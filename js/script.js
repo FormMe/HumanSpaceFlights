@@ -32,6 +32,6 @@ d3.csv("data/missions.csv", function (error, missionsData) {
         .entries(missionsData)
         .map(d => d.value);
 
-
+        
   flightsChart.update(aggrMissions);
 });
