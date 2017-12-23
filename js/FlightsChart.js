@@ -17,23 +17,37 @@ class FlightsChart{
 						    	d.values.forEach(function (c, i) {
 						    		d.values[i].prev = i == 0 ? 0 : d.values[i-1].values.length + d.values[i-1].prev;
 						    	});
+						    	d.values = d.values.sort(function(a, b){
+										    if(a.key < b.key) return -1;
+										    if(a.key > b.key) return 1;
+										    return 0;
+										});
 						    	return d;
 	  						});
 
-		console.log(groupedData);
+		// console.log(groupedData);
 		var height = self.height - self.margin.bottom;
 		var x = d3.scaleBand()
 			.range([self.margin.left, self.width])
 			.padding(0.1)
 			.domain(groupedData.map(d => d.key));
 
+		var maxY = d3.max(groupedData, function (d) {
+				console.log(d);
+				return d3.max(d.values, function (c) {
+					console.log(c);
+
+					return c.prev + c.values.length;
+				})
+			});
 		var y = d3.scaleLinear()
 			.range([self.height, self.margin.bottom])
-			.domain([0, 10]);
+			.domain([0, maxY]);
 
+		var Countries = ["USSR/Russia", "USA", "China"]
 		var color = d3.scaleOrdinal()
-		    .range(["#98abc5", "#8a89a6", "#7b6888"])
-		    .domain(["USSR/Russia", "USA", "China"]);
+		    .range(["#6b486b", "#98abc5", "#d0743c"])
+		    .domain(Countries);
 
 		var svg = d3.select('#FlightsChart')
 					.attr('width', self.svgWidth)
@@ -72,6 +86,27 @@ class FlightsChart{
 			    .attr("dy", ".35em")
 			    .attr("transform", "rotate(90)")
 			    .style("text-anchor", "start");
+
+		var legend = svg.append("g")
+		      .attr("font-family", "sans-serif")
+		      .attr("font-size", 10)
+		      .attr("text-anchor", "end")
+		    .selectAll("g")
+		    .data(Countries)
+		    .enter().append("g")
+		      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+		legend.append("rect")
+		      .attr("x", width - 19)
+		      .attr("width", 19)
+		      .attr("height", 19)
+		      .attr("fill", color);
+
+		legend.append("text")
+		      .attr("x", width - 24)
+		      .attr("y", 9.5)
+		      .attr("dy", "0.32em")
+		      .text(function(d) { return d; });
 	}
 }
 
