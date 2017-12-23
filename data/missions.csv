@@ -1,0 +1,395 @@
+,Crew,Country,Habitation,Brief Mission Summary,Fatality,Moon,Sub Orbital,Prolongation,Launch Data,Launch Mission,Return Data,Return Mission,Launch Year
+0,Yuri Gagarin,USSR/Russia,,First manned spaceflight. Completed one Earth orbit.,N,N,N,0.0,1961-04-12,Vostok 1,1961-04-12, Vostok 1,1961
+1,Alan B. Shepard,USA,,"First American manned suborbital spaceflight (altitude 187 kilometres, 116 miles).",N,N,Y,0.0,1961-05-05,Mercury-Redstone 3 (Freedom 7),1961-05-05, Mercury-Redstone 3 (Freedom 7),1961
+2,Virgil I. Grissom,USA,,"Second American manned suborbital flight (altitude 118.26 mi, 190 km).",N,N,Y,0.0,1961-07-21,Mercury-Redstone 4 (Liberty Bell 7),1961-07-21, Mercury-Redstone 4 (Liberty Bell 7),1961
+3,Gherman Titov,USSR/Russia,,Day-long flight. Completed 17 Earth orbits. Brief manual control by pilot.,N,N,N,1.0,1961-08-06,Vostok 2,1961-08-07, Vostok 2,1961
+4,John H. Glenn,USA,,First American manned orbital flight. Completed three orbits.,N,N,N,0.0,1962-02-20,Mercury-Atlas 6 (Friendship 7),1962-02-20, Mercury-Atlas 6 (Friendship 7),1962
+5,M. Scott Carpenter,USA,,First manual retrofire. Earth photography and study of liquids in weightless conditions.,N,N,N,0.0,1962-05-24,Mercury-Atlas 7 (Aurora 7),1962-05-24, Mercury-Atlas 7 (Aurora 7),1962
+6,Andriyan Nikolayev,USSR/Russia,,First instance of two manned spacecraft in orbit simultaneously.,N,N,N,4.0,1962-08-11,Vostok 3,1962-08-15, Vostok 3,1962
+7,Pavel Popovich,USSR/Russia,,First instance of two manned spacecraft in orbit simultaneously.,N,N,N,3.0,1962-08-12,Vostok 4,1962-08-15, Vostok 4,1962
+8,Walter M. Schirra,USA,,First flawless Mercury mission.,N,N,N,0.0,1962-10-03,Mercury-Atlas 8 (Sigma 7),1962-10-03, Mercury-Atlas 8 (Sigma 7),1962
+9,L. Gordon Cooper,USA,,First live TV from U.S. astronaut.,N,N,N,1.0,1963-05-15,Mercury-Atlas 9 (Faith 7),1963-05-16, Mercury-Atlas 9 (Faith 7),1963
+10,Valery Bykovsky,USSR/Russia,,Longest solo spaceflight.,N,N,N,5.0,1963-06-14,Vostok 5,1963-06-19, Vostok 5,1963
+11,Valentina Tereshkova,USSR/Russia,,First woman in space.,N,N,N,3.0,1963-06-16,Vostok 6,1963-06-19, Vostok 6,1963
+12,Joseph A. Walker,USA,,First winged craft in space. Reached altitude of 106 km.,N,N,Y,0.0,1963-07-19,"Flight 90, X-15",1963-07-19," Flight 90, X-15",1963
+13,Joseph A. Walker,USA,,Reached altitude of 108 km. Walker becomes first person to fly into space twice. X-15 #3 (serial 56-6672) becomes first vehicle to fly into space twice.,N,N,Y,0.0,1963-08-22,"Flight 91, X-15",1963-08-22," Flight 91, X-15",1963
+14,"Vladimir Komarov, Konstantin Feoktistov, Boris Yegorov",USSR/Russia,,First multiple person spaceflight. Biomedical research.,N,N,N,1.0,1964-10-12,Voskhod 1,1964-10-13, Voskhod 1,1964
+15,"Alexey Leonov, Pavel Belyayev",USSR/Russia,,First EVA.,N,N,N,1.0,1965-03-18,Voskhod 2,1965-03-19, Voskhod 2,1965
+16,"Virgil I. Grissom, John W. Young",USA,,First to perform orbital maneuvers.,N,N,N,0.0,1965-03-23,Gemini 3,1965-03-23, Gemini 3,1965
+17,"James A. McDivitt, Edward H. White",USA,,First American EVA.,N,N,N,4.0,1965-06-03,Gemini 4,1965-06-07, Gemini 4,1965
+18,"L. Gordon Cooper, Charles P. Conrad",USA,,First one week spaceflight. Cooper becomes the first person to orbit the Earth on two different missions.,N,N,N,8.0,1965-08-21,Gemini 5,1965-08-29, Gemini 5,1965
+19,"Frank F. Borman, James A. Lovell",USA,,First two-week spaceflight. First space rendezvous in history with Gemini 6A.,N,N,N,14.0,1965-12-04,Gemini 7,1965-12-18, Gemini 7,1965
+20,"Walter M. Schirra, Thomas P. Stafford",USA,,First space rendezvous in history with Gemini 7.,N,N,N,1.0,1965-12-15,Gemini 6A,1965-12-16, Gemini 6A,1965
+21,"Neil A. Armstrong, David R. Scott",USA,,First docking in space in history with Agena Target Vehicle Planned EVA canceled due to early re-entry necessitated by stuck thruster.,N,N,N,1.0,1966-03-16,Gemini 8,1966-03-17, Gemini 8,1966
+22,"Thomas P. Stafford, Eugene A. Cernan",USA,,First backup crew to fly space mission.,N,N,N,3.0,1966-06-03,Gemini 9A,1966-06-06, Gemini 9A,1966
+23,"John W. Young, Michael Collins",USA,,First rendezvous with two different objects.,N,N,N,3.0,1966-07-18,Gemini 10,1966-07-21, Gemini 10,1966
+24,"Charles P. Conrad, Richard F. Gordon, Jr.",USA,,Held altitude record prior to lunar missions (1374 km).,N,N,N,3.0,1966-09-12,Gemini 11,1966-09-15, Gemini 11,1966
+25,"James A. Lovell, Edwin E. Aldrin",USA,,First manual rendezvous. Miscellaneous scientific experiments.,N,N,N,4.0,1966-11-11,Gemini 12,1966-11-15, Gemini 12,1966
+26,Vladimir Komarov,USSR/Russia,,Crashed on re-entry. First fatality during spaceflight.,Y,N,N,1.0,1967-04-23,Soyuz 1,1967-04-24, Soyuz 1,1967
+27,"Walter M. Schirra, Donn F. Eisele, R. Walter Cunningham",USA,,First three person U.S. crew. Launched over 20 months after Apollo 1 fatalities.,N,N,N,11.0,1968-10-11,Apollo 7,1968-10-22, Apollo 7,1968
+28,Georgy Beregovoy,USSR/Russia,,Failed to dock with unmanned Soyuz 2.,N,N,N,4.0,1968-10-26,Soyuz 3,1968-10-30, Soyuz 3,1968
+29,"Frank F. Borman, James A. Lovell, William A. Anders",USA,,First manned lunar orbit.,N,Y,N,6.0,1968-12-21,Apollo 8,1968-12-27, Apollo 8,1968
+30,Vladimir Shatalov,USSR/Russia,,First crew transfer between space vehicles. First docking of two manned spacecraft.,N,N,N,3.0,1969-01-14,Soyuz 4,1969-01-17, Soyuz 4,1969
+31,Boris Volynov,USSR/Russia,,First crew transfer between space vehicles. First docking of two manned spacecraft.,N,N,N,3.0,1969-01-15,Soyuz 5,1969-01-18, Soyuz 5,1969
+32,"Aleksei Yeliseyev, Yevgeny Khrunov",USSR/Russia,,First crew transfer between space vehicles. First docking of two manned spacecraft.,N,N,N,2.0,1969-01-15,Soyuz 5,1969-01-17, Soyuz 4,1969
+33,"James A. McDivitt, David R. Scott, Russell L. Schweickart",USA,,Tested Lunar Module in low Earth orbit.,N,N,N,10.0,1969-03-03,Apollo 9,1969-03-13, Apollo 9,1969
+34,"Thomas P. Stafford, John W. Young, Eugene A. Cernan",USA,,Tested Lunar Module in low lunar orbit.,N,Y,N,8.0,1969-05-18,Apollo 10,1969-05-26, Apollo 10,1969
+35,"Neil A. Armstrong, Michael Collins, Edwin E. Aldrin",USA,Moon,First lunar landing.,N,Y,N,8.0,1969-07-16,Apollo 11,1969-07-24, Apollo 11,1969
+36,"Georgy Shonin, Valeri Kubasov",USSR/Russia,,First three-craft spaceflight.,N,N,N,5.0,1969-10-11,Soyuz 6,1969-10-16, Soyuz 6,1969
+37,"Anatoly Filipchenko, Vladislav Volkov, Viktor Gorbatko",USSR/Russia,,First three-craft spaceflight.,N,N,N,5.0,1969-10-12,Soyuz 7,1969-10-17, Soyuz 7,1969
+38,"Vladimir Shatalov, Aleksei Yeliseyev",USSR/Russia,,First three-craft spaceflight.,N,N,N,5.0,1969-10-13,Soyuz 8,1969-10-18, Soyuz 8,1969
+39,"Charles P. Conrad, Richard F. Gordon, Jr., Alan Bean",USA,Moon,Second lunar landing. Precision landing near Surveyor 3.,N,Y,N,10.0,1969-11-14,Apollo 12,1969-11-24, Apollo 12,1969
+40,"James A. Lovell, John L. Swigert, Fred W. Haise",USA,Moon,Lunar landing aborted following explosion en route.,N,Y,N,6.0,1970-04-11,Apollo 13,1970-04-17, Apollo 13,1970
+41,"Andriyan Nikolayev, Vitaliy Sevastyanov",USSR/Russia,,Investigations into effects of prolonged spaceflight. Record duration mission for single spacecraft.,N,N,N,18.0,1970-06-01,Soyuz 9,1970-06-19, Soyuz 9,1970
+42,"Alan B. Shepard, Stuart A. Roosa, Edgar D. Mitchell",USA,Moon,Third lunar landing. Shepard becomes only Mercury astronaut to walk on moon and hits golf ball on moon's surface.,N,Y,N,9.0,1971-01-31,Apollo 14,1971-02-09, Apollo 14,1971
+43,"Vladimir Shatalov, Aleksei Yeliseyev, Nikolay Rukavishnikov",USSR/Russia,,Unsuccessful attempt to board Salyut 1 space station.,N,N,N,2.0,1971-04-23,Soyuz 10,1971-04-25, Soyuz 10,1971
+44,"Georgy Dobrovolsky, Viktor Patsayev, Vladislav Volkov",USSR/Russia,Salyut 1,Successful boarding of Salyut 1 (first manned space station). All crew died on re-entry due to air leak.,Y,N,N,23.0,1971-06-06,Soyuz 11,1971-06-29, Soyuz 11,1971
+45,"David R. Scott, Alfred M. Worden, James B. Irwin",USA,Moon,Fourth lunar landing. First Lunar Rover.,N,Y,N,12.0,1971-07-26,Apollo 15,1971-08-07, Apollo 15,1971
+46,"John W. Young, Thomas K. Mattingly, Charles M. Duke",USA,Moon,Fifth lunar landing.,N,Y,N,11.0,1972-04-16,Apollo 16,1972-04-27, Apollo 16,1972
+47,"Eugene A. Cernan, Ronald E. Evans, Harrison H. Schmitt",USA,Moon,Sixth and last lunar landing.,N,Y,N,12.0,1972-12-07,Apollo 17,1972-12-19, Apollo 17,1972
+48,"Charles P. Conrad, Paul J. Weitz, Joseph P. Kerwin",USA,Skylab,First manned mission to Skylab space station. Spent almost one month in space.,N,N,N,28.0,1973-05-25,Skylab 2,1973-06-22, Skylab 2,1973
+49,"Alan L. Bean, Jack R. Lousma, Owen K. Garriott",USA,Skylab,Spent almost two months in space. Miscellaneous scientific experiments.,N,N,N,59.0,1973-07-28,Skylab 3,1973-09-25, Skylab 3,1973
+50,"Vasili Lazarev, Oleg Makarov",USSR/Russia,,Test flight of new Soyuz design following Soyuz 11 disaster.,N,N,N,2.0,1973-09-27,Soyuz 12,1973-09-29, Soyuz 12,1973
+51,"Gerald P. Carr, William R. Pogue, Edward G. Gibson",USA,Skylab,Spent almost three months in space. Miscellaneous scientific experiments conducted.,N,N,N,85.0,1973-11-16,Skylab 4,1974-02-08, Skylab 4,1973
+52,"Valentin Lebedev, Pyotr Klimuk",USSR/Russia,,"Second test of redesigned Soyuz capsule.
+ Astrophysical observations.",N,N,N,8.0,1973-12-18,Soyuz 13,1973-12-26, Soyuz 13,1973
+53,"Yuri Artyukhin, Pavel Popovich",USSR/Russia,Salyut 3,Military mission. Evaluation of military applications of human spaceflight.,N,N,N,16.0,1974-07-03,Soyuz 14,1974-07-19, Soyuz 14,1974
+54,"Lev Demin, Gennadi Sarafanov",USSR/Russia,,Failed to board Salyut 3 space station.,N,N,N,2.0,1974-08-26,Soyuz 15,1974-08-28, Soyuz 15,1974
+55,"Anatoly Filipchenko, Nikolay Rukavishnikov",USSR/Russia,,Systems testing in preparation for joint Soviet-US space flight.,N,N,N,6.0,1974-12-02,Soyuz 16,1974-12-08, Soyuz 16,1974
+56,"Georgy Grechko, Aleksei Gubarev",USSR/Russia,Salyut 4,Astronomical observations.,N,N,N,30.0,1975-01-11,Soyuz 17,1975-02-10, Soyuz 17,1975
+57,"Vasili Lazarev, Oleg Makarov",USSR/Russia,,Failed to reach orbit due to malfunction.,N,N,Y,0.0,1975-04-05,Soyuz 18a,1975-04-05, Soyuz 18a,1975
+58,"Pyotr Klimuk, Vitali Sevastyanov",USSR/Russia,Salyut 4,Research into long-term stays in space.,N,N,N,64.0,1975-05-24,Soyuz 18,1975-07-26, Soyuz 18,1975
+59,"Alexei Leonov, Valeri Kubasov",USSR/Russia,,"Apollo-Soyuz Test Project (ASTP); first joint Soviet–US spaceflight. The two craft dock in space with exchange of flags and gifts.
+ Last manned US mission until STS-1 in 1981.",N,N,N,6.0,1975-07-15,Soyuz 19,1975-07-21, Soyuz 19,1975
+60,"Thomas P. Stafford, Vance D. Brand, Donald K. Slayton",USA,,,N,N,N,9.0,1975-07-15,Apollo-Soyuz,1975-07-24, Apollo-Soyuz,1975
+61,"Boris Volynov, Vitaliy Zholobov",USSR/Russia,Salyut 5,Assessment of Salyut 5 station's military surveillance capabilities.,N,N,N,49.0,1976-07-06,Soyuz 21,1976-08-24, Soyuz 21,1976
+62,"Valery Bykovsky, Vladimir Aksyonov",USSR/Russia,,Earth photography.,N,N,N,8.0,1976-09-15,Soyuz 22,1976-09-23, Soyuz 22,1976
+63,"Vyacheslav Zudov, Valery Rozhdestvensky",USSR/Russia,,Failed to board Salyut 5 space station.,N,N,N,2.0,1976-10-14,Soyuz 23,1976-10-16, Soyuz 23,1976
+64,"Viktor Gorbatko, Yuri Glazkov",USSR/Russia,Salyut 5,Investigation of air quality on board Salyut 5.,N,N,N,18.0,1977-02-07,Soyuz 24,1977-02-25, Soyuz 24,1977
+65,"Vladimir Kovalyonok, Valeri Ryumin",USSR/Russia,,Failed to board Salyut 6 space station.,N,N,N,2.0,1977-10-09,Soyuz 25,1977-10-11, Soyuz 25,1977
+66,"Georgy Grechko, Yuri Romanenko",USSR/Russia,Salyut 6,First successful docking with Salyut 6.,N,N,N,97.0,1977-12-10,Soyuz 26,1978-03-16, Soyuz 27,1977
+67,"Vladimir Dzhanibekov, Oleg Makarov",USSR/Russia,Salyut 6,,N,N,N,6.0,1978-01-10,Soyuz 27,1978-01-16, Soyuz 26,1978
+68,"Aleksey Gubarev, Vladimír Remek",USSR/Russia,Salyut 6,First Czech astronaut and first astronaut not from USA or USSR (Remek).,N,N,N,8.0,1978-03-02,Soyuz 28,1978-03-10, Soyuz 28,1978
+69,"Vladimir Kovalyonok, Aleksandr Ivanchenkov",USSR/Russia,Salyut 6,Salyut 6 crew rotation.,N,N,N,141.0,1978-06-15,Soyuz 29,1978-11-02, Soyuz 31,1978
+70,"Pyotr Klimuk, Mirosław Hermaszewski",USSR/Russia,Salyut 6,Life sciences experiments. Earth observations and study of aurora borealis. First Pole in space (Hermaszewski).,N,N,N,8.0,1978-06-27,Soyuz 30,1978-07-05, Soyuz 30,1978
+71,"Valery Bykovsky, Sigmund Jähn",USSR/Russia,Salyut 6,First East German in space (Jähn).,N,N,N,8.0,1978-08-26,Soyuz 31,1978-09-03, Soyuz 29,1978
+72,"Vladimir Lyakhov, Valeri Ryumin",USSR/Russia,Salyut 6,Salyut 6 crew rotation.,N,N,N,176.0,1979-02-25,Soyuz 32,1979-08-19, Soyuz 34,1979
+73,"Nikolay Rukavishnikov, Georgi Ivanov",USSR/Russia,,Failed to board Salyut 6 space station. First Bulgarian in space (Ivanov).,N,N,N,2.0,1979-04-10,Soyuz 33,1979-04-12, Soyuz 33,1979
+74,"Leonid Popov, Valeri Ryumin",USSR/Russia,Salyut 6,Salyut 6 crew rotation.,N,N,N,186.0,1980-04-09,Soyuz 35,1980-10-11, Soyuz 37,1980
+75,"Valeri Kubasov, Bertalan Farkas",USSR/Russia,Salyut 6,"Materials processing, Earth observation and life sciences experiments. First Hungarian in space (Farkas).",N,N,N,8.0,1980-05-26,Soyuz 36,1980-06-03, Soyuz 35,1980
+76,"Yury Malyshev, Vladimir Aksyonov",USSR/Russia,Salyut 6,First manned flight of the Soyuz T.,N,N,N,4.0,1980-06-05,Soyuz T-2,1980-06-09, Soyuz T-2,1980
+77,"Viktor Gorbatko, Pham Tuân",USSR/Russia,Salyut 6,Miscellaneous scientific experiments. First Vietnamese and first Asian outside USSR in space (Tuan).,N,N,N,8.0,1980-07-23,Soyuz 37,1980-07-31, Soyuz 36,1980
+78,"Yuri Romanenko, Arnaldo Tamayo-Mendez",USSR/Russia,Salyut 6,First Cuban and first black person in space (Tamayo-Mendez).,N,N,N,8.0,1980-09-18,Soyuz 38,1980-09-26, Soyuz 38,1980
+79,"Leonid Kizim, Oleg Makarov, Gennadi Strekalov",USSR/Russia,Salyut 6,Salyut 6 refurbishment.,N,N,N,13.0,1980-11-27,Soyuz T-3,1980-12-10, Soyuz T-3,1980
+80,"Vladimir Kovalyonok, Viktor Savinykh",USSR/Russia,Salyut 6,,N,N,N,75.0,1981-03-13,Soyuz T-4,1981-05-26, Soyuz T-4,1981
+81,"Vladimir Dzhanibekov, Jügderdemidiin Gürragchaa",USSR/Russia,Salyut 6,First Mongolian in space (Gürragchaa).,N,N,N,7.0,1981-03-22,Soyuz 39,1981-03-29, Soyuz 39,1981
+82,"John W. Young, Robert L. Crippen",USA,,First space shuttle flight. Systems test.,N,N,N,2.0,1981-04-12,STS-1 (Columbia),1981-04-14, STS-1 (Columbia),1981
+83,"Leonid Popov, Dumitru Prunariu",USSR/Russia,Salyut 6,First Romanian in space (Prunariu). Magnetic field observations. Final Soyuz flight.,N,N,N,8.0,1981-05-14,Soyuz 40,1981-05-22, Soyuz 40,1981
+84,"Joseph H. Engle, Richard H. Truly",USA,,First re-use of a manned spacecraft. Systems test. Earth science observations.,N,N,N,2.0,1981-11-12,STS-2 (Columbia),1981-11-14, STS-2 (Columbia),1981
+85,"Jack R. Lousma, C. Gordon Fullerton",USA,,Further system testing. Miscellaneous scientific experiments and Earth science observations.,N,N,N,8.0,1982-03-22,STS-3 (Columbia),1982-03-30, STS-3 (Columbia),1982
+86,"Anatoli Brergovoy, Valentin Lebedev",USSR/Russia,Salyut 7,First mission to Salyut 7. Deployment of radio communications satellite.,N,N,N,213.0,1982-05-12,Soyuz T-5,1982-12-10, Soyuz T-7,1982
+87,"Vladimir Dzhanibekov, Aleksandr Ivanchenkov, Jean-Loup Chrétien",USSR/Russia,Salyut 7,First French citizen in space (Chrétien).,N,N,N,8.0,1982-06-24,Soyuz T-6,1982-07-02, Soyuz T-6,1982
+88,"Thomas K. Mattingly, Henry W. Hartsfield",USA,,Final space shuttle R&D flight. Miscellaneous scientific experiments plus classified US Air Force payload.,N,N,N,7.0,1982-06-27,STS-4 (Columbia),1982-07-04, STS-4 (Columbia),1982
+89,"Leonid Popov, Aleksandr Serebrov, Svetlana Savitskaya",USSR/Russia,Salyut 7,Second woman in space (Savitskaya).,N,N,N,8.0,1982-08-19,Soyuz T-7,1982-08-27, Soyuz T-5,1982
+90,"Vance D. Brand, Robert F. Overmyer, Joseph P. Allen, William B. Lenoir",USA,,Launched commercial ANIK C-3 and SBS-C communications satellites. Planned EVA cancelled due to space suit malfunction.,N,N,N,5.0,1982-11-11,STS-5 (Columbia),1982-11-16, STS-5 (Columbia),1982
+91,"Paul J. Weitz, Karol J. Bobko, Donald H. Peterson, F. Story Musgrave",USA,,First Space Shuttle EVA (Peterson and Musgrave). Deployment of first Tracking and Data Relay Satellite (TDRS-1). Miscellaneous science experiments.,N,N,N,5.0,1983-04-04,STS-6 (Challenger),1983-04-09," STS-6, Challenger",1983
+92,"Vladimir Titov, Gennadi Strekalov, Aleksandr Serebrov",USSR/Russia,,Failed to dock with Salyut 7.,N,N,N,2.0,1983-04-20,Soyuz T-8,1983-04-22, Soyuz T-8,1983
+93,"Robert L. Crippen, Frederick H. Hauck, John M. Fabian, Sally K. Ride, Norman E. Thagard",USA,,Two communications satellites launched. First American woman in space (Ride). Investigation into behavior of ant colony in zero gravity. Various microgravity experiments.,N,N,N,6.0,1983-06-18,STS-7 (Challenger),1983-06-24," STS-7, Challenger",1983
+94,"Vladimir Lyakhov, Aleksandr Aleksandrov",USSR/Russia,Salyut 7,,N,N,N,151.0,1983-06-26,Soyuz T-9,1983-11-23, Soyuz T-9,1983
+95,"Richard H. Truly, Daniel C. Brandenstein, Dale A. Gardner, Guion Bluford, William E. Thornton",USA,,First African-American in space (Bluford). First night launch and landing. Deployed INSAT-1B satellite for India. Observation of behavior of rats in space.,N,N,N,6.0,1983-08-30,STS-8 (Challenger),1983-09-05," STS-8, Challenger",1983
+96,"Vladimir Titov, Gennady Strekalov",USSR/Russia,,Launch failed due to fire. Crew ejected.,N,N,Y,0.0,1983-09-26,Soyuz T-10-1,1983-09-26, Soyuz T-10-1,1983
+97,"John W. Young, Brewster H. Shaw, Owen K. Garriott, Robert A. Parker, Byron K. Lichtenberg, Ulf Merbold",USA,,"First Spacelab (orbital laboratory) mission. First ESA astronaut, first West German astronaut and first non-American on US flight (Merbold).",N,N,N,10.0,1983-11-28,STS-9 (Columbia),1983-12-08, STS-9 (Columbia),1983
+98,"Vance D. Brand, Robert L. Gibson, Bruce McCandless II, Ronald E. McNair, Robert L. Stewart",USA,,First untethered spacewalk (McCandless and Stewart). WESTAR-VI and PALAPA-B2 satellites deployed but failed to attain correct orbits.,N,N,N,8.0,1984-02-03,STS-41-B (Challenger),1984-02-11, STS-41-B (Challenger),1984
+99,"Leonid Kizim, Vladimir Solovyov, Oleg Atkov",USSR/Russia,Salyut 7,,N,N,N,242.0,1984-02-04,Soyuz T-10,1984-10-02, Soyuz T-11,1984
+100,"Yury Malyshev, Gennadi Strekalov, Rakesh Sharma",USSR/Russia,Salyut 7,First Indian in space (Sharma). Earth observation program. Life sciences and materials processing experiments.,N,N,N,8.0,1984-04-03,Soyuz T-11,1984-04-11, Soyuz T-10,1984
+101,"Robert L. Crippen, Francis R. Scobee, George D. Nelson, James D. A. van Hoften, Terry J. Hart",USA,,"LDEF deployed for later retrieval. Capture, repair and redeployment of malfunctioning Solar Maximum Mission satellite.",N,N,N,7.0,1984-04-06,STS-41-C (Challenger),1984-04-13, STS-41-C (Challenger),1984
+102,"Vladimir Dzhanibekov, Igor Volk, Svetlana Savitskaya",USSR/Russia,Salyut 7,First EVA by a female astronaut (Savitskaya).,N,N,N,12.0,1984-07-17,Soyuz T-12,1984-07-29, Soyuz T-12,1984
+103,"Henry W. Hartsfield, Michael L. Coats, Judith A. Resnik, Steven A. Hawley, Richard M. Mullane, Charles D. Walker",USA,,Testing of experimental solar arrays. Three satellites deployed.,N,N,N,6.0,1984-08-30,STS-41-D (Discovery),1984-09-05, STS-41-D (Discovery),1984
+104,"Robert L. Crippen, Jon A. McBride, Kathryn D. Sullivan, Sally K. Ride, David C. Leestma, Marc Garneau, Paul D. Scully-Power",USA,,ERBS satellite deployed. Radar imaging. First EVA by an American woman (Sullivan). First Canadian in space (Garneau). First flight including two women.,N,N,N,8.0,1984-10-05,STS-41-G (Challenger),1984-10-13, STS-41-G (Challenger),1984
+105,"Frederick H. Hauck, David M. Walker, Anna L. Fisher, Dale A. Gardner, Joseph P. Allen",USA,,Deployed two communications satellites. Retrieved two malfunctioning satellites.,N,N,N,8.0,1984-11-08,STS-51-A (Discovery),1984-11-16, STS-51-A (Discovery),1984
+106,"Thomas K. Mattingly, Loren J. Shriver, Ellison S. Onizuka, James F. Buchli, Gary E. Payton",USA,,"First mission for the U.S. Department of Defense. Classified payload, possibly intelligence-gathering satellite.",N,N,N,3.0,1985-01-24,STS-51-C (Discovery),1985-01-27, STS-51-C (Discovery),1985
+107,"Karol J. Bobko, Donald E. Williams, M. Rhea Seddon, Jeffrey A. Hoffman, S. David Griggs, Charles D. Walker, E. Jake Garn",USA,,Communications satellite deployed. Miscellaneous scientific experiments. First senator in space (Garn).,N,N,N,7.0,1985-04-12,STS-51-D (Discovery),1985-04-19, STS-51-D (Discovery),1985
+108,"Robert F. Overmyer, Frederick D. Gregory, Don L. Lind, Norman E. Thagard, William E. Thornton, Lodewijk van den Berg, Taylor G. Wang",USA,,Second Spacelab mission; microgravity experiments. Observation of behaviour of monkeys and rodents in space.,N,N,N,7.0,1985-04-29,STS-51-B (Challenger),1985-05-06, STS-51-B (Challenger),1985
+109,Viktor Savinykh,USSR/Russia,Salyut 7,Repair of crippled Salyut 7 station.,N,N,N,170.0,1985-06-05,Soyuz T-13,1985-11-21, Soyuz T-14,1985
+110,Vladimir Dzhanibekov,USSR/Russia,Salyut 7,Repair of crippled Salyut 7 station.,N,N,N,114.0,1985-06-05,Soyuz T-13,1985-09-26, Soyuz T-13,1985
+111,"Daniel C. Brandenstein, John O. Creighton, Shannon W. Lucid, Steven R. Nagel, John M. Fabian, Patrick Baudry, Sultan Salman Al Saud",USA,,Three communications satellites deployed. Miscellaneous scientific experiments. First Saudi and the first Arab in space (Al-Saud).,N,N,N,7.0,1985-06-17,STS-51-G (Discovery),1985-06-24, STS-51-G (Discovery),1985
+112,"C. Gordon Fullerton, Roy D. Bridges, F. Story Musgrave, Anthony W. England, Karl G. Henize, Loren W. Acton, John-David F. Bartoe",USA,,Spacelab-2 mission. Miscellaneous science experiments. Three communications satellites deployed.,N,N,N,8.0,1985-07-29,STS-51-F (Challenger),1985-08-06, STS-51-F (Challenger),1985
+113,"Joseph H. Engle, Richard O. Covey, James D.A. van Hoften, John M. Lounge, William F. Fisher",USA,,"Three communications satellites deployed. Retrieval, repair and redeployment of LEASAT-3 satellite.",N,N,N,7.0,1985-08-27,STS-51-I (Discovery),1985-09-03, STS-51-I (Discovery),1985
+114,"Vladimir Vasyutin, Aleksandr Volkov",USSR/Russia,Salyut 7,,N,N,N,66.0,1985-09-17,Soyuz T-14,1985-11-21, Soyuz T-14,1985
+115,Georgi Grechko,USSR/Russia,,,N,N,N,9.0,1985-09-17,Soyuz T-14,1985-09-26, Soyuz T-13,1985
+116,"Karol J. Bobko, Ronald J. Grabe, David C. Hilmers, Robert L. Stewart, William A. Pailes",USA,,"Second U.S. Department of Defense mission. Classified payload, believed to be two communications satellites.",N,N,N,4.0,1985-10-03,STS-51-J (Atlantis),1985-10-07, STS-51-J (Atlantis),1985
+117,"Henry W. Hartsfield, Steven R. Nagel, James F. Buchli, Guion Bluford, Bonnie J. Dunbar, Reinhard Furrer, Ernst Messerschmid, Wubbo J. Ockels",USA,,German-sponsored Spacelab mission. Microgravity experiments. First Dutchman in space (Ockels).,N,N,N,7.0,1985-10-30,STS-61-A (Challenger),1985-11-06, STS-61-A (Challenger),1985
+118,"Brewster H. Shaw, Bryan D. O'Connor, Mary L. Cleave, Sherwood C. Spring, Jerry L. Ross, Rodolfo Neri Vela, Charles D. Walker",USA,,Three communications satellites deployed. Demonstration of in-orbit construction techniques. First Mexican in space (Neri Vela).,N,N,N,7.0,1985-11-26,STS-61-B (Atlantis),1985-12-03, STS-61-B (Atlantis),1985
+119,"Robert L. Gibson, Charles F. Bolden, Franklin R. Chang-Diaz, Steven A. Hawley, George D. Nelson, Robert J. Cenker, Clarence W. Nelson",USA,,Deployment of communications satellite. Miscellaneous science experiments.,N,N,N,6.0,1986-01-12,STS-61-C (Columbia),1986-01-18, STS-61-C (Columbia),1986
+120,"Francis R. Scobee, Michael J. Smith, Judith A. Resnik, Ellison S. Onizuka, Ronald E. McNair, Gregory B. Jarvis, S. Christa McAuliffe",USA,,Disintegrated 73 seconds after launch with loss of all crew.,Y,N,N,0.0,1986-01-28,STS-51-L (Challenger),1986-01-28, Failure,1986
+121,"Leonid Kizim, Vladimir Solovyov",USSR/Russia,"""Mir, Salyut 7, Mir""",First expedition to Mir. Last expedition to Salyut 7.,N,N,N,126.0,1986-03-13,Soyuz T-15,1986-07-16, Soyuz T-15,1986
+122,Yuri Romanenko,USSR/Russia,Mir,Mir crew rotation and maintenance.,N,N,N,326.0,1987-02-07,Soyuz TM-2,1987-12-29, Soyuz TM-3,1987
+123,Alexander Laveykin,USSR/Russia,Mir,Mir crew rotation and maintenance.,N,N,N,174.0,1987-02-07,Soyuz TM-2,1987-07-30, Soyuz TM-2,1987
+124,Aleksandr Aleksandrov,USSR/Russia,Mir,Mir crew rotation and maintenance.,N,N,N,161.0,1987-07-22,Soyuz TM-3,1987-12-29, Soyuz TM-3,1987
+125,"Aleksandr Viktorenko, Mohammed Faris",USSR/Russia,Mir,Mir crew rotation and maintenance.,N,N,N,8.0,1987-07-22,Soyuz TM-3,1987-07-30, Soyuz TM-2,1987
+126,"Vladimir Titov,Musa Manarov",USSR/Russia,Mir,Mir crew rotation. Biological experiments and astronomical observations.,N,N,N,367.0,1987-12-21,Soyuz TM-4,1988-12-21, Soyuz TM-6,1987
+127,Anatoli Levchenko,USSR/Russia,Mir,Mir crew rotation. Biological experiments and astronomical observations.,N,N,N,8.0,1987-12-21,Soyuz TM-4,1987-12-29, Soyuz TM-3,1987
+128,"Anatoly Solovyev, Victor Savinykh, Aleksandr Aleksandrov",USSR/Russia,Mir,,N,N,N,10.0,1988-06-07,Soyuz TM-5,1988-06-17, Soyuz TM-4,1988
+129,Valeri Polyakov,USSR/Russia,Mir,Mir crew rotation. First Afghan in space (Mohmand).,N,N,N,242.0,1988-08-29,Soyuz TM-6,1989-04-27, Soyuz TM-7,1988
+130,"Vladimir Lyakhov, Abdul Ahad Mohmand",USSR/Russia,Mir,Mir crew rotation. First Afghan in space (Mohmand).,N,N,N,9.0,1988-08-29,Soyuz TM-6,1988-09-07, Soyuz TM-5,1988
+131,"Frederick H. Hauck, Richard O. Covey, John M. Lounge, George D. Nelson, David C. Hilmers",USA,,"First ""Return to Flight"" Space Shuttle mission after Challenger Disaster. Deployment of Tracking and Data Relay Satellite-3 (TDRS-3).",N,N,N,5.0,1988-09-28,STS-26 (Discovery),1988-10-03, STS-26 (Discovery),1988
+132,Jean-Loup Chrétien,USSR/Russia,Mir,,N,N,N,25.0,1988-11-26,Soyuz TM-7,1988-12-21, Soyuz TM-6,1988
+133,"Aleksandr Volkov, Sergei Krikalev",USSR/Russia,Mir,Mir crew rotation. Technology experiments. First European EVA (Chrétien).,N,N,N,153.0,1988-11-26,Soyuz TM-7,1989-04-27, Soyuz TM-7,1988
+134,"Robert L. Gibson, Guy S. Gardner, Richard M. Mullane, Jerry L. Ross, William M. Shepherd",USA,,"U.S. Department of Defense mission. Classified payload, reportedly Lacrosse 1 radar reconnaissance satellite.",N,N,N,4.0,1988-12-02,STS-27 (Atlantis),1988-12-06, STS-27 (Atlantis),1988
+135,"Michael L. Coats, John E. Blaha, James P. Bagian, James F. Buchli, Robert C. Springer",USA,,Deployment of Tracking and Data Relay Satellite-4 (TDRS-4). Miscellaneous science experiments.,N,N,N,5.0,1989-03-13,STS-29 (Discovery),1989-03-18, STS-29 (Discovery),1989
+136,"David M. Walker, Ronald J. Grabe, Norman E. Thagard, Mary L. Cleave, Mark C. Lee",USA,,Magellan probe deployed.,N,N,N,4.0,1989-05-04,STS-30 (Atlantis),1989-05-08, STS-30 (Atlantis),1989
+137,"Brewster H. Shaw, Richard N. Richards, James C. Adamson, David C. Leestma, Mark N. Brown",USA,,"U.S. Department of Defense mission. Classified payload, reportedly military communications and reconnaissance satellites.",N,N,N,5.0,1989-08-08,STS-28 (Columbia),1989-08-13, STS-28 (Columbia),1989
+138,"Alexander Viktorenko, Aleksandr Serebrov",USSR/Russia,Mir,Mir equipment installation.,N,N,N,168.0,1989-09-05,Soyuz TM-8,1990-02-19, Soyuz TM-8,1989
+139,"Donald E. Williams, Michael J. McCulley, Franklin R. Chang-Diaz, Shannon W. Lucid, Ellen S. Baker",USA,,Galileo probe deployed.,N,N,N,5.0,1989-10-18,STS-34 (Atlantis),1989-10-23, STS-34 (Atlantis),1989
+140,"Frederick D. Gregory, John E. Blaha, F. Story Musgrave, Manley L. Carter, Kathryn C. Thornton",USA,,"U.S. Department of Defense mission. Classified payload, reportedly reconnaissance satellite. First African-American Shuttle Commander.",N,N,N,5.0,1989-11-22,STS-33 (Discovery),1989-11-27, STS-33 (Discovery),1989
+141,"Daniel C. Brandenstein, James D. Wetherbee, Bonnie J. Dunbar, G. David Low, Marsha S. Ivins",USA,,Deployment of defense communications satellite. Long Duration Exposure Facility (LDEF) retrieval.,N,N,N,11.0,1990-01-09,STS-32 (Columbia),1990-01-20, STS-32 (Columbia),1990
+142,"Anatoly Solovyev, Alexander Balandin",USSR/Russia,Mir,,N,N,N,157.0,1990-02-11,Soyuz TM-9,1990-07-17, Soyuz TM-9,1990
+143,"John O. Creighton, John H. Casper, Richard M. Mullane, David C. Hilmers, Pierre J. Thuot",USA,,"U.S. Department of Defense mission. Classified payload, reportedlyreconnaissance satellite.",N,N,N,4.0,1990-02-28,STS-36 (Atlantis),1990-03-04, STS-36 (Atlantis),1990
+144,"Loren J. Shriver, Charles F. Bolden, Steven A. Hawley, Bruce McCandless II, Kathryn D. Sullivan",USA,,Hubble Space Telescope deployed.,N,N,N,5.0,1990-04-24,STS-31 (Discovery),1990-04-29, STS-31 (Discovery),1990
+145,"Gennadi Strekalov, Gennadi Manakov",USSR/Russia,Mir,,N,N,N,130.0,1990-08-03,Soyuz TM-10,1990-12-10, Soyuz TM-10,1990
+146,"Richard N. Richards, Robert D. Cabana, William M. Shepherd, Bruce E. Melnick, Thomas D. Akers",USA,,Ulysses probe deployed. Miscellaneous science experiments.,N,N,N,4.0,1990-10-06,STS-41 (Discovery),1990-10-10, STS-41 (Discovery),1990
+147,"Richard O. Covey, Frank L. Culbertson, Robert C. Springer, Carl J. Meade, Charles D. Gemar",USA,,"U.S. Department of Defense mission. Classified payload, reportedly reconnaissance satellite.",N,N,N,5.0,1990-11-15,STS-38 (Atlantis),1990-11-20, STS-38 (Atlantis),1990
+148,"Vance D. Brand, Guy S. Gardner, Jeffrey A. Hoffman, John M. Lounge, Robert A. Parker, Samuel T. Durrance, Ronald A. Parise",USA,,Ultraviolet and X-ray astronomy (ASTRO-1 observatory).,N,N,N,8.0,1990-12-02,STS-35 (Columbia),1990-12-10, STS-35 (Columbia),1990
+149,"Viktor Afanasyev, Musa Manarov",USSR/Russia,Mir,Mir crew rotation. First Japanese in space (Akiyama).,N,N,N,176.0,1990-12-02,Soyuz TM-11,1991-05-26, Soyuz TM-11,1990
+150,Toyohiro Akiyama,USSR/Russia,Mir,,N,N,N,8.0,1990-12-02,Soyuz TM-11,1990-12-10, Soyuz TM-10,1990
+151,"Steven R. Nagel, Kenneth D. Cameron, Jerry L. Ross, Jerome Apt, Linda M. Godwin",USA,,Deployment of Compton Gamma Ray Observatory.,N,N,N,6.0,1991-04-05,STS-37 (Atlantis),1991-04-11, STS-37 (Atlantis),1991
+152,"Michael L. Coats, L. Blaine Hammond, Guion S. Bluford, Gregory J. Harbaugh, Richard J. Hieb, Donald R. McMonagle, Charles L. Veach",USA,,"U.S. Department of Defense mission. Part-classified payload, including various science experiments and observations.",N,N,N,8.0,1991-04-28,STS-39 (Discovery),1991-05-06, STS-39 (Discovery),1991
+153,Helen Sharman,USSR/Russia,Mir,Mir crew rotation. Life science experiments. First Briton in space (Sharman). First European woman in space (Sharman).,N,N,N,8.0,1991-05-18,Soyuz TM-12,1991-05-26, Soyuz TM-11,1991
+154,Anatoli Artsebarsky,USSR/Russia,Mir,Mir crew rotation. Life science experiments. First Briton in space (Sharman). First European woman in space (Sharman).,N,N,N,146.0,1991-05-18,Soyuz TM-12,1991-10-10, Soyuz TM-12,1991
+155,Sergei Krikalev,USSR/Russia,Mir,Mir crew rotation. Life science experiments. First Briton in space (Sharman). First European woman in space (Sharman).,N,N,N,313.0,1991-05-18,Soyuz TM-12,1992-03-25, Soyuz TM-13,1991
+156,"Bryan D. O'Connor, Sidney M. Gutierrez, James P. Bagian, Tamara E. Jernigan, M. Rhea Seddon, F. Drew Gaffney, Millie E. Hughes-Fulford",USA,,"Spacelab life sciences mission, studying humans, rodents and jellyfish.",N,N,N,9.0,1991-06-05,STS-40 (Columbia),1991-06-14, STS-40 (Columbia),1991
+157,"John E. Blaha, Michael A. Baker, Shannon W. Lucid, James C. Adamson, G. David Low",USA,,Deployment of Tracking and Data Relay Satellite-5.,N,N,N,9.0,1991-08-02,STS-43 (Atlantis),1991-08-11, STS-43 (Atlantis),1991
+158,"John O. Creighton, Kenneth S. Reightler, James F. Buchli, Charles D. Gemar, Mark N. Brown",USA,,Deployment of Upper Atmosphere Research Satellite (UARS).,N,N,N,6.0,1991-09-12,STS-48 (Discovery),1991-09-18, STS-48 (Discovery),1991
+159,"Toktar Aubakirov, Franz Viehböck",USSR/Russia,Mir,Mir crew rotation. First Kazakh in space (Aubakirov). First Austrian in space (Vieböck).,N,N,N,8.0,1991-10-02,Soyuz TM-13,1991-10-10, Soyuz TM-12,1991
+160,Aleksandr Volkov,USSR/Russia,Mir,Mir crew rotation. First Kazakh in space (Aubakirov). First Austrian in space (Vieböck).,N,N,N,176.0,1991-10-02,Soyuz TM-13,1992-03-25, Soyuz TM-13,1991
+161,"Frederick D. Gregory, Terence T. Henricks, F. Story Musgrave, Mario Runco, James S. Voss, Thomas J. Hennen",USA,,U.S. Department of Defense mission. Deployment of Defense Support Program (DSP) satellite.,N,N,N,7.0,1991-11-24,STS-44 (Atlantis),1991-12-01, STS-44 (Atlantis),1991
+162,"Ronald J. Grabe, Stephen S. Oswald, Norman E. Thagard, David C. Hilmers, William F. Readdy, Roberta L. Bondar, Ulf Merbold",USA,,International Microgravity Laboratory-1 (IML-1). Life sciences and materials processing experiments. First Canadian woman in space (Bondar).,N,N,N,8.0,1992-01-22,STS-42 (Discovery),1992-01-30, STS-42 (Discovery),1992
+163,Klaus-Dietrich Flade,USSR/Russia,Mir,First Soyuz mission since the collapse of the USSR.,N,N,N,8.0,1992-03-17,Soyuz TM-14,1992-03-25, Soyuz TM-13,1992
+164,"Aleksandr Viktorenko, Aleksandr Kaleri",USSR/Russia,Mir,First Soyuz mission since the collapse of the USSR.,N,N,N,147.0,1992-03-17,Soyuz TM-14,1992-08-10, Soyuz TM-14,1992
+165,"Charles F. Bolden, Brian Duffy, Kathryn D. Sullivan, David C. Leestma, C. Michael Foale, Byron K. Lichtenberg, Dirk Frimout",USA,,Atmospheric Laboratory for Applications and Science (ATLAS-1): international experiments in atmospheric and astronomical research. First Belgian in space (Frimout).,N,N,N,9.0,1992-03-24,STS-45 (Atlantis),1992-04-02, STS-45 (Atlantis),1992
+166,"Daniel C. Brandenstein, Kevin P. Chilton, Pierre J. Thuot, Kathryn C. Thornton, Richard J. Hieb, Thomas D. Akers, Bruce E. Melnick",USA,,Retrieval and redeployment of INTELSAT VI (F-3) satellite. Demonstration of maintenance and assembly capabilities for Space Station Freedom.,N,N,N,9.0,1992-05-07,STS-49 (Endeavour),1992-05-16, STS-49 (Endeavour),1992
+167,"Richard N. Richards, Kenneth D. Bowersox, Bonnie J. Dunbar, Lawrence J. DeLucas, Ellen S. Baker, Carl J. Meade, Eugene H. Trinh",USA,,United States Microgravity Laboratory-I (USML-1): various microgravity experiments.,N,N,N,14.0,1992-06-25,STS-50 (Columbia),1992-07-09, STS-50 (Columbia),1992
+168,"Anatoly Solovyev, Sergei Avdeyev",USSR/Russia,Mir,,N,N,N,190.0,1992-07-27,Soyuz TM-15,1993-02-01, Soyuz TM-14,1992
+169,Michael Tognini,USSR/Russia,Mir,Mir crew rotation.,N,N,N,14.0,1992-07-27,Soyuz TM-15,1992-08-10, Soyuz TM-15,1992
+170,"Loren J. Shriver, Andrew M. Allen, Jeffrey A. Hoffman, Franklin R. Chang-Diaz, Claude Nicollier, Marsha S. Ivins, Franco Malerba",USA,,Deployment of ESA's EURECA (European Retrievable Carrier). Deployment of joint NASA/Italian Space Agency Tethered Satellite System (TSS) (failed). First Swiss in space (Nicollier). First Italian in space (Malerba).,N,N,N,8.0,1992-07-31,STS-46 (Atlantis),1992-08-08, STS-46 (Atlantis),1992
+171,"Robert L. Gibson, Curtis L. Brown, Mark C. Lee, N. Jan Davis, Jerome Apt, Mae C. Jemison, Mamoru Mohri",USA,,50th Space Shuttle mission. Joint NASA and NASDA mission. Conducted microgravity investigations in materials and life sciences. First African-American woman in space (Jemison).,N,N,N,8.0,1992-09-12,STS-47 (Endeavour),1992-09-20, STS-47 (Endeavour),1992
+172,"James B. Wetherbee, Michael A. Baker, Charles L. Veach, William M. Shepherd, Tamara E. Jernigan, Steven G. MacLean",USA,,Deployment of Laser Geodynamic Satellite II (LAGEOS-II). US Microgravity Payload-1 (USMP-1): physics experiments.,N,N,N,10.0,1992-10-22,STS-52 (Columbia),1992-11-01, STS-52 (Columbia),1992
+173,"David M. Walker, Robert D. Cabana, Guion S. Bluford, James S. Voss, Michael R. Clifford",USA,,"Classified US Department of Defense primary payload, reportedly a reconnaissance satellite. Miscellaneous unclassified science experiments.",N,N,N,7.0,1992-12-02,STS-53 (Discovery),1992-12-09, STS-53 (Discovery),1992
+174,"John H. Casper, Donald R. McMonagle, Mario Runco, Gregory J. Harbaugh, Susan J. Helms",USA,,Deployment of fifth Tracking and Data Relay Satellite (TDRS-F). Diffuse X-ray Spectrometer (DXS) and microgravity experiments.,N,N,N,6.0,1993-01-13,STS-54 (Endeavour),1993-01-19, STS-54 (Endeavour),1993
+175,"Gennadi Manakov, Aleksandr Poleshchuk",USSR/Russia,Mir,Docking system tests.,N,N,N,180.0,1993-01-24,Soyuz TM-16,1993-07-22, Soyuz TM-16,1993
+176,"Kenneth D. Cameron, Stephen S. Oswald, C. Michael Foale, Kenneth D. Cockrell, Ellen L. Ochoa",USA,,Atmospheric Laboratory for Applications and Science-2 (ATLAS-2). Atmospheric and solar science research.,N,N,N,9.0,1993-04-08,STS-56 (Discovery),1993-04-17, STS-56 (Discovery),1993
+177,"Steven R. Nagel, Terence T. Henricks, Jerry L. Ross, Charles J. Precourt, Bernard A. Harris, Ulrich Walter, Hans Schlegel",USA,,German-sponsored Spacelab flight: miscellaneous science experiments.,N,N,N,10.0,1993-04-26,STS-55 (Columbia),1993-05-06, STS-55 (Columbia),1993
+178,"Ronald J. Grabe, Brian Duffy, G. David Low, Nancy J. Sherlock Currie, Peter J. Wisoff, Janice E. Voss",USA,,First SPACEHAB flight: biomedical and materials sciences experiments. Retrieval of ESA's EURECA (European Retrievable Carrier).,N,N,N,10.0,1993-06-21,STS-57 (Endeavour),1993-07-01, STS-57 (Endeavour),1993
+179,"Vasili Tsiblyev, Aleksandr Serebrov",USSR/Russia,Mir,Mir crew rotation.,N,N,N,197.0,1993-07-01,Soyuz TM-17,1994-01-13, Soyuz TM-16,1993
+180,Jean-Pierre Haigneré,USSR/Russia,Mir,Mir crew rotation.,N,N,N,21.0,1993-07-01,Soyuz TM-17,1993-07-22, Soyuz TM-17,1993
+181,"Frank L. Culbertson, William F. Readdy, James H. Newman, Daniel W. Bursch, Carl E. Walz",USA,,Deployment of Advanced Communications Technology Satellite (ACTS). Ultraviolet astronomical observations.,N,N,N,10.0,1993-09-12,STS-51 (Discovery),1993-09-22, STS-51 (Discovery),1993
+182,"John E. Blaha, Richard A. Searfoss, M. Rhea Seddon, William S. McArthur, David A. Wolf, Shannon W. Lucid, Martin J. Fettman",USA,,Spacelab life sciences mission.,N,N,N,14.0,1993-10-18,STS-58 (Columbia),1993-11-01, STS-58 (Columbia),1993
+183,"Richard O. Covey, Kenneth D. Bowersox, F. Story Musgrave, Kathryn C. Thornton, Claude Nicollier, Jeffrey A. Hoffman, Thomas D. Akers",USA,,First Hubble Space Telescope repair servicing mission.,N,N,N,11.0,1993-12-02,STS-61 (Endeavour),1993-12-13, STS-61 (Endeavour),1993
+184,Valeri Polyokov,USSR/Russia,Mir,Mir crew rotation.,N,N,N,439.0,1994-01-08,Soyuz TM-18,1995-03-22, Soyuz TM-18,1994
+185,"Viktor Afanasyev, Yuri Usachyev",USSR/Russia,Mir,Mir crew rotation.,N,N,N,183.0,1994-01-08,Soyuz TM-18,1994-07-09, Soyuz TM-20,1994
+186,"Charles F. Bolden, Kenneth S. Reightler, N. Jan Davis, Ronald M. Sega, Franklin R. Chang-Diaz, Sergei Krikalev",USA,,SPACEHAB-2: materials science and life sciences investigations. Wake Shield Facility-1 deployment. Medical and radiological investigations. First Russian to fly aboard the Space Shuttle (Krikalev).,N,N,N,8.0,1994-02-03,STS-60 (Discovery),1994-02-11, STS-60 (Discovery),1994
+187,"John H. Casper, Andrew M. Allen, Pierre J. Thuot, Charles D. Gemar, Marsha S. Ivins",USA,,Miscellaneous scientific experiments.,N,N,N,14.0,1994-03-04,STS-62 (Columbia),1994-03-18, STS-62 (Columbia),1994
+188,"Sidney M. Gutierrez, Kevin P. Chilton, Linda M. Godwin, Jerome Apt, Michael R. Clifford, Thomas D. Jones",USA,,Radar mapping of Earth and atmospheric research.,N,N,N,11.0,1994-04-09,STS-59 (Endeavour),1994-04-20, STS-59 (Endeavour),1994
+189,"Yuri Malenchenko, Talgat Musabayev",USSR/Russia,Mir,Medical and materials science experiments. Mir repairs.,N,N,N,125.0,1994-07-03,Soyuz TM-19,1994-11-04, Soyuz TM-19,1994
+190,"Robert D. Cabana, James D. Halsell, Richard J. Hieb, Carl E. Walz, Leroy Chiao, Donald A. Thomas, Chiaki Naito-Mukai",USA,,International Microgravity Laboratory-2: miscellaneous microgravity experiments. First Japanese woman in space (Naito-Mukai).,N,N,N,15.0,1994-07-08,STS-65 (Columbia),1994-07-23, STS-65 (Columbia),1994
+191,"Richard N. Richards, L. Blaine Hammond, Jerry M. Linenger, Susan J. Helms, Carl J. Meade, Mark C. Lee",USA,,Atmospheric and solar observations.,N,N,N,11.0,1994-09-09,STS-64 (Discovery),1994-09-20, STS-64 (Discovery),1994
+192,"Michael A. Baker, Terrence W. Wilcutt, Thomas D. Jones, Steven L. Smith, Daniel W. Bursch, Peter J.K. Wisoff",USA,,Radar imaging of Earth.,N,N,N,11.0,1994-09-30,STS-68 (Endeavour),1994-10-11, STS-68 (Endeavour),1994
+193,Ulf Merbold,USSR/Russia,Mir,Mir crew rotation.,N,N,N,31.0,1994-10-04,Soyuz TM-20,1994-11-04, Soyuz TM-19,1994
+194,"Aleksandr Viktorenko, Yelena Kondakova",USSR/Russia,Mir,Mir crew rotation.,N,N,N,170.0,1994-10-04,Soyuz TM-20,1995-03-22, Soyuz TM-20,1994
+195,"Donald R. McMonagle, Curtis L. Brown, Ellen L. Ochoa, Scott E. Parazynski, Joseph R. Tanner, Jean-François Clervoy",USA,,Atmospheric research.,N,N,N,11.0,1994-11-03,STS-66 (Atlantis),1994-11-14, STS-66 (Atlantis),1994
+196,"James D. Wetherbee, Eileen M. Collins, C. Michael Foale, Janice E. Voss, Bernard A. Harris, Vladimir G. Titov",USA,,Rendezvous maneuver with Mir. First female pilot (Collins). SPACEHAB-3: miscellaneous science experiments. First EVA by an African-American astronaut (Harris).,N,N,N,8.0,1995-02-03,STS-63 (Discovery),1995-02-11, STS-63 (Discovery),1995
+197,"Stephen S. Oswald, William G. Gregory, Tamara E. Jernigan, John M. Grunsfeld, Wendy B. Lawrence, Ronald A. Parise, Samuel T. Durrance",USA,,Ultraviolet astronomy studies.,N,N,N,16.0,1995-03-02,STS-67 (Endeavour),1995-03-18, STS-67 (Endeavour),1995
+198,"Norman E. Thagard, Vladimir Dezhurov, Gennady Strekalov",USSR/Russia,Mir,First American to visit Mir (Thagard).,N,N,N,116.0,1995-03-14,Soyuz TM-21,1995-07-07, STS-71 (Atlantis),1995
+199,"Robert L. Gibson, Charles J. Precourt, Ellen S. Baker, Bonnie J. Dunbar, Gregory J. Harbaugh",USA,Mir,First Shuttle-Mir docking. Biomedical experiments. Mir crew rotation and resupply.,N,N,N,10.0,1995-06-27,STS-71 (Atlantis),1995-07-07, STS-71 (Atlantis),1995
+200,"Anatoly Solovyev, Nikolai Budarin",USA,Mir,First Shuttle-Mir docking. Biomedical experiments. Mir crew rotation and resupply.,N,N,N,77.0,1995-06-27,STS-71 (Atlantis),1995-09-11, Soyuz TM-21,1995
+201,"Terence T. Henricks, Kevin R. Kregel, Nancy J. Sherlock Currie, Donald A. Thomas, Mary E. Weber",USA,,Deployment of 7th Tracking and Data Relay Satellite (TDRS). Biological and biomedical studies.,N,N,N,9.0,1995-07-13,STS-70 (Discovery),1995-07-22, STS-70 (Discovery),1995
+202,"Sergei Avdeyev, Yuri Ghidzenko, Thomas Reiter",USSR/Russia,Mir,Mir crew rotation. First EVA by a German cosmonaut (Reiter).,N,N,N,178.0,1995-09-05,Soyuz TM-22,1996-02-29, Soyuz TM-22,1995
+203,"David M. Walker, Kenneth D. Cockrell, James S. Voss, James H. Newman, Michael L. Gernhardt",USA,,Solar observations. Wake Shield Facility-2 deployment.,N,N,N,11.0,1995-09-07,STS-69 (Endeavour),1995-09-18, STS-69 (Endeavour),1995
+204,"Kenneth D. Bowersox, Kent V. Rominger, Kathryn C. Thornton, Catherine G. Coleman, Michael E. Lopez-Alegria, Fred W. Leslie, Albert Sacco",USA,,Microgravity experiments.,N,N,N,16.0,1995-10-20,STS-73 (Columbia),1995-11-05, STS-73 (Columbia),1995
+205,"Kenneth D. Cameron, James D. Halsell, Jerry L. Ross, William S. McArthur, Chris A. Hadfield",USA,Mir,Second Shuttle-Mir docking. Delivery of Russian docking module and solar arrays.,N,N,N,8.0,1995-11-12,STS-74 (Atlantis),1995-11-20, STS-74 (Atlantis),1995
+206,"Brian Duffy, Brent W. Jett, Leroy Chiao, Daniel T. Barry, Winston E. Scott, Koichi Wakata",USA,,Capture and return to Earth of Space Flyer Unit (Japanese microgravity research spacecraft).,N,N,N,9.0,1996-01-11,STS-72 (Endeavour),1996-01-20, STS-72 (Endeavour),1996
+207,"Yuri Onufrienko, Yuri Usachyev",USSR/Russia,Mir,,N,N,N,195.0,1996-02-21,Soyuz TM-23,1996-09-02, Soyuz TM-23,1996
+208,"Andrew M. Allen, Scott J. Horowitz, Franklin R. Chang-Diaz, Maurizio Cheli, Jeffrey A. Hoffman, Claude Nicollier, Umberto Guidoni",USA,,"Deployment of Tethered Satellite System (TSS-1R) (reflight, partial success). Microgravity research.",N,N,N,16.0,1996-02-22,STS-75 (Columbia),1996-03-09, STS-75 (Columbia),1996
+209,"Kevin P. Chilton, Richard A. Searfoss, Linda M. Godwin, Michael R. Clifford, Ronald M. Sega",USA,Mir,Mir crew rotation and resupply. First American woman on Mir (Lucid).,N,N,N,9.0,1996-03-22,STS-76 (Atlantis),1996-03-31, STS-76 (Atlantis),1996
+210,Shannon W. Lucid,USA,Mir,Mir crew rotation and resupply. First American woman on Mir (Lucid).,N,N,N,189.0,1996-03-22,STS-76 (Atlantis),1996-09-26, STS-79 (Atlantis),1996
+211,"John H. Casper, Curtis L. Brown, Daniel W. Bursch, Mario Runco, Jr., J. Marc Garneau, Andrew S.W. Thomas",USA,,SPACEHAB-4: miscellaneous science experiments. Deployment of Spartan-207/IAE (Inflatable Antenna Experiment) satellite. Rendezvous with experimental satellite.,N,N,N,10.0,1996-05-19,STS-77 (Endeavour),1996-05-29, STS-77 (Endeavour),1996
+212,"Terence T. Henricks, Kevin R. Kregel, Susan J. Helms, Richard M. Linnehan, Charles E. Brady, Jean-Jacques Favier, Robert B. Thirsk",USA,,"Microgravity, human physiology and life sciences research.",N,N,N,17.0,1996-06-20,STS-78 (Columbia),1996-07-07, STS-78 (Columbia),1996
+213,Claudie Haigneré,USSR/Russia,Mir,Mir crew rotation. Biological and medical experiments. First Frenchwoman in space (Andre-Deshays).,N,N,N,15.0,1996-08-18,Soyuz TM-24,1996-09-02, Soyuz TM-23,1996
+214,"Valery Korzun, Aleksandr Kaleri",USSR/Russia,Mir,Mir crew rotation. Biological and medical experiments. First Frenchwoman in space (Andre-Deshays).,N,N,N,197.0,1996-08-18,Soyuz TM-24,1997-03-02, Soyuz TM-24,1996
+215,"William F. Readdy, Terrence W. Wilcutt, Thomas D. Akers, Jerome Apt, Carl E. Walz",USA,Mir,Mir crew rotation and resupply. Miscellaneous scientific experiments.,N,N,N,10.0,1996-09-16,STS-79 (Atlantis),1996-09-26, STS-79 (Atlantis),1996
+216,John E. Blaha,USA,Mir,Mir crew rotation and resupply. Miscellaneous scientific experiments.,N,N,N,129.0,1996-09-16,STS-79 (Atlantis),1997-01-22, STS-81 (Atlantis),1996
+217,"Kenneth D. Cockrell, Kent V. Rominger, Tamara E. Jernigan, Thomas D. Jones, F. Story Musgrave",USA,,Deployment and retrieval of Wake Shield Facility and German-built Orbiting and Retrievable Far and Extreme Ultraviolet Spectrograph-Shuttle Pallet Satellite II (ORFEUS-SPAS II).,N,N,N,18.0,1996-11-19,STS-80 (Columbia),1996-12-07, STS-80 (Columbia),1996
+218,Jerry M. Linenger,USA,Mir,Mir crew rotation and resupply.,N,N,N,133.0,1997-01-12,STS-81 (Atlantis),1997-05-24, STS-81 (Atlantis),1997
+219,"Michael A. Baker, Brent W. Jett, John M. Grunsfeld, Marsha S. Ivins, Peter J.K. Wisoff",USA,Mir,Mir crew rotation and resupply.,N,N,N,10.0,1997-01-12,STS-81 (Atlantis),1997-01-22, STS-84 (Atlantis),1997
+220,Reinhold Ewald,USSR/Russia,Mir,Mir crew rotation and resupply.,N,N,N,20.0,1997-02-10,Soyuz TM-25,1997-03-02, Soyuz TM-24,1997
+221,"Vasili Tsibliev, Aleksandr Lazutkin",USSR/Russia,Mir,Mir crew rotation and resupply.,N,N,N,186.0,1997-02-10,Soyuz TM-25,1997-08-14, Soyuz TM-25,1997
+222,"Kenneth D. Bowersox, Scott J. Horowitz, Mark C. Lee, Steven A. Hawley, Gregory J. Harbaugh, Steven L. Smith, Joseph R. Tanner",USA,,Hubble Space Telescope servicing mission.,N,N,N,10.0,1997-02-11,STS-82 (Discovery),1997-02-21, STS-82 (Discovery),1997
+223,"James D. Halsell, Susan L. Still, Janice E. Voss, Donald A. Thomas, Michael L. Gernhardt, Roger K. Crouch, Gregory T. Linteris",USA,,Microgravity experiments. Mission cut short due to fuel cell problems.,N,N,N,4.0,1997-04-04,STS-83 (Columbia),1997-04-08, STS-83 (Columbia),1997
+224,C. Michael Foale,USA,Mir,Mir crew rotation and resupply. First joint US-Russian space walk.,N,N,N,145.0,1997-05-15,STS-84 (Atlantis),1997-10-06, STS-84 (Atlantis),1997
+225,"Charles J. Precourt, Eileen M. Collins, Jean-François Clervoy, Carlos I. Noriega, Edward T. Lu, Yelena Kondakova",USA,Mir,Mir crew rotation and resupply. First joint US-Russian space walk.,N,N,N,9.0,1997-05-15,STS-84 (Atlantis),1997-05-24, STS-86 (Atlantis),1997
+226,"James D. Halsell, Susan L. Still, Janice E. Voss, Donald A. Thomas, Michael L. Gernhardt, Roger K. Crouch, Gregory T. Linteris",USA,,Microgravity experiments. Reflight of curtailed STS-83 mission.,N,N,N,16.0,1997-07-01,STS-94 (Columbia),1997-07-17, STS-94 (Columbia),1997
+227,"Anatoly Solovyev, Pavel Vinogradov",USSR/Russia,Mir,Mir repair.,N,N,N,198.0,1997-08-06,Soyuz TM-26,1998-02-19, Soyuz TM-26,1997
+228,"Curtis L. Brown, Kent V. Rominger, N. Jan Davis, Robert L. Curbeam, Stephen K. Robinson, Bjarni V. Tryggvason",USA,,Atmospheric research.,N,N,N,12.0,1997-08-07,STS-85 (Discovery),1997-08-19, STS-85 (Discovery),1997
+229,David A. Wolf,USA,Mir,Mir crew rotation and resupply.,N,N,N,129.0,1997-09-25,STS-86 (Atlantis),1998-01-31, STS-86 (Atlantis),1997
+230,"James D. Wetherbee, Michael J. Bloomfield, Vladimir Titov, Scott E. Parazynski, Jean-Loup Chrétien, Wendy B. Lawrence",USA,Mir,Mir crew rotation and resupply.,N,N,N,11.0,1997-09-25,STS-86 (Atlantis),1997-10-06, STS-89 (Endeavour),1997
+231,"Steven W. Lindsey, Kevin R. Kregel, Winston E. Scott, Kalpana Chawla, Takao Doi, Leonid Kadeniuk",USA,,Miscellaneous scientific experiments. First Japanese EVA (Doi). First Ukrainian in space (Kadenyuk).,N,N,N,16.0,1997-11-19,STS-87 (Columbia),1997-12-05, STS-87 (Columbia),1997
+232,"Terrence W. Wilcutt, Joe F. Edwards, Bonnie J. Dunbar, Michael P. Anderson, James F. Reilly, Salizhan Sharipov",USA,Mir,Mir crew rotation and resupply.,N,N,N,9.0,1998-01-22,STS-89 (Endeavour),1998-01-31, STS-89 (Endeavour),1998
+233,Andrew S.W. Thomas,USA,Mir,Mir crew rotation and resupply.,N,N,N,142.0,1998-01-22,STS-89 (Endeavour),1998-06-12, STS-91 (Discovery),1998
+234,"Talgat Musabayev, Nikolai Budarin",USSR/Russia,Mir,,N,N,N,209.0,1998-01-29,Soyuz TM-27,1998-08-25, Soyuz TM-26,1998
+235,Léopold Eyharts,USSR/Russia,Mir,Mir crew rotation.,N,N,N,21.0,1998-01-29,Soyuz TM-27,1998-02-19, Soyuz TM-27,1998
+236,"Richard A. Searfoss, Scott D. Altman, Richard M. Linnehan, Dafydd R. Williams, Kathryn P. Hire, Jay C. Buckley, James A. Pawelzyk",USA,,Neuroscience research. Final Spacelab mission.,N,N,N,16.0,1998-04-17,STS-90 (Columbia),1998-05-03, STS-90 (Columbia),1998
+237,"Charles J. Precourt, Dominic L. Pudwill Gorie, Wendy B. Lawrence, Franklin R. Chang-Diaz, Janet L. Kavandi, Valery Ryumin",USA,Mir,Final Shuttle-Mir docking. Mir crew rotation and resupply. Astrophysics research.,N,N,N,10.0,1998-06-02,STS-91 (Discovery),1998-06-12, STS-91 (Discovery),1998
+238,Yuri Baturin,USSR/Russia,Mir,Mir crew rotation.,N,N,N,10.0,1998-08-15,Soyuz TM-28,1998-08-25, Soyuz TM-27,1998
+239,Sergei Avdeyev,USSR/Russia,Mir,Mir crew rotation.,N,N,N,379.0,1998-08-15,Soyuz TM-28,1999-08-28, Soyuz TM-28,1998
+240,Gennady Padalka,USSR/Russia,Mir,Mir crew rotation.,N,N,N,198.0,1998-08-15,Soyuz TM-28,1999-02-28, Soyuz TM-29,1998
+241,"Curtis L. Brown, Steven W. Lindsey, Scott E. Parazynski, Stephen K. Robinson, Pedro Duque, Chiaki Mukai, John H. Glenn",USA,,Miscellaneous scientific experiments. First Spaniard in space (Duque). Veteran John Glenn returned to space aged 77.,N,N,N,9.0,1998-10-29,STS-95 (Discovery),1998-11-07, STS-95 (Discovery),1998
+242,"Robert D. Cabana, Frederick W. Sturckow, Nancy J. Sherlock Currie, Jerry L. Ross, James H. Newman, Sergei Krikalev",USA,ISS,First ISS construction mission. Delivery of Unity Node Module.,N,N,N,11.0,1998-12-04,STS-88 (Endeavour),1998-12-15, STS-88 (Endeavour),1998
+243,Ivan Bella,USSR/Russia,Mir,Mir crew rotation. First Slovak in space (Bella).,N,N,N,8.0,1999-02-20,Soyuz TM-29,1999-02-28, Soyuz TM-28,1999
+244,"Viktor Afanasyev, Jean-Pierre Haigneré",USSR/Russia,Mir,Mir crew rotation. First Slovak in space (Bella).,N,N,N,190.0,1999-02-20,Soyuz TM-29,1999-08-28, Soyuz TM-29,1999
+245,"Kent V. Rominger, Rick D. Husband, Ellen L. Ochoa, Tamara E. Jernigan, Daniel T. Barry, Julie Payette, Valery Tokarev",USA,ISS,Second ISS flight. ISS assembly and resupply.,N,N,N,10.0,1999-05-27,STS-96 (Discovery),1999-06-06, STS-96 (Discovery),1999
+246,"Eileen M. Collins, Jeffrey S. Ashby, Steven A. Hawley, Catherine G. Coleman, Michel Tognini",USA,,Deployment of Chandra X-ray Observatory. First female Shuttle Commander (Collins).,N,N,N,4.0,1999-07-23,STS-93 (Columbia),1999-07-27, STS-93 (Columbia),1999
+247,"Curtis L. Brown, Scott J. Kelly, Steven L. Smith, C. Michael Foale, John M. Grunsfeld, Claude Nicollier, Jean-François Clervoy",USA,,Hubble Space Telescope servicing.,N,N,N,8.0,1999-12-19,STS-103 (Discovery),1999-12-27, STS-103 (Discovery),1999
+248,"Kevin R. Kregel, Dominic L. Pudwill Gorie, Janet L. Kavandi, Janice E. Voss, Mamoru Mohri, Gerhard Thiele",USA,,Radar topographic mapping of Earth's surface.,N,N,N,11.0,2000-02-11,STS-99 (Endeavour),2000-02-22, STS-99 (Endeavour),2000
+249,"Sergei Zalyotin, Aleksandr Kaleri",USSR/Russia,Mir,Mir repairs. 39th and final Mir mission.,N,N,N,74.0,2000-04-04,Soyuz TM-30,2000-06-16, Soyuz TM-30,2000
+250,"James D. Halsell, Scott J. Horowitz, Mary E. Weber, Jeffrey N. Williams, James S. Voss, Susan J. Helms, Yuri Usachev",USA,ISS,ISS construction and supply.,N,N,N,10.0,2000-05-19,STS-101 (Atlantis),2000-05-29, STS-101 (Atlantis),2000
+251,"Terrence W. Wilcutt, Scott D. Altman, Daniel C. Burbank, Edward T. Lu, Richard A. Mastracchio, Yuri Malenchenko, Boris Morukov",USA,ISS,ISS supply. Preparation for first long-term crew.,N,N,N,11.0,2000-09-08,STS-106 (Atlantis),2000-09-19, STS-106 (Atlantis),2000
+252,"Brian Duffy, Pamela A. Melroy, Koichi Wakata, Leroy Chiao, Peter J.K. Wisoff, Michael E. Lopez-Alegria, William S. McArthur",USA,ISS,ISS construction and outfitting. 100th Space Shuttle mission.,N,N,N,13.0,2000-10-11,STS-92 (Discovery),2000-10-24, STS-92 (Discovery),2000
+253,"Yuri Gidzenko, Sergei Krikalev, William M. Shepherd",USSR/Russia,ISS,First ISS Expedition Crew.,N,N,N,142.0,2000-10-31,Soyuz TM-31,2001-03-21, STS-102 (Discovery),2000
+254,"Brent W. Jett, Michael J. Bloomfield, Joseph R. Tanner, J. Marc Garneau, Carlos I. Noriega",USA,ISS,ISS construction and supply. Delivery of the first set of solar arrays and batteries.,N,N,N,11.0,2000-11-30,STS-97 (Endeavour),2000-12-11, STS-97 (Endeavour),2000
+255,"Kenneth D. Cockrell, Mark L. Polansky, Robert L. Curbeam, Marsha S. Ivins, Thomas D. Jones",USA,ISS,ISS assembly and supply. Delivery of Destiny Laboratory Module.,N,N,N,13.0,2001-02-07,STS-98 (Atlantis),2001-02-20, STS-98 (Atlantis),2001
+256,"James D. Wetherbee, James M. Kelly, Andrew S. W. Thomas, Paul W. Richards",USA,ISS,"ISS crew rotation, outfitting and resupply.",N,N,N,13.0,2001-03-08,STS-102 (Discovery),2001-03-21, STS-102 (Discovery),2001
+257,"Yury Usachev, James S. Voss, Susan Helms",USA,ISS,"ISS crew rotation, outfitting and resupply.",N,N,N,168.0,2001-03-08,STS-102 (Discovery),2001-08-22, STS-105 (Discovery),2001
+258,"Kent V. Rominger, Jeffrey S. Ashby, Scott E. Parazynski, John L. Phillips, Chris A. Hadfield, Umberto Guidoni, Yuri Lonchakov",USA,ISS,ISS supply and assembly: delivery of Canadarm2 robotic arm. First European on board ISS (Guidoni). First Canadian EVA(Hadfield).,N,N,N,12.0,2001-04-19,STS-100 (Endeavour),2001-05-01, STS-100 (Endeavour),2001
+259,"Talgat Musabayev, Yuri Baturin, Dennis A. Tito",USSR/Russia,ISS,First paying space tourist (Tito).,N,N,N,6.0,2001-04-29,Soyuz TM-32,2001-05-05, Soyuz TM-31,2001
+260,"Steven W. Lindsey, Charles O. Hobaugh, Michael L. Gernhardt, James F. Reilly, Janet L. Kavandi",USA,ISS,ISS assembly and maintenance: delivery of Quest Airlock,N,N,N,12.0,2001-07-12,STS-104 (Atlantis),2001-07-24, STS-104 (Atlantis),2001
+261,"Scott J. Horowitz, Frederick W. Sturckow, Daniel T. Barry, Patrick G. Forrester",USA,ISS,"ISS crew rotation, assembly and supply.",N,N,N,12.0,2001-08-10,STS-105 (Discovery),2001-08-22, STS-105 (Discovery),2001
+262,"Frank L. Culbertson, Vladimir Dezhurov, Mikhail Tyurin",USA,ISS,"ISS crew rotation, assembly and supply.",N,N,N,130.0,2001-08-10,STS-105 (Discovery),2001-12-17, STS-108 (Endeavour),2001
+263,"Victor Afanasyev, Konstantin Kozeyev, Claudie Haigneré",USSR/Russia,ISS,,N,N,N,10.0,2001-10-21,Soyuz TM-33,2001-10-31, Soyuz TM-32,2001
+264,"Yuri Onufrienko, Carl E. Walz, Daniel W. Bursch",USA,ISS,"ISS crew rotation, assembly and supply.",N,N,N,197.0,2001-12-05,STS-108 (Endeavour),2002-06-19, STS-108 (Endeavour),2001
+265,"Dominic L. Pudwill Gorie, Mark Kelly, Linda M. Godwin, Daniel M. Tani",USA,ISS,"ISS crew rotation, assembly and supply.",N,N,N,12.0,2001-12-05,STS-108 (Endeavour),2001-12-17, STS-111 (Endeavour),2001
+266,"Scott D. Altman, Duane G. Carey, John M. Grunsfeld, Nancy J. Sherlock Currie, James H. Newman, Richard M. Linnehan, Michael J. Massimino",USA,,Hubble Space Telescope servicing mission.,N,N,N,11.0,2002-03-01,STS-109 (Columbia),2002-03-12, STS-109 (Columbia),2002
+267,"Michael J. Bloomfield, Stephen N. Frick, Jerry L. Ross, Steven L. Smith, Ellen L. Ochoa, Lee Morin, Rex J. Walheim",USA,ISS,ISS assembly and supply.,N,N,N,11.0,2002-04-08,STS-110 (Atlantis),2002-04-19, STS-110 (Atlantis),2002
+268,"Yuri Gidzenko, Roberto Vittori, Mark Shuttleworth",USSR/Russia,ISS,First South African in space (Shuttleworth). Second space tourist (Shuttleworth).,N,N,N,10.0,2002-04-25,Soyuz TM-34,2002-05-05, Soyuz TM-33,2002
+269,"Kenneth D. Cockrell, Paul S. Lockhart, Franklin R. Chang-Diaz, Philippe Perrin",USA,ISS,"ISS crew rotation, assembly and supply.",N,N,N,14.0,2002-06-05,STS-111 (Endeavour),2002-06-19, STS-111 (Endeavour),2002
+270,"Valeri Korzun, Sergei Treshchev, Peggy A. Whitson",USA,ISS,"ISS crew rotation, assembly and supply.",N,N,N,186.0,2002-06-05,STS-111 (Endeavour),2002-12-07, STS-113 (Endeavour),2002
+271,"Jeffrey S. Ashby, Pamela A. Melroy, David A. Wolf, Piers J. Sellers, Sandra H. Magnus, Fyodor Yurchikhin",USA,ISS,"ISS assembly, maintenance and supply.",N,N,N,11.0,2002-10-07,STS-112 (Atlantis),2002-10-18, STS-112 (Atlantis),2002
+272,"Sergei Zalyotin, Yuri Lonchakov, Frank De Winne",USSR/Russia,ISS,,N,N,N,12.0,2002-10-29,Soyuz TMA-1,2002-11-10, Soyuz TM-34,2002
+273,"James D. Wetherbee, Paul S. Lockhart, Michael E. Lopez-Alegria, John B. Herrington",USA,ISS,"ISS assembly, crew rotation and supply.",N,N,N,14.0,2002-11-23,STS-113 (Endeavour),2002-12-07, STS-113 (Endeavour),2002
+274,"Kenneth D. Bowersox, Donald R. Pettit, Nikolai Budarin",USA,ISS,"ISS assembly, crew rotation and supply.",N,N,N,163.0,2002-11-23,STS-113 (Endeavour),2003-05-04, Soyuz TMA-1,2002
+275,"Rick D. Husband, William C. McCool, David M. Brown, Kalpana Chawla, Michael P. Anderson, Laurel B. Clark, Ilan Ramon",USA,,Microgravity and Earth science research. First Israeli in space (Ramon). Broke up during re-entry with loss of all crew.,Y,N,N,16.0,2003-01-16,STS-107 (Columbia),2003-02-01, STS-107 (Columbia),2003
+276,"Yuri Malenchenko, Edward T. Lu",USSR/Russia,ISS,ISS crew rotation.,N,N,N,186.0,2003-04-25,Soyuz TMA-2,2003-10-27, Soyuz TMA-2,2003
+277,Yáng Lìwěi,China,,First human spaceflight of the People's Republic of China.,N,N,N,0.0,2003-10-15,Shenzhou 5,2003-10-15, Shenzhou 5,2003
+278,Pedro Duque,USSR/Russia,ISS,ISS crew rotation.,N,N,N,9.0,2003-10-18,Soyuz TMA-3,2003-10-27, Soyuz TMA-2,2003
+279,"Aleksandr Kaleri, C. Michael Foale",USSR/Russia,ISS,ISS crew rotation.,N,N,N,195.0,2003-10-18,Soyuz TMA-3,2004-04-29, Soyuz TMA-3,2003
+280,André Kuipers,USSR/Russia,ISS,ISS crew rotation.,N,N,N,10.0,2004-04-19,Soyuz TMA-4,2004-04-29, Soyuz TMA-3,2004
+281,"Gennady Padalka, E. Michael Fincke",USSR/Russia,ISS,ISS crew rotation.,N,N,N,189.0,2004-04-19,Soyuz TMA-4,2004-10-24, Soyuz TMA-4,2004
+282,Michael W. Melvill,USA,,First human spaceflight of commercial spaceship.,N,N,Y,0.0,2004-06-21,"Flight 15P, SpaceShipOne",2004-06-21," Flight 15P, SpaceShipOne",2004
+283,Michael W. Melvill,USA,,Ansari X Prize flight #1.,N,N,Y,0.0,2004-09-29,"Flight 16P, SpaceShipOne",2004-09-29," Flight 16P, SpaceShipOne",2004
+284,W. Brian Binnie,USA,,"Ansari X Prize flight #2, winning the prize.",N,N,Y,0.0,2004-10-04,"Flight 17P, SpaceShipOne",2004-10-04," Flight 17P, SpaceShipOne",2004
+285,"Salizhan Sharipov, Leroy Chiao",USSR/Russia,ISS,ISS crew rotation.,N,N,N,193.0,2004-10-14,Soyuz TMA-5,2005-04-24, Soyuz TMA-4,2004
+286,Yuri Shargin,USSR/Russia,ISS,ISS crew rotation.,N,N,N,10.0,2004-10-14,Soyuz TMA-5,2004-10-24, Soyuz TMA-5,2004
+287,Roberto Vittori,USSR/Russia,ISS,ISS crew rotation.,N,N,N,9.0,2005-04-15,Soyuz TMA-6,2005-04-24, Soyuz TMA-5,2005
+288,"Sergei Krikalev, John L. Phillips",USSR/Russia,ISS,ISS crew rotation.,N,N,N,180.0,2005-04-15,Soyuz TMA-6,2005-10-11, Soyuz TMA-6,2005
+289,"Eileen M. Collins, James M. Kelly, Stephen K. Robinson, Andrew S. W. Thomas, Wendy B. Lawrence, Charles J. Camarda, Soichi Noguchi",USA,ISS,"First ""Return to Flight"" Space Shuttle mission after the loss of Columbia. ISS assembly and supply.",N,N,N,14.0,2005-07-26,STS-114 (Discovery),2005-08-09, STS-114 (Discovery),2005
+290,Gregory H. Olsen,USSR/Russia,ISS,ISS crew rotation. Third space tourist (Olsen).,N,N,N,10.0,2005-10-01,Soyuz TMA-7,2005-10-11, Soyuz TMA-6,2005
+291,"Valery Tokarev, William S. McArthur",USSR/Russia,ISS,ISS crew rotation.,N,N,N,190.0,2005-10-01,Soyuz TMA-7,2006-04-08, Soyuz TMA-7,2005
+292,"Fèi Jùnlóng, Niè Hǎishèng",China,,Second human spaceflight of the People's Republic of China.,N,N,N,4.0,2005-10-12,Shenzhou 6,2005-10-16, Shenzhou 6,2005
+293,Marcos Pontes,USSR/Russia,ISS,ISS crew rotation. First Brazilian in space (Pontes).,N,N,N,9.0,2006-03-30,Soyuz TMA-8,2006-04-08, Soyuz TMA-7,2006
+294,"Pavel Vinogradov, Jeffrey N. Williams",USSR/Russia,ISS,ISS crew rotation.,N,N,N,184.0,2006-03-30,Soyuz TMA-8,2006-09-29, Soyuz TMA-8,2006
+295,Thomas Reiter,USA,ISS,,N,N,N,172.0,2006-07-04,STS-121 (Discovery),2006-12-22, STS-121 (Discovery),2006
+296,"Steven W. Lindsey, Mark Kelly, Michael E. Fossum, Piers J. Sellers, Lisa M. Nowak, Stephanie D. Wilson",USA,ISS,ISS crew rotation and supply. Safety and repair system testing. First long-duration ISS mission by an ESA astronaut (Reiter).,N,N,N,13.0,2006-07-04,STS-121 (Discovery),2006-07-17, STS-116 (Discovery),2006
+297,"Brent W. Jett, Christopher J. Ferguson, Joseph R. Tanner, Daniel C. Burbank, Heidemarie M. Stefanyshyn-Piper, Steven G. MacLean",USA,ISS,Resumption of ISS assembly. First Canadian to operate Canadarm2. Delivery of the second set of solar arrays and batteries.,N,N,N,12.0,2006-09-09,STS-115 (Atlantis),2006-09-21, STS-115 (Atlantis),2006
+298,Anousheh Ansari,USSR/Russia,ISS,ISS crew rotation. First female space tourist (Ansari). First Persian in space (Ansari).,N,N,N,11.0,2006-09-18,Soyuz TMA-9,2006-09-29, Soyuz TMA-8,2006
+299,"Mikhail Tyurin, Michael E. Lopez-Alegria",USSR/Russia,ISS,ISS crew rotation. First female space tourist (Ansari). First Persian in space (Ansari).,N,N,N,216.0,2006-09-18,Soyuz TMA-9,2007-04-21, Soyuz TMA-9,2006
+300,Sunita L. Williams,USA,ISS,"ISS crew rotation and assembly
+ First Swede in space (Fuglesang)",N,N,N,195.0,2006-12-10,STS-116 (Discovery),2007-06-22, STS-116 (Discovery),2006
+301,"Mark L. Polansky, William A. Oefelein, Robert L. Curbeam, Joan E. Higginbotham, Nicholas J.M. Patrick, Christer Fuglesang",USA,ISS,"ISS crew rotation and assembly
+ First Swede in space (Fuglesang)",N,N,N,12.0,2006-12-10,STS-116 (Discovery),2006-12-22, STS-117 (Atlantis),2006
+302,Charles Simonyi,USSR/Russia,ISS,ISS crew rotation. Space tourist flight.,N,N,N,14.0,2007-04-07,Soyuz TMA-10,2007-04-21, Soyuz TMA-9,2007
+303,"Oleg Kotov, Fyodor Yurchikhin",USSR/Russia,ISS,ISS crew rotation. Space tourist flight.,N,N,N,198.0,2007-04-07,Soyuz TMA-10,2007-10-21, Soyuz TMA-10,2007
+304,Clayton C. Anderson,USA,ISS,ISS crew rotation and assembly,N,N,N,153.0,2007-06-08,STS-117 (Atlantis),2007-11-07, STS-117 (Atlantis),2007
+305,"Frederick W. Sturckow, Lee J. Archambault, Patrick G. Forrester, Steven R. Swanson, John D. Olivas, James F. Reilly",USA,ISS,ISS crew rotation and assembly,N,N,N,14.0,2007-06-08,STS-117 (Atlantis),2007-06-22, STS-120 (Discovery),2007
+306,"Scott Kelly, Charles O. Hobaugh, Tracy E. Caldwell Dyson, Richard A. Mastracchio, Barbara R. Morgan, Benjamin A. Drew, Dafydd R. Williams",USA,ISS,ISS assembly,N,N,N,13.0,2007-08-08,STS-118 (Endeavour),2007-08-21, STS-118 (Endeavour),2007
+307,Sheikh Muszaphar Shukor,USSR/Russia,ISS,ISS crew rotation. First Malaysian in space (Shukor). First female ISS commander (Whitson).,N,N,N,11.0,2007-10-10,Soyuz TMA-11,2007-10-21, Soyuz TMA-10,2007
+308,"Yuri Malenchenko, Peggy A. Whitson",USSR/Russia,ISS,ISS crew rotation. First Malaysian in space (Shukor). First female ISS commander (Whitson).,N,N,N,193.0,2007-10-10,Soyuz TMA-11,2008-04-19, Soyuz TMA-11,2007
+309,Daniel M. Tani,USA,ISS,ISS crew rotation and assembly,N,N,N,121.0,2007-10-23,STS-120 (Discovery),2008-02-20, STS-120 (Discovery),2007
+310,"Pamela A. Melroy, George D. Zamka, Scott E. Parazynski, Stephanie D. Wilson, Douglas H. Wheelock, Paolo Nespoli",USA,ISS,ISS crew rotation and assembly,N,N,N,15.0,2007-10-23,STS-120 (Discovery),2007-11-07, STS-122 (Atlantis),2007
+311,"Stephen N. Frick, Alan G. Poindexter, Leland D. Melvin, Rex J. Walheim, Stanley G. Love, Hans Schlegel",USA,ISS,ISS crew rotation and assembly,N,N,N,13.0,2008-02-07,STS-122 (Atlantis),2008-02-20, STS-122 (Atlantis),2008
+312,Léopold Eyharts,USA,ISS,ISS crew rotation and assembly,N,N,N,49.0,2008-02-07,STS-122 (Atlantis),2008-03-27, STS-123 (Endeavour),2008
+313,"Dominic L. Pudwill Gorie, Gregory H. Johnson, Robert L. Behnken, Michael J. Foreman, Richard M. Linnehan, Takao Doi",USA,ISS,ISS crew rotation and assembly,N,N,N,16.0,2008-03-11,STS-123 (Endeavour),2008-03-27, STS-123 (Endeavour),2008
+314,Garrett E. Reisman,USA,ISS,ISS crew rotation and assembly,N,N,N,96.0,2008-03-11,STS-123 (Endeavour),2008-06-14, STS-124 (Discovery),2008
+315,"Sergey Volkov, Oleg Kononenko",USSR/Russia,ISS,"ISS crew rotation. First South Korean in space (Yi)
+ First second-generation cosmonaut (Volkov).",N,N,N,200.0,2008-04-08,Soyuz TMA-12,2008-10-24, Soyuz TMA-11,2008
+316,Yi So-yeon,USSR/Russia,ISS,"ISS crew rotation. First South Korean in space (Yi)
+ First second-generation cosmonaut (Volkov).",N,N,N,11.0,2008-04-08,Soyuz TMA-12,2008-04-19, Soyuz TMA-12,2008
+317,Gregory E. Chamitoff,USA,ISS,"ISS assembly and crew rotation
+ Delivery of Kibo Japanese Experiment Module",N,N,N,184.0,2008-05-31,STS-124 (Discovery),2008-11-30, STS-124 (Discovery),2008
+318,"Mark Kelly, Kenneth T. Ham, Karen L. Nyberg, Ronald J. Garan, Michael E. Fossum, Akihiko Hoshide",USA,ISS,"ISS assembly and crew rotation
+ Delivery of Kibo Japanese Experiment Module",N,N,N,14.0,2008-05-31,STS-124 (Discovery),2008-06-14, STS-126 (Endeavour),2008
+319,"Zhai Zhigang, Liu Boming, Jing Haipeng",China,,Third human spaceflight and first spacewalk for China.,N,N,N,3.0,2008-09-25,Shenzhou 7,2008-09-28, Shenzhou 7,2008
+320,"Yuri Lonchakov, E. Michael Fincke",USSR/Russia,ISS,ISS crew rotation.,N,N,N,179.0,2008-10-12,Soyuz TMA-13,2009-04-08, Soyuz TMA-12,2008
+321,Richard A. Garriot,USSR/Russia,ISS,ISS crew rotation.,N,N,N,12.0,2008-10-12,Soyuz TMA-13,2008-10-24, Soyuz TMA-13,2008
+322,Sandra H. Magnus,USA,ISS,ISS logistics and crew rotation,N,N,N,135.0,2008-11-15,STS-126 (Endeavour),2009-03-29, STS-126 (Endeavour),2008
+323,"Christopher J. Ferguson, Eric A. Boe, Donald R. Pettit, Stephen G. Bowen, Heidemarie M. Stefanyshyn-Piper, Robert S. Kimbrough",USA,ISS,ISS logistics and crew rotation,N,N,N,15.0,2008-11-15,STS-126 (Endeavour),2008-11-30, STS-119 (Discovery),2008
+324,"Lee J. Archambault, Dominic A. Antonelli, Joseph M. Acaba, Steven R. Swanson, Richard R. Arnold, John L. Phillips",USA,ISS,Delivery of final solar power generation module and crew rotation,N,N,N,14.0,2009-03-15,STS-119 (Discovery),2009-03-29, STS-119 (Discovery),2009
+325,Koichi Wakata,USA,ISS,Delivery of final solar power generation module and crew rotation,N,N,N,139.0,2009-03-15,STS-119 (Discovery),2009-07-31, STS-127 (Endeavour),2009
+326,Charles Simonyi,USSR/Russia,ISS,ISS crew rotation.,N,N,N,13.0,2009-03-26,Soyuz TMA-14,2009-04-08, Soyuz TMA-13,2009
+327,"Gennady Padalka, Michael R. Barratt",USSR/Russia,ISS,ISS crew rotation.,N,N,N,200.0,2009-03-26,Soyuz TMA-14,2009-10-11, Soyuz TMA-14,2009
+328,"Scott D. Altman, Gregory C. Johnson, Michael T. Good, K. Megan McArthur, John M. Grunsfeld, Michael J. Massimino, Andrew J. Feustel",USA,,Hubble Space Telescope Servicing Mission 4,N,N,N,13.0,2009-05-11,STS-125 (Atlantis),2009-05-24, STS-125 (Atlantis),2009
+329,"Roman Romanenko, Frank De Winne, Robert Thirsk",USSR/Russia,ISS,ISS crew rotation.,N,N,N,189.0,2009-05-27,Soyuz TMA-15,2009-12-01, Soyuz TMA-15,2009
+330,"Mark L. Polansky, Douglas G. Hurley, Christopher J. Cassidy, Thomas H. Marshburn, David A. Wolf, Julie Payette",USA,ISS,Delivery of Japanese exposed facility and crew rotation,N,N,N,16.0,2009-07-15,STS-127 (Endeavour),2009-07-31, STS-127 (Endeavour),2009
+331,Timothy L. Kopra,USA,ISS,Delivery of Japanese exposed facility and crew rotation,N,N,N,58.0,2009-07-15,STS-127 (Endeavour),2009-09-11, STS-128 (Discovery),2009
+332,"Frederick W. Sturckow, Kevin A. Ford, Patrick G. Forrester, Jose M. Hernández, John D. Olivas, Christer Fuglesang",USA,ISS,"Delivery of experiments, logistics, and crew rotation",N,N,N,14.0,2009-08-28,STS-128 (Discovery),2009-09-11, STS-128 (Discovery),2009
+333,Nicole P. Stott,USA,ISS,,N,N,N,92.0,2009-08-28,STS-128 (Discovery),2009-11-27, STS-129 (Atlantis),2009
+334,"Maksim Surayev, Jeffrey N. Williams",USSR/Russia,ISS,,N,N,N,170.0,2009-09-30,Soyuz TMA-16,2010-03-18, Soyuz TMA-14,2009
+335,Guy Laliberté,USSR/Russia,ISS,ISS crew rotation.,N,N,N,11.0,2009-09-30,Soyuz TMA-16,2009-10-11, Soyuz TMA-16,2009
+336,"Charles O. Hobaugh, Barry E. Wilmore, Leland D. Melvin, Randolph J. Bresnik, Michael J. Foreman, Robert L. Satcher",USA,ISS,"ISS assembly
+ Delivery of ELC1 and ELC2",N,N,N,11.0,2009-11-16,STS-129 (Atlantis),2009-11-27, STS-129 (Atlantis),2009
+337,"Oleg Kotov, Timothy J. Creamer, Soichi Noguchi",USSR/Russia,ISS,ISS crew rotation.,N,N,N,165.0,2009-12-20,Soyuz TMA-17,2010-06-02, Soyuz TMA-17,2009
+338,"George D. Zamka, Terry W. Virts, Kathryn P. Hire, Stephen K. Robinson, Nicolas J.M. Patrick, Robert L. Behnken",USA,ISS,"ISS assembly
+ Delivery of Tranquility and Cupola",N,N,N,14.0,2010-02-08,STS-130 (Endeavour),2010-02-22, STS-130 (Endeavour),2010
+339,"Aleksandr Skvortsov, Mikhail Korniyenko, Tracy E. Caldwell Dyson",USSR/Russia,ISS,ISS crew rotation.,N,N,N,177.0,2010-04-02,Soyuz TMA-18,2010-09-25, Soyuz TMA-18,2010
+340,"Alan G. Poindexter, James P. Dutton, Richard A. Mastracchio, Clayton C. Anderson, Dorothy M. Metcalf-Lindenburger, Stephanie D. Wilson, Naoko Yamazaki",USA,ISS,"ISS assembly
+ Delivery of experiments and logistics",N,N,N,15.0,2010-04-05,STS-131 (Discovery),2010-04-20, STS-131 (Discovery),2010
+341,"Kenneth T. Ham, Dominic A. Antonelli, Garrett E. Reisman, Michael T. Good, Stephen G. Bowen, Piers J. Sellers",USA,ISS,"Delivery of experiments
+ Delivery of Rassvet",N,N,N,12.0,2010-05-14,STS-132 (Atlantis),2010-05-26, STS-132 (Atlantis),2010
+342,"Fyodor Yurchikhin, Shannon Walker, Douglas H. Wheelock",USSR/Russia,ISS,ISS crew rotation.,N,N,N,165.0,2010-06-15,Soyuz TMA-19,2010-11-26, Soyuz TMA-19,2010
+343,"Aleksandr Kaleri, Oleg Skripochka, Scott Kelly",USSR/Russia,ISS,ISS crew rotation.,N,N,N,161.0,2010-10-07,Soyuz TMA-01M,2011-03-16, Soyuz TMA-01M,2010
+344,"Dmitri Kondratyev, Catherine G. Coleman, Paolo Nespoli",USSR/Russia,ISS,ISS crew rotation.,N,N,N,161.0,2010-12-15,Soyuz TMA-20,2011-05-24, Soyuz TMA-20,2010
+345,"Steven Lindsey, Eric A. Boe, Nicole P. Stott, Benjamin A. Drew, Michael R. Barratt, Stephen G. Bowen",USA,ISS,ISS assembly and supply. Delivery of PLM. Delivery of Robonaut. Final mission of Discovery.,N,N,N,13.0,2011-02-24,STS-133 (Discovery),2011-03-09, STS-133 (Discovery),2011
+346,"Aleksandr Samokutyayev, Andrei Borisenko, Ronald J. Garan",USSR/Russia,ISS,ISS crew rotation.,N,N,N,166.0,2011-04-04,Soyuz TMA-21,2011-09-16, Soyuz TMA-21,2011
+347,"Mark Kelly, Gregory H. Johnson, Michael Fincke, Roberto Vittori, Andrew J. Feustel, Gregory E. Chamitoff",USA,ISS,ISS assembly and supply. Delivery of Alpha Magnetic Spectrometer. Delivery of ELC3. Final flight of Endeavour.,N,N,N,16.0,2011-05-16,STS-134 (Endeavour),2011-06-01, STS-134 (Endeavour),2011
+348,"Sergey Volkov, Satoshi Furukawa, Michael E. Fossum",USSR/Russia,ISS,ISS crew rotation.,N,N,N,169.0,2011-06-07,Soyuz TMA-02M,2011-11-22, Soyuz TMA-02M,2011
+349,"Christopher Ferguson, Douglas G. Hurley, Sandra Magnus, Rex J. Walheim",USA,ISS,ISS assembly and supply. Final flight of Atlantis. Final mission of the Space Shuttle.,N,N,N,13.0,2011-07-08,STS-135 (Atlantis),2011-07-21, STS-135 (Atlantis),2011
+350,"Anton Shkaplerov, Anatoli Ivanishin, Dan Burbank",USSR/Russia,ISS,ISS crew rotation.,N,N,N,166.0,2011-11-14,Soyuz TMA-22,2012-04-27, Soyuz TMA-22,2011
+351,"Oleg Kononenko, André Kuipers, Donald Pettit",USSR/Russia,ISS,ISS crew rotation.,N,N,N,194.0,2011-12-21,Soyuz TMA-03M,2012-07-01, Soyuz TMA-03M,2011
+352,"Gennady Padalka, Sergei Revin, Joseph M. Acaba",USSR/Russia,ISS,ISS crew rotation.,N,N,N,126.0,2012-05-15,Soyuz TMA-04M,2012-09-17, Soyuz TMA-04M,2012
+353,"Jing Haipeng, Liu Wang, Liu Yang",China,Tiangong 1,Fourth human spaceflight and first manned space station docking for China.,N,N,N,13.0,2012-06-16,Shenzhou 9,2012-06-29, Shenzhou 9,2012
+354,"Yuri Malenchenko, Sunita Williams, Akihiko Hoshide",USSR/Russia,ISS,ISS crew rotation.,N,N,N,128.0,2012-07-15,Soyuz TMA-05M,2012-11-19, Soyuz TMA-05M,2012
+355,"Oleg Novitskiy, Evgeny Tarelkin, Kevin A. Ford",USSR/Russia,ISS,ISS crew rotation.,N,N,N,145.0,2012-10-23,Soyuz TMA-06M,2013-03-16, Soyuz TMA-06M,2012
+356,"Roman Romanenko, Chris Hadfield, Thomas Marshburn",USSR/Russia,ISS,ISS crew rotation.,N,N,N,147.0,2012-12-19,Soyuz TMA-07M,2013-05-14, Soyuz TMA-07M,2012
+357,"Pavel Vinogradov, Alexander Misurkin, Christopher Cassidy",USSR/Russia,ISS,ISS crew rotation.,N,N,N,168.0,2013-03-28,Soyuz TMA-08M,2013-09-11, Soyuz TMA-08M,2013
+358,"Fyodor Yurchikhin, Karen L. Nyberg, Luca Parmitano",USSR/Russia,ISS,ISS crew rotation.,N,N,N,168.0,2013-05-28,Soyuz TMA-09M,2013-11-11, Soyuz TMA-09M,2013
+359,"Nie Haisheng, Zhang Xiaoguang, Wang Yaping",China,Tiangong 1,Fifth human spaceflight and second manned space station docking for China.,N,N,N,15.0,2013-06-11,Shenzhou 10,2013-06-26, Shenzhou 10,2013
+360,"Oleg Kotov, Sergey Ryazansky, Michael S. Hopkins",USSR/Russia,ISS,ISS crew rotation.,N,N,N,168.0,2013-09-25,Soyuz TMA-10M,2014-03-11, Soyuz TMA-10M,2013
+361,"Mikhail Tyurin, Richard Mastracchio, Koichi Wakata",USSR/Russia,ISS,ISS crew rotation.,N,N,N,189.0,2013-11-07,Soyuz TMA-11M,2014-05-14, Soyuz TMA-11M,2013
+362,"Aleksandr Skvortsov, Oleg Artemyev, Steven Swanson",USSR/Russia,ISS,ISS crew rotation.,N,N,N,171.0,2014-03-25,Soyuz TMA-12M,2014-09-11, Soyuz TMA-12M,2014
+363,"Maksim Surayev, Gregory R. Wiseman, Alexander Gerst",USSR/Russia,ISS,ISS crew rotation.,N,N,N,167.0,2014-05-28,Soyuz TMA-13M,2014-11-10, Soyuz TMA-13M,2014
+364,"Aleksandr Samokutyayev, Yelena Serova, Barry E. Wilmore",USSR/Russia,ISS,ISS crew rotation.,N,N,N,169.0,2014-09-25,Soyuz TMA-14M,2015-03-12, Soyuz TMA-14M,2014
+365,"Anton Shkaplerov, Samantha Cristoforetti, Terry W. Virts",USSR/Russia,ISS,ISS crew rotation.,N,N,N,201.0,2014-11-23,Soyuz TMA-15M,2015-06-11, Soyuz TMA-15M,2014
+366,"Mikhail Korniyenko, Scott Kelly",USSR/Russia,ISS,ISS crew rotation.,N,N,N,342.0,2015-03-27,Soyuz TMA-16M,2016-03-02, Soyuz TMA-16M,2015
+367,Gennady Padalka,USSR/Russia,ISS,ISS crew rotation.,N,N,N,170.0,2015-03-27,Soyuz TMA-16M,2015-09-12, Soyuz TMA-18M,2015
+368,"Oleg Kononenko, Kimiya Yui, Kjell N. Lindgren",USSR/Russia,ISS,ISS crew rotation.,N,N,N,143.0,2015-07-22,Soyuz TMA-17M,2015-12-11, Soyuz TMA-17M,2015
+369,Sergey Alexandrovich Volkov,USSR/Russia,ISS,ISS crew rotation.,N,N,N,183.0,2015-09-02,Soyuz TMA-18M,2016-03-02, Soyuz TMA-18M,2015
+370,"Andreas Mogensen, Aidyn Aimbetov",USSR/Russia,ISS,ISS crew rotation.,N,N,N,10.0,2015-09-02,Soyuz TMA-18M,2015-09-12, Soyuz TMA-16M,2015
+371,"Yuri Malenchenko, Timothy Kopra, Tim Peake",USSR/Russia,ISS,ISS crew rotation.,N,N,N,187.0,2015-12-15,Soyuz TMA-19M,2016-06-18, Soyuz TMA-19M,2015
+372,"Aleksey Ovchinin, Oleg Skripochka, Jeffrey Williams",USSR/Russia,ISS,ISS crew rotation.,N,N,N,174.0,2016-03-18,Soyuz TMA-20M,2016-09-07, Soyuz TMA-20M,2016
+373,"Anatoli Ivanishin, Takuya Onishi, Kathleen Rubins",USSR/Russia,ISS,ISS crew rotation.,N,N,N,116.0,2016-07-07,Soyuz MS-01,2016-10-30, Soyuz MS-01,2016
+374,"Jing Haipeng, Chen Dong",China,Tiangong 2,Testbed mission for the Chinese to gain experience from an extended stay on a space laboratory and test its life-support systems.,N,N,N,33.0,2016-10-16,Shenzhou 11,2016-11-18, Shenzhou 11,2016
+375,"Sergey Nikolayevich Ryzhikov, Andrei Borisenko, Robert S. Kimbrough",USSR/Russia,ISS,ISS crew rotation.,N,N,N,174.0,2016-10-19,Soyuz MS-02,2017-04-10, Soyuz MS-02,2016
+376,Peggy Whitson,USSR/Russia,ISS,ISS crew rotation.,N,N,N,291.0,2016-11-17,Soyuz MS-03,2017-09-03, Soyuz MS-03,2016
+377,"Oleg Novitskiy, Thomas Pesquet",USSR/Russia,ISS,ISS crew rotation.,N,N,N,198.0,2016-11-17,Soyuz MS-03,2017-06-02, Soyuz MS-04,2016
+378,"Fyodor Yurchikhin, Jack D. Fischer",USSR/Russia,ISS,ISS crew rotation.,N,N,N,137.0,2017-04-20,Soyuz MS-04,2017-09-03, Soyuz MS-04,2017
+379,"Sergey Ryazansky, Paolo Nespoli, Randolph Bresnik",USSR/Russia,ISS,ISS crew rotation.,N,N,N,140.0,2017-07-28,Soyuz MS-05,2017-12-14, Soyuz MS-05,2017
+380,"Alexander Misurkin, Mark T. Vande Hei, Joseph M. Acaba",USSR/Russia,ISS,ISS crew rotation.,N,N,N,,2017-09-12,Soyuz MS-06,, in orbit,2017
+381,"Anton Shkaplerov, Scott D. Tingle, Norishige Kanai",USSR/Russia,ISS,ISS crew rotation.,N,N,N,,2017-12-17,Soyuz MS-07,, in orbit,2017
