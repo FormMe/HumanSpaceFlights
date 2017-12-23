@@ -1,52 +1,60 @@
 class FlightsChart{
 	constructor(){
-		
+		self.margin = {top: 40, right: 10, bottom: 20, left: 10};
+		self.svgWidth = 800;
+		self.svgHeight = 450;
+		self.width = self.svgWidth - margin.left - margin.right;
+		self.height = self.svgHeight - margin.top - margin.bottom;
 	}
 
-	update(data){
+	update(missionsData){
 		
 		var n = 4, // The number of series.
 		    m = 58; // The number of values per series.
 
+		var groupedData = d3.nest()
+						    .key(function(d) { return d['Launch Year']; })
+						    .rollup(function(v) {
+						        return v;
+						    }) 
+						    .entries(missionsData);
+
+		console.log(groupedData);
 		// The xz array has m elements, representing the x-values shared by all series.
 		// The yz array has n elements, representing the y-values of each of the n series.
 		// Each yz[i] is an array of m non-negative numbers representing a y-value for xz[i].
 		// The y01z array has the same structure as yz, but with stacked [y₀, y₁] instead of y.
-		var xz = d3.range(m),
-		    yz = d3.range(n).map(function() { return bumps(m); }),
-		    y01z = d3.stack().keys(d3.range(n))(d3.transpose(yz)),
-		    yMax = d3.max(yz, function(y) { return d3.max(y); }),
+		var yMax = d3.max(groupedData, function(y) { return d3.max(y.value.lenght); }),
 		    y1Max = d3.max(y01z, function(y) { return d3.max(y, function(d) { return d[1]; }); });
-
-		var svg = d3.select("svg"),
-		    margin = {top: 40, right: 10, bottom: 20, left: 10},
-		    width = +svg.attr("width") - margin.left - margin.right,
-		    height = +svg.attr("height") - margin.top - margin.bottom,
-		    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		    
+		var svg = d3.select("#FlightsChart")
+					.attr('height', self.svgHeight)
+					.attr('width', self.svgWidth),
+		    g = svg.append("g").attr("transform", "translate(" + self.margin.left + "," + self.margin.top + ")");
 
 		var x = d3.scaleBand()
-		    .domain(xz)
-		    .rangeRound([0, width])
+		    .domain(groupedData.map(d => d.key))
+		    .rangeRound([0, self.width])
 		    .padding(0.08);
 
 		var y = d3.scaleLinear()
 		    .domain([0, y1Max])
-		    .range([height, 0]);
+		    .range([self.height, 0]);
 
 		var color = d3.scaleOrdinal()
 		    .domain(d3.range(n))
 		    .range(d3.schemeCategory20c);
 
 		var series = g.selectAll(".series")
-		  .data(y01z)
+		  .data(groupedData)
 		  .enter().append("g")
 		    .attr("fill", function(d, i) { return color(i); });
 
 		var rect = series.selectAll("rect")
 		  .data(function(d) { return d; })
 		  .enter().append("rect")
-		    .attr("x", function(d, i) { return x(i); })
-		    .attr("y", height)
+		    .attr("x", function(d, i) { return x(d.key); })
+		    .attr("y", self.height)
 		    .attr("width", x.bandwidth())
 		    .attr("height", 0);
 
@@ -57,10 +65,16 @@ class FlightsChart{
 
 		g.append("g")
 		    .attr("class", "axis axis--x")
-		    .attr("transform", "translate(0," + height + ")")
+		    .attr("transform", "translate(0," + self.height + ")")
 		    .call(d3.axisBottom(x)
 		        .tickSize(0)
-		        .tickPadding(6));
+		        .tickPadding(6))
+		    .selectAll('text')			
+		    .attr("y", 0)
+		    .attr("x", 9)
+		    .attr("dy", ".35em")
+		    .attr("transform", "rotate(90)")
+		    .style("text-anchor", "start");
 
 		d3.selectAll("input")
 		    .on("change", changed);

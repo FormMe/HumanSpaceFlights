@@ -4,7 +4,7 @@ let flightsChart = new FlightsChart();
 
 d3.csv("data/missions.csv", function (error, missionsData) {
 
-    d3.nest()
+  var aggrMissions = d3.nest()
         .key(function(d) { return d['Launch Mission']; })
         .rollup(function(v) {
             var info = v[0];
@@ -26,13 +26,12 @@ d3.csv("data/missions.csv", function (error, missionsData) {
                         "Return Mission": part["Return Mission"]
                     }
                 })
-
             }
-            console.log(v, obj); 
             return obj;
         }) 
         .entries(missionsData)
+        .map(d => d.value);
 
 
-    flightsChart.update(missionsData);
+  flightsChart.update(aggrMissions);
 });
