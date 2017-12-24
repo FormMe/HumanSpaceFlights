@@ -49,16 +49,16 @@ class FlightsChart{
 		      .text(function(d) { return d; });
 	}
 
-	update(data){
+	update(stackedData){
 		
-		console.log(data);
+		console.log(stackedData);
 		var height = this.height - this.margin.bottom;
 		var x = d3.scaleBand()
 			.range([this.margin.left, this.width])
 			.padding(0.1)
-			.domain(data.map(d => d.key));
+			.domain(stackedData.map(d => d.key));
 
-		var maxY = d3.max(data, function (d) {
+		var maxY = d3.max(stackedData, function (d) {
 				return d3.max(d.values, function (c) {
 					return c.prev + c.values.length;
 				})
@@ -72,23 +72,23 @@ class FlightsChart{
 					.attr('width', this.svgWidth)
 					.attr('height', this.svgHeight);
 
-		var stackBars = svg.selectAll(".stackBar")
-				.data(data);
+		svg.selectAll(".stackBar").remove();
 
-	    stackBars.exit().remove();
-
-	   	stackBars = stackBars.enter()
+	   	var stackBars = svg.selectAll(".stackBar")
+			.data(stackedData)
+	   		.enter()
 	    	.append('g')
-	    		.transition()
-	        	.duration(1000)
-	    	.attr("class", "stackBar")
-	    	.merge(stackBars)
+		    	.attr("class", "stackBar")
 		        .attr("transform", function (d) {
 				    return "translate("+ x(d.key) + ",0)";
-		        })
-	    	.selectAll("rect")
+		        });
+
+		stackBars.selectAll('rect')
 	    	.data(function(d) { return d.values; })
-	    	.enter().append("rect")
+	    	.enter()
+	    	.append("rect")
+	    		.transition()
+	        	.duration(1000)
 	        	.style("fill", function(d){return color(d.key);})
 		        .attr("y", function(d) { return  y(d.prev + d.values.length); })
 				.attr("height", function(d) { return  y(d.prev) - y(d.prev + d.values.length) ; })
