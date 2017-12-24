@@ -31,6 +31,27 @@ function groupMissions(missions) {
             });
 }
 
+function filterFatality() {
+    var filtered = missions;
+    var N = d3.select("#FatalityN").property("checked");
+    var Y = d3.select("#FatalityY").property("checked");
+    if(Y){
+        if(N){
+            d3.select("#FatalityN").property("checked", false);
+            d3.select("#FatalityY").property("checked", false);
+        }
+        else{
+            filtered = missions.filter(function(d,i){return d.Fatality == "Y";});
+        }
+    }  
+    else{
+        if(N){
+            filtered = missions.filter(function(d,i){return d.Fatality == "N";});
+        }
+    }
+    flightsChart.update(groupMissions(filtered));
+}
+
 d3.csv("data/missions.csv", function (error, missionsData) {
 
   missions = d3.nest()
@@ -61,7 +82,8 @@ d3.csv("data/missions.csv", function (error, missionsData) {
         .entries(missionsData)
         .map(d => d.value);
 
-    
+    d3.select("#FatalityY").on("change",filterFatality);
+    d3.select("#FatalityN").on("change",filterFatality);
     flightsChart.drawLegend();
     flightsChart.update(groupMissions(missions));
 
