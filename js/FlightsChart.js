@@ -1,7 +1,7 @@
 class FlightsChart{
 	
 	constructor(){
-		self.margin = {top: 40, right: 10, bottom: 20, left: 10};
+		self.margin = {top: 20, right: 10, bottom: 15, left: 30};
 		self.svgWidth = 800;
 		self.svgHeight = 450;
 		self.width = self.svgWidth - margin.left - margin.right;
@@ -33,15 +33,12 @@ class FlightsChart{
 			.domain(groupedData.map(d => d.key));
 
 		var maxY = d3.max(groupedData, function (d) {
-				console.log(d);
 				return d3.max(d.values, function (c) {
-					console.log(c);
-
 					return c.prev + c.values.length;
 				})
 			});
 		var y = d3.scaleLinear()
-			.range([self.height, self.margin.bottom])
+			.range([self.height, self.margin.top])
 			.domain([0, maxY]);
 
 		var Countries = ["USSR/Russia", "USA", "China"]
@@ -76,8 +73,6 @@ class FlightsChart{
 
 	    svg.append("g")
       		.attr("class", "axis")
-	    	.style("fill", "none")
-	    	.style("stroke", "white")
 	        .attr("transform", "translate(0," + self.height + ")")
 	        .call(d3.axisBottom(x))
 			.selectAll("text")
@@ -86,6 +81,11 @@ class FlightsChart{
 			    .attr("dy", ".35em")
 			    .attr("transform", "rotate(90)")
 			    .style("text-anchor", "start");
+
+	    svg.append("g")
+      		.attr("class", "axis")
+	        .attr("transform", "translate("+self.margin.left+",0)")
+	        .call(d3.axisLeft(y));
 
 		var legend = svg.append("g")
 		      .attr("font-family", "sans-serif")
@@ -107,6 +107,10 @@ class FlightsChart{
 		      .attr("y", 9.5)
 		      .attr("dy", "0.32em")
 		      .text(function(d) { return d; });
+
+        svg.append('text')
+          .text('Snow Totals')
+          .attr('transform', 'translate(-70, -20)');
 	}
 }
 

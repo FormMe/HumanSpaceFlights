@@ -1,0 +1,12 @@
+
+.axis line{
+  stroke: #f5f5f5;
+}
+
+.axis path{
+  stroke: #f5f5f5;
+}
+
+text{
+  fill: #f5f5f5;
+}
