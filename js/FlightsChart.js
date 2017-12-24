@@ -52,7 +52,6 @@ class FlightsChart{
 	update(stackedData){
 		
 		console.log(stackedData);
-		var height = this.height - this.margin.bottom;
 		var x = d3.scaleBand()
 			.range([this.margin.left, this.width])
 			.padding(0.1)
@@ -87,12 +86,17 @@ class FlightsChart{
 	    	.data(function(d) { return d.values; })
 	    	.enter()
 	    	.append("rect")
+		        .attr("y", this.height)
+				.attr("width", x.bandwidth())
+	        	.style("fill", function(d){return color(d.key);})
 	    		.transition()
 	        	.duration(1000)
-	        	.style("fill", function(d){return color(d.key);})
+	        	.delay(function (d, i) {
+					return i * 50;
+				})
+      			.ease(d3.easeCubic)
 		        .attr("y", function(d) { return  y(d.prev + d.values.length); })
-				.attr("height", function(d) { return  y(d.prev) - y(d.prev + d.values.length) ; })
-				.attr("width", x.bandwidth());
+				.attr("height", function(d) { return  y(d.prev) - y(d.prev + d.values.length) ; });
 
 	    svg.select(".Xaxis")
     		.transition()
