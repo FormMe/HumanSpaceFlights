@@ -1,21 +1,52 @@
 class FlightsChart{
 	
 	constructor(){
-		self.margin = {top: 20, right: 10, bottom: 15, left: 30};
-		self.svgWidth = 800;
-		self.svgHeight = 450;
-		self.width = self.svgWidth - margin.left - margin.right;
-		self.height = self.svgHeight - margin.top - margin.bottom;
+		this.margin = {top: 20, right: 10, bottom: 15, left: 30};
+		this.svgWidth = 800;
+		this.svgHeight = 450;
+		this.width = this.svgWidth - this.margin.left - this.margin.right;
+		this.height = this.svgHeight - this.margin.top - this.margin.bottom;
+
+		this.Countries = ["USSR/Russia", "USA", "China", "Other"]
+
+		this.color = d3.scaleOrdinal()
+		    .range(["#6b486b", "#98abc5", "#d0743c", "#3CB371"])
+		    .domain(this.Countries);
+	}
+
+	drawLegend() {
+		var svg = d3.select('#FlightsChart')
+							.attr('width', this.svgWidth)
+							.attr('height', this.svgHeight);
+		var legend = svg.append("g")
+		      .attr("font-family", "sans-serif")
+		      .attr("font-size", 10)
+		      .attr("text-anchor", "end")
+		      .attr("class", "legend")
+		    .selectAll("g")
+		    .data(this.Countries)
+		    .enter().append("g")
+		      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+		legend.append("rect")
+		      .attr("x", this.width - 19)
+		      .attr("width", 19)
+		      .attr("height", 19)
+		      .attr("fill", this.color);
+
+		legend.append("text")
+		      .attr("x", this.width - 24)
+		      .attr("y", 9.5)
+		      .attr("dy", "0.32em")
+		      .text(function(d) { return d; });
 	}
 
 	update(data){
-		var Countries = ["USSR/Russia", "USA", "China", "Other"]
-	
-
+		
 		console.log(data);
-		var height = self.height - self.margin.bottom;
+		var height = this.height - this.margin.bottom;
 		var x = d3.scaleBand()
-			.range([self.margin.left, self.width])
+			.range([this.margin.left, this.width])
 			.padding(0.1)
 			.domain(data.map(d => d.key));
 
@@ -25,24 +56,22 @@ class FlightsChart{
 				})
 			});
 		var y = d3.scaleLinear()
-			.range([self.height, self.margin.top])
+			.range([this.height, this.margin.top])
 			.domain([0, maxY]);
 
-		var color = d3.scaleOrdinal()
-		    .range(["#6b486b", "#98abc5", "#d0743c", "#3CB371"])
-		    .domain(Countries);
-
+		var color = this.color;
 		var svg = d3.select('#FlightsChart')
-					.attr('width', self.svgWidth)
-					.attr('height', self.svgHeight);
+					.attr('width', this.svgWidth)
+					.attr('height', this.svgHeight);
 
-		var stackBars = svg.selectAll('g')
+		var stackBars = svg.selectAll(".stackBar")
 				.data(data);
 
 	    stackBars.exit().remove();
-	    // add new elements
-	   stackBars = stackBars.enter()
+
+	   	stackBars = stackBars.enter()
 	    	.append('g')
+	    	.attr("class", "stackBar")
 	    	.merge(stackBars)
 		        .attr("transform", function (d) {
 				    return "translate("+ x(d.key) + ",0)";
@@ -59,7 +88,7 @@ class FlightsChart{
 
 	    svg.append("g")
       		.attr("class", "axis")
-	        .attr("transform", "translate(0," + self.height + ")")
+	        .attr("transform", "translate(0," + this.height + ")")
 	        .call(d3.axisBottom(x))
 			.selectAll("text")
 			    .attr("y", 0)
@@ -70,33 +99,12 @@ class FlightsChart{
 
 	    svg.append("g")
       		.attr("class", "axis")
-	        .attr("transform", "translate("+self.margin.left+",0)")
-	        .call(d3.axisLeft(y));
-
-		var legend = svg.append("g")
-		      .attr("font-family", "sans-serif")
-		      .attr("font-size", 10)
-		      .attr("text-anchor", "end")
-		    .selectAll("g")
-		    .data(Countries)
-		    .enter().append("g")
-		      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-		legend.append("rect")
-		      .attr("x", width - 19)
-		      .attr("width", 19)
-		      .attr("height", 19)
-		      .attr("fill", color);
-
-		legend.append("text")
-		      .attr("x", width - 24)
-		      .attr("y", 9.5)
-		      .attr("dy", "0.32em")
-		      .text(function(d) { return d; });
-
-        svg.append('text')
-          .text('Snow Totals')
-          .attr('transform', 'translate(-70, -20)');
+	        .attr("transform", "translate("+this.margin.left+",0)")
+	        .call(d3.axisLeft(y)
+	        		.tickValues(d3.range(y.domain()[0], y.domain()[1] + 1, 1))
+					.tickFormat(function(d) {
+						return ~~d;
+					}));
 	}
 }
 
