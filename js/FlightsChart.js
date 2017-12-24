@@ -71,7 +71,7 @@ class FlightsChart{
 					.attr('width', this.svgWidth)
 					.attr('height', this.svgHeight);
 
-		function tooltip_render (tooltip_data) {
+		function tooltip_missions_render (tooltip_data) {
 		    let text = "<h4>" + tooltip_data.key + "</h4>";;
             text += "<ul>"
             tooltip_data.values.forEach((row)=>{
@@ -80,15 +80,10 @@ class FlightsChart{
             text += "</ul>";
 		    return text;
 		}
+
 		let tip = d3.tip().attr('class', 'd3-tip')
-		            .direction('s')
-		            .offset(function() {
-		                return [0,0];
-		            })
-		            .html((d)=> {
-		            	console.log(d);
-		                return tooltip_render(d);
-		            });
+		            .direction('e')
+		            .html(tooltip_missions_render);
 
 		svg.call(tip);
 
