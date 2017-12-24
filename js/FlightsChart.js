@@ -50,7 +50,7 @@ class FlightsChart{
 	}
 
 	update(stackedData){
-		
+
 		console.log(stackedData);
 		var x = d3.scaleBand()
 			.range([this.margin.left, this.width])
@@ -71,9 +71,30 @@ class FlightsChart{
 					.attr('width', this.svgWidth)
 					.attr('height', this.svgHeight);
 
-		svg.selectAll(".stackBar").remove();
+		function tooltip_render (tooltip_data) {
+		    let text = "<h4>" + tooltip_data.key + "</h4>";;
+            text += "<ul>"
+            tooltip_data.values.forEach((row)=>{
+                text += "<li>" + row["Launch Mission"] + " ("+ row["Launch Data"]  + ")</li>"
+            });
+            text += "</ul>";
+		    return text;
+		}
+		let tip = d3.tip().attr('class', 'd3-tip')
+		            .direction('s')
+		            .offset(function() {
+		                return [0,0];
+		            })
+		            .html((d)=> {
+		            	console.log(d);
+		                return tooltip_render(d);
+		            });
 
-	   	var stackBars = svg.selectAll(".stackBar")
+		svg.call(tip);
+
+		svg.selectAll(".stackBar").remove();
+	   	
+		var stackBars = svg.selectAll(".stackBar")
 			.data(stackedData)
 	   		.enter()
 	    	.append('g')
@@ -82,18 +103,22 @@ class FlightsChart{
 				    return "translate("+ x(d.key) + ",0)";
 		        });
 
-		stackBars.selectAll('rect')
-	    	.data(function(d) { return d.values; })
-	    	.enter()
-	    	.append("rect")
-		        .attr("y", this.height)
+		var rects = stackBars.selectAll('rect')
+		    	.data(function(d) { return d.values; })
+		    	.enter()
+		    	.append("rect")
 				.attr("width", x.bandwidth())
-	        	.style("fill", function(d){return color(d.key);})
-	    		.transition()
-	        	.duration(1000)
-      			.ease(d3.easeCubic)
-		        .attr("y", function(d) { return  y(d.prev + d.values.length); })
-				.attr("height", function(d) { return  y(d.prev) - y(d.prev + d.values.length) ; });
+	        	.style("fill", function(d){return color(d.key);});
+
+        rects.attr("y", this.height)
+    		.transition()
+        	.duration(1000)
+  			.ease(d3.easeCubic)
+	        .attr("y", function(d) { return  y(d.prev + d.values.length); })
+			.attr("height", function(d) { return  y(d.prev) - y(d.prev + d.values.length) ; });
+
+		rects.on('mouseover', tip.show)
+      		 .on('mouseout', tip.hide);
 
 	    svg.select(".Xaxis")
     		.transition()
