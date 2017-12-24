@@ -9,23 +9,24 @@ class FlightsChart{
 	}
 
 	update(missionsData){
+		var Countries = ["USSR/Russia", "USA", "China"]
 		var groupedData = d3.nest()
 						    .key(function(d) { return d['Launch Year']; })
 						    .key(function(d) { return d['Country']; })
 	  						.entries(missionsData)
-	  						.map(function (d) {	  							
+	  						.map(function (d) {	  	
+						    	d.values = Countries.map(function (c) {
+						    		return d.values.find(function (a) {
+						    			return a.key == c;
+						    		});
+						    	}).filter(c => c != undefined);						
 						    	d.values.forEach(function (c, i) {
 						    		d.values[i].prev = i == 0 ? 0 : d.values[i-1].values.length + d.values[i-1].prev;
 						    	});
-						    	d.values = d.values.sort(function(a, b){
-										    if(a.key < b.key) return -1;
-										    if(a.key > b.key) return 1;
-										    return 0;
-										});
 						    	return d;
 	  						});
 
-		// console.log(groupedData);
+		console.log(groupedData);
 		var height = self.height - self.margin.bottom;
 		var x = d3.scaleBand()
 			.range([self.margin.left, self.width])
@@ -41,7 +42,6 @@ class FlightsChart{
 			.range([self.height, self.margin.top])
 			.domain([0, maxY]);
 
-		var Countries = ["USSR/Russia", "USA", "China"]
 		var color = d3.scaleOrdinal()
 		    .range(["#6b486b", "#98abc5", "#d0743c"])
 		    .domain(Countries);
