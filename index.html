@@ -29,11 +29,41 @@ label {
 	<div id='stars2'></div>
 	<div id='stars3'></div>
 
+
+	<div id="parent">
+	    <div class="right">
+	    	<label>Habitation:</label>
+	        <select id="Habitation" class="select_box" onchange="chooseData()">
+	            <option selected value="attendance">All</option>
+	            <option value="">Space</option>
+	            <option value="Moon">Moon</option>
+	            <option value="ISS">ISS</option>
+	            <option value="Mir">Mir</option>
+	            <option value="Salyut 1">Salyut 1</option>
+	            <option value="Salyut 3">Salyut 3</option>
+	            <option value="Salyut 4">Salyut 4</option>
+	            <option value="Salyut 5">Salyut 5</option>
+	            <option value="Salyut 6">Salyut 6</option>
+	            <option value="Salyut 7">Salyut 7</option>
+	            <option value="Skylab">Skylab</option>
+	            <option value="Tiangong 1">Tiangong 1</option>
+	            <option value="Tiangong 2">Tiangong 2</option>
+	        </select>
+	    </div>
+	    <div class="left">
+			<svg id='FlightsChart'></svg>
+	    </div>
+	</div>
+
+		
+	<div>
+		
 <!-- 	<form>
 		<label><input type="radio" name="mode" value="grouped"> Grouped</label>
 		<label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
 	</form> -->
-	<svg id='FlightsChart'></svg>	
+
+	</div>
 	
 </body>
 </html>

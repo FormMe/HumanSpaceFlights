@@ -8,32 +8,18 @@ class FlightsChart{
 		self.height = self.svgHeight - margin.top - margin.bottom;
 	}
 
-	update(missionsData){
-		var Countries = ["USSR/Russia", "USA", "China"]
-		var groupedData = d3.nest()
-						    .key(function(d) { return d['Launch Year']; })
-						    .key(function(d) { return d['Country']; })
-	  						.entries(missionsData)
-	  						.map(function (d) {	  	
-						    	d.values = Countries.map(function (c) {
-						    		return d.values.find(function (a) {
-						    			return a.key == c;
-						    		});
-						    	}).filter(c => c != undefined);						
-						    	d.values.forEach(function (c, i) {
-						    		d.values[i].prev = i == 0 ? 0 : d.values[i-1].values.length + d.values[i-1].prev;
-						    	});
-						    	return d;
-	  						});
+	update(data){
+		var Countries = ["USSR/Russia", "USA", "China", "Other"]
+	
 
-		console.log(groupedData);
+		console.log(data);
 		var height = self.height - self.margin.bottom;
 		var x = d3.scaleBand()
 			.range([self.margin.left, self.width])
 			.padding(0.1)
-			.domain(groupedData.map(d => d.key));
+			.domain(data.map(d => d.key));
 
-		var maxY = d3.max(groupedData, function (d) {
+		var maxY = d3.max(data, function (d) {
 				return d3.max(d.values, function (c) {
 					return c.prev + c.values.length;
 				})
@@ -43,7 +29,7 @@ class FlightsChart{
 			.domain([0, maxY]);
 
 		var color = d3.scaleOrdinal()
-		    .range(["#6b486b", "#98abc5", "#d0743c"])
+		    .range(["#6b486b", "#98abc5", "#d0743c", "#3CB371"])
 		    .domain(Countries);
 
 		var svg = d3.select('#FlightsChart')
@@ -51,7 +37,7 @@ class FlightsChart{
 					.attr('height', self.svgHeight);
 
 		var stackBars = svg.selectAll('g')
-				.data(groupedData);
+				.data(data);
 
 	    stackBars.exit().remove();
 	    // add new elements

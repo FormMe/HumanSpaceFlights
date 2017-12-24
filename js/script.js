@@ -32,6 +32,22 @@ d3.csv("data/missions.csv", function (error, missionsData) {
         .entries(missionsData)
         .map(d => d.value);
 
-        
-  flightsChart.update(aggrMissions);
+        var Countries = ["USSR/Russia", "USA", "China", "Other"]
+        var groupedData = d3.nest()
+                        .key(function(d) { return d['Launch Year']; })
+                        .key(function(d) { return d['Country']; })
+                        .entries(missionsData)
+                        .map(function (d) {     
+                            d.values = Countries.map(function (c) {
+                                return d.values.find(function (a) {
+                                    return a.key == c;
+                                });
+                            }).filter(c => c != undefined);                     
+                            d.values.forEach(function (c, i) {
+                                d.values[i].prev = i == 0 ? 0 : d.values[i-1].values.length + d.values[i-1].prev;
+                            });
+                            return d;
+                        });
+                            
+  flightsChart.update(groupedData);
 });
