@@ -33,8 +33,9 @@ label {
 	<div class="parent">
 	    <div class="right">
 	    	<label>Habitation:</label>
-	        <select id="Habitation" class="select_box" onchange="filterHabitation()">
-	            <option selected value="All">All</option>
+	        <div class="select">
+		      <select id="Habitation" onchange="filterHabitation()">
+		        <option selected value="All">All</option>
 	            <option value="">Space</option>
 	            <option value="Moon">Moon</option>
 	            <option value="ISS">ISS</option>
@@ -48,11 +49,21 @@ label {
 	            <option value="Skylab">Skylab</option>
 	            <option value="Tiangong 1">Tiangong 1</option>
 	            <option value="Tiangong 2">Tiangong 2</option>
-	        </select>
+		      </select>
+		      <div class="select__arrow"></div>
+		    </div>
+
 
 	        <label>Outcome:</label>
-			<label><input type="checkbox" id="FatalityY"></input>Fatality</label>
-			<label><input type="checkbox" id="FatalityN"></input>Success</label>
+		    <label class="control control--checkbox">Fatality
+		      <input type="checkbox" id="FatalityY"/>
+		      <div class="control__indicator"></div>
+		    </label>
+		    <label class="control control--checkbox">Success
+		      <input type="checkbox" id="FatalityN"/>
+		      <div class="control__indicator"></div>
+		    </label>
+
 	    </div>
 	    <div class="left">
 			<svg id='FlightsChart'></svg>
