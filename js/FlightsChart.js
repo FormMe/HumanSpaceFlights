@@ -18,6 +18,14 @@ class FlightsChart{
 		var svg = d3.select('#FlightsChart')
 							.attr('width', this.svgWidth)
 							.attr('height', this.svgHeight);
+		svg.append("g")
+      		.attr("class", "Xaxis axis")
+	        .attr("transform", "translate(0," + this.height + ")");
+
+      	svg.append("g")
+      		.attr("class", "Yaxis axis")
+	        .attr("transform", "translate("+this.margin.left+",0)");
+
 		var legend = svg.append("g")
 		      .attr("font-family", "sans-serif")
 		      .attr("font-size", 10)
@@ -29,13 +37,13 @@ class FlightsChart{
 		      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
 		legend.append("rect")
-		      .attr("x", this.width - 19)
+		      .attr("x", this.svgWidth - 19)
 		      .attr("width", 19)
 		      .attr("height", 19)
 		      .attr("fill", this.color);
 
 		legend.append("text")
-		      .attr("x", this.width - 24)
+		      .attr("x", this.svgWidth - 24)
 		      .attr("y", 9.5)
 		      .attr("dy", "0.32em")
 		      .text(function(d) { return d; });
@@ -71,6 +79,8 @@ class FlightsChart{
 
 	   	stackBars = stackBars.enter()
 	    	.append('g')
+	    		.transition()
+	        	.duration(1000)
 	    	.attr("class", "stackBar")
 	    	.merge(stackBars)
 		        .attr("transform", function (d) {
@@ -79,16 +89,14 @@ class FlightsChart{
 	    	.selectAll("rect")
 	    	.data(function(d) { return d.values; })
 	    	.enter().append("rect")
-	    		.transition()
-	        	.duration(1000)
 	        	.style("fill", function(d){return color(d.key);})
 		        .attr("y", function(d) { return  y(d.prev + d.values.length); })
 				.attr("height", function(d) { return  y(d.prev) - y(d.prev + d.values.length) ; })
 				.attr("width", x.bandwidth());
 
-	    svg.append("g")
-      		.attr("class", "axis")
-	        .attr("transform", "translate(0," + this.height + ")")
+	    svg.select(".Xaxis")
+    		.transition()
+        	.duration(1000)
 	        .call(d3.axisBottom(x))
 			.selectAll("text")
 			    .attr("y", 0)
@@ -97,9 +105,9 @@ class FlightsChart{
 			    .attr("transform", "rotate(90)")
 			    .style("text-anchor", "start");
 
-	    svg.append("g")
-      		.attr("class", "axis")
-	        .attr("transform", "translate("+this.margin.left+",0)")
+	    svg.select(".Yaxis")
+    		.transition()
+        	.duration(1000)
 	        .call(d3.axisLeft(y)
 	        		.tickValues(d3.range(y.domain()[0], y.domain()[1] + 1, 1))
 					.tickFormat(function(d) {

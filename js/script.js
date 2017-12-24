@@ -5,6 +5,7 @@ let missions;
 function filterHabitation() {
     var habitation = d3.select("#Habitation").node().value; 
     var filtered =  missions.filter(function (m) {
+        if (habitation == "All") return true;
         return m["Habitation"] == habitation;
     });
 
