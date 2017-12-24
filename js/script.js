@@ -2,17 +2,7 @@
 let flightsChart = new FlightsChart();
 let missions;
 
-function filterHabitation() {
-    var habitation = d3.select("#Habitation").node().value; 
-    var filtered =  missions.filter(function (m) {
-        if (habitation == "All") return true;
-        return m["Habitation"] == habitation;
-    });
-
-    flightsChart.update(groupMissions(filtered));
-}
-
-function groupMissions(missions) {
+function group_missions(missions) {
     var Countries = ["USSR/Russia", "USA", "China", "Other"]
     return d3.nest()
             .key(function(d) { return d['Launch Year']; })
@@ -31,8 +21,16 @@ function groupMissions(missions) {
             });
 }
 
-function filterFatality() {
-    var filtered = missions;
+function filter_habitation(misData) {
+    var habitation = d3.select("#Habitation").node().value; 
+    return misData.filter(function (m) {
+                if (habitation == "All") return true;
+                return m["Habitation"] == habitation;
+            });
+}
+
+function filter_fatality(misData) {
+    var filtered = misData;
     var N = d3.select("#FatalityN").property("checked");
     var Y = d3.select("#FatalityY").property("checked");
     if(Y){
@@ -41,15 +39,19 @@ function filterFatality() {
             d3.select("#FatalityY").property("checked", false);
         }
         else{
-            filtered = missions.filter(function(d,i){return d.Fatality == "Y";});
+            return filtered.filter(function(d,i){return d.Fatality == "Y";});
         }
     }  
     else{
         if(N){
-            filtered = missions.filter(function(d,i){return d.Fatality == "N";});
+            return filtered.filter(function(d,i){return d.Fatality == "N";});
         }
     }
-    flightsChart.update(groupMissions(filtered));
+    return filtered;
+}
+
+function filter_missions() {
+    flightsChart.update(group_missions(filter_habitation(filter_fatality(missions))));    
 }
 
 d3.csv("data/missions.csv", function (error, missionsData) {
@@ -82,9 +84,8 @@ d3.csv("data/missions.csv", function (error, missionsData) {
         .entries(missionsData)
         .map(d => d.value);
 
-    d3.select("#FatalityY").on("change",filterFatality);
-    d3.select("#FatalityN").on("change",filterFatality);
+    d3.select("#FatalityY").on("change",filter_missions);
+    d3.select("#FatalityN").on("change",filter_missions);
     flightsChart.drawLegend();
-    flightsChart.update(groupMissions(missions));
-
+    filter_missions();
 });
