@@ -49,7 +49,7 @@ class FlightsChart{
 		      .text(function(d) { return d; });
 	}
 
-	update(stackedData){
+	update(stackedData, isMissions = true){
 
 		console.log(stackedData);
 		var x = d3.scaleBand()

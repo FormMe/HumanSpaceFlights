@@ -26,7 +26,7 @@ function group_astronauts(astrData, misData){
     var yearGroupMis = d3.nest()
                     .key(function(d) { return d['Launch Year']; })
                     .entries(misData);
-    yearGroupMis.map(function (y) {
+    return yearGroupMis.map(function (y) {
         var astrs = [];
         y.values.forEach(function (mis) {
             mis.Crew.forEach(function (crew) {
@@ -59,7 +59,6 @@ function group_astronauts(astrData, misData){
         });
         return y;
     });           
-    console.log(yearGroupMis);
 }
 
 
@@ -92,8 +91,11 @@ function filter_fatality(misData) {
     return filtered;
 }
 
-function filter_missions() {
-    flightsChart.update(group_missions(filter_habitation(filter_fatality(missions))));    
+function filter() {
+    var fMis = filter_habitation(filter_fatality(missions));
+    // flightsChart.update(group_missions(fMis));    
+
+    flightsChart.update(group_astronauts(astronauts, fMis));   
 }
 
 
@@ -134,9 +136,9 @@ d3.csv("data/missions.csv", function (error, missionsData) {
         .entries(missionsData)
         .map(d => d.value);
 
-    d3.select("#FatalityY").on("change",filter_missions);
-    d3.select("#FatalityN").on("change",filter_missions);
+    d3.select("#FatalityY").on("change",filter);
+    d3.select("#FatalityN").on("change",filter);
     flightsChart.drawLegend();
-    filter_missions();
-    group_astronauts(astronauts, missions);
+    filter(); 
+    
 });
