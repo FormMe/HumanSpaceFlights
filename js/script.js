@@ -30,14 +30,24 @@ function group_astronauts(astrData, misData){
         var astrs = [];
         y.values.forEach(function (mis) {
             mis.Crew.forEach(function (crew) {
-                astrs = astrs.concat(crew.Members);
+                var members = crew.Members.map(function (n) {
+                    return{
+                        Name: n,
+                        "Year Mission": mis["Launch Mission"]
+                    }
+                })
+                astrs = astrs.concat(members);
             })
         });
         astrs = [...new Set(astrs)];
+        console.log(astrs);
         found = astrData.filter(function (astr) {
-                    return astrs.includes(astr["Name"]);
+                    return astrs.find(a => a.Name == astr.Name) != undefined;
                 });
-        var notFound = [...new Set(astrs.filter(name => found.find(a => a.Name == name) == undefined))];
+        found.forEach(function (astr) {
+                astr["Year Mission"] = astrs.find(a => a.Name == astr.Name)["Year Mission"];
+            });
+        var notFound = [...new Set(astrs.filter(astr => found.find(a => a.Name == astr.Name) == undefined))];
         
         var grouped = d3.nest()
                         .key(d => d['Country'])
@@ -95,7 +105,7 @@ function filter() {
     var fMis = filter_habitation(filter_fatality(missions));
     // flightsChart.update(group_missions(fMis));    
 
-    flightsChart.update(group_astronauts(astronauts, fMis));   
+    flightsChart.update(group_astronauts(astronauts, fMis), false);   
 }
 
 

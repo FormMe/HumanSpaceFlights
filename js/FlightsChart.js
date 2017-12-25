@@ -49,7 +49,7 @@ class FlightsChart{
 		      .text(function(d) { return d; });
 	}
 
-	update(stackedData, isMissions = true){
+	update(stackedData, isMissions){
 
 		console.log(stackedData);
 		var x = d3.scaleBand()
@@ -74,8 +74,17 @@ class FlightsChart{
 		function tooltip_missions_render (tooltip_data) {
 		    let text = "<h4>" + tooltip_data.key + "</h4>";;
             text += "<ul>"
-            tooltip_data.values.forEach((row)=>{
-                text += "<li>" + row["Launch Mission"] + " ("+ row["Launch Data"]  + ")</li>"
+            tooltip_data.values.forEach(function (row) {
+            	if (isMissions){
+                	text += "<li>" + row["Launch Mission"] + " ("+ row["Launch Data"]  + ")</li>";
+                }
+                else{
+                	text += "<li>" + row["Name"];
+                	// if (tooltip_data.key != "Other"){
+                		text += " ("+ row["Year Mission"] + ")" ;
+                	// }
+                	text +="</li>";
+                }
             });
             text += "</ul>";
 		    return text;
