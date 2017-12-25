@@ -1,6 +1,6 @@
 
 let flightsChart = new FlightsChart();
-let missions;
+let missions, astronauts;
 
 function group_missions(missions) {
     var Countries = ["USSR/Russia", "USA", "China", "Other"]
@@ -53,6 +53,15 @@ function filter_fatality(misData) {
 function filter_missions() {
     flightsChart.update(group_missions(filter_habitation(filter_fatality(missions))));    
 }
+
+
+d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
+    astronautsData.forEach(function (astr) {
+        astr.Missions = astr.Missions.split(',').map(name => name.trim())
+    })
+    astronauts = astronautsData;
+    console.log(astronauts);
+});
 
 d3.csv("data/missions.csv", function (error, missionsData) {
 
