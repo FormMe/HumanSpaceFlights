@@ -1,9 +1,9 @@
 
 let flightsChart = new FlightsChart();
 let missions, astronauts;
+var Countries = ["USSR/Russia", "USA", "China", "Other"]
 
 function group_missions(missions) {
-    var Countries = ["USSR/Russia", "USA", "China", "Other"]
     return d3.nest()
             .key(function(d) { return d['Launch Year']; })
             .key(function(d) { return d['Country']; })
@@ -20,6 +20,48 @@ function group_missions(missions) {
                 return d;
             });
 }
+
+function group_astronauts(astrData, misData){
+
+    var yearGroupMis = d3.nest()
+                    .key(function(d) { return d['Launch Year']; })
+                    .entries(misData);
+    yearGroupMis.map(function (y) {
+        var astrs = [];
+        y.values.forEach(function (mis) {
+            mis.Crew.forEach(function (crew) {
+                astrs = astrs.concat(crew.Members);
+            })
+        });
+        astrs = [...new Set(astrs)];
+        found = astrData.filter(function (astr) {
+                    return astrs.includes(astr["Name"]);
+                });
+        var notFound = [...new Set(astrs.filter(name => found.find(a => a.Name == name) == undefined))];
+        
+        var grouped = d3.nest()
+                        .key(d => d['Country'])
+                        .entries(found);
+
+        if(notFound.length != 0){
+            grouped.push({
+                key: "Other",
+                values: notFound
+            });
+        }
+        y.values = Countries.map(function (c) {
+            return grouped.find(function (a) {
+                return a.key == c;
+            });
+        }).filter(c => c != undefined);                     
+        y.values.forEach(function (c, i) {
+            y.values[i].prev = i == 0 ? 0 : y.values[i-1].values.length + y.values[i-1].prev;
+        });
+        return y;
+    });           
+    console.log(yearGroupMis);
+}
+
 
 function filter_habitation(misData) {
     var habitation = d3.select("#Habitation").node().value; 
@@ -60,7 +102,6 @@ d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
         astr.Missions = astr.Missions.split(',').map(name => name.trim())
     })
     astronauts = astronautsData;
-    console.log(astronauts);
 });
 
 d3.csv("data/missions.csv", function (error, missionsData) {
@@ -97,4 +138,5 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     d3.select("#FatalityN").on("change",filter_missions);
     flightsChart.drawLegend();
     filter_missions();
+    group_astronauts(astronauts, missions);
 });
