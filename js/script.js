@@ -103,9 +103,12 @@ function filter_fatality(misData) {
 
 function filter() {
     var fMis = filter_habitation(filter_fatality(missions));
-    // flightsChart.update(group_missions(fMis));    
-
-    flightsChart.update(group_astronauts(astronauts, fMis), false);   
+    if (d3.select("#Astr_Mis").property("checked")){        
+        flightsChart.update(group_astronauts(astronauts, fMis), false);   
+    }
+    else{
+        flightsChart.update(group_missions(fMis), true);   
+    }
 }
 
 
