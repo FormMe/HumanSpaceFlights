@@ -12,6 +12,9 @@ class FlightsChart{
 		this.color = d3.scaleOrdinal()
 		    .range(["#6b486b", "#98abc5", "#d0743c", "#3CB371"])
 		    .domain(this.Countries);
+
+		this.down_d = 500;
+		this.up_d = 800;
 	}
 
 	drawLegend() {
@@ -51,7 +54,26 @@ class FlightsChart{
 
 	update(stackedData, isMissions){
 
+		var t = this;
+		var draw = true;
+		d3.select('#FlightsChart')
+		  .selectAll('.stackBar')
+		  .selectAll('rect')
+    		.transition()
+        	.duration(this.down_d)
+        	.attr('height', 0)
+        	.attr('y', t.height)
+        	.on("end", function () {
+        		if (draw) {
+        			t.raise_up(stackedData, isMissions);
+        			draw = false;
+        		}
+        	});
+	}
+
+	raise_up(stackedData, isMissions){
 		console.log(stackedData);
+      
 		var x = d3.scaleBand()
 			.range([this.margin.left, this.width])
 			.padding(0.1)
@@ -67,9 +89,7 @@ class FlightsChart{
 			.domain([0, maxY]);
 
 		var color = this.color;
-		var svg = d3.select('#FlightsChart')
-					.attr('width', this.svgWidth)
-					.attr('height', this.svgHeight);
+		var svg = d3.select('#FlightsChart');
 
 		function tooltip_missions_render (tooltip_data) {
 		    let text = "<label style='color: " + color(tooltip_data.key) + "'>" + tooltip_data.key + "</label>";
@@ -119,7 +139,7 @@ class FlightsChart{
 
         rects.attr("y", this.height)
     		.transition()
-        	.duration(1000)
+        	.duration(this.up_d)
   			.ease(d3.easeCubic)
 	        .attr("y", function(d) { return  y(d.prev + d.values.length); })
 			.attr("height", function(d) { return  y(d.prev) - y(d.prev + d.values.length) ; });
@@ -129,7 +149,7 @@ class FlightsChart{
 
 	    svg.select(".Xaxis")
     		.transition()
-        	.duration(1000)
+        	.duration(this.up_d)
 	        .call(d3.axisBottom(x))
 			.selectAll("text")
 			    .attr("y", 0)
@@ -140,7 +160,7 @@ class FlightsChart{
 
 	    svg.select(".Yaxis")
     		.transition()
-        	.duration(1000)
+        	.duration(this.up_d)
 	        .call(d3.axisLeft(y)
 	        		.tickFormat(function(e){
 				        if(Math.floor(e) != e) return;

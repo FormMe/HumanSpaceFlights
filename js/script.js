@@ -101,8 +101,8 @@ function filter_fatality(misData) {
 }
 
 function filter() {
-    var fMis = filter_habitation(filter_fatality(missions));
-    if (d3.select("#Astr_Mis").property("checked")){        
+    var fMis = filter_habitation(filter_fatality(missions));  
+    if (d3.select("#Astr_Mis").property("checked")){    
         flightsChart.update(group_astronauts(astronauts, fMis), false);   
     }
     else{
@@ -151,6 +151,5 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     d3.select("#FatalityY").on("change",filter);
     d3.select("#FatalityN").on("change",filter);
     flightsChart.drawLegend();
-    filter(); 
-    
+    flightsChart.raise_up(group_astronauts(astronauts, missions), false);       
 });
