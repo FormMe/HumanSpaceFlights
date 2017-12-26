@@ -13,7 +13,7 @@ class FlightsChart{
 		    .range(["#6b486b", "#98abc5", "#d0743c", "#3CB371"])
 		    .domain(this.Countries);
 
-		this.down_d = 500;
+		this.down_d = 300;
 		this.up_d = 800;
 	}
 
@@ -62,7 +62,6 @@ class FlightsChart{
     		.transition()
         	.duration(this.down_d)
         	.attr('height', 0)
-        	.attr('y', t.height)
         	.on("end", function () {
         		if (draw) {
         			draw = false;
