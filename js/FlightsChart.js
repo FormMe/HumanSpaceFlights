@@ -1,9 +1,9 @@
 class FlightsChart{
 	
-	constructor(){
+	constructor(w ,h){
 		this.margin = {top: 20, right: 10, bottom: 15, left: 30};
-		this.svgWidth = 800;
-		this.svgHeight = 450;
+		this.svgWidth = w;
+		this.svgHeight = h;
 		this.width = this.svgWidth - this.margin.left - this.margin.right;
 		this.height = this.svgHeight - this.margin.top - this.margin.bottom;
 
@@ -72,29 +72,25 @@ class FlightsChart{
 					.attr('height', this.svgHeight);
 
 		function tooltip_missions_render (tooltip_data) {
-		    let text = "<h4>" + tooltip_data.key + "</h4>";;
-            text += "<ul>"
-            	if (isMissions){
-            		tooltip_data.values.forEach(function (row) {
-                		text += "<li>" + row["Launch Mission"] + " ("+ row["Launch Data"]  + ")</li>";
-                	});
-                }
-                else{
-            		 console.log(tooltip_data);
-            		var grouped = d3.nest()
-			            		  .key(d => d["Year Mission"])
-			            		  .entries(tooltip_data.values);
-			        grouped.forEach(function (row) {
-                			text += "<li>" +  row.key + "<ul>";
-                			row.values.forEach(function (astrs) {
-                				text += "<li>" + astrs.Name + "</li>";
-                			})
-							text += "</ul></li>";
-            			})
-                }
-            
-            text += "</ul>";
-		    return text;
+		    let text = "<label style='color: " + color(tooltip_data.key) + "'>" + tooltip_data.key + "</label>";
+        	var cols = tooltip_data.values.length >= 15 ? 2 : 1;
+        	text += "<ul style='columns: " + cols + "'>";
+        	if (isMissions){
+        		tooltip_data.values.forEach(function (row) {
+            		text += "<li>" + row["Launch Mission"] + ": "+ row["Launch Data"]  + "</li>";
+            	});
+            }
+            else{
+        		var grouped = d3.nest()
+		            		  .key(d => d["Year Mission"])
+		            		  .entries(tooltip_data.values);
+		        grouped.forEach(function (row) {
+        			row.values.forEach(function (astrs) {
+        				text += "<li>" + astrs.Name + ": " + row.key + "</li>";
+        			})
+    			});
+            }
+		    return "</ul>" + text;
 		}
 
 		let tip = d3.tip().attr('class', 'd3-tip')

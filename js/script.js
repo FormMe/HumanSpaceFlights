@@ -1,5 +1,5 @@
 
-let flightsChart = new FlightsChart();
+let flightsChart = new FlightsChart(800, 500);
 let missions, astronauts;
 var Countries = ["USSR/Russia", "USA", "China", "Other"]
 
@@ -40,7 +40,6 @@ function group_astronauts(astrData, misData){
             })
         });
         astrs = [...new Set(astrs)];
-        console.log(astrs);
         found = astrData.filter(function (astr) {
                     return astrs.find(a => a.Name == astr.Name) != undefined;
                 });
