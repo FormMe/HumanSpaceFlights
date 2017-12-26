@@ -65,8 +65,8 @@ class FlightsChart{
         	.attr('y', t.height)
         	.on("end", function () {
         		if (draw) {
-        			t.raise_up(stackedData, isMissions);
         			draw = false;
+        			t.raise_up(stackedData, isMissions);
         		}
         	});
 	}
