@@ -74,18 +74,25 @@ class FlightsChart{
 		function tooltip_missions_render (tooltip_data) {
 		    let text = "<h4>" + tooltip_data.key + "</h4>";;
             text += "<ul>"
-            tooltip_data.values.forEach(function (row) {
             	if (isMissions){
-                	text += "<li>" + row["Launch Mission"] + " ("+ row["Launch Data"]  + ")</li>";
+            		tooltip_data.values.forEach(function (row) {
+                		text += "<li>" + row["Launch Mission"] + " ("+ row["Launch Data"]  + ")</li>";
+                	});
                 }
                 else{
-                	text += "<li>" + row["Name"];
-                	// if (tooltip_data.key != "Other"){
-                		text += " ("+ row["Year Mission"] + ")" ;
-                	// }
-                	text +="</li>";
+            		 console.log(tooltip_data);
+            		var grouped = d3.nest()
+			            		  .key(d => d["Year Mission"])
+			            		  .entries(tooltip_data.values);
+			        grouped.forEach(function (row) {
+                			text += "<li>" +  row.key + "<ul>";
+                			row.values.forEach(function (astrs) {
+                				text += "<li>" + astrs.Name + "</li>";
+                			})
+							text += "</ul></li>";
+            			})
                 }
-            });
+            
             text += "</ul>";
 		    return text;
 		}
@@ -139,10 +146,10 @@ class FlightsChart{
     		.transition()
         	.duration(1000)
 	        .call(d3.axisLeft(y)
-	        		.tickValues(d3.range(y.domain()[0], y.domain()[1] + 1, 1))
-					.tickFormat(function(d) {
-						return ~~d;
-					}));
+	        		.tickFormat(function(e){
+				        if(Math.floor(e) != e) return;
+				        return e;
+				    }));
 	}
 }
 
