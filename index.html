@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Human Space Flights</title>
@@ -12,6 +13,7 @@
 	<script src="d3/d3.min.js"></script>
     <script type="text/javascript" src="bower_components/d3-tip/index.js"></script>
     <script src="js/FlightsChart.js" async></script>
+    <script src="js/SunburstStat.js" async></script>
     <script src="js/script.js" async></script>
 </head>
 <body>
@@ -20,8 +22,12 @@
 	<!-- <div id='stars3'></div> -->
 
 
-	<div class="parent">
-	    <div class="right">
+	<div class="container">
+	    <div class="view stacked">
+			<svg id='FlightsChart'></svg>
+	    </div>
+
+	    <div class="view filters">
 	    	<label>Habitation:</label>
 	        <div class="select">
 		      <select id="Habitation" onchange="filter()">
@@ -43,8 +49,6 @@
 		      <div class="select__arrow"></div>
 		    </div>
 
-
-
 	        <label>Outcome:</label>
 		    <label class="control control--checkbox">Fatality
 		      <input type="checkbox" id="FatalityY"/>
@@ -59,9 +63,8 @@
 			  <input type="checkbox" id="Astr_Mis" onchange="filter()">
 			  <span class="slider round"></span>
 			</label>
-	    </div>
-	    <div class="left">
-			<svg id='FlightsChart'></svg>
+
+			<svg id='Sunburst'> </svg>
 	    </div>
 	</div>
 

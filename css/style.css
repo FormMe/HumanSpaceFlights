@@ -20,16 +20,16 @@ label{
   color: #f5f5f5;
 }
 
-.parent {
-    overflow: hidden;
+.view {
+    padding: 0.5em;
+    float: left;
 }
-.right {
-    float: right;
-    width: 200px;
-    height: 1000px;
+
+.stacked{	
+    width: 900px;
 }
-.left {
-    overflow: hidden;
-    height: 1000px;
+
+.filters{	
+    width: 100px;
 }
 

@@ -1,5 +1,6 @@
 
-let flightsChart = new FlightsChart(800, 500);
+let flightsChart = new FlightsChart(900, 500);
+let sunburstStat = new SunburstStat();
 let missions, astronauts;
 var Countries = ["USSR/Russia", "USA", "China", "Other"]
 
@@ -152,4 +153,5 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     d3.select("#FatalityN").on("change",filter);
     flightsChart.drawLegend();
     flightsChart.raise_up(group_astronauts(astronauts, missions), false);       
+    sunburstStat.update([]);
 });
