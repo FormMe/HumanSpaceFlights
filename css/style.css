@@ -29,9 +29,9 @@ hr {
   	color: #f5f5f5;
 } 
 
-h3{
+.title{
   text-align: center;
-  color: #f5f5f5;
+  font-size: 20px;
 }
 
 .header {
