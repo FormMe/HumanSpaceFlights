@@ -25,6 +25,7 @@
 	<div>
 	    <div class="view stacked">
 	    	<h3 id="BarChartTitle">Number of launched space missions</h3>
+			<hr>
 			<svg id='FlightsChart'></svg>
 	    </div>
 
@@ -42,6 +43,7 @@
 			    <div class="filt">
 				    <label>Missions filters</label>
 				    <hr>
+
 			    	<label>Habitation:</label>
 			        <div class="select">
 				      <select id="Habitation" onchange="filter()">
@@ -64,28 +66,47 @@
 				    </div>
 
 			        <label >Outcome:</label>
-				    <label class="control control--checkbox">
-				      <span>Fatality</span>
-				      <input type="checkbox" id="FatalityY"/>
-				      <div class="control__indicator"></div>
-				    </label>
-				    <label class="control control--checkbox">
-				      <span>Success</span>
-				      <input type="checkbox" id="FatalityN"/>
-				      <div class="control__indicator"></div>
-				    </label>
+				     <div class="select">
+				      <select id="Outcome" onchange="filter()">
+				        <option selected value="All">All</option>
+				        <option value="Fatality">Fatality</option>
+			            <option value="Success">Success</option>
+				      </select>
+				      <div class="select__arrow"></div>
+				    </div>
 			    </div>
 
 			    <div class="filt">
 				    <label>Astronauts filters</label>
 				    <hr>
+
 				    <label>Status:</label>
 			        <div class="select">
-				      <select id="Status" onchange="filter()">
+				      <select id="Status" onchange="filter_astr()">
 				        <option selected value="All">All</option>
 			            <option value="Active">Active</option>
 			            <option value="Retired">Retired</option>
 			            <option value="Deceased">Deceased</option>
+				      </select>
+				      <div class="select__arrow"></div>
+				    </div>
+
+				    <label>Gender:</label>
+			        <div class="select">
+				      <select id="Gender" onchange="filter_astr()">
+				        <option selected value="All">All</option>
+			            <option value="Male">Male</option>
+			            <option value="Female">Female</option>
+				      </select>
+				      <div class="select__arrow"></div>
+				    </div>
+
+				    <label>Space walk:</label>
+				    <div class="select">
+				      <select id="SpaceWalk" onchange="filter_astr()">
+				        <option selected value="All">All</option>
+			            <option value="Yes">Yes</option>
+			            <option value="No">No</option>
 				      </select>
 				      <div class="select__arrow"></div>
 				    </div>

@@ -3,7 +3,7 @@
   display: block;
   position: relative;
   padding-left: 30px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 .control input {
@@ -72,7 +72,7 @@
 .select {
   position: relative;
   display: inline-block;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   width: 100px;
 }
 .select select {

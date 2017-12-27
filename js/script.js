@@ -30,6 +30,26 @@ function filter_status(astrData){
     });
 }
 
+function filter_gender(astrData){ 
+    var gender = d3.select("#Gender").node().value;
+    return astrData.filter(function (astr) {
+        if (gender == "All") return true;
+        return astr.Gender == gender;
+    });
+}
+
+function filter_walk(astrData){
+    var walk = d3.select("#SpaceWalk").node().value;
+    return astrData.filter(function (astr) {
+        switch (walk) {
+          case "All": return true;
+          case "No": return astr["Space Walks"] == "" || astr["Space Walks"] == 0.0;
+          case "Yes": return astr["Space Walks"] != "" || astr["Space Walks"] > 0.0;
+        } 
+    });
+}
+
+
 function group_astronauts(astrData, misData){
 
     var yearGroupMis = d3.nest()
@@ -57,7 +77,7 @@ function group_astronauts(astrData, misData){
             });
         var notFound = [...new Set(astrs.filter(astr => found.find(a => a.Name == astr.Name) == undefined))];
         
-        found = filter_status(found);
+        found = filter_status(filter_gender(filter_walk(found)));
 
         var grouped = d3.nest()
                         .key(d => d['Country'])
@@ -91,37 +111,34 @@ function filter_habitation(misData) {
 }
 
 function filter_fatality(misData) {
-    var filtered = misData;
-    var N = d3.select("#FatalityN").property("checked");
-    var Y = d3.select("#FatalityY").property("checked");
-    if(Y){
-        if(N){
-            d3.select("#FatalityN").property("checked", false);
-            d3.select("#FatalityY").property("checked", false);
-        }
-        else{
-            return filtered.filter(function(d,i){return d.Fatality == "Y";});
-        }
-    }  
-    else{
-        if(N){
-            return filtered.filter(function(d,i){return d.Fatality == "N";});
-        }
-    }
-    return filtered;
+    var outcome = d3.select("#Outcome").node().value; 
+    return misData.filter(function (m) {
+                switch (outcome) {
+                  case "All": return true;
+                  case "Fatality": return m.Fatality == "Y";
+                  case "Success": return m.Fatality == "N";
+                }   
+            });
 }
 
 function filter() {
-    var fMis = filter_habitation(filter_fatality(missions));  
     var dataType = d3.select("#DataType").node().value; 
-    if (dataType == "Astonauts"){    
-        flightsChart.update(group_astronauts(astronauts, fMis), false);   
+    var fMis = filter_habitation(filter_fatality(missions));  
+    if (dataType == "Astonauts"){  
+        flightsChart.update(group_astronauts(astronauts, fMis), false);     
     }
     else if (dataType == "Missions"){
         flightsChart.update(group_missions(fMis), true);   
     }
 }
 
+function filter_astr() {
+    var dataType = d3.select("#DataType").node().value; 
+    if (dataType == "Astonauts"){
+        var fMis = filter_habitation(filter_fatality(missions));  
+        flightsChart.update(group_astronauts(astronauts, fMis), false);   
+    }
+}
 
 d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
     astronautsData.forEach(function (astr) {
@@ -163,6 +180,6 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     d3.select("#FatalityY").on("change",filter);
     d3.select("#FatalityN").on("change",filter);
     flightsChart.drawLegend();
-    flightsChart.raise_up(group_astronauts(astronauts, missions), false);       
+    flightsChart.raise_up(group_missions(missions), true);    
     sunburstStat.update([]);
 });
