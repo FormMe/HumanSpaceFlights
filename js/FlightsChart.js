@@ -54,6 +54,12 @@ class FlightsChart{
 
 	update(stackedData, isMissions){
 
+		d3.select("#BarChartTitle")		  
+          .text(function () {
+      	 	return isMissions ? "Number of launched space missions" 
+      	 					  : "Number of humans launched into space";
+          });
+
 		var t = this;
 		var draw = true;
 		d3.select('#FlightsChart')

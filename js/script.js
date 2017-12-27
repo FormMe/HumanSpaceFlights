@@ -103,10 +103,11 @@ function filter_fatality(misData) {
 
 function filter() {
     var fMis = filter_habitation(filter_fatality(missions));  
-    if (d3.select("#Astr_Mis").property("checked")){    
+    var dataType = d3.select("#DataType").node().value; 
+    if (dataType == "Astonauts"){    
         flightsChart.update(group_astronauts(astronauts, fMis), false);   
     }
-    else{
+    else if (dataType == "Missions"){
         flightsChart.update(group_missions(fMis), true);   
     }
 }

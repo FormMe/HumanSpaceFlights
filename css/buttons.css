@@ -73,13 +73,13 @@
   position: relative;
   display: inline-block;
   margin-bottom: 15px;
-  width: 100%;
+  width: 100px;
 }
 .select select {
   display: inline-block;
-  width: 100%;
+  width: 100px;
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 4px 5px;
   outline: 0;
   border: 0;
   border-radius: 0;
@@ -103,8 +103,8 @@
 }
 .select__arrow {
   position: absolute;
-  top: 16px;
-  right: 15px;
+  top: 10px;
+  right: 10px;
   width: 0;
   height: 0;
   pointer-events: none;

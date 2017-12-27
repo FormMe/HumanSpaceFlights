@@ -22,49 +22,79 @@
 	<!-- <div id='stars3'></div> -->
 
 
-	<div class="container">
+	<div>
 	    <div class="view stacked">
+	    	<h3 id="BarChartTitle">Number of launched space missions</h3>
 			<svg id='FlightsChart'></svg>
 	    </div>
 
-	    <div class="view filters">
-	    	<label>Habitation:</label>
-	        <div class="select">
-		      <select id="Habitation" onchange="filter()">
-		        <option selected value="All">All</option>
-	            <option value="">Space</option>
-	            <option value="Moon">Moon</option>
-	            <option value="ISS">ISS</option>
-	            <option value="Mir">Mir</option>
-	            <option value="Salyut 1">Salyut 1</option>
-	            <option value="Salyut 3">Salyut 3</option>
-	            <option value="Salyut 4">Salyut 4</option>
-	            <option value="Salyut 5">Salyut 5</option>
-	            <option value="Salyut 6">Salyut 6</option>
-	            <option value="Salyut 7">Salyut 7</option>
-	            <option value="Skylab">Skylab</option>
-	            <option value="Tiangong 1">Tiangong 1</option>
-	            <option value="Tiangong 2">Tiangong 2</option>
-		      </select>
-		      <div class="select__arrow"></div>
-		    </div>
+	    <div class="view sun_filters">
+	    	<div class="view">
+	    		<label>Graph of:</label>
+		        <div class="select">
+			      <select id="DataType" onchange="filter()">
+			        <option selected value="Missions">Missions</option>
+		            <option value="Astonauts">Astonauts</option>
+			      </select>
+			      <div class="select__arrow"></div>
+			    </div>
 
-	        <label>Outcome:</label>
-		    <label class="control control--checkbox">Fatality
-		      <input type="checkbox" id="FatalityY"/>
-		      <div class="control__indicator"></div>
-		    </label>
-		    <label class="control control--checkbox">Success
-		      <input type="checkbox" id="FatalityN"/>
-		      <div class="control__indicator"></div>
-		    </label>
+			    <div class="filt">
+				    <label>Missions filters</label>
+				    <hr>
+			    	<label>Habitation:</label>
+			        <div class="select">
+				      <select id="Habitation" onchange="filter()">
+				        <option selected value="All">All</option>
+			            <option value="">Space</option>
+			            <option value="Moon">Moon</option>
+			            <option value="ISS">ISS</option>
+			            <option value="Mir">Mir</option>
+			            <option value="Salyut 1">Salyut 1</option>
+			            <option value="Salyut 3">Salyut 3</option>
+			            <option value="Salyut 4">Salyut 4</option>
+			            <option value="Salyut 5">Salyut 5</option>
+			            <option value="Salyut 6">Salyut 6</option>
+			            <option value="Salyut 7">Salyut 7</option>
+			            <option value="Skylab">Skylab</option>
+			            <option value="Tiangong 1">Tiangong 1</option>
+			            <option value="Tiangong 2">Tiangong 2</option>
+				      </select>
+				      <div class="select__arrow"></div>
+				    </div>
 
-		    <label class="switch">
-			  <input type="checkbox" id="Astr_Mis" onchange="filter()">
-			  <span class="slider round"></span>
-			</label>
+			        <label >Outcome:</label>
+				    <label class="control control--checkbox">
+				      <span>Fatality</span>
+				      <input type="checkbox" id="FatalityY"/>
+				      <div class="control__indicator"></div>
+				    </label>
+				    <label class="control control--checkbox">
+				      <span>Success</span>
+				      <input type="checkbox" id="FatalityN"/>
+				      <div class="control__indicator"></div>
+				    </label>
+			    </div>
 
-			<svg id='Sunburst'> </svg>
+			    <div class="filt">
+				    <label>Astronauts filters</label>
+				    <hr>
+				    <label>Status:</label>
+			        <div class="select">
+				      <select id="Status" onchange="filter()">
+				        <option selected value="All">All</option>
+			            <option value="Active">Active</option>
+			            <option value="Retired">Retired</option>
+			            <option value="Deceased">Deceased</option>
+				      </select>
+				      <div class="select__arrow"></div>
+				    </div>
+			    </div>
+	    	</div>
+	    	
+	    	<div class="view sunburst">
+				<svg id='Sunburst'> </svg>
+	    	</div>
 	    </div>
 	</div>
 
