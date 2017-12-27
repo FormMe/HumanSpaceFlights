@@ -22,6 +22,14 @@ function group_missions(missions) {
             });
 }
 
+function filter_status(astrData){
+    var status = d3.select("#Status").node().value;
+    return astrData.filter(function (astr) {
+        if (status == "All") return true;
+        return astr.Status == status;
+    });
+}
+
 function group_astronauts(astrData, misData){
 
     var yearGroupMis = d3.nest()
@@ -49,6 +57,8 @@ function group_astronauts(astrData, misData){
             });
         var notFound = [...new Set(astrs.filter(astr => found.find(a => a.Name == astr.Name) == undefined))];
         
+        found = filter_status(found);
+
         var grouped = d3.nest()
                         .key(d => d['Country'])
                         .entries(found);
