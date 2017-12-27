@@ -22,12 +22,36 @@ class FlightsChart{
 							.attr('width', this.svgWidth)
 							.attr('height', this.svgHeight);
 		svg.append("g")
+      		.attr("class", "Yaxis axis")
+	        .attr("transform", "translate("+this.margin.left+",0)");
+
+
+      	var axisBrush = svg.append("g").attr("class", "axisBrush");
+
+      	axisBrush.append("g")
       		.attr("class", "Xaxis axis")
 	        .attr("transform", "translate(0," + this.height + ")");
 
-      	svg.append("g")
-      		.attr("class", "Yaxis axis")
-	        .attr("transform", "translate("+this.margin.left+",0)");
+		var brush = d3.brushX()
+					  .extent([[this.margin.left,this.height],
+							   [this.svgWidth - this.margin.right, this.svgHeight - 3]])
+					  .on("end", function brushed() {
+							        var s = d3.event.selection;
+							        console.log(s);
+							        var selectedData = []
+							        if (s != null) {
+							        	var years = svg.select(".Xaxis").selectAll('.tick')
+							        					.filter(function (d) {
+							                                var x = d3.select(this)._groups[0][0].transform.animVal[0].matrix.e;
+							                                return x >= s[0] && x <= s[1];
+							        					})._groups[0]
+							            				.map(d => d.__data__);
+							        	
+							        }
+							    });
+		axisBrush.append("g").attr("class", "brush").call(brush);
+
+
 
 		var legend = svg.append("g")
 		      .attr("font-family", "sans-serif")
