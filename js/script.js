@@ -180,6 +180,6 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     d3.select("#FatalityY").on("change",filter);
     d3.select("#FatalityN").on("change",filter);
     flightsChart.drawLegend();
-    flightsChart.raise_up(group_missions(missions), true);    
+    flightsChart.update(group_missions(missions), true);    
     sunburstStat.update([]);
 });

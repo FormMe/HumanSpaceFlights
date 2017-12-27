@@ -15,6 +15,7 @@ class FlightsChart{
 
 		this.down_d = 300;
 		this.up_d = 800;
+		this.emptyData = true;
 	}
 
 	drawLegend() {
@@ -37,8 +38,6 @@ class FlightsChart{
 							   [this.svgWidth - this.margin.right, this.svgHeight - 3]])
 					  .on("end", function brushed() {
 							        var s = d3.event.selection;
-							        console.log(s);
-							        var selectedData = []
 							        if (s != null) {
 							        	var years = svg.select(".Xaxis").selectAll('.tick')
 							        					.filter(function (d) {
@@ -84,20 +83,26 @@ class FlightsChart{
       	 					  : "Number of humans launched into space";
           });
 
-		var t = this;
-		var draw = true;
-		d3.select('#FlightsChart')
-		  .selectAll('.stackBar')
-		  .selectAll('rect')
-    		.transition()
-        	.duration(this.down_d)
-        	.attr('height', 0)
-        	.on("end", function () {
-        		if (draw) {
-        			draw = false;
-        			t.raise_up(stackedData, isMissions);
-        		}
-        	});
+        if(this.emptyData){
+        	this.raise_up(stackedData, isMissions);
+        }
+        else{
+			var t = this;
+			var draw = true;
+			d3.select('#FlightsChart')
+			  .selectAll('.stackBar')
+			  .selectAll('rect')
+	    		.transition()
+	        	.duration(this.down_d)
+	        	.attr('height', 0)
+	        	.on("end", function () {
+	        		if (draw) {
+	        			draw = false;
+	        			t.raise_up(stackedData, isMissions);
+	        		}
+	        	});
+        }
+        this.emptyData = stackedData.length == 0
 	}
 
 	raise_up(stackedData, isMissions){
