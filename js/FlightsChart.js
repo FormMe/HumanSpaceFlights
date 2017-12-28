@@ -1,9 +1,9 @@
 class FlightsChart{
 	
-	constructor(w ,h){
-		this.margin = {top: 20, right: 10, bottom: 15, left: 30};
-		this.svgWidth = w;
-		this.svgHeight = h;
+	constructor(svgHeight, svgWidth, margin, selectionTable){
+		this.margin = margin;
+		this.svgWidth = svgWidth;
+		this.svgHeight = svgHeight;
 		this.width = this.svgWidth - this.margin.left - this.margin.right;
 		this.height = this.svgHeight - this.margin.top - this.margin.bottom;
 
@@ -16,6 +16,8 @@ class FlightsChart{
 		this.down_d = 300;
 		this.up_d = 800;
 		this.emptyData = true;
+		this.data = null;
+		this.selectionTable = selectionTable;
 	}
 
 	drawLegend() {
@@ -33,24 +35,7 @@ class FlightsChart{
       		.attr("class", "Xaxis axis")
 	        .attr("transform", "translate(0," + this.height + ")");
 
-		var brush = d3.brushX()
-					  .extent([[this.margin.left,this.height],
-							   [this.svgWidth - this.margin.right, this.svgHeight - 3]])
-					  .on("end", function brushed() {
-							        var s = d3.event.selection;
-							        if (s != null) {
-							        	var years = svg.select(".Xaxis").selectAll('.tick')
-							        					.filter(function (d) {
-							                                var x = d3.select(this)._groups[0][0].transform.animVal[0].matrix.e;
-							                                return x >= s[0] && x <= s[1];
-							        					})._groups[0]
-							            				.map(d => d.__data__);
-							        	
-							        }
-							    });
-		axisBrush.append("g").attr("class", "brush").call(brush);
-
-
+	    axisBrush.append("g").attr("class", "brush");
 
 		var legend = svg.append("g")
 		      .attr("font-family", "sans-serif")
@@ -77,7 +62,10 @@ class FlightsChart{
 
 	update(stackedData, isMissions){
 
-		d3.select("#BarChartTitle")		  
+		this.data = stackedData;
+		this.selectionTable.update(this.data);
+
+	   	d3.select("#BarChartTitle")		  
           .text(function () {
       	 	return isMissions ? "Number of launched space missions" 
       	 					  : "Number of humans launched into space";
