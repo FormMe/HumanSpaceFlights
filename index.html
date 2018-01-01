@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/buttons.css"/>
     <link rel="stylesheet" href="css/tooltip.css"/>
+    <link rel="stylesheet" href="css/parallelCoords.css"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 	<script src="d3/d3.min.js"></script>
     <script type="text/javascript" src="bower_components/d3-tip/index.js"></script>
     <script src="js/FlightsChart.js" async></script>
     <script src="js/SunburstStat.js" async></script>
+	<script src="js/render-queue.js" async></script>
     <script src="js/SelectionTable.js" async></script>
     <script src="js/script.js" async></script>
 </head>
@@ -33,111 +35,113 @@
     </div>
 	<hr>
 
-	<div>
-	    <div class="view stacked">
-	    	<label class="title" id="BarChartTitle">Number of launched space missions</label>
-			<svg id='FlightsChart'></svg>
-	    </div>
+    <div class="view stacked">
+    	<label class="title" id="BarChartTitle">Number of launched space missions</label>
+		<svg id='FlightsChart'></svg>
+    </div>
 
-	    <div class="view sun_filters">
-	    	<div class="view">
-	    		<label>Graph of:</label>
+    <div class="view sun_filters">
+    	<div class="view">
+    		<label>Graph of:</label>
+	        <div class="select">
+		      <select id="DataType" onchange="filter()">
+		        <option selected value="Missions">Missions</option>
+	            <option value="Astonauts">Astonauts</option>
+		      </select>
+		      <div class="select__arrow"></div>
+		    </div>
+
+		    <div class="filt">
+			    <label>Missions filters</label>
+			    <hr>
+
+		    	<label>Habitation:</label>
 		        <div class="select">
-			      <select id="DataType" onchange="filter()">
-			        <option selected value="Missions">Missions</option>
-		            <option value="Astonauts">Astonauts</option>
+			      <select id="Habitation" onchange="filter()">
+			        <option selected value="All">All</option>
+		            <option value="">Space</option>
+		            <option value="Moon">Moon</option>
+		            <option value="ISS">ISS</option>
+		            <option value="Mir">Mir</option>
+		            <option value="Salyut 1">Salyut 1</option>
+		            <option value="Salyut 3">Salyut 3</option>
+		            <option value="Salyut 4">Salyut 4</option>
+		            <option value="Salyut 5">Salyut 5</option>
+		            <option value="Salyut 6">Salyut 6</option>
+		            <option value="Salyut 7">Salyut 7</option>
+		            <option value="Skylab">Skylab</option>
+		            <option value="Tiangong 1">Tiangong 1</option>
+		            <option value="Tiangong 2">Tiangong 2</option>
 			      </select>
 			      <div class="select__arrow"></div>
 			    </div>
 
-			    <div class="filt">
-				    <label>Missions filters</label>
-				    <hr>
+		        <label >Outcome:</label>
+			     <div class="select">
+			      <select id="Outcome" onchange="filter()">
+			        <option selected value="All">All</option>
+			        <option value="Fatality">Fatality</option>
+		            <option value="Success">Success</option>
+			      </select>
+			      <div class="select__arrow"></div>
+			    </div>
+		    </div>
 
-			    	<label>Habitation:</label>
-			        <div class="select">
-				      <select id="Habitation" onchange="filter()">
-				        <option selected value="All">All</option>
-			            <option value="">Space</option>
-			            <option value="Moon">Moon</option>
-			            <option value="ISS">ISS</option>
-			            <option value="Mir">Mir</option>
-			            <option value="Salyut 1">Salyut 1</option>
-			            <option value="Salyut 3">Salyut 3</option>
-			            <option value="Salyut 4">Salyut 4</option>
-			            <option value="Salyut 5">Salyut 5</option>
-			            <option value="Salyut 6">Salyut 6</option>
-			            <option value="Salyut 7">Salyut 7</option>
-			            <option value="Skylab">Skylab</option>
-			            <option value="Tiangong 1">Tiangong 1</option>
-			            <option value="Tiangong 2">Tiangong 2</option>
-				      </select>
-				      <div class="select__arrow"></div>
-				    </div>
+		    <div class="filt">
+			    <label>Astronauts filters</label>
+			    <hr>
 
-			        <label >Outcome:</label>
-				     <div class="select">
-				      <select id="Outcome" onchange="filter()">
-				        <option selected value="All">All</option>
-				        <option value="Fatality">Fatality</option>
-			            <option value="Success">Success</option>
-				      </select>
-				      <div class="select__arrow"></div>
-				    </div>
+			    <label>Status:</label>
+		        <div class="select">
+			      <select id="Status" onchange="filter_astr()">
+			        <option selected value="All">All</option>
+		            <option value="Active">Active</option>
+		            <option value="Retired">Retired</option>
+		            <option value="Deceased">Deceased</option>
+			      </select>
+			      <div class="select__arrow"></div>
 			    </div>
 
-			    <div class="filt">
-				    <label>Astronauts filters</label>
-				    <hr>
-
-				    <label>Status:</label>
-			        <div class="select">
-				      <select id="Status" onchange="filter_astr()">
-				        <option selected value="All">All</option>
-			            <option value="Active">Active</option>
-			            <option value="Retired">Retired</option>
-			            <option value="Deceased">Deceased</option>
-				      </select>
-				      <div class="select__arrow"></div>
-				    </div>
-
-				    <label>Gender:</label>
-			        <div class="select">
-				      <select id="Gender" onchange="filter_astr()">
-				        <option selected value="All">All</option>
-			            <option value="Male">Male</option>
-			            <option value="Female">Female</option>
-				      </select>
-				      <div class="select__arrow"></div>
-				    </div>
-
-				    <label>Space walk:</label>
-				    <div class="select">
-				      <select id="SpaceWalk" onchange="filter_astr()">
-				        <option selected value="All">All</option>
-			            <option value="Yes">Yes</option>
-			            <option value="No">No</option>
-				      </select>
-				      <div class="select__arrow"></div>
-				    </div>
+			    <label>Gender:</label>
+		        <div class="select">
+			      <select id="Gender" onchange="filter_astr()">
+			        <option selected value="All">All</option>
+		            <option value="Male">Male</option>
+		            <option value="Female">Female</option>
+			      </select>
+			      <div class="select__arrow"></div>
 			    </div>
-	    	</div>
-	    	
-	    	<div class="view sunburst">
-				<svg id='Sunburst'> </svg>
-	    	</div>
-	    </div>
-	</div>
 
+			    <label>Space walk:</label>
+			    <div class="select">
+			      <select id="SpaceWalk" onchange="filter_astr()">
+			        <option selected value="All">All</option>
+		            <option value="Yes">Yes</option>
+		            <option value="No">No</option>
+			      </select>
+			      <div class="select__arrow"></div>
+			    </div>
+		    </div>
+    	</div>
+    	
+    	<div class="view sunburst">
+			<svg id='Sunburst'> </svg>
+    	</div>
+    </div>
+
+
+    <div id='parallelCoords'>
+    	
+    </div>
 		
-	<div>
+<!-- 	<div>
 		
-<!-- 	<form>
+	<form>
 		<label><input type="radio" name="mode" value="grouped"> Grouped</label>
 		<label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
-	</form> -->
+	</form>
 
-	</div>
+	</div> -->
 	
 </body>
 </html>

@@ -194,7 +194,6 @@ function create_year_brush(){
                                 else if (dataType == "Missions"){
                                     selectionTable.update(fMis);
                                 }
-                                // selectionTable.update(stackedData.filter(d => years.includes(d.key)));
                             }
                         });
                   
