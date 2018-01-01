@@ -94,8 +94,7 @@ class FlightsChart{
 	}
 
 	raise_up(stackedData, isMissions){
-		console.log(stackedData);
-      
+		
 		var x = d3.scaleBand()
 			.range([this.margin.left, this.width])
 			.padding(0.1)
