@@ -28,7 +28,11 @@ class Graph{
 			.selectAll("circle")
 			.data(graph.nodes)
 			.enter().append("circle")
-			  .attr("r", 5)
+			  .attr("r", function (d) {
+			  	if (d.type == 'mission') return 5;
+			  	console.log(d.id, d.value['Space Flight (hr)']);
+			  	return Math.max(3, Math.log(d.value['Space Flight (hr)']));
+			  })
 			  .attr("fill", function(d) { 
 			  	if(d.type == 'mission') return "yellow";
 			  	return color(d.value.Country);
