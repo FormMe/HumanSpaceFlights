@@ -15,6 +15,8 @@ class Graph{
 		    .force("charge", d3.forceManyBody())
 		    .force("center", d3.forceCenter(width / 2, height / 2));
 
+		svg.selectAll('g').remove();
+		
 		var link = svg.append("g")
 		  	.attr("class", "links")
 			.selectAll("line")
