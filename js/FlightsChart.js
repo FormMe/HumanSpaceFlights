@@ -1,23 +1,18 @@
 class FlightsChart{
 	
-	constructor(svgHeight, svgWidth, margin, selectionTable){
+	constructor(svgHeight, svgWidth, margin, selectionList, color){
 		this.margin = margin;
 		this.svgWidth = svgWidth;
 		this.svgHeight = svgHeight;
 		this.width = this.svgWidth - this.margin.left - this.margin.right;
 		this.height = this.svgHeight - this.margin.top - this.margin.bottom;
 
-		this.Countries = ["USSR/Russia", "USA", "China", "Other"]
-
-		this.color = d3.scaleOrdinal()
-		    .range(["#6b486b", "#98abc5", "#d0743c", "#3CB371"])
-		    .domain(this.Countries);
-
+		this.color = color;
 		this.down_d = 300;
 		this.up_d = 800;
 		this.emptyData = true;
 		this.data = null;
-		this.selectionTable = selectionTable;
+		this.selectionList = selectionList;
 	}
 
 	drawLegend() {
@@ -43,7 +38,7 @@ class FlightsChart{
 		      .attr("text-anchor", "end")
 		      .attr("class", "legend")
 		    .selectAll("g")
-		    .data(this.Countries)
+		    .data(this.color.domain())
 		    .enter().append("g")
 		      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
@@ -63,7 +58,7 @@ class FlightsChart{
 	update(stackedData, isMissions){
 
 		this.data = stackedData;
-		this.selectionTable.update(this.data);
+		// this.selectionList.update(this.data);
 
 	   	d3.select("#BarChartTitle")		  
           .text(function () {
@@ -94,7 +89,7 @@ class FlightsChart{
 	}
 
 	raise_up(stackedData, isMissions){
-		
+
 		var x = d3.scaleBand()
 			.range([this.margin.left, this.width])
 			.padding(0.1)
@@ -112,7 +107,7 @@ class FlightsChart{
 		var color = this.color;
 		var svg = d3.select('#FlightsChart');
 
-		function tooltip_missions_render (tooltip_data) {
+		function tooltip_render (tooltip_data) {
 		    let text = "<label style='color: " + color(tooltip_data.key) + "'>" + tooltip_data.key + "</label>";
         	var cols = tooltip_data.values.length >= 15 ? 2 : 1;
         	text += "<ul style='columns: " + cols + "'>";
@@ -136,7 +131,7 @@ class FlightsChart{
 
 		let tip = d3.tip().attr('class', 'd3-tip')
 		            .direction('e')
-		            .html(tooltip_missions_render);
+		            .html(tooltip_render);
 
 		svg.call(tip);
 
