@@ -52,12 +52,29 @@ class SelectionList{
 		    			type: 'astronaut',
 		    			value: m
 		    		});
-
+		    		var astrMis = missions.filter(miss => m.Missions.includes(miss["Launch Mission"]));
+		    		astrMis.forEach(function (miss) {
+		    			if(nodes.find(n => n.id == miss["Launch Mission"]) == undefined){
+			    			nodes.push({
+				    			id: miss["Launch Mission"],
+				    			type: 'mission',
+				    			value: miss
+				    		});
+				    		links.push({
+				    			"source": miss["Launch Mission"],
+				    			"target": m.Name
+				    		});
+		    			}
+		    		})
 		    	})
-		    	return {
+				console.log(links);
+				console.log(nodes);
+		    	var graph = {
 		    		'links': [...new Set(links)],
 		    		'nodes': [...new Set(nodes)] 
 		    	}
+				console.log(graph);
+		    	return graph;
 		}
 
 

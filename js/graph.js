@@ -1,6 +1,6 @@
 class Graph{
-	constructor(){
-
+	constructor(color){
+		this.color = color;
 	}
 
 	update(graph){
@@ -8,7 +8,7 @@ class Graph{
 		    width = +svg.attr("width"),
 		    height = +svg.attr("height");
 
-		var color = d3.scaleOrdinal(d3.schemeCategory20);
+		var color = this.color;
 
 		var simulation = d3.forceSimulation()
 		    .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -16,7 +16,7 @@ class Graph{
 		    .force("center", d3.forceCenter(width / 2, height / 2));
 
 		svg.selectAll('g').remove();
-		
+
 		var link = svg.append("g")
 		  	.attr("class", "links")
 			.selectAll("line")
@@ -29,7 +29,10 @@ class Graph{
 			.data(graph.nodes)
 			.enter().append("circle")
 			  .attr("r", 5)
-			  .attr("fill", function(d) { return color(d.group); })
+			  .attr("fill", function(d) { 
+			  	if(d.type == 'mission') return "yellow";
+			  	return color(d.value.Country);
+			  })
 			  .call(d3.drag()
 			      .on("start", dragstarted)
 			      .on("drag", dragged)

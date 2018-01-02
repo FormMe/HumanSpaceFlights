@@ -9,7 +9,7 @@ var color = d3.scaleOrdinal()
 
 // let selectionTable = new SelectionTable(color);
 let missions, astronauts;
-let graph = new Graph();
+let graph = new Graph(color);
 let selectionList = new SelectionList(color, missions, astronauts, graph);
 let flightsChart = new FlightsChart(svgHeight, svgWidth, margin, selectionList, color);
 let sunburstStat = new SunburstStat();
