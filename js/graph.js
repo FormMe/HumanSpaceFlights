@@ -4,6 +4,7 @@ class Graph{
 	}
 
 	update(graph){
+	console.log(graph);
 		var svg = d3.select("#Graph"),
 		    width = +svg.attr("width"),
 		    height = +svg.attr("height");
@@ -24,10 +25,10 @@ class Graph{
 			.enter().append("line");
 
 		var node = svg.append("g")
-		  	.attr("class", "nodes")
 			.selectAll("circle")
 			.data(graph.nodes)
 			.enter().append("circle")
+			  .attr("class", d => d.selected ? "selected" : "nodes")
 			  .attr("r", function (d) {
 			  	if (d.type == 'mission') return 5;
 			  	console.log(d.id, d.value['Space Flight (hr)']);
@@ -40,7 +41,8 @@ class Graph{
 			  .call(d3.drag()
 			      .on("start", dragstarted)
 			      .on("drag", dragged)
-			      .on("end", dragended));
+			      .on("end", dragended))
+			  	  .on("click", clicked);
 
 		node.append("title")
 		  .text(function(d) { return d.id; });
@@ -64,6 +66,7 @@ class Graph{
 			    .attr("cy", function(d) { return d.y; });
 		}
 
+		var t = this;
 		function dragstarted(d) {
 		  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
 		  d.fx = d.x;
@@ -80,5 +83,14 @@ class Graph{
 		  d.fx = null;
 		  d.fy = null;
 		}	
+
+		function clicked(d) {
+			if(d.type == "mission"){
+				t.update(create_mis_graph(d.value));
+			}
+			else if(d.type == "astronaut"){
+				t.update(create_astr_graph(d.value));
+			}
+		}
 	}
 }

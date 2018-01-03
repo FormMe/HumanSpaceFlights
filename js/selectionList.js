@@ -27,24 +27,12 @@ class SelectionList{
 		if(isMissions){
 			var columns = this.misCols;
 			var mapF = map_mis;
-			var create_graph = function (mis) {
-				var G = create_mis_graph(mis);
-				G.nodes.filter(n => n.type == 'astronaut')
-					.map(a => create_astr_graph(a.value))
-					.forEach(function (g) { G = merge_graph(G, g); });
-				return G;
-			};
+			var create_graph = create_mis_graph;
 		}
 		else{
 			var columns = this.astrCols;	
 			var mapF = map_astrs;
-			var create_graph = function (astr) {
-				var G = create_astr_graph(astr);
-				G.nodes.filter(n => n.type == 'mission')
-					.map(m => create_mis_graph(m.value))
-					.forEach(function (g) { G = merge_graph(G, g); });
-				return G;
-			};	
+			var create_graph = create_astr_graph;	
 		}
 
 		var grid = d3.divgrid().columns(columns);

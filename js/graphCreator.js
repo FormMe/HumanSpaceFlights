@@ -1,8 +1,9 @@
-function create_astr_graph(astr) {
+function astr_graph(astr) {
 	var nodes = [{
 		id: astr.Name,
 		type: 'astronaut',
-		value: astr
+		value: astr,
+    	selected: false
 	}];
 	var links = [];
 	missions
@@ -11,7 +12,8 @@ function create_astr_graph(astr) {
 			nodes.push({
     			id: mis["Launch Mission"],
     			type: 'mission',
-    			value: mis
+    			value: mis,
+    			selected: false
     		});
     		links.push({
     			"source": mis["Launch Mission"],
@@ -24,12 +26,13 @@ function create_astr_graph(astr) {
 	};
 }
 
-function create_mis_graph(mis) {
+function mis_graph(mis) {
 	var members = [];
 	var nodes = [{
 		id: mis["Launch Mission"],
 		type: 'mission',
-		value: mis
+		value: mis,
+    	selected: false
 	}];
 	mis.Crew.forEach(function (c) {
 		members = members.concat(c.Members);
@@ -41,7 +44,8 @@ function create_mis_graph(mis) {
     		nodes.push({
     			id: astr.Name,
     			type: 'astronaut',
-    			value: astr
+    			value: astr,
+    			selected: false
     		});
     		links.push({
     			"source": mis["Launch Mission"],
@@ -67,3 +71,22 @@ function merge_graph(g1, g2){
 	});
 	return g1;
 }
+
+
+function create_astr_graph(astr) {
+	var G = astr_graph(astr);
+	G.nodes.filter(n => n.type == 'mission')
+		.map(m => mis_graph(m.value))
+		.forEach(function (g) { G = merge_graph(G, g); });
+	G.nodes.find(n => n.id == astr.Name).selected = true;
+	return G;
+}
+
+function create_mis_graph(mis) {
+	var G = mis_graph(mis);
+	G.nodes.filter(n => n.type == 'astronaut')
+		.map(a => astr_graph(a.value))
+		.forEach(function (g) { G = merge_graph(G, g); });
+	G.nodes.find(n => n.id == mis["Launch Mission"]).selected = true;
+	return G;
+};
