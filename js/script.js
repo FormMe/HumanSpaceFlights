@@ -206,6 +206,21 @@ function create_year_brush(){
     d3.select('#FlightsChart').select('.brush').call(brush);   
 }
 
+
+function complete_graph() {
+    var G = {'links':[], 'nodes':[]};
+    var dataType = d3.select("#DataType").node().value; 
+    selectionList.data.forEach(function (row) {
+        if (dataType == "Astonauts"){
+           G = merge_graph(G, create_astr_graph(row));
+        }
+        else if (dataType == "Missions"){
+           G = merge_graph(G, create_mis_graph(row));
+        }
+    });
+    graph.update(G);
+}
+
 d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
     astronautsData.forEach(function (astr) {
         astr.Missions = astr.Missions.split(',').map(name => name.trim())

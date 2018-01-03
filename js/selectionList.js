@@ -1,3 +1,15 @@
+
+function map_mis(d) {				
+	d["Prolongation"] = d3.max(d.Crew, c => c.Prolongation);
+	d["Return Data"] = d3.max(d.Crew, c => c["Return Data"]);
+	d["Crew Count"] = d3.sum(d.Crew, c => c.Members.length);
+	// d["Country"] = "<img src='pics/esa_white.png' width='20' height='20'/>";
+	return d;
+};
+function map_astrs(d) {
+	return d;
+};
+
 class SelectionList{
 	constructor(color, missions, astronauts, graph){
 		this.color = color;
@@ -9,20 +21,8 @@ class SelectionList{
 	}
 
 	update(data, isMissions){
-		var map_mis = function (d) {				
-				d["Prolongation"] = d3.max(d.Crew, c => c.Prolongation);
-				d["Return Data"] = d3.max(d.Crew, c => c["Return Data"]);
-				d["Crew Count"] = d3.sum(d.Crew, c => c.Members.length);
-				// d["Country"] = "<img src='pics/esa_white.png' width='20' height='20'/>";
-				return d;
-			};
-		var map_astrs = function (d) {
-				return d;
-			};
-
-		var missions = this.missions;
-		var astronauts = this.astronauts;
 		var graph = this.graph;
+		this.data = data;
 
 		if(isMissions){
 			var columns = this.misCols;
@@ -34,7 +34,6 @@ class SelectionList{
 			var mapF = map_astrs;
 			var create_graph = create_astr_graph;	
 		}
-
 		var grid = d3.divgrid().columns(columns);
 		d3.select('#grid')
 			.datum(data.map(mapF))
