@@ -4,9 +4,11 @@ class SelectionList{
 		this.missions = missions;
 		this.astronauts = astronauts;
 		this.graph = graph;
+		this.misCols = ["Launch Mission", "Launch Data", "Country", "Habitation"];
+		this.astrCols = ["Name", "Gender", "Country", "Birth Date"];
 	}
 
-	update(data){
+	update(data, isMissions){
 		var map_mis = function (d) {				
 				d["Prolongation"] = d3.max(d.Crew, c => c.Prolongation);
 				d["Return Data"] = d3.max(d.Crew, c => c["Return Data"]);
@@ -15,78 +17,115 @@ class SelectionList{
 				return d;
 			};
 		var map_astrs = function (d) {
-				return {
-					"Launch Mission": d["Launch Mission"],
-					"Launch Data": d["Launch Data"],
-					"Country": d["Country"],
-					"Habitation": d["Habitation"],
-					"Prolongation": d3.max(d.Crew, c => c.Prolongation),
-					"Crew Count": d3.sum(d.Crew, c => c.Members.length)
-				}
+				return d;
 			};
 
 		var missions = this.missions;
 		var astronauts = this.astronauts;
 		console.log(astronauts);
 		var graph = this.graph;
-		var create_mis_graph = function (mis) {
-				var members = [];
-		    	var nodes = [{
-	    			id: mis["Launch Mission"],
-	    			type: 'mission',
-	    			value: mis
-		    	}];
-		    	mis.Crew.forEach(function (c) {
-		    		members = members.concat(c.Members);
-		    	});
-		    	members = astronauts.filter(astr => members.includes(astr.Name));
-		    	var links = members.map(function (m) {
-		    		return {
-		    			"source": mis["Launch Mission"],
-		    			"target": m.Name
-		    		}
-		    	})
-		    	members.forEach(function (m) {
-		    		nodes.push({
-		    			id: m.Name,
-		    			type: 'astronaut',
-		    			value: m
+
+		var create_astr_graph = function (astr) {
+			var nodes = [{
+    			id: astr.Name,
+    			type: 'astronaut',
+    			value: astr
+    		}];
+	    	var links = [];
+    		missions
+    			.filter(mis => astr.Missions.includes(mis["Launch Mission"]))
+				.forEach(function (mis) {
+					nodes.push({
+		    			id: mis["Launch Mission"],
+		    			type: 'mission',
+		    			value: mis
 		    		});
-		    		var astrMis = missions.filter(miss => m.Missions.includes(miss["Launch Mission"]));
-		    		astrMis.forEach(function (miss) {
-		    			if(nodes.find(n => n.id == miss["Launch Mission"]) == undefined){
-			    			nodes.push({
-				    			id: miss["Launch Mission"],
-				    			type: 'mission',
-				    			value: miss
-				    		});
-				    		links.push({
-				    			"source": miss["Launch Mission"],
-				    			"target": m.Name
-				    		});
-		    			}
-		    		})
-		    	})
-				console.log(links);
-				console.log(nodes);
-		    	var graph = {
-		    		'links': [...new Set(links)],
-		    		'nodes': [...new Set(nodes)] 
-		    	}
-				console.log(graph);
-		    	return graph;
+		    		links.push({
+		    			"source": mis["Launch Mission"],
+		    			"target": astr.Name
+		    		});
+				});
+	    	return {
+	    		'links': links,
+	    		'nodes': nodes
+	    	};
 		}
 
+		var create_mis_graph = function (mis) {
+			var members = [];
+	    	var nodes = [{
+    			id: mis["Launch Mission"],
+    			type: 'mission',
+    			value: mis
+	    	}];
+	    	mis.Crew.forEach(function (c) {
+	    		members = members.concat(c.Members);
+	    	});
+	    	var links = [];
+	    	astronauts
+	    		.filter(astr => members.includes(astr.Name))
+	    		.forEach(function (astr) {
+		    		nodes.push({
+		    			id: astr.Name,
+		    			type: 'astronaut',
+		    			value: astr
+		    		});
+		    		links.push({
+		    			"source": mis["Launch Mission"],
+		    			"target": astr.Name
+		    		});
+	    		});
+	    	return {
+	    		'links': links,
+	    		'nodes': nodes
+	    	};
+		}
+
+		var merge_graph = function(g1, g2){
+			g2.nodes.forEach(function (node2) {
+				if(g1.nodes.find(node1 => node1.id == node2.id) == undefined){
+					g1.nodes.push(node2);
+				}
+			});
+			g2.links.forEach(function (link2) {
+				if(g1.links.find(link1 => link1.source == link2.source && link1.target == link2.target) == undefined){
+					g1.links.push(link2);
+				}
+			});
+			return g1;
+		}
+
+		if(isMissions){
+			var columns = this.misCols;
+			var mapF = map_mis;
+			var create_graph = function (mis) {
+				var G = create_mis_graph(mis);
+				G.nodes.filter(n => n.type == 'astronaut')
+					.map(a => create_astr_graph(a.value))
+					.forEach(function (g) { G = merge_graph(G, g); });
+				return G;
+			};
+		}
+		else{
+			var columns = this.astrCols;	
+			var mapF = map_astrs;
+			var create_graph = function (astr) {
+				var G = create_astr_graph(astr);
+				G.nodes.filter(n => n.type == 'mission')
+					.map(m => create_mis_graph(m.value))
+					.forEach(function (g) { G = merge_graph(G, g); });
+				return G;
+			};	
+		}
 
 		console.log(data);
-		var grid = d3.divgrid()
-					 .columns(["Launch Mission", "Launch Data", "Country", "Habitation"]);
+		var grid = d3.divgrid().columns(columns);
 		d3.select('#grid')
-			.datum(data.map(map_mis))
+			.datum(data.map(mapF))
 			.call(grid)
 			.selectAll(".row")
 		    .on("click", function(d) {
-		    	graph.update(create_mis_graph(d));
+		    	graph.update(create_graph(d));
 		    })
 		    .on('mouseover', function (d) {
 		    });

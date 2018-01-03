@@ -150,11 +150,11 @@ function filter() {
         //     if(b == undefined)
         //         console.log(astr);
         // });
-        selectionList.update(curAstrs);
+        selectionList.update(curAstrs, false);
     }
     else if (dataType == "Missions"){
         flightsChart.update(group_missions(curMis), true);   
-        selectionList.update(curMis);
+        selectionList.update(curMis, true);
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
 }
@@ -171,7 +171,7 @@ function filter_astr() {
         //     if(b == undefined)
         //         console.log(astr);
         // });  
-        selectionList.update(curAstrs);
+        selectionList.update(curAstrs, false);
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
 }
@@ -195,10 +195,10 @@ function create_year_brush(){
                                 var dataType = d3.select("#DataType").node().value; 
                                 if (dataType == "Astonauts"){
                                     group_astronauts(astronauts, fMis);
-                                    selectionList.update(curAstrs);
+                                    selectionList.update(curAstrs, false);
                                 }
                                 else if (dataType == "Missions"){
-                                    selectionList.update(fMis);
+                                    selectionList.update(fMis, true);
                                 }
                             }
                         });
@@ -251,7 +251,7 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     flightsChart.update(group_missions(missions), true);    
     sunburstStat.update([]); 
     console.log(curMis);
-    selectionList.update(curMis);
+    selectionList.update(curMis, true);
     create_year_brush();
     // graph.update(5);
 });
