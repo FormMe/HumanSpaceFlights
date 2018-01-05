@@ -260,7 +260,7 @@ Nicolas J.M. Patrick,1998.0,Retired,3/22/1964,"North Yorkshire, England",Male,Un
 James A. Pawelczyk,,Retired,9/20/1960,"Buffalo, NY",Male,University of Rochester; Pennsylvania State University; University of North Texas,,,1,381,0.0,0.0,STS-90 (Columbia),,,USA
 Gary E. Payton,,Retired,6/20/1948,"Rock Island, IL",Male,US Air Force Academy; Purdue University,Major,US Air Force,1,73,0.0,0.0,STS-51-C (Discovery),,,USA
 Donald H. Peterson,1969.0,Retired,10/22/1933,"Winona, MS",Male,US Military Academy; US Air Force Institute of Technology,Colonel,US Air Force (Retired),1,120,1.0,4.0,STS-6 (Challenger),,,USA
-Donald R. Pettit,1996.0,Active,4/20/1955,"Silverton, OR",Male,Oregon State University; University of Arizona,,,3,8872,2.0,13.0,"STS-113 (Endeavour), STS-126 (Endeavor), Soyuz TMA-03M",,,USA
+Donald R. Pettit,1996.0,Active,4/20/1955,"Silverton, OR",Male,Oregon State University; University of Arizona,,,3,8872,2.0,13.0,"STS-113 (Endeavor), STS-126 (Endeavor), Soyuz TMA-03M",,,USA
 John L. Phillips,1996.0,Retired,4/15/1951,"Ft. Belvoir, VA",Male,US Naval Academy; University of West Florida; University of California-Los Angeles,Captain,US Naval Reserves (Retired),3,4880,1.0,5.0,"STS-100 (Endeavor), Soyuz TMA-6, STS-119 (Discovery)",,,USA
 William R. Pogue,1966.0,Retired,1/23/1930,"Okemah, OK",Male,Oklahoma Baptist University; Oklahoma State University,Colonel,US Air Force (Retired),1,2017,2.0,13.0,Skylab 4,,,USA
 Alan G. Poindexter,1998.0,Deceased,11/5/1961,"Pasadena, CA",Male,Georgia Institute of Technology; US Naval Postgraduate School,Captain,US Navy,2,669,0.0,0.0,"STS-122 (Atlantis), STS-131 (Discovery)",7/1/2012,,USA
@@ -371,7 +371,7 @@ Pavel Belyayev,1960.0,Deceased,26/06/ 1925,"Chelishchevo,Northern Dvina ",Male,,
 Georgy Beregovoy,1962.0,Deceased,1921-04-05,"Fedorivka, Poltava Oblast, Soviet Union",Male,Air Force Academy,Lieutenant General,Russian Air Force,1,94,,,Soyuz 3,1995-06-30,,USSR/Russia
 Anatoly Berezovoy,1970.0,Retired,11/04/ 1942," Enem, Adyghe Autonomous Oblast,",Male,Kachin Higher Military Aviation School of Pilots,Colonel,Russian Air Force,1,5073,1.0,2.0,Soyuz T-5,,,USSR/Russia
 Andrey Borisenko,2003.0,Active,1964-04-17,"Leningrad, Russia",Male,Leningrad Military Mechanical Institute,,,2,8097,,,"Soyuz TMA-21, Soyuz MS-02",,,USSR/Russia
-Nikolay Budarin,1989.0,Retired,1953-04-29,"Kirya, Chuvashia",Male, Moscow Aviation Institute,Hero of the Russian Federation,,3,10657,8.0,44.0,"STS-71 (Atlantis), Soyuz TM-27, STS-113 (Endeavour)",,,USSR/Russia
+Nikolay Budarin,1989.0,Retired,1953-04-29,"Kirya, Chuvashia",Male, Moscow Aviation Institute,Hero of the Russian Federation,,3,10657,8.0,44.0,"STS-71 (Atlantis), Soyuz TM-27, STS-113 (Endeavor)",,,USSR/Russia
 Valery Bykovsky,1960.0,Retired,1934-08-02,"Pavlovsky Posad, Soviet Union",Male,,Major General,Russian Air Force,3,497,,,"Vostok 5, Soyuz 22, Soyuz 31",,,USSR/Russia
 Vladimir Vasyutin,1978.0,Deceased,1952-03-08,"Kharkiv, Ukrainian SSR",Male,,Lieutenant General,Russian Air Force,1,1557,,,Soyuz T-14,2002-07-19,,USSR/Russia
 Alexander Victorenko,1978.0,Retired,1947-03-29,"Olginka, Kazakh SSR",Male,,,,4,13294,6.0,19.0,"Soyuz TM-3, Soyuz TM-8, Soyuz TM-14, Soyuz TM-20",,,USSR/Russia
@@ -409,10 +409,10 @@ Vladimir Komarov,1961.0,Deceased,1927-03-16,"Moscow, Russia",Male,Krasnodar High
 Yelena Kondakova,1989.0,Retired,1957-03-30,"Mytishchi, Russia",Female,,,,1,4272,,,"Soyuz TM-20, STS-84 (Atlantis)",,,USSR/Russia
 Dmitri Kondratyev,1997.0,Retired,1969-05-25,"Irkutsk, Russian SFSR",Male, Moscow State University for Economy/Yury A. Gagarin Air Force Academy,Сolonel,Russian Air Force,1,3823,2.0,10.0,Soyuz TMA-20,,,USSR/Russia
 Oleg Kononenko,1996.0,Active,1964-06-21,"Chardzhou, Turkmen SSR",Male,N. E. Zhukovskiy Aviation Institute,,,3,533,3.0,18.0,"Soyuz TMA-12, Soyuz TMA-03M, Soyuz TMA-17M",,,USSR/Russia
-Valery Korzun,1992.0,Retired,1953-03-05,"Krasny Sulin, Rostov Oblast",Male,Kachinsk higher military aviation pilot school/Gagarin Military Aviation Academy,Major General,Russian Air Force,2,9159,4.0,22.0,"Soyuz TM-24, STS-111 (Endeavour)",,,USSR/Russia
+Valery Korzun,1992.0,Retired,1953-03-05,"Krasny Sulin, Rostov Oblast",Male,Kachinsk higher military aviation pilot school/Gagarin Military Aviation Academy,Major General,Russian Air Force,2,9159,4.0,22.0,"Soyuz TM-24, STS-111 (Endeavor)",,,USSR/Russia
 Mikhail Korniyenko,1998.0,Active,1960-04-05,"Syzran, Kuibyshev (Samara) Region, Russia",Male,Moscow Aviation Institute,,,2,12394,2.0,12.0,"Soyuz TMA-18, Soyuz TMA-16M",,,USSR/Russia
 Oleg Kotov,1996.0,Retired,1965-10-27,"Simferopol, Ukrainian SSR, Soviet Union",Male,Kirov Military Medical Academy,Lieutenant Colonel,Russian Air Force,3,12629,6.0,37.0,"Soyuz TMA-10, Soyuz TMA-17, Soyuz TMA-10M",,,USSR/Russia
-Sergey Krikalev,1985.0,Retired,1958-08-27,"Leningrad, Soviet Union",Male,Baltic State Technical University,Major,Russian Air Force,6,19281,8.0,41.0,"Soyuz TM-7, Soyuz TM-12, STS-60, STS-88 (Endeavour), Soyuz TM-31, Soyuz TMA-6",,,USSR/Russia
+Sergey Krikalev,1985.0,Retired,1958-08-27,"Leningrad, Soviet Union",Male,Baltic State Technical University,Major,Russian Air Force,6,19281,8.0,41.0,"Soyuz TM-7, Soyuz TM-12, STS-60, STS-88 (Endeavor), Soyuz TM-31, Soyuz TMA-6",,,USSR/Russia
 Valery Kubasov,1966.0,Deceased,1935-01-07,"Vyazniki, Ivanovo Industrial Oblast, RSFSR, USSR",Male,Moscow Aviation Institute,,,3,449,,,"Soyuz 6, Soyuz 19, Soyuz 36",2014-02-19,,USSR/Russia
 Alexander Laveykin,1978.0,Retired,1951-04-21,"Moscow, Soviet Union",Male,Bauman Moscow State Technical University,,,1,4179,3.0,8.0,Soyuz TM-2,,,USSR/Russia
 Vasily Lazarev,1964.0,Deceased,1928-02-23,"Poroshino, Altai Krai, Soviet Union",Male,Saratov Medical Institute,Colonel,Russian Air Force,2,2,,,"Soyuz 12, Soyuz 18a",1990-12-31,,USSR/Russia
@@ -433,7 +433,7 @@ Talgat Musabayev,1990.0,Retired,1951-01-07,"Kargaly, Kazakhstan ",Male,Engineeri
 Andriyan Nikolayev,1960.0,Deceased,1929-09-05,"Shorshely, Russian SFSR, Soviet Union",Male,Chernigov High Aviation School,Major General,Russian Air Force,2,519,,,"Vostok 3, Soyuz 9",2004-07-03,,USSR/Russia
 Oleg Novitskiy,2006.0,Active,1971-10-12,"Cherven, Minsk Voblast, Belarus",Male,Kachinskoye Military Pilot School named after A. Myasnikov/ Yury Gagarin Air Force Academy,Lieutenant Colonel,Russian Air Force,2,8170,,,"Soyuz TMA-06M, Soyuz MS-03",,,USSR/Russia
 Alexey Ovchinin,2006.0,Active,1971-09-28,"Rybinsk, Yaroslavl Oblast, Russian SFSR",Male,Yeysk Military Aviation College,Lieutenant Colonel,Russian Air Force,1,4131,,,	Soyuz TMA-20M,,,USSR/Russia
-Yury Onufriyenko,1989.0,Retired,1961-02-06,"Ryasne, Ukraine, Soviet Union",Male,Yeysk Military Aviation College/ Moscow State University,Colonel,Russian Air Force,2,9351,8.0,43.0,"Soyuz TM-23, STS-108 (Endeavour)",,,USSR/Russia
+Yury Onufriyenko,1989.0,Retired,1961-02-06,"Ryasne, Ukraine, Soviet Union",Male,Yeysk Military Aviation College/ Moscow State University,Colonel,Russian Air Force,2,9351,8.0,43.0,"Soyuz TM-23, STS-108 (Endeavor)",,,USSR/Russia
 Gennady Padalka,1989.0,Retired,1958-06-21,"Krasnodar, Russia",Male,Yeysk Military Aviation College,Colonel,Russian Air Force,5,21083,10.0,39.0,"Soyuz TM-28, Soyuz TMA-4, Soyuz TMA-14, Soyuz TMA-04M, Soyuz TMA-16M",,,USSR/Russia
 Victor Patsayev,1968.0,Deceased,1933-06-19,"Aktyubinsk, Kazakh SSR, Soviet Union",Male,Penza Industrial Institute,,,1,570,,,Soyuz 11,1971-06-30,Soyuz 11,USSR/Russia
 Alexander Poleshchuk,1989.0,Retired,1953-10-30,"Cheremkhovo, Russia",Male,Moscow Aviation Institute,Captain,Russian Air Force,1,4297,2.0,10.0,Soyuz TM-16,,,USSR/Russia
@@ -466,7 +466,7 @@ Valentina Tereshkova,1962.0,Retired,1937-03-06,"Bolshoye Maslennikovo, Yaroslavl
 Gherman Titov,1960.0,Deceased,1935-09-11,"Verkhneye Zhilino, West Siberian Krai, Russia",Male,Stalingrad Military Aviation School,General Colonel,Russian Air Force,1,25,,,Vostok 2,2000-09-20,,USSR/Russia
 Vladimir Titov,1976.0,Retired,1947-01-01,"Sretensk, Chita Oblast, Russia",Male,Gagarin Air Force Academy,Colonel,Russian Air Force,4,9072,4.0,19.0,"Soyuz T-8, Soyuz T-10-1, Soyuz TM-4, STS-86 (Atlantis)",,,USSR/Russia
 Valery Tokarev,1989.0,Retired,1952-10-29,"Kapustin Yar, Astrakhan Oblast, Russia",Male, Stavropol Higher Military Aviation School for Pilots and Navigators,Colonel,Russian Air Force,2,4791,2.0,11.0,"STS-96 (Discovery), Soyuz TMA-7",,,USSR/Russia
-Sergey Treshchev,1992.0,Retired,1958-08-18,"Krasnuy Kustar, Lipetsk Oblast, Russia",Male,Moscow Power Institute,,,1,4438,1.0,5.0,STS-111 (Endeavour),,,USSR/Russia
+Sergey Treshchev,1992.0,Retired,1958-08-18,"Krasnuy Kustar, Lipetsk Oblast, Russia",Male,Moscow Power Institute,,,1,4438,1.0,5.0,STS-111 (Endeavor),,,USSR/Russia
 Mikhail TYuryn,1994.0,Retired,1960-03-02,"Kolomna, Russia",Male,Moscow Aviation Institute,,,3,12771,4.0,17.0,"STS-105 (Discovery), Soyuz TMA-9, Soyuz TMA-11M",,,USSR/Russia
 Yury Usachyev,1989.0,Retired,1957-10-09,"Donetsk, Rostov Oblast, Russia",Male,Moscow Aviation Institute,Lieutenant,Russian Air Force,4,13270,7.0,29.0,"Soyuz TM-18, Soyuz TM-23, STS-101 (Atlantis), STS-102 (Discovery)",,,USSR/Russia
 Konstantin Feoktistov,1964.0,Deceased,1926-02-07,"Voronezh, Russia",Male,Bauman Moscow State Technical University,,,1,24,,,Voskhod 1,2009-11-21,,USSR/Russia
@@ -474,7 +474,7 @@ Anatoly Filipchenko,1963.0,Retired,1928-02-26,"Davydovka, Russia",Male,Chuguev M
 Yevgeny Khrunov,1960.0,Deceased,1933-09-10,"Tula, Russia",Male,Serov Higher Air Force School,Colonel,Russian Air Force,1,48,,,Soyuz 5,2000-05-20,,USSR/Russia
 Vasily Tsiblyev,1987.0,Retired,1954-02-20,"Orekhovka, Crimea, Ukraine",Male,Kharkov Higher Military Aviation School of Pilots,Lieutenant General,Russian Air Force,2,9160,,,"Soyuz TM-17, Soyuz TM-25",,,USSR/Russia
 Yury Shargin,1996.0,Retired,1960-03-20,"Engels, Russia",Male,Military Engineering Academy for Aeronautics and Astronautics,Lieutenant Colonel,Russian Air Force,1,237,,,Soyuz TMA-5,,,USSR/Russia
-Salizhan Sharipov,1990.0,Retired,1964-08-24,"Uzgen, Osh oblast, Kyrgyztan",Male,Moscow State University,Colonel,Russian Air Force,2,4839,2.0,11.0,"STS-89 (Endeavour), Soyuz TMA-5",,,USSR/Russia
+Salizhan Sharipov,1990.0,Retired,1964-08-24,"Uzgen, Osh oblast, Kyrgyztan",Male,Moscow State University,Colonel,Russian Air Force,2,4839,2.0,11.0,"STS-89 (Endeavor), Soyuz TMA-5",,,USSR/Russia
 Vladimir Shatalov,1963.0,Retired,1927-12-08,"Petropavlovsk, Kazakhstan",Male,Kacha Air Force Pilot School,Lieutenant General,Russian Air Force,3,238,,,"Soyuz 4, Soyuz 8, Soyuz 10",,,USSR/Russia
 Anton Shkaplerov,2003.0,Active,1972-02-20,"Sevastopol, Ukraine",Male,N. E. Zhukovskiy Aviation Institute,Colonel,Russian Air Force,3,8760,1.0,6.0,"Soyuz TMA-22, Soyuz TMA-15M, Soyuz MS-07",,,USSR/Russia
 Georgy Shonin,1960.0,Deceased,1935-08-03,"Rovenky, Ukraine",Male,N. E. Zhukovskiy Aviation Institute,Lieutenant General,Russian Air Force,1,119,,,Soyuz 6,1997-04-07,,USSR/Russia

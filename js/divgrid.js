@@ -44,7 +44,7 @@ d3.divgrid = function(config) {
     cells.exit().remove();
 
     selection.selectAll(".cell")
-      .text(function(d) { return d; });
+      .html(function(d) { return d; });
 
     return dg;
   };

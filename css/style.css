@@ -65,6 +65,12 @@ hr {
     width: 900px;
 }
 
+.grid{ 
+    width: 400px;
+    margin-left: 30px;
+    margin-top: 30px; 
+}
+
 .sun_filters{	
     width: 300px;
 }
@@ -93,8 +99,9 @@ hr {
 .row, .header, .cell { height: 18px; }
 .row, .header { clear: left; }
 .header { font-weight: bold; }
-.cell { float: left; overflow: hidden; white-space: nowrap; width: 100px; font-size: 14px;}
-.col-0 { width: 180px; }
+.cell { float: left; overflow: hidden;  width: 80px; font-size: 14px; padding-left: 5px;}
+.col-0 { width: 150px; }
+.col-1 { width: 50px; }
 div { color: #f5f5f5; }
 #grid{
   overflow-y:scroll;
