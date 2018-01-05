@@ -18,9 +18,35 @@ class Info{
 			}
 		}
 		else{
+			var t = [["Country", data["Country"]],
+					["Gender", data["Gender"]],
+					["Birth Date", data["Birth Date"]],
+					["Birth Place", data["Birth Place"]]];
+
+			if(data["Death Date"] != "")
+				t.push(["Death Date", data["Death Date"]]);		
+			if(data["Death Mission"] != "")
+				t.push(["Death Mission", data["Death Mission"]]);	
+			if(data["Alma Mater"] != "")
+				t.push(["Alma Mater", data["Alma Mater"]]);
+
+			t = t.concat([["Selection Year", parseInt(data["Year"])],
+							["Status", data["Status"]],
+							["Space Flights", parseInt(data["Space Flights"]) + " ("+parseInt(data["Space Flight (hr)"])+" hr)"],
+							["Space Walks", parseInt(data["Space Walks"]) + " ("+parseInt(data["Space Walks (hr)"])+" hr)"],
+							["Missions",data["Missions"].map(function (m) {
+								return m + "<br/>";
+							}).join("")]]);
+
+			if(data["Military Branch"] != "")
+				t.push(["Military Branch", data["Military Branch"]]);		
+
+			if(data["Military Rank"] != "")
+				t.push(["Military Rank", data["Military Rank"]]);
+
 			data = {
 				caption: data["Name"],
-				table: [["ssds"]]
+				table: t
 			}
 		}
 
@@ -54,7 +80,7 @@ class Info{
 
 	    tbody.selectAll('td')
 	    	 .attr('width', function (d, i) {
-	    	 	return i % 2 == 0 ? "25%" : "75%";
+	    	 	return i % 2 == 0 ? "30%" : "70%";
 	    	 })
 	    	 .html(function (d) { return d; });
 	}

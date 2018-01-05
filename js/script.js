@@ -229,7 +229,9 @@ function complete_graph() {
 
 d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
     astronautsData.forEach(function (astr) {
-        astr.Missions = astr.Missions.split(',').map(name => name.trim())
+        astr.Missions = astr.Missions.split(',').map(name => name.trim());
+        astr["Space Walks"] = astr["Space Walks"] == "" ? 0 : astr["Space Walks"];
+        astr["Space Walks (hr)"] = astr["Space Walks (hr)"] == "" ? 0 : astr["Space Walks (hr)"];
     })
     astronauts = astronautsData;
     selectionList.astronauts = astronauts;
@@ -292,7 +294,7 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     flightsChart.drawLegend();
     flightsChart.update(group_missions(missions), true);    
     sunburstStat.update([]); 
-    console.log(curMis);
+    console.log(astronauts);
     selectionList.update(curMis, true);
     create_year_brush();
     // graph.update(5);
