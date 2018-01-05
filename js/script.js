@@ -87,13 +87,13 @@ function group_astronauts(astrData, misData){
                     return astrs.find(a => a.Name == astr.Name) != undefined;
                 });
         
-        found = filter_status(filter_gender(filter_walk(found)));
-        curAstrs = curAstrs.concat(found);
-
         found.forEach(function (astr) {
                 astr["Year Mission"] = astrs.find(a => a.Name == astr.Name)["Year Mission"];
             });
         var notFound = [...new Set(astrs.filter(astr => found.find(a => a.Name == astr.Name) == undefined))];
+
+        found = filter_status(filter_gender(filter_walk(found)));
+        curAstrs = curAstrs.concat(found);
 
         var grouped = d3.nest()
                         .key(d => d['Country'])

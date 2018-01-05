@@ -31,7 +31,7 @@ class Graph{
 			  .attr("class", d => d.selected ? "selected" : "nodes")
 			  .attr("r", function (d) {
 			  	if (d.type == 'mission') return 5;
-			  	console.log(d.id, d.value['Space Flight (hr)']);
+			  	if (d.type == 'astronaut' && d.value.Country == "Other") return 5;
 			  	return Math.max(3, Math.log(d.value['Space Flight (hr)']));
 			  })
 			  .attr("fill", function(d) { 
@@ -54,7 +54,7 @@ class Graph{
 		simulation.force("link")
 		  .links(graph.links);
 
-		var radius = 10;
+		var radius = 15;
 		function ticked() {
 			node
 			    .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
@@ -86,6 +86,7 @@ class Graph{
 		}	
 
 		function clicked(d) {
+			if (d.type == 'astronaut' && d.value.Country == "Other") return;
 			if(d.type == "mission"){
 				t.update(create_mis_graph(d.value));
 			}

@@ -65,6 +65,11 @@ class FlightsChart{
       	 	return isMissions ? "Number of launched space missions" 
       	 					  : "Number of humans launched into space";
           });
+	   	d3.select("#ListTitle")		  
+	          .text(function () {
+	      	 	return isMissions ? "List of missions" 
+	      	 					  : "List of astronauts";
+	          });
 
         if(this.emptyData){
         	this.raise_up(stackedData, isMissions);

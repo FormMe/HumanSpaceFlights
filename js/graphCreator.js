@@ -6,20 +6,22 @@ function astr_graph(astr) {
     	selected: false
 	}];
 	var links = [];
-	missions
-		.filter(mis => astr.Missions.includes(mis["Launch Mission"]))
-		.forEach(function (mis) {
-			nodes.push({
-    			id: mis["Launch Mission"],
-    			type: 'mission',
-    			value: mis,
-    			selected: false
-    		});
-    		links.push({
-    			"source": mis["Launch Mission"],
-    			"target": astr.Name
-    		});
-		});
+	if (astr.Country != "Other") {
+		missions
+			.filter(mis => astr.Missions.includes(mis["Launch Mission"]))
+			.forEach(function (mis) {
+				nodes.push({
+	    			id: mis["Launch Mission"],
+	    			type: 'mission',
+	    			value: mis,
+	    			selected: false
+	    		});
+	    		links.push({
+	    			"source": mis["Launch Mission"],
+	    			"target": astr.Name
+	    		});
+			});
+	}
 	return {
 		'links': links,
 		'nodes': nodes
@@ -28,6 +30,7 @@ function astr_graph(astr) {
 
 function mis_graph(mis) {
 	var members = [];
+	var links = [];
 	var nodes = [{
 		id: mis["Launch Mission"],
 		type: 'mission',
@@ -36,8 +39,13 @@ function mis_graph(mis) {
 	}];
 	mis.Crew.forEach(function (c) {
 		members = members.concat(c.Members);
+		c.Members.forEach(function (astr) {			
+    		links.push({
+    			"source": mis["Launch Mission"],
+    			"target": astr
+    		});
+		})
 	});
-	var links = [];
 	astronauts
 		.filter(astr => members.includes(astr.Name))
 		.forEach(function (astr) {
@@ -47,11 +55,16 @@ function mis_graph(mis) {
     			value: astr,
     			selected: false
     		});
-    		links.push({
-    			"source": mis["Launch Mission"],
-    			"target": astr.Name
-    		});
+    		members.splice(members.indexOf(astr.Name), 1);
 		});
+	members.forEach(function (astr) {
+		nodes.push({
+			id: astr,
+			type: 'astronaut',
+			value: {Name: astr, Country: "Other"},
+			selected: false
+		});
+	})
 	return {
 		'links': links,
 		'nodes': nodes
