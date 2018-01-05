@@ -1,4 +1,4 @@
-Crew,Country,Habitation,Brief Mission Summary,Fatality,Moon,Sub Orbital,Prolongation,Launch Data,Launch Mission,Return Data,Return Mission,Launch Year
+Crew,Country,Habitation,Brief Mission Summary,Fatality,Moon,Sub Orbital,Prolongation,Launch Data,Launch Mission,Return Data,Return Mission,Year
 Yury Gagarin,USSR/Russia,,First manned spaceflight. Completed one Earth orbit.,N,N,N,0.0,1961-04-12,Vostok 1,1961-04-12,Vostok 1,1961
 Gherman Titov,USSR/Russia,,Day-long flight. Completed 17 Earth orbits. Brief manual control by pilot.,N,N,N,1.0,1961-08-06,Vostok 2,1961-08-07,Vostok 2,1961
 John H. Glenn,USA,,First American manned orbital flight. Completed three orbits.,N,N,N,0.0,1962-02-20,Mercury-Atlas 6 (Friendship 7),1962-02-20,Mercury-Atlas 6 (Friendship 7),1962

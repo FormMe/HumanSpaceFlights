@@ -9,8 +9,9 @@ var color = d3.scaleOrdinal()
 
 // let selectionTable = new SelectionTable(color);
 let missions, astronauts;
-let graph = new Graph(color);
-let selectionList = new SelectionList(color, missions, astronauts, graph);
+let info = new Info();
+let graph = new Graph(color, info);
+let selectionList = new SelectionList(color, missions, astronauts, graph, info);
 let flightsChart = new FlightsChart(svgHeight, svgWidth, margin, selectionList, color);
 let sunburstStat = new SunburstStat();
 let curMis = [], curAstrs = [];
@@ -19,7 +20,7 @@ var brush;
 
 function group_missions(missions) {
     return d3.nest()
-            .key(function(d) { return d['Launch Year']; })
+            .key(function(d) { return d['Year']; })
             .key(function(d) { return d['Country']; })
             .entries(missions)
             .map(function (d) {     
@@ -67,7 +68,7 @@ function group_astronauts(astrData, misData){
 
     curAstrs = [];
     var yearGroupMis = d3.nest()
-                    .key(function(d) { return d['Launch Year']; })
+                    .key(function(d) { return d['Year']; })
                     .entries(misData);
     return yearGroupMis.map(function (y) {
         var astrs = [];
@@ -158,6 +159,7 @@ function filter() {
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
     d3.select("#Graph").selectAll('g').remove();
+    info.remove();
 }
 
 function filter_astr() {
@@ -176,6 +178,7 @@ function filter_astr() {
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
     d3.select("#Graph").selectAll('g').remove();
+    info.remove();
 }
 
 
@@ -193,7 +196,7 @@ function create_year_brush(){
                                                     return x >= s[0] && x <= s[1];
                                                 })._groups[0]
                                                 .map(d => d.__data__);
-                                var fMis = curMis.filter(d => years.includes(d["Launch Year"]));
+                                var fMis = curMis.filter(d => years.includes(d["Year"]));
                                 var dataType = d3.select("#DataType").node().value; 
                                 if (dataType == "Astonauts"){
                                     group_astronauts(astronauts, fMis);
@@ -210,6 +213,7 @@ function create_year_brush(){
 
 
 function complete_graph() {
+    info.remove();
     var G = {'links':[], 'nodes':[]};
     var dataType = d3.select("#DataType").node().value; 
     selectionList.data.forEach(function (row) {
@@ -231,6 +235,18 @@ d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
     selectionList.astronauts = astronauts;
 });
 
+function get_country_html(d){
+    switch(d.Country){
+        case 'USA': return "<img src='pics/usa_flag.png' width='22' height='12' title='USA'>";
+        case 'USSR/Russia': 
+            if(d.Year < 1991)
+                return "<img src='pics/ussr_flag.png' width='22' height='12' title='USSR'>";
+            else
+                return "<img src='pics/rus_flag.png' width='22' height='12' title='Russia'>";
+
+        case "China": return "<img src='pics/china_flag.png' width='22' height='12' title='China'>";
+    }
+}   
 d3.csv("data/missions.csv", function (error, missionsData) {
 
   missions = d3.nest()
@@ -240,22 +256,31 @@ d3.csv("data/missions.csv", function (error, missionsData) {
             obj = {
                 "Brief Mission Summary": info["Brief Mission Summary"],
                 "Country": info["Country"],
+                "Country Flag": get_country_html(info),
                 "Fatality": info["Fatality"],
                 "Moon": info["Moon"],
                 "Sub Orbital": info["Sub Orbital"],
                 "Launch Data": info["Launch Data"],
                 "Launch Mission": info["Launch Mission"],
-                "Launch Year": info["Launch Year"],
+                "Year": info["Year"],
                 "Habitation": info["Habitation"] == "" ? "Space" : info["Habitation"],
                 "Crew": v.map(function (part) {
                     return {
                         "Members": part["Crew"].split(',').map(name => name.trim()),
-                        "Prolongation": part["Prolongation"],
+                        "Duration": part["Prolongation"],
                         "Return Data": part["Return Data"],
                         "Return Mission": part["Return Mission"]
                     }
                 })
             }
+            obj["Duration"] = d3.max(obj.Crew, c => c.Duration);
+            obj["Return Data"] = d3.max(obj.Crew, c => c["Return Data"]);
+            obj["Crew size"] = d3.sum(obj.Crew, c => c.Members.length);
+            var members = [];
+            obj.Crew.forEach(function (c) {
+                members = members.concat(c.Members);
+            });
+            obj["Members"] = members;
             return obj;
         }) 
         .entries(missionsData)

@@ -1,22 +1,9 @@
 
-function get_country_html(astr){
-	switch(astr.Country){
-		case 'USA': return "<img src='pics/usa_flag.png' width='22' height='12'>";
-		case 'USSR/Russia': 
-			if(astr.Year < 1991)
-				return "<img src='pics/ussr_flag.png' width='22' height='12'>";
-			else
-				return "<img src='pics/rus_flag.png' width='22' height='12'>";
-
-		case "China": return "<img src='pics/china_flag.png' width='22' height='12'>";
-	}
-}	
 
 function map_mis(d) {			
 	d["Prolongation"] = d3.max(d.Crew, c => c.Prolongation);
 	d["Return Data"] = d3.max(d.Crew, c => c["Return Data"]);
-	d["Crew Count"] = d3.sum(d.Crew, c => c.Members.length);
-	d["Country Flag"] = get_country_html(d);
+	d["Crew size"] = d3.sum(d.Crew, c => c.Members.length);
 	return d;
 };
 function map_astrs(d) {
@@ -24,17 +11,19 @@ function map_astrs(d) {
 };
 
 class SelectionList{
-	constructor(color, missions, astronauts, graph){
+	constructor(color, missions, astronauts, graph, info){
 		this.color = color;
 		this.missions = missions;
 		this.astronauts = astronauts;
 		this.graph = graph;
+		this.info = info;
 		this.misCols = ["Launch Mission", "Country Flag", "Launch Data", "Habitation"];
 		this.astrCols = ["Name", "Country Flag", "Gender", "Birth Date"];
 	}
 
 	update(data, isMissions){
 		var graph = this.graph;
+		var info = this.info;
 		this.data = data;
 
 		if(isMissions){
@@ -54,6 +43,7 @@ class SelectionList{
 			.selectAll(".row")
 		    .on("click", function(d) {
 		    	graph.update(create_graph(d));
+		    	info.update(d, isMissions);
 		    })
 		    .on('mouseover', function (d) {
 		    });

@@ -74,6 +74,11 @@ hr {
     width: 430px;
 }
 
+.info{
+    width: 350px;
+}
+
+
 .sun_filters{	
     width: 300px;
 }
@@ -168,4 +173,9 @@ div { color: #f5f5f5; }
 
 #ListTitle{
   margin-bottom: 200px; 
+}
+
+.infoTitle{
+  border-bottom: 1.5px solid #f5f5f5;
+  padding-bottom: 15px;
 }
