@@ -157,6 +157,7 @@ function filter() {
         selectionList.update(curMis, true);
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
+    d3.select("#Graph").selectAll('g').remove();
 }
 
 function filter_astr() {
@@ -174,6 +175,7 @@ function filter_astr() {
         selectionList.update(curAstrs, false);
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
+    d3.select("#Graph").selectAll('g').remove();
 }
 
 

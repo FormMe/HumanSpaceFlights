@@ -4,7 +4,6 @@ class Graph{
 	}
 
 	update(graph){
-	console.log(graph);
 		var svg = d3.select("#Graph"),
 		    width = +svg.attr("width"),
 		    height = +svg.attr("height");
@@ -31,12 +30,12 @@ class Graph{
 			  .attr("class", d => d.selected ? "selected" : "nodes")
 			  .attr("r", function (d) {
 			  	if (d.type == 'mission') return 5;
-			  	if (d.type == 'astronaut' && d.value["Country Text"] == "Other") return 5;
+			  	if (d.type == 'astronaut' && d.value.Country == "Other") return 5;
 			  	return Math.max(3, Math.log(d.value['Space Flight (hr)']));
 			  })
 			  .attr("fill", function(d) { 
 			  	if(d.type == 'mission') return "yellow";
-			  	return color(d.value["Country Text"]);
+			  	return color(d.value.Country);
 			  })
 			  .call(d3.drag()
 			      .on("start", dragstarted)
@@ -86,7 +85,7 @@ class Graph{
 		}	
 
 		function clicked(d) {
-			if (d.type == 'astronaut' && d.value["Country Text"] == "Other") return;
+			if (d.type == 'astronaut' && d.value.Country == "Other") return 5;
 			if(d.type == "mission"){
 				t.update(create_mis_graph(d.value));
 			}

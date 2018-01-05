@@ -16,8 +16,7 @@ function map_mis(d) {
 	d["Prolongation"] = d3.max(d.Crew, c => c.Prolongation);
 	d["Return Data"] = d3.max(d.Crew, c => c["Return Data"]);
 	d["Crew Count"] = d3.sum(d.Crew, c => c.Members.length);
-	d["Country Text"] = d["Country"];
-	d["Country"] = get_country_html(d);
+	d["Country Flag"] = get_country_html(d);
 	return d;
 };
 function map_astrs(d) {
@@ -30,8 +29,8 @@ class SelectionList{
 		this.missions = missions;
 		this.astronauts = astronauts;
 		this.graph = graph;
-		this.misCols = ["Launch Mission", "Country", "Launch Data", "Habitation"];
-		this.astrCols = ["Name", "Country", "Gender", "Birth Date"];
+		this.misCols = ["Launch Mission", "Country Flag", "Launch Data", "Habitation"];
+		this.astrCols = ["Name", "Country Flag", "Gender", "Birth Date"];
 	}
 
 	update(data, isMissions){
