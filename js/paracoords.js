@@ -1,5 +1,5 @@
-var margin = {top: 66, right: 110, bottom: 20, left: 88},
-    width = 1250 - margin.left - margin.right,
+var margin = {top: 66, right: 110, bottom: 20, left: 70},
+    width = 1200 - margin.left - margin.right,
     height = 340 - margin.top - margin.bottom,
     innerHeight = height - 2;
 
@@ -61,6 +61,11 @@ var misDimensions = [
     description: "Launch Year"
   },
   {
+    key: "Duration",
+    description: "Mission Duration (days)",
+    type: types["Number"]
+  },
+  {
     key: "Crew size",
     type: types["Number"],
     description: "Crew size",
@@ -69,11 +74,6 @@ var misDimensions = [
             if(Math.floor(e) != e) return;
             return e;
         })
-  },
-  {
-    key: "Duration",
-    description: "Mission Duration (days)",
-    type: types["Number"]
   }
 ];
 
@@ -81,8 +81,12 @@ var misDimensions = [
 
 var container = d3.select("body").append('div')
     .classed("view parcoords",  true)
+    .style('margin-left', "30px")
     .style("width", width + margin.left + margin.right + "px")
-    .style("height", height + margin.top + margin.bottom + "px");
+    .style("height", height + margin.top*2 + margin.bottom + "px");
+
+var header = container.append('label').attr('class', 'title');
+container.append('hr');
 
 var svg = container.append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -104,15 +108,15 @@ ctx.globalAlpha = 0.15;
 ctx.lineWidth = 1.5;
 ctx.scale(devicePixelRatio, devicePixelRatio);
 
-// var output = d3.select("body").append("pre");
-
 function paracoords_update(data, isMissions) {
 
   if (isMissions) {
     var dimensions = misDimensions;
+    header.text('Missions parameters');
   }
   else{
     var dimensions = misDimensions;
+    header.text('Astronauts parameters');
   }
   var xscale = d3.scalePoint()
       .domain(d3.range(dimensions.length))
