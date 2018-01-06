@@ -1,3 +1,4 @@
+
 class FlightsChart{
 	
 	constructor(svgHeight, svgWidth, margin, selectionList, color){

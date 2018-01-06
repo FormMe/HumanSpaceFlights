@@ -1,5 +1,4 @@
 
-
 function map_mis(d) {			
 	d["Prolongation"] = d3.max(d.Crew, c => c.Prolongation);
 	d["Return Data"] = d3.max(d.Crew, c => c["Return Data"]);

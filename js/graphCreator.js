@@ -1,3 +1,4 @@
+
 function astr_graph(astr) {
 	var nodes = [{
 		id: astr.Name,

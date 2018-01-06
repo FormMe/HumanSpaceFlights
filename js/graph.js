@@ -1,3 +1,4 @@
+
 class Graph{
 	constructor(color, info){
 		this.color = color;
