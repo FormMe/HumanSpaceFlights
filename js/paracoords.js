@@ -78,6 +78,71 @@ var misDimensions = [
 ];
 
 
+var astrDimensions = [
+  {
+    key: "Country",
+    description: "Country",
+    type: types["String"],
+    axis: d3.axisLeft()
+      .tickFormat(function(d,i) {
+        return d;
+      })
+  },
+  {
+    key: "Gender",
+    description: "Gender",
+    type: types["String"],
+    axis: d3.axisLeft()
+      .tickFormat(function(d,i) {
+        return d;
+      })
+  },
+  {
+    key: "Birth Date",
+    type: types["Date"],
+    description: "Birth Year"
+  },
+  {
+    key: "Year",
+    description: "Selection Year",
+    type: types["Number"]
+  },
+  {
+    key: "Status",
+    description: "Status",
+    type: types["String"],
+    axis: d3.axisLeft()
+      .tickFormat(function(d,i) {
+        return d;
+      })
+  },
+  {
+    key: "Space Flights",
+    type: types["Number"],
+    description: "Count of Space Flights"
+  },
+  {
+    key: "Space Flight (hr)",
+    type: types["Number"],
+    description: "Space Flights (hr)"
+  },
+  {
+    key: "Space Walks",
+    type: types["Number"],
+    description: "Count of Space Walks"
+  },
+  {
+    key: "Space Walks (hr)",
+    type: types["Number"],
+    description: "Space Walks (hr)"
+  },
+  {
+    key: "Death Date",
+    description: "Death Year",
+    type: types["Date"]
+  }
+];
+
 
 var container = d3.select("body").append('div')
     .classed("view parcoords",  true)
@@ -115,9 +180,12 @@ function paracoords_update(data, isMissions) {
     header.text('Missions parameters');
   }
   else{
-    var dimensions = misDimensions;
+    var dimensions = astrDimensions;
     header.text('Astronauts parameters');
   }
+
+  svg.selectAll(".axis").remove();
+
   var xscale = d3.scalePoint()
       .domain(d3.range(dimensions.length))
       .range([0, width]);
