@@ -1,13 +1,14 @@
 class Info{
 
 	update(data, isMission){
+		console.log(data);
 		if(isMission){
 			data = {
 				caption: data["Launch Mission"],
 				table: [["Country", data["Country Flag"] + "  " + data.Country],
 						["Launch date", data["Launch Data"]],
-						["Return date", data["Return Data"]],
-						["Mission duration", parseInt(data["Duration"]) + " days"],
+						["Return date", data["Return Data"] == "" ? "in orbit" : data["Return Data"]],
+						["Mission duration", data["Return Data"] == "" ? "in orbit" :  parseInt(data["Duration"]) + " days"],
 						["Habitation", data["Habitation"]],
 						["Crew size",  data["Crew size"]],
 						["Members", data["Members"].map(function (m) {
@@ -49,7 +50,6 @@ class Info{
 				table: t
 			}
 		}
-
 		this.draw(data);
 	}
 
