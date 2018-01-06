@@ -1,4 +1,3 @@
-
 class Info{
 
 	update(data, isMission){
@@ -82,6 +81,9 @@ class Info{
 	    tbody.selectAll('td')
 	    	 .attr('width', function (d, i) {
 	    	 	return i % 2 == 0 ? "30%" : "70%";
+	    	 })
+	    	 .classed("header", function (d, i) {
+	    	 	return i % 2 == 0;
 	    	 })
 	    	 .html(function (d) { return d; });
 	}

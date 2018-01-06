@@ -106,6 +106,7 @@ hr {
 
 .row, .header, .cell { height: 18px; }
 .row:nth-child(odd) { background: rgba(4,0,0,0.15); }
+.row:hover { background: rgba(40,45,44,0.5); }
 .row, .header { clear: left; }
 .header { font-weight: bold; }
 .cell { float: left; overflow: hidden;  width: 80px; font-size: 14px; padding-left: 5px;}
