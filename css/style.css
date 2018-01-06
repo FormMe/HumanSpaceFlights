@@ -46,9 +46,9 @@ hr {
 #header{
     text-align: center;
     justify-content: center;
-    margin: -7px;
+/*    margin: -7px;
     margin-top: -8px;
-    background: rgba(245,245,245,0.55);
+    background: rgba(245,245,245,0.55);*/
 }
 .logo{
     margin-top: 10px;

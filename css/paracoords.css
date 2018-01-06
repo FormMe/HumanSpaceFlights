@@ -1,5 +1,6 @@
 body {
   min-width: 760px;
+  background: "black";
 }
 
 .parcoords {
@@ -20,7 +21,7 @@ body {
 .axis .title {
   font-size: 10px;
   transform: rotate(-21deg) translate(-5px,-6px);
-  fill: #222;
+  fill: #f5f5f5;
 }
 
 .axis line,
@@ -31,6 +32,7 @@ body {
 }
 
 .axis .tick text {
+  fill: #f5f5f5;
   pointer-events: none;
 }
 
@@ -49,7 +51,7 @@ body {
 .axis.active line,
 .axis.active path {
   fill: none;
-  stroke: #222;
+  stroke: #f5f5f5;
   stroke-width: 1px;
 }
 
@@ -68,11 +70,12 @@ body {
 .axis.active .tick text {
   opacity: 1;
   font-weight: bold;
+  font-size: 120%;
 }
 
 .brush .extent {
   fill-opacity: .3;
-  stroke: #fff;
+  stroke: #f5f5f5;
   stroke-width: 1px;
 }
 

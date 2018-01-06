@@ -224,6 +224,7 @@ function complete_graph() {
            G = merge_graph(G, create_mis_graph(row));
         }
     });
+
     graph.update(G);
 }
 
@@ -296,8 +297,8 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     flightsChart.drawLegend();
     flightsChart.update(group_missions(missions), true);    
     sunburstStat.update([]); 
-    console.log(astronauts);
     selectionList.update(curMis, true);
     create_year_brush();
-    // graph.update(5);
+    paracoords_update(missions, true);
+
 });
