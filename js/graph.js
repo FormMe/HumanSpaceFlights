@@ -36,7 +36,7 @@ class Graph{
 			  	return Math.max(3, Math.log(d.value['Space Flight (hr)']));
 			  })
 			  .attr("fill", function(d) { 
-			  	if(d.type == 'mission') return "yellow";
+			  	if(d.type == 'mission') return "#fdd023";
 			  	return color(d.value.Country);
 			  })
 			  .call(d3.drag()

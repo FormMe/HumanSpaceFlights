@@ -4,7 +4,7 @@ svgWidth = 900;
 svgHeight = 500;
 var Countries = ["USSR/Russia", "USA", "China", "Other"]
 var color = d3.scaleOrdinal()
-            .range(["#6b486b", "#98abc5", "#d0743c", "#3CB371"])
+            .range(["#7c587f", "#a4bcbc", "#007f97", "#4c3f77"])
             .domain(Countries);
 
 // let selectionTable = new SelectionTable(color);
@@ -227,16 +227,6 @@ function complete_graph() {
     graph.update(G);
 }
 
-d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
-    astronautsData.forEach(function (astr) {
-        astr.Missions = astr.Missions.split(',').map(name => name.trim());
-        astr["Space Walks"] = astr["Space Walks"] == "" ? 0 : astr["Space Walks"];
-        astr["Space Walks (hr)"] = astr["Space Walks (hr)"] == "" ? 0 : astr["Space Walks (hr)"];
-    })
-    astronauts = astronautsData;
-    selectionList.astronauts = astronauts;
-});
-
 function get_country_html(d){
     switch(d.Country){
         case 'USA': return "<img src='pics/usa_flag.png' width='22' height='12' title='USA'>";
@@ -249,6 +239,18 @@ function get_country_html(d){
         case "China": return "<img src='pics/china_flag.png' width='22' height='12' title='China'>";
     }
 }   
+
+d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
+    astronautsData.forEach(function (astr) {
+        astr.Missions = astr.Missions.split(',').map(name => name.trim());
+        astr["Space Walks"] = astr["Space Walks"] == "" ? 0 : astr["Space Walks"];
+        astr["Space Walks (hr)"] = astr["Space Walks (hr)"] == "" ? 0 : astr["Space Walks (hr)"];
+		astr["Country Flag"] = get_country_html(astr);
+    })
+    astronauts = astronautsData;
+    selectionList.astronauts = astronauts;
+});
+
 d3.csv("data/missions.csv", function (error, missionsData) {
 
   missions = d3.nest()

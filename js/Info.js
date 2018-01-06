@@ -18,7 +18,7 @@ class Info{
 			}
 		}
 		else{
-			var t = [["Country", data["Country"]],
+			var t = [["Country", data["Country Flag"] + "  " + data.Country],
 					["Gender", data["Gender"]],
 					["Birth Date", data["Birth Date"]],
 					["Birth Place", data["Birth Place"]]];
@@ -50,6 +50,10 @@ class Info{
 			}
 		}
 
+		this.draw(data);
+	}
+
+	draw(data){
 		var table = d3.select('#Info').select("table")
 						.attr("id", "Table")
 						.attr("width", '350px');
@@ -89,11 +93,9 @@ class Info{
 	}
 
 	remove(){
-		var table = d3.select('#Info').select("table");
-		table.select("tbody")
-			 .selectAll('td')
-			 .html('');
-	    table.select("caption").html("")
-	    	 .classed("infoTitle", false);
+		this.draw({caption:"", table:[]});
+	    d3.select('#Info').select("table")
+	    	.select("caption")
+	    	.classed("infoTitle", false);
 	}
 }
