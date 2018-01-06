@@ -16,7 +16,7 @@ let flightsChart = new FlightsChart(svgHeight, svgWidth, margin, selectionList, 
 let sunburstStat = new SunburstStat();
 let curMis = [], curAstrs = [];
 var brush;
-
+var firstParaCoord = true;
 
 function group_missions(missions) {
     return d3.nest()
@@ -151,13 +151,15 @@ function filter() {
         //     if(b == undefined)
         //         console.log(astr);
         // });
+    	if(firstParaCoord){
+    		paracoords_update(astronauts, false);
+    		firstParaCoord = false;
+    	}
     	paracoords_update(curAstrs, false);
-        selectionList.update(curAstrs, false);
     }
     else if (dataType == "Missions"){
         flightsChart.update(group_missions(curMis), true);   
     	paracoords_update(curMis, true);
-        selectionList.update(curMis, true);
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
     d3.select("#Graph").selectAll('g').remove();
@@ -176,8 +178,12 @@ function filter_astr() {
         //     if(b == undefined)
         //         console.log(astr);
         // });  
+    	if(firstParaCoord){
+    		paracoords_update(astronauts, false);
+    		firstParaCoord = false;
+    	}
     	paracoords_update(curAstrs, false);
-        selectionList.update(curAstrs, false);
+
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
     d3.select("#Graph").selectAll('g').remove();
@@ -253,9 +259,10 @@ d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
         astr["Space Walks"] = astr["Space Walks"] == "" ? 0 : astr["Space Walks"];
         astr["Space Walks (hr)"] = astr["Space Walks (hr)"] == "" ? 0 : astr["Space Walks (hr)"];
 		astr["Country Flag"] = get_country_html(astr);
+		astr["Birth Year"] = astr["Birth Date"];
+		astr["Death Year"] = astr["Death Date"];
     })
     astronauts = astronautsData;
-    selectionList.astronauts = astronauts;
 });
 
 d3.csv("data/missions.csv", function (error, missionsData) {
@@ -278,7 +285,7 @@ d3.csv("data/missions.csv", function (error, missionsData) {
                 "Crew": v.map(function (part) {
                     return {
                         "Members": part["Crew"].split(',').map(name => name.trim()),
-                        "Duration": part["Prolongation"],
+                        "Duration": parseInt(part["Prolongation"]),
                         "Return Data": part["Return Data"],
                         "Return Mission": part["Return Mission"]
                     }

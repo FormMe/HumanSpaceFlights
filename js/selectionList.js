@@ -13,8 +13,6 @@ class SelectionList{
 		var info = this.info;
 		this.data = data;
 
-		console.log(data);
-
 		if(isMissions){
 			var columns = this.misCols;
 			var create_graph = create_mis_graph;

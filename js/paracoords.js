@@ -61,11 +61,6 @@ var misDimensions = [
     description: "Launch Year"
   },
   {
-    key: "Duration",
-    description: "Mission Duration (days)",
-    type: types["Number"]
-  },
-  {
     key: "Crew size",
     type: types["Number"],
     description: "Crew size",
@@ -74,6 +69,11 @@ var misDimensions = [
             if(Math.floor(e) != e) return;
             return e;
         })
+  },
+  {
+    key: "Duration",
+    description: "Duration (days)",
+    type: types["Number"]
   }
 ];
 
@@ -98,7 +98,7 @@ var astrDimensions = [
       })
   },
   {
-    key: "Birth Date",
+    key: "Birth Year",
     type: types["Date"],
     description: "Birth Year"
   },
@@ -137,7 +137,7 @@ var astrDimensions = [
     description: "Space Walks (hr)"
   },
   {
-    key: "Death Date",
+    key: "Death Year",
     description: "Death Year",
     type: types["Date"]
   }
@@ -200,13 +200,13 @@ function paracoords_update(data, isMissions) {
 
   data.forEach(function(d) {
     dimensions.forEach(function(p) {
-      d[p.key] = !d[p.key] ? null : p.type.coerce(d[p.key]);
+        d[p.key] = d[p.key] != 0 && !d[p.key] ? null : p.type.coerce(d[p.key]);
     });
 
     // truncate long text strings to fit in data table
-    for (var key in d) {
-      if (d[key] && d[key].length > 35) d[key] = d[key].slice(0,36);
-    }
+    // for (var key in d) {
+    //   if (d[key] && d[key].length > 35) d[key] = d[key].slice(0,36);
+    // }
   });
 
   // type/dimension default setting happens here
@@ -225,8 +225,9 @@ function paracoords_update(data, isMissions) {
   var render = renderQueue(draw).rate(30);
 
   ctx.clearRect(0,0,width,height);
-  ctx.globalAlpha = d3.min([1.15/Math.pow(data.length,0.3),1]);
+  ctx.globalAlpha = d3.min([0.85/Math.pow(data.length,0.3),1]);
   render(data);
+  selectionList.update(data, isMissions);
 
   axes.append("g")
       .each(function(d) {
@@ -258,9 +259,6 @@ function paracoords_update(data, isMissions) {
   d3.selectAll(".axis.pl_discmethod .tick text")
     .style("fill", color);
     
-  // output.text(d3.tsvFormat(data.slice(0,24)));
-    selectionList.update(data, isMissions);
-
   function project(d) {
     return dimensions.map(function(p,i) {
       // check if data element has property and contains a value
