@@ -1,5 +1,5 @@
-var margin = {top: 66, right: 110, bottom: 20, left: 188},
-    width = 1000 - margin.left - margin.right,
+var margin = {top: 66, right: 110, bottom: 20, left: 88},
+    width = 1250 - margin.left - margin.right,
     height = 340 - margin.top - margin.bottom,
     innerHeight = height - 2;
 
@@ -57,7 +57,7 @@ var misDimensions = [
   },
   {
     key: "Year",
-    type: types["Date"],
+    type: types["Number"],
     description: "Launch Year"
   },
   {
@@ -187,6 +187,7 @@ function paracoords_update(data, isMissions) {
     .style("fill", color);
     
   // output.text(d3.tsvFormat(data.slice(0,24)));
+    selectionList.update(data, isMissions);
 
   function project(d) {
     return dimensions.map(function(p,i) {
@@ -297,7 +298,7 @@ function paracoords_update(data, isMissions) {
     ctx.globalAlpha = d3.min([0.85/Math.pow(selected.length,0.3),1]);
     render(selected);
 
-    // output.text(d3.tsvFormat(selected.slice(0,24)));
+    selectionList.update(selected, isMissions);
   }
 }
 

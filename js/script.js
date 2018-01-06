@@ -11,7 +11,7 @@ var color = d3.scaleOrdinal()
 let missions, astronauts;
 let info = new Info();
 let graph = new Graph(color, info);
-let selectionList = new SelectionList(color, missions, astronauts, graph, info);
+let selectionList = new SelectionList(color, graph, info);
 let flightsChart = new FlightsChart(svgHeight, svgWidth, margin, selectionList, color);
 let sunburstStat = new SunburstStat();
 let curMis = [], curAstrs = [];
@@ -151,10 +151,12 @@ function filter() {
         //     if(b == undefined)
         //         console.log(astr);
         // });
+    	paracoords_update(curAstrs, false);
         selectionList.update(curAstrs, false);
     }
     else if (dataType == "Missions"){
         flightsChart.update(group_missions(curMis), true);   
+    	paracoords_update(curMis, true);
         selectionList.update(curMis, true);
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
@@ -174,6 +176,7 @@ function filter_astr() {
         //     if(b == undefined)
         //         console.log(astr);
         // });  
+    	paracoords_update(curAstrs, false);
         selectionList.update(curAstrs, false);
     }
     d3.select('#FlightsChart').select('.brush').call(brush.move, null);
@@ -195,14 +198,17 @@ function create_year_brush(){
                                                     var x = d3.select(this)._groups[0][0].transform.animVal[0].matrix.e;
                                                     return x >= s[0] && x <= s[1];
                                                 })._groups[0]
-                                                .map(d => d.__data__);
+                                                .map(d => parseInt(d.__data__));
                                 var fMis = curMis.filter(d => years.includes(d["Year"]));
+                                console.log(curMis);
                                 var dataType = d3.select("#DataType").node().value; 
                                 if (dataType == "Astonauts"){
                                     group_astronauts(astronauts, fMis);
+    								paracoords_update(curAstrs, false);
                                     selectionList.update(curAstrs, false);
                                 }
                                 else if (dataType == "Missions"){
+    								paracoords_update(fMis, true);
                                     selectionList.update(fMis, true);
                                 }
                             }
@@ -291,13 +297,10 @@ d3.csv("data/missions.csv", function (error, missionsData) {
         .entries(missionsData)
         .map(d => d.value);
 
-    selectionList.missions = missions;
-
     curMis = missions;
     flightsChart.drawLegend();
     flightsChart.update(group_missions(missions), true);    
     sunburstStat.update([]); 
-    selectionList.update(curMis, true);
     create_year_brush();
     paracoords_update(missions, true);
 
