@@ -35,7 +35,7 @@ var types = {
   }
 };
 
-var dimensions, xscale;
+var dimensions, xscale, isMissions;
 var misDimensions = [
   {
     key: "Country",
@@ -169,15 +169,20 @@ var canvas = container.append("canvas")
 
 var ctx = canvas.node().getContext("2d");
 ctx.globalCompositeOperation = 'darken';
-ctx.globalAlpha = 0.15;
+ctx.globalAlpha = 0.25;
 ctx.lineWidth = 1.5;
 ctx.scale(devicePixelRatio, devicePixelRatio);
 
 function draw(d) {
 
-  ctx.strokeStyle = d.highlighted ? "red" : color(d.Country);   
-  ctx.lineWidth =  d.highlighted ? 3 : 1.5; 
-  ctx.globalAlpha =  d.highlighted ? 1 : 0.15; 
+  function cmp(d1, d2) {
+      return isMissions ? d1["Launch Mission"] == d2["Launch Mission"] : d1["Name"] == d2["Name"];
+  }
+
+  var hl = d.highlighted || (info.d && cmp(info.d, d));
+  ctx.strokeStyle = hl ? "red" : color(d.Country);   
+  ctx.lineWidth = hl ? 3 : 1.5; 
+  ctx.globalAlpha = hl ? 1 : 0.25; 
   ctx.beginPath();
   var coords = dimensions.map(function(p,i) {
                     // check if data element has property and contains a value
@@ -216,18 +221,15 @@ function draw(d) {
   ctx.stroke();
 }
 
-var render = renderQueue(draw).rate(10);
-
 function renderList(_data, isMissions) {
   ctx.clearRect(0,0,width,height);
   ctx.globalAlpha = d3.min([0.85/Math.pow(_data.length,0.3),1]);
-  // render(_data);
   _data.forEach(draw);
   selectionList.update(_data, isMissions);
 }
 
-function paracoords_update(data, isMissions) {
-
+function paracoords_update(data, isMis) {
+  isMissions = isMis;
   if (isMissions) {
     dimensions = misDimensions;
     header.text('Missions parameters');
@@ -255,11 +257,6 @@ function paracoords_update(data, isMissions) {
     dimensions.forEach(function(p) {
         d[p.key] = d[p.key] != 0 && !d[p.key] ? null : p.type.coerce(d[p.key]);
     });
-
-    // truncate long text strings to fit in data table
-    // for (var key in d) {
-    //   if (d[key] && d[key].length > 35) d[key] = d[key].slice(0,36);
-    // }
   });
 
   // type/dimension default setting happens here
@@ -275,8 +272,11 @@ function paracoords_update(data, isMissions) {
     dim.scale.domain(dim.domain);
   });
 
-
-  renderList(data, isMissions);
+  var render = renderQueue(draw).rate(15);
+  ctx.clearRect(0,0,width,height);
+  ctx.globalAlpha = d3.min([0.85/Math.pow(data.length,0.3),1]);
+  render(data);
+  selectionList.update(data, isMissions);
 
   axes.append("g")
       .each(function(d) {
@@ -309,7 +309,6 @@ function paracoords_update(data, isMissions) {
     .style("fill", color);
     
 
-
   var highlightedMis = ["Apollo 11"];
   var highlightedAstr = ["Yury Gagarin"];
 
@@ -320,7 +319,7 @@ function paracoords_update(data, isMissions) {
 
   // Handles a brush event, toggling the display of foreground lines.
   function brush() {
-    render.invalidate();
+    // render.invalidate();
 
     var actives = [];
     svg.selectAll(".axis .brush")

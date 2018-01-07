@@ -1,6 +1,7 @@
 class Info{
 
 	update(data, isMission){
+		this.remove()
 		this.d = data;
 		if(isMission){
 			data = {
