@@ -223,7 +223,6 @@ function draw(d) {
 
 function renderList(_data, isMissions) {
   ctx.clearRect(0,0,width,height);
-  ctx.globalAlpha = d3.min([0.85/Math.pow(_data.length,0.3),1]);
   _data.forEach(draw);
   selectionList.update(_data, isMissions);
 }

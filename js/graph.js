@@ -43,7 +43,15 @@ class Graph{
 			      .on("start", dragstarted)
 			      .on("drag", dragged)
 			      .on("end", dragended))
-			  .on("click", clicked);
+			  .on("click", clicked)
+			  .on('mouseover', function (d) {
+		    	d.value.highlighted = true;
+		    	draw(d.value);
+			  })
+			  .on('mouseout', function (d) {
+		    	d.value.highlighted = false;
+		    	renderList(null, isMissions);
+			  });
 
 		node.append("title")
 		  .text(function(d) { return d.id; });
@@ -88,14 +96,15 @@ class Graph{
 
 		function clicked(d) {
 			if (d.type == 'astronaut' && d.value.Country == "Other") return 5;
-			if(d.type == "mission"){
+			if (d.type == "mission"){
 				t.info.update(d.value, true);
 				t.update(create_mis_graph(d.value));
+		    	renderList(null, false);
 			}
-			else if(d.type == "astronaut"){
+			else if (d.type == "astronaut"){
 				t.info.update(d.value, false);
 				t.update(create_astr_graph(d.value));
-
+		    	renderList(null, false);
 			}
 		}
 	}
