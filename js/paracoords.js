@@ -176,7 +176,8 @@ ctx.scale(devicePixelRatio, devicePixelRatio);
 function draw(d) {
 
   ctx.strokeStyle = d.highlighted ? "red" : color(d.Country);   
-  ctx.lineWidth =  d.highlighted ? 5 : 1.5; 
+  ctx.lineWidth =  d.highlighted ? 3 : 1.5; 
+  ctx.globalAlpha =  d.highlighted ? 1 : 0.15; 
   ctx.beginPath();
   var coords = dimensions.map(function(p,i) {
                     // check if data element has property and contains a value
@@ -220,7 +221,8 @@ var render = renderQueue(draw).rate(10);
 function renderList(_data, isMissions) {
   ctx.clearRect(0,0,width,height);
   ctx.globalAlpha = d3.min([0.85/Math.pow(_data.length,0.3),1]);
-  render(_data);
+  // render(_data);
+  _data.forEach(draw);
   selectionList.update(_data, isMissions);
 }
 

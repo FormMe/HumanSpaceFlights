@@ -30,11 +30,11 @@ class SelectionList{
 		    	graph.update(create_graph(d));
 		    	info.update(d, isMissions);
 		    	d.highlighted = true;
-		    	renderList(data, isMissions);
+		    	draw(d);
 		    })
 		    .on('mouseover', function (d) {
 		    	d.highlighted = true;
-		    	renderList(data, isMissions);
+		    	draw(d);
 		    })
 		    .on('mouseout', function (d) {
 		    	d.highlighted = false;
