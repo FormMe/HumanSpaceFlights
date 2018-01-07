@@ -29,8 +29,16 @@ class SelectionList{
 		    .on("click", function(d) {
 		    	graph.update(create_graph(d));
 		    	info.update(d, isMissions);
+		    	d.highlighted = true;
+		    	renderList(data, isMissions);
 		    })
 		    .on('mouseover', function (d) {
+		    	d.highlighted = true;
+		    	renderList(data, isMissions);
+		    })
+		    .on('mouseout', function (d) {
+		    	d.highlighted = false;
+		    	renderList(data, isMissions);
 		    });
 	}
 }

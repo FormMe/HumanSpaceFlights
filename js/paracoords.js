@@ -35,7 +35,7 @@ var types = {
   }
 };
 
-
+var dimensions, xscale;
 var misDimensions = [
   {
     key: "Country",
@@ -173,20 +173,71 @@ ctx.globalAlpha = 0.15;
 ctx.lineWidth = 1.5;
 ctx.scale(devicePixelRatio, devicePixelRatio);
 
+function draw(d) {
+
+  ctx.strokeStyle = d.highlighted ? "red" : color(d.Country);   
+  ctx.lineWidth =  d.highlighted ? 5 : 1.5; 
+  ctx.beginPath();
+  var coords = dimensions.map(function(p,i) {
+                    // check if data element has property and contains a value
+                    if (!(p.key in d) || d[p.key] === null) 
+                      return null;
+                    return [xscale(i),p.scale(d[p.key])];
+                  });
+  coords.forEach(function(p,i) {
+    // this tricky bit avoids rendering null values as 0
+    if (p === null) {
+      // this bit renders horizontal lines on the previous/next
+      // dimensions, so that sandwiched null values are visible
+      if (i > 0) {
+        var prev = coords[i-1];
+        if (prev !== null) {
+          ctx.moveTo(prev[0],prev[1]);
+          ctx.lineTo(prev[0]+6,prev[1]);
+        }
+      }
+      if (i < coords.length-1) {
+        var next = coords[i+1];
+        if (next !== null) {
+          ctx.moveTo(next[0]-6,next[1]);
+        }
+      }
+      return;
+    }
+    
+    if (i == 0) {
+      ctx.moveTo(p[0],p[1]);
+      return;
+    }
+
+    ctx.lineTo(p[0],p[1]);
+  });
+  ctx.stroke();
+}
+
+var render = renderQueue(draw).rate(10);
+
+function renderList(_data, isMissions) {
+  ctx.clearRect(0,0,width,height);
+  ctx.globalAlpha = d3.min([0.85/Math.pow(_data.length,0.3),1]);
+  render(_data);
+  selectionList.update(_data, isMissions);
+}
+
 function paracoords_update(data, isMissions) {
 
   if (isMissions) {
-    var dimensions = misDimensions;
+    dimensions = misDimensions;
     header.text('Missions parameters');
   }
   else{
-    var dimensions = astrDimensions;
+    dimensions = astrDimensions;
     header.text('Astronauts parameters');
   }
 
   svg.selectAll(".axis").remove();
 
-  var xscale = d3.scalePoint()
+  xscale = d3.scalePoint()
       .domain(d3.range(dimensions.length))
       .range([0, width]);
 
@@ -222,12 +273,8 @@ function paracoords_update(data, isMissions) {
     dim.scale.domain(dim.domain);
   });
 
-  var render = renderQueue(draw).rate(30);
 
-  ctx.clearRect(0,0,width,height);
-  ctx.globalAlpha = d3.min([0.85/Math.pow(data.length,0.3),1]);
-  render(data);
-  selectionList.update(data, isMissions);
+  renderList(data, isMissions);
 
   axes.append("g")
       .each(function(d) {
@@ -256,55 +303,14 @@ function paracoords_update(data, isMissions) {
       .attr("x", -8)
       .attr("width", 16);
 
-  d3.selectAll(".axis.pl_discmethod .tick text")
+  d3.selectAll(".axis.Country .tick text")
     .style("fill", color);
     
-  function project(d) {
-    return dimensions.map(function(p,i) {
-      // check if data element has property and contains a value
-      if (
-        !(p.key in d) ||
-        d[p.key] === null
-      ) return null;
 
-      return [xscale(i),p.scale(d[p.key])];
-    });
-  };
 
-  function draw(d) {
-    ctx.strokeStyle = color(d.Country);
-    ctx.beginPath();
-    var coords = project(d);
-    coords.forEach(function(p,i) {
-      // this tricky bit avoids rendering null values as 0
-      if (p === null) {
-        // this bit renders horizontal lines on the previous/next
-        // dimensions, so that sandwiched null values are visible
-        if (i > 0) {
-          var prev = coords[i-1];
-          if (prev !== null) {
-            ctx.moveTo(prev[0],prev[1]);
-            ctx.lineTo(prev[0]+6,prev[1]);
-          }
-        }
-        if (i < coords.length-1) {
-          var next = coords[i+1];
-          if (next !== null) {
-            ctx.moveTo(next[0]-6,next[1]);
-          }
-        }
-        return;
-      }
-      
-      if (i == 0) {
-        ctx.moveTo(p[0],p[1]);
-        return;
-      }
+  var highlightedMis = ["Apollo 11"];
+  var highlightedAstr = ["Yury Gagarin"];
 
-      ctx.lineTo(p[0],p[1]);
-    });
-    ctx.stroke();
-  }
 
   function brushstart() {
     d3.event.sourceEvent.stopPropagation();
@@ -336,39 +342,7 @@ function paracoords_update(data, isMissions) {
       }
     });
 
-    // show ticks for active brush dimensions
-    // and filter ticks to only those within brush extents
-    
-    svg.selectAll(".axis")
-        .filter(function(d) {
-          return actives.indexOf(d) > -1 ? true : false;
-        })
-        .classed("active", true)
-        .each(function(dimension, i) {
-          var extent = extents[i];
-          d3.select(this)
-            .selectAll(".tick text")
-            .style("display", function(d) {
-              var value = dimension.type.coerce(d);
-              return dimension.type.within(value, extent, dimension) ? null : "none";
-            });
-        });
-
-    /*// reset dimensions without active brushes
-    svg.selectAll(".axis")
-        .filter(function(d) {
-          return actives.indexOf(d) > -1 ? false : true;
-        })
-        .classed("active", false)
-        .selectAll(".tick text")
-          .style("display", null);
-    */
-
-    ctx.clearRect(0,0,width,height);
-    ctx.globalAlpha = d3.min([0.85/Math.pow(selected.length,0.3),1]);
-    render(selected);
-
-    selectionList.update(selected, isMissions);
+    renderList(selected, isMissions);    
   }
 }
 

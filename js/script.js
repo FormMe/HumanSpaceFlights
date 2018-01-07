@@ -261,6 +261,7 @@ d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
 		astr["Country Flag"] = get_country_html(astr);
 		astr["Birth Year"] = astr["Birth Date"];
 		astr["Death Year"] = astr["Death Date"];
+		astr["highlighted"] = false;
     })
     astronauts = astronautsData;
 });
@@ -282,6 +283,7 @@ d3.csv("data/missions.csv", function (error, missionsData) {
                 "Launch Mission": info["Launch Mission"],
                 "Year": info["Year"],
                 "Habitation": info["Habitation"] == "" ? "Space" : info["Habitation"],
+                "highlighted": false,
                 "Crew": v.map(function (part) {
                     return {
                         "Members": part["Crew"].split(',').map(name => name.trim()),

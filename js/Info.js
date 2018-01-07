@@ -1,7 +1,7 @@
 class Info{
 
 	update(data, isMission){
-		console.log(data);
+		this.d = data;
 		if(isMission){
 			data = {
 				caption: data["Launch Mission"],
@@ -93,6 +93,7 @@ class Info{
 	}
 
 	remove(){
+		if (this.d) this.d.highlighted = false;
 		this.draw({caption:"", table:[]});
 	    d3.select('#Info').select("table")
 	    	.select("caption")
