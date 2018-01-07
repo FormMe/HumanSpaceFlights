@@ -186,6 +186,7 @@ function create_year_brush(){
     function brushed() {
 	    var s = d3.event.selection;
 	    var dataType = d3.select("#DataType").node().value; 
+	    var fMis = curMis;
 	    if (s != null) {
 	        var years = d3.select(".Xaxis").selectAll('.tick')
 	                        .filter(function (d) {
@@ -193,23 +194,16 @@ function create_year_brush(){
 	                            return x >= s[0] && x <= s[1];
 	                        })._groups[0]
 	                        .map(d => parseInt(d.__data__));
-	        var fMis = curMis.filter(d => years.includes(d["Year"]));
-	        if (dataType == "Astonauts"){
-	            group_astronauts(astronauts, fMis);
-				paracoords_update(curAstrs, false);
-	        }
-	        else if (dataType == "Missions"){
-				paracoords_update(fMis, true);
-	        }
+	        fMis = fMis.filter(d => years.includes(d["Year"]));
 	    }
-	    else{
-	    	if (dataType == "Astonauts"){
-				paracoords_update(astronauts, false);
-	        }
-	        else if (dataType == "Missions"){
-				paracoords_update(missions, true);
-	        }
-	    }
+    	if (dataType == "Astonauts"){
+            group_astronauts(astronauts, fMis);
+			paracoords_update(curAstrs, false);
+        }
+        else if (dataType == "Missions"){
+			paracoords_update(fMis, true);
+        }
+	    
 	}	              
     d3.select('#FlightsChart').select('.brush').call(brush);   
 }

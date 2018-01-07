@@ -59,7 +59,6 @@ class FlightsChart{
 	update(stackedData, isMissions){
 
 		this.data = stackedData;
-		// this.selectionList.update(this.data);
 
 	   	d3.select("#BarChartTitle")		  
           .text(function () {
