@@ -221,13 +221,16 @@ function draw(d) {
   ctx.stroke();
 }
 
+var curData;
 function renderList(_data, isMissions) {
+  if(_data == null) _data = curData;
   ctx.clearRect(0,0,width,height);
   _data.forEach(draw);
   selectionList.update(_data, isMissions);
 }
 
 function paracoords_update(data, isMis) {
+  curData = data;
   isMissions = isMis;
   if (isMissions) {
     dimensions = misDimensions;
@@ -307,11 +310,6 @@ function paracoords_update(data, isMis) {
   d3.selectAll(".axis.Country .tick text")
     .style("fill", color);
     
-
-  var highlightedMis = ["Apollo 11"];
-  var highlightedAstr = ["Yury Gagarin"];
-
-
   function brushstart() {
     d3.event.sourceEvent.stopPropagation();
   }
@@ -342,6 +340,7 @@ function paracoords_update(data, isMis) {
       }
     });
 
+    curData = selected;
     renderList(selected, isMissions);    
   }
 }

@@ -95,16 +95,19 @@ class Graph{
 		}	
 
 		function clicked(d) {
+	    	var dataType = d3.select("#DataType").node().value; 
 			if (d.type == 'astronaut' && d.value.Country == "Other") return 5;
 			if (d.type == "mission"){
 				t.info.update(d.value, true);
 				t.update(create_mis_graph(d.value));
-		    	renderList(null, false);
+		    	if (dataType == "Missions")
+		    		renderList(null, true);
 			}
 			else if (d.type == "astronaut"){
 				t.info.update(d.value, false);
 				t.update(create_astr_graph(d.value));
-		    	renderList(null, false);
+		    	if (dataType == "Astronauts")
+		    		renderList(null, false);
 			}
 		}
 	}

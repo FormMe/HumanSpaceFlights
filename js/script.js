@@ -1,13 +1,12 @@
 
 margin = {top: 20, right: 10, bottom: 15, left: 30};
 svgWidth = 900;
-svgHeight = 500;
+svgHeight = 400;
 var Countries = ["USSR/Russia", "USA", "China", "Other"]
 var color = d3.scaleOrdinal()
             .range(["#7c587f", "#a4bcbc", "#007f97", "#4c3f77"])
             .domain(Countries);
 
-// let selectionTable = new SelectionTable(color);
 let missions, astronauts;
 let info = new Info();
 let graph = new Graph(color, info);
@@ -143,14 +142,7 @@ function filter() {
     var dataType = d3.select("#DataType").node().value; 
     curMis = filter_habitation(filter_fatality(missions));  
     if (dataType == "Astonauts"){  
-        flightsChart.update(group_astronauts(astronauts, curMis), false);     
-        // astronauts.forEach(function (astr) {
-        //     var b = curAstrs.find(function (a) {
-        //         return a.Name == astr.Name;
-        //     });
-        //     if(b == undefined)
-        //         console.log(astr);
-        // });
+        flightsChart.update(group_astronauts(astronauts, curMis), false);   
     	if(firstParaCoord){
     		paracoords_update(astronauts, false);
     		firstParaCoord = false;
@@ -171,13 +163,6 @@ function filter_astr() {
     if (dataType == "Astonauts"){
         curMis = filter_habitation(filter_fatality(missions));  
         flightsChart.update(group_astronauts(astronauts, curMis), false); 
-        // astronauts.forEach(function (astr) {
-        //     var b = curAstrs.find(function (a) {
-        //         return a.Name == astr.Name;
-        //     });
-        //     if(b == undefined)
-        //         console.log(astr);
-        // });  
     	if(firstParaCoord){
     		paracoords_update(astronauts, false);
     		firstParaCoord = false;
@@ -196,30 +181,36 @@ function create_year_brush(){
     brush = d3.brushX()
               .extent([[margin.left, svgHeight - margin.top - margin.bottom],
                        [svgWidth - margin.left - margin.right, svgHeight - 3]])
-              .on("end", function brushed() {
-                            var s = d3.event.selection;
-                            if (s != null) {
-                                var years = d3.select(".Xaxis").selectAll('.tick')
-                                                .filter(function (d) {
-                                                    var x = d3.select(this)._groups[0][0].transform.animVal[0].matrix.e;
-                                                    return x >= s[0] && x <= s[1];
-                                                })._groups[0]
-                                                .map(d => parseInt(d.__data__));
-                                var fMis = curMis.filter(d => years.includes(d["Year"]));
-                                console.log(curMis);
-                                var dataType = d3.select("#DataType").node().value; 
-                                if (dataType == "Astonauts"){
-                                    group_astronauts(astronauts, fMis);
-    								paracoords_update(curAstrs, false);
-                                    selectionList.update(curAstrs, false);
-                                }
-                                else if (dataType == "Missions"){
-    								paracoords_update(fMis, true);
-                                    selectionList.update(fMis, true);
-                                }
-                            }
-                        });
-                  
+              // .on("brush", brushed)
+              .on("end", brushed);
+    function brushed() {
+	    var s = d3.event.selection;
+	    var dataType = d3.select("#DataType").node().value; 
+	    if (s != null) {
+	        var years = d3.select(".Xaxis").selectAll('.tick')
+	                        .filter(function (d) {
+	                            var x = d3.select(this)._groups[0][0].transform.animVal[0].matrix.e;
+	                            return x >= s[0] && x <= s[1];
+	                        })._groups[0]
+	                        .map(d => parseInt(d.__data__));
+	        var fMis = curMis.filter(d => years.includes(d["Year"]));
+	        if (dataType == "Astonauts"){
+	            group_astronauts(astronauts, fMis);
+				paracoords_update(curAstrs, false);
+	        }
+	        else if (dataType == "Missions"){
+				paracoords_update(fMis, true);
+	        }
+	    }
+	    else{
+	    	if (dataType == "Astonauts"){
+				paracoords_update(astronauts, false);
+	        }
+	        else if (dataType == "Missions"){
+				paracoords_update(missions, true);
+	        }
+	    }
+	}	              
     d3.select('#FlightsChart').select('.brush').call(brush);   
 }
 
@@ -262,6 +253,7 @@ d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
 		astr["Birth Year"] = astr["Birth Date"];
 		astr["Death Year"] = astr["Death Date"];
 		astr["highlighted"] = false;
+        astr["Year"] = astr["Year"] == "" ? astr["Birth Date"] : astr["Year"];
     })
     astronauts = astronautsData;
 });
