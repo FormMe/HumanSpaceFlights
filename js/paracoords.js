@@ -226,7 +226,6 @@ function renderList(_data, isMissions) {
   if(_data == null) _data = curData;
   ctx.clearRect(0,0,width,height);
   _data.forEach(draw);
-  selectionList.update(_data, isMissions);
 }
 
 function paracoords_update(data, isMis) {
@@ -279,6 +278,7 @@ function paracoords_update(data, isMis) {
   ctx.globalAlpha = d3.min([0.85/Math.pow(data.length,0.3),1]);
   render(data);
   selectionList.update(data, isMissions);
+  summaryChart.update(data, isMissions);
 
   axes.append("g")
       .each(function(d) {
@@ -300,7 +300,10 @@ function paracoords_update(data, isMis) {
           .extent([[-10,0], [10,height]])
           .on("start", brushstart)
           .on("brush", brush)
-          .on("end", brush)
+          .on("end", function () {
+            var selected = brush();
+            summaryChart.update(selected, isMissions);
+          } )
         )
       })
     .selectAll("rect")
@@ -342,6 +345,8 @@ function paracoords_update(data, isMis) {
 
     curData = selected;
     renderList(selected, isMissions);    
+    selectionList.update(selected, isMissions);
+    return selected;
   }
 }
 

@@ -15,7 +15,7 @@
     <script src="bower_components/d3-tip/index.js"></script>
     <script src="js/divgrid.js"></script>
     <script src="js/FlightsChart.js"></script>
-    <script src="js/SunburstStat.js"></script>
+    <script src="js/SummaryChart.js"></script>
     <script src="js/graphCreator.js"></script>
     <script src="js/graph.js"></script>
     <script src="js/Info.js"></script>
@@ -26,7 +26,6 @@
 <!-- 	<div id='stars'></div>
 	<div id='stars2'></div>
 	<div id='stars3'></div> -->
-
 
     <div id="header">
         <img class='logo' src="pics/roscosmos.png" width="57" height="62"/>
@@ -128,7 +127,9 @@
     	</div>
     	
     	<div class="view sunburst">
-			<svg id='Sunburst'> </svg>
+		    <label id='sumTitle'>Count of missions</label>
+		    <hr>
+			<svg id='SummaryChart'> </svg>
     	</div>
     </div>
 

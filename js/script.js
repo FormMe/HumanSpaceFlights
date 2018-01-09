@@ -12,7 +12,7 @@ let info = new Info();
 let graph = new Graph(color, info);
 let selectionList = new SelectionList(color, graph, info);
 let flightsChart = new FlightsChart(svgHeight, svgWidth, margin, selectionList, color);
-let sunburstStat = new SunburstStat();
+let summaryChart = new SummaryChart(color);
 let curMis = [], curAstrs = [];
 var brush;
 var firstParaCoord = true;
@@ -62,10 +62,12 @@ function filter_walk(astrData){
     });
 }
 
+var notFound = [];
 
 function group_astronauts(astrData, misData){
 
     curAstrs = [];
+    notFound = []
     var yearGroupMis = d3.nest()
                     .key(function(d) { return d['Year']; })
                     .entries(misData);
@@ -90,7 +92,7 @@ function group_astronauts(astrData, misData){
         found.forEach(function (astr) {
                 astr["Year Mission"] = astrs.find(a => a.Name == astr.Name)["Year Mission"];
             });
-        var notFound = [...new Set(astrs.filter(astr => found.find(a => a.Name == astr.Name) == undefined))];
+        var nFound = [...new Set(astrs.filter(astr => found.find(a => a.Name == astr.Name) == undefined))];
 
         found = filter_status(filter_gender(filter_walk(found)));
         curAstrs = curAstrs.concat(found);
@@ -99,11 +101,15 @@ function group_astronauts(astrData, misData){
                         .key(d => d['Country'])
                         .entries(found);
 
-        if(notFound.length != 0){
+        if(nFound.length != 0){
             grouped.push({
                 key: "Other",
-                values: notFound
+                values: nFound
             });
+            nFound.forEach(function (d) {
+                d.Country = "Other"
+            });
+            notFound = notFound.concat(nFound);
         }
         y.values = Countries.map(function (c) {
             return grouped.find(function (a) {
@@ -202,8 +208,7 @@ function create_year_brush(){
         }
         else if (dataType == "Missions"){
 			paracoords_update(fMis, true);
-        }
-	    
+        }	    
 	}	              
     d3.select('#FlightsChart').select('.brush').call(brush);   
 }
@@ -295,7 +300,6 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     curMis = missions;
     flightsChart.drawLegend();
     flightsChart.update(group_missions(missions), true);    
-    sunburstStat.update([]); 
     create_year_brush();
     paracoords_update(missions, true);
 
