@@ -303,6 +303,12 @@ function paracoords_update(data, isMis) {
           .on("end", function () {
             var selected = brush();
             summaryChart.update(selected, isMissions);
+            if (isMissions) {
+              flightsChart.update(group_missions(selected), isMissions);  
+            }
+            else{
+              flightsChart.update(group_astronauts(selected, curMis), isMissions); 
+            }
           } )
         )
       })
