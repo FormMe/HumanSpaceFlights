@@ -243,7 +243,7 @@ function complete_graph() {
 function get_country_html(d){
     var code = (d["Country Code"] || "").toLowerCase();
     if (code && ["us", "ru", "cn"].indexOf(code) == -1) {
-        return "<img src='https://flagcdn.com/w40/" + code + ".png' width='22' height='15' alt='" + code.toUpperCase() +
+        return "<img src='pics/flags/" + code + ".svg' width='22' height='15' alt='" + code.toUpperCase() +
                "' title='" + (d.Nationality || d.Country) + "'>";
     }
     switch(d.Country){

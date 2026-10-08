@@ -506,7 +506,7 @@ Cai Xuzhe,2010,Active,1976-05-01,"Shenzhou, Hebei, China",Male,,"Senior Colonel,
 Charles Simonyi,,Retired,1948-09-10,"Budapest, Hungary",Male,"University of California, Berkeley (BS)Stanford University (PhD)",,,2,638,0,0,"Soyuz TMA-10, Soyuz TMA-14",,,USA,Hungary / United States,US
 Chen Dong,2010,Active,1978-12-12,"Luoyang, Henan, China",Male,PLA Air Force Aviation University; Xi'an Jiaotong University,"Major general, People's Liberation Army Aerospace Force",People's Liberation Army Air Force,3,10047,6,37,"Shenzhou 11, Shenzhou 14, Shenzhou 20",,,China,China,CN
 Chen Zhongrui,2020,Active,1984-10-01,"Puyang, Henan, China",Male,,"Lieutenant colonel, People's Liberation Army Ground Force",,1,4896,1,6,Shenzhou 20,,,China,China,CN
-Chiaki Mukai,1985,Retired,1952-05-06,"Tatebayashi, Gunma Prefecture, Japan",Female,Keio University,,,1,568,0,0,STS-95 (Discovery),,,Other,Japan,JP
+Chiaki Mukai,1985,Retired,1952-05-06,"Tatebayashi, Gunma Prefecture, Japan",Female,Keio University,,,2,568,0,0,"STS-65 (Columbia), STS-95 (Discovery)",,,Other,Japan,JP
 Chris A. Hadfield,1992,Retired,1959-08-29,"Sarnia, Ontario, Canada",Male,Milton District High School; Royal Military College of Canada; Royal Roads University,,,3,3976,2,15,"STS-74 (Atlantis), STS-100 (Endeavor), Soyuz TMA-07M",,,Other,Canada,CA
 Christer Fuglesang,1992,Retired,1957-03-18,"Stockholm, Sweden",Male,Royal Institute of Technology (MSc) Stockholm University (PhD),,,2,642,5,32,"STS-116 (Discovery), STS-128 (Discovery)",,,Other,Sweden,SE
 Christopher Sembroski,,Active,1979-08-28,Kannapolis,Male,"Embry–Riddle Aeronautical University, Daytona Beach",senior airman,,1,71,0,0,Inspiration4,,,USA,United States,US
@@ -542,7 +542,7 @@ Helen Sharman,1989,Retired,1963-05-30,"Sheffield, West Riding of Yorkshire, Engl
 Ilan Ramon,1996,Deceased,1954-06-20,"Ramat Gan, Israel",Male,Tel Aviv University (BSc),"Colonel, Israeli Air Force",Israeli Air Force,1,382,0,0,STS-107 (Columbia),2003-02-01,,Other,Israel,IL
 Ivan Bella,1998,Retired,1964-05-21,"Brezno, Czechoslovakia (present Slovakia)",Male,,Brigadier general,Slovak Air Force,1,190,0,0,Soyuz TM-29,,,Other,Czechoslovakia / Slovakia,SK
 Ivan Vagner,2010,Active,1985-07-10,"Severoonezhsk, Soviet Union",Male,Baltic State Technical University,lieutenant,,2,10008,1,7,"Soyuz MS-16, Soyuz MS-26",,,USSR/Russia,Russia,RU
-J. Marc Garneau,,Deceased,1949-02-23,"Quebec City, Quebec, Canada",Male,Imperial College London; Royal Military College of Canada,Naval captain,,2,698,0,0,"STS-77 (Endeavor), STS-97 (Endeavor)",2025-06-04,,Other,Canada,CA
+J. Marc Garneau,,Deceased,1949-02-23,"Quebec City, Quebec, Canada",Male,Imperial College London; Royal Military College of Canada,Naval captain,,3,698,0,0,"STS-41-G (Challenger), STS-77 (Endeavor), STS-97 (Endeavor)",2025-06-04,,Other,Canada,CA
 Jack Hathaway,2021,Active,1982-10-05,"South Windsor, Connecticut, U.S.",Male,Cranfield University; Empire Test Pilots' School; Naval War College,,United States Navy,1,5688,0,0,SpaceX Crew-12,,,USA,United States,US
 Jannicke Mikkelsen,,Active,1986-06-08,"Edinburgh, Scotland",Female,National Film and Television School,,,1,72,0,0,Fram2,,,Other,Norway / United Kingdom,GB
 Jasmin Moghbeli,2017,Active,1983-06-24,"Bad Nauheim, West Germany",Female,Baldwin Senior High School; Massachusetts Institute of Technology; Naval Postgraduate School,"Lieutenant Colonel, USMC",United States Marine Corps,1,4778,1,7,SpaceX Crew-7,,,USA,Iran / United States,US
@@ -630,7 +630,7 @@ Sergey Teteryatnikov,2021,Active,1988-12-19,"Uspenovka, Stavropol Krai, Russian 
 Sheikh Muszaphar Shukor,,Retired,1972-07-27,"Kuala Lumpur, Malaysia",Male,Manipal Academy of Higher Education (MBBS),,,1,261,0,0,Soyuz TMA-11,,,Other,Malaysia,MY
 Shubhanshu Shukla,2019,Active,1985-10-10,"Lucknow, Uttar Pradesh, India",Male,National Defence Academy,,,1,483,0,0,Axiom Mission 4,,,Other,India,IN
 Sian Proctor,,Active,1970-03-28,"Hagåtña, Guam",Female,Arizona State University; PennWest Edinboro,,,1,71,0,0,Inspiration4,,,USA,United States,US
-Sigmund Jähn,1976,Deceased,1937-02-13,"Morgenröthe-Rautenkranz, Saxony, Third Reich",Male,Central Institute for Earth Physics; Franz Mehring Military Academy; Gagarin Air Force Academy,"10px Generalmajor, Air Forces of the National People's Army",8th Fighter Wing,1,189,0,0,Soyuz 31,2019-09-21,,Other,East Germany / Germany,DD
+Sigmund Jähn,1976,Deceased,1937-02-13,"Morgenröthe-Rautenkranz, Saxony, Third Reich",Male,Central Institute for Earth Physics; Franz Mehring Military Academy; Gagarin Air Force Academy,"10px Generalmajor, Air Forces of the National People's Army",8th Fighter Wing,1,189,0,0,Soyuz 31,2019-09-21,,Other,East Germany / Germany,DE
 Soichi Noguchi,1996,Retired,1965-04-15,"Yokohama, Japan",Male,University of Tokyo,,,2,8266,4,27,"STS-114 (Discovery), Soyuz TMA-17",,,Other,Japan,JP
 Song Lingdong,2020,Active,1990-08-01,"Heze, Shandong, China",Male,,"Lieutenant colonel, People's Liberation Army Ground Force",,1,4392,0,0,Shenzhou 19,,,China,China,CN
 Sophie Adenot,,Active,1982-07-05,"Cosne-Cours-sur-Loire, France",Female,Empire Test Pilots' School; Institut Supérieur de l'Aéronautique et de l'Espace; Maison d'éducation de la Légion d'honneur Saint-Denis,colonel,French Air Force,1,5688,0,0,SpaceX Crew-12,,,Other,France,FR
@@ -646,7 +646,7 @@ Thomas Pesquet,2009,Active,1978-02-27,"Rouen, Normandy, France",Male,Institut Su
 Thomas Reiter,1992,Retired,1958-05-23,"Frankfurt, West Germany",Male,University of the Bundeswehr Munich,"Brigadier General, Luftwaffe (Bundeswehr)",,2,8406,3,14,"Soyuz TM-22, STS-121 (Discovery)",,,Other,Germany,DE
 Tibor Kapu,2024,Active,1991-11-05,"Vásárosnamény, Hungary",Male,Budapest University of Technology and Economics (ME),,,1,483,0,0,Axiom Mission 4,,,Other,Hungary,HU
 Toyohiro Akiyama,,Deceased,1942-07-22,"Tokyo, Japan",Male,"International Christian University (BS, 1966?)",,,1,190,0,0,Soyuz TM-11,2026-08-26,,Other,Japan,JP
-Ulf Merbold,1978,Retired,1941-06-20,"Greiz, Thuringia, Germany",Male,University of Stuttgart,,,3,1176,0,0,"STS-9 (Columbia), STS-42 (Discovery), Soyuz TM-20",,,Other,East Germany / Germany,DD
+Ulf Merbold,1978,Retired,1941-06-20,"Greiz, Thuringia, Germany",Male,University of Stuttgart,,,3,1176,0,0,"STS-9 (Columbia), STS-42 (Discovery), Soyuz TM-20",,,Other,East Germany / Germany,DE
 Ulrich Walter,1987,Retired,1954-02-09,"Iserlohn, West Germany",Male,Märkisches Gymnasium; University of Cologne,lieutenant,,1,240,0,0,STS-55 (Columbia),,,Other,Germany,DE
 Umberto Guidoni,,Retired,1954-08-18,"Rome, Italy",Male,Sapienza University of Rome,,,2,663,0,0,"STS-75 (Columbia), STS-100 (Endeavor)",,,Other,Italy,IT
 Victor Glover,2013,Active,1976-04-30,"Pomona, California, US",Male,Air University; California Polytechnic State University; Naval Postgraduate School,"Captain, United States Navy",,1,4232,4,26,Artemis II,,,USA,United States,US

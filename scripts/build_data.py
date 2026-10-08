@@ -186,6 +186,8 @@ def country_code(category, codes):
     if preferred:
         return preferred
     codes = [c for c in codes if c not in ("US", "RU", "CN")] or codes
+    # dissolved states -> successor flag available in pics/flags
+    codes = sorted({{"DD": "DE", "SU": "RU", "CS": "CZ", "YU": "RS"}.get(c, c) for c in codes})
     return codes[0] if codes else ""
 
 
@@ -506,17 +508,19 @@ def main():
     for q in new_missions:
         new_flyers |= launch_crew[q]
 
-    def best_name(candidates, person):
+    def name_scores(candidates, person):
         names = [n for n in [first(person.get("label", []))] + person.get("alt_labels", []) if n]
-        best, best_score = None, 0
-        for cand in candidates:
-            score = max([same_person(cand, n) for n in names] or [0])
-            if score > best_score:
-                best, best_score = cand, score
-        return best if best_score >= 3 else None
+        return {c: max([same_person(c, n) for n in names] or [0]) for c in sorted(set(candidates))}
+
+    def best_name(candidates, person):
+        scores = name_scores(candidates, person)
+        best = max(scores, key=lambda c: (scores[c], c in legacy_astr_by_name), default=None)
+        return best if best and scores[best] >= 3 else None
 
     person_name = {}       # qid -> name used in the CSV files
-    for q, person in people.items():
+    alias = {}             # other spellings of the same person in the legacy missions
+    for q in sorted(people):
+        person = people[q]
         if not is_person(q):
             continue
         label = first(person["label"])
@@ -524,7 +528,13 @@ def main():
         for m in person_links[q]:
             if m in wd_to_legacy:
                 legacy_names += legacy_crew[wd_to_legacy[m]]
-        name = best_name(set(legacy_names), person) if legacy_names else None
+        name = best_name(legacy_names, person) if legacy_names else None
+        if name:
+            scores = name_scores(legacy_names, person)
+            for other, score in scores.items():
+                if other != name and score >= 3 and other not in legacy_astr_by_name \
+                        and same_person(other, name) >= 3:
+                    alias[other] = name
         if name is None and q in new_flyers:
             # same spelling is not enough (Clifton C. Williams vs Christopher Williams):
             # the birth date has to match too
@@ -620,6 +630,9 @@ def main():
             for member in members:
                 mission_duration[(label, member)] = float(days) if days else None
 
+    for row in legacy_missions:
+        crew = [c.strip() for c in row["Crew"].split(",") if c.strip()]
+        row["Crew"] = ", ".join(alias.get(c, c) for c in crew)
     missions_out = legacy_missions + new_rows
 
     # Legacy missions that are still "in orbit" in the old file have landed by now.
