@@ -48,7 +48,7 @@ MISSION_COLUMNS = ["Crew", "Country", "Habitation", "Brief Mission Summary", "Fa
 ASTRONAUT_COLUMNS = ["Name", "Year", "Status", "Birth Date", "Birth Place", "Gender",
                      "Alma Mater", "Military Rank", "Military Branch", "Space Flights",
                      "Space Flight (hr)", "Space Walks", "Space Walks (hr)", "Missions",
-                     "Death Date", "Death Mission", "Country", "Nationality"]
+                     "Death Date", "Death Mission", "Country", "Nationality", "Country Code"]
 
 # Not orbital human spaceflights: kept out, like in the original dataset.
 SUBORBITAL = re.compile(
@@ -160,6 +160,14 @@ def nationality(names):
         if n not in cleaned:
             cleaned.append(n)
     return " / ".join(cleaned)
+
+
+def country_code(category, codes):
+    preferred = {"USA": "US", "USSR/Russia": "RU", "China": "CN"}.get(category)
+    if preferred:
+        return preferred
+    codes = [c for c in codes if c not in ("US", "RU", "CN")] or codes
+    return codes[0] if codes else ""
 
 
 def mission_country(name, mission):
@@ -602,6 +610,7 @@ def main():
         q = by_name_q.get(a["Name"])
         cat = a["Country"]
         a["Nationality"] = {"USA": "United States", "USSR/Russia": "USSR / Russia"}.get(cat, cat)
+        a["Country Code"] = country_code(cat, [])
         if q:
             person = people[q]
             box = wikipedia_details(q)
@@ -683,6 +692,7 @@ def main():
             "Death Mission": "",
             "Country": country_category(citizenship),
             "Nationality": nationality(citizenship),
+            "Country Code": country_code(country_category(citizenship), person.get("citizenship_code", [])),
         })
         seen.add(name)
 
