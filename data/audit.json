@@ -1,10 +1,10 @@
 {
+ "suspicious_records": {},
  "crew_without_record": {},
  "missing_field_counts": {
   "Alma Mater": 32,
   "Birth Place": 1,
-  "Space Flight (hr)": 1,
-  "Year": 61
+  "Year": 60
  },
  "astronauts_with_gaps": {
   "Aidyn Aimbetov": [
@@ -85,9 +85,7 @@
    "Year"
   ],
   "Georgy Ivanov": [
-   "Year",
-   "Alma Mater",
-   "Space Flight (hr)"
+   "Alma Mater"
   ],
   "Gregory B. Jarvis": [
    "Year"
@@ -275,9 +273,7 @@
    "Alma Mater"
   ]
  },
- "missions_without_summary": [
-  "Apollo-Soyuz"
- ],
+ "missions_without_summary": [],
  "sources": {
   "Wikidata/Wikipedia": 194,
   "legacy": 29,

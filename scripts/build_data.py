@@ -493,7 +493,21 @@ def make_audit(missions, astronauts):
     for missing in gaps.values():
         for f in missing:
             field_counts[f] += 1
+    # plausibility: a wrong person (namesake) usually shows up here
+    suspicious = {}
+    for a in astronauts:
+        flights = sorted(r["Launch Data"] for r in missions
+                         if a["Name"] in [c.strip() for c in r["Crew"].split(",")])
+        born = legacy_birth(a["Birth Date"])
+        if flights and born[:4].isdigit():
+            age = int(flights[0][:4]) - int(born[:4])
+            if not 20 <= age <= 80:
+                suspicious[a["Name"]] = "age %d at first flight" % age
+        died = legacy_birth(a["Death Date"])
+        if flights and died[:4].isdigit() and died < flights[-1]:
+            suspicious[a["Name"]] = "death date %s before flight %s" % (died, flights[-1])
     return {
+        "suspicious_records": suspicious,
         "crew_without_record": {n: m for n, m in sorted(crew.items()) if n not in names},
         "missing_field_counts": dict(sorted(field_counts.items())),
         "astronauts_with_gaps": dict(sorted(gaps.items())),
@@ -678,9 +692,13 @@ def main():
 
     person_name = {}       # qid -> name used in the CSV files
     alias = {}             # other spellings of the same person in the legacy missions
+    flew = set(person_links) | set(direct)
+    for crew in list(launch_crew.values()) + list(landing_crew.values()):
+        flew |= crew
     for q in sorted(people):
         person = people[q]
-        if not is_person(q):
+        # namesakes found by the title lookup (a poet called Georgy Ivanov...) are ignored
+        if not is_person(q) or q not in flew:
             continue
         label = first(person["label"])
         legacy_names = []
@@ -802,7 +820,10 @@ def main():
     legacy_to_wd = {v: k for k, v in wd_to_legacy.items()}
     for row in legacy_missions:
         q = legacy_to_wd.get(row["Launch Mission"])
-        if not row["Brief Mission Summary"].strip() and q:
+        fixed = override(row["Launch Mission"], "*", "summary")
+        if fixed:
+            row["Brief Mission Summary"] = fixed
+        elif not row["Brief Mission Summary"].strip() and q:
             row["Brief Mission Summary"] = summarize(
                 extracts.get(article(wd_missions[q]) or "", ""), wd_missions[q].get("description"))
         crew = [c.strip() for c in row["Crew"].split(",") if c.strip()]
@@ -819,6 +840,12 @@ def main():
                 row["Return Data"] = ret
                 row["Return Mission"] = override(row["Launch Mission"], "*", "return_mission") or row["Launch Mission"]
                 row["Prolongation"] = "%.1f" % (parse_date(ret) - parse_date(row["Launch Data"])).days
+
+    # durations of the legacy flights as well (time in space fallback)
+    for row in legacy_missions:
+        for c in row["Crew"].split(","):
+            if c.strip() and row["Prolongation"]:
+                mission_duration.setdefault((row["Launch Mission"], c.strip()), float(row["Prolongation"]))
 
     # crew name -> missions (in order) for every person of the final dataset
     flights_of = defaultdict(list)

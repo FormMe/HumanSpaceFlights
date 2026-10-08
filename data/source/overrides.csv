@@ -9,3 +9,5 @@ Shenzhou 21,*,return_mission,Shenzhou 22
 Shenzhou 21,*,return_date,2026-05-29
 # Planned private mission, not flown yet (Wikidata has a placeholder launch date).
 Vast-1,*,skip,
+# Legacy mission without summary; Wikidata names it "Apollo–Soyuz Test Project".
+Apollo-Soyuz,*,summary,First joint US-Soviet spaceflight: Apollo docked with Soyuz 19 in orbit.
