@@ -1,0 +1,51 @@
+name: Update spaceflight data
+
+on:
+  schedule:
+    - cron: "17 4 * * 1"   # every Monday, 04:17 UTC
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/**"
+      - "data/source/**"
+      - ".github/workflows/update-data.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch raw data (Wikidata + Wikipedia)
+        run: python scripts/fetch_data.py
+
+      - name: Build CSV files for the app
+        run: |
+          if [ -f scripts/build_data.py ]; then python scripts/build_data.py; fi
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "No data changes"
+          else
+            git commit -m "Update spaceflight data ($(date -u +%Y-%m-%d))"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
