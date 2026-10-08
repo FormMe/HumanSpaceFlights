@@ -448,6 +448,7 @@ svg#Graph {
   #grid { height: 360px; font-size: 12px; }
   #grid .col-0 { flex: 1.8 1 0; }
   #grid .col-1 { flex: 0 0 36px; }
+  #grid .col-2 { flex: 0 0 84px; }
   .field .select,
   .field .select select { max-width: none; }
 }
