@@ -315,7 +315,7 @@ John L. Swigert,1966.0,Deceased,8/30/1931,"Denver, CO",Male,University of Colora
 Daniel M. Tani,1996.0,Retired,2/1/1961,"Ridley Park, PA",Male,MIT,,,2,3162,6.0,39.0,"STS-108 (Endeavor), STS-120 (Discovery)",,,USA,United States
 Joseph R. Tanner,1992.0,Retired,1/21/1950,"Danville, IL",Male,University of Illinois,,,4,1045,7.0,46.0,"STS-66 (Atlantis), STS-82 (Discovery), STS-97 (Endeavor), STS-115 (Discovery)",,,USA,United States
 Norman E. Thagard,1978.0,Retired,7/3/1943,"Marianna, FL",Male,Florida State University; University of Texas,,,5,3373,0.0,0.0,"STS-7 (Challenger), STS-51-B (Challenger), STS-30 (Atlantis), STS-42 (Discovery), STS-71 (Atlantis)",,,USA,United States
-Andrew S. W. Thomas,1992.0,Management,12/18/1951,"Adelaide, Australia",Male,University of Adelaide,,,4,4257,1.0,6.0,"STS-77 (Endeavor), STS-89 (Endeavor), STS-102 (Discovery), STS-114 (Discovery)",,,USA,Australia / United States
+Andrew S. W. Thomas,1992.0,Management,12/18/1951,"Adelaide, Australia",Male,University of Adelaide,,,4,4257,1.0,6.0,"STS-77 (Endeavor), STS-89 (Endeavor), STS-102 (Discovery), STS-114 (Discovery)",,,USA,United States
 Donald A. Thomas,1990.0,Retired,5/6/1955,"Cleveland, OH",Male,Case Western Reserve University; Cornell University,,,4,1040,0.0,0.0,"STS-65 (Columbia), STS-70 (Discovery), STS-83 (Columbia), STS-94 (Columbia)",,,USA,United States
 Stephen D. Thorne,1985.0,Deceased,2/11/1953,"Frankfurt, West Germany",Male,US Naval Academy,Lieutenant Commander,US Navy,0,0,0.0,0.0,,5/24/1986,,USA,United States
 Kathryn C. Thornton,1984.0,Retired,8/17/1952,"Montgomery, AL",Female,Auburn University; University of Virginia,,,4,975,3.0,21.0,"STS-33 (Discovery), STS-49 (Endeavor), STS-61 (Endeavor), STS-73 (Columbia)",,,USA,United States
@@ -325,7 +325,7 @@ Scott D. Tingle,2009.0,Active,7/19/1965,"Attleboro, MA",Male,Southeastern Massac
 Richard H. Truly,1969.0,Deceased,11/12/1937,"Fayette, MS",Male,Georgia Institute of Technology,Vice Admiral,US Navy (Retired),2,199,0.0,0.0,"STS-2 (Columbia), STS-8 (Challenger)",2024-02-27,,USA,United States
 Lodewijk van den Berg,,Deceased,3/24/1932,"Sluiskil, Netherlands",Male,Delft University of Technology; University of Delaware,,,1,168,0.0,0.0,STS-51-B (Challenger),2022-10-16,,USA,United States
 James D.A. van Hoften,1978.0,Retired,6/11/1944,"Fresno, CA",Male,University of California-Berkeley; Colorado State University,,,2,338,4.0,22.0,"STS-41-C (Challenger), STS-51-I (Discovery)",,,USA,United States
-Mark T. Vande Hei,2009.0,Active,11/10/1966,"Falls Church, VA",Male,Saint John’s University; Stanford University,Colonel,US Army,3,12561,0.0,0.0,"Soyuz MS-06, Soyuz MS-18, Soyuz MS-19",,,USA,United States
+Mark T. Vande Hei,2009.0,Active,11/10/1966,"Falls Church, VA",Male,Saint John’s University; Stanford University,Colonel,US Army,2,12561,0.0,0.0,"Soyuz MS-06, Soyuz MS-18",,,USA,United States
 Charles L. Veach,1984.0,Deceased,9/18/1944,"Chicago, IL",Male,US Air Force Academy,,,2,436,0.0,0.0,"STS-39 (Discovery), STS-52 (Columbia)",10/3/1995,,USA,United States
 Terry W. Virts,2000.0,Active,12/1/1967,"Baltimore, MD",Male,US Air Force Academy; Embry-Riddle Aeronautical University,Colonel,US Air Force,2,5122,3.0,18.0,"STS-130 (Endeavor), Soyuz TMA-15M",,,USA,United States
 James S. Voss,1987.0,Retired,3/3/1949,"Cordova, AL",Male,Auburn University; University of Colorado,Colonel,US Army (Retired),5,4853,4.0,22.0,"STS-44 (Atlantis), STS-53 (Discovery), STS-69 (Endeavor), STS-101 (Atlantis), STS-102 (Discovery)",,,USA,United States
@@ -346,8 +346,8 @@ Terrence W. Wilcutt,1990.0,Management,10/31/1949,"Russellville, KY",Male,Western
 Clifton C. Williams,1963.0,Deceased,9/26/1932,"Mobile, AL",Male,Auburn University,Major,US Marine Corps,1,5785,0.0,0.0,Soyuz MS-28,10/5/1967,,USA,United States
 Donald E. Williams,1978.0,Deceased,2/13/1958,"Lafayette, IN",Male,Purdue University,Captain,US Navy (Retired),2,287,0.0,0.0,"STS-51-D (Discovery), STS-34 (Atlantis)",2016-02-23,,USA,United States
 Jeffrey Williams,1996.0,Active,1/18/1958,"Superior, WI",Male,US Military Academy; US Naval Postgraduate School; US Naval War College,Colonel,US Army (Retired),4,12818,5.0,32.0,"STS-101 (Atlantis), Soyuz TMA-8, Soyuz TMA-16, Soyuz TMA-20M",,,USA,United States
-Sunita L. Williams,1998.0,Active,9/19/1965,"Euclid, OH",Female,US Naval Academy; Florida Institute of Technology,Captain,US Navy,4,14592,7.0,50.0,"STS-116 (Discovery), Soyuz TMA-05M, Boeing Crew Flight Test, SpaceX Crew-9",,,USA,United States
-Barry E. Wilmore,2000.0,Active,12/29/1962,"Murfreesboro, TN",Male,Tennessee Technological University; University of Tennessee,Captain,US Navy,4,11144,4.0,25.0,"STS-129 (Atlantis), Soyuz TMA-14M, Boeing Crew Flight Test, SpaceX Crew-9",,,USA,United States
+Sunita L. Williams,1998.0,Active,9/19/1965,"Euclid, OH",Female,US Naval Academy; Florida Institute of Technology,Captain,US Navy,3,14592,7.0,50.0,"STS-116 (Discovery), Soyuz TMA-05M, Boeing Crew Flight Test",,,USA,United States
+Barry E. Wilmore,2000.0,Active,12/29/1962,"Murfreesboro, TN",Male,Tennessee Technological University; University of Tennessee,Captain,US Navy,3,11144,4.0,25.0,"STS-129 (Atlantis), Soyuz TMA-14M, Boeing Crew Flight Test",,,USA,United States
 Stephanie D. Wilson,1996.0,Active,9/27/1966,"Boston, MA",Female,Harvard University; University of Texas,,,3,1031,0.0,0.0,"STS-121 (Discovery), STS-120 (Discovery), STS-131 (Discovery)",,,USA,United States
 Gregory R. Wiseman,2009.0,Active,11/11/1975,"Baltimore, MD",Male,Rensselaer Polytechnic Institute; Johns Hopkins University,Commander,US Navy,1,3968,2.0,13.0,Soyuz TMA-13M,,,USA,United States
 Peter J. Wisoff,1990.0,Retired,8/16/1958,"Norfolk, VA",Male,University of Virginia; Stanford University,,,4,1064,3.0,20.0,"STS-57 (Endeavor), STS-68 (Endeavor), STS-81 (Atlantis), STS-92 (Discovery)",,,USA,United States
@@ -408,7 +408,7 @@ Konstantin Kozeyev,1996.0,Retired,1967-12-01,"Korolyov, Russia",Male,Moscow Avia
 Vladimir Komarov,1961.0,Deceased,1927-03-16,"Moscow, Russia",Male,Krasnodar Higher Military Aviation School of Pilots,Сolonel,Russian Air Force,2,51,,,"Voskhod 1, Soyuz 1",1967-04-24,,USSR/Russia,USSR
 Yelena Kondakova,1989.0,Retired,1957-03-30,"Mytishchi, Russia",Female,,,,1,4272,,,"Soyuz TM-20, STS-84 (Atlantis)",,,USSR/Russia,Russia / USSR
 Dmitri Kondratyev,1997.0,Retired,1969-05-25,"Irkutsk, Russian SFSR",Male, Moscow State University for Economy/Yury A. Gagarin Air Force Academy,Сolonel,Russian Air Force,1,3823,2.0,10.0,Soyuz TMA-20,,,USSR/Russia,Russia
-Oleg Kononenko,1996.0,Active,1964-06-21,"Chardzhou, Turkmen SSR",Male,N. E. Zhukovskiy Aviation Institute,,,6,26655,3.0,18.0,"Soyuz TMA-12, Soyuz TMA-03M, Soyuz TMA-17M, Soyuz MS-11, Soyuz MS-24, Soyuz MS-25",,,USSR/Russia,Russia / Turkmenistan
+Oleg Kononenko,1996.0,Active,1964-06-21,"Chardzhou, Turkmen SSR",Male,N. E. Zhukovskiy Aviation Institute,,,4,26655,3.0,18.0,"Soyuz TMA-12, Soyuz TMA-03M, Soyuz TMA-17M, Soyuz MS-11",,,USSR/Russia,Russia / Turkmenistan
 Valery Korzun,1992.0,Retired,1953-03-05,"Krasny Sulin, Rostov Oblast",Male,Kachinsk higher military aviation pilot school/Gagarin Military Aviation Academy,Major General,Russian Air Force,2,9159,4.0,22.0,"Soyuz TM-24, STS-111 (Endeavor)",,,USSR/Russia,Russia
 Mikhail Korniyenko,1998.0,Retired,1960-04-05,"Syzran, Kuibyshev (Samara) Region, Russia",Male,Moscow Aviation Institute,,,2,12394,2.0,12.0,"Soyuz TMA-18, Soyuz TMA-16M",,,USSR/Russia,Russia
 Oleg Kotov,1996.0,Retired,1965-10-27,"Simferopol, Ukrainian SSR, Soviet Union",Male,Kirov Military Medical Academy,Lieutenant Colonel,Russian Air Force,3,12629,6.0,37.0,"Soyuz TMA-10, Soyuz TMA-17, Soyuz TMA-10M",,,USSR/Russia,Russia
@@ -431,7 +431,7 @@ Alexander Misurkin,2006.0,Retired,1977-09-23,"Yershichi, Smolensk Oblast, Russia
 Boris Morukov,1989.0,Deceased,1950-10-01,"Moscow, Russia",Male,Sechenov University,,,1,283,,,STS-106 (Atlantis),2015-01-01,,USSR/Russia,Russia / USSR
 Talgat Musabayev,1990.0,Deceased,1951-01-07,"Kargaly, Kazakhstan ",Male,Engineering Institute of Civil Aviation in Riga,Major General,Russian Air Force,3,8194,7.0,41.0,"Soyuz TM-19, Soyuz TM-27, Soyuz TM-32",2025-08-03,,USSR/Russia,Kazakhstan / Russia / USSR
 Andriyan Nikolayev,1960.0,Deceased,1929-09-05,"Shorshely, Russian SFSR, Soviet Union",Male,Chernigov High Aviation School,Major General,Russian Air Force,2,519,,,"Vostok 3, Soyuz 9",2004-07-03,,USSR/Russia,Russia / USSR
-Oleg Novitskiy,2006.0,Retired,1971-10-12,"Cherven, Minsk Voblast, Belarus",Male,Kachinskoye Military Pilot School named after A. Myasnikov/ Yury Gagarin Air Force Academy,Lieutenant Colonel,Russian Air Force,5,13082,,,"Soyuz TMA-06M, Soyuz MS-03, Soyuz MS-18, Soyuz MS-24, Soyuz MS-25",,,USSR/Russia,Russia / USSR
+Oleg Novitskiy,2006.0,Retired,1971-10-12,"Cherven, Minsk Voblast, Belarus",Male,Kachinskoye Military Pilot School named after A. Myasnikov/ Yury Gagarin Air Force Academy,Lieutenant Colonel,Russian Air Force,3,13082,,,"Soyuz TMA-06M, Soyuz MS-03, Soyuz MS-18",,,USSR/Russia,Russia / USSR
 Alexey Ovchinin,2006.0,Active,1971-09-28,"Rybinsk, Yaroslavl Oblast, Russian SFSR",Male,Yeysk Military Aviation College,Lieutenant Colonel,Russian Air Force,4,14284,,,"Soyuz TMA-20M, Soyuz MS-10, Soyuz MS-12, Soyuz MS-26",,,USSR/Russia,Russia
 Yury Onufriyenko,1989.0,Retired,1961-02-06,"Ryasne, Ukraine, Soviet Union",Male,Yeysk Military Aviation College/ Moscow State University,Colonel,Russian Air Force,2,9351,8.0,43.0,"Soyuz TM-23, STS-108 (Endeavor)",,,USSR/Russia,Russia / Ukraine
 Gennady Padalka,1989.0,Retired,1958-06-21,"Krasnodar, Russia",Male,Yeysk Military Aviation College,Colonel,Russian Air Force,5,21083,10.0,39.0,"Soyuz TM-28, Soyuz TMA-4, Soyuz TMA-14, Soyuz TMA-04M, Soyuz TMA-16M",,,USSR/Russia,Russia / USSR
@@ -490,7 +490,7 @@ Alexey Zubritsky,2018,Active,1992-08-22,"Volodymyrivske, Zaporizhzhia, Ukraine",
 Ali AlQarni,2023,Active,1992-03-01,"Sabt Al-Alaya, Balqarn, 'Asir Province, Saudi Arabia",Male,King Faisal Air Academy,captain,,1,221,0,0.0,Axiom Mission 2,,,Other,Saudi Arabia
 Alper Gezeravcı,,Active,1979-12-02,"Silifke, Mersin, Turkey",Male,,25px|bağlantı=Tuğgeneral Brigadier General,,1,520,0,0.0,Axiom Mission 3,,,Other,Turkey
 Andreas Mogensen,2009,Active,1976-11-02,"Copenhagen, Denmark",Male,Imperial College London; University of Texas at Austin,,,2,5015,0,0.0,"Soyuz TMA-18M, SpaceX Crew-7",,,Other,Kingdom of Denmark
-Andrew R. Morgan,2013,Retired,1976-02-05,"Morgantown, West Virginia, U.S.",Male,Dover High School; Uniformed Services University of the Health Sciences; United States Military Academy,"Brigadier General, U.S. Army",,2,6517,0,0.0,"Soyuz MS-13, Soyuz MS-15",,,USA,United States
+Andrew S.W. Thomas,1992,Retired,1951-12-18,"Adelaide, South Australia",Male,University of Adelaide,,,2,4257,0,0.0,"STS-77 (Endeavor), STS-89 (Endeavor)",,,USA,Australia / United States
 Andrey Fedyayev,2012,Active,1981-02-26,"Serov, Sverdlovsk Oblast, Russian SFSR, USSR",Male,,"Major, Russian Air Force",,2,4463,0,0.0,"SpaceX Crew-6, SpaceX Crew-12",,,USSR/Russia,Russia
 André Kuipers,1998,Retired,1958-10-05,"Amsterdam, Netherlands",Male,University of Amsterdam,,,2,4627,0,0.0,"Soyuz TMA-4, Soyuz TMA-03M",,,Other,Netherlands
 Anil Menon,,Active,1976-10-15,"Minneapolis, Minnesota, U.S.",Male,Harvard University; St. Paul Academy and Summit School; Stanford University,,,1,0.0,0,0.0,Soyuz MS-29,,,USA,United States
@@ -499,12 +499,13 @@ Anna Menon,2025,Active,1985-12-24,"Houston, Texas, U.S.",Female,Duke University;
 Anne McClain,2013,Active,1979-06-07,Spokane,Female,Gonzaga Preparatory School; United States Military Academy; United States Naval Test Pilot School,"Colonel, US Army",,2,8432,0,0.0,"Soyuz MS-11, SpaceX Crew-10",,,USA,United States
 Anousheh Ansari,,Retired,1966-09-12,"Mashhad, Iran",Female,George Mason University; George Washington University,,,1,261,0,0.0,Soyuz TMA-9,,,USA,Iran / United States
 Arnaldo Tamayo-Mendez,1978,Retired,1942-01-29,"Baracoa, Cuba",Male,,Brigadier General,,1,189,0,0.0,Soyuz 38,,,Other,Cuba
+Arnaud Prost,,Active,1992-11-06,Marseille,Male,,,,1,0.0,0,0.0,Vast-1,,,Other,France
 Bertalan Farkas,1978,Retired,1949-08-02,"Gyulaháza, Hungary",Male,Kilián György College for Aviation Technology; Krasnodar Higher Military Aviation School of Pilots named after Hero of the Soviet Union A.K. Serov,"Brigadier General, Hungarian Air Force",Hungarian Air Force,1,189,0,0.0,Soyuz 36,,,Other,Hungary
 Bjarni V. Tryggvason,1983,Deceased,1945-09-21,"Reykjavík, Iceland",Male,Richmond Secondary School; University of British Columbia; University of Western Ontario,,,1,308,0,0.0,STS-85 (Discovery),2022-04-05,,Other,Canada
-Cai Xuzhe,2010,Active,1976-05-01,"Shenzhou, Hebei, China",Male,,"Senior Colonel, People's Liberation Army Ground Force",,2,4368,0,0.0,"Shenzhou 14, Shenzhou 19",,,China,China
+Cai Xuzhe,2010,Active,1976-05-01,"Shenzhou, Hebei, China",Male,,"Senior Colonel, People's Liberation Army Ground Force",,2,8760,0,0.0,"Shenzhou 14, Shenzhou 19",,,China,China
 Charles Simonyi,,Retired,1948-09-10,"Budapest, Hungary",Male,"Stanford University; University of California, Berkeley",,,2,638,0,0.0,"Soyuz TMA-10, Soyuz TMA-14",,,USA,Hungary / United States
 Chen Dong,2010,Active,1978-12-12,"Luoyang, Henan, China",Male,PLA Air Force Aviation University; Xi'an Jiaotong University,"Major general, People's Liberation Army Aerospace Force",People's Liberation Army Air Force,3,774,0,0.0,"Shenzhou 11, Shenzhou 14, Shenzhou 20",,,China,China
-Chen Zhongrui,2020,Active,1984-10-01,"Puyang, Henan, China",Male,,"Lieutenant colonel, People's Liberation Army Ground Force",,1,0.0,0,0.0,Shenzhou 20,,,China,China
+Chen Zhongrui,2020,Active,1984-10-01,"Puyang, Henan, China",Male,,"Lieutenant colonel, People's Liberation Army Ground Force",,1,6480,0,0.0,Shenzhou 20,,,China,China
 Chiaki Naito-Mukai,1985,Retired,1952-05-06,"Tatebayashi, Gunma Prefecture, Japan",Female,Keio University,,,1,568,0,0.0,STS-65 (Columbia),,,Other,Japan
 Chris A. Hadfield,1992,Retired,1959-08-29,"Sarnia, Ontario, Canada",Male,Milton District High School; Royal Military College of Canada; Royal Roads University,,,3,3984,0,0.0,"STS-74 (Atlantis), STS-100 (Endeavor), Soyuz TMA-07M",,,Other,Canada
 Christer Fuglesang,1992,Retired,1957-03-18,"Stockholm, Sweden",Male,Royal Institute of Technology; Stockholm University,,,2,642,0,0.0,"STS-116 (Discovery), STS-128 (Discovery)",,,Other,Sweden
@@ -535,13 +536,11 @@ Gui Haichao,2020,Active,1986-11-01,"Yaoguan Town, Shidian County, Baoshan, Yunna
 Guy Laliberté,,Retired,1959-09-02,"Quebec City, Quebec, Canada",Male,,,,1,261,0,0.0,Soyuz TMA-16,,,Other,Canada
 Hans Schlegel,1987,Retired,1951-08-03,"Überlingen, West Germany",Male,Albertus Magnus Gymnasium; Hansagymnasium Köln; Lewis Central High School,Oberleutnant,Fallschirmjäger (Bundeswehr),2,546,0,0.0,"STS-55 (Columbia), STS-122 (Atlantis)",,,Other,Germany
 Hayley Arceneaux,,Active,1991-12-04,"Baton Rouge, Louisiana",Female,,,,1,71,0,0.0,Inspiration4,,,USA,United States
-Hazza Al Mansouri,2018,Retired,1983-12-13,"Al Wathba, United Arab Emirates",Male,Khalifa bin Zayed Air College,,,2,192,0,0.0,"Soyuz MS-12, Soyuz MS-15",,,Other,United Arab Emirates
 Helen Sharman,1989,Retired,1963-05-30,"Sheffield, West Riding of Yorkshire, England",Female,"Birkbeck, University of London; University of London; University of Sheffield",,,1,189,0,0.0,Soyuz TM-12,,,Other,United Kingdom
 Ilan Ramon,1996,Deceased,1954-06-20,"Ramat Gan, Israel",Male,Israeli Air Force Flight Academy; Tel Aviv University,"Colonel, Israeli Air Force",Israeli Air Force,1,382,0,0.0,STS-107 (Columbia),2003-02-01,,Other,Israel
 Ivan Bella,1998,Retired,1964-05-21,"Brezno, Czechoslovakia (present Slovakia)",Male,,Brigadier general,Slovak Air Force,1,190,0,0.0,Soyuz TM-29,,,Other,Czechoslovakia / Slovakia
 Ivan Vagner,2010,Active,1985-07-10,"Severoonezhsk, Soviet Union",Male,Baltic State Technical University,lieutenant,,2,9988,0,0.0,"Soyuz MS-16, Soyuz MS-26",,,USSR/Russia,Russia
-J. Marc Garneau,,Deceased,1949-02-23,"Quebec City, Quebec, Canada",Male,Imperial College London; Royal Military College of Canada,Naval captain,,2,698,0,0.0,"STS-77 (Endeavor), STS-97 (Endeavor)",2025-06-04,,Other,Canada
-Jack Hathaway,2021,Active,1982-10-05,"South Windsor, Connecticut, U.S.",Male,Cranfield University; Empire Test Pilots' School; Naval War College,,United States Navy,1,0.0,0,0.0,SpaceX Crew-12,,,USA,United States
+Jack Hathaway,2021,Active,1982-10-05,"South Windsor, Connecticut, U.S.",Male,Cranfield University; Empire Test Pilots' School; Naval War College,,United States Navy,1,5688,0,0.0,SpaceX Crew-12,,,USA,United States
 Jannicke Mikkelsen,,Active,1986-06-08,"Edinburgh, Scotland",Female,National Film and Television School,,,1,72,0,0.0,Fram2,,,Other,Norway / United Kingdom
 Jasmin Moghbeli,2017,Active,1983-06-24,"Bad Nauheim, West Germany",Female,Baldwin Senior High School; Massachusetts Institute of Technology; Naval Postgraduate School,"Lieutenant Colonel, USMC",United States Marine Corps,1,4778,0,0.0,SpaceX Crew-7,,,USA,Iran / United States
 Jean-François Clervoy,1985,Retired,1958-11-19,"Longeville-lès-Metz, France",Male,Institut Supérieur de l'Aéronautique et de l'Espace; Prytanée National Militaire; École polytechnique,"Ingénieur Général de 2e classe (Brigadier General, Corps of Ordnance Engineers)",corps of armament,3,675,0,0.0,"STS-66 (Atlantis), STS-84 (Atlantis), STS-103 (Discovery)",,,Other,France
@@ -563,15 +562,15 @@ Kayla Barron,2017,Active,1987-09-19,"Pocatello, Idaho, U.S.",Female,Peterhouse; 
 Kimiya Yui,,Active,1970-01-30,"Kawakami, Nagano, Japan",Male,National Defense Academy of Japan,Lieutenant Colonel,,2,7401,0,0.0,"Soyuz TMA-17M, SpaceX Crew-11",,,Other,Japan
 Kirill Peskov,2018,Active,1990-05-01,"Kyzyl, Tuva ASSR, Soviet Union",Male,,"Lieutenant, Russian Air Force (reserve)",,1,3544,0,0.0,SpaceX Crew-10,,,USSR/Russia,Russia
 Klaus-Dietrich Flade,1990,Retired,1952-08-23,"Büdesheim, West Germany",Male,University of the Bundeswehr Munich,"Lieutenant colonel, German Air Force",,1,190,0,0.0,Soyuz TM-14,,,Other,Germany
-Klim Shipenko,,Active,1983-06-16,"Moscow, Russian SFSR, Soviet Union",Male,,,,2,280,0,0.0,"Soyuz MS-18, Soyuz MS-19",,,USSR/Russia,Russia / USSR
+Klim Shipenko,,Active,1983-06-16,"Moscow, Russian SFSR, Soviet Union",Male,,,,1,280,0,0.0,Soyuz MS-18,,,USSR/Russia,Russia / USSR
 Koichi Wakata,1992,Active,1963-08-01,"Ōmiya, Saitama, Japan",Male,Kyushu University,,,5,12115,0,0.0,"STS-72 (Endeavor), STS-92 (Discovery), STS-119 (Discovery), Soyuz TMA-11M, SpaceX Crew-5",,,Other,Japan
 Konstantin Borisov,2018,Active,1984-08-14,"Smolensk, Russian SFSR, Soviet Union",Male,,,,1,4778,0,0.0,SpaceX Crew-7,,,USSR/Russia,Russia
 Lai Ka-ying,2022,Active,1982-11-01,Hong Kong,Female,Tsuen Wan Public Ho Chuen Yiu Memorial College; University of Hong Kong,N/A,,1,0.0,0,0.0,Shenzhou 23,,,China,China
 Larry Connor,,Active,1950-01-07,"Albany, New York, U.S.",Male,Ohio University,,,1,410,0,0.0,Axiom Mission 1,,,USA,United States
 Leonid Kadeniuk,1976,Deceased,1951-01-28,"Klishkivtsi, Chernivtsi Oblast, Ukrainian SSR, Soviet Union",Male,Moscow Aviation Institute; Yuri Gagarin Cosmonaut Training Center,"Major general, UAF",,1,377,0,0.0,STS-87 (Columbia),2018-01-31,,USSR/Russia,USSR / Ukraine
-Li Cong,2020,Active,1989-10-01,"Handan, Hebei, China",Male,,"Lieutenant colonel, PLAAF",,1,0.0,0,0.0,Shenzhou 18,,,China,China
-Li Guangsu,2020,Active,1987-07-01,"Pei County, Jiangsu",Male,,"Lieutenant colonel, PLAAF",,1,0.0,0,0.0,Shenzhou 18,,,China,China
-Liu Boming,1998,Active,1966-10-29,"Nenjiang, Heilongjiang, China",Male,PLA Air Force Aviation University,"Major general, People's Liberation Army Strategic Support Force",,3,2280,0,0.0,"Shenzhou 7, Tianhe, Shenzhou 12",,,China,China
+Li Cong,2020,Active,1989-10-01,"Handan, Hebei, China",Male,,"Lieutenant colonel, PLAAF",,1,4608,0,0.0,Shenzhou 18,,,China,China
+Li Guangsu,2020,Active,1987-07-01,"Pei County, Jiangsu",Male,,"Lieutenant colonel, PLAAF",,1,4608,0,0.0,Shenzhou 18,,,China,China
+Liu Boming,1998,Active,1966-10-29,"Nenjiang, Heilongjiang, China",Male,PLA Air Force Aviation University,"Major general, People's Liberation Army Strategic Support Force",,2,2280,0,0.0,"Shenzhou 7, Shenzhou 12",,,China,China
 Liu Wang,1998,Retired,1969-03-01,"Pingyao County, Shanxi, People's Republic of China",Male,Beihang University,"Major General, PLASSF",,1,312,0,0.0,Shenzhou 9,,,China,China
 Liu Yang,2010,Active,1978-10-06,"Zhengzhou, Henan, China",Female,PLA Air Force Aviation University; Tsinghua University,"Senior Colonel, People's Liberation Army Strategic Support Force",People's Liberation Army Air Force,2,312,0,0.0,"Shenzhou 9, Shenzhou 14",,,China,China
 Loral O'Hara,2017,Active,1983-05-03,"Houston, Texas, U.S.",Female,Clements High School; Purdue University; University of Kansas,,,1,4888,0,0.0,Soyuz MS-24,,,USA,United States
@@ -579,9 +578,9 @@ Luca Parmitano,2009,Active,1976-09-27,"Paternò, Italy",Male,University of Naple
 Luke Delaney,2021,Active,1979-08-25,"Miami, Florida, U.S.",Male,Deltona High School; Marine Corps University; Naval Postgraduate School,,,1,0.0,0,0.0,SpaceX Crew-13,,,USA,United States
 Léopold Eyharts,1990,Retired,1957-04-28,"Biarritz, Pyrénées-Atlantiques, France",Male,Lycée Louis-Barthou; School of the Air and Space,"Brigadier General, French Air Force",,2,1654,0,0.0,"Soyuz TM-27, STS-122 (Atlantis)",,,Other,France
 Mamoru Mohri,1985,Retired,1948-01-29,"Yoichi, Hokkaidō, Japan",Male,Flinders University,,,2,460,0,0.0,"STS-47 (Endeavor), STS-99 (Endeavor)",,,Other,Japan
+Marc Garneau,,Deceased,1949-02-23,"Quebec City, Quebec, Canada",Male,Imperial College London; Royal Military College of Canada,Naval captain,,1,698,0,0.0,STS-41-G (Challenger),2025-06-04,,Other,Canada
 Marcos Pontes,,Retired,1963-03-11,"Bauru, São Paulo, Brazil",Male,Aeronautics Institute of Technology; Naval Postgraduate School,Lieutenant colonel,Brazilian Air Force,1,237,0,0.0,Soyuz TMA-8,,,Other,Brazil
 Marcus Wandt,2022,Active,1980-09-22,"Mora, Sweden",Male,Chalmers University of Technology; Military Academy Karlberg; Sundsta-Älvkullegymnasiet,Lt. Colonel,Swedish Air Force,1,520,0,0.0,Axiom Mission 3,,,Other,Norway / Sweden
-Marina Vasilevskaya,,Active,1990-09-14,"Minsk, Byelorussian SSR, Soviet Union(now Belarus)",Female,Minsk Innovation University,,,2,331,0,0.0,"Soyuz MS-24, Soyuz MS-25",,,Other,Belarus
 Mark Pathy,,Active,1969-07-01,,Male,INSEAD,,,1,410,0,0.0,Axiom Mission 1,,,Other,Canada
 Mark Shuttleworth,,Retired,1973-09-18,"Welkom, Orange Free State",Male,Brooks School; Diocesan College; Rondebosch Boys' High School,,,1,237,0,0.0,Soyuz TM-34,,,Other,South Africa / United Kingdom
 Matthew Dominick,2017,Active,1981-12-07,"Wheat Ridge, Colorado, U.S.",Male,D'Evelyn Junior/Senior High School; Naval Postgraduate School; Reserve Officers' Training Corps,"Commander, US Navy",United States Navy,1,5644,0,0.0,SpaceX Crew-8,,,USA,United States
@@ -594,8 +593,7 @@ Naoko Yamazaki,1999,Retired,1970-12-27,"Matsudo, Chiba, Japan",Female,Ochanomizu
 Nichole Ayers,,Active,1988-12-14,"San Diego, California, U.S.",Female,Rice University; United States Air Force Academy; Woodland Park High School,,,1,3544,0,0.0,SpaceX Crew-10,,,USA,United States
 Nick Hague,2013,Active,1975-09-24,"Belleville, Kansas, U.S.",Male,MIT College of Engineering; Peabody-Burns Junior/Senior High School; U.S. Air Force Test Pilot School,"Brigadier General, US Space Force",United States Space Force,3,8972,0,0.0,"Soyuz MS-10, Soyuz MS-12, SpaceX Crew-9",,,USA,United States
 Nicole Mann,2013,Active,1977-06-27,"Petaluma, California, U.S.",Female,Rancho Cotate High School; Stanford University; United States Naval Academy,"Colonel, U.S. Marine Corps",United States Marine Corps,1,3778,0,0.0,SpaceX Crew-5,,,USA,United States
-Nie Haisheng,1998,Active,1964-10-13,"Zaoyang, Hubei, China",Male,PLA Air Force Aviation University,"Major general, PLASSF",,4,2678,0,0.0,"Shenzhou 6, Shenzhou 10, Tianhe, Shenzhou 12",,,China,China
-Nikolay Chub,2012,Active,1984-06-10,"Novocherkassk, Russian SFSR, USSR",Male,,,,2,8972,0,0.0,"Soyuz MS-24, Soyuz MS-25",,,USSR/Russia,Russia
+Nie Haisheng,1998,Active,1964-10-13,"Zaoyang, Hubei, China",Male,PLA Air Force Aviation University,"Major general, PLASSF",,3,2678,0,0.0,"Shenzhou 6, Shenzhou 10, Shenzhou 12",,,China,China
 Norishige Kanai,2009,Active,1976-12-05,"Tokyo, Japan",Male,,"Lieutenant, JMSDF",,1,4037,0,0.0,Soyuz MS-07,,,Other,Japan
 Oleg Platonov,2018,Active,1986-06-27,"Chelyabinsk, Russian SFSR, Soviet Union",Male,,"Lieutenant colonel, Russian Air Force",,1,4001,0,0.0,SpaceX Crew-11,,,USSR/Russia,Russia
 Paolo Nespoli,1998,Retired,1957-04-06,"Milan, Italy",Male,New York University; New York University Tandon School of Engineering; University of Florence,Major,Italian Army,3,7515,0,0.0,"STS-120 (Discovery), Soyuz TMA-20, Soyuz MS-05",,,Other,Italy
@@ -603,7 +601,7 @@ Patrick Baudry,1980,Retired,1946-03-06,"Douala, Cameroon",Male,Lycée Chaptal; P
 Pedro Duque,,Retired,1963-03-14,"Madrid, Spain",Male,Technical University of Madrid,,,2,451,0,0.0,"STS-95 (Discovery), Soyuz TMA-3",,,Other,Spain
 Pham Tuân,1979,Retired,1947-02-14,"Kiến Xương, Thái Bình province, North Vietnam",Male,Krasnodar Higher Military Aviation School of Pilots named after Hero of the Soviet Union A.K. Serov,lieutenant general,,1,189,0,0.0,Soyuz 37,,,Other,Vietnam
 Philippe Perrin,1990,Retired,1963-01-06,"Meknes, Morocco",Male,École polytechnique,"Colonel, French Air Force",,1,333,0,0.0,STS-111 (Endeavor),,,Other,France
-Pyotr Dubrov,2012,Active,1978-01-30,"Khabarovsk, Russian SFSR, USSR",Male,,,,3,8524,0,0.0,"Soyuz MS-18, Soyuz MS-19, Soyuz MS-29",,,USSR/Russia,Russia
+Pyotr Dubrov,2012,Active,1978-01-30,"Khabarovsk, Russian SFSR, USSR",Male,,,,2,8524,0,0.0,"Soyuz MS-18, Soyuz MS-29",,,USSR/Russia,Russia
 Rabea Rogge,,Active,1996-01-28,"Berlin, Germany",Female,ETH Zurich,,,1,72,0,0.0,Fram2,,,Other,Germany
 Raja Chari,2017,Active,1977-06-24,"Milwaukee, Wisconsin, U.S.",Male,Columbus High School; Massachusetts Institute of Technology; United States Air Force Academy,"Brigadier General, USAF",United States Air Force,1,4227,0,0.0,SpaceX Crew-3,,,USA,United States
 Rakesh Sharma,1982,Retired,1949-01-13,"Patiala, PEPSU, India(now in Punjab, India)",Male,Nizam College; North-Eastern Hill University; Osmania University,squadron leader,Indian Air Force,1,190,0,0.0,Soyuz T-11,,,Other,India
@@ -631,15 +629,15 @@ Shubhanshu Shukla,2019,Active,1985-10-10,"Lucknow, Uttar Pradesh, India",Male,Na
 Sian Proctor,,Active,1970-03-28,"Hagåtña, Guam",Female,Arizona State University; PennWest Edinboro,,,1,71,0,0.0,Inspiration4,,,USA,United States
 Sigmund Jähn,1976,Deceased,1937-02-13,"Morgenröthe-Rautenkranz, Saxony, Third Reich",Male,Central Institute for Earth Physics; Franz Mehring Military Academy; Gagarin Air Force Academy,"10px Generalmajor, Air Forces of the National People's Army",8th Fighter Wing,1,189,0,0.0,Soyuz 31,2019-09-21,,Other,East Germany / Germany
 Soichi Noguchi,1996,Retired,1965-04-15,"Yokohama, Japan",Male,University of Tokyo,,,2,8266,0,0.0,"STS-114 (Discovery), Soyuz TMA-17",,,Other,Japan
-Song Lingdong,2020,Active,1990-08-01,"Heze, Shandong, China",Male,,"Lieutenant colonel, People's Liberation Army Ground Force",,1,0.0,0,0.0,Shenzhou 19,,,China,China
-Sophie Adenot,,Active,1982-07-05,"Cosne-Cours-sur-Loire, France",Female,Empire Test Pilots' School; Institut Supérieur de l'Aéronautique et de l'Espace; Maison d'éducation de la Légion d'honneur Saint-Denis,colonel,French Air Force,1,0.0,0,0.0,SpaceX Crew-12,,,Other,France
+Song Lingdong,2020,Active,1990-08-01,"Heze, Shandong, China",Male,,"Lieutenant colonel, People's Liberation Army Ground Force",,1,4392,0,0.0,Shenzhou 19,,,China,China
+Sophie Adenot,,Active,1982-07-05,"Cosne-Cours-sur-Loire, France",Female,Empire Test Pilots' School; Institut Supérieur de l'Aéronautique et de l'Espace; Maison d'éducation de la Légion d'honneur Saint-Denis,colonel,French Air Force,1,5688,0,0.0,SpaceX Crew-12,,,Other,France
 Steven G. MacLean,1983,Retired,1954-12-14,"Ottawa, Ontario, Canada",Male,Merivale High School; York University,,,2,520,0,0.0,"STS-52 (Columbia), STS-115 (Atlantis)",,,Other,Canada
 Sultan Al Niadi,,Active,1981-05-23,"Al Ain, United Arab Emirates",Male,Griffith University; University of Brighton,,,1,4463,0,0.0,SpaceX Crew-6,,,Other,United Arab Emirates
 Sultan Salman Al Saud,,Retired,1956-06-27,"Riyadh, Saudi Arabia",Male,Syracuse University; University of Denver,colonel,,1,170,0,0.0,STS-51-G (Discovery),,,Other,Saudi Arabia
 Sławosz Uznański-Wiśniewski,2022,Active,1984-04-12,"Łódź, Polish People's Republic",Male,University of the Mediterranean - Aix Marseille II; École polytechnique de l'université de Nantes; Łódź University of Technology,,,1,483,0,0.0,Axiom Mission 4,,,Other,Poland
 Takao Doi,1985,Retired,1954-09-18,"Tokyo, Japan",Male,Rice University; University of Colorado; University of Tokyo,,,2,764,0,0.0,"STS-87 (Columbia), STS-123 (Endeavor)",,,Other,Japan
 Takuya Onishi,2009,Active,1975-12-22,"Nerima, Tokyo, Japan",Male,University of Tokyo,,,2,6307,0,0.0,"Soyuz MS-01, SpaceX Crew-10",,,Other,Japan
-Tang Hongbo,2010,Active,1975-10-01,"Xiangtan County, Hunan, China",Male,PLA Air Force Aviation University,"Senior colonel, People's Liberation Army Strategic Support Force",People's Liberation Army Air Force,3,2212,0,0.0,"Tianhe, Shenzhou 12, Shenzhou 17",,,China,China
+Tang Hongbo,2010,Active,1975-10-01,"Xiangtan County, Hunan, China",Male,PLA Air Force Aviation University,"Senior colonel, People's Liberation Army Strategic Support Force",People's Liberation Army Air Force,2,2212,0,0.0,"Shenzhou 12, Shenzhou 17",,,China,China
 Tang Shengjie,2020,Active,1989-12-01,"Dingxi, Gansu, China",Male,,Lieutenant Colonel,,1,4488,0,0.0,Shenzhou 17,,,China,China
 Thomas Pesquet,2009,Active,1978-02-27,"Rouen, Normandy, France",Male,Institut Supérieur de l'Aéronautique et de l'Espace; Lycée Pierre-Corneille; Polytechnic School of Montreal,,,2,9516,0,0.0,"Soyuz MS-03, SpaceX Crew-2",,,Other,France
 Thomas Reiter,1992,Retired,1958-05-23,"Frankfurt, West Germany",Male,University of the Bundeswehr Munich,"Brigadier General, Luftwaffe (Bundeswehr)",,2,8406,0,0.0,"Soyuz TM-22, STS-121 (Discovery)",,,Other,Germany
@@ -651,8 +649,8 @@ Umberto Guidoni,,Retired,1954-08-18,"Rome, Italy",Male,Sapienza University of Ro
 Victor Glover,2013,Active,1976-04-30,"Pomona, California, US",Male,Air University; California Polytechnic State University; Naval Postgraduate School,"Captain, United States Navy",,1,4014,0,0.0,Artemis II,,,USA,United States
 Vladimír Remek,,Retired,1948-09-26,"České Budějovice, Czechoslovakia",Male,Gagarin Air Force Academy,colonel,,1,190,0,0.0,Soyuz 28,,,Other,Czech Republic
 Walter Villadei,,Active,1974-04-29,"Rome, Italy",Male,,,,1,520,0,0.0,Axiom Mission 3,,,Other,Italy
-Wang Haoze,2020,Active,1990-03-01,"Luanping, Hebei Province, China",Female,Southeast University,Lieutenant Colonel,,1,0.0,0,0.0,Shenzhou 19,,,China,China
-Wang Jie,2020,Active,1989-09-01,"Bayannur, Inner Mongolia, China",Male,,"Lieutenant colonel, People's Liberation Army Air Force",,1,0.0,0,0.0,Shenzhou 20,,,China,China
+Wang Haoze,2020,Active,1990-03-01,"Luanping, Hebei Province, China",Female,Southeast University,Lieutenant Colonel,,1,4392,0,0.0,Shenzhou 19,,,China,China
+Wang Jie,2020,Active,1989-09-01,"Bayannur, Inner Mongolia, China",Male,,"Lieutenant colonel, People's Liberation Army Air Force",,1,6480,0,0.0,Shenzhou 20,,,China,China
 Wang Yaping,2010,Active,1980-01-27,"Yantai, Shandong, China",Female,PLA Air Force Aviation University,"Senior colonel, People's Liberation Army Strategic Support Force",,2,4728,0,0.0,"Shenzhou 10, Shenzhou 13",,,China,China
 Warren Hoburg,2017,Active,1985-09-16,"Pittsburgh, Pennsylvania, U.S.",Male,"Massachusetts Institute of Technology; North Allegheny Senior High School; University of California, Berkeley",,,1,4463,0,0.0,SpaceX Crew-6,,,USA,United States
 Wu Fei,2020,Active,1993-01-01,"Baotou, Inner Mongolia, China",Male,,Major,,1,336,0,0.0,Shenzhou 21,,,China,China
@@ -661,7 +659,7 @@ Yang Liwei,1998,Retired,1965-06-21,"Suizhong, Huludao, Liaoning, China",Male,PLA
 Ye Guangfu,2010,Active,1980-09-01,"Chengdu, Sichuan, China",Male,,"Senior colonel, People's Liberation Army Strategic Support Force",,2,4378,0,0.0,"Shenzhou 13, Shenzhou 18",,,China,China
 Yi So-yeon,2006,Retired,1978-06-02,"Gwangju, South Korea",Female,Gwangju Science High School; Haas School of Business; KAIST,,,1,261,0,0.0,Soyuz TMA-12,,,Other,South Korea
 Yozo Hirano,,Active,1985-10-12,"Imabari, Ehime Prefecture, Japan",Male,,,,1,284,0,0.0,Soyuz MS-20,,,Other,Japan
-Yulia Peresild,,Active,1984-09-05,"Pskov, Russian SFSR, Soviet Union",Female,Russian Institute of Theatre Arts,,,2,280,0,0.0,"Soyuz MS-18, Soyuz MS-19",,,USSR/Russia,Russia
+Yulia Peresild,,Active,1984-09-05,"Pskov, Russian SFSR, Soviet Union",Female,Russian Institute of Theatre Arts,,,1,280,0,0.0,Soyuz MS-18,,,USSR/Russia,Russia
 Yusaku Maezawa,,Active,1975-11-22,"Kamagaya, Japan",Male,Waseda Jitsugyo; Waseda University Junior and Senior High School,,,1,284,0,0.0,Soyuz MS-20,,,Other,Japan
 Zena Cardman,2017,Active,1987-10-26,"Urbana, Illinois, U.S.",Female,Bruton High School; Lyndon B. Johnson Space Center; Pennsylvania State University,,,1,4001,0,0.0,SpaceX Crew-11,,,USA,United States
 Zhai Zhigang,1998,Active,1966-10-10,"Longjiang County, Heilongjiang, China",Male,PLA Air Force Aviation University,"Major General, People's Liberation Army Strategic Support Force",,2,4446,0,0.0,"Shenzhou 7, Shenzhou 13",,,China,China

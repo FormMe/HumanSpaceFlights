@@ -712,6 +712,42 @@
    "Soyuz-2.1a"
   ]
  },
+ "Q110823547": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Artemis_V"
+  ],
+  "country": [
+   "United States"
+  ],
+  "description": [
+   "fifth orbital flight of the Artemis program"
+  ],
+  "destination": [
+   "lunar south pole"
+  ],
+  "follows": [
+   "Artemis IV"
+  ],
+  "instance": [
+   "human spaceflight",
+   "space mission"
+  ],
+  "label": [
+   "Artemis V"
+  ],
+  "launch": [
+   "2029-09-01T00:00:00Z"
+  ],
+  "operator": [
+   "National Aeronautics and Space Administration"
+  ],
+  "part_of": [
+   "Artemis program"
+  ],
+  "vehicle": [
+   "Space Launch System"
+  ]
+ },
  "Q110831308": {
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-7"
@@ -903,6 +939,34 @@
   ],
   "vehicle": [
    "Soyuz-FG"
+  ]
+ },
+ "Q113407663": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Blue_Origin_NS-22"
+  ],
+  "country": [
+   "United States"
+  ],
+  "description": [
+   "2022 American crewed sub-orbital spaceflight"
+  ],
+  "instance": [
+   "human spaceflight",
+   "space mission",
+   "sub-orbital spaceflight"
+  ],
+  "label": [
+   "Blue Origin NS-22"
+  ],
+  "launch": [
+   "2022-08-04T00:00:00Z"
+  ],
+  "operator": [
+   "Blue Origin"
+  ],
+  "vehicle": [
+   "New Shepard"
   ]
  },
  "Q1135865": {
@@ -1592,6 +1656,42 @@
    "Space Shuttle program"
   ]
  },
+ "Q117448674": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Artemis_VI"
+  ],
+  "country": [
+   "United States"
+  ],
+  "description": [
+   "sixth orbital flight of the Artemis program"
+  ],
+  "destination": [
+   "Moon"
+  ],
+  "follows": [
+   "Artemis V"
+  ],
+  "instance": [
+   "human spaceflight",
+   "space mission"
+  ],
+  "label": [
+   "Artemis VI"
+  ],
+  "launch": [
+   "2030-09-01T00:00:00Z"
+  ],
+  "operator": [
+   "National Aeronautics and Space Administration"
+  ],
+  "part_of": [
+   "Artemis program"
+  ],
+  "vehicle": [
+   "Space Launch System Block 1B"
+  ]
+ },
  "Q118864589": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_17"
@@ -1631,6 +1731,98 @@
   ],
   "vehicle": [
    "Long March 2F"
+  ]
+ },
+ "Q119040652": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Artemis_VII"
+  ],
+  "country": [
+   "United States"
+  ],
+  "description": [
+   "seventh orbital flight of the Artemis program"
+  ],
+  "destination": [
+   "Moon"
+  ],
+  "follows": [
+   "Artemis VI"
+  ],
+  "instance": [
+   "human spaceflight",
+   "space mission"
+  ],
+  "label": [
+   "Artemis VII"
+  ],
+  "launch": [
+   "2031-09-01T00:00:00Z"
+  ],
+  "operator": [
+   "National Aeronautics and Space Administration"
+  ],
+  "vehicle": [
+   "Space Launch System Block 1B"
+  ]
+ },
+ "Q119040697": {
+  "country": [
+   "United States"
+  ],
+  "description": [
+   "eighth orbital flight of the Artemis program"
+  ],
+  "destination": [
+   "Moon"
+  ],
+  "follows": [
+   "Artemis VII"
+  ],
+  "instance": [
+   "human spaceflight",
+   "space mission"
+  ],
+  "label": [
+   "Artemis VIII"
+  ],
+  "launch": [
+   "2032-01-01T00:00:00Z"
+  ],
+  "operator": [
+   "National Aeronautics and Space Administration"
+  ],
+  "vehicle": [
+   "Space Launch System Block 1B"
+  ]
+ },
+ "Q119557989": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Vast-1"
+  ],
+  "description": [
+   "planned 2025 private crewed spaceflight to Haven-1"
+  ],
+  "destination": [
+   "Haven-1"
+  ],
+  "instance": [
+   "future event",
+   "human spaceflight",
+   "private spaceflight"
+  ],
+  "label": [
+   "Vast-1"
+  ],
+  "launch": [
+   "2025-08-01T00:00:00Z"
+  ],
+  "operator": [
+   "SpaceX",
+   "Vast"
+  ],
+  "vehicle": [
+   "Falcon 9 Block 5"
   ]
  },
  "Q119807": {
@@ -1780,6 +1972,35 @@
   ],
   "vehicle": [
    "Long March 2F"
+  ]
+ },
+ "Q124414227": {
+  "description": [
+   "private crewed spaceflight to the International Space Station in 2026"
+  ],
+  "destination": [
+   "Haven-1"
+  ],
+  "follows": [
+   "Vast-1"
+  ],
+  "instance": [
+   "future event",
+   "human spaceflight",
+   "private spaceflight"
+  ],
+  "label": [
+   "Vast-2"
+  ],
+  "launch": [
+   "2026-01-01T00:00:00Z"
+  ],
+  "operator": [
+   "SpaceX",
+   "Vast"
+  ],
+  "vehicle": [
+   "Falcon 9 Block 5"
   ]
  },
  "Q1254245": {
@@ -2136,6 +2357,39 @@
   ],
   "vehicle": [
    "Long March 2F"
+  ]
+ },
+ "Q134960598": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Soyuz_MS-30"
+  ],
+  "country": [
+   "Russia"
+  ],
+  "description": [
+   "planned 2027 Russian crewed spaceflight to the ISS"
+  ],
+  "follows": [
+   "Soyuz MS-29"
+  ],
+  "instance": [
+   "human spaceflight",
+   "space mission"
+  ],
+  "label": [
+   "Soyuz MS-30"
+  ],
+  "launch": [
+   "2027-03-01T00:00:00Z"
+  ],
+  "operator": [
+   "Roscosmos State Corporation"
+  ],
+  "part_of": [
+   "Soyuz programme"
+  ],
+  "vehicle": [
+   "Soyuz-2.1a"
   ]
  },
  "Q135112229": {
@@ -4093,6 +4347,45 @@
   ],
   "vehicle": [
    "Soyuz-FG"
+  ]
+ },
+ "Q21028127": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Artemis_III"
+  ],
+  "country": [
+   "United States"
+  ],
+  "description": [
+   "second crewed flight in the Artemis program"
+  ],
+  "destination": [
+   "lunar orbit"
+  ],
+  "follows": [
+   "Artemis II"
+  ],
+  "instance": [
+   "human spaceflight",
+   "space mission"
+  ],
+  "label": [
+   "Artemis III"
+  ],
+  "landing": [
+   "2028-01-01T00:00:00Z"
+  ],
+  "launch": [
+   "2027-01-01T00:00:00Z"
+  ],
+  "operator": [
+   "National Aeronautics and Space Administration"
+  ],
+  "part_of": [
+   "Artemis program"
+  ],
+  "vehicle": [
+   "Space Launch System Block 1"
   ]
  },
  "Q211254": {
@@ -7525,6 +7818,42 @@
   ],
   "vehicle": [
    "Soyuz-2.1a"
+  ]
+ },
+ "Q60846240": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Artemis_IV"
+  ],
+  "country": [
+   "United States"
+  ],
+  "description": [
+   "fourth orbital flight of the Artemis program"
+  ],
+  "destination": [
+   "Moon"
+  ],
+  "follows": [
+   "Artemis III"
+  ],
+  "instance": [
+   "human spaceflight",
+   "space mission"
+  ],
+  "label": [
+   "Artemis IV"
+  ],
+  "launch": [
+   "2028-01-01T00:00:00Z"
+  ],
+  "operator": [
+   "National Aeronautics and Space Administration"
+  ],
+  "part_of": [
+   "Artemis program"
+  ],
+  "vehicle": [
+   "Space Launch System Block 1B"
   ]
  },
  "Q608659": {

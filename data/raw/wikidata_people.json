@@ -1148,6 +1148,81 @@
    "12760140"
   ]
  },
+ "Q109953238": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Andre_Douglas"
+  ],
+  "birth": [
+   "1985-12-11T00:00:00Z"
+  ],
+  "birth_place": [
+   "Miami"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "description": [
+   "American engineer and NASA astronaut"
+  ],
+  "educated_at": [
+   "George Washington University",
+   "Johns Hopkins University",
+   "United States Coast Guard Academy",
+   "University of Michigan",
+   "Western Branch High School"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Andre Douglas"
+  ],
+  "military_branch": [
+   "United States Coast Guard"
+  ],
+  "military_rank": [
+   "lieutenant"
+  ]
+ },
+ "Q109953976": {
+  "alt_labels": [
+   "Deniz Melissa Burnham"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Deniz_Burnham"
+  ],
+  "birth": [
+   "1985-10-01T00:00:00Z"
+  ],
+  "birth_place": [
+   "Adana"
+  ],
+  "citizenship": [
+   "Turkey",
+   "United States"
+  ],
+  "citizenship_code": [
+   "TR",
+   "US"
+  ],
+  "description": [
+   "Turkish engineer and NASA astronaut (born 1985)"
+  ],
+  "educated_at": [
+   "University of California, San Diego",
+   "University of Southern California",
+   "Vanden High School"
+  ],
+  "gender": [
+   "female"
+  ],
+  "label": [
+   "Deniz Burnham"
+  ]
+ },
  "Q109968497": {
   "alt_labels": [
    "Luke Delaney (astronaut)"
@@ -1759,6 +1834,32 @@
    "16097040"
   ]
  },
+ "Q115328941": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Arnaud_Prost"
+  ],
+  "birth": [
+   "1992-11-06T00:00:00Z"
+  ],
+  "birth_place": [
+   "Marseille"
+  ],
+  "citizenship": [
+   "France"
+  ],
+  "citizenship_code": [
+   "FR"
+  ],
+  "description": [
+   "French astronaut"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Arnaud Prost"
+  ]
+ },
  "Q115387945": {
   "alt_labels": [
    "Slawosz Uznanski"
@@ -1836,6 +1937,29 @@
   ],
   "time_in_space_s": [
    "1870800"
+  ]
+ },
+ "Q115813900": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Jim_Kitchen"
+  ],
+  "birth": [
+   "1964-01-01T00:00:00Z"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "description": [
+   "American professor"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Jim Kitchen"
   ]
  },
  "Q1162918": {
@@ -2178,6 +2302,34 @@
   ],
   "time_in_space_s": [
    "1190496"
+  ]
+ },
+ "Q118364894": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Sara_Sabry"
+  ],
+  "birth": [
+   "1993-05-23T00:00:00Z"
+  ],
+  "citizenship": [
+   "Egypt"
+  ],
+  "citizenship_code": [
+   "EG"
+  ],
+  "description": [
+   "private astronaut"
+  ],
+  "educated_at": [
+   "Lycée Français du Caire",
+   "Polytechnic University of Milan",
+   "The American University in Cairo"
+  ],
+  "gender": [
+   "female"
+  ],
+  "label": [
+   "Sara Sabry"
   ]
  },
  "Q118490": {
@@ -3641,37 +3793,6 @@
    "14452140"
   ]
  },
- "Q13500192": {
-  "article": [
-   "https://en.wikipedia.org/wiki/Christina_Koch"
-  ],
-  "birth": [
-   "1979-01-29T00:00:00Z"
-  ],
-  "birth_place": [
-   "Grand Rapids"
-  ],
-  "citizenship": [
-   "United States"
-  ],
-  "citizenship_code": [
-   "US"
-  ],
-  "description": [
-   "American astronaut (born 1979)"
-  ],
-  "educated_at": [
-   "NASA Academy",
-   "North Carolina School of Science and Mathematics",
-   "North Carolina State University"
-  ],
-  "gender": [
-   "female"
-  ],
-  "time_in_space_s": [
-   "28389480"
-  ]
- },
  "Q13500570": {
   "alt_labels": [
    "Anne C. McClain",
@@ -3805,6 +3926,40 @@
   ],
   "time_in_space_s": [
    "23460480"
+  ]
+ },
+ "Q13519806": {
+  "alt_labels": [
+   "Vanessa Audi Rhys O’Brien"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Vanessa_O%27Brien"
+  ],
+  "birth": [
+   "1964-12-02T00:00:00Z"
+  ],
+  "birth_place": [
+   "Grosse Pointe"
+  ],
+  "citizenship": [
+   "United Kingdom",
+   "United States"
+  ],
+  "citizenship_code": [
+   "GB",
+   "US"
+  ],
+  "description": [
+   "American mountaineer (born 1964)"
+  ],
+  "educated_at": [
+   "Stern School of Business"
+  ],
+  "gender": [
+   "female"
+  ],
+  "label": [
+   "Vanessa O'Brien"
   ]
  },
  "Q1355634": {
@@ -5157,6 +5312,20 @@
    "1792080"
   ]
  },
+ "Q15995039": {
+  "alt_labels": [
+   "dp"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Dude_Perfect"
+  ],
+  "description": [
+   "sports entertainment YouTube channel"
+  ],
+  "label": [
+   "Dude Perfect"
+  ]
+ },
  "Q1615": {
   "article": [
    "https://en.wikipedia.org/wiki/Neil_Armstrong"
@@ -5638,6 +5807,17 @@
   ],
   "time_in_space_s": [
    "1389780"
+  ]
+ },
+ "Q1825840": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Survivor:_Samoa"
+  ],
+  "description": [
+   "season of television series"
+  ],
+  "label": [
+   "Survivor: Samoa"
   ]
  },
  "Q182642": {
@@ -11485,6 +11665,35 @@
   ],
   "time_in_space_s": [
    "26349660"
+  ]
+ },
+ "Q3331969": {
+  "alt_labels": [
+   "Mario Ferreira"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/M%C3%A1rio_Ferreira"
+  ],
+  "birth": [
+   "1968-01-15T00:00:00Z"
+  ],
+  "birth_place": [
+   "Matosinhos"
+  ],
+  "citizenship": [
+   "Portugal"
+  ],
+  "citizenship_code": [
+   "PT"
+  ],
+  "description": [
+   "Portuguese businessperson"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Mário Ferreira"
   ]
  },
  "Q334463": {
@@ -22430,40 +22639,6 @@
    "4530840"
   ]
  },
- "Q6160001": {
-  "alt_labels": [
-   "\"Rook\" Isaacman",
-   "Jared \"Rook\" Isaacman"
-  ],
-  "article": [
-   "https://en.wikipedia.org/wiki/Jared_Isaacman"
-  ],
-  "birth": [
-   "1983-02-11T00:00:00Z"
-  ],
-  "birth_place": [
-   "Westfield"
-  ],
-  "citizenship": [
-   "United States"
-  ],
-  "citizenship_code": [
-   "US"
-  ],
-  "description": [
-   "American businessman, pilot, and private astronaut"
-  ],
-  "educated_at": [
-   "Embry–Riddle Aeronautical University",
-   "Ridge High School"
-  ],
-  "gender": [
-   "male"
-  ],
-  "time_in_space_s": [
-   "255780"
-  ]
- },
  "Q620632": {
   "alt_labels": [
    "Aleksandr Ivanovich Lazutkin"
@@ -26597,6 +26772,21 @@
    "28639500"
   ]
  },
+ "Q9335995": {
+  "alt_labels": [
+   "SHENZHOU-11",
+   "Shenzhou-11"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Shenzhou_11"
+  ],
+  "description": [
+   "crewed spaceflight of the Shenzhou program of China"
+  ],
+  "label": [
+   "Shenzhou 11"
+  ]
+ },
  "Q935071": {
   "article": [
    "https://en.wikipedia.org/wiki/Jean-Jacques_Favier"
@@ -27003,42 +27193,6 @@
   ],
   "time_in_space_s": [
    "3049800"
-  ]
- },
- "Q957368": {
-  "article": [
-   "https://en.wikipedia.org/wiki/Franco_Malerba"
-  ],
-  "birth": [
-   "1946-10-10T00:00:00Z"
-  ],
-  "birth_place": [
-   "Busalla"
-  ],
-  "citizenship": [
-   "Italy"
-  ],
-  "citizenship_code": [
-   "IT"
-  ],
-  "description": [
-   "Italian astronaut"
-  ],
-  "educated_at": [
-   "University of Genoa"
-  ],
-  "gender": [
-   "male"
-  ],
-  "military_branch": [
-   "Italian Navy"
-  ],
-  "military_rank": [
-   "Gardes de la Marine",
-   "reservist"
-  ],
-  "time_in_space_s": [
-   "688500"
   ]
  },
  "Q963226": {
