@@ -370,6 +370,7 @@ svg#Graph {
 }
 
 #Info caption {
+  display: table-caption;
   text-align: left;
   font-size: 22px;
 }

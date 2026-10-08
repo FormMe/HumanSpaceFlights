@@ -241,6 +241,11 @@ function complete_graph() {
 }
 
 function get_country_html(d){
+    var code = (d["Country Code"] || "").toLowerCase();
+    if (code && ["us", "ru", "cn"].indexOf(code) == -1) {
+        return "<img src='https://flagcdn.com/w40/" + code + ".png' width='22' height='15' alt='" + code.toUpperCase() +
+               "' title='" + (d.Nationality || d.Country) + "'>";
+    }
     switch(d.Country){
         case 'USA': return "<img src='pics/usa_flag.png' width='22' height='12' title='USA'>";
         case 'USSR/Russia': 
@@ -262,7 +267,7 @@ d3.csv("data/all_astronauts.csv", function (error, astronautsData) {
 		astr["Birth Year"] = astr["Birth Date"];
 		astr["Death Year"] = astr["Death Date"];
 		astr["highlighted"] = false;
-        astr["Year"] = astr["Year"] == "" ? astr["Birth Date"] : astr["Year"];
+        astr["Year"] = astr["Year"] == "" ? null : astr["Year"];
     })
     astronauts = astronautsData;
 });
@@ -312,6 +317,11 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     flightsChart.update(group_missions(missions), true);    
     // create_year_brush();
     paracoords_update(missions, true);
+
+    d3.json("data/meta.json", function (error, meta) {
+        if (!error && meta && meta.built_at)
+            d3.select("#DataUpdated").text(" · updated " + meta.built_at.slice(0, 10));
+    });
 
     var barScroll = document.querySelector('.stacked .scroll-x');
     if (barScroll) barScroll.scrollLeft = barScroll.scrollWidth;

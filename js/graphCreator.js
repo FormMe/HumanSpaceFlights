@@ -7,7 +7,7 @@ function astr_graph(astr) {
     	selected: false
 	}];
 	var links = [];
-	if (astr.Country != "Other") {
+	if (!astr.stub) {
 		missions
 			.filter(mis => astr.Missions.includes(mis["Launch Mission"]))
 			.forEach(function (mis) {
@@ -62,7 +62,7 @@ function mis_graph(mis) {
 		nodes.push({
 			id: astr,
 			type: 'astronaut',
-			value: {Name: astr, Country: "Other"},
+			value: {Name: astr, Country: "Other", stub: true},
 			selected: false
 		});
 	})

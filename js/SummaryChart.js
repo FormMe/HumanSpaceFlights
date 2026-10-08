@@ -26,7 +26,8 @@ class SummaryChart{
 		}
 		var groupedData = d3.nest()
 							.key(d => d.Country)
-							.entries(all);
+							.entries(all)
+							.sort((a, b) => Countries.indexOf(a.key) - Countries.indexOf(b.key));
 		
 		var color = this.color;
 		var svg = d3.select("#SummaryChart");
@@ -54,7 +55,7 @@ class SummaryChart{
            .attr("fill", d => color(d.key));
 
 
-        var bias = 0;
+        var bias = 0, labelX = 0;
    		var counts = svg.selectAll('.cnt')
 	            .data(groupedData);
 		counts.exit().remove();
@@ -66,10 +67,11 @@ class SummaryChart{
 	            .attr('font-size', "12px")
 		     	.attr("dy", "20")
 				.attr("dx", function (d, i) {
-					if (i == 2) return width - 23;
 	           		var cur = bias;
 	           		bias += d.values.length * width / len;
-	           	 	return cur;
+	           		// keep labels of narrow segments from overlapping
+	           		labelX = i == 0 ? cur : Math.max(cur, labelX + 30);
+	           	 	return Math.min(labelX, width - 23);
 				})
 				.attr('class', 'cnt')
 				.text(function(d) { return d.values.length; });

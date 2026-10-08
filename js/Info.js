@@ -20,7 +20,7 @@ class Info{
 			}
 		}
 		else{
-			var t = [["Country", data["Country Flag"] + "  " + data.Country],
+			var t = [["Country", (data["Country Flag"] || "") + "  " + (data.Nationality || data.Country)],
 					["Gender", data["Gender"]],
 					["Birth Date", data["Birth Date"]],
 					["Birth Place", data["Birth Place"]]];
@@ -32,7 +32,7 @@ class Info{
 			if(data["Alma Mater"] != "")
 				t.push(["Alma Mater", data["Alma Mater"]]);
 
-			t = t.concat([["Selection Year", parseInt(data["Year"])],
+			t = t.concat([["Selection Year", data["Year"] ? parseInt(data["Year"]) : "—"],
 							["Status", data["Status"]],
 							["Space Flights", parseInt(data["Space Flights"]) + " ("+parseInt(data["Space Flight (hr)"])+" hr)"],
 							["Space Walks", parseInt(data["Space Walks"]) + " ("+parseInt(data["Space Walks (hr)"])+" hr)"],
