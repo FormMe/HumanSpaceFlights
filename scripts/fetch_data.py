@@ -116,36 +116,47 @@ def fetch_recent_flights(since="2017-01-01"):
     return found
 
 
+def label_of(var):
+    """English label of var, or the multilingual ('mul') one when there is no English label.
+
+    Since 2024 Wikidata drops English labels that equal the 'mul' default label,
+    so many items (e.g. Christina Koch, SpaceX Crew-1) have no 'en' label at all.
+    """
+    return ('OPTIONAL { %s rdfs:label ?en FILTER(LANG(?en) = "en") } '
+            'OPTIONAL { %s rdfs:label ?mul FILTER(LANG(?mul) = "mul") } '
+            'BIND(COALESCE(?en, ?mul) AS ?value) FILTER(BOUND(?value))' % (var, var))
+
+
 MISSION_FIELDS = {
-    "label": '?item rdfs:label ?value FILTER(LANG(?value) = "en")',
+    "label": label_of("?item"),
     "description": '?item schema:description ?value FILTER(LANG(?value) = "en")',
     "article": '?value schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/>',
     "launch": "?item wdt:P619 ?value",
     "landing": "?item wdt:P620 ?value",
-    "instance": "?item wdt:P31 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "operator": "?item wdt:P137 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "country": "?item wdt:P17 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "vehicle": "?item wdt:P375 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "part_of": "?item wdt:P361 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "destination": "?item wdt:P1444 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "follows": "?item wdt:P155 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
+    "instance": "?item wdt:P31 ?v . " + label_of("?v"),
+    "operator": "?item wdt:P137 ?v . " + label_of("?v"),
+    "country": "?item wdt:P17 ?v . " + label_of("?v"),
+    "vehicle": "?item wdt:P375 ?v . " + label_of("?v"),
+    "part_of": "?item wdt:P361 ?v . " + label_of("?v"),
+    "destination": "?item wdt:P1444 ?v . " + label_of("?v"),
+    "follows": "?item wdt:P155 ?v . " + label_of("?v"),
 }
 
 PEOPLE_FIELDS = {
-    "label": '?item rdfs:label ?value FILTER(LANG(?value) = "en")',
-    "alt_labels": '?item skos:altLabel ?value FILTER(LANG(?value) = "en")',
+    "label": label_of("?item"),
+    "alt_labels": '?item skos:altLabel ?value FILTER(LANG(?value) IN ("en", "mul"))',
     "description": '?item schema:description ?value FILTER(LANG(?value) = "en")',
     "article": '?value schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/>',
     "birth": "?item wdt:P569 ?value",
     "death": "?item wdt:P570 ?value",
-    "gender": "?item wdt:P21 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "birth_place": "?item wdt:P19 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "citizenship": "?item wdt:P27 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
+    "gender": "?item wdt:P21 ?v . " + label_of("?v"),
+    "birth_place": "?item wdt:P19 ?v . " + label_of("?v"),
+    "citizenship": "?item wdt:P27 ?v . " + label_of("?v"),
     "citizenship_code": "?item wdt:P27/wdt:P297 ?value",
     "time_in_space_s": "?item p:P2873/psn:P2873/wikibase:quantityAmount ?value",
-    "educated_at": "?item wdt:P69 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "military_rank": "?item wdt:P410 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
-    "military_branch": "?item wdt:P241 ?v . ?v rdfs:label ?value FILTER(LANG(?value) = \"en\")",
+    "educated_at": "?item wdt:P69 ?v . " + label_of("?v"),
+    "military_rank": "?item wdt:P410 ?v . " + label_of("?v"),
+    "military_branch": "?item wdt:P241 ?v . " + label_of("?v"),
 }
 
 
@@ -210,7 +221,7 @@ def wbgetentities(ids, props):
     for batch in chunks(sorted(ids), 50):
         resp = request("GET", WIKIDATA_API, params={
             "action": "wbgetentities", "format": "json", "ids": "|".join(batch),
-            "props": props, "languages": "en", "sitefilter": "enwiki",
+            "props": props, "languages": "en|mul", "sitefilter": "enwiki",
         })
         out.update(resp.json().get("entities", {}))
         time.sleep(0.5)
@@ -233,10 +244,11 @@ def fetch_details_api(ids, fields):
         if "redirects" in e:
             e = entities.get(e["redirects"]["to"], e)
         item = {}
-        label = e.get("labels", {}).get("en", {}).get("value")
+        labels = e.get("labels", {})
+        label = (labels.get("en") or labels.get("mul") or {}).get("value")
         if label:
             item["label"] = [label]
-        aliases = [a["value"] for a in e.get("aliases", {}).get("en", [])]
+        aliases = [a["value"] for lang in ("en", "mul") for a in e.get("aliases", {}).get(lang, [])]
         if aliases and "alt_labels" in fields:
             item["alt_labels"] = sorted(aliases)
         desc = e.get("descriptions", {}).get("en", {}).get("value")
@@ -267,7 +279,8 @@ def fetch_details_api(ids, fields):
     ref_entities = wbgetentities(refs, "labels|claims") if refs else {}
 
     def ref_label(r):
-        return ref_entities.get(r, {}).get("labels", {}).get("en", {}).get("value")
+        labels = ref_entities.get(r, {}).get("labels", {})
+        return (labels.get("en") or labels.get("mul") or {}).get("value")
 
     result = {}
     for q, item in raw.items():

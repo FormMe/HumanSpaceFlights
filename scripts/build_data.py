@@ -53,7 +53,7 @@ ASTRONAUT_COLUMNS = ["Name", "Year", "Status", "Birth Date", "Birth Place", "Gen
 # Not orbital human spaceflights: kept out, like in the original dataset.
 SUBORBITAL = re.compile(
     r"new shepard|blue origin|\bns-\d|virgin galactic|galactic \d|unity \d|spaceship|"
-    r"x-15|mercury-redstone|suborbital|sub-orbital", re.I)
+    r"x-15|mercury-redstone|suborbital|sub-orbital|vss unity", re.I)
 
 TODAY = dt.date.today()
 
