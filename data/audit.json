@@ -1,14 +1,11 @@
 {
- "crew_without_record": {
-  "Franco Malerba": [
-   "STS-46 (Atlantis)"
-  ]
- },
+ "crew_without_record": {},
  "missing_field_counts": {
   "Alma Mater": 32,
   "Birth Place": 1,
+  "Nationality": 2,
   "Space Flight (hr)": 1,
-  "Year": 60
+  "Year": 61
  },
  "astronauts_with_gaps": {
   "Aidyn Aimbetov": [
@@ -79,6 +76,9 @@
   "F. Andrew Gaffney": [
    "Year"
   ],
+  "Franco Malerba": [
+   "Nationality"
+  ],
   "Franz Viehböck": [
    "Alma Mater"
   ],
@@ -117,6 +117,10 @@
   ],
   "Jannicke Mikkelsen": [
    "Year"
+  ],
+  "Jared Isaacman": [
+   "Year",
+   "Nationality"
   ],
   "Jay C. Buckley": [
    "Year"
@@ -280,7 +284,7 @@
   "Apollo-Soyuz"
  ],
  "sources": {
-  "Wikidata/Wikipedia": 191,
+  "Wikidata/Wikipedia": 194,
   "legacy": 29,
   "legacy + Wikidata/Wikipedia": 449
  }

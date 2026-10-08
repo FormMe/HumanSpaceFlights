@@ -2717,6 +2717,17 @@
    "1738740"
   ]
  },
+ "Q125234721": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Keisha_Schahaff_and_Anastatia_Mayers"
+  ],
+  "description": [
+   "Antiguan and Barbudan spacewomen"
+  ],
+  "label": [
+   "Keisha Schahaff and Anastatia Mayers"
+  ]
+ },
  "Q125575516": {
   "article": [
    "https://en.wikipedia.org/wiki/Li_Cong_(taikonaut)"
@@ -3042,6 +3053,20 @@
   ],
   "label": [
    "Chun Wang"
+  ]
+ },
+ "Q129947691": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Nicola_Pecile"
+  ],
+  "description": [
+   "commercial astronaut"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Nicola Pecile"
   ]
  },
  "Q130720158": {
@@ -5384,6 +5409,34 @@
   ],
   "label": [
    "Dude Perfect"
+  ]
+ },
+ "Q16106272": {
+  "alt_labels": [
+   "John Goodwin",
+   "John Stuart Goodwin",
+   "Jon Stuart Goodwin"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Jon_Goodwin_(canoeist)"
+  ],
+  "birth": [
+   "1943-06-19T00:00:00Z"
+  ],
+  "citizenship": [
+   "United Kingdom"
+  ],
+  "citizenship_code": [
+   "GB"
+  ],
+  "description": [
+   "British canoeist"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Jon Goodwin"
   ]
  },
  "Q1615": {
@@ -22973,6 +23026,40 @@
    "Anna L. Fisher"
   ]
  },
+ "Q60651185": {
+  "alt_labels": [
+   "Mark P. \"Forger\" Stucky",
+   "Mark Stucky"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Mark_P._Stucky"
+  ],
+  "birth": [
+   "1958-11-09T00:00:00Z"
+  ],
+  "birth_place": [
+   "Minneapolis"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "description": [
+   "Test pilot and astronaut"
+  ],
+  "educated_at": [
+   "Kansas State University",
+   "Salina High School South"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Mark P. Stucky"
+  ]
+ },
  "Q607394": {
   "alt_labels": [
    "Richard J. Hieb",
@@ -23730,6 +23817,17 @@
   ],
   "time_in_space_s": [
    "2774520"
+  ]
+ },
+ "Q6872043": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Mir_EO-24"
+  ],
+  "description": [
+   "twenty-fourth expedition to Mir space station"
+  ],
+  "label": [
+   "Mir EO-24"
   ]
  },
  "Q692263": {
