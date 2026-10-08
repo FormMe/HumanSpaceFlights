@@ -2845,6 +2845,50 @@
    "1197300"
   ]
  },
+ "Q1282566": {
+  "alt_labels": [
+   "John Sumter Bull"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/John_S._Bull"
+  ],
+  "birth": [
+   "1934-09-25T00:00:00Z"
+  ],
+  "birth_place": [
+   "Memphis"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "2008-08-11T00:00:00Z"
+  ],
+  "description": [
+   "U.S. Navy test pilot, engineer and astronaut (1934–2008)"
+  ],
+  "educated_at": [
+   "Central High School",
+   "Rice University",
+   "Stanford University",
+   "United States Naval Test Pilot School"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "John S. Bull"
+  ],
+  "military_branch": [
+   "United States Navy"
+  ],
+  "military_rank": [
+   "lieutenant commander"
+  ]
+ },
  "Q12865": {
   "article": [
    "https://en.wikipedia.org/wiki/Bertalan_Farkas"
@@ -3770,6 +3814,9 @@
  "Q13499227": {
   "alt_labels": [
    "Victor Jerome Glover Jr."
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Victor_Glover"
   ],
   "birth": [
    "1976-04-30T00:00:00Z"
@@ -7432,6 +7479,44 @@
    "Christa McAuliffe"
   ]
  },
+ "Q2315605": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Fernando_Caldeiro"
+  ],
+  "birth": [
+   "1958-06-12T00:00:00Z"
+  ],
+  "birth_place": [
+   "Buenos Aires"
+  ],
+  "citizenship": [
+   "Argentina"
+  ],
+  "citizenship_code": [
+   "AR"
+  ],
+  "death": [
+   "2009-10-03T00:00:00Z"
+  ],
+  "description": [
+   "Argentine-American astronaut (1958–2009)"
+  ],
+  "educated_at": [
+   "Farmingdale State College",
+   "University of Arizona",
+   "University of Central Florida",
+   "William Cullen Bryant High School"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Fernando Caldeiro"
+  ],
+  "time_in_space_s": [
+   "0"
+  ]
+ },
  "Q232441": {
   "alt_labels": [
    "Laurel Blair Clark",
@@ -8922,6 +9007,48 @@
    "1621800"
   ]
  },
+ "Q2705403": {
+  "alt_labels": [
+   "Philip Kenyon Chapman"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Philip_K._Chapman"
+  ],
+  "birth": [
+   "1935-03-05T00:00:00Z"
+  ],
+  "birth_place": [
+   "Melbourne"
+  ],
+  "citizenship": [
+   "Australia",
+   "United States"
+  ],
+  "citizenship_code": [
+   "AU",
+   "US"
+  ],
+  "death": [
+   "2021-04-05T00:00:00Z"
+  ],
+  "description": [
+   "American astronaut (1935–2021)"
+  ],
+  "educated_at": [
+   "Massachusetts Institute of Technology",
+   "Parramatta High School",
+   "University of Sydney"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Philip K. Chapman"
+  ],
+  "time_in_space_s": [
+   "0"
+  ]
+ },
  "Q27336250": {
   "article": [
    "https://en.wikipedia.org/wiki/Chen_Dong_(taikonaut)"
@@ -8960,6 +9087,46 @@
   ],
   "time_in_space_s": [
    "2788140"
+  ]
+ },
+ "Q2742047": {
+  "alt_labels": [
+   "Patricia Consolatrix Hilliard Robertson"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Patricia_Robertson"
+  ],
+  "birth": [
+   "1963-03-12T00:00:00Z"
+  ],
+  "birth_place": [
+   "Indiana"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "2001-05-24T00:00:00Z"
+  ],
+  "description": [
+   "American astronaut (1963–2001)"
+  ],
+  "educated_at": [
+   "Drexel University",
+   "Drexel University College of Medicine",
+   "Indiana University of Pennsylvania"
+  ],
+  "gender": [
+   "female"
+  ],
+  "label": [
+   "Patricia Robertson"
+  ],
+  "time_in_space_s": [
+   "0"
   ]
  },
  "Q278656": {
@@ -9667,6 +9834,35 @@
   ],
   "time_in_space_s": [
    "1062720"
+  ]
+ },
+ "Q2992438": {
+  "alt_labels": [
+   "Georgy Vladimirovich Ivanov"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Georgy_Ivanov"
+  ],
+  "birth": [
+   "1894-11-10T00:00:00Z"
+  ],
+  "birth_place": [
+   "Seda"
+  ],
+  "citizenship": [
+   "Russian Empire"
+  ],
+  "death": [
+   "1958-08-26T00:00:00Z"
+  ],
+  "description": [
+   "Russian poet and essayist"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Georgy Ivanov"
   ]
  },
  "Q30157738": {
@@ -11606,6 +11802,43 @@
    "682800"
   ]
  },
+ "Q3270358": {
+  "alt_labels": [
+   "F. Curtis Michel",
+   "Frank Curtis Michel"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Curt_Michel"
+  ],
+  "birth": [
+   "1934-06-05T00:00:00Z"
+  ],
+  "birth_place": [
+   "La Crosse"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "2015-02-23T00:00:00Z"
+  ],
+  "description": [
+   "American astronaut"
+  ],
+  "educated_at": [
+   "C. K. McClatchy High School",
+   "California Institute of Technology"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Curt Michel"
+  ]
+ },
  "Q3294252": {
   "alt_labels": [
    "Mark Thomas Vande Hei",
@@ -12081,6 +12314,51 @@
    "2480460"
   ]
  },
+ "Q345678": {
+  "alt_labels": [
+   "Roger B. Chaffee",
+   "Roger Chaffee"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Roger_B._Chaffee"
+  ],
+  "birth": [
+   "1935-02-15T00:00:00Z"
+  ],
+  "birth_place": [
+   "Grand Rapids"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "1967-01-27T00:00:00Z"
+  ],
+  "description": [
+   "United States Navy commander, NASA astronaut (1935–1967)"
+  ],
+  "educated_at": [
+   "Illinois Institute of Technology",
+   "Innovation Central High School",
+   "Purdue University",
+   "United States Naval Academy"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Roger Bruce Chaffee"
+  ],
+  "military_branch": [
+   "United States Navy"
+  ],
+  "military_rank": [
+   "lieutenant commander"
+  ]
+ },
  "Q346671": {
   "alt_labels": [
    "Richard Douglas Husband",
@@ -12413,6 +12691,86 @@
   ],
   "time_in_space_s": [
    "264780"
+  ]
+ },
+ "Q3498668": {
+  "alt_labels": [
+   "Stephen Douglas Thorne",
+   "Stephen Thorne"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Stephen_D._Thorne"
+  ],
+  "birth": [
+   "1953-02-11T00:00:00Z"
+  ],
+  "birth_place": [
+   "Frankfurt"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "1986-05-24T00:00:00Z"
+  ],
+  "description": [
+   "American astronaut (1953–1986)"
+  ],
+  "educated_at": [
+   "T.L. Hanna High School",
+   "United States Naval Academy",
+   "United States Naval Test Pilot School"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Stephen D. Thorne"
+  ]
+ },
+ "Q3499300": {
+  "alt_labels": [
+   "Duane Edgar Graveline"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Duane_Graveline"
+  ],
+  "birth": [
+   "1931-03-02T00:00:00Z"
+  ],
+  "birth_place": [
+   "Newport"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "2016-09-05T00:00:00Z"
+  ],
+  "description": [
+   "American astronaut (1931-2016)"
+  ],
+  "educated_at": [
+   "Johns Hopkins University",
+   "University of Vermont"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Duane Graveline"
+  ],
+  "military_branch": [
+   "United States Air Force"
+  ],
+  "military_rank": [
+   "Colonel"
   ]
  },
  "Q350317": {
@@ -14298,6 +14656,20 @@
   ],
   "time_in_space_s": [
    "73.000002"
+  ]
+ },
+ "Q382071": {
+  "alt_labels": [
+   "Афанасьев"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Afanasyev"
+  ],
+  "description": [
+   "family name (Афанасьев)"
+  ],
+  "label": [
+   "Afanasyev"
   ]
  },
  "Q382150": {
@@ -19860,6 +20232,47 @@
    "15326040"
   ]
  },
+ "Q5112759": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Christopher_Loria"
+  ],
+  "birth": [
+   "1960-07-09T00:00:00Z"
+  ],
+  "birth_place": [
+   "Newton"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "description": [
+   "American astronaut"
+  ],
+  "educated_at": [
+   "Belmont High School",
+   "John F. Kennedy School of Government",
+   "U.S. Air Force Test Pilot School",
+   "United States Naval Academy"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Christopher Loria"
+  ],
+  "military_branch": [
+   "United States Marine Corps"
+  ],
+  "military_rank": [
+   "Colonel"
+  ],
+  "time_in_space_s": [
+   "0"
+  ]
+ },
  "Q512266": {
   "alt_labels": [
    "Thomas Gautier Pesquet"
@@ -22528,6 +22941,38 @@
    "Victor Vescovo"
   ]
  },
+ "Q60361095": {
+  "alt_labels": [
+   "Anna Linderfelt Fisher"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Anna_L._Fisher"
+  ],
+  "birth": [
+   "1878-01-01T00:00:00Z"
+  ],
+  "birth_place": [
+   "Milwaukee"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "1939-10-17T00:00:00Z"
+  ],
+  "description": [
+   "American advisor to Faisal I of Iraq"
+  ],
+  "gender": [
+   "female"
+  ],
+  "label": [
+   "Anna L. Fisher"
+  ]
+ },
  "Q607394": {
   "alt_labels": [
    "Richard J. Hieb",
@@ -22688,6 +23133,92 @@
    "15977220"
   ]
  },
+ "Q621462": {
+  "alt_labels": [
+   "Elliot McKay See",
+   "Elliot McKay See, Jr."
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Elliot_See"
+  ],
+  "birth": [
+   "1927-07-23T00:00:00Z"
+  ],
+  "birth_place": [
+   "Dallas"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "1966-02-28T00:00:00Z"
+  ],
+  "description": [
+   "American test pilot and NASA astronaut (1927-1966)"
+  ],
+  "educated_at": [
+   "Highland Park High School",
+   "United States Merchant Marine Academy",
+   "University of California, Los Angeles",
+   "University of Texas at Austin"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Elliot See"
+  ],
+  "military_rank": [
+   "commander"
+  ],
+  "time_in_space_s": [
+   "0"
+  ]
+ },
+ "Q6246601": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Neil_Woodward"
+  ],
+  "birth": [
+   "1962-07-26T00:00:00Z"
+  ],
+  "birth_place": [
+   "Chicago"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "description": [
+   "NASA astronaut"
+  ],
+  "educated_at": [
+   "George Washington University",
+   "Massachusetts Institute of Technology",
+   "United States Naval Test Pilot School",
+   "University of Texas at Austin"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Neil Woodward"
+  ],
+  "military_branch": [
+   "United States Navy"
+  ],
+  "military_rank": [
+   "commander"
+  ],
+  "time_in_space_s": [
+   "0"
+  ]
+ },
  "Q632907": {
   "alt_labels": [
    "Leland Devon Melvin",
@@ -22724,6 +23255,53 @@
   ],
   "time_in_space_s": [
    "2035680"
+  ]
+ },
+ "Q634141": {
+  "alt_labels": [
+   "Theodore Cordy Freeman"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Theodore_Freeman"
+  ],
+  "birth": [
+   "1930-02-18T00:00:00Z"
+  ],
+  "birth_place": [
+   "Haverford"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "1964-10-31T00:00:00Z"
+  ],
+  "description": [
+   "American astronaut (1930-1964)"
+  ],
+  "educated_at": [
+   "U.S. Air Force Test Pilot School",
+   "United States Naval Academy",
+   "University of Delaware",
+   "University of Michigan"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Theodore Freeman"
+  ],
+  "military_branch": [
+   "United States Air Force"
+  ],
+  "military_rank": [
+   "captain"
+  ],
+  "time_in_space_s": [
+   "0"
   ]
  },
  "Q634822": {
@@ -23385,6 +23963,57 @@
   ],
   "time_in_space_s": [
    "3740460"
+  ]
+ },
+ "Q704355": {
+  "alt_labels": [
+   "Charles Arthur \"Art\" Bassett II",
+   "Charles Arthur Bassett II",
+   "Charlie Bassett"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Charles_Bassett"
+  ],
+  "birth": [
+   "1931-12-30T00:00:00Z"
+  ],
+  "birth_place": [
+   "Dayton"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "1966-02-28T00:00:00Z"
+  ],
+  "description": [
+   "United States Air Force test pilot and astronaut (1931–1966)"
+  ],
+  "educated_at": [
+   "Berea High School",
+   "Ohio State University",
+   "Texas Tech University",
+   "U.S. Air Force Test Pilot School",
+   "USC Viterbi School of Engineering",
+   "University of Southern California"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Charles Bassett"
+  ],
+  "military_branch": [
+   "United States Air Force"
+  ],
+  "military_rank": [
+   "captain"
+  ],
+  "time_in_space_s": [
+   "0"
   ]
  },
  "Q704639": {
@@ -24165,6 +24794,53 @@
   ],
   "time_in_space_s": [
    "32974860"
+  ]
+ },
+ "Q709646": {
+  "alt_labels": [
+   "'''Clifton 'C.C.' Williams'''"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Clifton_Williams"
+  ],
+  "birth": [
+   "1932-09-26T00:00:00Z"
+  ],
+  "birth_place": [
+   "Mobile"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "1967-10-05T00:00:00Z"
+  ],
+  "description": [
+   "American astronaut (1932–1967)"
+  ],
+  "educated_at": [
+   "Auburn University",
+   "Murphy High School",
+   "Spring Hill College",
+   "United States Naval Test Pilot School"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Clifton Williams"
+  ],
+  "military_branch": [
+   "United States Marine Corps"
+  ],
+  "military_rank": [
+   "major"
+  ],
+  "time_in_space_s": [
+   "0"
   ]
  },
  "Q709921": {
@@ -24963,6 +25639,51 @@
   ],
   "time_in_space_s": [
    "1282800"
+  ]
+ },
+ "Q720191": {
+  "alt_labels": [
+   "Edward Galen \"Ed\" Givens Jr"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Edward_Givens"
+  ],
+  "birth": [
+   "1930-01-05T00:00:00Z"
+  ],
+  "birth_place": [
+   "Quanah"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "death": [
+   "1967-06-06T00:00:00Z"
+  ],
+  "description": [
+   "American astronaut (1930-1967)"
+  ],
+  "educated_at": [
+   "Quanah High School",
+   "Texas A&M University",
+   "U.S. Air Force Test Pilot School",
+   "United States Naval Academy",
+   "University of Oklahoma"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Edward Givens"
+  ],
+  "military_branch": [
+   "United States Air Force"
+  ],
+  "military_rank": [
+   "Major"
   ]
  },
  "Q720194": {

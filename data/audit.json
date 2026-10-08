@@ -7,6 +7,7 @@
  "missing_field_counts": {
   "Alma Mater": 32,
   "Birth Place": 1,
+  "Space Flight (hr)": 1,
   "Year": 60
  },
  "astronauts_with_gaps": {
@@ -88,7 +89,9 @@
    "Year"
   ],
   "Georgy Ivanov": [
-   "Alma Mater"
+   "Year",
+   "Alma Mater",
+   "Space Flight (hr)"
   ],
   "Gregory B. Jarvis": [
    "Year"
@@ -240,9 +243,6 @@
   "Valery Bykovsky": [
    "Alma Mater"
   ],
-  "Victor Glover": [
-   "Year"
-  ],
   "Vladimir Vasyutin": [
    "Alma Mater"
   ],
@@ -281,7 +281,7 @@
  ],
  "sources": {
   "Wikidata/Wikipedia": 191,
-  "legacy": 39,
-  "legacy + Wikidata/Wikipedia": 439
+  "legacy": 29,
+  "legacy + Wikidata/Wikipedia": 449
  }
 }
