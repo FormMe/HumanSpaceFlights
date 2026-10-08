@@ -1553,6 +1553,7 @@
   "alt_labels": [
    "James 'Jim' Arthur Lovell, Jr.",
    "James A. Lovell, Jr.",
+   "James Arthur Lovell",
    "James Arthur Lovell Jr.",
    "James Lovell Jr.",
    "Jim A. Lovell Jr.",
@@ -1900,6 +1901,7 @@
   ],
   "educated_at": [
    "University of the Mediterranean - Aix Marseille II",
+   "VIII Liceum Ogólnokształcące im. Adama Asnyka w Łodzi",
    "École polytechnique de l'université de Nantes",
    "Łódź University of Technology"
   ],
@@ -2789,6 +2791,11 @@
   ]
  },
  "Q126127455": {
+  "alt_labels": [
+   "Kapu, Tibor",
+   "T. Kapu",
+   "Tibor Kapu"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Tibor_Kapu"
   ],
@@ -3878,6 +3885,45 @@
    "14452140"
   ]
  },
+ "Q13500192": {
+  "alt_labels": [
+   "Christina Hammock Koch",
+   "Christina Marie Hammock",
+   "Christina Marie Hammock Koch"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Christina_Koch"
+  ],
+  "birth": [
+   "1979-01-29T00:00:00Z"
+  ],
+  "birth_place": [
+   "Grand Rapids"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "description": [
+   "American astronaut (born 1979)"
+  ],
+  "educated_at": [
+   "NASA Academy",
+   "North Carolina School of Science and Mathematics",
+   "North Carolina State University"
+  ],
+  "gender": [
+   "female"
+  ],
+  "label": [
+   "Christina Koch"
+  ],
+  "time_in_space_s": [
+   "28389480"
+  ]
+ },
  "Q13500570": {
   "alt_labels": [
    "Anne C. McClain",
@@ -3929,7 +3975,8 @@
    "Nicole Aunapu Mann",
    "Nicole Mann",
    "Nicole V. Aunapu",
-   "Nicole Victoria Aunapu"
+   "Nicole Victoria Aunapu",
+   "Nicole Victoria Aunapu Mann"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Nicole_Aunapu_Mann"
@@ -4705,6 +4752,9 @@
   ]
  },
  "Q1393554": {
+  "alt_labels": [
+   "John-David Francis Bartoe"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/John-David_F._Bartoe"
   ],
@@ -5191,7 +5241,8 @@
    "Aleksei Arkhipovich Leonov",
    "Aleksej Arhipovič Leonov",
    "Alexei Arkhipovich Leonov",
-   "Alexey Arkhipovich Leonov"
+   "Alexey Arkhipovich Leonov",
+   "Леонов, Алексей Архипович"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Alexei_Leonov"
@@ -5311,6 +5362,7 @@
  "Q158486": {
   "alt_labels": [
    "Eugene A. Cernan",
+   "Eugene Andrew Cernan",
    "Gene Cernan"
   ],
   "article": [
@@ -5440,6 +5492,11 @@
   ]
  },
  "Q1615": {
+  "alt_labels": [
+   "Armstrong",
+   "Neil A. Armstrong",
+   "Neil Alden Armstrong"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Neil_Armstrong"
   ],
@@ -5586,6 +5643,9 @@
   ]
  },
  "Q16297": {
+  "alt_labels": [
+   "Bill Shatner"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/William_Shatner"
   ],
@@ -5664,6 +5724,9 @@
   ]
  },
  "Q1687593": {
+  "alt_labels": [
+   "Jeremy Roger Hansen"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Jeremy_Hansen"
   ],
@@ -5744,6 +5807,7 @@
  },
  "Q174979": {
   "alt_labels": [
+   "Alan Bartlett Shepard",
    "Alan Bartlett Shepard Jr."
   ],
   "article": [
@@ -6231,6 +6295,8 @@
  "Q19242": {
   "alt_labels": [
    "Bill A. Anders",
+   "William A. Anders",
+   "William Alison Anders",
    "William Anders"
   ],
   "article": [
@@ -7373,6 +7439,7 @@
  },
  "Q2252": {
   "alt_labels": [
+   "Edwin Aldrin Jr.",
    "Edwin Eugene Aldrin Jr.",
    "Edwin Eugene Aldrin, Jr."
   ],
@@ -7417,6 +7484,10 @@
   ]
  },
  "Q227030": {
+  "alt_labels": [
+   "Mark R. Shuttleworth",
+   "Mark Richard Shuttleworth"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Mark_Shuttleworth"
   ],
@@ -7455,6 +7526,9 @@
   ]
  },
  "Q229635": {
+  "alt_labels": [
+   "Eileen Marie Collins"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Eileen_Collins"
   ],
@@ -7497,6 +7571,7 @@
  "Q229674": {
   "alt_labels": [
    "Christa Corrigan",
+   "Sharon Christa Corrigan",
    "Sharon Christa McAuliffe"
   ],
   "article": [
@@ -7801,7 +7876,8 @@
  "Q235523": {
   "alt_labels": [
    "Peggy A. Whitson",
-   "Peggy Annette Whitson"
+   "Peggy Annette Whitson",
+   "Peggy Whitson"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Peggy_Whitson"
@@ -7951,6 +8027,9 @@
   ]
  },
  "Q237473": {
+  "alt_labels": [
+   "Helen Patricia Sharman"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Helen_Sharman"
   ],
@@ -8449,6 +8528,9 @@
   ]
  },
  "Q254058": {
+  "alt_labels": [
+   "Patrick Pierre Roger Baudry"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Patrick_Baudry"
   ],
@@ -8900,7 +8982,8 @@
   "educated_at": [
    "Carthage Senior High School",
    "Missouri Southern State University",
-   "Missouri University of Science and Technology"
+   "Missouri University of Science and Technology",
+   "University of Washington"
   ],
   "gender": [
    "female"
@@ -9743,7 +9826,8 @@
   ],
   "educated_at": [
    "Sunnyside High School",
-   "University of Houston"
+   "University of Houston",
+   "University of Washington"
   ],
   "gender": [
    "female"
@@ -10548,6 +10632,13 @@
   ]
  },
  "Q3116390": {
+  "alt_labels": [
+   "G. R. Wiseman",
+   "Gregory R. Wiseman",
+   "Gregory Reid Wiseman",
+   "Gregory Wiseman",
+   "R. Wiseman"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Reid_Wiseman"
   ],
@@ -10635,7 +10726,10 @@
  "Q312556": {
   "alt_labels": [
    "Jeff Jorgensen",
-   "Jeffrey Jorgensen"
+   "Jeffrey Bezos",
+   "Jeffrey Jorgensen",
+   "Jeffrey Preston Bezos",
+   "Jeffrey Preston Jorgensen"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Jeff_Bezos"
@@ -11326,7 +11420,8 @@
   ],
   "educated_at": [
    "Cheney High School (Washington)",
-   "Creighton University"
+   "Creighton University",
+   "University of Washington"
   ],
   "gender": [
    "male"
@@ -12095,7 +12190,8 @@
  "Q336810": {
   "alt_labels": [
    "Donald K. Slayton",
-   "Donald Kent 'Deke' Slayton"
+   "Donald Kent 'Deke' Slayton",
+   "Donald Kent Slayton"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Deke_Slayton"
@@ -13346,7 +13442,8 @@
  "Q360433": {
   "alt_labels": [
    "Franklin Chang Diaz",
-   "Franklin Chang-Diaz"
+   "Franklin Chang-Diaz",
+   "Franklin Ramón Chang-Díaz"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Franklin_Chang-D%C3%ADaz"
@@ -13500,6 +13597,9 @@
   ]
  },
  "Q362190": {
+  "alt_labels": [
+   "Scott Joseph Kelly"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Scott_Kelly_(astronaut)"
   ],
@@ -13906,7 +14006,14 @@
  "Q364451": {
   "alt_labels": [
    "Beregovoy",
-   "Georgy Timofeyevich Beregovoy"
+   "Georgy Timofeyevich Beregovoy",
+   "Береговой Г. Т.",
+   "Береговой Георгий",
+   "Береговой Георгий Тимофеевич",
+   "Береговой, Г. Т.",
+   "Береговой, Георгий",
+   "Георгий Береговой",
+   "Георгий Тимофеевич Береговой"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Georgy_Beregovoy"
@@ -14050,6 +14157,7 @@
  "Q372215": {
   "alt_labels": [
    "Ronnie Walter \"Walt\" Cunningham",
+   "Ronnie Walter Cunningham",
    "Walt Cunningham"
   ],
   "article": [
@@ -14713,6 +14821,8 @@
  },
  "Q382071": {
   "alt_labels": [
+   "Afanasiev",
+   "Afanasyev",
    "Афанасьев"
   ],
   "article": [
@@ -14770,6 +14880,9 @@
   ]
  },
  "Q382176": {
+  "alt_labels": [
+   "Daniel Christopher Burbank"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Daniel_C._Burbank"
   ],
@@ -15101,6 +15214,11 @@
   ]
  },
  "Q41575": {
+  "alt_labels": [
+   "Sue Helms",
+   "Susan Helms",
+   "Susan Jane Helms"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Susan_Helms"
   ],
@@ -15302,6 +15420,9 @@
   ]
  },
  "Q426836": {
+  "alt_labels": [
+   "Dale Allan Gardner"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Dale_Gardner"
   ],
@@ -15585,7 +15706,8 @@
  },
  "Q434205": {
   "alt_labels": [
-   "Jean-Loup Chretien"
+   "Jean-Loup Chretien",
+   "Jean-Loup Jacques Marie Chrétien"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Jean-Loup_Chr%C3%A9tien"
@@ -15793,6 +15915,7 @@
  },
  "Q4350906": {
   "alt_labels": [
+   "Julia Peresild",
    "Yulia Sergeevna Peresild",
    "Yuliya Peresild",
    "Yuliya Sergeyevna Peresild"
@@ -15933,6 +16056,7 @@
   "educated_at": [
    "Camas High School",
    "Feinberg School of Medicine",
+   "University of Washington",
    "Wright State University"
   ],
   "gender": [
@@ -15970,7 +16094,8 @@
   "educated_at": [
    "Douglas Byrd High School",
    "Massachusetts Institute of Technology",
-   "U.S. Air Force Test Pilot School"
+   "U.S. Air Force Test Pilot School",
+   "University of Washington"
   ],
   "gender": [
    "male"
@@ -16064,6 +16189,12 @@
   ]
  },
  "Q4407963": {
+  "alt_labels": [
+   "Lauren Sanchez",
+   "Lauren Sanchez Bezos",
+   "Lauren Sánchez Bezos",
+   "Lauren Wendy Sánchez"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Lauren_S%C3%A1nchez_Bezos"
   ],
@@ -16609,6 +16740,9 @@
   ]
  },
  "Q447304": {
+  "alt_labels": [
+   "Rex Joseph Walheim"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Rex_J._Walheim"
   ],
@@ -16998,7 +17132,8 @@
  },
  "Q448547": {
   "alt_labels": [
-   "Pedro Duque Duque"
+   "Pedro Duque Duque",
+   "Pedro Francisco Duque Duque"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Pedro_Duque"
@@ -18232,6 +18367,9 @@
   ]
  },
  "Q464166": {
+  "alt_labels": [
+   "Kathryn Dwyer Sullivan"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Kathryn_D._Sullivan"
   ],
@@ -19113,6 +19251,9 @@
   "birth": [
    "1977-07-01T00:00:00Z"
   ],
+  "birth_place": [
+   "Caribou"
+  ],
   "citizenship": [
    "Sweden",
    "United States"
@@ -19425,6 +19566,9 @@
   "birth": [
    "1959-07-02T00:00:00Z"
   ],
+  "birth_place": [
+   "Jacksonville"
+  ],
   "citizenship": [
    "United States"
   ],
@@ -19616,6 +19760,7 @@
  },
  "Q49284": {
   "alt_labels": [
+   "Judith A. Resnik",
    "Judith Arlene Resnik"
   ],
   "article": [
@@ -19658,6 +19803,7 @@
   "alt_labels": [
    "Dr Sally Kristen Ride",
    "Sally K. Ride",
+   "Sally Kristen Ride",
    "Sally Ride- Hawley"
   ],
   "article": [
@@ -19996,7 +20142,8 @@
   ],
   "educated_at": [
    "Naval Postgraduate School",
-   "United States Naval Test Pilot School"
+   "United States Naval Test Pilot School",
+   "University of Washington"
   ],
   "gender": [
    "male"
@@ -20205,6 +20352,8 @@
  },
  "Q507046": {
   "alt_labels": [
+   "Owen Garriott",
+   "Owen Kay Garriott",
    "Owen Kay Garriott, PhD"
   ],
   "article": [
@@ -20519,7 +20668,8 @@
   ],
   "educated_at": [
    "Harvey Mudd College",
-   "University of Göttingen"
+   "University of Göttingen",
+   "University of Washington"
   ],
   "gender": [
    "male"
@@ -21564,6 +21714,7 @@
  },
  "Q536632": {
   "alt_labels": [
+   "Paul Joseph Weitz",
    "Paul Weitz"
   ],
   "article": [
@@ -23184,6 +23335,47 @@
    "4530840"
   ]
  },
+ "Q6160001": {
+  "alt_labels": [
+   "\"Rook\" Isaacman",
+   "Jared \"Rook\" Isaacman",
+   "Jared Rook Isaacman",
+   "Jared Taylor Isaacman",
+   "Rook",
+   "Rook Isaacman"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Jared_Isaacman"
+  ],
+  "birth": [
+   "1983-02-11T00:00:00Z"
+  ],
+  "birth_place": [
+   "Westfield"
+  ],
+  "citizenship": [
+   "United States"
+  ],
+  "citizenship_code": [
+   "US"
+  ],
+  "description": [
+   "American businessman, pilot, and private astronaut"
+  ],
+  "educated_at": [
+   "Embry–Riddle Aeronautical University",
+   "Ridge High School"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Jared Isaacman"
+  ],
+  "time_in_space_s": [
+   "255780"
+  ]
+ },
  "Q620632": {
   "alt_labels": [
    "Aleksandr Ivanovich Lazutkin"
@@ -24328,6 +24520,7 @@
   ],
   "educated_at": [
    "Harvey Mudd College",
+   "University of Washington",
    "Winston Churchill High School"
   ],
   "gender": [
@@ -25632,6 +25825,7 @@
   "educated_at": [
    "Plymouth College",
    "Pullman High School",
+   "University of Washington",
    "Washington State University"
   ],
   "gender": [
@@ -25980,6 +26174,7 @@
   ],
   "educated_at": [
    "U.S. Air Force Test Pilot School",
+   "University of Washington",
    "West Seattle High School"
   ],
   "gender": [
@@ -26641,7 +26836,8 @@
    "Yuriy Gagarin",
    "Yury Alekseyevich Gagarin",
    "Yury Alexeyevich Gagarin",
-   "Yury Gagarin"
+   "Yury Gagarin",
+   "Юрий Алексеевич Гагарин"
   ],
   "article": [
    "https://en.wikipedia.org/wiki/Yuri_Gagarin"
@@ -26826,7 +27022,8 @@
   "educated_at": [
    "Sheldon High School",
    "U.S. Air Force Test Pilot School",
-   "United States Air Force Academy"
+   "United States Air Force Academy",
+   "University of Washington"
   ],
   "gender": [
    "male"
@@ -27787,6 +27984,9 @@
   ]
  },
  "Q944386": {
+  "alt_labels": [
+   "Wubbo Johannes Ockels"
+  ],
   "article": [
    "https://en.wikipedia.org/wiki/Wubbo_Ockels"
   ],
@@ -28025,6 +28225,48 @@
   ],
   "time_in_space_s": [
    "3049800"
+  ]
+ },
+ "Q957368": {
+  "alt_labels": [
+   "Franco Egidio Malerba"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Franco_Malerba"
+  ],
+  "birth": [
+   "1946-10-10T00:00:00Z"
+  ],
+  "birth_place": [
+   "Busalla"
+  ],
+  "citizenship": [
+   "Italy"
+  ],
+  "citizenship_code": [
+   "IT"
+  ],
+  "description": [
+   "Italian astronaut"
+  ],
+  "educated_at": [
+   "University of Genoa"
+  ],
+  "gender": [
+   "male"
+  ],
+  "label": [
+   "Franco Malerba"
+  ],
+  "military_branch": [
+   "Italian Navy"
+  ],
+  "military_rank": [
+   "Gardes de la Marine",
+   "reservist"
+  ],
+  "time_in_space_s": [
+   "688500"
   ]
  },
  "Q963226": {

@@ -3,7 +3,6 @@
  "missing_field_counts": {
   "Alma Mater": 32,
   "Birth Place": 1,
-  "Nationality": 2,
   "Space Flight (hr)": 1,
   "Year": 61
  },
@@ -76,9 +75,6 @@
   "F. Andrew Gaffney": [
    "Year"
   ],
-  "Franco Malerba": [
-   "Nationality"
-  ],
   "Franz Viehböck": [
    "Alma Mater"
   ],
@@ -119,8 +115,7 @@
    "Year"
   ],
   "Jared Isaacman": [
-   "Year",
-   "Nationality"
+   "Year"
   ],
   "Jay C. Buckley": [
    "Year"

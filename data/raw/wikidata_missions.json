@@ -7448,6 +7448,9 @@
   "instance": [
    "human spaceflight"
   ],
+  "label": [
+   "SpaceX Crew-1"
+  ],
   "landing": [
    "2021-05-02T00:00:00Z"
   ],
@@ -12939,6 +12942,9 @@
   ],
   "destination": [
    "International Space Station"
+  ],
+  "follows": [
+   "SpaceX Crew-1"
   ],
   "instance": [
    "human spaceflight"
