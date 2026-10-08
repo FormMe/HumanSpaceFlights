@@ -10,12 +10,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/background.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/paracoords.css"/>
     <link rel="stylesheet" href="css/buttons.css"/>
     <link rel="stylesheet" href="css/tooltip.css"/>
+    <link rel="stylesheet" href="css/paracoords.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
     <script src="bower_components/d3/d3.min.js"></script>
     <script src="bower_components/d3-tip/index.js"></script>
     <script src="js/divgrid.js"></script>
@@ -27,6 +27,8 @@
     <script src="js/render-queue.js"></script>
 </head>
 <body>
+    <div id="sky" aria-hidden="true"></div>
+
     <header id="header">
         <div class="logos">
             <img class="logo" src="pics/roscosmos.png" alt="Roscosmos" width="77" height="82"/>
@@ -36,6 +38,7 @@
         <div class="heading">
             <h1 class="page_header">Human Spaceflight Missions</h1>
             <p class="project">"Astronet" project</p>
+            <div class="stats" id="Stats"></div>
         </div>
         <div class="logos">
             <img class="logo" src="pics/CNSA.png" alt="CNSA" width="112" height="82"/>
@@ -49,6 +52,7 @@
             <div class="scroll-x">
                 <svg id="FlightsChart" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid meet"></svg>
             </div>
+            <p class="scroll-hint">← swipe to see earlier years</p>
         </section>
 
         <section class="view card sun_filters">
@@ -164,7 +168,13 @@
                 <h2 class="title" id="GraphTitle">Missions-Astronauts Connections</h2>
                 <button class="button" onclick="complete_graph()">Draw all</button>
             </div>
-            <svg id="Graph" width="430" height="450" viewBox="0 0 430 450" preserveAspectRatio="xMidYMid meet"></svg>
+            <div class="graph-body">
+                <svg id="Graph" width="430" height="450" viewBox="0 0 430 450" preserveAspectRatio="xMidYMid meet"></svg>
+                <p class="graph-hint">
+                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="22" cy="22" r="5"/><circle cx="8" cy="10" r="3.5"/><circle cx="37" cy="12" r="3.5"/><circle cx="34" cy="36" r="3.5"/><circle cx="9" cy="33" r="3.5"/><path d="M18 19l-7-6.5M26 19.5l8-5.5M25.5 25.5l6 8M18 25.5l-7 5.5"/></svg>
+                    Pick a mission or an astronaut in the list to see who flew with whom, or press <b>Draw all</b>.
+                </p>
+            </div>
         </section>
 
         <section class="view card info" id="Info">
@@ -172,7 +182,10 @@
                 <caption class="title"></caption>
                 <tbody></tbody>
             </table>
-            <p class="info-hint">Click a mission or an astronaut in the list or in the graph to see the details.</p>
+            <p class="info-hint">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="5" width="26" height="30" rx="4"/><path d="M13 13h14M13 19h14M13 25h9"/></svg>
+                Details of the selected mission or astronaut appear here.
+            </p>
         </section>
     </main>
 
@@ -181,6 +194,7 @@
         <span id="DataUpdated"></span>
     </footer>
 
+    <script src="js/starfield.js"></script>
     <script src="js/paracoords.js"></script>
     <script src="js/selectionList.js"></script>
     <script src="js/script.js"></script>

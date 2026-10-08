@@ -21,7 +21,9 @@ var renderQueue = (function(func) {
       if (!valid) return true;
       var chunk = _queue.splice(0,_rate);
       chunk.map(func);
-      timer_frame(doFrame);
+      // stop when everything is drawn: an endless requestAnimationFrame loop
+      // (one more for every redraw) kept the browser busy on every frame
+      if (_queue.length) timer_frame(doFrame);
     }
 
     doFrame();

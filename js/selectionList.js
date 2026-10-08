@@ -27,6 +27,8 @@ class SelectionList{
 			.call(grid)
 			.selectAll(".row")
 		    .on("click", function(d) {
+		    	d3.selectAll('#grid .row').classed('active', false);
+		    	d3.select(this).classed('active', true);
 		    	graph.update(create_graph(d));
 		    	info.update(d, isMissions);
 		    	d.highlighted = true;

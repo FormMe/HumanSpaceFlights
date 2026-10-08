@@ -1,6 +1,9 @@
 // http://bl.ocks.org/3687826
 d3.divgrid = function(config) {
   var columns = [];
+  // readable header names for some data columns
+  var labels = {"Country Flag": "", "Launch Data": "Launch date",
+                "Launch Mission": "Mission", "Birth Date": "Born"};
 
   var dg = function(selection) {
     if (columns.length == 0) columns = d3.keys(selection.data()[0][0]);
@@ -20,7 +23,7 @@ d3.divgrid = function(config) {
       .classed("cell", true)
 
     selection.selectAll(".header .cell")
-      .text(function(d) { return d; });
+      .text(function(d) { return labels[d] != null ? labels[d] : d; });
 
     header.exit().remove();
 

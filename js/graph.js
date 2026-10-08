@@ -64,7 +64,22 @@ class Graph{
 		  .links(graph.links);
 
 		var radius = 15;
+		// zoom the view smoothly to the nodes, so a small graph is not a
+		// tiny cluster in the middle of a big empty area (phones!)
+		var view = (svg.attr("viewBox") || ("0 0 " + width + " " + height)).split(/\s+/).map(Number);
+		function fitView() {
+			if (!graph.nodes.length) return;
+			var x0 = d3.min(graph.nodes, d => d.x), x1 = d3.max(graph.nodes, d => d.x),
+			    y0 = d3.min(graph.nodes, d => d.y), y1 = d3.max(graph.nodes, d => d.y);
+			var pad = 28, w = Math.max(x1 - x0 + 2 * pad, 170), h = Math.max(y1 - y0 + 2 * pad, 170);
+			// keep the aspect ratio of the svg
+			if (w / h > width / height) h = w * height / width; else w = h * width / height;
+			var target = [(x0 + x1) / 2 - w / 2, (y0 + y1) / 2 - h / 2, w, h];
+			view = view.map((v, i) => v + (target[i] - v) * 0.12);
+			svg.attr("viewBox", view.map(v => v.toFixed(1)).join(" "));
+		}
 		function ticked() {
+			fitView();
 			node
 			    .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
 		        .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });

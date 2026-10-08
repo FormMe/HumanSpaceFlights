@@ -321,6 +321,14 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     d3.json("data/meta.json", function (error, meta) {
         if (!error && meta && meta.built_at)
             d3.select("#DataUpdated").text(" · updated " + meta.built_at.slice(0, 10));
+        if (!error && meta) {
+            var stats = [[meta.missions, "missions"], [meta.astronauts, "astronauts"],
+                         ["1961–" + String(meta.last_launch || "").slice(0, 4), ""]];
+            d3.select("#Stats").selectAll(".stat").data(stats).enter()
+                .append("span").attr("class", "stat")
+                .style("animation-delay", (d, i) => (0.3 + i * 0.1) + "s")
+                .html(d => "<b>" + d[0] + "</b>" + (d[1] ? " " + d[1] : ""));
+        }
     });
 
     var barScroll = document.querySelector('.stacked .scroll-x');
