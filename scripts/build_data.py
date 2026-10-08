@@ -366,7 +366,7 @@ def wiki_date(raw):
     """Date from an infobox value: {{Start date|2021|04|09|...}} or '9 April 2021'."""
     if not raw:
         return ""
-    m = re.search(r"\{\{\s*(?:start|end|launch|landing)?[ -]?date(?: and age)?\s*\|"
+    m = re.search(r"\{\{\s*[a-z -]*date[a-z -]*\|"
                   r"(?:[^|}]*=[^|}]*\|)*\s*(\d{4})\s*\|\s*(\d{1,2})\s*\|\s*(\d{1,2})", raw, re.I)
     if m:
         y, mo, d = (int(x) for x in m.groups())
@@ -398,6 +398,67 @@ def field_raw(box_text, field):
 
 def link_titles(raw):
     return [t.strip() for t in re.findall(r"\[\[([^\]|#]+)", raw or "")]
+
+
+AGENCY_COUNTRY = [
+    (r"NASA|United States", "United States", "US"), (r"Roscosmos|Russia|Soviet", "Russia", "RU"),
+    (r"CNSA|CMSA|China|PLA", "China", "CN"), (r"JAXA|NASDA|Japan", "Japan", "JP"),
+    (r"CSA|Canad", "Canada", "CA"), (r"ISRO|India", "India", "IN"),
+    (r"Ital", "Italy", "IT"), (r"German|DLR", "Germany", "DE"), (r"CNES|Franc", "France", "FR"),
+]
+
+
+def wiki_url(title):
+    return "https://en.wikipedia.org/wiki/" + title.replace(" ", "_")
+
+
+def person_from_wikipedia(title, box_text, extract):
+    """Minimal Wikidata-like record from an astronaut article."""
+    box = parse_infobox(box_text)
+    if not box or not re.search(r"astronaut|cosmonaut|taikonaut|spaceflight",
+                                box_text + extract, re.I):
+        return None
+    birth = wiki_date(box.get("birth_date"))
+    words = re.findall(r"\b(she|her|hers|he|his|him)\b", extract.lower())
+    female = sum(w in ("she", "her", "hers") for w in words)
+    male = len(words) - female
+    gender = "female" if female > male else "male" if male > female else ""
+    origin = plain(box.get("nationality", "")) + " " + plain(box.get("type", ""))
+    citizenship, codes = [], []
+    for pattern, country, code in AGENCY_COUNTRY:
+        if re.search(pattern, origin):
+            citizenship, codes = [country], [code]
+            break
+    rec = {
+        "label": [re.sub(r"\s*\(.*?\)$", "", plain(box.get("name", "")) or title)],
+        "article": [wiki_url(title)],
+        "description": ["astronaut (from Wikipedia)"],
+        "birth": [birth + "T00:00:00Z"] if birth else [],
+        "death": [wiki_date(box.get("death_date")) + "T00:00:00Z"] if wiki_date(box.get("death_date")) else [],
+        "gender": [gender] if gender else [],
+        "birth_place": [plain(box.get("birth_place", ""))] if box.get("birth_place") else [],
+        "citizenship": citizenship,
+        "citizenship_code": codes,
+    }
+    return {k: v for k, v in rec.items() if v}
+
+
+def mission_from_wikipedia(title, box_text, extract):
+    """Spaceflight known only from its Wikipedia infobox."""
+    box = parse_infobox(box_text)
+    launch = wiki_date(box.get("launch_date"))
+    if not launch:
+        return None
+    landing = wiki_date(box.get("landing_date"))
+    rec = {
+        "label": [title],
+        "article": [wiki_url(title)],
+        "launch": [launch + "T00:00:00Z"],
+        "landing": [landing + "T00:00:00Z"] if landing else [],
+        "description": [plain(box.get("mission_type", ""))] if box.get("mission_type") else [],
+        "operator": [plain(box.get("operator", ""))] if box.get("operator") else [],
+    }
+    return {k: v for k, v in rec.items() if v}
 
 
 AUDIT_FIELDS = ["Birth Date", "Birth Place", "Gender", "Status", "Year", "Alma Mater",
@@ -453,6 +514,7 @@ def main():
     mission_boxes = load_json("wikipedia_mission_infoboxes.json", {})
     title_ids = load_json("wikipedia_title_ids.json", {})
     legacy_ids = load_json("wikipedia_legacy_ids.json", {})
+    person_extracts = load_json("wikipedia_person_extracts.json", {})
     extracts = load_json("wikipedia_extracts.json", {})
     overrides = load_overrides()
 
@@ -465,6 +527,22 @@ def main():
             return None
         from urllib.parse import unquote
         return unquote(url.rsplit("/wiki/", 1)[-1]).replace("_", " ")
+
+    # Records built from Wikipedia alone, for articles whose Wikidata item
+    # could not be read (see data/raw/diagnostics.json).
+    for title, q in sorted(list(title_ids.items()) + list(legacy_ids.items())):
+        if q in people or title not in infoboxes:
+            continue
+        rec = person_from_wikipedia(title, infoboxes[title], person_extracts.get(title, ""))
+        if rec:
+            people[q] = rec
+    known_articles = {article(m) for m in wd_missions.values()}
+    for title, text in sorted(mission_boxes.items()):
+        if title in known_articles:
+            continue
+        rec = mission_from_wikipedia(title, text, extracts.get(title, ""))
+        if rec:
+            wd_missions["wp:" + title] = rec
 
     def is_person(q):
         p = people.get(q)

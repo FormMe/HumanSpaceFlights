@@ -188,6 +188,7 @@ def fetch_details(ids, fields, what, batch_size=200, resolve_redirects=True):
 
 
 WIKIDATA_API = "https://www.wikidata.org/w/api.php"
+DIAGNOSTICS = {}
 
 # property -> (field, kind) used by the wbgetentities fallback
 API_PROPS = {
@@ -261,6 +262,8 @@ def fetch_details_api(ids, fields):
                     if unit in SECONDS:
                         item.setdefault(field, []).append(str(float(v["amount"]) * SECONDS[unit]))
         raw[q] = item
+        if not item.get("label"):
+            DIAGNOSTICS.setdefault("wikidata_api_empty", {})[q] = json.dumps(e)[:400]
     ref_entities = wbgetentities(refs, "labels|claims") if refs else {}
 
     def ref_label(r):
@@ -493,8 +496,14 @@ def main():
     for t, q in list(title_ids.items()) + list(legacy_ids.items()):
         if q in people and not people[q].get("article"):
             people[q]["article"] = ["https://en.wikipedia.org/wiki/" + requests.utils.quote(t.replace(" ", "_"))]
+    # people known only by their Wikipedia article (Wikidata returned nothing)
+    orphan_titles = {t for t, q in title_ids.items() if q not in people}
+    orphan_titles |= {t for t, q in legacy_ids.items() if q not in people and q in set(title_ids.values())}
+    DIAGNOSTICS["people_without_wikidata"] = {t: title_ids.get(t) or legacy_ids.get(t)
+                                              for t in sorted(orphan_titles)}
     person_boxes = fetch_infoboxes(
-        {article_title(p["article"][0]) for p in people.values() if p.get("article")})
+        {article_title(p["article"][0]) for p in people.values() if p.get("article")} | orphan_titles)
+    person_extracts = fetch_extracts(orphan_titles)
 
     # Second round: flights listed in astronaut infoboxes but unknown to Wikidata
     # queries above (e.g. a mission item without crew statements).
@@ -508,9 +517,16 @@ def main():
     extra = fetch_missions(set(extra_ids.values()) - set(flights))
     extra = {k: v for k, v in extra.items() if v.get("launch")}
     log("  %d extra flights from astronaut infoboxes" % len(extra))
+    extra_articles = {article_title(m["article"][0]) for m in extra.values() if m.get("article")}
+    missing_flights = {t for t, q in extra_ids.items()
+                       if q not in flights and q not in extra and t not in extra_articles}
     flights.update(extra)
-    extra_boxes = fetch_infoboxes(
-        {article_title(m["article"][0]) for m in extra.values() if m.get("article")})
+    extra_boxes = fetch_infoboxes(extra_articles | missing_flights)
+    # only spaceflight infoboxes of the flights unknown to Wikidata are kept
+    for t in missing_flights:
+        if not re.search(r"\{\{\s*Infobox spaceflight", extra_boxes.get(t) or "", re.I):
+            extra_boxes.pop(t, None)
+    DIAGNOSTICS["flights_without_wikidata"] = sorted(t for t in missing_flights if t in extra_boxes)
     mission_boxes.update(extra_boxes)
     extra_titles = set()
     for box in extra_boxes.values():
@@ -536,6 +552,8 @@ def main():
     save("wikipedia_mission_infoboxes.json", mission_boxes)
     save("wikipedia_infoboxes.json", person_boxes)
     save("wikipedia_extracts.json", extracts)
+    save("wikipedia_person_extracts.json", person_extracts)
+    save("diagnostics.json", DIAGNOSTICS)
     save("meta.json", {"fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                        "people": len(people), "missions": len(flights), "links": len(links)})
 
