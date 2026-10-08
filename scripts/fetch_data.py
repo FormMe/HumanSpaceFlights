@@ -101,6 +101,21 @@ def fetch_links():
     return sorted(links)
 
 
+def fetch_recent_flights(since="2017-01-01"):
+    """Crewed flights found by class, so missions without crew links are not missed."""
+    log("Wikidata: human spaceflights since %s" % since)
+    rows = sparql("""
+        SELECT DISTINCT ?mission WHERE {
+          VALUES ?cls { "human spaceflight"@en "crewed spaceflight"@en }
+          ?c rdfs:label ?cls .
+          ?mission wdt:P31 ?c ; wdt:P619 ?launch .
+          FILTER(?launch >= "%sT00:00:00Z"^^xsd:dateTime)
+        }""" % since)
+    found = {qid(r["mission"]) for r in rows}
+    log("  %d flights" % len(found))
+    return found
+
+
 MISSION_FIELDS = {
     "label": '?item rdfs:label ?value FILTER(LANG(?value) = "en")',
     "description": '?item schema:description ?value FILTER(LANG(?value) = "en")',

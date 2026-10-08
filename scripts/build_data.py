@@ -311,6 +311,45 @@ def load_overrides():
 # main build
 # --------------------------------------------------------------------------
 
+MONTHS = {m: i for i, m in enumerate(
+    ["january", "february", "march", "april", "may", "june", "july", "august",
+     "september", "october", "november", "december"], 1)}
+
+
+def wiki_date(raw):
+    """Date from an infobox value: {{Start date|2021|04|09|...}} or '9 April 2021'."""
+    if not raw:
+        return ""
+    m = re.search(r"\{\{\s*(?:start|end|launch|landing)?[ -]?date(?: and age)?\s*\|"
+                  r"(?:[^|}]*=[^|}]*\|)*\s*(\d{4})\s*\|\s*(\d{1,2})\s*\|\s*(\d{1,2})", raw, re.I)
+    if m:
+        y, mo, d = (int(x) for x in m.groups())
+    else:
+        text = plain(raw).lower()
+        m1 = re.search(r"(\d{1,2})\s+(%s)\s+(\d{4})" % "|".join(MONTHS), text)
+        m2 = re.search(r"(%s)\s+(\d{1,2}),?\s+(\d{4})" % "|".join(MONTHS), text)
+        if m1:
+            d, mo, y = int(m1.group(1)), MONTHS[m1.group(2)], int(m1.group(3))
+        elif m2:
+            mo, d, y = MONTHS[m2.group(1)], int(m2.group(2)), int(m2.group(3))
+        else:
+            return ""
+    try:
+        return dt.date(y, mo, d).isoformat()
+    except ValueError:
+        return ""
+
+
+def field_raw(box_text, field):
+    """Raw value of an infobox parameter (works without mwparserfromhell, keeps links)."""
+    m = re.search(r"\|\s*%s\s*=(.*?)(?=\n\s*\|\s*[a-z_ ]+=|\Z)" % field, box_text or "", re.S | re.I)
+    return m.group(1).strip() if m else None
+
+
+def link_titles(raw):
+    return [t.strip() for t in re.findall(r"\[\[([^\]|#]+)", raw or "")]
+
+
 def main():
     legacy_missions = read_csv(os.path.join(SOURCE, "missions_legacy.csv"))
     legacy_astronauts = read_csv(os.path.join(SOURCE, "astronauts_legacy.csv"))
@@ -318,6 +357,8 @@ def main():
     people = load_json("wikidata_people.json", {})
     wd_missions = load_json("wikidata_missions.json", {})
     infoboxes = load_json("wikipedia_infoboxes.json", {})
+    mission_boxes = load_json("wikipedia_mission_infoboxes.json", {})
+    title_ids = load_json("wikipedia_title_ids.json", {})
     extracts = load_json("wikipedia_extracts.json", {})
     overrides = load_overrides()
 
@@ -331,6 +372,10 @@ def main():
         from urllib.parse import unquote
         return unquote(url.rsplit("/wiki/", 1)[-1]).replace("_", " ")
 
+    def is_person(q):
+        p = people.get(q)
+        return bool(p and p.get("label") and (p.get("birth") or p.get("gender")))
+
     # ---- legacy missions index ------------------------------------------
     legacy_by_key = {}
     legacy_crew = defaultdict(list)          # mission name -> crew names
@@ -342,19 +387,54 @@ def main():
         legacy_dates[row["Launch Data"]].append(row["Launch Mission"])
     cutoff = max(row["Launch Data"] for row in legacy_missions)
 
-    # ---- classify Wikidata missions ---------------------------------------
-    mission_people = defaultdict(set)
-    person_missions = defaultdict(set)
+    # ---- crews: Wikipedia infobox (launching / landing) or Wikidata ------
+    link_people = defaultdict(set)
+    person_links = defaultdict(set)
     for p, m in links:
-        mission_people[m].add(p)
-        person_missions[p].add(m)
+        link_people[m].add(p)
+        person_links[p].add(m)
 
+    launch_crew, landing_crew, launch_date, landing_date = {}, {}, {}, {}
+    for q, m in wd_missions.items():
+        box = mission_boxes.get(article(m) or "") or ""
+        raw_launching = field_raw(box, "launching")
+        raw_landing = field_raw(box, "landing")
+        raw_members = field_raw(box, "crew_members")
+
+        def ids(raw):
+            return {title_ids[t] for t in link_titles(raw) if t in title_ids and is_person(title_ids[t])}
+
+        if raw_launching is not None or raw_members is not None:
+            up = ids(raw_launching) if raw_launching is not None else ids(raw_members)
+            down = ids(raw_landing) if raw_landing is not None else set(up)
+            if raw_launching is None and not up:
+                up = {p for p in link_people[q] if is_person(p)}
+                down = set(up)
+        else:
+            up = {p for p in link_people[q] if is_person(p)}
+            down = set(up)
+        launch_crew[q], landing_crew[q] = up, down
+
+        wd_launch = wd_date(min(m["launch"]))
+        launch_date[q] = wiki_date(field_raw(box, "launch_date")) or wd_launch
+        if abs((parse_date(launch_date[q]) - parse_date(wd_launch)).days) > 3:
+            launch_date[q] = wd_launch   # infobox shows a different (e.g. planned) date
+        landing = wiki_date(field_raw(box, "landing_date"))
+        if not landing and m.get("landing"):
+            landing = wd_date(min(m["landing"]))
+            if landing.endswith("-01-01"):   # Wikidata value with year precision only
+                landing = ""
+        if landing and parse_date(landing) > TODAY:
+            landing = ""
+        landing_date[q] = landing
+
+    # ---- classify Wikidata missions ---------------------------------------
     skip_missions = {o["mission"] for o in overrides if o["field"] == "skip"}
     wd_to_legacy = {}    # wikidata qid -> legacy mission name
     new_missions = {}    # wikidata qid -> mission name
     for q, m in wd_missions.items():
         label = first(m.get("label", []))
-        launch = wd_date(min(m.get("launch", [""])))
+        launch = launch_date[q]
         if not label or not launch:
             continue
         key = mission_key(label)
@@ -371,42 +451,42 @@ def main():
                         + m.get("operator", []) + m.get("description", []))
         if SUBORBITAL.search(text):
             continue
-        if label in skip_missions:
+        if any(re.search(r"module|space station$|satellite|cargo", i, re.I) for i in m.get("instance", [])):
+            continue
+        if label in skip_missions or not launch_crew[q]:
             continue
         new_missions[q] = label
 
     # ---- people: map Wikidata persons to legacy name spellings ----------
     legacy_astr_by_name = {a["Name"]: a for a in legacy_astronauts}
+    new_flyers = set()
+    for q in new_missions:
+        new_flyers |= launch_crew[q]
 
     def best_name(candidates, person):
-        names = [first(person.get("label", []))] + person.get("alt_labels", [])
+        names = [n for n in [first(person.get("label", []))] + person.get("alt_labels", []) if n]
         best, best_score = None, 0
         for cand in candidates:
-            score = max(same_person(cand, n) for n in names if n) if any(names) else 0
+            score = max([same_person(cand, n) for n in names] or [0])
             if score > best_score:
                 best, best_score = cand, score
         return best if best_score >= 3 else None
 
     person_name = {}       # qid -> name used in the CSV files
-    person_legacy = {}     # qid -> legacy astronaut record
     for q, person in people.items():
-        label = first(person.get("label", []))
-        if not label:
+        if not is_person(q):
             continue
+        label = first(person["label"])
         legacy_names = []
-        for m in person_missions[q]:
+        for m in person_links[q]:
             if m in wd_to_legacy:
                 legacy_names += legacy_crew[wd_to_legacy[m]]
         name = best_name(set(legacy_names), person) if legacy_names else None
-        if name is None:
+        if name is None and q in new_flyers:
             name = best_name(legacy_astr_by_name.keys(), person)
-            if name and not person_missions[q] & set(new_missions):
-                name = None  # only trust a pure name match for people with new flights
-        if name is None and label in legacy_astr_by_name:
-            name = label
+            if name and same_person(name, label) < 3:
+                name = None
         person_name[q] = name or label
-        if person_name[q] in legacy_astr_by_name:
-            person_legacy[q] = legacy_astr_by_name[person_name[q]]
 
     # ---- new mission rows -------------------------------------------------
     member_override = defaultdict(dict)   # (mission, member) -> {field: value}
@@ -419,30 +499,40 @@ def main():
                 return member_override[key][field]
         return None
 
+    def mission_name(q):
+        return wd_to_legacy.get(q) or first(wd_missions[q].get("label", []))
+
+    def return_flight(p, q):
+        """Mission on which person p came back after launching on mission q."""
+        later = [b for b in wd_missions if p in landing_crew.get(b, ())
+                 and launch_date.get(b) and launch_date[b] >= launch_date[q]]
+        if not later or q in later:
+            return q
+        return min(later, key=lambda b: launch_date[b])
+
     new_rows = []
     mission_duration = {}
-    for q, label in sorted(new_missions.items(), key=lambda kv: min(wd_missions[kv[0]]["launch"])):
+    for q, label in sorted(new_missions.items(), key=lambda kv: launch_date[kv[0]]):
         m = wd_missions[q]
-        launch = wd_date(min(m["launch"]))
-        landing = wd_date(min(m.get("landing", [""]))) if m.get("landing") else ""
-        crew = sorted({person_name[p] for p in mission_people[q] if p in person_name})
-        crew = [c for c in crew if override(label, c, "remove") is None]
-        extra = [o["member"] for o in overrides
-                 if o["mission"] == label and o["field"] == "add"]
-        crew += [c for c in extra if c not in crew]
-        if not crew:
-            continue
+        launch = launch_date[q]
         extract = extracts.get(article(m) or "", "")
 
         groups = defaultdict(list)
-        for c in crew:
-            ret_mission = override(label, c, "return_mission") or label
+        for p in launch_crew[q]:
+            c = person_name.get(p)
+            if not c or override(label, c, "remove") is not None:
+                continue
+            back = return_flight(p, q)
+            ret_mission = override(label, c, "return_mission") or mission_name(back)
             ret_date = override(label, c, "return_date")
             if ret_date is None:
-                ret_date = landing
-            if ret_date and parse_date(ret_date) and parse_date(ret_date) > TODAY:
-                ret_date = ""
+                ret_date = landing_date.get(back, "")
             groups[(ret_mission, ret_date)].append(c)
+        for o in overrides:
+            if o["mission"] == label and o["field"] == "add":
+                groups[(label, landing_date[q])].append(o["member"])
+        if not groups:
+            continue
 
         country = override(label, "*", "country") or mission_country(label, m)
         hab = override(label, "*", "habitation")
@@ -456,7 +546,7 @@ def main():
             else:
                 ret_mission = "in orbit"
             new_rows.append({
-                "Crew": ", ".join(members),
+                "Crew": ", ".join(sorted(members)),
                 "Country": country,
                 "Habitation": hab,
                 "Brief Mission Summary": summary,
@@ -479,7 +569,7 @@ def main():
     for row in missions_out:
         if row["Return Mission"] == "in orbit" and row in legacy_missions:
             q = next((k for k, v in wd_to_legacy.items() if v == row["Launch Mission"]), None)
-            landing = wd_date(min(wd_missions[q].get("landing", [""]))) if q and wd_missions[q].get("landing") else ""
+            landing = landing_date.get(q, "") if q else ""
             ret = override(row["Launch Mission"], "*", "return_date") or landing
             if ret:
                 row["Return Data"] = ret
