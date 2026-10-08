@@ -149,7 +149,7 @@ PEOPLE_FIELDS = {
 }
 
 
-def fetch_details(ids, fields, what, batch_size=200):
+def fetch_details(ids, fields, what, batch_size=200, resolve_redirects=True):
     """One small query per property: avoids cartesian blow-up of OPTIONALs."""
     log("Wikidata: details of %d %s" % (len(ids), what))
     result = {i: {} for i in ids}
@@ -164,6 +164,23 @@ def fetch_details(ids, fields, what, batch_size=200):
     for item in result.values():
         for field in item:
             item[field] = sorted(item[field])
+
+    # Merged Wikidata items: the old id (e.g. from a Wikipedia page prop or a
+    # stale link) is a redirect and has no statements of its own.
+    empty = [i for i, item in result.items() if not item]
+    if empty and resolve_redirects:
+        targets = {}
+        for batch in chunks(empty, batch_size):
+            rows = sparql("SELECT ?item ?target WHERE { VALUES ?item { %s } ?item owl:sameAs ?target }"
+                          % " ".join("wd:" + q for q in batch))
+            for row in rows:
+                targets[qid(row["item"])] = qid(row["target"])
+        if targets:
+            log("  %d redirected items" % len(targets))
+            resolved = fetch_details(set(targets.values()), fields, what, batch_size,
+                                     resolve_redirects=False)
+            for old, new in targets.items():
+                result[old] = resolved.get(new, {})
     return result
 
 
