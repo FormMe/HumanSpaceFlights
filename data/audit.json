@@ -1,0 +1,287 @@
+{
+ "crew_without_record": {
+  "Franco Malerba": [
+   "STS-46 (Atlantis)"
+  ]
+ },
+ "missing_field_counts": {
+  "Alma Mater": 32,
+  "Birth Place": 1,
+  "Year": 60
+ },
+ "astronauts_with_gaps": {
+  "Aidyn Aimbetov": [
+   "Year"
+  ],
+  "Albert Sacco": [
+   "Year"
+  ],
+  "Alexander Victorenko": [
+   "Alma Mater"
+  ],
+  "Alper Gezeravcı": [
+   "Year"
+  ],
+  "Andrey Fedyayev": [
+   "Alma Mater"
+  ],
+  "Anousheh Ansari": [
+   "Year"
+  ],
+  "Arnaldo Tamayo-Mendez": [
+   "Alma Mater"
+  ],
+  "Byron K. Lichtenberg": [
+   "Year"
+  ],
+  "Cai Xuzhe": [
+   "Alma Mater"
+  ],
+  "Charles D. Walker": [
+   "Year"
+  ],
+  "Charles Simonyi": [
+   "Year"
+  ],
+  "Chen Zhongrui": [
+   "Alma Mater"
+  ],
+  "Christopher Sembroski": [
+   "Year"
+  ],
+  "Chun Wang": [
+   "Year",
+   "Alma Mater"
+  ],
+  "Clarence W. Nelson": [
+   "Year"
+  ],
+  "Deng Qingming": [
+   "Alma Mater"
+  ],
+  "Dirk Frimout": [
+   "Year"
+  ],
+  "E. Jake Garn": [
+   "Year"
+  ],
+  "Eric Philips": [
+   "Year"
+  ],
+  "Eugene H. Trinh": [
+   "Year"
+  ],
+  "Eytan Stibbe": [
+   "Year",
+   "Alma Mater"
+  ],
+  "F. Andrew Gaffney": [
+   "Year"
+  ],
+  "Franz Viehböck": [
+   "Alma Mater"
+  ],
+  "Fred W. Leslie": [
+   "Year"
+  ],
+  "Gary E. Payton": [
+   "Year"
+  ],
+  "Georgy Ivanov": [
+   "Alma Mater"
+  ],
+  "Gregory B. Jarvis": [
+   "Year"
+  ],
+  "Gregory H. Olsen": [
+   "Year"
+  ],
+  "Gregory T. Linteris": [
+   "Year"
+  ],
+  "Guy Laliberté": [
+   "Year",
+   "Alma Mater"
+  ],
+  "Hayley Arceneaux": [
+   "Year"
+  ],
+  "Ivan Bella": [
+   "Alma Mater"
+  ],
+  "James A. Pawelczyk": [
+   "Year"
+  ],
+  "Jannicke Mikkelsen": [
+   "Year"
+  ],
+  "Jay C. Buckley": [
+   "Year"
+  ],
+  "Jean-Loup Chrétien": [
+   "Alma Mater"
+  ],
+  "John Shoffner": [
+   "Alma Mater"
+  ],
+  "John-David F. Bartoe": [
+   "Year"
+  ],
+  "Klim Shipenko": [
+   "Year"
+  ],
+  "Konstantin Borisov": [
+   "Alma Mater"
+  ],
+  "Larry Connor": [
+   "Year"
+  ],
+  "Lawrence J. DeLucas": [
+   "Year"
+  ],
+  "Lodewijk van den Berg": [
+   "Year"
+  ],
+  "Loren W. Acton": [
+   "Year"
+  ],
+  "Marina Vasilevskaya": [
+   "Year"
+  ],
+  "Mark Pathy": [
+   "Birth Place",
+   "Year"
+  ],
+  "Mark Shuttleworth": [
+   "Year"
+  ],
+  "Martin J. Fettman": [
+   "Year"
+  ],
+  "Matthias Maurer": [
+   "Year"
+  ],
+  "Michel Tognini": [
+   "Alma Mater"
+  ],
+  "Millie E. Hughes-Fulford": [
+   "Year"
+  ],
+  "Mohammed Faris": [
+   "Alma Mater"
+  ],
+  "Nikolay Chub": [
+   "Alma Mater"
+  ],
+  "Norishige Kanai": [
+   "Alma Mater"
+  ],
+  "Paul D. Scully-Power": [
+   "Year"
+  ],
+  "Pavel Belyayev": [
+   "Alma Mater"
+  ],
+  "Pyotr Dubrov": [
+   "Alma Mater"
+  ],
+  "Rabea Rogge": [
+   "Year"
+  ],
+  "Richard A. Garriott": [
+   "Year"
+  ],
+  "Robert Hines": [
+   "Year"
+  ],
+  "Robert J. Cenker": [
+   "Year"
+  ],
+  "Roberto Vittori": [
+   "Alma Mater"
+  ],
+  "Roger K. Crouch": [
+   "Year"
+  ],
+  "Ronald A. Parise": [
+   "Year"
+  ],
+  "S. Christa McAuliffe": [
+   "Year"
+  ],
+  "Samuel T. Durrance": [
+   "Year"
+  ],
+  "Sarah Gillis": [
+   "Year"
+  ],
+  "Scott Poteet": [
+   "Year"
+  ],
+  "Sian Proctor": [
+   "Year"
+  ],
+  "Song Lingdong": [
+   "Alma Mater"
+  ],
+  "Sultan Salman Al Saud": [
+   "Year"
+  ],
+  "Taylor G. Wang": [
+   "Year"
+  ],
+  "Thomas J. Hennen": [
+   "Year",
+   "Alma Mater"
+  ],
+  "Toyohiro Akiyama": [
+   "Year"
+  ],
+  "Valery Bykovsky": [
+   "Alma Mater"
+  ],
+  "Victor Glover": [
+   "Year"
+  ],
+  "Vladimir Vasyutin": [
+   "Alma Mater"
+  ],
+  "Walter Villadei": [
+   "Year",
+   "Alma Mater"
+  ],
+  "Wang Jie": [
+   "Alma Mater"
+  ],
+  "William A. Pailes": [
+   "Year"
+  ],
+  "Ye Guangfu": [
+   "Alma Mater"
+  ],
+  "Yelena Kondakova": [
+   "Alma Mater"
+  ],
+  "Yozo Hirano": [
+   "Year",
+   "Alma Mater"
+  ],
+  "Yulia Peresild": [
+   "Year"
+  ],
+  "Yusaku Maezawa": [
+   "Year"
+  ],
+  "Zhang Xiaoguang": [
+   "Alma Mater"
+  ]
+ },
+ "missions_without_summary": [
+  "Apollo-Soyuz"
+ ],
+ "sources": {
+  "Wikidata/Wikipedia": 191,
+  "legacy": 39,
+  "legacy + Wikidata/Wikipedia": 439
+ }
+}

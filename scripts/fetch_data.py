@@ -181,6 +181,106 @@ def fetch_details(ids, fields, what, batch_size=200, resolve_redirects=True):
                                      resolve_redirects=False)
             for old, new in targets.items():
                 result[old] = resolved.get(new, {})
+    if resolve_redirects:
+        missing = [i for i, item in result.items() if not item.get("label")]
+        result.update(fetch_details_api(missing, fields))
+    return result
+
+
+WIKIDATA_API = "https://www.wikidata.org/w/api.php"
+
+# property -> (field, kind) used by the wbgetentities fallback
+API_PROPS = {
+    "P569": ("birth", "time"), "P570": ("death", "time"),
+    "P619": ("launch", "time"), "P620": ("landing", "time"),
+    "P21": ("gender", "item"), "P19": ("birth_place", "item"),
+    "P27": ("citizenship", "item"), "P69": ("educated_at", "item"),
+    "P410": ("military_rank", "item"), "P241": ("military_branch", "item"),
+    "P31": ("instance", "item"), "P137": ("operator", "item"), "P17": ("country", "item"),
+    "P375": ("vehicle", "item"), "P361": ("part_of", "item"),
+    "P1444": ("destination", "item"), "P155": ("follows", "item"),
+    "P2873": ("time_in_space_s", "quantity"),
+}
+SECONDS = {"Q11574": 1, "Q7727": 60, "Q25235": 3600, "Q573": 86400, "Q577": 31557600}
+
+
+def wbgetentities(ids, props):
+    out = {}
+    for batch in chunks(sorted(ids), 50):
+        resp = request("GET", WIKIDATA_API, params={
+            "action": "wbgetentities", "format": "json", "ids": "|".join(batch),
+            "props": props, "languages": "en", "sitefilter": "enwiki",
+        })
+        out.update(resp.json().get("entities", {}))
+        time.sleep(0.5)
+    return out
+
+
+def fetch_details_api(ids, fields):
+    """Same output as fetch_details, read from the Wikidata API instead of SPARQL.
+
+    The query service sometimes misses items (its index lags behind or drops
+    entities); the API reads the live item, and follows redirects itself.
+    """
+    if not ids:
+        return {}
+    log("  Wikidata API fallback for %d items" % len(ids))
+    entities = wbgetentities(ids, "labels|aliases|descriptions|claims|sitelinks")
+    refs, raw = set(), {}
+    for q in ids:
+        e = entities.get(q, {})
+        if "redirects" in e:
+            e = entities.get(e["redirects"]["to"], e)
+        item = {}
+        label = e.get("labels", {}).get("en", {}).get("value")
+        if label:
+            item["label"] = [label]
+        aliases = [a["value"] for a in e.get("aliases", {}).get("en", [])]
+        if aliases and "alt_labels" in fields:
+            item["alt_labels"] = sorted(aliases)
+        desc = e.get("descriptions", {}).get("en", {}).get("value")
+        if desc:
+            item["description"] = [desc]
+        title = e.get("sitelinks", {}).get("enwiki", {}).get("title")
+        if title:
+            item["article"] = ["https://en.wikipedia.org/wiki/" + requests.utils.quote(title.replace(" ", "_"))]
+        for prop, (field, kind) in API_PROPS.items():
+            if field not in fields:
+                continue
+            for claim in e.get("claims", {}).get(prop, []):
+                v = claim.get("mainsnak", {}).get("datavalue", {}).get("value")
+                if v is None:
+                    continue
+                if kind == "time":
+                    item.setdefault(field, []).append(v["time"].lstrip("+"))
+                elif kind == "item":
+                    refs.add(v["id"])
+                    item.setdefault("_" + field, []).append(v["id"])
+                elif kind == "quantity":
+                    unit = v.get("unit", "").rsplit("/", 1)[-1]
+                    if unit in SECONDS:
+                        item.setdefault(field, []).append(str(float(v["amount"]) * SECONDS[unit]))
+        raw[q] = item
+    ref_entities = wbgetentities(refs, "labels|claims") if refs else {}
+
+    def ref_label(r):
+        return ref_entities.get(r, {}).get("labels", {}).get("en", {}).get("value")
+
+    result = {}
+    for q, item in raw.items():
+        for key in [k for k in item if k.startswith("_")]:
+            field = key[1:]
+            item[field] = sorted({ref_label(r) for r in item[key] if ref_label(r)})
+            if field == "citizenship" and "citizenship_code" in fields:
+                codes = set()
+                for r in item[key]:
+                    for c in ref_entities.get(r, {}).get("claims", {}).get("P297", []):
+                        v = c.get("mainsnak", {}).get("datavalue", {}).get("value")
+                        if v:
+                            codes.add(v)
+                item["citizenship_code"] = sorted(codes)
+            del item[key]
+        result[q] = {k: sorted(set(v)) for k, v in item.items() if v}
     return result
 
 
@@ -295,7 +395,7 @@ def fetch_wikidata_ids(titles):
     for batch in chunks(sorted(titles), 50):
         resp = request("GET", WIKIPEDIA_API, params={
             "action": "query", "format": "json", "formatversion": 2,
-            "prop": "pageprops", "ppprop": "wikibase_item",
+            "prop": "pageprops", "ppprop": "wikibase_item|disambiguation",
             "redirects": 1, "titles": "|".join(batch),
         })
         data = resp.json()["query"]
@@ -304,8 +404,9 @@ def fetch_wikidata_ids(titles):
             for r in data.get(kind, []):
                 alias.setdefault(r["to"], []).append(r["from"])
         for page in data.get("pages", []):
-            item = page.get("pageprops", {}).get("wikibase_item")
-            if not item:
+            props = page.get("pageprops", {})
+            item = props.get("wikibase_item")
+            if not item or "disambiguation" in props:
                 continue
             todo = [page["title"]]
             while todo:
@@ -347,6 +448,18 @@ def save(name, obj):
     log("saved %s" % os.path.relpath(path, ROOT))
 
 
+def legacy_names():
+    import csv
+    names = set()
+    src = os.path.join(ROOT, "data", "source")
+    with open(os.path.join(src, "missions_legacy.csv"), encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            names |= {c.strip() for c in row["Crew"].split(",") if c.strip()}
+    with open(os.path.join(src, "astronauts_legacy.csv"), encoding="utf-8") as f:
+        names |= {row["Name"].strip() for row in csv.DictReader(f)}
+    return names
+
+
 def main():
     os.makedirs(RAW_DIR, exist_ok=True)
     links = fetch_links()
@@ -364,8 +477,22 @@ def main():
         crew_titles |= crew_link_titles(box)
     title_ids = fetch_wikidata_ids(crew_titles)
 
-    people = fetch_people({p for p, _ in links} | set(title_ids.values()))
+    # Names used in the hand-curated legacy CSV files, looked up as Wikipedia
+    # titles: gives a direct name -> person link even when Wikidata has no
+    # "astronaut mission" statements for that person.
+    legacy_titles = {}
+    for name in legacy_names():
+        for variant in (name, name + " (astronaut)", name + " (cosmonaut)"):
+            legacy_titles[variant] = name
+    legacy_ids = fetch_wikidata_ids(set(legacy_titles))
+
+    people = fetch_people({p for p, _ in links} | set(title_ids.values()) | set(legacy_ids.values()))
     people = {k: v for k, v in people.items() if v.get("label")}
+    # Article titles: Wikidata sitelinks, or the titles linked from the
+    # spaceflight infoboxes (some items lack the enwiki sitelink in the query service).
+    for t, q in list(title_ids.items()) + list(legacy_ids.items()):
+        if q in people and not people[q].get("article"):
+            people[q]["article"] = ["https://en.wikipedia.org/wiki/" + requests.utils.quote(t.replace(" ", "_"))]
     person_boxes = fetch_infoboxes(
         {article_title(p["article"][0]) for p in people.values() if p.get("article")})
 
@@ -405,6 +532,7 @@ def main():
     save("wikidata_people.json", people)
     save("wikidata_missions.json", flights)
     save("wikipedia_title_ids.json", title_ids)
+    save("wikipedia_legacy_ids.json", {t: q for t, q in legacy_ids.items() if t in legacy_titles})
     save("wikipedia_mission_infoboxes.json", mission_boxes)
     save("wikipedia_infoboxes.json", person_boxes)
     save("wikipedia_extracts.json", extracts)

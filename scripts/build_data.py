@@ -48,7 +48,7 @@ MISSION_COLUMNS = ["Crew", "Country", "Habitation", "Brief Mission Summary", "Fa
 ASTRONAUT_COLUMNS = ["Name", "Year", "Status", "Birth Date", "Birth Place", "Gender",
                      "Alma Mater", "Military Rank", "Military Branch", "Space Flights",
                      "Space Flight (hr)", "Space Walks", "Space Walks (hr)", "Missions",
-                     "Death Date", "Death Mission", "Country", "Nationality", "Country Code"]
+                     "Death Date", "Death Mission", "Country", "Nationality", "Country Code", "Source"]
 
 # Not orbital human spaceflights: kept out, like in the original dataset.
 SUBORBITAL = re.compile(
@@ -233,17 +233,29 @@ def habitation(name, mission, extract):
 # --------------------------------------------------------------------------
 
 def parse_infobox(text):
+    """Parameters of an infobox, including embedded ones.
+
+    Many biographies use {{Infobox person}} with {{Infobox astronaut|embed=yes}}
+    (and {{Infobox military person}}) nested inside a parameter; the astronaut
+    fields (time in space, EVAs, selection, status) live in the embedded box.
+    """
     if not text or mwparserfromhell is None:
         return {}
     try:
         code = mwparserfromhell.parse(text)
-        tpl = code.filter_templates(recursive=False)[0]
-    except (IndexError, ValueError):
+    except ValueError:
         return {}
+    boxes = [t for t in code.filter_templates(recursive=True)
+             if str(t.name).strip().lower().startswith("infobox")]
+    # astronaut / spaceflight boxes first: their values win
+    boxes.sort(key=lambda t: 0 if re.search(r"astronaut|spaceflight", str(t.name), re.I) else 1)
     out = {}
-    for p in tpl.params:
-        key = str(p.name).strip().lower().replace(" ", "_")
-        out[key] = str(p.value).strip()
+    for tpl in boxes:
+        for p in tpl.params:
+            key = str(p.name).strip().lower().replace(" ", "_")
+            value = str(p.value).strip()
+            if value and not value.lower().startswith("{{infobox") and key not in out:
+                out[key] = value
     return out
 
 
@@ -291,9 +303,12 @@ def selection_year(raw):
     return m.group(1) if m else ""
 
 
-def status_from(raw, death):
+def status_from(raw, death, retired=""):
     if death:
         return "Deceased"
+    m = re.search(r"\b(19|20)\d\d\b", plain(retired or ""))
+    if m and int(m.group(0)) <= TODAY.year:
+        return "Retired"
     text = plain(raw).lower()
     if "deceased" in text or "died" in text:
         return "Deceased"
@@ -385,6 +400,49 @@ def link_titles(raw):
     return [t.strip() for t in re.findall(r"\[\[([^\]|#]+)", raw or "")]
 
 
+AUDIT_FIELDS = ["Birth Date", "Birth Place", "Gender", "Status", "Year", "Alma Mater",
+                "Space Flight (hr)", "Nationality"]
+
+
+def f_never_flew(a, crew):
+    return a["Name"] not in crew
+
+
+def make_audit(missions, astronauts):
+    """What is still missing after the build (written to data/audit.json)."""
+    names = {a["Name"] for a in astronauts}
+    crew = defaultdict(list)
+    for r in missions:
+        for c in r["Crew"].split(","):
+            if c.strip():
+                crew[c.strip()].append(r["Launch Mission"])
+    fatal_launches = {r["Launch Mission"] for r in missions
+                      if r["Fatality"] == "Y" and r["Prolongation"] in ("0", "0.0")}
+    gaps = {}
+    for a in astronauts:
+        missing = [f for f in AUDIT_FIELDS if not str(a.get(f, "")).strip()
+                   or (f == "Space Flight (hr)" and a.get(f) in ("0", "0.0")
+                       and a["Name"] in crew and not all(
+                           m in fatal_launches for m in crew[a["Name"]]))]
+        if f_never_flew(a, crew):
+            missing = [f for f in missing if f != "Year"]
+        if missing:
+            gaps[a["Name"]] = missing
+    field_counts = defaultdict(int)
+    for missing in gaps.values():
+        for f in missing:
+            field_counts[f] += 1
+    return {
+        "crew_without_record": {n: m for n, m in sorted(crew.items()) if n not in names},
+        "missing_field_counts": dict(sorted(field_counts.items())),
+        "astronauts_with_gaps": dict(sorted(gaps.items())),
+        "missions_without_summary": sorted({r["Launch Mission"] for r in missions
+                                            if not r["Brief Mission Summary"].strip()}),
+        "sources": dict(sorted(defaultdict(int, {k: sum(1 for a in astronauts if a.get("Source") == k)
+                                                 for k in {a.get("Source") for a in astronauts}}).items())),
+    }
+
+
 def main():
     legacy_missions = read_csv(os.path.join(SOURCE, "missions_legacy.csv"))
     legacy_astronauts = read_csv(os.path.join(SOURCE, "astronauts_legacy.csv"))
@@ -394,6 +452,7 @@ def main():
     infoboxes = load_json("wikipedia_infoboxes.json", {})
     mission_boxes = load_json("wikipedia_mission_infoboxes.json", {})
     title_ids = load_json("wikipedia_title_ids.json", {})
+    legacy_ids = load_json("wikipedia_legacy_ids.json", {})
     extracts = load_json("wikipedia_extracts.json", {})
     overrides = load_overrides()
 
@@ -517,6 +576,28 @@ def main():
         best = max(scores, key=lambda c: (scores[c], c in legacy_astr_by_name), default=None)
         return best if best and scores[best] >= 3 else None
 
+    # direct links legacy name -> person through Wikipedia titles; only kept
+    # when the article is about a space traveller (not a namesake)
+    space_words = re.compile(r"astronaut|cosmonaut|taikonaut|spaceflight|space tourist|"
+                             r"payload specialist|spationaut|space travel", re.I)
+
+    def is_space_traveller(q, name):
+        person = people.get(q, {})
+        if person_links.get(q):
+            return True
+        if any(space_words.search(d) for d in person.get("description", [])):
+            return True
+        legacy = legacy_astr_by_name.get(name)
+        return bool(legacy and legacy_birth(legacy["Birth Date"]) == wd_date(first(person.get("birth", []))))
+
+    direct = defaultdict(list)     # qid -> legacy names
+    for name in sorted(set(legacy_astr_by_name) | {c for cs in legacy_crew.values() for c in cs}):
+        for variant in (name, name + " (astronaut)", name + " (cosmonaut)"):
+            q = legacy_ids.get(variant)
+            if q and is_person(q) and is_space_traveller(q, name):
+                direct[q].append(name)
+                break
+
     person_name = {}       # qid -> name used in the CSV files
     alias = {}             # other spellings of the same person in the legacy missions
     for q in sorted(people):
@@ -529,6 +610,13 @@ def main():
             if m in wd_to_legacy:
                 legacy_names += legacy_crew[wd_to_legacy[m]]
         name = best_name(legacy_names, person) if legacy_names else None
+        if direct.get(q):
+            names = sorted(direct[q], key=lambda n: (n not in legacy_astr_by_name, n))
+            if name is None or name not in names:
+                name = name if name in legacy_astr_by_name else names[0]
+            for other in names:
+                if other != name and other not in legacy_astr_by_name:
+                    alias[other] = name
         if name:
             scores = name_scores(legacy_names, person)
             for other, score in scores.items():
@@ -541,7 +629,8 @@ def main():
             born = wd_date(first(person.get("birth", [])))
             same_birth = [n for n, a in legacy_astr_by_name.items()
                           if born and legacy_birth(a["Birth Date"]) == born]
-            name = best_name(same_birth, person)
+            scores = name_scores(same_birth, person)
+            name = max(scores, key=scores.get) if scores and max(scores.values()) >= 2 else None
         person_name[q] = name or label
 
     # ---- new mission rows -------------------------------------------------
@@ -628,9 +717,16 @@ def main():
                 "Year": launch[:4],
             })
             for member in members:
-                mission_duration[(label, member)] = float(days) if days else None
+                # crews still in orbit: time in space so far
+                mission_duration[(label, member)] = float(days) if days else \
+                    float((TODAY - parse_date(launch)).days)
 
+    legacy_to_wd = {v: k for k, v in wd_to_legacy.items()}
     for row in legacy_missions:
+        q = legacy_to_wd.get(row["Launch Mission"])
+        if not row["Brief Mission Summary"].strip() and q:
+            row["Brief Mission Summary"] = summarize(
+                extracts.get(article(wd_missions[q]) or "", ""), wd_missions[q].get("description"))
         crew = [c.strip() for c in row["Crew"].split(",") if c.strip()]
         row["Crew"] = ", ".join(alias.get(c, c) for c in crew)
     missions_out = legacy_missions + new_rows
@@ -673,7 +769,9 @@ def main():
         cat = a["Country"]
         a["Nationality"] = {"USA": "United States", "USSR/Russia": "USSR / Russia"}.get(cat, cat)
         a["Country Code"] = country_code(cat, [])
+        a["Source"] = "legacy"
         if q:
+            a["Source"] = "legacy + Wikidata/Wikipedia"
             person = people[q]
             box = wikipedia_details(q)
             if person.get("citizenship"):
@@ -695,7 +793,7 @@ def main():
                 (mission_duration.get((m, a["Name"])) or 0) * 24 for m in added)
             a["Space Flight (hr)"] = fmt_number(max(hours or 0, computed))
             if not a["Death Date"]:
-                st = status_from(box.get("status"), "")
+                st = status_from(box.get("status"), "", box.get("retired"))
                 if added:
                     a["Status"] = st or "Active"
                 elif st and a["Status"] != "Management":
@@ -726,7 +824,7 @@ def main():
         hours = max(hours or 0, computed)
         evas = first_int(box.get("total_evas") or box.get("eva1") or "") or 0
         eva_hours = duration_hours(box.get("total_eva_time") or box.get("eva2")) or 0
-        status = status_from(box.get("status"), death)
+        status = status_from(box.get("status"), death, box.get("retired"))
         if not status:
             last = max(r["Launch Data"] for r in missions_out if r["Launch Mission"] in flights)
             status = "Active" if (TODAY - parse_date(last)).days < 6 * 365 else "Retired"
@@ -740,7 +838,8 @@ def main():
             "Gender": {"male": "Male", "female": "Female", "trans woman": "Female",
                        "trans man": "Male"}.get(gender, gender.capitalize()),
             "Alma Mater": plain(box.get("alma_mater") or box.get("education") or "").replace("\n", "; ")
-                          or "; ".join(person.get("educated_at", [])[:3]),
+                          or "; ".join([e for e in person.get("educated_at", [])
+                                     if not re.search(r"high school|secondary|gymnasium|lyc[eé]e|school no", e, re.I)][:3]),
             "Military Rank": plain(box.get("rank", "")).split("\n")[0][:80]
                              or first(person.get("military_rank", [])),
             "Military Branch": first(person.get("military_branch", [])),
@@ -754,11 +853,18 @@ def main():
             "Country": country_category(citizenship),
             "Nationality": nationality(citizenship),
             "Country Code": country_code(country_category(citizenship), person.get("citizenship_code", [])),
+            "Source": "Wikidata/Wikipedia",
         })
         seen.add(name)
 
     write_csv(os.path.join(DATA, "missions.csv"), missions_out, MISSION_COLUMNS)
     write_csv(os.path.join(DATA, "all_astronauts.csv"), astronauts_out, ASTRONAUT_COLUMNS)
+
+    audit = make_audit(missions_out, astronauts_out)
+    with open(os.path.join(DATA, "audit.json"), "w", encoding="utf-8") as f:
+        json.dump(audit, f, ensure_ascii=False, indent=1)
+    log("audit: %d crew members without astronaut record, %d astronauts with missing fields"
+        % (len(audit["crew_without_record"]), len(audit["astronauts_with_gaps"])))
 
     fetched = load_json("meta.json", {}).get("fetched_at", "")
     meta = {
