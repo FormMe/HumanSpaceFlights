@@ -3,15 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Interactive visualization of every human spaceflight mission and astronaut since 1961.">
+    <meta name="theme-color" content="#090a0f">
     <title>Human Space Flights</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/background.css"/>
     <link rel="stylesheet" href="css/style.css"/>
-	<link rel="stylesheet" href="css/paracoords.css"></link>
+    <link rel="stylesheet" href="css/paracoords.css"/>
     <link rel="stylesheet" href="css/buttons.css"/>
     <link rel="stylesheet" href="css/tooltip.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-	<script src="bower_components/d3/d3.min.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
     <script src="bower_components/d3-tip/index.js"></script>
     <script src="js/divgrid.js"></script>
     <script src="js/FlightsChart.js"></script>
@@ -19,161 +24,165 @@
     <script src="js/graphCreator.js"></script>
     <script src="js/graph.js"></script>
     <script src="js/Info.js"></script>
-	<script src="js/render-queue.js"></script>
-    <!-- <script src="js/SelectionTable.js" ></script> -->
+    <script src="js/render-queue.js"></script>
 </head>
 <body>
-<!-- 	<div id='stars'></div>
-	<div id='stars2'></div>
-	<div id='stars3'></div> -->
-
-    <div id="header">
-    	<div style="display: inline-block;">
-	        <img class='logo' src="pics/roscosmos.png" width="77" height="82"/>
-	        <img class='logo' src="pics/nasa.png" width="82" height="82"/>
-	        <img class='logo' src="pics/jaxa.png" width="102" height="82"/>    		
-    	</div>
-        <div style="display: inline-block;">
-        	<span class="page_header">Human Spaceflight Missions</span>
-        	<br>
-        	<span class="project">"Astronet" project</span>
+    <header id="header">
+        <div class="logos">
+            <img class="logo" src="pics/roscosmos.png" alt="Roscosmos" width="77" height="82"/>
+            <img class="logo" src="pics/nasa.png" alt="NASA" width="82" height="82"/>
+            <img class="logo" src="pics/jaxa.png" alt="JAXA" width="102" height="82"/>
         </div>
-    	<div style="display: inline-block;">
-	        <img class='logo' src="pics/CNSA.png" width="112" height="82"/>
-	        <img class='logo' src="pics/esa_white.png" width="162" height="82"/>		
-    	</div>
-		<hr>
-    </div>
+        <div class="heading">
+            <h1 class="page_header">Human Spaceflight Missions</h1>
+            <p class="project">"Astronet" project</p>
+        </div>
+        <div class="logos">
+            <img class="logo" src="pics/CNSA.png" alt="CNSA" width="112" height="82"/>
+            <img class="logo" src="pics/esa_white.png" alt="ESA" width="162" height="82"/>
+        </div>
+    </header>
 
-    <div class="view stacked">
-    	<label class="title" id="BarChartTitle">Number of launched space missions</label>
-		<svg id='FlightsChart'></svg>
-    </div>
+    <main class="layout">
+        <section class="view card stacked">
+            <h2 class="title" id="BarChartTitle">Number of launched space missions</h2>
+            <div class="scroll-x">
+                <svg id="FlightsChart" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid meet"></svg>
+            </div>
+        </section>
 
-    <div class="view sun_filters">
-    	<div class="view">
-    		<label>Graph of:</label>
-	        <div class="select">
-		      <select id="DataType" onchange="filter()">
-		        <option selected value="Missions">Missions</option>
-	            <option value="Astonauts">Astonauts</option>
-		      </select>
-		      <div class="select__arrow"></div>
-		    </div>
+        <section class="view card sun_filters">
+            <div class="field field-wide">
+                <label for="DataType">Graph of:</label>
+                <div class="select">
+                    <select id="DataType" onchange="filter()">
+                        <option selected value="Missions">Missions</option>
+                        <option value="Astonauts">Astronauts</option>
+                    </select>
+                    <div class="select__arrow"></div>
+                </div>
+            </div>
 
-		    <div class="filt">
-			    <label>Missions filters</label>
-			    <hr>
+            <div class="filters-row">
+                <fieldset class="filt">
+                    <legend>Missions filters</legend>
 
-		    	<label>Habitation:</label>
-		        <div class="select">
-			      <select id="Habitation" onchange="filter()">
-			        <option selected value="All">All</option>
-		            <option value="Space">Space</option>
-		            <option value="Moon">Moon</option>
-		            <option value="ISS">ISS</option>
-		            <option value="Mir">Mir</option>
-		            <option value="Salyut 1">Salyut 1</option>
-		            <option value="Salyut 3">Salyut 3</option>
-		            <option value="Salyut 4">Salyut 4</option>
-		            <option value="Salyut 5">Salyut 5</option>
-		            <option value="Salyut 6">Salyut 6</option>
-		            <option value="Salyut 7">Salyut 7</option>
-		            <option value="Skylab">Skylab</option>
-		            <option value="Tiangong 1">Tiangong 1</option>
-		            <option value="Tiangong 2">Tiangong 2</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
+                    <div class="field">
+                        <label for="Habitation">Habitation:</label>
+                        <div class="select">
+                            <select id="Habitation" onchange="filter()">
+                                <option selected value="All">All</option>
+                                <option value="Space">Space</option>
+                                <option value="Moon">Moon</option>
+                                <option value="ISS">ISS</option>
+                                <option value="Tiangong">Tiangong</option>
+                                <option value="Mir">Mir</option>
+                                <option value="Salyut 1">Salyut 1</option>
+                                <option value="Salyut 3">Salyut 3</option>
+                                <option value="Salyut 4">Salyut 4</option>
+                                <option value="Salyut 5">Salyut 5</option>
+                                <option value="Salyut 6">Salyut 6</option>
+                                <option value="Salyut 7">Salyut 7</option>
+                                <option value="Skylab">Skylab</option>
+                                <option value="Tiangong 1">Tiangong 1</option>
+                                <option value="Tiangong 2">Tiangong 2</option>
+                            </select>
+                            <div class="select__arrow"></div>
+                        </div>
+                    </div>
 
-		        <label >Outcome:</label>
-			     <div class="select">
-			      <select id="Outcome" onchange="filter()">
-			        <option selected value="All">All</option>
-			        <option value="Fatality">Fatality</option>
-		            <option value="Success">Success</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
-		    </div>
+                    <div class="field">
+                        <label for="Outcome">Outcome:</label>
+                        <div class="select">
+                            <select id="Outcome" onchange="filter()">
+                                <option selected value="All">All</option>
+                                <option value="Fatality">Fatality</option>
+                                <option value="Success">Success</option>
+                            </select>
+                            <div class="select__arrow"></div>
+                        </div>
+                    </div>
+                </fieldset>
 
-		    <div class="filt">
-			    <label>Astronauts filters</label>
-			    <hr>
+                <fieldset class="filt">
+                    <legend>Astronauts filters</legend>
 
-			    <label>Status:</label>
-		        <div class="select">
-			      <select id="Status" onchange="filter_astr()">
-			        <option selected value="All">All</option>
-		            <option value="Active">Active</option>
-		            <option value="Retired">Retired</option>
-		            <option value="Deceased">Deceased</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
+                    <div class="field">
+                        <label for="Status">Status:</label>
+                        <div class="select">
+                            <select id="Status" onchange="filter_astr()">
+                                <option selected value="All">All</option>
+                                <option value="Active">Active</option>
+                                <option value="Retired">Retired</option>
+                                <option value="Deceased">Deceased</option>
+                            </select>
+                            <div class="select__arrow"></div>
+                        </div>
+                    </div>
 
-			    <label>Gender:</label>
-		        <div class="select">
-			      <select id="Gender" onchange="filter_astr()">
-			        <option selected value="All">All</option>
-		            <option value="Male">Male</option>
-		            <option value="Female">Female</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
+                    <div class="field">
+                        <label for="Gender">Gender:</label>
+                        <div class="select">
+                            <select id="Gender" onchange="filter_astr()">
+                                <option selected value="All">All</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <div class="select__arrow"></div>
+                        </div>
+                    </div>
 
-			    <label>Space walk:</label>
-			    <div class="select">
-			      <select id="SpaceWalk" onchange="filter_astr()">
-			        <option selected value="All">All</option>
-		            <option value="Yes">Yes</option>
-		            <option value="No">No</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
-		    </div>
-    	</div>
-    	
-    	<div class="view sunburst">
-		    <label id='sumTitle'>Count of missions</label>
-		    <hr>
-			<svg id='SummaryChart'> </svg>
-    	</div>
-    </div>
+                    <div class="field">
+                        <label for="SpaceWalk">Space walk:</label>
+                        <div class="select">
+                            <select id="SpaceWalk" onchange="filter_astr()">
+                                <option selected value="All">All</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <div class="select__arrow"></div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
 
-	<script src="js/paracoords.js"></script>
+            <div class="sunburst">
+                <h3 id="sumTitle">Count of missions</h3>
+                <svg id="SummaryChart" viewBox="0 0 280 120" preserveAspectRatio="xMinYMin meet"></svg>
+            </div>
+        </section>
 
-	<div class="view grid">		
-	    <label class="title" id="ListTitle"></label>
-	    <hr style="margin-top: 15px;">
-	    <div id='grid'></div>
-	</div>
+        <section class="view card parcoords" id="parcoords"></section>
 
-	<div class="view graph">	
-	    <label class="title" id="GraphTitle">Missions-Astronauts Connections</label>
-		<button class="button" onclick="complete_graph()">Draw all</button>
-	    <hr>
-			
-		<svg id='Graph' width="430" height="450"></svg>
-	</div>
+        <section class="view card grid">
+            <h2 class="title" id="ListTitle"></h2>
+            <div id="grid"></div>
+        </section>
 
+        <section class="view card graph">
+            <div class="card-head">
+                <h2 class="title" id="GraphTitle">Missions-Astronauts Connections</h2>
+                <button class="button" onclick="complete_graph()">Draw all</button>
+            </div>
+            <svg id="Graph" width="430" height="450" viewBox="0 0 430 450" preserveAspectRatio="xMidYMid meet"></svg>
+        </section>
 
-	<div class="view info" id="Info">
-		<table>
-			<caption class="title"></caption>
-			<tbody></tbody>
-		</table>
-	</div>
-<!-- 	<div>
-		
-	<form>
-		<label><input type="radio" name="mode" value="grouped"> Grouped</label>
-		<label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
-	</form>
+        <section class="view card info" id="Info">
+            <table>
+                <caption class="title"></caption>
+                <tbody></tbody>
+            </table>
+            <p class="info-hint">Click a mission or an astronaut in the list or in the graph to see the details.</p>
+        </section>
+    </main>
 
-	</div> -->
+    <footer class="footer">
+        Data: <a href="https://www.wikidata.org/">Wikidata</a> &amp; <a href="https://en.wikipedia.org/">Wikipedia</a>
+        <span id="DataUpdated"></span>
+    </footer>
 
-    <script src="js/selectionList.js" ></script>
+    <script src="js/paracoords.js"></script>
+    <script src="js/selectionList.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

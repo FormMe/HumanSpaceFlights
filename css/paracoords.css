@@ -1,19 +1,27 @@
-body {
-  min-width: 760px;
-  background: "black";
-}
-
 .parcoords {
   display: block;
 }
 
-.parcoords svg,
-.parcoords canvas {
+.parcoords-plot {
+  position: relative;
+  width: 100%;
+}
+
+.parcoords-plot svg,
+.parcoords-plot canvas {
   font: 10px sans-serif;
   position: absolute;
 }
 
-.parcoords canvas {
+.parcoords-plot svg {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.parcoords-plot canvas {
   opacity: 0.9;
   pointer-events: none;
 }

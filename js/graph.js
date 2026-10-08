@@ -106,7 +106,7 @@ class Graph{
 			else if (d.type == "astronaut"){
 				t.info.update(d.value, false);
 				t.update(create_astr_graph(d.value));
-		    	if (dataType == "Astronauts")
+		    	if (dataType == "Astonauts")
 		    		renderList(null, false);
 			}
 		}

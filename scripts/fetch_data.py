@@ -220,6 +220,49 @@ def fetch_infoboxes(titles):
     return result
 
 
+CREW_FIELDS = ("crew_members", "launching", "landing", "crew")
+
+
+def crew_link_titles(infobox):
+    titles = set()
+    if not infobox:
+        return titles
+    for field in CREW_FIELDS:
+        m = re.search(r"\|\s*%s\s*=(.*?)(?=\n\s*\|\s*[a-z_ ]+=|\Z)" % field, infobox, re.S | re.I)
+        if m:
+            for link in re.findall(r"\[\[([^\]|#]+)", m.group(1)):
+                titles.add(link.strip())
+    return titles
+
+
+def fetch_wikidata_ids(titles):
+    """Wikipedia article title -> Wikidata QID (follows redirects)."""
+    log("Wikipedia: Wikidata ids of %d articles" % len(titles))
+    result = {}
+    for batch in chunks(sorted(titles), 50):
+        resp = request("GET", WIKIPEDIA_API, params={
+            "action": "query", "format": "json", "formatversion": 2,
+            "prop": "pageprops", "ppprop": "wikibase_item",
+            "redirects": 1, "titles": "|".join(batch),
+        })
+        data = resp.json()["query"]
+        alias = {}
+        for kind in ("normalized", "redirects"):
+            for r in data.get(kind, []):
+                alias.setdefault(r["to"], []).append(r["from"])
+        for page in data.get("pages", []):
+            item = page.get("pageprops", {}).get("wikibase_item")
+            if not item:
+                continue
+            todo = [page["title"]]
+            while todo:
+                t = todo.pop()
+                result[t] = item
+                todo += alias.get(t, [])
+        time.sleep(1)
+    return result
+
+
 def fetch_extracts(titles):
     log("Wikipedia: intros of %d articles" % len(titles))
     result = {}
@@ -254,16 +297,24 @@ def save(name, obj):
 def main():
     os.makedirs(RAW_DIR, exist_ok=True)
     links = fetch_links()
-    people = fetch_people({p for p, _ in links})
-    missions = fetch_missions({m for _, m in links})
+    mission_ids = {m for _, m in links} | fetch_recent_flights()
+    missions = fetch_missions(mission_ids)
 
     # Keep only real flights (with a launch date); drops ISS expeditions etc.
     flights = {k: v for k, v in missions.items() if v.get("launch")}
     links = [(p, m) for p, m in links if m in flights]
-    flyers = {p for p, _ in links}
-    people = {k: v for k, v in people.items() if k in flyers}
 
-    infoboxes = fetch_infoboxes(
+    mission_boxes = fetch_infoboxes(
+        {article_title(m["article"][0]) for m in flights.values() if m.get("article")})
+    crew_titles = set()
+    for box in mission_boxes.values():
+        crew_titles |= crew_link_titles(box)
+    title_ids = fetch_wikidata_ids(crew_titles)
+
+    people = fetch_people({p for p, _ in links} | set(title_ids.values()))
+    people = {k: v for k, v in people.items() if v.get("label")}
+
+    person_boxes = fetch_infoboxes(
         {article_title(p["article"][0]) for p in people.values() if p.get("article")})
     extracts = fetch_extracts(
         {article_title(m["article"][0]) for m in flights.values() if m.get("article")})
@@ -271,7 +322,9 @@ def main():
     save("wikidata_links.json", [list(l) for l in links])
     save("wikidata_people.json", people)
     save("wikidata_missions.json", flights)
-    save("wikipedia_infoboxes.json", infoboxes)
+    save("wikipedia_title_ids.json", title_ids)
+    save("wikipedia_mission_infoboxes.json", mission_boxes)
+    save("wikipedia_infoboxes.json", person_boxes)
     save("wikipedia_extracts.json", extracts)
     save("meta.json", {"fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                        "people": len(people), "missions": len(flights), "links": len(links)})

@@ -3,7 +3,7 @@ var margin = {top: 66, right: 110, bottom: 20, left: 70},
     height = 340 - margin.top - margin.bottom,
     innerHeight = height - 2;
 
-var devicePixelRatio = 1;
+var pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
 
 var Countries = ["USSR/Russia", "USA", "China", "Other"]
@@ -58,7 +58,8 @@ var misDimensions = [
   {
     key: "Year",
     type: types["Number"],
-    description: "Launch Year"
+    description: "Launch Year",
+    axis: d3.axisLeft().tickFormat(d3.format("d"))
   },
   {
     key: "Crew size",
@@ -105,7 +106,8 @@ var astrDimensions = [
   {
     key: "Year",
     description: "Selection Year",
-    type: types["Number"]
+    type: types["Number"],
+    axis: d3.axisLeft().tickFormat(d3.format("d"))
   },
   {
     key: "Status",
@@ -144,34 +146,41 @@ var astrDimensions = [
 ];
 
 
-var container = d3.select("body").append('div')
-    .classed("view parcoords",  true)
-    .style('margin-left', "30px")
-    .style("width", width + margin.left + margin.right + "px")
-    .style("height", height + margin.top*2 + margin.bottom + "px");
+var svgWidth = width + margin.left + margin.right,
+    svgHeight = height + margin.top + margin.bottom;
 
-var header = container.append('label').attr('class', 'title');
-container.append('hr');
+var container = d3.select("#parcoords");
 
-var svg = container.append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+var header = container.append('h2').attr('class', 'title');
+
+// The plot keeps its original coordinate system (viewBox) and is scaled
+// to the card width with CSS; the canvas is positioned in percentages so
+// it always stays aligned with the svg axes.
+var plot = container.append('div')
+    .attr('class', 'scroll-x')
+  .append('div')
+    .attr('class', 'parcoords-plot')
+    .style('aspect-ratio', svgWidth + ' / ' + svgHeight);
+
+var svg = plot.append("svg")
+    .attr("viewBox", "0 0 " + svgWidth + " " + svgHeight)
+    .attr("preserveAspectRatio", "xMinYMin meet")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var canvas = container.append("canvas")
-    .attr("width", width )
-    .attr("height", height )
-    .style("width", width + "px")
-    .style("height", height + "px")
-    .style("margin-top", margin.top + "px")
-    .style("margin-left", margin.left + "px");
+var canvas = plot.append("canvas")
+    .attr("width", width * pixelRatio)
+    .attr("height", height * pixelRatio)
+    .style("left", (100 * margin.left / svgWidth) + "%")
+    .style("top", (100 * margin.top / svgHeight) + "%")
+    .style("width", (100 * width / svgWidth) + "%")
+    .style("height", (100 * height / svgHeight) + "%");
 
 var ctx = canvas.node().getContext("2d");
 ctx.globalCompositeOperation = 'darken';
 ctx.globalAlpha = 0.25;
 ctx.lineWidth = 1.5;
-ctx.scale(devicePixelRatio, devicePixelRatio);
+ctx.scale(pixelRatio, pixelRatio);
 
 function draw(d) {
 

@@ -313,4 +313,6 @@ d3.csv("data/missions.csv", function (error, missionsData) {
     // create_year_brush();
     paracoords_update(missions, true);
 
+    var barScroll = document.querySelector('.stacked .scroll-x');
+    if (barScroll) barScroll.scrollLeft = barScroll.scrollWidth;
 });
