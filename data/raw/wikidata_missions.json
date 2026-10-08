@@ -2515,6 +2515,42 @@
    "Space Shuttle program"
   ]
  },
+ "Q136745599": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Shenzhou_22"
+  ],
+  "country": [
+   "People's Republic of China"
+  ],
+  "description": [
+   "2025 Chinese spaceflight to the Tiangong space station"
+  ],
+  "follows": [
+   "Shenzhou 21"
+  ],
+  "instance": [
+   "spaceflight"
+  ],
+  "label": [
+   "Shenzhou 22"
+  ],
+  "landing": [
+   "2026-05-29T00:00:00Z"
+  ],
+  "launch": [
+   "2025-11-25T00:00:00Z"
+  ],
+  "operator": [
+   "China National Space Administration"
+  ],
+  "part_of": [
+   "China Manned Space Program",
+   "Tiangong program"
+  ],
+  "vehicle": [
+   "Long March 2F"
+  ]
+ },
  "Q136850111": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_23"
@@ -4419,6 +4455,30 @@
   ],
   "vehicle": [
    "Soyuz"
+  ]
+ },
+ "Q211761": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Salyut_1"
+  ],
+  "description": [
+   "first space station launched by the Soviet Union"
+  ],
+  "instance": [
+   "space laboratory",
+   "space station"
+  ],
+  "label": [
+   "Salyut 1"
+  ],
+  "launch": [
+   "1971-04-19T00:00:00Z"
+  ],
+  "part_of": [
+   "Salyut programme"
+  ],
+  "vehicle": [
+   "Proton-K"
   ]
  },
  "Q2118077": {
@@ -6459,6 +6519,34 @@
    "Space Shuttle program"
   ]
  },
+ "Q48604": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Mir"
+  ],
+  "country": [
+   "Russia",
+   "Soviet Union"
+  ],
+  "description": [
+   "1986–2001 modular space station in low Earth orbit"
+  ],
+  "instance": [
+   "artificial satellite of the Earth",
+   "former entity",
+   "international space station",
+   "space laboratory",
+   "space station"
+  ],
+  "label": [
+   "Mir"
+  ],
+  "launch": [
+   "1986-02-19T00:00:00Z"
+  ],
+  "vehicle": [
+   "Proton-K"
+  ]
+ },
  "Q48816787": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-15"
@@ -8042,6 +8130,29 @@
   ],
   "vehicle": [
    "Space Shuttle"
+  ]
+ },
+ "Q613601": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Salyut_6"
+  ],
+  "description": [
+   "former Soviet orbital space station"
+  ],
+  "follows": [
+   "Salyut 5"
+  ],
+  "instance": [
+   "space station"
+  ],
+  "label": [
+   "Salyut 6"
+  ],
+  "launch": [
+   "1977-09-29T00:00:00Z"
+  ],
+  "vehicle": [
+   "Proton-K"
   ]
  },
  "Q617651": {
@@ -12326,6 +12437,32 @@
   ],
   "vehicle": [
    "Soyuz-U2"
+  ]
+ },
+ "Q904503": {
+  "article": [
+   "https://en.wikipedia.org/wiki/Salyut_7"
+  ],
+  "description": [
+   "space station launched on 19 April 1982"
+  ],
+  "follows": [
+   "Salyut 6"
+  ],
+  "instance": [
+   "space station"
+  ],
+  "label": [
+   "Salyut 7"
+  ],
+  "landing": [
+   "1991-02-07T00:00:00Z"
+  ],
+  "launch": [
+   "1982-04-19T00:00:00Z"
+  ],
+  "vehicle": [
+   "Proton-K"
   ]
  },
  "Q905035": {

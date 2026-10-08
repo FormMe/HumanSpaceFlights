@@ -1384,6 +1384,22 @@
    "1062720"
   ]
  },
+ "Q11081577": {
+  "alt_labels": [
+   "Xinhuanet Co Ltd",
+   "news.cn",
+   "xinhuanet.com"
+  ],
+  "article": [
+   "https://en.wikipedia.org/wiki/Xinhuanet"
+  ],
+  "description": [
+   "Chinese government news company"
+  ],
+  "label": [
+   "Xinhuanet"
+  ]
+ },
  "Q110879": {
   "alt_labels": [
    "Virgil I. Grissom",

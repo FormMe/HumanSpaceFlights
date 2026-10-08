@@ -315,7 +315,7 @@ John L. Swigert,1966.0,Deceased,8/30/1931,"Denver, CO",Male,University of Colora
 Daniel M. Tani,1996.0,Retired,2/1/1961,"Ridley Park, PA",Male,MIT,,,2,3162,6.0,39.0,"STS-108 (Endeavor), STS-120 (Discovery)",,,USA,United States,US
 Joseph R. Tanner,1992.0,Retired,1/21/1950,"Danville, IL",Male,University of Illinois,,,4,1045,7.0,46.0,"STS-66 (Atlantis), STS-82 (Discovery), STS-97 (Endeavor), STS-115 (Discovery)",,,USA,United States,US
 Norman E. Thagard,1978.0,Retired,7/3/1943,"Marianna, FL",Male,Florida State University; University of Texas,,,5,3373,0.0,0.0,"STS-7 (Challenger), STS-51-B (Challenger), STS-30 (Atlantis), STS-42 (Discovery), STS-71 (Atlantis)",,,USA,United States,US
-Andrew S. W. Thomas,1992.0,Management,12/18/1951,"Adelaide, Australia",Male,University of Adelaide,,,4,4257,1.0,6.0,"STS-77 (Endeavor), STS-89 (Endeavor), STS-102 (Discovery), STS-114 (Discovery)",,,USA,Australia / United States,US
+Andrew S. W. Thomas,1992.0,Management,12/18/1951,"Adelaide, Australia",Male,University of Adelaide,,,4,4257,1.0,6.0,"STS-77 (Endeavor), STS-89 (Endeavor), STS-102 (Discovery), STS-114 (Discovery)",,,USA,United States,US
 Donald A. Thomas,1990.0,Retired,5/6/1955,"Cleveland, OH",Male,Case Western Reserve University; Cornell University,,,4,1040,0.0,0.0,"STS-65 (Columbia), STS-70 (Discovery), STS-83 (Columbia), STS-94 (Columbia)",,,USA,United States,US
 Stephen D. Thorne,1985.0,Deceased,2/11/1953,"Frankfurt, West Germany",Male,US Naval Academy,Lieutenant Commander,US Navy,0,0,0.0,0.0,,5/24/1986,,USA,United States,US
 Kathryn C. Thornton,1984.0,Retired,8/17/1952,"Montgomery, AL",Female,Auburn University; University of Virginia,,,4,975,3.0,21.0,"STS-33 (Discovery), STS-49 (Endeavor), STS-61 (Endeavor), STS-73 (Columbia)",,,USA,United States,US
@@ -491,6 +491,7 @@ Ali AlQarni,2023,Active,1992-03-01,"Sabt Al-Alaya, Balqarn, 'Asir Province, Saud
 Alper Gezeravcı,,Active,1979-12-02,"Silifke, Mersin, Turkey",Male,Turkish Air Force Academy (BS)Air Force Institute of Technology,25px|bağlantı=Tuğgeneral Brigadier General,,1,528,0,0,Axiom Mission 3,,,Other,Turkey,TR
 Andreas Mogensen,2009,Active,1976-11-02,"Copenhagen, Denmark",Male,Imperial College London; University of Texas at Austin,,,2,5015,0,0,"Soyuz TMA-18M, SpaceX Crew-7",,,Other,Denmark,
 Andrew R. Morgan,2013,Retired,1976-02-05,"Morgantown, West Virginia, U.S.",Male,Dover High School; Uniformed Services University of the Health Sciences; United States Military Academy,"Brigadier General, U.S. Army",,1,6528,7,46,Soyuz MS-13,,,USA,United States,US
+Andrew S.W. Thomas,1992,Retired,1951-12-18,"Adelaide, South Australia",Male,"University of Adelaide (BEng, PhD)",,,2,4257,1,6,"STS-77 (Endeavor), STS-89 (Endeavor)",,,USA,Australia / United States,US
 Andrey Fedyayev,2012,Active,1981-02-26,"Serov, Sverdlovsk Oblast, Russian SFSR, USSR",Male,,"Major, Russian Air Force",,2,10152,0,0,"SpaceX Crew-6, SpaceX Crew-12",,,USSR/Russia,Russia,RU
 André Kuipers,1998,Retired,1958-10-05,"Amsterdam, Netherlands",Male,University of Amsterdam,,,2,4888,0,0,"Soyuz TMA-4, Soyuz TMA-03M",,,Other,Netherlands,NL
 Anil Menon,,Active,1976-10-15,"Minneapolis, Minnesota, U.S.",Male,Harvard University; St. Paul Academy and Summit School; Stanford University,,,1,0,0,0,Soyuz MS-29,,,USA,United States,US
@@ -505,7 +506,7 @@ Cai Xuzhe,2010,Active,1976-05-01,"Shenzhou, Hebei, China",Male,,"Senior Colonel,
 Charles Simonyi,,Retired,1948-09-10,"Budapest, Hungary",Male,"University of California, Berkeley (BS)Stanford University (PhD)",,,2,638,0,0,"Soyuz TMA-10, Soyuz TMA-14",,,USA,Hungary / United States,US
 Chen Dong,2010,Active,1978-12-12,"Luoyang, Henan, China",Male,PLA Air Force Aviation University; Xi'an Jiaotong University,"Major general, People's Liberation Army Aerospace Force",People's Liberation Army Air Force,3,10047,6,37,"Shenzhou 11, Shenzhou 14, Shenzhou 20",,,China,China,CN
 Chen Zhongrui,2020,Active,1984-10-01,"Puyang, Henan, China",Male,,"Lieutenant colonel, People's Liberation Army Ground Force",,1,4896,1,6,Shenzhou 20,,,China,China,CN
-Chiaki Naito-Mukai,1985,Retired,1952-05-06,"Tatebayashi, Gunma Prefecture, Japan",Female,Keio University,,,1,568,0,0,STS-65 (Columbia),,,Other,Japan,JP
+Chiaki Mukai,1985,Retired,1952-05-06,"Tatebayashi, Gunma Prefecture, Japan",Female,Keio University,,,1,568,0,0,STS-95 (Discovery),,,Other,Japan,JP
 Chris A. Hadfield,1992,Retired,1959-08-29,"Sarnia, Ontario, Canada",Male,Milton District High School; Royal Military College of Canada; Royal Roads University,,,3,3976,2,15,"STS-74 (Atlantis), STS-100 (Endeavor), Soyuz TMA-07M",,,Other,Canada,CA
 Christer Fuglesang,1992,Retired,1957-03-18,"Stockholm, Sweden",Male,Royal Institute of Technology (MSc) Stockholm University (PhD),,,2,642,5,32,"STS-116 (Discovery), STS-128 (Discovery)",,,Other,Sweden,SE
 Christopher Sembroski,,Active,1979-08-28,Kannapolis,Male,"Embry–Riddle Aeronautical University, Daytona Beach",senior airman,,1,71,0,0,Inspiration4,,,USA,United States,US
