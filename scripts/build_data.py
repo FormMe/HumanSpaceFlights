@@ -121,11 +121,21 @@ def same_person(a, b):
         score += 1
     if ta[0][0] == tb[0][0]:
         score += 1
+    elif {t[0] for t in ta[:-1]} & {t[0] for t in tb[:-1]}:
+        score += 1  # 'Gregory R. Wiseman' vs 'Reid Wiseman'
     return score
 
 
 def wd_date(value):
     return value[:10] if value else ""
+
+
+def legacy_birth(text):
+    """'5/17/1967' or '1959-01-03 00:00:00' -> '1967-05-17'."""
+    m = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4})", text or "")
+    if m:
+        return "%s-%02d-%02d" % (m.group(3), int(m.group(1)), int(m.group(2)))
+    return (text or "")[:10]
 
 
 def parse_date(text):
@@ -150,13 +160,22 @@ def country_category(names):
     return "Other"
 
 
+HISTORICAL_STATES = {"Nazi Germany", "Weimar Republic", "First Syrian Republic",
+                     "United Arab Republic", "Democratic Republic of Afghanistan",
+                     "Russian Soviet Federative Socialist Republic", "Russian Empire",
+                     "Mandatory Palestine", "British Raj", "Dominion of India"}
+
+
 def nationality(names):
+    if len(names) > 1:
+        names = [n for n in names if n not in HISTORICAL_STATES] or names
     cleaned = []
     for n in names:
         n = {"United States of America": "United States",
              "People's Republic of China": "China",
              "Soviet Union": "USSR",
-             "Kingdom of the Netherlands": "Netherlands"}.get(n, n)
+             "Kingdom of the Netherlands": "Netherlands",
+             "Kingdom of Denmark": "Denmark"}.get(n, n)
         if n not in cleaned:
             cleaned.append(n)
     return " / ".join(cleaned)
@@ -240,7 +259,7 @@ def duration_hours(raw):
     """'{{Duration|d=328|h=13|m=58}}', '665d 22h 22m', '15 hours, 17 minutes' -> hours."""
     if not raw:
         return None
-    raw = raw.replace("&nbsp;", " ")
+    raw = re.sub(r"(?<=\d),(?=\d{3})", "", raw.replace("&nbsp;", " "))
     parts = {}
     for unit in ("y", "d", "h", "m"):
         m = re.search(r"\|\s*%s\s*=\s*(\d+)" % unit, raw)
@@ -297,6 +316,8 @@ def fmt_number(value):
     if value in (None, ""):
         return ""
     value = float(value)
+    if value == 0:
+        return "0"
     return str(int(round(value))) if value >= 1 else str(round(value, 1))
 
 
@@ -333,7 +354,11 @@ def wiki_date(raw):
     if m:
         y, mo, d = (int(x) for x in m.groups())
     else:
-        text = plain(raw).lower()
+        text = re.sub(r"<ref[^>]*/>|<ref.*?</ref>", " ", raw, flags=re.S)
+        text = re.sub(r"\{\{\s*(?:nbsp|snd|ndash|spaces)\s*\}\}", " ", text, flags=re.I)
+        text = re.sub(r"\{\{[^{}|]*\|", " ", text).replace("}}", " ")
+        text = re.sub(r"\[\[(?:[^\]|]*\|)?([^\]]*)\]\]", r"\1", text)
+        text = re.sub(r"&nbsp;", " ", text).lower()
         m1 = re.search(r"(\d{1,2})\s+(%s)\s+(\d{4})" % "|".join(MONTHS), text)
         m2 = re.search(r"(%s)\s+(\d{1,2}),?\s+(\d{4})" % "|".join(MONTHS), text)
         if m1:
@@ -402,32 +427,42 @@ def main():
         link_people[m].add(p)
         person_links[p].add(m)
 
+    # article title -> person, from Wikidata sitelinks and resolved infobox links
+    person_by_title = dict(title_ids)
+    for q, person in people.items():
+        t = article(person)
+        if t:
+            person_by_title.setdefault(t, q)
+
+    def crew_ids(raw):
+        found = set()
+        for t in link_titles(raw):
+            q = person_by_title.get(t) or person_by_title.get(t[:1].upper() + t[1:])
+            if q and is_person(q):
+                found.add(q)
+        return found
+
     launch_crew, landing_crew, launch_date, landing_date = {}, {}, {}, {}
     for q, m in wd_missions.items():
-        box = mission_boxes.get(article(m) or "") or ""
-        raw_launching = field_raw(box, "launching")
-        raw_landing = field_raw(box, "landing")
-        raw_members = field_raw(box, "crew_members")
-
-        def ids(raw):
-            return {title_ids[t] for t in link_titles(raw) if t in title_ids and is_person(title_ids[t])}
-
-        if raw_launching is not None or raw_members is not None:
-            up = ids(raw_launching) if raw_launching is not None else ids(raw_members)
-            down = ids(raw_landing) if raw_landing is not None else set(up)
-            if raw_launching is None and not up:
-                up = {p for p in link_people[q] if is_person(p)}
-                down = set(up)
+        box_text = mission_boxes.get(article(m) or "") or ""
+        box = parse_infobox(box_text)
+        both = crew_ids(box.get("crew_members"))
+        up_only = crew_ids(box.get("crew_launching") or box.get("launching"))
+        down_only = crew_ids(box.get("crew_landing") or box.get("landing"))
+        has_fields = any(k in box for k in ("crew_members", "crew_launching", "crew_landing",
+                                             "launching", "landing"))
+        if has_fields and (both or up_only or down_only):
+            up, down = both | up_only, both | down_only
         else:
             up = {p for p in link_people[q] if is_person(p)}
             down = set(up)
         launch_crew[q], landing_crew[q] = up, down
 
         wd_launch = wd_date(min(m["launch"]))
-        launch_date[q] = wiki_date(field_raw(box, "launch_date")) or wd_launch
+        launch_date[q] = wiki_date(box.get("launch_date")) or wd_launch
         if abs((parse_date(launch_date[q]) - parse_date(wd_launch)).days) > 3:
             launch_date[q] = wd_launch   # infobox shows a different (e.g. planned) date
-        landing = wiki_date(field_raw(box, "landing_date"))
+        landing = wiki_date(box.get("landing_date"))
         if not landing and m.get("landing"):
             landing = wd_date(min(m["landing"]))
             if landing.endswith("-01-01"):   # Wikidata value with year precision only
@@ -491,9 +526,12 @@ def main():
                 legacy_names += legacy_crew[wd_to_legacy[m]]
         name = best_name(set(legacy_names), person) if legacy_names else None
         if name is None and q in new_flyers:
-            name = best_name(legacy_astr_by_name.keys(), person)
-            if name and same_person(name, label) < 3:
-                name = None
+            # same spelling is not enough (Clifton C. Williams vs Christopher Williams):
+            # the birth date has to match too
+            born = wd_date(first(person.get("birth", [])))
+            same_birth = [n for n, a in legacy_astr_by_name.items()
+                          if born and legacy_birth(a["Birth Date"]) == born]
+            name = best_name(same_birth, person)
         person_name[q] = name or label
 
     # ---- new mission rows -------------------------------------------------
@@ -511,12 +549,23 @@ def main():
         return wd_to_legacy.get(q) or first(wd_missions[q].get("label", []))
 
     def return_flight(p, q):
-        """Mission on which person p came back after launching on mission q."""
-        later = [b for b in wd_missions if p in landing_crew.get(b, ())
-                 and launch_date.get(b) and launch_date[b] >= launch_date[q]]
-        if not later or q in later:
+        """Mission on which person p came back after launching on mission q.
+
+        Usually the same spacecraft; otherwise the vehicle whose landing crew
+        includes p and which landed after p's launch (it may have been
+        launched earlier, e.g. Soyuz MS-25 crew landing in Soyuz MS-24).
+        """
+        if p in landing_crew.get(q, ()):
             return q
-        return min(later, key=lambda b: launch_date[b])
+        start = parse_date(launch_date[q])
+        options = []
+        for b, crew in landing_crew.items():
+            if b == q or p not in crew or not landing_date.get(b):
+                continue
+            days = (parse_date(landing_date[b]) - start).days
+            if 0 <= days <= 500:
+                options.append((days, b))
+        return min(options)[1] if options else q
 
     new_rows = []
     mission_duration = {}
@@ -622,26 +671,26 @@ def main():
                 a["Status"] = "Deceased"
             new_flights = [m for m in flights_of.get(a["Name"], []) if m in {r["Launch Mission"] for r in new_rows}]
             old = [m.strip() for m in a["Missions"].split(",") if m.strip()]
-            if new_flights:
-                a["Missions"] = ", ".join(old + [m for m in new_flights if m not in old])
-                a["Space Flights"] = str(len(old) + len([m for m in new_flights if m not in old]))
-                hours = duration_hours(box.get("time"))
-                if hours is None and person.get("time_in_space_s"):
-                    hours = float(first(person["time_in_space_s"])) / 3600
-                if hours is None:
-                    hours = float(a["Space Flight (hr)"] or 0) + sum(
-                        (mission_duration.get((m, a["Name"])) or 0) * 24 for m in new_flights)
-                a["Space Flight (hr)"] = fmt_number(max(hours, float(a["Space Flight (hr)"] or 0)))
-                st = status_from(box.get("status"), a["Death Date"])
-                a["Status"] = st or "Active"
-            elif not a["Death Date"]:
+            added = [m for m in new_flights if m not in old]
+            if added:
+                a["Missions"] = ", ".join(old + added)
+                a["Space Flights"] = str(len(old) + len(added))
+            hours = duration_hours(box.get("time_in_space") or box.get("time"))
+            if hours is None and person.get("time_in_space_s"):
+                hours = float(first(person["time_in_space_s"])) / 3600
+            computed = float(a["Space Flight (hr)"] or 0) + sum(
+                (mission_duration.get((m, a["Name"])) or 0) * 24 for m in added)
+            a["Space Flight (hr)"] = fmt_number(max(hours or 0, computed))
+            if not a["Death Date"]:
                 st = status_from(box.get("status"), "")
-                if st and a["Status"] != "Management":
+                if added:
+                    a["Status"] = st or "Active"
+                elif st and a["Status"] != "Management":
                     a["Status"] = st
-            evas = first_int(box.get("eva1", ""))
+            evas = first_int(box.get("total_evas") or box.get("eva1") or "")
             if evas is not None and evas > float(a["Space Walks"] or 0):
                 a["Space Walks"] = str(evas)
-                eva_hours = duration_hours(box.get("eva2"))
+                eva_hours = duration_hours(box.get("total_eva_time") or box.get("eva2"))
                 if eva_hours:
                     a["Space Walks (hr)"] = fmt_number(eva_hours)
         astronauts_out.append(a)
@@ -657,14 +706,13 @@ def main():
         box = wikipedia_details(q)
         citizenship = person.get("citizenship", [])
         death = wd_date(first(person.get("death", [])))
-        hours = duration_hours(box.get("time"))
+        hours = duration_hours(box.get("time_in_space") or box.get("time"))
         if hours is None and person.get("time_in_space_s"):
             hours = float(first(person["time_in_space_s"])) / 3600
-        if hours is None:
-            durations = [mission_duration.get((m, name)) for m in flights]
-            hours = sum(d or 0 for d in durations) * 24
-        evas = first_int(box.get("eva1", "")) or 0
-        eva_hours = duration_hours(box.get("eva2")) or 0
+        computed = sum(mission_duration.get((m, name)) or 0 for m in flights) * 24
+        hours = max(hours or 0, computed)
+        evas = first_int(box.get("total_evas") or box.get("eva1") or "") or 0
+        eva_hours = duration_hours(box.get("total_eva_time") or box.get("eva2")) or 0
         status = status_from(box.get("status"), death)
         if not status:
             last = max(r["Launch Data"] for r in missions_out if r["Launch Mission"] in flights)
@@ -678,7 +726,7 @@ def main():
             "Birth Place": plain(box.get("birth_place", "")) or first(person.get("birth_place", [])),
             "Gender": {"male": "Male", "female": "Female", "trans woman": "Female",
                        "trans man": "Male"}.get(gender, gender.capitalize()),
-            "Alma Mater": plain(box.get("alma_mater", "")).replace("\n", "; ")
+            "Alma Mater": plain(box.get("alma_mater") or box.get("education") or "").replace("\n", "; ")
                           or "; ".join(person.get("educated_at", [])[:3]),
             "Military Rank": plain(box.get("rank", "")).split("\n")[0][:80]
                              or first(person.get("military_rank", [])),

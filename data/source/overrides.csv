@@ -1,2 +1,11 @@
 # Manual corrections applied by scripts/build_data.py (see README).
+# Lines starting with '#' are ignored.
 mission,member,field,value
+# Soyuz MS-10: launch abort, the crew landed after a ballistic suborbital flight.
+Soyuz MS-10,*,sub_orbital,Y
+Soyuz MS-10,*,summary,Launch abort: booster failure two minutes after lift-off; the crew landed safely after a ballistic descent.
+# Shenzhou 22 was launched uncrewed as a lifeboat and brought the Shenzhou 21 crew home.
+Shenzhou 21,*,return_mission,Shenzhou 22
+Shenzhou 21,*,return_date,2026-05-29
+# Planned private mission, not flown yet (Wikidata has a placeholder launch date).
+Vast-1,*,skip,

@@ -235,17 +235,38 @@ def fetch_infoboxes(titles):
     return result
 
 
-CREW_FIELDS = ("crew_members", "launching", "landing", "crew")
+CREW_FIELDS = ("crew_members", "crew_launching", "crew_landing", "launching", "landing", "crew")
 
 
 def crew_link_titles(infobox):
+    """Titles of the people linked in the crew fields of a spaceflight infobox."""
     titles = set()
     if not infobox:
         return titles
-    for field in CREW_FIELDS:
-        m = re.search(r"\|\s*%s\s*=(.*?)(?=\n\s*\|\s*[a-z_ ]+=|\Z)" % field, infobox, re.S | re.I)
-        if m:
-            for link in re.findall(r"\[\[([^\]|#]+)", m.group(1)):
+    try:
+        import mwparserfromhell
+        tpl = mwparserfromhell.parse(infobox).filter_templates(recursive=False)[0]
+        values = [str(p.value) for p in tpl.params
+                  if str(p.name).strip().lower() in CREW_FIELDS]
+    except (ImportError, IndexError):
+        values = [infobox]
+    for value in values:
+        for link in re.findall(r"\[\[([^\]|#]+)", value):
+            titles.add(link.strip())
+    return titles
+
+
+def infobox_link_titles(infobox, fields):
+    try:
+        import mwparserfromhell
+        tpl = mwparserfromhell.parse(infobox or "").filter_templates(recursive=False)[0]
+        values = [str(p.value) for p in tpl.params if str(p.name).strip().lower() in fields]
+    except (ImportError, IndexError):
+        return set()
+    titles = set()
+    for value in values:
+        for link in re.findall(r"\[\[([^\]|#]+)", value):
+            if not re.match(r"(file|image|category):", link, re.I):
                 titles.add(link.strip())
     return titles
 
@@ -328,9 +349,38 @@ def main():
 
     people = fetch_people({p for p, _ in links} | set(title_ids.values()))
     people = {k: v for k, v in people.items() if v.get("label")}
-
     person_boxes = fetch_infoboxes(
         {article_title(p["article"][0]) for p in people.values() if p.get("article")})
+
+    # Second round: flights listed in astronaut infoboxes but unknown to Wikidata
+    # queries above (e.g. a mission item without crew statements).
+    known_articles = {article_title(m["article"][0]) for m in flights.values() if m.get("article")}
+    mission_titles = set()
+    for box in person_boxes.values():
+        mission_titles |= infobox_link_titles(box, ("mission", "missions"))
+    mission_titles = {t for t in mission_titles
+                      if t not in known_articles and not re.match(r"expedition|list of", t, re.I)}
+    extra_ids = fetch_wikidata_ids(mission_titles)
+    extra = fetch_missions(set(extra_ids.values()) - set(flights))
+    extra = {k: v for k, v in extra.items() if v.get("launch")}
+    log("  %d extra flights from astronaut infoboxes" % len(extra))
+    flights.update(extra)
+    extra_boxes = fetch_infoboxes(
+        {article_title(m["article"][0]) for m in extra.values() if m.get("article")})
+    mission_boxes.update(extra_boxes)
+    extra_titles = set()
+    for box in extra_boxes.values():
+        extra_titles |= crew_link_titles(box)
+    extra_title_ids = fetch_wikidata_ids(extra_titles - set(title_ids))
+    title_ids.update(extra_title_ids)
+    new_people = set(extra_title_ids.values()) - set(people)
+    if new_people:
+        more = fetch_people(new_people)
+        more = {k: v for k, v in more.items() if v.get("label")}
+        people.update(more)
+        person_boxes.update(fetch_infoboxes(
+            {article_title(p["article"][0]) for p in more.values() if p.get("article")}))
+
     extracts = fetch_extracts(
         {article_title(m["article"][0]) for m in flights.values() if m.get("article")})
 
