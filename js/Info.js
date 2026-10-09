@@ -29,7 +29,7 @@ class Info{
 			this.draw({
 				caption: data["Launch Mission"],
 				sub: data.Year + " · " + data.Country,
-				lead: data["Brief Mission Summary"],
+				lead: data["Description"] || data["Brief Mission Summary"],
 				table: rows
 			});
 			this.media("m:" + data["Launch Mission"], data["Photo URL"], "p:" + data["Launch Mission"], !!data["Patch URL"]);

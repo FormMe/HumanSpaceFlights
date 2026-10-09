@@ -46,7 +46,7 @@ MISSION_COLUMNS = ["Crew", "Country", "Habitation", "Brief Mission Summary", "Fa
                    "Moon", "Sub Orbital", "Prolongation", "Launch Data", "Launch Mission",
                    "Return Data", "Return Mission", "Year",
                    "Rocket", "Spacecraft", "Launch Site", "Landing Site", "Callsign", "Operator",
-                   "Wikipedia", "Photo URL", "Photo Credit", "Photo Page",
+                   "Wikipedia", "Description", "Photo URL", "Photo Credit", "Photo Page",
                    "Patch URL", "Patch Credit", "Patch Page"]
 ASTRONAUT_COLUMNS = ["Name", "Year", "Status", "Birth Date", "Birth Place", "Gender",
                      "Alma Mater", "Military Rank", "Military Branch", "Space Flights",
@@ -1008,6 +1008,8 @@ def main():
         row["Callsign"] = short(box.get("crew_callsign"), 40)
         row["Operator"] = short(box.get("operator")) or first(m.get("operator", []))
         row["Wikipedia"] = article_url(title)
+        intro = re.sub(r"\s*\([^()]*\)", "", extracts.get(title or "", ""))
+        row["Description"] = re.sub(r"\s+", " ", intro).strip()[:700]
         files = mission_files.get(title or "", {})
         patch = free_image(files.get("insignia"), "Patch")
         lead = images.get(title or "", {}).get("file")
