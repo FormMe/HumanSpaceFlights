@@ -1359,3 +1359,78 @@ canvas#Graph {
   height: 420px;
   touch-action: none;
 }
+
+/* ================= list: sortable, with scale ================= */
+
+#grid.lt { font-size: 13px; }
+#grid.lt .header,
+#grid.lt .row {
+  display: grid;
+  align-items: center;
+  column-gap: 10px;
+  padding: 0 8px;
+}
+#grid.lt-missions .header,
+#grid.lt-missions .row { grid-template-columns: minmax(0, 1fr) 74px 50px 92px; }
+#grid.lt-astronauts .header,
+#grid.lt-astronauts .row { grid-template-columns: minmax(0, 1fr) 62px 84px 80px; }
+#grid.lt .row { min-height: 40px; }
+#grid.lt .cell { padding: 0; flex: none; overflow: hidden; }
+
+/* header: sort buttons */
+#grid.lt .header { min-height: 32px; }
+#grid.lt .header .cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: left;
+}
+#grid.lt .header .cell:hover { color: var(--text); }
+#grid.lt .header .cell.sorted { color: var(--accent-strong); }
+.lt-arrow { font-size: 8px; opacity: 0; transition: opacity .15s; }
+#grid.lt .header .cell:hover .lt-arrow,
+#grid.lt .header .cell.sorted .lt-arrow { opacity: 1; }
+
+/* name with flag and a small second line */
+.lt-name { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.lt-flag { flex: none; display: inline-flex; width: 20px; }
+.lt-flag img { width: 20px; height: 13px; border-radius: 2px; object-fit: cover; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12); }
+.lt-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+.lt-text b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lt-text small { font-size: 11px; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lt-date { font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 12px; }
+.lt-none { color: var(--text-dim); }
+
+/* dots: one per person / flight */
+.lt-dots { display: inline-flex; flex-wrap: wrap; gap: 2px; max-width: 46px; align-items: center; }
+.lt-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--text-muted); }
+.lt-dots em { font-style: normal; font-size: 10px; color: var(--text-dim); margin-left: 2px; }
+
+/* bars on a scale shared by the whole dataset */
+.lt-bar { display: flex; flex-direction: column; gap: 3px; }
+.lt-track { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.07); overflow: hidden; }
+.lt-track span { display: block; height: 100%; border-radius: 2px; }
+.lt-val { font-size: 11.5px; color: var(--text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.footer .authors { margin-bottom: 6px; font-size: 14px; color: var(--text-muted); }
+.footer .authors b { color: var(--text); font-weight: 600; }
+
+/* phones: three columns, the name gets the room */
+@media (max-width: 760px) {
+  #grid.lt-missions .header,
+  #grid.lt-missions .row { grid-template-columns: minmax(0, 1fr) 46px 88px; }
+  #grid.lt-astronauts .header,
+  #grid.lt-astronauts .row { grid-template-columns: minmax(0, 1fr) 62px 88px; }
+  #grid.lt .c-date, #grid.lt .header .h-date,
+  #grid.lt .c-eva, #grid.lt .header .h-eva { display: none; }
+}
