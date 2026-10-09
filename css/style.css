@@ -511,7 +511,7 @@ svg#FlightsChart {
 .graph.has-graph .graph-hint { display: none; }
 
 .button {
-  background: linear-gradient(180deg, #7468e0, var(--accent));      /* white text >= 4.5:1 */
+  background: linear-gradient(180deg, #6e62da, var(--accent));      /* white text >= 4.5:1 (4.75 at the top) */
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: #fff;
   padding: 7px 16px;
@@ -1096,7 +1096,7 @@ svg#FlightsChart {
 .mode-switch button:not(.active):hover { color: var(--text); background: rgba(255, 255, 255, 0.05); }
 .mode-switch button:disabled { cursor: progress; }
 .mode-switch button.active {
-  background: linear-gradient(180deg, var(--accent-strong), var(--accent));
+  background: linear-gradient(180deg, #6e62da, var(--accent));   /* white text >= 4.5:1 */
   color: #fff;
   box-shadow: 0 4px 14px -6px rgba(107, 95, 211, 0.9);
 }
