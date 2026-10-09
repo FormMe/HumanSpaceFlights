@@ -1447,7 +1447,7 @@
    "United States"
   ],
   "description": [
-   "spaceflight taking astronauts to the ISS"
+   "2026 American crewed spaceflight to the ISS"
   ],
   "destination": [
    "International Space Station"
@@ -1469,6 +1469,9 @@
   ],
   "part_of": [
    "Commercial Crew Program"
+  ],
+  "vehicle": [
+   "Falcon 9 Block 5"
   ]
  },
  "Q115651863": {
@@ -2256,7 +2259,7 @@
    "STS-76"
   ],
   "landing": [
-   "1996-04-30T00:00:00Z"
+   "1996-04-31T00:00:00Z"
   ],
   "launch": [
    "1996-03-22T00:00:00Z"
@@ -2413,6 +2416,9 @@
   ],
   "label": [
    "SpaceX Crew-12"
+  ],
+  "landing": [
+   "2026-10-08T00:00:00Z"
   ],
   "launch": [
    "2026-02-13T00:00:00Z"
