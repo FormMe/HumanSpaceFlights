@@ -31,7 +31,7 @@ class SelectionList{
 				{ key: "name", label: "Mission", type: "text", value: d => d["Launch Mission"],
 				  html: d => flagName(d["Country Flag"], d["Launch Mission"], d.Habitation + " · " + d.Year) },
 				{ key: "date", label: "Launched", type: "text", value: d => d["Launch Data"],
-				  html: d => "<span class='lt-date'>" + d["Launch Data"] + "</span>" },
+				  html: d => "<span class='lt-date'>" + esc(d["Launch Data"]) + "</span>" },
 				{ key: "crew", label: "Crew", type: "num", value: d => +d["Crew size"] || 0,
 				  html: d => dots(d["Crew size"], 7) },
 				{ key: "dur", label: "Duration", type: "num", value: missionDays,
@@ -114,16 +114,20 @@ class SelectionList{
 			});
 		hcells.order();
 
-		// rows
+		// rows (a mode switch starts from an empty list: other columns)
+		if (this.renderedMode !== mode) root.selectAll(".row").remove();
+		this.renderedMode = mode;
 		var sel = root.selectAll(".row").data(rows, d => isMissions ? d["Launch Mission"] : d.Name);
 		sel.exit().remove();
 		// a row is a button: reachable with Tab, opened with Enter or Space
+		// the cells of a row never change while it stays in the list (rows are keyed
+		// by name): only new rows are built, not all 600 on every filter or brush move
 		sel = sel.enter().append("div").attr("class", "row")
 			.attr("tabindex", 0).attr("role", "button")
-			.merge(sel);
-		sel.classed("active", d => info.d === d)
 			.attr("aria-label", d => isMissions ? d["Launch Mission"] : d.Name)
 			.html(d => columns.map(c => "<div class='cell c-" + c.key + "'>" + c.html(d) + "</div>").join(""))
+			.merge(sel);
+		sel.classed("active", d => info.d === d)
 			.order()
 			.on("click", function(d) {
 		    	graph.update(create_graph(d));
@@ -134,12 +138,15 @@ class SelectionList{
 		    	if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.click(); }
 		    })
 		    .on('mouseover', function (d) {
-		    	Photos.prefetch(photoKeys(d, isMissions));     // the photo is on its way before the click
+		    	// the photo is on its way before the click, if the pointer rests on the row
+		    	clearTimeout(self.dwell);
+		    	self.dwell = setTimeout(() => Photos.prefetch(photoKeys(d, isMissions)), 150);
 		    	d.highlighted = true;
 		    	draw(d);
 		    })
 		    .on('touchstart', function (d) { Photos.prefetch(photoKeys(d, isMissions)); }, { passive: true })
 		    .on('mouseout', function (d) {
+		    	clearTimeout(self.dwell);
 		    	d.highlighted = false;
 		    	renderList(data, isMissions);
 		    });

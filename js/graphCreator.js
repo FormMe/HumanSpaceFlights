@@ -1,4 +1,22 @@
 
+// lookups built once per data set: who is who, and who flew which missions
+// (scanning every astronaut and mission for each node made "Draw all" slow)
+var lookups = { missions: null, astronauts: null };
+function lookup() {
+	if (lookups.missions !== missions || lookups.astronauts !== astronauts) {
+		var byName = new Map(), missionsOf = new Map();
+		astronauts.forEach(a => byName.set(a.Name, a));
+		missions.forEach(function (m) {
+			m.Members.forEach(function (n) {
+				if (!missionsOf.has(n)) missionsOf.set(n, new Set());
+				missionsOf.get(n).add(m);
+			});
+		});
+		lookups = { missions: missions, astronauts: astronauts, byName: byName, missionsOf: missionsOf };
+	}
+	return lookups;
+}
+
 function astr_graph(astr) {
 	var nodes = [{
 		id: astr.Name,
@@ -8,9 +26,10 @@ function astr_graph(astr) {
 	}];
 	var links = [];
 	if (!astr.stub) {
+		var crewOf = lookup().missionsOf.get(astr.Name) || new Set();
 		missions
 			// by name, and by crew membership (one spelling mistake must not break a link)
-			.filter(mis => astr.Missions.includes(mis["Launch Mission"]) || mis.Members.includes(astr.Name))
+			.filter(mis => crewOf.has(mis) || astr.Missions.includes(mis["Launch Mission"]))
 			.forEach(function (mis) {
 				nodes.push({
 	    			id: mis["Launch Mission"],
@@ -48,8 +67,8 @@ function mis_graph(mis) {
     		});
 		})
 	});
-	astronauts
-		.filter(astr => members.includes(astr.Name))
+	var byName = lookup().byName;
+	members.slice().map(n => byName.get(n)).filter(Boolean)
 		.forEach(function (astr) {
     		nodes.push({
     			id: astr.Name,

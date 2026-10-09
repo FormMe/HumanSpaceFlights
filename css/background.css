@@ -33,8 +33,9 @@ html {
   left: 0;
   right: 0;
   top: 0;
-  height: calc(100vh + 3 * var(--tile));
-  height: calc(100lvh + 3 * var(--tile));
+  /* one tile for the drift, one for the parallax shift (each moves less than a tile) */
+  height: calc(100vh + 2 * var(--tile));
+  height: calc(100lvh + 2 * var(--tile));
   background-repeat: repeat;
   opacity: 0;
   transition: opacity 1.2s ease;

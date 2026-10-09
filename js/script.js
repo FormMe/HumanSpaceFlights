@@ -239,10 +239,29 @@ function loadFailed(error) {
         .text("The data could not be loaded. Please reload the page.");
 }
 
+// controls (no inline handlers in the HTML: the page's CSP forbids them)
+["DataType", "Habitation", "Outcome"].forEach(id => document.getElementById(id).addEventListener("change", filter));
+["Status", "Gender", "SpaceWalk"].forEach(id => document.getElementById(id).addEventListener("change", filter_astr));
+document.getElementById("DrawAll").addEventListener("click", complete_graph);
+
 // both tables first: clicks before the second one arrived used to throw
+// d3.csv builds its row parser with new Function(), which the page's CSP
+// (no 'unsafe-eval') refuses: rows are parsed and turned into objects here
+function parseCsv(text) {
+    var rows = d3.csvParseRows(text), header = rows.shift() || [];
+    return rows.map(function (r) {
+        var o = {};
+        header.forEach(function (h, i) { o[h] = r[i] === undefined ? "" : r[i]; });
+        return o;
+    });
+}
+function loadCsv(url, callback) {
+    d3.text(url, function (error, text) { callback(error, error ? null : parseCsv(text)); });
+}
+
 d3.queue()
-    .defer(d3.csv, "data/missions.csv")
-    .defer(d3.csv, "data/all_astronauts.csv")
+    .defer(loadCsv, "data/missions.csv")
+    .defer(loadCsv, "data/all_astronauts.csv")
     .await(function (error, missionRows, astronautRows) {
         if (error || !missionRows || !astronautRows) return loadFailed(error);
         astronauts = prepareAstronauts(astronautRows);
@@ -257,8 +276,11 @@ d3.queue()
         // a select restored by the browser (back / forward) applies at once
         if (!isMissionMode() || ["Habitation", "Outcome"].some(id => selected(id) != "All")) filter();
 
-        var barScroll = document.querySelector('.stacked .scroll-x');
-        if (barScroll) barScroll.scrollLeft = barScroll.scrollWidth;
+        // the latest years in view (in the next frame: reading scrollWidth forces a layout)
+        requestAnimationFrame(function () {
+            var barScroll = document.querySelector('.stacked .scroll-x');
+            if (barScroll) barScroll.scrollLeft = barScroll.scrollWidth;
+        });
     });
 
 d3.json("data/meta.json", function (error, meta) {

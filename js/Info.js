@@ -3,7 +3,7 @@
 class Info{
 
 	update(data, isMission){
-		this.remove();
+		this.remove(true);          // no sync here: update() syncs once at the end
 		this.d = data;
 		this.isMission = isMission;
 		this.draw(isMission ? this.mission(data) : this.astronaut(data));
@@ -167,7 +167,7 @@ class Info{
 		});
 		// small portraits / patches next to the names, when we have them
 		body.querySelectorAll(".ic-ava").forEach(function (el) {
-			function put(src) { if (src && el.isConnected) { el.style.backgroundImage = "url(" + src + ")"; el.classList.add("img"); } }
+			function put(src) { if (src && el.isConnected) { el.style.backgroundImage = 'url("' + src + '")'; el.classList.add("img"); } }
 			var now = Photos.peek(el.dataset.key);      // tiny copies are usually here already
 			if (now) put(now); else Photos.get(el.dataset.key).then(put, function () {});
 		});
@@ -181,8 +181,9 @@ class Info{
 		box.classList.toggle("portrait", !!portrait);
 		box.hidden = !photoUrl && !hasPatch;
 		box.classList.toggle("no-photo", !photoUrl);
-		if (photoUrl) Photos.show(photo, photoKey, photoUrl); else { photo.hidden = true; photo.dataset.key = ""; }
-		photo.dataset.full = photoUrl || "";
+		// the packed copy only: the original is loaded when the photo is opened full screen
+		if (photoUrl) Photos.show(photo, photoKey, null); else { photo.hidden = true; photo.dataset.key = ""; }
+		photo.dataset.full = wikimediaUrl(photoUrl);
 		var self = this;
 		if (!photo.dataset.zoomable) {          // tap the photo: full screen
 			photo.dataset.zoomable = "1";
@@ -225,11 +226,11 @@ class Info{
 		el.hidden = !html;
 	}
 
-	remove(){
+	remove(quiet){
 		if (this.d) this.d.highlighted = false;
 		this.d = null;
 		this.draw(null);
-		this.sync();
+		if (!quiet) this.sync();
 		var media = document.getElementById("InfoMedia");
 		if (media) {
 			media.hidden = true;

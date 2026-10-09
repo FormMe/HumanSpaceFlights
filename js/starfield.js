@@ -87,6 +87,9 @@
   style.textContent = css;
   document.head.appendChild(style);
 
+  var idle = window.requestIdleCallback
+    ? function (f) { window.requestIdleCallback(f, { timeout: 1200 }); }
+    : function (f) { setTimeout(f, 200); };
   var wrappers = [];
   layers.forEach(function (cfg, i) {
     var wrap = document.createElement("div");
@@ -101,10 +104,13 @@
     wrap.appendChild(layer);
     sky.appendChild(wrap);
     wrappers.push({ el: wrap, factor: cfg.parallax, tile: cfg.tile });
-    toURL(paintTile(cfg.tile, cfg.count, cfg.r[0], cfg.r[1], cfg.a[0], cfg.a[1], cfg.glow), function (url) {
-      layer.style.backgroundImage = "url(" + url + ")";
-      layer.style.backgroundSize = cfg.tile + "px " + cfg.tile + "px";
-      layer.classList.add("ready");
+    // painted when the page is idle: the layers fade in anyway, the charts come first
+    idle(function () {
+      toURL(paintTile(cfg.tile, cfg.count, cfg.r[0], cfg.r[1], cfg.a[0], cfg.a[1], cfg.glow), function (url) {
+        layer.style.backgroundImage = 'url("' + url + '")';
+        layer.style.backgroundSize = cfg.tile + "px " + cfg.tile + "px";
+        layer.classList.add("ready");
+      });
     });
   });
 

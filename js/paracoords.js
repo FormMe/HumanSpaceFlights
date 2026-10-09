@@ -350,10 +350,20 @@ function paracoords_update(data, isMis, domainData) {
     });
 
     curData = selected;
-    renderList(selected, isMissions);    
-    selectionList.update(selected, isMissions);
+    scheduleBrushRender(selected);
     return selected;
   }
+}
+
+// brushing fires on every pointer move: the lines and the list follow once per frame
+var brushFrame = null;
+function scheduleBrushRender(rows) {
+  if (brushFrame) cancelAnimationFrame(brushFrame);
+  brushFrame = requestAnimationFrame(function () {
+    brushFrame = null;
+    renderList(rows);
+    selectionList.update(rows, isMissions);
+  });
 }
 
 function d3_functor(v) {

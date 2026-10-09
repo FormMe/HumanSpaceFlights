@@ -72,6 +72,7 @@ var Photos = (function () {
 			img.classList.remove("loading");
 		}
 		if (!now) get(key).then(done);
+		fullUrl = wikimediaUrl(fullUrl);
 		if (fullUrl) {
 			var big = new Image();
 			big.onload = function () { done(fullUrl); };
@@ -80,7 +81,7 @@ var Photos = (function () {
 	}
 
 	// after the page has settled: the tiny copies, mission photos and patches
-	// first (about 1.4 MB), then the astronauts' (about 1.5 MB)
+	// first, then the astronauts' (about 3 MB in all)
 	function preloadTiny() {
 		loadIndex().then(function (idx) {
 			var first = {}, later = {};
@@ -163,7 +164,7 @@ var Lightbox = (function () {
 		source.style.visibility = "hidden";   // the photo has "left" the card
 		box.querySelector(".lightbox-close").focus({ preventScroll: true });
 		// the original, when the host allows it
-		var full = source.dataset.full;
+		var full = wikimediaUrl(source.dataset.full);
 		if (full) { var big = new Image(); big.onload = function () { if (opened) img.src = full; }; big.src = full; }
 	}
 

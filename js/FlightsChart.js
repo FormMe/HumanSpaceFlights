@@ -147,7 +147,7 @@ class FlightsChart{
         	text += "<ul style='columns: " + cols + "'>";
         	if (isMissions){
         		tooltip_data.values.forEach(function (row) {
-            		text += "<li>" + esc(row["Launch Mission"]) + " <span>" + Info.date(row["Launch Data"], true) + "</span></li>";
+            		text += "<li>" + esc(row["Launch Mission"]) + " <span>" + esc(Info.date(row["Launch Data"], true)) + "</span></li>";
             	});
             }
             else{

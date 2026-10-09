@@ -6,7 +6,7 @@ var graphTip = (function () {
 	function fmt(n) { return d3.format(",")(Math.round(n)); }
 	function row(label, value) {
 		return value === undefined || value === null || value === "" ? "" :
-			"<div class='gt-row'><span>" + label + "</span><b>" + value + "</b></div>";
+			"<div class='gt-row'><span>" + label + "</span><b>" + esc(value) + "</b></div>";   // values come from the data
 	}
 	function html(d) {
 		var v = d.value, swatch = "<i style='background:" + color(v.Country) + "'></i>";
@@ -17,7 +17,7 @@ var graphTip = (function () {
 				row("Launch", Info.date(v["Launch Data"], true)) +
 				row("Duration", durationText(v)) +      // the same wording as the list and the card
 				row("Crew", v["Crew size"]) +
-				row("Where", esc(v.Habitation));
+				row("Where", v.Habitation);
 		}
 		if (v.stub) {
 			return "<div class='gt-kicker'>" + swatch + "Astronaut</div>" +
@@ -59,7 +59,6 @@ var graphTip = (function () {
 			if (d.type === "mission") key = v["Patch URL"] ? "t:p:" + v["Launch Mission"] : null;
 			else if (!v.stub && v["Photo URL"]) key = "t:a:" + v.Name;
 			el.dataset.key = key || "";
-			if (!v.stub) Photos.prefetch(photoKeys(v, d.type === "mission"));   // a click on the node will want it
 			if (key) Photos.get(key).then(function (src) {
 				if (!src || el.dataset.key !== key || !el.classList.contains("visible")) return;
 				var img = document.createElement("img");
@@ -167,10 +166,17 @@ class Graph{
 		    // card's proportions, and the view zooms to fit it
 		    .force("x", d3.forceX(width / 2).strength(0.05 * Math.min(1, height / width)))
 		    .force("y", d3.forceY(height / 2).strength(0.05))
-		    .on("tick", function () { self.fitView(); self.draw(); });
-		// big graphs: skip the first, most chaotic part of the layout
+		    .on("tick", function () {
+		    	// "Draw all" (1000+ nodes): the layout runs every frame, the canvas
+		    	// is redrawn every second frame, so the page stays responsive
+		    	if (huge && (ticks++ & 1)) return;
+		    	self.fitView(); self.draw();
+		    })
+		    .on("end", function () { self.fitView(); self.draw(); });
+		var ticks = 0, huge = graph.nodes.length > 300;
 		// big graphs settle in ~100 frames instead of ~300
 		if (big) this.simulation.alphaDecay(0.045).velocityDecay(0.5);
+		if (huge) this.simulation.alphaMin(0.005);
 		this.fitView(true);
 		this.draw();
 	}

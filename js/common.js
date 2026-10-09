@@ -44,3 +44,8 @@ function durationText(d) {
     var n = Math.round(days);
     return d3.format(",")(n) + (n == 1 ? " day" : " days");
 }
+
+// images are loaded only from Wikimedia (the data could carry any URL)
+function wikimediaUrl(url) {
+    return /^https:\/\/(upload|thumb)\.wikimedia\.org\//.test(String(url || "")) ? url : "";
+}

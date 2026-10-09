@@ -174,11 +174,22 @@ def link_people_and_missions(missions_out, astronauts_out):
     log("  mission lists of %d astronauts taken from the crews, %d flight counts raised" % (changed, raised))
 
 
+def safe_value(column, value):
+    """Text from Wikipedia/Wikidata is shown on a web page: no markup can get
+    through (a cut '<img ... onerror=' would), and links are http(s) only."""
+    value = "" if value is None else str(value)
+    if column.endswith(("URL", "Page")) or column == "Wikipedia":
+        return value if re.match(r"https?://", value) and not re.search(r"[\s<>\"]", value) else ""
+    if "<" in value or ">" in value:
+        value = re.sub(r"<[^>]*>?", "", value).replace("<", "").replace(">", "")
+    return value
+
+
 def write_csv(path, rows, columns):
     with open(path, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
         w.writeheader()
-        w.writerows(rows)
+        w.writerows({c: safe_value(c, r.get(c, "")) for c in columns} for r in rows)
     log("wrote %s (%d rows)" % (os.path.relpath(path, ROOT), len(rows)))
 
 

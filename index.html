@@ -7,6 +7,8 @@
     <meta name="description" content="Interactive visualization of every human spaceflight mission and astronaut since 1961.">
     <meta name="theme-color" content="#090a0f">
     <title>Human Space Flights</title>
+    <!-- scripts only from this site; images from here and Wikimedia; fonts from Google -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://upload.wikimedia.org https://thumb.wikimedia.org; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +64,7 @@
             <div class="field field-wide">
                 <label for="DataType">Graph of:</label>
                 <div class="select">
-                    <select id="DataType" autocomplete="off" onchange="filter()" disabled>
+                    <select id="DataType" autocomplete="off" disabled>
                         <option selected value="Missions">Missions</option>
                         <option value="Astronauts">Astronauts</option>
                     </select>
@@ -82,7 +84,7 @@
                     <div class="field">
                         <label for="Habitation">Habitation:</label>
                         <div class="select">
-                            <select id="Habitation" autocomplete="off" onchange="filter()">
+                            <select id="Habitation" autocomplete="off">
                                 <option selected value="All">All</option>
                                 <option value="Space">Space</option>
                                 <option value="Moon">Moon</option>
@@ -106,7 +108,7 @@
                     <div class="field">
                         <label for="Outcome">Outcome:</label>
                         <div class="select">
-                            <select id="Outcome" autocomplete="off" onchange="filter()">
+                            <select id="Outcome" autocomplete="off">
                                 <option selected value="All">All</option>
                                 <option value="Fatality">Fatality</option>
                                 <option value="Success">Success</option>
@@ -122,7 +124,7 @@
                     <div class="field">
                         <label for="Status">Status:</label>
                         <div class="select">
-                            <select id="Status" autocomplete="off" onchange="filter_astr()">
+                            <select id="Status" autocomplete="off">
                                 <option selected value="All">All</option>
                                 <option value="Active">Active</option>
                                 <option value="Management">Management</option>
@@ -136,7 +138,7 @@
                     <div class="field">
                         <label for="Gender">Gender:</label>
                         <div class="select">
-                            <select id="Gender" autocomplete="off" onchange="filter_astr()">
+                            <select id="Gender" autocomplete="off">
                                 <option selected value="All">All</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -148,7 +150,7 @@
                     <div class="field">
                         <label for="SpaceWalk">Space walk:</label>
                         <div class="select">
-                            <select id="SpaceWalk" autocomplete="off" onchange="filter_astr()">
+                            <select id="SpaceWalk" autocomplete="off">
                                 <option selected value="All">All</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
@@ -185,7 +187,7 @@
         <section class="view card graph" data-tab="graph">
             <div class="card-head">
                 <h2 class="title" id="GraphTitle">Missions-Astronauts Connections</h2>
-                <button class="button" onclick="complete_graph()">Draw all</button>
+                <button type="button" class="button" id="DrawAll">Draw all</button>
             </div>
             <div class="graph-body">
                 <canvas id="Graph" role="img" aria-label="Graph of missions and their crews"></canvas>
