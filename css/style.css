@@ -261,6 +261,9 @@ h1, h2, h3, p { margin: 0; font-weight: 400; }
   padding: 0;
   margin: 0;
 }
+/* a button in the head must not make it taller than a plain title:
+   titles and dividers line up across the cards */
+.card-head .button { margin-top: -6px; margin-bottom: -6px; }
 
 /* charts scale with the card; on narrow screens they scroll sideways */
 
@@ -588,6 +591,10 @@ svg#Graph {
 
 .info-hint { display: none; padding: 30px 10px; }
 #Info:not(.has-data) .info-hint { display: block; }
+.info-links[hidden] { display: none; }
+@media (min-width: 761px) {      /* empty card: the hint in the middle, like the graph's */
+  #Info:not(.has-data) { display: flex; flex-direction: column; justify-content: center; }
+}
 
 /* ---------- tooltips ---------- */
 
@@ -1110,8 +1117,9 @@ svg#FlightsChart {
     height: auto;
     min-height: 0;
   }
-  .layout > .graph       { grid-column: 1 / 8;  grid-row: 3; }
-  .layout > .info        { grid-column: 8 / 13; grid-row: 3; }
+  /* same columns as the rows above */
+  .layout > .graph       { grid-column: 1 / 9;  grid-row: 3; }
+  .layout > .info        { grid-column: 9 / 13; grid-row: 3; }
 }
 
 /* medium screens: one column in the same order */
@@ -1379,7 +1387,16 @@ canvas#Graph {
 .lt-track { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.07); overflow: hidden; }
 .lt-track span { display: block; height: 100%; border-radius: 2px; }
 .lt-val { font-size: 11.5px; color: var(--text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.footer .authors { margin-bottom: 6px; font-size: 14px; color: var(--text-muted); }
+.footer .authors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 10px;
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
 .footer .authors b { color: var(--text); font-weight: 600; }
 
 /* phones: three columns, the name gets the room */
@@ -1562,7 +1579,8 @@ canvas#Graph {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.ic-stat b.long { font-size: 16px; white-space: normal; line-height: 1.2; padding-top: 2px; }
+.ic-stat b { height: 24px; line-height: 24px; }      /* labels line up across the tiles */
+.ic-stat b.long { font-size: 16px; }
 .ic-stat span { display: block; margin-top: 2px; font-size: 11.5px; color: var(--text-muted); line-height: 1.25; }
 .ic-stat small { display: block; font-size: 11px; color: var(--text-dim); }
 
@@ -1667,7 +1685,8 @@ canvas#Graph {
   .ic-stats { gap: 6px; margin-bottom: 14px; }
   .ic-stat { padding: 8px 8px 7px; border-radius: 10px; }
   .ic-stat b { font-size: 16px; }
-  .ic-stat b.long { font-size: 13.5px; padding-top: 3px; }
+  .ic-stat b { height: 20px; line-height: 20px; }
+  .ic-stat b.long { font-size: 13.5px; }
   .ic-stat span { font-size: 10.5px; }
   .ic-stat small { font-size: 10px; }
   .ic-lead p { font-size: 14px; }
@@ -1694,8 +1713,8 @@ canvas#Graph {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  margin: 4px 2px;
-  padding: 5px 14px 5px 8px;
+  margin: 0;
+  padding: 5px 16px 5px 6px;
   border-radius: 999px;
   border: 1px solid rgba(255, 140, 60, 0.45);
   background: linear-gradient(135deg, rgba(255, 120, 40, 0.16), rgba(138, 127, 240, 0.14));
@@ -1739,6 +1758,7 @@ canvas#Graph {
 }
 .crew-hint {
   max-width: 0;
+  margin-left: -7px;            /* no gap while hidden: the button stays symmetric */
   opacity: 0;
   white-space: nowrap;
   font-size: 12px;
@@ -1751,15 +1771,26 @@ canvas#Graph {
   border-color: rgba(255, 140, 60, 0.8);
   box-shadow: 0 10px 26px -10px rgba(255, 122, 47, 0.7);
 }
-.crew-btn:hover .crew-hint, .crew-btn:focus-visible .crew-hint { max-width: 120px; opacity: 1; margin-left: 2px; }
+.crew-btn:hover .crew-hint, .crew-btn:focus-visible .crew-hint { max-width: 120px; opacity: 1; margin-left: 0; }
 .crew-btn:hover .crew-helmet { animation-duration: .9s; }
 .crew-btn b { white-space: nowrap; }
 @media (hover: none) {           /* phones: always say what the button does */
-  .crew-hint { max-width: 120px; opacity: .9; margin-left: 2px; }
+  .crew-hint { max-width: 120px; opacity: .9; margin-left: 0; }
 }
+.crew-names { white-space: nowrap; }
 @media (max-width: 480px) {
-  .crew-btn { flex-wrap: wrap; justify-content: center; row-gap: 0; padding: 6px 14px 6px 8px; font-size: 13.5px; }
-  .crew-hint { flex-basis: 100%; max-width: none; text-align: center; margin: 0; font-size: 11.5px; }
+  /* helmet on the left, names over the hint; as wide as the names */
+  .crew-btn {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    column-gap: 9px;
+    padding: 6px 16px 6px 6px;
+    border-radius: 22px;
+    font-size: 13.5px;
+    text-align: left;
+  }
+  .crew-helmet { grid-row: 1 / 3; }
+  .crew-hint { max-width: none; margin: 0; font-size: 11.5px; line-height: 1.3; }
 }
 
 .crew-modal {
@@ -1824,4 +1855,11 @@ canvas#Graph {
 }
 @media (prefers-reduced-motion: reduce) {
   .crew-btn::after, .crew-helmet, .crew-card, .crew-modal { animation: none; }
+}
+
+@media (max-width: 760px) {
+  /* phones: "Draw all" stays beside the title, the title wraps instead */
+  .graph .card-head { flex-wrap: nowrap; align-items: center; }
+  .graph .card-head .title { min-width: 0; }
+  .graph .card-head .button { flex: none; padding: 8px 14px; font-size: 14px; }
 }
