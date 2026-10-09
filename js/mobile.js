@@ -96,7 +96,7 @@
   var missionFilters = ["Habitation", "Outcome"];
   var astronautFilters = ["Status", "Gender", "SpaceWalk"];
 
-  function astronautsMode() { return dataType.value === "Astonauts"; }
+  function astronautsMode() { return dataType.value === "Astronauts"; }
 
   function syncMode() {
     body.classList.toggle("mode-astronauts", astronautsMode());
@@ -149,15 +149,31 @@
   syncFilters();
 
   // ---- details sheet ---------------------------------------------------------
-  var info = document.getElementById("Info");
+  var infoCard = document.getElementById("Info");
   var rows = document.getElementById("InfoBody");
-  function openSheet() { body.classList.add("sheet-open"); }
-  function closeSheet() { body.classList.remove("sheet-open"); }
+  // on phones the card is a modal sheet: a dialog only while it is open
+  var opener = null;
+  function openSheet() {
+    if (body.classList.contains("sheet-open")) return;
+    opener = document.activeElement;
+    body.classList.add("sheet-open");
+    infoCard.setAttribute("role", "dialog");
+    infoCard.setAttribute("aria-modal", "true");
+    document.getElementById("SheetClose").focus({ preventScroll: true });
+  }
+  function closeSheet() {
+    if (!body.classList.contains("sheet-open")) return;
+    body.classList.remove("sheet-open");
+    infoCard.removeAttribute("role");
+    infoCard.removeAttribute("aria-modal");
+    if (opener && opener.isConnected) opener.focus({ preventScroll: true });   // back to the row
+    opener = null;
+  }
 
   new MutationObserver(function () {
     if (rows.firstChild) {
       if (phone.matches) openSheet();
-      info.scrollTop = 0;
+      infoCard.scrollTop = 0;
     } else {
       closeSheet();
     }
@@ -170,27 +186,29 @@
     setTab("graph");
   });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeSheet();
+    // Esc closes the topmost layer only: the photo or the crew picture first
+    var overlay = document.querySelector(".lightbox.show") || !document.getElementById("CrewModal").hidden;
+    if (e.key === "Escape" && !overlay) closeSheet();
   });
 
   // swipe the sheet down to close it
   var startY = null;
-  info.addEventListener("touchstart", function (e) {
-    startY = info.scrollTop <= 0 ? e.touches[0].clientY : null;
+  infoCard.addEventListener("touchstart", function (e) {
+    startY = infoCard.scrollTop <= 0 ? e.touches[0].clientY : null;
   }, { passive: true });
-  info.addEventListener("touchmove", function (e) {
+  infoCard.addEventListener("touchmove", function (e) {
     if (startY === null) return;
     var dy = e.touches[0].clientY - startY;
     if (dy > 0) {
-      info.classList.add("dragging");
-      info.style.transform = "translate3d(0," + dy + "px,0)";
+      infoCard.classList.add("dragging");
+      infoCard.style.transform = "translate3d(0," + dy + "px,0)";
     }
   }, { passive: true });
-  info.addEventListener("touchend", function (e) {
+  infoCard.addEventListener("touchend", function (e) {
     if (startY === null) return;
     var dy = e.changedTouches[0].clientY - startY;
-    info.classList.remove("dragging");
-    info.style.transform = "";
+    infoCard.classList.remove("dragging");
+    infoCard.style.transform = "";
     if (dy > 90) closeSheet();
     startY = null;
   });

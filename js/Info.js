@@ -17,6 +17,14 @@ class Info{
 			this.links(data["Wikipedia"], [["Photo", data["Photo Credit"], data["Photo Page"], data["Photo URL"]]]);
 		}
 		this.reveal();
+		this.sync();
+	}
+
+	// the list row and the plot line follow the card, whatever opened it
+	// (a row, a graph node, a crew / mission button)
+	sync() {
+		if (typeof selectionList !== "undefined") selectionList.markActive(this.d);
+		if (typeof renderList === "function" && typeof curData !== "undefined" && curData) renderList();
 	}
 
 	// bring the card into view, smoothly, when its top is out of sight or low on
@@ -46,7 +54,7 @@ class Info{
 		});
 		return {
 			title: d["Launch Mission"],
-			sub: [d["Country Flag"] + " " + d.Country, d["Operator"]],
+			sub: [(d["Country Flag"] || "") + " " + esc(d.Country), d["Operator"]],
 			badges: badges,
 			stats: [
 				!inOrbit && days < 2 && d["Flight Time"] ? [d["Flight Time"], "in flight"] : [dur[0], dur[1], inOrbit ? "so far" : d["Flight Time"]],
@@ -90,7 +98,7 @@ class Info{
 		if (d["Death Mission"]) badges.push(["sad", "Died on " + d["Death Mission"]]);
 		return {
 			title: d["Name"],
-			sub: [(d["Country Flag"] || "") + " " + (d.Nationality || d.Country), d["Agency"]],
+			sub: [(d["Country Flag"] || "") + " " + esc(d.Nationality || d.Country), d["Agency"]],
 			badges: badges,
 			stats: [
 				[+d["Space Flights"] || missions.length, (+d["Space Flights"] || missions.length) == 1 ? "flight" : "flights"],
@@ -179,12 +187,19 @@ class Info{
 		if (!photo.dataset.zoomable) {          // tap the photo: full screen
 			photo.dataset.zoomable = "1";
 			photo.addEventListener("click", function () { Lightbox.open(photo, self.photoCaption()); });
+			Info.pressable(photo, "Open the photo full screen");
 		}
 		if (hasPatch) Photos.show(patch, patchKey, null); else { patch.hidden = true; patch.dataset.key = ""; }
 		patch.classList.remove("zoomed");
+		var name = this.d ? (this.isMission ? this.d["Launch Mission"] : this.d.Name) : "";
+		photo.alt = name ? (portrait ? "Portrait of " : "Photo of ") + name : "";
+		patch.alt = name ? name + " mission patch" : "Mission patch";
 		if (!patch.dataset.zoomable) {          // tap the patch: it grows, tap again: back
 			patch.dataset.zoomable = "1";
-			patch.addEventListener("click", function () { patch.classList.toggle("zoomed"); });
+			patch.addEventListener("click", function () {
+				patch.setAttribute("aria-pressed", String(patch.classList.toggle("zoomed")));
+			});
+			Info.pressable(patch, "Enlarge the mission patch");
 		}
 	}
 
@@ -198,11 +213,12 @@ class Info{
 	links(wiki, credits) {
 		var el = document.getElementById("InfoLinks");
 		var html = "";
+		wiki = safeUrl(wiki);          // only http(s) links from the data
 		if (wiki) html += "<a class='info-wiki' href='" + wiki + "' target='_blank' rel='noopener'>" +
 			"<svg width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='currentColor' stroke-width='1.6' stroke-linecap='round'><path d='M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V10M9 2h5v5M14 2L7.5 8.5'/></svg>" +
 			"Read on Wikipedia</a>";
 		var lines = credits.filter(c => c[3]).map(c =>
-			"<span>" + c[0] + ": " + (c[2] ? "<a href='" + c[2] + "' target='_blank' rel='noopener'>" + Info.esc(c[1] || "Wikimedia Commons") + "</a>"
+			"<span>" + c[0] + ": " + (safeUrl(c[2]) ? "<a href='" + safeUrl(c[2]) + "' target='_blank' rel='noopener'>" + Info.esc(c[1] || "Wikimedia Commons") + "</a>"
 			                              : Info.esc(c[1] || "Wikimedia Commons")) + "</span>");
 		if (lines.length) html += "<p class='info-credits'>" + lines.join("") + "</p>";
 		el.innerHTML = html;
@@ -213,6 +229,7 @@ class Info{
 		if (this.d) this.d.highlighted = false;
 		this.d = null;
 		this.draw(null);
+		this.sync();
 		var media = document.getElementById("InfoMedia");
 		if (media) {
 			media.hidden = true;
@@ -223,9 +240,15 @@ class Info{
 	}
 
 	// ---- helpers ----
-	static esc(s) {
-		return String(s === undefined || s === null ? "" : s)
-			.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;");
+	static esc(s) { return esc(s); }       // common.js
+	// an image that acts as a button: focusable, Enter / Space click it
+	static pressable(el, label) {
+		el.tabIndex = 0;
+		el.setAttribute("role", "button");
+		el.title = label;
+		el.addEventListener("keydown", function (e) {
+			if (e.key === "Enter" || e.key === " ") { e.preventDefault(); el.click(); }
+		});
 	}
 	static find(list, test) { return list ? list.find(test) : null; }
 	static parse(s) {

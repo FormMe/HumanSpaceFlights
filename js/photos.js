@@ -116,7 +116,11 @@ var Lightbox = (function () {
 		img = box.querySelector("img");
 		cap = box.querySelector(".lightbox-cap");
 		box.addEventListener("click", close);
-		document.addEventListener("keydown", function (e) { if (e.key === "Escape" && opened) close(); });
+		document.addEventListener("keydown", function (e) {
+			if (!opened) return;
+			if (e.key === "Escape") close();
+			else if (e.key === "Tab") { e.preventDefault(); box.querySelector(".lightbox-close").focus(); }  // focus stays inside
+		});
 		var y0 = null;           // swipe down to close
 		box.addEventListener("touchstart", function (e) { y0 = e.touches[0].clientY; }, { passive: true });
 		box.addEventListener("touchend", function (e) {
@@ -157,6 +161,7 @@ var Lightbox = (function () {
 		img.style.transform = "";
 		img.style.borderRadius = "";
 		source.style.visibility = "hidden";   // the photo has "left" the card
+		box.querySelector(".lightbox-close").focus({ preventScroll: true });
 		// the original, when the host allows it
 		var full = source.dataset.full;
 		if (full) { var big = new Image(); big.onload = function () { if (opened) img.src = full; }; big.src = full; }
@@ -174,6 +179,7 @@ var Lightbox = (function () {
 		box.classList.remove("show");
 		setTimeout(function () {
 			src.style.visibility = "";
+			if (document.activeElement === document.body || box.contains(document.activeElement)) src.focus({ preventScroll: true });
 			if (!opened) { img.style.transform = ""; img.style.borderRadius = ""; }
 		}, 380);
 	}

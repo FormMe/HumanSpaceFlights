@@ -1,7 +1,7 @@
 
 // Instant, styled tooltip for the nodes of the graph (replaces the
 // browser's slow native <title> tooltip).
-var tip = (function () {
+var graphTip = (function () {
 	var el = null;
 	function fmt(n) { return d3.format(",")(Math.round(n)); }
 	function row(label, value) {
@@ -11,25 +11,24 @@ var tip = (function () {
 	function html(d) {
 		var v = d.value, swatch = "<i style='background:" + color(v.Country) + "'></i>";
 		if (d.type === "mission") {
-			var inOrbit = !v["Return Data"];
-			return "<div class='gt-kicker'>" + swatch + "Mission · " + v.Year + "</div>" +
-				"<div class='gt-title'>" + v["Launch Mission"] + "</div>" +
-				"<div class='gt-sub'>" + (v["Country Flag"] || "") + " " + v.Country + "</div>" +
-				row("Launch", v["Launch Data"]) +
-				row("Duration", inOrbit ? "in orbit" : fmt(v.Duration) + (v.Duration == 1 ? " day" : " days")) +
+			return "<div class='gt-kicker'>" + swatch + "Mission · " + esc(v.Year) + "</div>" +
+				"<div class='gt-title'>" + esc(v["Launch Mission"]) + "</div>" +
+				"<div class='gt-sub'>" + (v["Country Flag"] || "") + " " + esc(v.Country) + "</div>" +
+				row("Launch", Info.date(v["Launch Data"], true)) +
+				row("Duration", durationText(v)) +      // the same wording as the list and the card
 				row("Crew", v["Crew size"]) +
-				row("Where", v.Habitation);
+				row("Where", esc(v.Habitation));
 		}
 		if (v.stub) {
 			return "<div class='gt-kicker'>" + swatch + "Astronaut</div>" +
-				"<div class='gt-title'>" + v.Name + "</div>" +
+				"<div class='gt-title'>" + esc(v.Name) + "</div>" +
 				"<div class='gt-sub gt-muted'>No details in the dataset</div>";
 		}
 		var hours = +v["Space Flight (hr)"] || 0;
 		var walks = +v["Space Walks"] || 0;
-		return "<div class='gt-kicker'>" + swatch + "Astronaut · " + (v.Status || "") + "</div>" +
-			"<div class='gt-title'>" + v.Name + "</div>" +
-			"<div class='gt-sub'>" + (v["Country Flag"] || "") + " " + (v.Nationality || v.Country) + "</div>" +
+		return "<div class='gt-kicker'>" + swatch + "Astronaut · " + esc(v.Status || "") + "</div>" +
+			"<div class='gt-title'>" + esc(v.Name) + "</div>" +
+			"<div class='gt-sub'>" + (v["Country Flag"] || "") + " " + esc(v.Nationality || v.Country) + "</div>" +
 			row("Flights", v["Space Flights"]) +
 			row("In space", hours >= 48 ? fmt(hours / 24) + " days" : fmt(hours) + " h") +
 			row("Spacewalks", walks ? walks + " (" + fmt(+v["Space Walks (hr)"] || 0) + " h)" : "none");
@@ -115,13 +114,20 @@ class Graph{
 		return d.type == 'mission' ? "#eef0f7" : this.color(d.value.Country);
 	}
 
+	// a hovered node must not stay highlighted in the list and the plot
+	dropHover() {
+		if (this.hover) this.hover.value.highlighted = false;
+		this.hover = null;
+	}
+
 	clear() {
 		if (this.simulation) this.simulation.stop();
+		this.dropHover();
 		this.nodes = [];
 		this.links = [];
 		this.hover = null;
 		this.near = null;
-		tip.hide();
+		graphTip.hide();
 		this.ctx.setTransform(1, 0, 0, 1, 0, 0);
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		d3.select(this.canvas.closest(".graph")).classed("has-graph", false);
@@ -141,12 +147,13 @@ class Graph{
 		canvas.style.height = height + "px";
 
 		if (this.simulation) this.simulation.stop();
+		this.dropHover();
 		this.nodes = graph.nodes;
 		this.links = graph.links;
 		this.hover = null;
 		this.near = null;
 		this.view = [0, 0, width, height];
-		tip.hide();
+		graphTip.hide();
 		d3.select(canvas.closest(".graph")).classed("has-graph", graph.nodes.length > 0);
 
 		var big = graph.nodes.length > 60;
@@ -261,7 +268,7 @@ class Graph{
 	}
 
 	setHover(d, e) {
-		if (d === this.hover) { if (d) tip.move(e); return; }
+		if (d === this.hover) { if (d) graphTip.move(e); return; }
 		if (this.hover) {
 			this.hover.value.highlighted = false;
 			renderList(null, isMissions);
@@ -276,11 +283,13 @@ class Graph{
 			});
 			this.near = near;
 			d.value.highlighted = true;
-			draw(d.value);   // highlight the line in the parallel coordinates
-			tip.show(d, e);
+			// highlight the line in the parallel coordinates, when the node is of
+			// the kind the plot shows (an astronaut has no line among missions)
+			if ((d.type === "mission") === isMissionMode()) draw(d.value);
+			graphTip.show(d, e);
 		} else {
 			this.near = null;
-			tip.hide();
+			graphTip.hide();
 		}
 		this.canvas.style.cursor = d ? "pointer" : "";
 		this.draw();
@@ -311,7 +320,7 @@ class Graph{
 			})
 			.on("start", function () {
 				self.dragging = true;
-				tip.hide();
+				graphTip.hide();
 				if (!d3.event.active) self.simulation.alphaTarget(0.3).restart();
 				var d = d3.event.subject;
 				d.fx = d.x;
@@ -331,19 +340,18 @@ class Graph{
 	}
 
 	clicked(d) {
-		var dataType = d3.select("#DataType").node().value;
 		if (d.type == 'astronaut' && d.value.stub) return;
 		if (d.type == "mission"){
 			this.info.update(d.value, true);
 			this.update(create_mis_graph(d.value));
-			if (dataType == "Missions")
-				renderList(null, true);
+			if (isMissionMode())
+				renderList();
 		}
 		else if (d.type == "astronaut"){
 			this.info.update(d.value, false);
 			this.update(create_astr_graph(d.value));
-			if (dataType == "Astonauts")
-				renderList(null, false);
+			if (!isMissionMode())
+				renderList();
 		}
 	}
 }

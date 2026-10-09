@@ -10,7 +10,7 @@ class SelectionList{
 		var dash = "<span class='lt-none'>—</span>";
 		function flagName(flag, name, sub) {
 			return "<span class='lt-name'><span class='lt-flag'>" + (flag || "") + "</span>" +
-			       "<span class='lt-text'><b>" + name + "</b>" + (sub ? "<small>" + sub + "</small>" : "") + "</span></span>";
+			       "<span class='lt-text'><b>" + esc(name) + "</b>" + (sub ? "<small>" + esc(sub) + "</small>" : "") + "</span></span>";
 		}
 		function dots(n, max) {
 			n = +n || 0;
@@ -25,11 +25,6 @@ class SelectionList{
 			       "%;background:" + self.color(country) + "'></span></span><span class='lt-val'>" + label + "</span></span>";
 		}
 		function days(d) { return d < 1.5 ? Math.max(1, Math.round(d * 24)) + " h" : d >= 10 ? d3.format(",")(Math.round(d)) + " d" : (Math.round(d * 10) / 10) + " d"; }
-		function today() { return new Date(); }
-		function missionDays(d) {
-			if (d["Return Data"]) return +d.Duration || 0;
-			return (today() - new Date(d["Launch Data"])) / 864e5;   // still in orbit: so far
-		}
 
 		this.columns = {
 			missions: [
@@ -120,17 +115,21 @@ class SelectionList{
 		// rows
 		var sel = root.selectAll(".row").data(rows, d => isMissions ? d["Launch Mission"] : d.Name);
 		sel.exit().remove();
-		sel = sel.enter().append("div").attr("class", "row").merge(sel);
+		// a row is a button: reachable with Tab, opened with Enter or Space
+		sel = sel.enter().append("div").attr("class", "row")
+			.attr("tabindex", 0).attr("role", "button")
+			.merge(sel);
 		sel.classed("active", d => info.d === d)
+			.attr("aria-label", d => isMissions ? d["Launch Mission"] : d.Name)
 			.html(d => columns.map(c => "<div class='cell c-" + c.key + "'>" + c.html(d) + "</div>").join(""))
 			.order()
 			.on("click", function(d) {
-		    	root.selectAll('.row').classed('active', false);
-		    	d3.select(this).classed('active', true);
 		    	graph.update(create_graph(d));
-		    	info.update(d, isMissions);
-		    	d.highlighted = true;
-		    	renderList(data, isMissions);
+		    	info.update(d, isMissions);      // marks the row and redraws the plot lines
+		    })
+		    .on("keydown", function () {
+		    	var e = d3.event;
+		    	if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.click(); }
 		    })
 		    .on('mouseover', function (d) {
 		    	Photos.prefetch(photoKeys(d, isMissions));     // the photo is on its way before the click
@@ -144,6 +143,11 @@ class SelectionList{
 		    });
 		// keep the header first
 		root.node().insertBefore(head.node(), root.node().firstChild);
+	}
+
+	// the row of the item in the details card (or none) is the active one
+	markActive(d) {
+		d3.select('#grid').selectAll('.row').classed('active', r => r === d);
 	}
 }
 

@@ -3,7 +3,7 @@ class FlightsChart{
 	// Stacked columns: launches (or people launched) per year, stacked by country.
 	// Drawn at the real pixel size of its card, so text keeps its size on
 	// phones; re-drawn when the card width changes.
-	constructor(svgHeight, svgWidth, margin, selectionList, color){
+	constructor(color){
 		this.margin = {top: 12, right: 6, bottom: 26, left: 30};
 		this.color = color;
 		this.down_d = 250;
@@ -12,7 +12,6 @@ class FlightsChart{
 		this.emptyData = true;
 		this.data = null;
 		this.isMissions = true;
-		this.selectionList = selectionList;
 		this.measure();
 
 		var t = this;
@@ -71,18 +70,18 @@ class FlightsChart{
         }
         else{
 			var t = this;
-			var draw = true;
+			var pending = true;          // raise the new bars once, after the last old one went down
 			var bars = d3.select('#FlightsChart').selectAll('.stackBar rect');
 			if (bars.empty()) {
 				t.raise_up(stackedData, isMissions);
 			} else {
 				bars.transition()
-		        	.duration(this.down_d)
+		        	.duration(REDUCED_MOTION.matches ? 0 : this.down_d)
 		        	.attr('y', this.height)
 		        	.attr('height', 0)
 		        	.on("end", function () {
-		        		if (draw) {
-		        			draw = false;
+		        		if (pending) {
+		        			pending = false;
 		        			t.raise_up(stackedData, isMissions);
 		        		}
 		        	});
@@ -142,22 +141,23 @@ class FlightsChart{
 			.text(d => d);
 
 		function tooltip_render (tooltip_data) {
-		    let text = "<label><i style='background:" + color(tooltip_data.key) + "'></i>" + tooltip_data.key +
+		    let text = "<label><i style='background:" + color(tooltip_data.key) + "'></i>" + esc(tooltip_data.key) +
 		               " <b>" + tooltip_data.values.length + "</b></label>";
         	var cols = tooltip_data.values.length >= 15 ? 2 : 1;
         	text += "<ul style='columns: " + cols + "'>";
         	if (isMissions){
         		tooltip_data.values.forEach(function (row) {
-            		text += "<li>" + row["Launch Mission"] + " <span>" + row["Launch Data"] + "</span></li>";
+            		text += "<li>" + esc(row["Launch Mission"]) + " <span>" + Info.date(row["Launch Data"], true) + "</span></li>";
             	});
             }
             else{
+        		var missionOf = tooltip_data.missionOf || {};
         		var grouped = d3.nest()
-		            		  .key(d => d["Year Mission"])
+		            		  .key(d => missionOf[d.Name] || d["Year Mission"])
 		            		  .entries(tooltip_data.values);
 		        grouped.forEach(function (row) {
         			row.values.forEach(function (astrs) {
-        				text += "<li>" + astrs.Name + " <span>" + row.key + "</span></li>";
+        				text += "<li>" + esc(astrs.Name) + " <span>" + esc(row.key) + "</span></li>";
         			})
     			});
             }
@@ -195,8 +195,7 @@ class FlightsChart{
 		} else {
 	        rects.attr("y", height).attr("height", 0)
 	    		.transition()
-	        	.duration(this.up_d)
-	        	.delay((d, i, nodes) => 0)
+	        	.duration(REDUCED_MOTION.matches ? 0 : this.up_d)
 	  			.ease(d3.easeCubicOut)
 		        .attr("y", top)
 				.attr("height", size);

@@ -13,7 +13,7 @@ var renderQueue = (function(func) {
 
   rq.render = function() {
     var valid = true;
-    _invalidate = rq.invalidate = function() {
+    _invalidate = function() {
       valid = false;
     };
 
@@ -59,7 +59,7 @@ var renderQueue = (function(func) {
     return rq;
   };
 
-  rq.invalidate = _invalidate;
+  rq.invalidate = function () { _invalidate(); };
 
   var timer_frame = window.requestAnimationFrame
     || window.webkitRequestAnimationFrame

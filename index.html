@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/style.css"/>
     <script src="bower_components/d3/d3.min.js"></script>
     <script src="bower_components/d3-tip/index.js"></script>
-    <script src="js/divgrid.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/FlightsChart.js"></script>
     <script src="js/SummaryChart.js"></script>
     <script src="js/graphCreator.js"></script>
@@ -62,17 +62,17 @@
             <div class="field field-wide">
                 <label for="DataType">Graph of:</label>
                 <div class="select">
-                    <select id="DataType" onchange="filter()">
+                    <select id="DataType" autocomplete="off" onchange="filter()" disabled>
                         <option selected value="Missions">Missions</option>
-                        <option value="Astonauts">Astronauts</option>
+                        <option value="Astronauts">Astronauts</option>
                     </select>
                     <div class="select__arrow"></div>
                 </div>
             </div>
 
             <div class="mode-switch" role="group" aria-label="Show">
-                <button type="button" data-mode="Missions" class="active" aria-pressed="true">Missions</button>
-                <button type="button" data-mode="Astonauts" aria-pressed="false">Astronauts</button>
+                <button type="button" data-mode="Missions" class="active" aria-pressed="true" disabled>Missions</button>
+                <button type="button" data-mode="Astronauts" aria-pressed="false" disabled>Astronauts</button>
             </div>
 
             <div class="filters-row" id="FiltersPanel">
@@ -82,7 +82,7 @@
                     <div class="field">
                         <label for="Habitation">Habitation:</label>
                         <div class="select">
-                            <select id="Habitation" onchange="filter()">
+                            <select id="Habitation" autocomplete="off" onchange="filter()">
                                 <option selected value="All">All</option>
                                 <option value="Space">Space</option>
                                 <option value="Moon">Moon</option>
@@ -106,7 +106,7 @@
                     <div class="field">
                         <label for="Outcome">Outcome:</label>
                         <div class="select">
-                            <select id="Outcome" onchange="filter()">
+                            <select id="Outcome" autocomplete="off" onchange="filter()">
                                 <option selected value="All">All</option>
                                 <option value="Fatality">Fatality</option>
                                 <option value="Success">Success</option>
@@ -122,9 +122,10 @@
                     <div class="field">
                         <label for="Status">Status:</label>
                         <div class="select">
-                            <select id="Status" onchange="filter_astr()">
+                            <select id="Status" autocomplete="off" onchange="filter_astr()">
                                 <option selected value="All">All</option>
                                 <option value="Active">Active</option>
+                                <option value="Management">Management</option>
                                 <option value="Retired">Retired</option>
                                 <option value="Deceased">Deceased</option>
                             </select>
@@ -135,7 +136,7 @@
                     <div class="field">
                         <label for="Gender">Gender:</label>
                         <div class="select">
-                            <select id="Gender" onchange="filter_astr()">
+                            <select id="Gender" autocomplete="off" onchange="filter_astr()">
                                 <option selected value="All">All</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -147,7 +148,7 @@
                     <div class="field">
                         <label for="SpaceWalk">Space walk:</label>
                         <div class="select">
-                            <select id="SpaceWalk" onchange="filter_astr()">
+                            <select id="SpaceWalk" autocomplete="off" onchange="filter_astr()">
                                 <option selected value="All">All</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
@@ -200,7 +201,7 @@
             </div>
         </section>
 
-        <section class="view card info" id="Info" role="dialog" aria-label="Details">
+        <section class="view card info" id="Info" aria-label="Details">
             <div class="sheet-bar">
                 <span class="sheet-handle"></span>
                 <button type="button" class="sheet-close" id="SheetClose" aria-label="Close details">

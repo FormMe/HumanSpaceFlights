@@ -6,10 +6,6 @@ var margin = {top: 42, right: 110, bottom: 20, left: 84},
 var pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
 
-var Countries = ["USSR/Russia", "USA", "China", "Other"]
-var color = d3.scaleOrdinal()
-            .range(["#e5578b", "#3987e5", "#c98500", "#8a92a6"])
-            .domain(Countries);
 
 var types = {
   "Number": {
@@ -46,7 +42,7 @@ var vertical = false, plotW = width, plotH = height, lastFull = null;
 // script.js declares globals with the same names (margin, width, height):
 // keep this plot's own sizes
 var PC_DESKTOP = { m: { top: margin.top, right: margin.right, bottom: margin.bottom, left: margin.left }, w: width, h: height };
-var phone = window.matchMedia("(max-width: 760px)");
+var phone = PHONE;
 
 // Categorical axes list their values in a meaningful order (top to bottom),
 // not alphabetically; values missing from the list are appended at the end.
@@ -59,7 +55,7 @@ function ordered(order) {
   };
 }
 
-var countryOrder = ["USSR/Russia", "USA", "China", "Other"];
+var countryOrder = Countries;
 var habitationOrder = ["Space", "Moon", "Salyut 1", "Salyut 3", "Salyut 4", "Salyut 5",
                        "Salyut 6", "Salyut 7", "Skylab", "Mir", "ISS",
                        "Tiangong 1", "Tiangong 2", "Tiangong"];
@@ -187,13 +183,21 @@ function draw(d) {
 }
 
 var curData;
-function renderList(_data, isMissions) {
+// One queue for the whole plot: a new full render cancels the one in
+// progress (separate queues kept painting old lines over a filtered plot).
+var lineQueue = renderQueue(draw).rate(50);
+
+// redraw every line at once (hover, brushing): stops a progressive render first
+function renderList(_data) {
   if(_data == null) _data = curData;
+  lineQueue.invalidate();
   ctx.clearRect(0,0,plotW,plotH);
   _data.forEach(draw);
 }
 
-function paracoords_update(data, isMis) {
+// data: the rows drawn; domainData: the rows the axes span when they are
+// set up the first time (all astronauts, even if a filter is on)
+function paracoords_update(data, isMis, domainData) {
   curData = data;
   lastFull = data;
   isMissions = isMis;
@@ -219,9 +223,12 @@ function paracoords_update(data, isMis) {
       .attr("class", function(d) { return "axis " + d.key.replace(/ /g, "_"); })
       .attr("transform", function(d,i) { return vertical ? "translate(0," + xscale(i) + ")" : "translate(" + xscale(i) + ")"; });
 
-  data.forEach(function(d) {
-    dimensions.forEach(function(p) {
-        d[p.key] = d[p.key] != 0 && !d[p.key] ? null : p.type.coerce(d[p.key]);
+  var spanned = domainData || data;
+  [data, spanned].forEach(function (rows) {
+    rows.forEach(function(d) {
+      dimensions.forEach(function(p) {
+          d[p.key] = d[p.key] != 0 && !d[p.key] ? null : p.type.coerce(d[p.key]);
+      });
     });
   });
 
@@ -229,7 +236,7 @@ function paracoords_update(data, isMis) {
   dimensions.forEach(function(dim) {
     if (!("domain" in dim)) {
       // detect domain using dimension type's extent function
-      var values = data.map(function(d) { return d[dim.key]; });
+      var values = spanned.map(function(d) { return d[dim.key]; });
       dim.domain = dim.order ? dim.order(values) : d3_functor(dim.type.extent)(values);
     }
     // use type's default scale for dimension, in the current orientation:
@@ -240,10 +247,8 @@ function paracoords_update(data, isMis) {
     dim.scale.domain(dim.domain);
   });
 
-  var render = renderQueue(draw).rate(15);
   ctx.clearRect(0,0,plotW,plotH);
-  ctx.globalAlpha = d3.min([0.85/Math.pow(data.length,0.3),1]);
-  render(data);
+  lineQueue(data);
   selectionList.update(data, isMissions);
   summaryChart.update(data, isMissions);
 
@@ -315,7 +320,7 @@ function paracoords_update(data, isMis) {
     .style("fill", color);
     
   function brushstart() {
-    d3.event.sourceEvent.stopPropagation();
+    if (d3.event.sourceEvent) d3.event.sourceEvent.stopPropagation();   // none for brush.move
   }
 
   // Handles a brush event, toggling the display of foreground lines.
@@ -363,7 +368,9 @@ function d3_functor(v) {
     var w = container.node().clientWidth;
     if (phone.matches === vertical && (!vertical || Math.abs(w - lastW) < 8)) return;
     lastW = w;
+    // brushes do not survive the new axes: the bars go back to the same rows
     paracoords_update(lastFull, isMissions);
+    flightsChart.update(isMissions ? group_missions(lastFull) : group_astronauts(astronauts, curMis), isMissions);
   }
   window.addEventListener("resize", function () { clearTimeout(timer); timer = setTimeout(redraw, 200); });
 })();

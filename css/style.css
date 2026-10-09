@@ -1949,3 +1949,6 @@ canvas#Graph {
   stroke-linejoin: round;
 }
 .parcoords-plot.vertical .axis .tick text { font-size: 10.5px; }
+
+/* the page behind the details sheet does not scroll */
+body.sheet-open, html:has(body.sheet-open) { overflow: hidden; }
