@@ -150,12 +150,12 @@
 
   // ---- details sheet ---------------------------------------------------------
   var info = document.getElementById("Info");
-  var rows = info.querySelector("tbody");
+  var rows = document.getElementById("InfoBody");
   function openSheet() { body.classList.add("sheet-open"); }
   function closeSheet() { body.classList.remove("sheet-open"); }
 
   new MutationObserver(function () {
-    if (rows.querySelector("tr")) {
+    if (rows.firstChild) {
       if (phone.matches) openSheet();
       info.scrollTop = 0;
     } else {

@@ -46,7 +46,7 @@ MISSION_COLUMNS = ["Crew", "Country", "Habitation", "Brief Mission Summary", "Fa
                    "Moon", "Sub Orbital", "Prolongation", "Launch Data", "Launch Mission",
                    "Return Data", "Return Mission", "Year",
                    "Rocket", "Spacecraft", "Launch Site", "Landing Site", "Callsign", "Operator",
-                   "Wikipedia", "Description", "Photo URL", "Photo Credit", "Photo Page",
+                   "Flight Time", "Wikipedia", "Description", "Photo URL", "Photo Credit", "Photo Page",
                    "Patch URL", "Patch Credit", "Patch Page"]
 ASTRONAUT_COLUMNS = ["Name", "Year", "Status", "Birth Date", "Birth Place", "Gender",
                      "Alma Mater", "Military Rank", "Military Branch", "Space Flights",
@@ -978,6 +978,39 @@ def main():
         text = re.sub(r"\s{2,}", " ", text).strip(" ,;(")
         return text[:limit].rstrip(" ,;(")
 
+    def flight_time(raw):
+        """'9 hours, 13 minutes' or {{time interval|start|end}} -> '9 h 13 min'."""
+        text = re.sub(r"<ref[^>]*/>|<ref.*?</ref>", " ", raw or "", flags=re.S).replace("&nbsp;", " ")
+        hit = re.search(r"\{\{\s*time interval\s*\|([^|}]+)\|([^|}]+)", text, flags=re.I)
+        if hit:
+            ends = []
+            for value in hit.groups():
+                value = re.sub(r"\s*(UTC|GMT)\s*$", "", value.replace(",", " ").strip())
+                value = re.sub(r"\s+", " ", value).replace("Sept ", "Sep ")
+                for fmt in ("%d %B %Y %H:%M:%S", "%d %B %Y %H:%M", "%B %d %Y %H:%M:%S", "%B %d %Y %H:%M",
+                            "%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M",
+                            "%d %b %Y %H:%M:%S", "%d %b %Y %H:%M"):
+                    try:
+                        ends.append(dt.datetime.strptime(value, fmt))
+                        break
+                    except ValueError:
+                        pass
+            if len(ends) == 2 and ends[1] > ends[0]:
+                minutes = int((ends[1] - ends[0]).total_seconds() // 60)
+                days, rest = divmod(minutes, 1440)
+                parts = [(days, "d"), (rest // 60, "h"), (rest % 60, "min")]
+                if days:
+                    parts = parts[:2]
+                return " ".join("%d %s" % p for p in parts if p[0])
+            return ""
+        text = re.sub(r"\{\{[^{}]*\}\}", " ", text)
+        parts = []
+        for unit, label in ((r"d(ays?)?\b", "d"), (r"h(ours?|rs?)?\b", "h"), (r"m(in(ute)?s?)?\b", "min")):
+            hit = re.search(r"(\d[\d,.]*)\s*" + unit, text, flags=re.I)
+            if hit:
+                parts.append(hit.group(1).replace(",", "") + " " + label)
+        return " ".join(parts)
+
     def free_image(name, prefix):
         """Thumbnail, credit and file page of a free image (non-free files are skipped:
         Wikipedia may use them under fair use, this site may not)."""
@@ -1005,7 +1038,8 @@ def main():
             row["Rocket"] = "Space Shuttle"
         row["Launch Site"] = short(box.get("launch_site"))
         row["Landing Site"] = short(box.get("landing_site") or box.get("landing_zone"))
-        row["Callsign"] = short(box.get("crew_callsign"), 40)
+        row["Callsign"] = short(box.get("crew_callsign"), 40).strip("-–— \"'()")
+        row["Flight Time"] = flight_time(box.get("mission_duration"))
         row["Operator"] = short(box.get("operator")) or first(m.get("operator", []))
         row["Wikipedia"] = article_url(title)
         intro = re.sub(r"\s*\([^()]*\)", "", extracts.get(title or "", ""))

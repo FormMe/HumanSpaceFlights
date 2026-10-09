@@ -24,7 +24,7 @@ class SelectionList{
 			return "<span class='lt-bar'><span class='lt-track'><span style='width:" + w.toFixed(1) +
 			       "%;background:" + self.color(country) + "'></span></span><span class='lt-val'>" + label + "</span></span>";
 		}
-		function days(d) { return d >= 10 ? d3.format(",")(Math.round(d)) + " d" : (Math.round(d * 10) / 10) + " d"; }
+		function days(d) { return d < 1.5 ? Math.max(1, Math.round(d * 24)) + " h" : d >= 10 ? d3.format(",")(Math.round(d)) + " d" : (Math.round(d * 10) / 10) + " d"; }
 		function today() { return new Date(); }
 		function missionDays(d) {
 			if (d["Return Data"]) return +d.Duration || 0;
