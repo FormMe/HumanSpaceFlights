@@ -242,7 +242,7 @@ def fetch_details_api(ids, fields):
     """
     if not ids:
         return {}
-    log("  Wikidata API fallback for %d items" % len(ids))
+    log("  Wikidata API: %d items" % len(ids))
     entities = wbgetentities(ids, "labels|aliases|descriptions|claims|sitelinks")
     refs, raw = set(), {}
     for q in ids:
@@ -262,16 +262,21 @@ def fetch_details_api(ids, fields):
             item["description"] = [desc]
         title = e.get("sitelinks", {}).get("enwiki", {}).get("title")
         if title:
-            item["article"] = ["https://en.wikipedia.org/wiki/" + requests.utils.quote(title.replace(" ", "_"))]
+            item["article"] = ["https://en.wikipedia.org/wiki/" + requests.utils.quote(title.replace(" ", "_"), safe="()/,:'!$*;@~")]
         for prop, (field, kind) in API_PROPS.items():
             if field not in fields:
                 continue
-            for claim in e.get("claims", {}).get(prop, []):
+            claims = [c for c in e.get("claims", {}).get(prop, []) if c.get("rank") != "deprecated"]
+            if any(c.get("rank") == "preferred" for c in claims):   # like wdt: in SPARQL
+                claims = [c for c in claims if c.get("rank") == "preferred"]
+            for claim in claims:
                 v = claim.get("mainsnak", {}).get("datavalue", {}).get("value")
                 if v is None:
                     continue
                 if kind == "time":
-                    item.setdefault(field, []).append(v["time"].lstrip("+"))
+                    # '+1977-00-00T00:00:00Z' (year precision) -> '1977-01-01T00:00:00Z', as SPARQL gives it
+                    t = re.sub(r"^(\d{4})-00-00", r"\1-01-01", v["time"].lstrip("+"))
+                    item.setdefault(field, []).append(re.sub(r"^(\d{4}-\d\d)-00", r"\1-01", t))
                 elif kind == "item":
                     refs.add(v["id"])
                     item.setdefault("_" + field, []).append(v["id"])
@@ -306,12 +311,18 @@ def fetch_details_api(ids, fields):
     return result
 
 
+# Details are read from the Wikidata API (wbgetentities): the query service is
+# often overloaded (429, 502, 60 s timeouts) and a weekly run then fails,
+# while the API serves 50 items per request reliably. fetch_details (SPARQL)
+# stays for reference and comparisons.
 def fetch_missions(ids):
-    return fetch_details(ids, MISSION_FIELDS, "missions")
+    log("Wikidata: details of %d missions" % len(ids))
+    return fetch_details_api(ids, MISSION_FIELDS)
 
 
 def fetch_people(ids):
-    return fetch_details(ids, PEOPLE_FIELDS, "people")
+    log("Wikidata: details of %d people" % len(ids))
+    return fetch_details_api(ids, PEOPLE_FIELDS)
 
 
 # --------------------------------------------------------------------------
