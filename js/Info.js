@@ -21,6 +21,8 @@ class Info{
 	mission(d) {
 		var inOrbit = !d["Return Data"];
 		var days = inOrbit ? (new Date() - new Date(d["Launch Data"])) / 864e5 : +d["Duration"] || 0;
+		var exact = Info.flightDays(d["Flight Time"]);      // '9 d 1 h' beats a difference of dates
+		if (!inOrbit && exact) days = exact;
 		var dur = Info.span(d["Launch Data"], d["Return Data"], days);
 		var badges = [];
 		if (inOrbit) badges.push(["live", "In orbit"]);
@@ -106,13 +108,13 @@ class Info{
 			(c.badges.length ? "<p class='ic-badges'>" + c.badges.map(b => "<span class='ic-badge " + b[0] + "'>" + e(b[1]) + "</span>").join("") + "</p>" : "") +
 			"</header>";
 		html += "<div class='ic-stats'>" + c.stats.map(s =>
-			"<div class='ic-stat'><b" + (String(s[0]).length > 9 ? " class='long'" : "") + ">" + e(s[0]) + "</b><span>" + e(s[1]) + "</span>" + (s[2] ? "<small>" + e(s[2]) + "</small>" : "") + "</div>").join("") + "</div>";
+			"<div class='ic-stat'><b" + (String(s[0]).length > 6 ? " class='long'" : "") + ">" + e(s[0]) + "</b><span>" + e(s[1]) + "</span>" + (s[2] ? "<small>" + e(s[2]) + "</small>" : "") + "</div>").join("") + "</div>";
 		if (c.lead) {
 			var long = c.lead.length > 260;
 			html += "<div class='ic-lead" + (long ? " clamp" : "") + "'><p>" + e(c.lead) + "</p>" +
 				(long ? "<button type='button' class='ic-more'>Read more</button>" : "") + "</div>";
 		}
-		if (c.summary && c.summary != c.lead) html += "<p class='ic-note'>" + e(c.summary) + "</p>";
+		if (c.summary && !Info.same(c.summary, c.lead)) html += "<p class='ic-note'>" + e(c.summary) + "</p>";
 		c.groups.forEach(function (g) {
 			var rows = g[1].filter(r => r[1] && String(r[1]).trim() && r[1] != "NaN");
 			if (!rows.length) return;
@@ -212,6 +214,20 @@ class Info{
 	static clean(s) {
 		s = String(s || "").replace(/^[\s\-–—"'(]+|[\s\-–—"')]+$/g, "").trim();
 		return /[a-zа-я0-9]/i.test(s) ? s : "";
+	}
+	// the short summary of new missions is the same Wikipedia intro
+	static same(a, b) {
+		function norm(x) { return String(x || "").replace(/\([^()]*\)/g, "").replace(/[^a-z0-9]+/gi, "").toLowerCase(); }
+		a = norm(a); b = norm(b);
+		return !a || b.indexOf(a) >= 0 || a.slice(0, 60) === b.slice(0, 60);
+	}
+	static flightDays(t) {
+		var m = String(t || "").match(/(\d+(?:\.\d+)?)\s*(d|h|min)/g);
+		if (!m) return 0;
+		return m.reduce(function (sum, part) {
+			var v = parseFloat(part), u = part.replace(/[\d.\s]/g, "");
+			return sum + (u == "d" ? v : u == "h" ? v / 24 : v / 1440);
+		}, 0);
 	}
 	static semi(s) { return String(s || "").split(/;\s*/).filter(Boolean).join(" · "); }
 	static initials(name) {
