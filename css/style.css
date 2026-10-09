@@ -86,6 +86,14 @@ h1, h2, h3, p { margin: 0; font-weight: 400; }
   text-align: center;
 }
 
+/* below 1400px the logos don't fit beside the title: all five go in one
+   centered row under it instead of wrapping unevenly */
+@media (max-width: 1399px) {
+  #header { gap: 16px 18px; }
+  .heading { order: -1; flex-basis: 100%; }
+  .logo { height: 46px; }
+}
+
 #header::after {
   content: "";
   position: absolute;
