@@ -1411,6 +1411,10 @@ canvas#Graph {
 
 /* ================= details: photo, patch, links ================= */
 
+/* "display: block" below must not win over the hidden attribute: a card
+   without a photo would keep showing the previous card's photo */
+.info-photo[hidden], .info-patch[hidden], .info-media[hidden] { display: none !important; }
+
 .info-media {
   position: relative;
   margin: 0 0 14px;

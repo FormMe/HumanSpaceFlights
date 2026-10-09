@@ -75,6 +75,22 @@ def read_csv(path):
         return list(csv.DictReader(f))
 
 
+def iso_date(value):
+    """'5/17/1967' (legacy, month first), '26/06/ 1925' (day first: 26 > 12),
+    '04/23/01' -> ISO 'YYYY-MM-DD'; ISO dates and anything else stay as they are."""
+    m = re.match(r"^\s*(\d{1,2})\s*/\s*(\d{1,2})\s*/\s*(\d{2}|\d{4})\s*$", value or "")
+    if not m:
+        return value
+    a, b, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
+    if y < 100:
+        y += 2000 if y <= TODAY.year % 100 else 1900
+    month, day = (b, a) if a > 12 else (a, b)
+    try:
+        return dt.date(y, month, day).isoformat()
+    except ValueError:
+        return value
+
+
 def link_people_and_missions(missions_out, astronauts_out):
     """Every astronaut's "Missions" are the exact names of the missions whose crew
     lists them, in launch order. The legacy lists used other spellings
@@ -1211,6 +1227,9 @@ def main():
                 break
 
     link_people_and_missions(missions_out, astronauts_out)
+    for a in astronauts_out:
+        for field in ("Birth Date", "Death Date"):
+            a[field] = iso_date(a[field])
     write_csv(os.path.join(DATA, "missions.csv"), missions_out, MISSION_COLUMNS)
     write_csv(os.path.join(DATA, "all_astronauts.csv"), astronauts_out, ASTRONAUT_COLUMNS)
 

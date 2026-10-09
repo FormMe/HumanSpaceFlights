@@ -247,6 +247,7 @@ class Info{
 	}
 	static clean(s) {
 		s = String(s || "").replace(/^[\s\-–—"'(]+|[\s\-–—"')]+$/g, "").trim();
+		if ((s.match(/\(/g) || []).length > (s.match(/\)/g) || []).length) s += ")";   // "Дербент (Derbent"
 		return /[a-zа-я0-9]/i.test(s) ? s : "";
 	}
 	// the short summary of new missions is the same Wikipedia intro
