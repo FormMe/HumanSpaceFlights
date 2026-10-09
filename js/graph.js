@@ -65,16 +65,43 @@ class Graph{
 	}
 
 	update(graph){
-		var svg = d3.select("#Graph"),
-		    width = +svg.attr("width"),
-		    height = +svg.attr("height");
+		var svg = d3.select("#Graph");
+		// use the whole width of the card; the height follows the width
+		var box = svg.node().parentNode;
+		var width = Math.max(260, Math.round(box.clientWidth || 430)),
+		    height = Math.round(Math.max(380, Math.min(620, width * 0.72)));
+		svg.attr("width", width).attr("height", height)
+		   .attr("viewBox", "0 0 " + width + " " + height);
+		this.last = graph;
+		this.lastWidth = width;
+		var self = this;
+		if (!this.resizeBound) {
+			this.resizeBound = true;
+			window.addEventListener("resize", function () {
+				clearTimeout(self.resizeTimer);
+				self.resizeTimer = setTimeout(function () {
+					var w = Math.round(box.clientWidth);
+					if (self.last && self.last.nodes.length && Math.abs(w - self.lastWidth) > 8) {
+						self.last.nodes.forEach(function (n) { n.x = n.y = n.vx = n.vy = undefined; });
+						self.update(self.last);
+					}
+				}, 200);
+			});
+		}
 
 		var color = this.color;
 
 		var simulation = d3.forceSimulation()
 		    .force("link", d3.forceLink().id(function(d) { return d.id; }))
-		    .force("charge", d3.forceManyBody().strength(-8))
-		    .force("center", d3.forceCenter(width / 2, height / 2));
+		    .force("charge", d3.forceManyBody().strength(graph.nodes.length > 60 ? -10 : -40))
+		    .force("center", d3.forceCenter(width / 2, height / 2))
+		    // no walls: a soft pull to the middle keeps the cloud in the
+		    // card's proportions, and the view zooms to fit it
+		    .force("x", d3.forceX(width / 2).strength(0.05 * Math.min(1, height / width)))
+		    .force("y", d3.forceY(height / 2).strength(0.05));
+
+		if (this.simulation) this.simulation.stop();
+		this.simulation = simulation;
 
 		svg.selectAll('g').remove();
 
@@ -150,7 +177,8 @@ class Graph{
 			if (!graph.nodes.length) return;
 			var x0 = d3.min(graph.nodes, d => d.x), x1 = d3.max(graph.nodes, d => d.x),
 			    y0 = d3.min(graph.nodes, d => d.y), y1 = d3.max(graph.nodes, d => d.y);
-			var pad = 28, w = Math.max(x1 - x0 + 2 * pad, 170), h = Math.max(y1 - y0 + 2 * pad, 170);
+			// never zoom in more than 2x: a small graph stays a small graph
+			var pad = 28, w = Math.max(x1 - x0 + 2 * pad, width / 2), h = Math.max(y1 - y0 + 2 * pad, height / 2);
 			// keep the aspect ratio of the svg
 			if (w / h > width / height) h = w * height / width; else w = h * width / height;
 			var target = [(x0 + x1) / 2 - w / 2, (y0 + y1) / 2 - h / 2, w, h];
@@ -160,8 +188,8 @@ class Graph{
 		function ticked() {
 			fitView();
 			node
-			    .attr("cx", function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
-		        .attr("cy", function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
+			    .attr("cx", function(d) { return d.x; })
+		        .attr("cy", function(d) { return d.y; });
 
 			link
 			    .attr("x1", function(d) { return d.source.x; })

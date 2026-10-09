@@ -278,8 +278,6 @@ svg#SummaryChart {
 }
 
 svg#Graph {
-  max-width: 520px;
-  margin: 0 auto;
   touch-action: none;
 }
 
