@@ -1,33 +1,68 @@
 /*
- * Phone layout: one section at a time (bottom tab bar), filters folded
- * behind a button, details of the selected mission/astronaut in a bottom
- * sheet. On wider screens none of this is visible and the page is the
- * usual dashboard; the classes below only matter inside the CSS media query.
+ * Phone layout: the page scrolls as usual and the bottom tab bar is a
+ * shortcut to its sections (the tab of the section on screen lights up);
+ * compact filter chips; details of the selected mission/astronaut in a
+ * bottom sheet. On wider screens none of this is visible and the page is
+ * the usual dashboard.
  */
 (function () {
   var body = document.body;
   var phone = window.matchMedia("(max-width: 760px)");
   var tabs = document.querySelectorAll("#TabBar button");
 
-  // ---- tabs ----------------------------------------------------------------
-  function setTab(name) {
-    body.setAttribute("data-tab", name);
+  // ---- tab bar: jump to a section, highlight the one on screen --------------
+  function sectionsOf(name) {
+    return Array.prototype.slice.call(document.querySelectorAll('.layout > [data-tab="' + name + '"]'));
+  }
+  // top of a tab's area = its section that is highest on the page
+  function topOf(name) {
+    var tops = sectionsOf(name).map(function (el) {
+      return el.getBoundingClientRect().top + window.pageYOffset;
+    });
+    return tops.length ? Math.min.apply(null, tops) : 0;
+  }
+
+  function markTab(name) {
     tabs.forEach(function (b) {
       var on = b.getAttribute("data-tab") === name;
       b.classList.toggle("active", on);
-      b.setAttribute("aria-current", on ? "page" : "false");
+      b.setAttribute("aria-current", on ? "location" : "false");
     });
-    if (phone.matches) {
-      var first = document.querySelector('.layout > [data-tab="' + name + '"]');
-      var top = first ? first.getBoundingClientRect().top + window.pageYOffset - 12 : 0;
-      // keep the header in view on the first tab, jump to the section otherwise
-      window.scrollTo(0, name === "timeline" ? 0 : Math.max(0, top));
-    }
+  }
+
+  var jumping = 0;
+  function goTo(name) {
+    markTab(name);
+    jumping = Date.now();
+    var top = name === "timeline" ? 0 : topOf(name) - 12;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
   }
   tabs.forEach(function (b) {
-    b.addEventListener("click", function () { setTab(b.getAttribute("data-tab")); });
+    b.addEventListener("click", function () { goTo(b.getAttribute("data-tab")); });
   });
-  setTab("timeline");
+
+  // scroll spy: the active tab follows the section in the upper part of the screen
+  var names = Array.prototype.map.call(tabs, function (b) { return b.getAttribute("data-tab"); });
+  var spyQueued = false;
+  function spy() {
+    spyQueued = false;
+    if (!phone.matches || Date.now() - jumping < 900) return;
+    var line = window.pageYOffset + document.documentElement.clientHeight * 0.35;
+    var current = names[0];
+    names.forEach(function (n) { if (topOf(n) <= line) current = n; });
+    // at the very bottom the last section wins even if it is short
+    var doc = document.documentElement;
+    if (window.pageYOffset + doc.clientHeight >= doc.scrollHeight - 24) {
+      current = names[names.length - 1];
+    }
+    markTab(current);
+  }
+  window.addEventListener("scroll", function () {
+    if (!spyQueued) { spyQueued = true; window.requestAnimationFrame(spy); }
+  }, { passive: true });
+  markTab("timeline");
+
+  function setTab(name) { goTo(name); }   // used by the details sheet
 
   // ---- view switch and filters -------------------------------------------
   var dataType = document.getElementById("DataType");
