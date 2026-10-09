@@ -63,7 +63,11 @@ class Info{
 		var born = Info.parse(d["Birth Date"]);
 		var died = Info.parse(d["Death Date"]);
 		var age = born ? Math.floor(((died || new Date()) - born) / 31557600000) : null;
-		var missions = (d["Missions"] || []).filter(Boolean).map(function (name) {
+		var names = (d["Missions"] || []).filter(Boolean);
+		(missions_list() || []).forEach(function (m) {      // also every mission whose crew lists the person
+			if (m.Members.includes(d.Name) && !names.includes(m["Launch Mission"])) names.push(m["Launch Mission"]);
+		});
+		var missions = names.map(function (name) {
 			var m = Info.find(missions_list(), x => x["Launch Mission"] == name);
 			return { label: name, sub: m ? m.Year : "", key: "t:p:" + name,
 			         open: m ? () => graph.clicked({ type: "mission", value: m }) : null };

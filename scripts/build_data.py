@@ -75,6 +75,45 @@ def read_csv(path):
         return list(csv.DictReader(f))
 
 
+def link_people_and_missions(missions_out, astronauts_out):
+    """Every astronaut's "Missions" are the exact names of the missions whose crew
+    lists them, in launch order. The legacy lists used other spellings
+    ("Mercury 7" for "Mercury-Atlas 7 (Aurora 7)", "ST-5", "Gemini 9" for
+    "Gemini 9A") and missed flights, so links from a person to a mission broke.
+    A crew name that differs only by a suffix ("Albert Sacco" / "Albert Sacco Jr.")
+    is renamed to the astronaut's name."""
+    def norm(name):
+        name = re.sub(r",?\s+(jr|sr|ii|iii|iv)\.?$", "", name.strip(), flags=re.I)
+        return re.sub(r"[^a-z]", "", unicodedata.normalize("NFKD", name).lower())
+
+    def crew(row):
+        return [c.strip() for c in row["Crew"].split(",") if c.strip()]
+
+    names = {a["Name"] for a in astronauts_out}
+    by_norm = defaultdict(set)
+    for a in astronauts_out:
+        by_norm[norm(a["Name"])].add(a["Name"])
+    for row in missions_out:
+        fixed = []
+        for c in crew(row):
+            match = by_norm.get(norm(c), set())
+            fixed.append(c if c in names or len(match) != 1 else next(iter(match)))
+        row["Crew"] = ", ".join(fixed)
+
+    flown = defaultdict(list)
+    for row in sorted(missions_out, key=lambda r: r["Launch Data"]):
+        for c in crew(row):
+            if row["Launch Mission"] not in flown[c]:
+                flown[c].append(row["Launch Mission"])
+    changed = 0
+    for a in astronauts_out:
+        if flown.get(a["Name"]):
+            joined = ", ".join(flown[a["Name"]])
+            changed += joined != a["Missions"]
+            a["Missions"] = joined
+    log("  mission lists of %d astronauts taken from the crews" % changed)
+
+
 def write_csv(path, rows, columns):
     with open(path, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
@@ -1065,6 +1104,7 @@ def main():
         a["Wikipedia"] = article_url(title)
         a.update(free_image(images.get(title or "", {}).get("file"), "Photo"))
 
+    link_people_and_missions(missions_out, astronauts_out)
     write_csv(os.path.join(DATA, "missions.csv"), missions_out, MISSION_COLUMNS)
     write_csv(os.path.join(DATA, "all_astronauts.csv"), astronauts_out, ASTRONAUT_COLUMNS)
 

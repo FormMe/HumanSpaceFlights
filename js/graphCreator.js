@@ -9,7 +9,8 @@ function astr_graph(astr) {
 	var links = [];
 	if (!astr.stub) {
 		missions
-			.filter(mis => astr.Missions.includes(mis["Launch Mission"]))
+			// by name, and by crew membership (one spelling mistake must not break a link)
+			.filter(mis => astr.Missions.includes(mis["Launch Mission"]) || mis.Members.includes(astr.Name))
 			.forEach(function (mis) {
 				nodes.push({
 	    			id: mis["Launch Mission"],
