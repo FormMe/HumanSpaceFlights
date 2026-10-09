@@ -155,6 +155,8 @@ class Graph{
 		this.view = [0, 0, width, height];
 		graphTip.hide();
 		d3.select(canvas.closest(".graph")).classed("has-graph", graph.nodes.length > 0);
+		// the legend shows "Selected" only when a node is
+		d3.select("#GraphLegend").classed("no-selected", !graph.nodes.some(n => n.selected));
 
 		var big = graph.nodes.length > 60;
 		this.simulation = d3.forceSimulation(graph.nodes)

@@ -1950,3 +1950,5 @@ body.sheet-open, html:has(body.sheet-open) { overflow: hidden; }
     scroll-behavior: auto !important;
   }
 }
+
+#GraphLegend.no-selected .legend-item:has(.node-selected) { display: none; }
