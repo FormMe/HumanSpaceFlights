@@ -56,7 +56,7 @@
     markTab(name);
     jumping = Date.now();
     var top = name === "timeline" ? 0 : topOf(name) - 12;
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    window.scrollTo({ top: Math.max(0, top), behavior: REDUCED_MOTION.matches ? "auto" : "smooth" });
   }
   tabs.forEach(function (b) {
     b.addEventListener("click", function () { goTo(b.getAttribute("data-tab")); });
@@ -241,5 +241,9 @@
   function close() { modal.hidden = true; btn.focus(); }
   btn.addEventListener("click", open);
   modal.addEventListener("click", function (e) { if (e.target === modal || e.target.closest(".crew-close")) close(); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) close(); });
+  document.addEventListener("keydown", function (e) {
+    if (modal.hidden) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "Tab") { e.preventDefault(); document.getElementById("CrewClose").focus(); }   // focus stays inside
+  });
 })();

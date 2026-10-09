@@ -98,7 +98,9 @@ class SelectionList{
 			.attr("type", "button")
 			.attr("class", c => "cell h-" + c.key)
 			.merge(hcells)
-			.attr("aria-sort", c => sort && sort.key === c.key ? (sort.dir > 0 ? "ascending" : "descending") : "none")
+			// aria-sort belongs to table headers: a button says what it does instead
+			.attr("aria-label", c => "Sort by " + c.label.toLowerCase() +
+				(sort && sort.key === c.key ? (sort.dir > 0 ? ", now ascending" : ", now descending") : ""))
 			.classed("sorted", c => sort && sort.key === c.key)
 			.html(c => c.label + "<span class='lt-arrow'>" +
 				(sort && sort.key === c.key ? (sort.dir > 0 ? "▲" : "▼") : "▼") + "</span>")
@@ -141,6 +143,11 @@ class SelectionList{
 		    	d.highlighted = false;
 		    	renderList(data, isMissions);
 		    });
+		// nothing matches the filters: say so
+		var empty = root.selectAll(".lt-empty").data(rows.length ? [] : [0]);
+		empty.exit().remove();
+		empty.enter().append("p").attr("class", "lt-empty")
+			.text("No " + (isMissions ? "missions" : "astronauts") + " match these filters.");
 		// keep the header first
 		root.node().insertBefore(head.node(), root.node().firstChild);
 	}

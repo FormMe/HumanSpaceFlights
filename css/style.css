@@ -1,7 +1,7 @@
 :root {
   --text: #f2f4f8;
   --text-muted: #9aa3b5;
-  --text-dim: #6f7889;
+  --text-dim: #8a93a6;        /* >= 4.5:1 on the cards and the sheet */
   --accent: #6b5fd3;
   --accent-strong: #8a7ff0;
   --accent-soft: rgba(107, 95, 211, 0.18);
@@ -119,10 +119,7 @@ h1, h2, h3, p { margin: 0; font-weight: 400; }
   transition: opacity .2s, transform .2s;
 }
 
-.logo:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-}
+.logo:hover { opacity: 1; }
 
 .page_header {
   color: var(--text);
@@ -200,9 +197,6 @@ h1, h2, h3, p { margin: 0; font-weight: 400; }
   animation: fade-up .7s cubic-bezier(.2, .7, .2, 1) backwards;
 }
 
-.card:hover {
-  border-color: var(--card-border-hover);
-}
 
 /* a soft highlight along the top edge of every card */
 .card::before {
@@ -517,7 +511,7 @@ svg#FlightsChart {
 .graph.has-graph .graph-hint { display: none; }
 
 .button {
-  background: linear-gradient(180deg, var(--accent-strong), var(--accent));
+  background: linear-gradient(180deg, #7468e0, var(--accent));      /* white text >= 4.5:1 */
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: #fff;
   padding: 7px 16px;
@@ -849,7 +843,7 @@ svg#FlightsChart {
 }
 #FlightsChart .grid text { text-anchor: end; }
 #FlightsChart .Xaxis text { text-anchor: middle; }
-#FlightsChart .stackBar rect { transition: opacity .15s; cursor: pointer; }
+#FlightsChart .stackBar rect { transition: opacity .15s; }      /* hover shows the names; not clickable */
 #FlightsChart.hovering .stackBar rect { opacity: 0.38; }
 #FlightsChart.hovering .stackBar.hover rect { opacity: 1; }
 
@@ -883,7 +877,8 @@ svg#FlightsChart {
 .sum-legend {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 16px;
+  gap: 8px 28px;
+  max-width: 520px;
 }
 .sum-item {
   display: grid;
@@ -1098,6 +1093,8 @@ svg#FlightsChart {
   cursor: pointer;
   transition: background-color .15s, color .15s;
 }
+.mode-switch button:not(.active):hover { color: var(--text); background: rgba(255, 255, 255, 0.05); }
+.mode-switch button:disabled { cursor: progress; }
 .mode-switch button.active {
   background: linear-gradient(180deg, var(--accent-strong), var(--accent));
   color: #fff;
@@ -1124,6 +1121,12 @@ body:not(.mode-astronauts) .filt-astr { display: none; }
   border: 1px solid var(--field-border);
   background: var(--field-bg);
   transition: border-color .15s, background-color .15s;
+}
+.filters-row .field:hover { border-color: rgba(255, 255, 255, 0.26); }
+/* the select inside a chip draws no ring of its own: the chip shows the focus */
+.filters-row .field:focus-within {
+  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 .filters-row .field.is-set {
   border-color: var(--accent-strong);
@@ -1290,6 +1293,7 @@ canvas#Graph {
 #grid.lt .header .cell:hover { color: var(--text); }
 #grid.lt .header .cell.sorted { color: var(--accent-strong); }
 .lt-arrow { font-size: 8px; opacity: 0; transition: opacity .15s; }
+@media (hover: none) { .lt-arrow { opacity: .45; } }      /* touch: the columns show they sort */
 #grid.lt .header .cell:hover .lt-arrow,
 #grid.lt .header .cell.sorted .lt-arrow { opacity: 1; }
 
@@ -1615,7 +1619,7 @@ canvas#Graph {
   .ic-stat { padding: 8px 8px 7px; border-radius: 10px; }
   .ic-stat b { font-size: 16px; }
   .ic-stat b { height: 20px; line-height: 20px; }
-  .ic-stat b.long { font-size: 13.5px; }
+  .ic-stat b.long { font-size: 13.5px; min-height: 20px; }
   .ic-stat span { font-size: 10.5px; }
   .ic-stat small { font-size: 10px; }
   .ic-lead p { font-size: 14px; }
@@ -1884,3 +1888,65 @@ canvas#Graph {
 
 /* the page behind the details sheet does not scroll */
 body.sheet-open, html:has(body.sheet-open) { overflow: hidden; }
+
+/* ================= review fixes: layout, touch, motion ================= */
+
+/* desktop: the graph keeps its own height and stays in view next to a long card */
+@media (min-width: 761px) {
+  .layout > .graph { align-self: start; position: sticky; top: 16px; }
+}
+/* tablet: the controls before the charts they drive (as on phones) */
+@media (min-width: 761px) and (max-width: 1200px) {
+  .layout > .sun_filters { order: -1; }
+}
+/* key numbers of the card: a long value takes two lines instead of "…" */
+.ic-stat b.long { height: auto; min-height: 24px; line-height: 1.15; white-space: normal; overflow: visible; }
+
+/* a filter that matches nothing says so */
+.card.is-empty { position: relative; }
+.card.is-empty::after {
+  content: attr(data-empty);
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(13, 18, 30, 0.9);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.lt-empty { padding: 22px 12px; text-align: center; color: var(--text-muted); font-size: 14px; }
+
+/* phones: touch targets of at least 44 px */
+@media (max-width: 760px) {
+  .sheet-close { width: 44px; height: 44px; top: 0; right: 6px; }
+  #grid.lt .header .cell { min-height: 44px; }
+  .mode-switch button, .filters-row .field { height: 44px; }
+  .crew-close { width: 44px; height: 44px; }
+  .ic-stat b.long { min-height: 20px; }
+  /* "Show connections" stays at hand at the bottom of a long sheet */
+  #Info .sheet-graph {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    /* a band of the sheet colour around it: the text scrolls under, not through */
+    box-shadow: 0 6px 18px -6px rgba(107, 95, 211, 0.7), 0 0 0 10px #10162a, 0 -14px 16px 6px #10162a;
+  }
+}
+
+/* the CNSA mark is dark blue on a dark sky: a faint light edge */
+.logo[alt*="CNSA" i], .logo[src*="CNSA"] { filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.25)); }
+
+/* reduced motion: no transitions or animations anywhere */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -115,6 +115,11 @@ function filter() {
         // axes keep the range of all astronauts, whatever is filtered
         paracoords_update(curAstrs, false, astronauts);
     }
+    // the charts say it when the filters match nothing
+    var none = isMissionMode() ? !curMis.length : !curAstrs.length;
+    d3.selectAll(".stacked, .parcoords")
+        .classed("is-empty", none)
+        .attr("data-empty", "No " + (isMissionMode() ? "missions" : "astronauts") + " match these filters");
     graph.clear();
     info.remove();
 }
