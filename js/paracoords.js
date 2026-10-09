@@ -36,113 +36,47 @@ var types = {
 };
 
 var dimensions, xscale, isMissions;
+// Integer ticks only (counts, years).
+function intAxis() {
+  return d3.axisLeft().tickFormat(function (e) { return Math.floor(e) === e ? e : ""; });
+}
+
+// Categorical axes list their values in a meaningful order (top to bottom),
+// not alphabetically; values missing from the list are appended at the end.
+function ordered(order) {
+  return function (values) {
+    var present = d3.set(values.filter(function (v) { return v != null; })).values();
+    var known = order.filter(function (v) { return present.indexOf(v) >= 0; });
+    var rest = present.filter(function (v) { return order.indexOf(v) < 0; }).sort();
+    return known.concat(rest);
+  };
+}
+
+var countryOrder = ["USSR/Russia", "USA", "China", "Other"];
+var habitationOrder = ["Space", "Moon", "Salyut 1", "Salyut 3", "Salyut 4", "Salyut 5",
+                       "Salyut 6", "Salyut 7", "Skylab", "Mir", "ISS",
+                       "Tiangong 1", "Tiangong 2", "Tiangong"];
+var statusOrder = ["Active", "Management", "Retired", "Deceased"];
+
 var misDimensions = [
-  {
-    key: "Country",
-    description: "Country",
-    type: types["String"],
-    axis: d3.axisLeft()
-      .tickFormat(function(d,i) {
-        return d;
-      })
-  },
-  {
-    key: "Habitation",
-    description: "Habitation",
-    type: types["String"],
-    axis: d3.axisLeft()
-      .tickFormat(function(d,i) {
-        return d;
-      })
-  },
-  {
-    key: "Year",
-    type: types["Number"],
-    description: "Launch Year",
-    axis: d3.axisLeft().tickFormat(d3.format("d"))
-  },
-  {
-    key: "Crew size",
-    type: types["Number"],
-    description: "Crew size",
-    axis: d3.axisLeft()
-        .tickFormat(function(e){
-            if(Math.floor(e) != e) return;
-            return e;
-        })
-  },
-  {
-    key: "Duration",
-    description: "Duration (days)",
-    type: types["Number"]
-  }
+  { key: "Country", description: "Country", type: types["String"], order: ordered(countryOrder) },
+  { key: "Habitation", description: "Habitation", type: types["String"], order: ordered(habitationOrder) },
+  { key: "Year", description: "Launch year", type: types["Number"], axis: intAxis() },
+  { key: "Crew size", description: "Crew size", type: types["Number"], axis: intAxis() },
+  { key: "Duration", description: "Duration\n(days)", type: types["Number"] }
 ];
 
-
 var astrDimensions = [
-  {
-    key: "Country",
-    description: "Country",
-    type: types["String"],
-    axis: d3.axisLeft()
-      .tickFormat(function(d,i) {
-        return d;
-      })
-  },
-  {
-    key: "Gender",
-    description: "Gender",
-    type: types["String"],
-    axis: d3.axisLeft()
-      .tickFormat(function(d,i) {
-        return d;
-      })
-  },
-  {
-    key: "Birth Year",
-    type: types["Date"],
-    description: "Birth Year"
-  },
-  {
-    key: "Year",
-    description: "Selection Year",
-    type: types["Number"],
-    axis: d3.axisLeft().tickFormat(d3.format("d"))
-  },
-  {
-    key: "Status",
-    description: "Status",
-    type: types["String"],
-    axis: d3.axisLeft()
-      .tickFormat(function(d,i) {
-        return d;
-      })
-  },
-  {
-    key: "Space Flights",
-    type: types["Number"],
-    description: "Count of Space Flights"
-  },
-  {
-    key: "Space Flight (hr)",
-    type: types["Number"],
-    description: "Space Flights (hr)"
-  },
-  {
-    key: "Space Walks",
-    type: types["Number"],
-    description: "Count of Space Walks"
-  },
-  {
-    key: "Space Walks (hr)",
-    type: types["Number"],
-    description: "Space Walks (hr)"
-  },
-  {
-    key: "Death Year",
-    description: "Death Year",
-    type: types["Date"]
-  }
+  { key: "Country", description: "Country", type: types["String"], order: ordered(countryOrder) },
+  { key: "Gender", description: "Gender", type: types["String"], order: ordered(["Female", "Male"]) },
+  { key: "Birth Year", description: "Born", type: types["Date"] },
+  { key: "Year", description: "Selected", type: types["Number"], axis: intAxis() },
+  { key: "Space Flights", description: "Flights", type: types["Number"], axis: intAxis() },
+  { key: "Space Flight (hr)", description: "Hours\nin space", type: types["Number"] },
+  { key: "Space Walks", description: "Spacewalks", type: types["Number"], axis: intAxis() },
+  { key: "Space Walks (hr)", description: "Spacewalk\nhours", type: types["Number"] },
+  { key: "Status", description: "Status", type: types["String"], order: ordered(statusOrder) },
+  { key: "Death Year", description: "Died", type: types["Date"] }
 ];
 
 
@@ -273,7 +207,8 @@ function paracoords_update(data, isMis) {
   dimensions.forEach(function(dim) {
     if (!("domain" in dim)) {
       // detect domain using dimension type's extent function
-      dim.domain = d3_functor(dim.type.extent)(data.map(function(d) { return d[dim.key]; }));
+      var values = data.map(function(d) { return d[dim.key]; });
+      dim.domain = dim.order ? dim.order(values) : d3_functor(dim.type.extent)(values);
     }
     if (!("scale" in dim)) {
       // use type's default scale for dimension
@@ -298,8 +233,18 @@ function paracoords_update(data, isMis) {
       })
     .append("text")
       .attr("class", "title")
-      .attr("text-anchor", "start")
-      .text(function(d) { return "description" in d ? d.description : d.key; });
+      .attr("text-anchor", "middle")
+      .each(function(d) {
+        // one or two lines, the last one just above the axis
+        var lines = ("description" in d ? d.description : d.key).split("\n");
+        var text = d3.select(this);
+        lines.forEach(function(line, i) {
+          text.append("tspan")
+              .attr("x", 0)
+              .attr("dy", i === 0 ? (-(lines.length - 1) * 1.15) + "em" : "1.15em")
+              .text(line);
+        });
+      });
 
   // Add and store a brush for each axis.
   axes.append("g")
