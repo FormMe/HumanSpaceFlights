@@ -10,7 +10,7 @@
   "Aidyn Aimbetov": [
    "Year"
   ],
-  "Albert Sacco": [
+  "Albert Sacco Jr.": [
    "Year"
   ],
   "Alexander Victorenko": [
@@ -290,6 +290,8 @@
  ],
  "missions_without_patch": [
   "Boeing Crew Flight Test",
+  "STS-31 (Discovery)",
+  "STS-43 (Atlantis)",
   "Shenzhou 10",
   "Shenzhou 11",
   "Shenzhou 12",
@@ -401,11 +403,133 @@
   "Jannicke Mikkelsen",
   "Rabea Rogge",
   "Roger B. Chaffee",
+  "Shannon Walker",
+  "Sheikh Muszaphar Shukor",
   "Vladimir Vasyutin"
  ],
  "sources": {
   "Wikidata/Wikipedia": 194,
   "legacy": 19,
   "legacy + Wikidata/Wikipedia": 459
- }
+ },
+ "legacy_crews_differ_from_wikidata": {
+  "Vostok 4": {
+   "wikidata_item": "Q568419",
+   "only_legacy": [],
+   "only_wikidata": [
+    "Andriyan Nikolayev"
+   ]
+  }
+ },
+ "dates_corrected": {
+  "Charles P. Conrad": {
+   "Birth Date": [
+    "5/2/1930",
+    "1930-06-02"
+   ]
+  },
+  "Donald E. Williams": {
+   "Birth Date": [
+    "2/13/1958",
+    "1942-02-13"
+   ]
+  },
+  "Donn F. Eisele": {
+   "Birth Date": [
+    "5/23/1930",
+    "1930-06-23"
+   ]
+  },
+  "Eileen M. Collins": {
+   "Birth Date": [
+    "11/19/1959",
+    "1956-11-19"
+   ]
+  },
+  "Georgy Beregovoy": {
+   "Birth Date": [
+    "1921-04-05",
+    "1921-04-15"
+   ]
+  },
+  "Jeffrey S. Ashby": {
+   "Birth Date": [
+    "6/1/1954",
+    "1954-06-16"
+   ]
+  },
+  "Jerome Apt": {
+   "Birth Date": [
+    "4/18/1949",
+    "1949-04-28"
+   ]
+  },
+  "Kalpana Chawla": {
+   "Birth Date": [
+    "6/1/1961",
+    "1962-03-17"
+   ]
+  },
+  "Kevin P. Chilton": {
+   "Birth Date": [
+    "3/11/1954",
+    "1954-11-03"
+   ]
+  },
+  "Mikhail Korniyenko": {
+   "Birth Date": [
+    "1960-04-05",
+    "1960-04-15"
+   ]
+  },
+  "Nicolas J.M. Patrick": {
+   "Birth Date": [
+    "3/22/1964",
+    "1964-11-19"
+   ]
+  },
+  "Paul J. Weitz": {
+   "Birth Date": [
+    "6/25/1932",
+    "1932-07-25"
+   ]
+  },
+  "Ronald J. Garan": {
+   "Birth Date": [
+    "10/20/1961",
+    "1961-10-30"
+   ]
+  },
+  "Sergey Revin": {
+   "Birth Date": [
+    "1966-12-12",
+    "1966-01-12"
+   ]
+  },
+  "Sherwood C. Spring": {
+   "Birth Date": [
+    "9/23/1944",
+    "1944-09-03"
+   ]
+  },
+  "Stephen N. Frick": {
+   "Birth Date": [
+    "9/30/1961",
+    "1964-09-30"
+   ]
+  },
+  "Walter M. Schirra": {
+   "Death Date": [
+    "5/2/2007",
+    "2007-05-03"
+   ]
+  },
+  "William B. Lenoir": {
+   "Death Date": [
+    "8/26/2012",
+    "2010-08-26"
+   ]
+  }
+ },
+ "qid_used_by_several_records": {}
 }

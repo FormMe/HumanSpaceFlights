@@ -44,23 +44,86 @@ def log(*args):
     print(*args, file=sys.stderr, flush=True)
 
 
+def retry_after(resp, wait):
+    """The server says how long to back off (seconds; capped at 2 minutes)."""
+    try:
+        return max(wait, min(int(resp.headers.get("Retry-After", 0)), 120))
+    except (TypeError, ValueError):
+        return wait
+
+
 def request(method, url, retries=5, **kwargs):
+    """HTTP request, retried on 429, 5xx and network errors only: any other
+    4xx is a mistake in the request, a retry would only fail again."""
     for attempt in range(retries):
         wait = 2 ** (attempt + 1)
         try:
             resp = session.request(method, url, timeout=(10, 60), **kwargs)
-            if resp.status_code == 429 or resp.status_code >= 500:
-                try:      # the server says how long to back off
-                    wait = max(wait, min(int(resp.headers.get("Retry-After", 0)), 120))
-                except ValueError:
-                    pass
-                raise requests.HTTPError("HTTP %s" % resp.status_code)
-            resp.raise_for_status()
-            return resp
-        except (requests.RequestException, ValueError) as err:
+        except (requests.ConnectionError, requests.Timeout) as err:
             log("  request failed (%s), retry in %ss" % (err, wait))
             time.sleep(wait)
+            continue
+        if resp.status_code == 429 or resp.status_code >= 500:
+            wait = retry_after(resp, wait)
+            log("  HTTP %s, retry in %ss" % (resp.status_code, wait))
+            time.sleep(wait)
+            continue
+        resp.raise_for_status()
+        return resp
     raise RuntimeError("giving up on %s" % url)
+
+
+class ApiError(RuntimeError):
+    def __init__(self, code, info):
+        super().__init__("API error %s: %s" % (code, info))
+        self.code = code
+
+
+def mw_api(url, params, retries=5):
+    """One MediaWiki API call (Wikipedia or Wikidata). maxlag=5 makes the
+    servers refuse work while they are lagging; that is waited out. Any other
+    API error raises: a silently empty answer would drop data."""
+    params = dict(params, format="json", maxlag=5)
+    for attempt in range(retries):
+        resp = request("GET", url, params=params)
+        data = resp.json()
+        error = data.get("error")
+        if not error:
+            return data
+        if error.get("code") != "maxlag":
+            raise ApiError(error.get("code"), error.get("info"))
+        wait = retry_after(resp, 5 * (attempt + 1))
+        log("  servers lagging, retry in %ss" % wait)
+        time.sleep(wait)
+    raise RuntimeError("giving up on %s (maxlag)" % url)
+
+
+def mw_query(params, url=None):
+    """action=query, following "continue" until the answer is complete; the
+    pieces are merged (pages by title, normalized/redirects lists added up)."""
+    params = dict(params, action="query", formatversion=2)
+    merged, pages = {}, {}
+    while True:
+        data = mw_api(url or WIKIPEDIA_API, params)
+        query = data.get("query", {})
+        for key, value in query.items():
+            if key == "pages":
+                for page in value:
+                    old = pages.setdefault(page["title"], {})
+                    for k, v in page.items():
+                        if isinstance(v, list) and isinstance(old.get(k), list):
+                            old[k] = old[k] + [x for x in v if x not in old[k]]
+                        elif k not in old or not old[k]:
+                            old[k] = v
+            elif isinstance(value, list):
+                merged.setdefault(key, []).extend(value)
+            else:
+                merged[key] = value
+        if "continue" not in data:
+            break
+        params = dict(params, **data["continue"])
+    merged["pages"] = list(pages.values())
+    return merged
 
 
 # --------------------------------------------------------------------------
@@ -107,104 +170,37 @@ def fetch_links():
     return sorted(links)
 
 
+HUMAN_SPACEFLIGHT = "Q752783"      # class "human spaceflight" (alias "crewed spaceflight")
+
+
 def fetch_recent_flights(since="2017-01-01"):
-    """Crewed flights found by class, so missions without crew links are not missed."""
+    """Crewed flights found by class, so missions without crew links are not missed.
+
+    The class is matched by its QID; the old match by English label stays as
+    a fallback ('mul' too: Wikidata drops English labels equal to 'mul')."""
     log("Wikidata: human spaceflights since %s" % since)
     rows = sparql("""
         SELECT DISTINCT ?mission WHERE {
-          VALUES ?cls { "human spaceflight"@en "crewed spaceflight"@en }
-          ?c rdfs:label ?cls .
+          { VALUES ?c { wd:%s } }
+          UNION
+          { VALUES ?cls { "human spaceflight"@en "crewed spaceflight"@en
+                          "human spaceflight"@mul "crewed spaceflight"@mul }
+            ?c rdfs:label ?cls . }
           ?mission wdt:P31 ?c ; wdt:P619 ?launch .
           FILTER(?launch >= "%sT00:00:00Z"^^xsd:dateTime)
-        }""" % since)
+        }""" % (HUMAN_SPACEFLIGHT, since))
     found = {qid(r["mission"]) for r in rows}
     log("  %d flights" % len(found))
     return found
 
 
-def label_of(var):
-    """English label of var, or the multilingual ('mul') one when there is no English label.
-
-    Since 2024 Wikidata drops English labels that equal the 'mul' default label,
-    so many items (e.g. Christina Koch, SpaceX Crew-1) have no 'en' label at all.
-    """
-    return ('OPTIONAL { %s rdfs:label ?en FILTER(LANG(?en) = "en") } '
-            'OPTIONAL { %s rdfs:label ?mul FILTER(LANG(?mul) = "mul") } '
-            'BIND(COALESCE(?en, ?mul) AS ?value) FILTER(BOUND(?value))' % (var, var))
-
-
-MISSION_FIELDS = {
-    "label": label_of("?item"),
-    "description": '?item schema:description ?value FILTER(LANG(?value) = "en")',
-    "article": '?value schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/>',
-    "launch": "?item wdt:P619 ?value",
-    "landing": "?item wdt:P620 ?value",
-    "instance": "?item wdt:P31 ?v . " + label_of("?v"),
-    "operator": "?item wdt:P137 ?v . " + label_of("?v"),
-    "country": "?item wdt:P17 ?v . " + label_of("?v"),
-    "vehicle": "?item wdt:P375 ?v . " + label_of("?v"),
-    "part_of": "?item wdt:P361 ?v . " + label_of("?v"),
-    "destination": "?item wdt:P1444 ?v . " + label_of("?v"),
-    "follows": "?item wdt:P155 ?v . " + label_of("?v"),
-    "commons_image": "?item wdt:P18 ?value",      # free files on Wikimedia Commons
-    "commons_logo": "?item wdt:P154 ?value",
-}
-
-PEOPLE_FIELDS = {
-    "label": label_of("?item"),
-    "alt_labels": '?item skos:altLabel ?value FILTER(LANG(?value) IN ("en", "mul"))',
-    "description": '?item schema:description ?value FILTER(LANG(?value) = "en")',
-    "article": '?value schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/>',
-    "birth": "?item wdt:P569 ?value",
-    "death": "?item wdt:P570 ?value",
-    "gender": "?item wdt:P21 ?v . " + label_of("?v"),
-    "birth_place": "?item wdt:P19 ?v . " + label_of("?v"),
-    "citizenship": "?item wdt:P27 ?v . " + label_of("?v"),
-    "citizenship_code": "?item wdt:P27/wdt:P297 ?value",
-    "time_in_space_s": "?item p:P2873/psn:P2873/wikibase:quantityAmount ?value",
-    "educated_at": "?item wdt:P69 ?v . " + label_of("?v"),
-    "military_rank": "?item wdt:P410 ?v . " + label_of("?v"),
-    "military_branch": "?item wdt:P241 ?v . " + label_of("?v"),
-    "commons_image": "?item wdt:P18 ?value",
-}
-
-
-def fetch_details(ids, fields, what, batch_size=200, resolve_redirects=True):
-    """One small query per property: avoids cartesian blow-up of OPTIONALs."""
-    log("Wikidata: details of %d %s" % (len(ids), what))
-    result = {i: {} for i in ids}
-    for batch in chunks(sorted(ids), batch_size):
-        values = " ".join("wd:" + q for q in batch)
-        for field, pattern in fields.items():
-            rows = sparql("SELECT DISTINCT ?item ?value WHERE { VALUES ?item { %s } %s }"
-                          % (values, pattern))
-            for row in rows:
-                result[qid(row["item"])].setdefault(field, set()).add(row["value"])
-            time.sleep(0.3)
-    for item in result.values():
-        for field in item:
-            item[field] = sorted(item[field])
-
-    # Merged Wikidata items: the old id (e.g. from a Wikipedia page prop or a
-    # stale link) is a redirect and has no statements of its own.
-    empty = [i for i, item in result.items() if not item]
-    if empty and resolve_redirects:
-        targets = {}
-        for batch in chunks(empty, batch_size):
-            rows = sparql("SELECT ?item ?target WHERE { VALUES ?item { %s } ?item owl:sameAs ?target }"
-                          % " ".join("wd:" + q for q in batch))
-            for row in rows:
-                targets[qid(row["item"])] = qid(row["target"])
-        if targets:
-            log("  %d redirected items" % len(targets))
-            resolved = fetch_details(set(targets.values()), fields, what, batch_size,
-                                     resolve_redirects=False)
-            for old, new in targets.items():
-                result[old] = resolved.get(new, {})
-    if resolve_redirects:
-        missing = [i for i, item in result.items() if not item.get("label")]
-        result.update(fetch_details_api(missing, fields))
-    return result
+# Fields read for missions and people (see API_PROPS for the properties).
+MISSION_FIELDS = ["label", "description", "article", "launch", "landing", "instance",
+                  "operator", "country", "vehicle", "part_of", "destination", "follows",
+                  "commons_image", "commons_logo"]   # commons_*: free files on Wikimedia Commons
+PEOPLE_FIELDS = ["label", "alt_labels", "description", "article", "birth", "death", "gender",
+                 "birth_place", "citizenship", "citizenship_code", "time_in_space_s",
+                 "educated_at", "military_rank", "military_branch", "commons_image"]
 
 
 WIKIDATA_API = "https://www.wikidata.org/w/api.php"
@@ -227,22 +223,40 @@ SECONDS = {"Q11574": 1, "Q7727": 60, "Q25235": 3600, "Q573": 86400, "Q577": 3155
 
 
 def wbgetentities(ids, props):
+    """Raises on an API error (an empty answer would silently drop 50 items),
+    except for a deleted item: that one is skipped and noted in diagnostics."""
+    def get(batch):
+        try:
+            data = mw_api(WIKIDATA_API, {
+                "action": "wbgetentities", "ids": "|".join(batch),
+                "props": props, "languages": "en|mul", "sitefilter": "enwiki",
+            })
+        except ApiError as err:
+            if err.code != "no-such-entity":
+                raise
+            if len(batch) == 1:
+                DIAGNOSTICS.setdefault("wikidata_deleted_items", []).append(batch[0])
+                return {}
+            out = {}
+            for q in batch:          # find the deleted one
+                out.update(get([q]))
+            return out
+        return data.get("entities", {})
+
     out = {}
     for batch in chunks(sorted(ids), 50):
-        resp = request("GET", WIKIDATA_API, params={
-            "action": "wbgetentities", "format": "json", "ids": "|".join(batch),
-            "props": props, "languages": "en|mul", "sitefilter": "enwiki",
-        })
-        out.update(resp.json().get("entities", {}))
+        out.update(get(batch))
         time.sleep(0.5)
     return out
 
 
 def fetch_details_api(ids, fields):
-    """Same output as fetch_details, read from the Wikidata API instead of SPARQL.
+    """Details of Wikidata items: {qid: {field: [values]}}, read with the API.
 
     The query service sometimes misses items (its index lags behind or drops
     entities); the API reads the live item, and follows redirects itself.
+    Item values are the labels of the items (en, else mul); dates keep their
+    precision after a slash: '1977-01-01T00:00:00Z/9' (9 year, 10 month, 11 day).
     """
     if not ids:
         return {}
@@ -278,9 +292,11 @@ def fetch_details_api(ids, fields):
                 if v is None:
                     continue
                 if kind == "time":
-                    # '+1977-00-00T00:00:00Z' (year precision) -> '1977-01-01T00:00:00Z', as SPARQL gives it
+                    # '+1977-00-00T00:00:00Z' (year precision) -> '1977-01-01T00:00:00Z/9': the
+                    # build must know that '2027-01-01' of a planned flight is no real date
                     t = re.sub(r"^(\d{4})-00-00", r"\1-01-01", v["time"].lstrip("+"))
-                    item.setdefault(field, []).append(re.sub(r"^(\d{4}-\d\d)-00", r"\1-01", t))
+                    t = re.sub(r"^(\d{4}-\d\d)-00", r"\1-01", t)
+                    item.setdefault(field, []).append("%s/%s" % (t, v.get("precision", 11)))
                 elif kind == "item":
                     refs.add(v["id"])
                     item.setdefault("_" + field, []).append(v["id"])
@@ -319,8 +335,7 @@ def fetch_details_api(ids, fields):
 
 # Details are read from the Wikidata API (wbgetentities): the query service is
 # often overloaded (429, 502, 60 s timeouts) and a weekly run then fails,
-# while the API serves 50 items per request reliably. fetch_details (SPARQL)
-# stays for reference and comparisons.
+# while the API serves 50 items per request reliably.
 def fetch_missions(ids):
     log("Wikidata: details of %d missions" % len(ids))
     return fetch_details_api(ids, MISSION_FIELDS)
@@ -367,12 +382,10 @@ def fetch_infoboxes(titles):
     log("Wikipedia: infoboxes of %d articles" % len(titles))
     result = {}
     for batch in chunks(sorted(titles), 50):
-        resp = request("GET", WIKIPEDIA_API, params={
-            "action": "query", "format": "json", "formatversion": 2,
+        data = mw_query({
             "prop": "revisions", "rvprop": "content", "rvslots": "main",
             "redirects": 1, "titles": "|".join(batch),
         })
-        data = resp.json()["query"]
         alias = {}
         for kind in ("normalized", "redirects"):
             for r in data.get(kind, []):
@@ -432,12 +445,10 @@ def fetch_wikidata_ids(titles):
     log("Wikipedia: Wikidata ids of %d articles" % len(titles))
     result = {}
     for batch in chunks(sorted(titles), 50):
-        resp = request("GET", WIKIPEDIA_API, params={
-            "action": "query", "format": "json", "formatversion": 2,
+        data = mw_query({
             "prop": "pageprops", "ppprop": "wikibase_item|disambiguation",
             "redirects": 1, "titles": "|".join(batch),
         })
-        data = resp.json()["query"]
         alias = {}
         for kind in ("normalized", "redirects"):
             for r in data.get(kind, []):
@@ -461,12 +472,10 @@ def fetch_page_images(titles, size=960):
     log("Wikipedia: lead images of %d articles" % len(titles))
     result = {}
     for batch in chunks(sorted(titles), 50):
-        resp = request("GET", WIKIPEDIA_API, params={
-            "action": "query", "format": "json", "formatversion": 2,
+        data = mw_query({
             "prop": "pageimages", "piprop": "thumbnail|name", "pithumbsize": size,
             "pilimit": 50, "redirects": 1, "titles": "|".join(batch),
         })
-        data = resp.json()["query"]
         alias = {}
         for kind in ("normalized", "redirects"):
             for r in data.get(kind, []):
@@ -507,13 +516,11 @@ def fetch_file_info(files, width=960):
     log("Wikipedia: info about %d image files" % len(files))
     result = {}
     for batch in chunks(sorted(files), 50):
-        resp = request("GET", WIKIPEDIA_API, params={
-            "action": "query", "format": "json", "formatversion": 2,
+        data = mw_query({
             "prop": "imageinfo", "iiprop": "url|extmetadata", "iiurlwidth": width,
-            "iiextmetadatafilter": "LicenseShortName|NonFree|Artist|Credit",
+            "iiextmetadatafilter": "LicenseShortName|LicenseUrl|AttributionRequired|NonFree|Artist|Credit",
             "titles": "|".join("File:" + f for f in batch),
         })
-        data = resp.json()["query"]
         alias = {}
         for r in data.get("normalized", []):
             alias[r["to"]] = r["from"]
@@ -534,8 +541,14 @@ def fetch_file_info(files, width=960):
                 "thumb": info["thumburl"],
                 "page": info.get("descriptionurl", ""),
                 "license": field("LicenseShortName"),
+                "license_url": field("LicenseUrl"),
+                "attribution_required": str(field("AttributionRequired")).lower() in ("true", "1", "yes"),
                 "nonfree": str(field("NonFree")).lower() in ("true", "1", "yes"),
-                "artist": re.sub(r"<[^>]+>", "", str(field("Artist"))).strip()[:120],
+                # HTML stripped here, entities unescaped and the text cut (on a
+                # word) by the build; the Credit is the attribution of CC BY
+                # files that name no Artist
+                "artist": re.sub(r"<[^>]+>", "", str(field("Artist"))).strip()[:400],
+                "credit": re.sub(r"<[^>]+>", "", str(field("Credit"))).strip()[:400],
             }
         time.sleep(1)
     return result
@@ -545,12 +558,10 @@ def fetch_extracts(titles, sentences=3):
     log("Wikipedia: intros of %d articles" % len(titles))
     result = {}
     for batch in chunks(sorted(titles), 20):
-        resp = request("GET", WIKIPEDIA_API, params={
-            "action": "query", "format": "json", "formatversion": 2,
+        data = mw_query({
             "prop": "extracts", "exintro": 1, "explaintext": 1, "exsentences": sentences,
             "exlimit": "max", "redirects": 1, "titles": "|".join(batch),
         })
-        data = resp.json()["query"]
         alias = {}
         for kind in ("normalized", "redirects"):
             for r in data.get(kind, []):
@@ -566,10 +577,34 @@ def fetch_extracts(titles, sentences=3):
 
 
 def save(name, obj):
+    """Write atomically: a killed run never leaves half a JSON file behind."""
     path = os.path.join(RAW_DIR, name)
-    with open(path, "w", encoding="utf-8") as f:
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=1, sort_keys=True)
+    os.replace(tmp, path)
     log("saved %s" % os.path.relpath(path, ROOT))
+
+
+MAX_DROP = 0.10     # a count falling by more than this means a broken fetch
+
+
+def check_counts(counts):
+    """Compare with the previous snapshot (data/raw/meta.json). A sudden drop
+    (a query that timed out half way, Wikidata dropping English labels...)
+    would quietly remove missions and people from the site: stop instead."""
+    path = os.path.join(RAW_DIR, "meta.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            previous = json.load(f)
+    except (OSError, ValueError):
+        return
+    bad = ["%s %d -> %d" % (k, previous[k], n) for k, n in counts.items()
+           if isinstance(previous.get(k), int) and n < previous[k] * (1 - MAX_DROP)]
+    if bad:
+        log("counts dropped by more than %d%%: %s" % (MAX_DROP * 100, ", ".join(bad)))
+        log("raw files NOT written; check the sources (or delete data/raw/meta.json to accept)")
+        sys.exit(1)
 
 
 def legacy_names():
@@ -688,6 +723,8 @@ def main():
     wanted |= {v["file"] for v in images.values() if v.get("file")}
     file_info = fetch_file_info(wanted)
 
+    counts = {"people": len(people), "missions": len(flights), "links": len(links)}
+    check_counts(counts)
     save("wikidata_links.json", [list(l) for l in links])
     save("wikidata_people.json", people)
     save("wikidata_missions.json", flights)
@@ -702,8 +739,7 @@ def main():
     save("wikipedia_person_files.json", person_files)
     save("wikipedia_file_info.json", file_info)
     save("diagnostics.json", DIAGNOSTICS)
-    save("meta.json", {"fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-                       "people": len(people), "missions": len(flights), "links": len(links)})
+    save("meta.json", dict(counts, fetched_at=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())))
 
 
 if __name__ == "__main__":

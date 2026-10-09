@@ -15,16 +15,35 @@ Inputs
 Outputs (same format as before, so the visualization did not change)
   data/missions.csv
   data/all_astronauts.csv
+  data/audit.json                    gaps and doubtful records, corrections made
   data/meta.json                     build date, counts
 
 The legacy data is kept as is; Wikidata adds
   * every crewed orbital mission launched after the last legacy mission,
   * astronauts of all countries that were missing (China, Japan, Europe, ...),
-  * new flights / status / death date / time in space of legacy astronauts.
+  * new flights / status / death date / time in space of legacy astronauts,
+  * birth / death dates precise to the day where the legacy ones differ.
+
+How records are matched (in this order):
+  1. missions: a Wikidata flight is the legacy mission with the same name key,
+     else the only legacy mission launched that day (expedition items excluded);
+     later flights with a crew are new missions;
+  2. people: a Wikidata person is the legacy crew spelling with the closest
+     name on the same missions (same_person), or the legacy name whose Wikipedia
+     article is that person (when it is about a space traveller), or, for new
+     flyers, a legacy astronaut with the same birth date;
+  3. legacy spellings still unmatched: the Wikidata crews of their missions
+     minus the people already matched usually leave one person; one QID is used
+     by one record only, another crew spelling of it becomes an alias;
+  4. link_people_and_missions: every astronaut's missions are re-read from the
+     crews, and "Space Flights" is raised to their number when it was lower.
+Everything doubtful is listed in data/audit.json.
 """
 
 import csv
 import datetime as dt
+import difflib
+import html
 import json
 import os
 import re
@@ -34,8 +53,8 @@ from collections import defaultdict
 
 try:
     import mwparserfromhell
-except ImportError:  # the build still works, just without Wikipedia infobox details
-    mwparserfromhell = None
+except ImportError:  # without it every infobox detail would silently be lost
+    sys.exit("mwparserfromhell is missing: pip install -r scripts/requirements.txt")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -61,6 +80,13 @@ SUBORBITAL = re.compile(
 
 TODAY = dt.date.today()
 
+# Licences under which an image may be shown here (prefix, any case): public
+# domain, CC0, CC BY / BY-SA (any version and port), Free Art License, Flickr's
+# "No restrictions", the Government Open Data License - India, "Attribution".
+# NC / ND variants are not free (they do not exist on Commons, but who knows).
+FREE_LICENSES = re.compile(r"(?!.*(\bnc\b|\bnd\b|-nc|-nd|non-?commercial|no-?deriv))"
+                           r"(public domain|pd\b|pd-|cc0|cc[ -]by|fal\b|no restrictions|godl-india|attribution)", re.I)
+
 
 def log(*args):
     print(*args, file=sys.stderr)
@@ -76,15 +102,24 @@ def read_csv(path):
 
 
 def iso_date(value):
-    """'5/17/1967' (legacy, month first), '26/06/ 1925' (day first: 26 > 12),
-    '04/23/01' -> ISO 'YYYY-MM-DD'; ISO dates and anything else stay as they are."""
-    m = re.match(r"^\s*(\d{1,2})\s*/\s*(\d{1,2})\s*/\s*(\d{2}|\d{4})\s*$", value or "")
+    """The one parser for the legacy dates -> ISO 'YYYY-MM-DD'.
+
+    '5/17/1967' is month first (the American rows). The Russian rows were typed
+    day first and have a space before the year: '11/04/ 1942' is 11 April,
+    '4/08/ 1998' is 4 August. A first number > 12 is a day in any case.
+    '1959-01-03 00:00:00' -> '1959-01-03'; anything else stays as it is."""
+    value = (value or "").strip()
+    m = re.match(r"^(\d{4}-\d\d-\d\d)(?:[ T].*)?$", value)
+    if m:
+        return m.group(1)
+    m = re.match(r"^(\d{1,2})\s*/\s*(\d{1,2})\s*/(\s*)(\d{2}|\d{4})$", value)
     if not m:
         return value
-    a, b, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
+    a, b, y = int(m.group(1)), int(m.group(2)), int(m.group(4))
     if y < 100:
         y += 2000 if y <= TODAY.year % 100 else 1900
-    month, day = (b, a) if a > 12 else (a, b)
+    day_first = bool(m.group(3)) or a > 12
+    month, day = (b, a) if day_first else (a, b)
     try:
         return dt.date(y, month, day).isoformat()
     except ValueError:
@@ -121,13 +156,22 @@ def link_people_and_missions(missions_out, astronauts_out):
         for c in crew(row):
             if row["Launch Mission"] not in flown[c]:
                 flown[c].append(row["Launch Mission"])
-    changed = 0
+    changed = raised = 0
     for a in astronauts_out:
         if flown.get(a["Name"]):
             joined = ", ".join(flown[a["Name"]])
             changed += joined != a["Missions"]
             a["Missions"] = joined
-    log("  mission lists of %d astronauts taken from the crews" % changed)
+            # "Space Flights" is never below the flights in the dataset; a larger
+            # legacy count stays (suborbital flights are not in the dataset)
+            try:
+                count = float(a["Space Flights"] or 0)
+            except ValueError:
+                count = 0
+            if len(flown[a["Name"]]) > count:
+                a["Space Flights"] = str(len(flown[a["Name"]]))
+                raised += 1
+    log("  mission lists of %d astronauts taken from the crews, %d flight counts raised" % (changed, raised))
 
 
 def write_csv(path, rows, columns):
@@ -185,16 +229,38 @@ def same_person(a, b):
     return score
 
 
-def wd_date(value):
-    return value[:10] if value else ""
+def wd_time(value):
+    """Wikidata time -> (ISO date, precision: 9 year, 10 month, 11 day).
+
+    New snapshots store the precision after a slash ('1977-01-01T00:00:00Z/9');
+    older ones do not, and give a year-precision value as 'YYYY-01-01': there
+    a 1 January is taken as year precision (a real 1 January is rare and only
+    loses a correction, never adds a wrong date)."""
+    if not value:
+        return "", 0
+    date, _, precision = value.partition("/")
+    if precision.isdigit():
+        return date[:10], int(precision)
+    return date[:10], 9 if date[5:10] == "01-01" else 11
 
 
-def legacy_birth(text):
-    """'5/17/1967' or '1959-01-03 00:00:00' -> '1967-05-17'."""
-    m = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4})", text or "")
-    if m:
-        return "%s-%02d-%02d" % (m.group(3), int(m.group(1)), int(m.group(2)))
-    return (text or "")[:10]
+def best_date(values):
+    """Most precise of several Wikidata dates (the earliest among equals)."""
+    dates = [wd_time(v) for v in values or [] if v]
+    if not dates:
+        return "", 0
+    return min(dates, key=lambda dp: (-dp[1], dp[0]))
+
+
+def max_quantity(values):
+    """Largest of several Wikidata quantities, as a number (not the string sort)."""
+    numbers = []
+    for v in values or []:
+        try:
+            numbers.append(float(v))
+        except (TypeError, ValueError):
+            pass
+    return max(numbers) if numbers else None
 
 
 def parse_date(text):
@@ -298,7 +364,7 @@ def parse_infobox(text):
     (and {{Infobox military person}}) nested inside a parameter; the astronaut
     fields (time in space, EVAs, selection, status) live in the embedded box.
     """
-    if not text or mwparserfromhell is None:
+    if not text:
         return {}
     try:
         code = mwparserfromhell.parse(text)
@@ -321,8 +387,7 @@ def parse_infobox(text):
 def plain(value):
     if not value:
         return ""
-    if mwparserfromhell is not None:
-        value = mwparserfromhell.parse(value).strip_code()
+    value = mwparserfromhell.parse(value).strip_code()
     value = re.sub(r"<[^>]+>", " ", value)
     value = re.sub(r"\s+", " ", value)
     return value.strip(" ,;")
@@ -333,23 +398,40 @@ def duration_hours(raw):
     if not raw:
         return None
     raw = re.sub(r"(?<=\d),(?=\d{3})", "", raw.replace("&nbsp;", " "))
-    parts = {}
-    for unit in ("y", "d", "h", "m"):
-        m = re.search(r"\|\s*%s\s*=\s*(\d+)" % unit, raw)
-        if m:
-            parts[unit] = int(m.group(1))
-    if not parts:
-        text = plain(raw).lower()
-        for unit, pattern in (("y", r"(\d+)\s*(?:years?|yr)"),
-                              ("d", r"(\d+)\s*(?:days?|d\b)"),
-                              ("h", r"(\d+)\s*(?:hours?|hrs?|h\b)"),
-                              ("m", r"(\d+)\s*(?:minutes?|mins?|m\b)")):
-            m = re.search(pattern, text)
-            if m:
-                parts[unit] = int(m.group(1))
+    raw = re.sub(r"<ref[^>]*/>|<ref.*?</ref>", " ", raw, flags=re.S)
+    units = (("y", r"(\d+)\s*(?:years?|yrs?|y\b)"),
+             ("mo", r"(\d+)\s*(?:months?|mos?\b)"),
+             ("d", r"(\d+)\s*(?:days?|d\b)"),
+             ("h", r"(\d+)\s*(?:hours?|hrs?|h\b)"),
+             ("m", r"(\d+)\s*(?:minutes?|mins?|m\b)"))
+
+    def found(text):
+        hits = {}
+        for unit in ("y", "mo", "d", "h", "m"):       # {{Duration|d=328|h=13|m=58}}
+            hits[unit] = re.findall(r"\|\s*%s\s*=\s*(\d+)" % unit, text)
+        if not any(hits.values()):
+            text = plain(text).lower()
+            hits = {unit: re.findall(pattern, text) for unit, pattern in units}
+        return hits
+
+    hits = found(raw)
+    if any(len(v) > 1 for v in hits.values()):
+        # several flights listed one by one: adding up the first matches gives a
+        # random number; only an explicit total is used, else the caller falls
+        # back to Wikidata or the sum of the flights
+        lines = re.split(r"<br\s*/?>|<hr\s*/?>|\n", raw, flags=re.I)
+        totals = [s for s in lines if "total" in s.lower()]
+        if not totals:     # {{Tree list}}: '*12h 46m:' over '**7h 45m (lunar surface)'
+            totals = [s for s in lines if re.match(r"\s*\*[^*]", s)]
+        hits = found(totals[0]) if len(totals) == 1 else {}
+        if any(len(v) > 1 for v in hits.values()):
+            return None
+    parts = {unit: int(v[0]) for unit, v in hits.items() if v}
     if not parts:
         return None
-    return parts.get("y", 0) * 8766 + parts.get("d", 0) * 24 + parts.get("h", 0) + parts.get("m", 0) / 60
+    # a month is 1/12 of a Julian year (730.5 h), a year 8766 h
+    return (parts.get("y", 0) * 8766 + parts.get("mo", 0) * 730.5 + parts.get("d", 0) * 24
+            + parts.get("h", 0) + parts.get("m", 0) / 60)
 
 
 def first_int(raw):
@@ -378,23 +460,61 @@ def status_from(raw, death, retired=""):
     return ""
 
 
+def sentences(text):
+    """Split text into sentences, but not after initials or short abbreviations:
+    'spacecraft named "Y. A. Gagarin"' and 'the U.S. Navy' stay whole."""
+    text = re.sub(r"\s+", " ", text or "").strip()
+    out, start = [], 0
+    for m in re.finditer(r"[.!?]['\")\]]*\s+(?=[A-Z])", text):
+        token = text[start:m.start() + 1].rsplit(" ", 1)[-1].lstrip("'\"(")
+        if re.fullmatch(r"(?:[A-Za-z]\.)+|(?:Mr|Mrs|Ms|Dr|St|Jr|Sr|Lt|Col|Gen|Capt|No|vs|lit|approx|ca)\.", token):
+            continue
+        out.append(text[start:m.end()].strip())
+        start = m.end()
+    if text[start:].strip():
+        out.append(text[start:].strip())
+    return out
+
+
+def cut_text(text, limit):
+    """At most `limit` characters, cut on a word boundary and marked with '…'."""
+    if len(text) <= limit:
+        return text
+    cut = text[:limit]
+    m = re.search(r"\s\S*$", cut)          # the last whole word
+    if m and m.start() > 0:
+        cut = cut[:m.start()]
+    return cut.rstrip(" ,;:-–—(\n") + "…"
+
+
 def summarize(extract, description):
     if extract:
-        sentences = re.split(r"(?<=[.!?])\s+(?=[A-Z])", extract.strip())
-        summary = " ".join(sentences[:2])
-        return summary[:400]
+        parts = sentences(extract)
+        summary = " ".join(parts[:2])
+        if len(summary) > 400 and len(parts[0]) <= 400:
+            summary = parts[0]           # one whole sentence rather than a cut one
+        return cut_text(summary, 399)    # 399 + '…' = 400 at most
     if description:
         return description[0][:1].upper() + description[0][1:] + "."
     return ""
 
 
+NUMERIC_COLUMNS = ["Year", "Space Flights", "Space Flight (hr)", "Space Walks", "Space Walks (hr)"]
+
+
 def fmt_number(value):
+    """The one formatter of the numeric columns: '2004' (not '2004.0'), '0.5'.
+    Values of 1 and more are whole numbers (hours are whole hours, as in the
+    legacy data); below 1 one decimal is kept. The page reads them with +value
+    / parseInt, so both forms parse the same."""
     if value in (None, ""):
         return ""
-    value = float(value)
-    if value == 0:
-        return "0"
-    return str(int(round(value))) if value >= 1 else str(round(value, 1))
+    try:
+        value = float(value)
+    except (TypeError, ValueError):
+        return str(value)
+    value = round(value) if value >= 1 else round(value, 1)
+    return str(int(value)) if value == int(value) else "%.1f" % value
 
 
 # --------------------------------------------------------------------------
@@ -422,8 +542,15 @@ MONTHS = {m: i for i, m in enumerate(
 
 
 def wiki_date(raw):
-    """Date from an infobox value: {{Start date|2021|04|09|...}} or '9 April 2021'."""
+    """Date from an infobox value: {{Start date|2021|04|09|...}} or '9 April 2021'.
+
+    A planned date ('NET March 2027 (planned)', 'TBD', 'scheduled for ...') is
+    no date: such a mission has not flown (yet), or never did (STS-61-E)."""
     if not raw:
+        return ""
+    visible = re.sub(r"<ref[^>]*/>|<ref.*?</ref>", " ", raw, flags=re.S)
+    visible = re.sub(r"\|\s*net\s*=\s*\w*", " ", visible, flags=re.I)   # {{ltime|...|net=no}}
+    if re.search(r"\b(planned|net|scheduled|tbd|tba)\b", visible, re.I):
         return ""
     m = re.search(r"\{\{\s*[a-z -]*date[a-z -]*\|"
                   r"(?:[^|}]*=[^|}]*\|)*\s*(\d{4})\s*\|\s*(\d{1,2})\s*\|\s*(\d{1,2})", raw, re.I)
@@ -449,12 +576,6 @@ def wiki_date(raw):
         return ""
 
 
-def field_raw(box_text, field):
-    """Raw value of an infobox parameter (works without mwparserfromhell, keeps links)."""
-    m = re.search(r"\|\s*%s\s*=(.*?)(?=\n\s*\|\s*[a-z_ ]+=|\Z)" % field, box_text or "", re.S | re.I)
-    return m.group(1).strip() if m else None
-
-
 def link_titles(raw):
     return [t.strip() for t in re.findall(r"\[\[([^\]|#]+)", raw or "")]
 
@@ -477,7 +598,7 @@ def person_from_wikipedia(title, box_text, extract):
     if not box or not re.search(r"astronaut|cosmonaut|taikonaut|spaceflight",
                                 box_text + extract, re.I):
         return None
-    birth = wiki_date(box.get("birth_date"))
+    birth, death = wiki_date(box.get("birth_date")), wiki_date(box.get("death_date"))
     words = re.findall(r"\b(she|her|hers|he|his|him)\b", extract.lower())
     female = sum(w in ("she", "her", "hers") for w in words)
     male = len(words) - female
@@ -492,8 +613,8 @@ def person_from_wikipedia(title, box_text, extract):
         "label": [re.sub(r"\s*\(.*?\)$", "", plain(box.get("name", "")) or title)],
         "article": [wiki_url(title)],
         "description": ["astronaut (from Wikipedia)"],
-        "birth": [birth + "T00:00:00Z"] if birth else [],
-        "death": [wiki_date(box.get("death_date")) + "T00:00:00Z"] if wiki_date(box.get("death_date")) else [],
+        "birth": [birth + "T00:00:00Z/11"] if birth else [],         # infobox dates are day precise
+        "death": [death + "T00:00:00Z/11"] if death else [],
         "gender": [gender] if gender else [],
         "birth_place": [plain(box.get("birth_place", ""))] if box.get("birth_place") else [],
         "citizenship": citizenship,
@@ -502,7 +623,7 @@ def person_from_wikipedia(title, box_text, extract):
     return {k: v for k, v in rec.items() if v}
 
 
-def mission_from_wikipedia(title, box_text, extract):
+def mission_from_wikipedia(title, box_text):
     """Spaceflight known only from its Wikipedia infobox."""
     box = parse_infobox(box_text)
     launch = wiki_date(box.get("launch_date"))
@@ -512,8 +633,8 @@ def mission_from_wikipedia(title, box_text, extract):
     rec = {
         "label": [title],
         "article": [wiki_url(title)],
-        "launch": [launch + "T00:00:00Z"],
-        "landing": [landing + "T00:00:00Z"] if landing else [],
+        "launch": [launch + "T00:00:00Z/11"],         # infobox dates are day precise
+        "landing": [landing + "T00:00:00Z/11"] if landing else [],
         "description": [plain(box.get("mission_type", ""))] if box.get("mission_type") else [],
         "operator": [plain(box.get("operator", ""))] if box.get("operator") else [],
     }
@@ -522,10 +643,6 @@ def mission_from_wikipedia(title, box_text, extract):
 
 AUDIT_FIELDS = ["Birth Date", "Birth Place", "Gender", "Status", "Year", "Alma Mater",
                 "Space Flight (hr)", "Nationality"]
-
-
-def f_never_flew(a, crew):
-    return a["Name"] not in crew
 
 
 def make_audit(missions, astronauts):
@@ -544,7 +661,7 @@ def make_audit(missions, astronauts):
                    or (f == "Space Flight (hr)" and a.get(f) in ("0", "0.0")
                        and a["Name"] in crew and not all(
                            m in fatal_launches for m in crew[a["Name"]]))]
-        if f_never_flew(a, crew):
+        if a["Name"] not in crew:      # never flew: no selection year expected
             missing = [f for f in missing if f != "Year"]
         if missing:
             gaps[a["Name"]] = missing
@@ -557,12 +674,12 @@ def make_audit(missions, astronauts):
     for a in astronauts:
         flights = sorted(r["Launch Data"] for r in missions
                          if a["Name"] in [c.strip() for c in r["Crew"].split(",")])
-        born = legacy_birth(a["Birth Date"])
+        born = iso_date(a["Birth Date"])
         if flights and born[:4].isdigit():
             age = int(flights[0][:4]) - int(born[:4])
             if not 20 <= age <= 80:
                 suspicious[a["Name"]] = "age %d at first flight" % age
-        died = legacy_birth(a["Death Date"])
+        died = iso_date(a["Death Date"])
         if flights and died[:4].isdigit() and died < flights[-1]:
             suspicious[a["Name"]] = "death date %s before flight %s" % (died, flights[-1])
     return {
@@ -600,8 +717,9 @@ def main():
     person_files = load_json("wikipedia_person_files.json", {})
     overrides = load_overrides()
 
-    if not wd_missions:
-        log("no raw data in data/raw - run scripts/fetch_data.py first")
+    if not wd_missions or not people or not links:
+        # legacy-only CSVs would drop every mission since 2017: better no build
+        sys.exit("no raw data in data/raw - run scripts/fetch_data.py first")
 
     def article(item):
         url = first(item.get("article", []))
@@ -622,7 +740,7 @@ def main():
     for title, text in sorted(mission_boxes.items()):
         if title in known_articles:
             continue
-        rec = mission_from_wikipedia(title, text, extracts.get(title, ""))
+        rec = mission_from_wikipedia(title, text)
         if rec:
             wd_missions["wp:" + title] = rec
 
@@ -679,22 +797,33 @@ def main():
             down = set(up)
         launch_crew[q], landing_crew[q] = up, down
 
-        wd_launch = wd_date(min(m["launch"]))
-        launch_date[q] = wiki_date(box.get("launch_date")) or wd_launch
-        if abs((parse_date(launch_date[q]) - parse_date(wd_launch)).days) > 3:
+        # A Wikidata date with year or month precision is a placeholder of a
+        # planned flight ('2027-01-01'): unknown, so such a mission can never
+        # turn into a flown one. Planned infobox dates are dropped by wiki_date.
+        wd_launch, precision = best_date(m.get("launch"))
+        if precision < 11:
+            wd_launch = ""
+        box_launch = wiki_date(box.get("launch_date"))
+        launch_date[q] = box_launch or wd_launch
+        if box_launch and wd_launch and abs((parse_date(box_launch) - parse_date(wd_launch)).days) > 3:
             launch_date[q] = wd_launch   # infobox shows a different (e.g. planned) date
         landing = wiki_date(box.get("landing_date"))
-        if not landing and m.get("landing"):
-            landing = wd_date(min(m["landing"]))
-            if landing.endswith("-01-01"):   # Wikidata value with year precision only
+        if not landing:
+            landing, precision = best_date(m.get("landing"))
+            if precision < 11:
                 landing = ""
         if landing and parse_date(landing) > TODAY:
             landing = ""
         landing_date[q] = landing
 
     # ---- classify Wikidata missions ---------------------------------------
+    # A Wikidata flight is the legacy mission of the same name ('STS-6' for
+    # 'STS-6 (Challenger)'), else the only legacy mission launched that day;
+    # an expedition item (Salyut 6 EO-1) shares its launch day with its Soyuz
+    # but is not that flight. Flights after the legacy data are new missions.
     skip_missions = {o["mission"] for o in overrides if o["field"] == "skip"}
     wd_to_legacy = {}    # wikidata qid -> legacy mission name
+    by_key = set()       # qids matched by name rather than by launch day
     new_missions = {}    # wikidata qid -> mission name
     for q, m in wd_missions.items():
         label = first(m.get("label", []))
@@ -704,6 +833,9 @@ def main():
         key = mission_key(label)
         if key in legacy_by_key:
             wd_to_legacy[q] = legacy_by_key[key]
+            by_key.add(q)
+            continue
+        if any(re.search(r"expedition|\bEO-\d", t, re.I) for t in [label] + m.get("instance", [])):
             continue
         same_day = legacy_dates.get(launch, [])
         if len(same_day) == 1:
@@ -748,7 +880,7 @@ def main():
         if any(space_words.search(d) for d in person.get("description", [])):
             return True
         legacy = legacy_astr_by_name.get(name)
-        return bool(legacy and legacy_birth(legacy["Birth Date"]) == wd_date(first(person.get("birth", []))))
+        return bool(legacy and iso_date(legacy["Birth Date"]) == best_date(person.get("birth"))[0])
 
     direct = defaultdict(list)     # qid -> legacy names
     for name in sorted(set(legacy_astr_by_name) | {c for cs in legacy_crew.values() for c in cs}):
@@ -790,9 +922,9 @@ def main():
         if name is None and q in new_flyers:
             # same spelling is not enough (Clifton C. Williams vs Christopher Williams):
             # the birth date has to match too
-            born = wd_date(first(person.get("birth", [])))
+            born = best_date(person.get("birth"))[0]
             same_birth = [n for n, a in legacy_astr_by_name.items()
-                          if born and legacy_birth(a["Birth Date"]) == born]
+                          if born and iso_date(a["Birth Date"]) == born]
             scores = name_scores(same_birth, person)
             name = max(scores, key=scores.get) if scores and max(scores.values()) >= 2 else None
         person_name[q] = name or label
@@ -885,7 +1017,40 @@ def main():
                 mission_duration[(label, member)] = float(days) if days else \
                     float((TODAY - parse_date(launch)).days)
 
-    legacy_to_wd = {v: k for k, v in wd_to_legacy.items()}
+    # several items for one legacy mission: the one matched by name wins
+    legacy_to_wd = {}
+    for q, name in sorted(wd_to_legacy.items(), key=lambda kv: kv[0] in by_key):
+        legacy_to_wd[name] = q
+
+    def spelling_only(a, b):
+        """Two spellings of one name: same_person, or a transliteration of the
+        surname with the same initial (Victorenko / Viktorenko, Gidzenko / Guidzenko)."""
+        if same_person(a, b) >= 2:
+            return True
+        ta, tb = name_tokens(a), name_tokens(b)
+        return bool(ta and tb) and ta[0][0] == tb[0][0] and \
+            difflib.SequenceMatcher(None, ta[-1], tb[-1]).ratio() >= 0.75
+
+    def crew_difference(names, qids):
+        """Legacy crew vs Wikidata crew, ignoring differences of spelling."""
+        wd_names = {q: [n for n in [first(people[q].get("label", []))] + people[q].get("alt_labels", []) if n]
+                    for q in qids if q in people}
+        only_legacy = [n for n in names
+                       if not any(spelling_only(n, w) for ws in wd_names.values() for w in ws)]
+        only_wd = sorted(ws[0] for ws in wd_names.values()
+                         if not any(spelling_only(n, w) for n in names for w in ws))
+        return only_legacy, only_wd
+
+    # Legacy crews that Wikidata (crew from the mission infobox, else the
+    # P450/P1029 links) gives differently: either source can be wrong, the
+    # clear errors of the legacy file have been fixed in it.
+    crews_differ = {}
+    for mission, q in sorted(legacy_to_wd.items()):
+        if not launch_crew.get(q):
+            continue
+        only_legacy, only_wd = crew_difference(legacy_crew[mission], launch_crew[q])
+        if only_legacy or only_wd:
+            crews_differ[mission] = {"wikidata_item": q, "only_legacy": only_legacy, "only_wikidata": only_wd}
     for row in legacy_missions:
         q = legacy_to_wd.get(row["Launch Mission"])
         fixed = override(row["Launch Mission"], "*", "summary")
@@ -901,7 +1066,7 @@ def main():
     # Legacy missions that are still "in orbit" in the old file have landed by now.
     for row in missions_out:
         if row["Return Mission"] == "in orbit" and row in legacy_missions:
-            q = next((k for k, v in wd_to_legacy.items() if v == row["Launch Mission"]), None)
+            q = legacy_to_wd.get(row["Launch Mission"])
             landing = landing_date.get(q, "") if q else ""
             ret = override(row["Launch Mission"], "*", "return_date") or landing
             if ret:
@@ -931,10 +1096,26 @@ def main():
     # People whose legacy spelling matched nobody ("Mikhail TYuryn", "Yury
     # Usachyev"): the Wikidata crews of their missions, minus everyone already
     # matched, usually leave exactly one person.
-    # A person counts as taken only when matched to an astronaut record: the
-    # crew may spell the same person differently ("Albert Sacco" for the
-    # record "Albert Sacco Jr.").
+    # A person matched to a legacy record is taken. One matched only to a crew
+    # spelling may still be found here for a legacy record ("Albert Sacco" in
+    # the crew, record "Albert Sacco Jr."): the QID then moves to the record and
+    # the crew spelling is renamed, so no QID is ever used by two records.
     taken = {q for n, q in by_name_q.items() if n in legacy_astr_by_name}
+
+    def rename_crew(old, new):
+        """Crew spelling `old` is the person of the record `new`."""
+        for row in missions_out:
+            crew = [c.strip() for c in row["Crew"].split(",") if c.strip()]
+            if old in crew:
+                row["Crew"] = ", ".join(new if c == old else c for c in crew)
+                key = (row["Launch Mission"], old)
+                if key in mission_duration:
+                    mission_duration.setdefault((row["Launch Mission"], new), mission_duration.pop(key))
+        for m in flights_of.pop(old, []):
+            if m not in flights_of[new]:
+                flights_of[new].append(m)
+        flights_of[new].sort(key=lambda m: min(r["Launch Data"] for r in missions_out if r["Launch Mission"] == m))
+
     unmatched = dict(flights_of)
     for a in legacy_astronauts:
         flown = [m.strip() for m in a["Missions"].split(",") if m.strip()]
@@ -966,13 +1147,25 @@ def main():
                 continue
             common = {scored[0][1]}
         q = common.pop()
-        if q in people:
-            by_name_q[name] = q
-            taken.add(q)
-            log("  matched by crew: %s -> %s" % (name, first(people[q].get("label", [q]))))
+        if q not in people:
+            continue
+        # One person, one record: a QID already used by a crew spelling (crew
+        # "Albert Sacco", record "Albert Sacco Jr.") moves to this record and
+        # the crew spelling becomes an alias of it.
+        used_by = [n for n, other in by_name_q.items() if other == q and n != name]
+        if used_by and (name not in legacy_astr_by_name or any(n in legacy_astr_by_name for n in used_by)):
+            continue
+        for n in used_by:
+            del by_name_q[n]
+            rename_crew(n, name)
+            log("  crew name %s -> record %s" % (n, name))
+        by_name_q[name] = q
+        taken.add(q)
+        log("  matched by crew: %s -> %s" % (name, first(people[q].get("label", [q]))))
 
     astronauts_out = []
     seen = set()
+    dates_corrected = {}
 
     def wikipedia_details(q):
         person = people.get(q, {})
@@ -991,10 +1184,19 @@ def main():
             box = wikipedia_details(q)
             if person.get("citizenship"):
                 a["Nationality"] = nationality(person["citizenship"])
-            death = wd_date(first(person.get("death", [])))
-            if death and not a["Death Date"]:
-                a["Death Date"] = death
-                a["Status"] = "Deceased"
+            # Wikidata dates precise to the day win over the legacy ones (the
+            # legacy file had typos and day/month swaps); see audit.json. Not
+            # when the Wikipedia infobox agrees with the legacy date (Ronald
+            # Evans died on 6 April 1990 US time, 7 April UTC).
+            for field, prop in (("Birth Date", "birth"), ("Death Date", "death")):
+                date, precision = best_date(person.get(prop))
+                old_date = iso_date(a[field])
+                if date and not old_date:
+                    a[field] = date          # died after the legacy data was made
+                elif date and precision >= 11 and date != old_date \
+                        and wiki_date(box.get(prop + "_date")) != old_date:
+                    dates_corrected.setdefault(a["Name"], {})[field] = [a[field], date]
+                    a[field] = date
             new_flights = [m for m in flights_of.get(a["Name"], []) if m in {r["Launch Mission"] for r in new_rows}]
             old = [m.strip() for m in a["Missions"].split(",") if m.strip()]
             added = [m for m in new_flights if m not in old]
@@ -1002,8 +1204,8 @@ def main():
                 a["Missions"] = ", ".join(old + added)
                 a["Space Flights"] = str(len(old) + len(added))
             hours = duration_hours(box.get("time_in_space") or box.get("time"))
-            if hours is None and person.get("time_in_space_s"):
-                hours = float(first(person["time_in_space_s"])) / 3600
+            if hours is None and max_quantity(person.get("time_in_space_s")):
+                hours = max_quantity(person["time_in_space_s"]) / 3600
             computed = float(a["Space Flight (hr)"] or 0) + sum(
                 (mission_duration.get((m, a["Name"])) or 0) * 24 for m in added)
             a["Space Flight (hr)"] = fmt_number(max(hours or 0, computed))
@@ -1031,10 +1233,10 @@ def main():
         person = people[q]
         box = wikipedia_details(q)
         citizenship = person.get("citizenship", [])
-        death = wd_date(first(person.get("death", [])))
+        death = best_date(person.get("death"))[0]
         hours = duration_hours(box.get("time_in_space") or box.get("time"))
-        if hours is None and person.get("time_in_space_s"):
-            hours = float(first(person["time_in_space_s"])) / 3600
+        if hours is None and max_quantity(person.get("time_in_space_s")):
+            hours = max_quantity(person["time_in_space_s"]) / 3600
         computed = sum(mission_duration.get((m, name)) or 0 for m in flights) * 24
         hours = max(hours or 0, computed)
         evas = first_int(box.get("total_evas") or box.get("eva1") or "") or 0
@@ -1048,7 +1250,7 @@ def main():
             "Name": name,
             "Year": selection_year(box.get("selection", "")),
             "Status": status,
-            "Birth Date": wd_date(first(person.get("birth", []))),
+            "Birth Date": best_date(person.get("birth"))[0],
             "Birth Place": plain(box.get("birth_place", "")) or first(person.get("birth_place", [])),
             "Gender": {"male": "Male", "female": "Female", "trans woman": "Female",
                        "trans man": "Male"}.get(gender, gender.capitalize()),
@@ -1081,10 +1283,26 @@ def main():
         text = re.sub(r"\s{2,}", " ", text).strip(" ,;(")
         return text[:limit].rstrip(" ,;(")
 
+    def tidy(text):
+        """Dashes and quotes off the ends, an unbalanced parenthesis at either
+        end dropped, one left open by a cut closed: 'Mayak (Beacon)' stays whole,
+        'NE of Arkalyk?)' -> 'NE of Arkalyk?', 'Pamir (after a mountain' + ')'."""
+        dashes = "-–— \"'"
+        text = text.strip(dashes)
+        while text.endswith(")") and text.count(")") > text.count("("):
+            text = text[:-1].strip(dashes)
+        while text.startswith("(") and text.count("(") > text.count(")"):
+            text = text[1:].strip(dashes)
+        if text.count("(") > text.count(")"):
+            text = text.rstrip(dashes + ",;") + ")"
+        return text
+
     def flight_time(raw):
         """'9 hours, 13 minutes' or {{time interval|start|end}} -> '9 h 13 min'."""
-        text = re.sub(r"<ref[^>]*/>|<ref.*?</ref>", " ", raw or "", flags=re.S).replace("&nbsp;", " ")
-        hit = re.search(r"\{\{\s*time interval\s*\|([^|}]+)\|([^|}]+)", text, flags=re.I)
+        text = re.sub(r"<ref[^>]*/>|<ref.*?</ref>|<!--.*?-->", " ", raw or "", flags=re.S).replace("&nbsp;", " ")
+        hit = re.search(r"\{\{\s*time interval\s*\|([^|}]+)\|([^|}]*)", text, flags=re.I)
+        if hit and not hit.group(2).strip():
+            return ""          # {{time interval|start||...}}: still in flight
         if hit:
             ends = []
             for value in hit.groups():
@@ -1106,7 +1324,11 @@ def main():
                     parts = parts[:2]
                 return " ".join("%d %s" % p for p in parts if p[0])
             return ""
-        text = re.sub(r"\{\{[^{}]*\}\}", " ", text)
+        # '19 minutes, 41 seconds (achieved)<br />180 days (planned)' (Soyuz MS-10):
+        # the planned duration is not the flight time; one line, the first real one
+        lines = [line for line in re.split(r"<br\s*/?>", text, flags=re.I)
+                 if not re.search(r"planned", line, re.I)]
+        text = re.sub(r"\{\{[^{}]*\}\}", " ", lines[0] if lines else "")
         parts = []
         for unit, label in ((r"d(ays?)?\b", "d"), (r"h(ours?|rs?)?\b", "h"), (r"m(in(ute)?s?)?\b", "min")):
             hit = re.search(r"(\d[\d,.]*)\s*" + unit, text, flags=re.I)
@@ -1143,13 +1365,28 @@ def main():
         return not any(same(n, m) for _, n, m in same_kind)
 
     def free_image(name, prefix):
-        """Thumbnail, credit and file page of a free image (non-free files are skipped:
-        Wikipedia may use them under fair use, this site may not)."""
+        """Thumbnail, credit and file page of a free image.
+
+        Only files under a licence of FREE_LICENSES are used: non-free files
+        (fair use) Wikipedia may show, this site may not, and a file without a
+        known licence is skipped too, so the next source is tried."""
         info = file_info.get(name or "") or info_by_key.get(file_key(name))
         if not info or info.get("nonfree"):
             return {}
-        credit = " · ".join(x for x in (info.get("artist", ""), info.get("license", "")) if x)
-        return {prefix + " URL": info["thumb"], prefix + " Credit": credit[:160], prefix + " Page": info.get("page", "")}
+        license = (info.get("license") or "").strip()
+        if not FREE_LICENSES.match(license):
+            return {}
+        artist = html.unescape(info.get("artist") or "").strip()
+        if not artist and re.match(r"cc[ -]by", license, re.I):
+            # CC BY needs an attribution: the Credit field when there is no Artist
+            artist = html.unescape(re.sub(r"<[^>]+>", "", info.get("credit") or "")).strip()
+        # snapshots without "credit" cut the artist at 120 characters: the
+        # broken last word goes, the cut is marked
+        if "credit" not in info and len(info.get("artist") or "") >= 120:
+            artist = cut_text(artist, len(artist) - 1)
+        artist = cut_text(artist, 119)
+        credit = " · ".join(x for x in (artist, license) if x)
+        return {prefix + " URL": info["thumb"], prefix + " Credit": credit, prefix + " Page": info.get("page", "")}
 
     def article_url(title):
         return ("https://en.wikipedia.org/wiki/" + title.replace(" ", "_")) if title else ""
@@ -1169,13 +1406,13 @@ def main():
         if not row["Rocket"] and box.get("shuttle"):
             row["Rocket"] = "Space Shuttle"
         row["Launch Site"] = short(box.get("launch_site"))
-        row["Landing Site"] = short(box.get("landing_site") or box.get("landing_zone"))
-        row["Callsign"] = short(box.get("crew_callsign"), 40).strip("-–— \"'()")
+        row["Landing Site"] = tidy(short(box.get("landing_site") or box.get("landing_zone")))
+        row["Callsign"] = tidy(short(box.get("crew_callsign"), 40))
         row["Flight Time"] = flight_time(box.get("mission_duration"))
         row["Operator"] = short(box.get("operator")) or first(m.get("operator", []))
         row["Wikipedia"] = article_url(title)
         intro = re.sub(r"\s*\([^()]*\)", "", extracts.get(title or "", ""))
-        row["Description"] = re.sub(r"\s+", " ", intro).strip()[:700]
+        row["Description"] = cut_text(re.sub(r"\s+", " ", intro).strip(), 700)
         # Images, free ones only, from several places in order. The patch:
         # infobox 'insignia', then Wikidata's logo. The photo: infobox 'image',
         # the crew photo, the article's lead image, Wikidata's image; never the
@@ -1216,7 +1453,7 @@ def main():
         a["Agency"] = short(box.get("type"), 50)
         bio = person_extracts.get(title or "", "")
         bio = re.sub(r"\s*\([^()]*\)", "", bio)          # drop "(born ...; Russian: ...)"
-        a["Bio"] = re.sub(r"\s+", " ", bio).strip()[:600]
+        a["Bio"] = cut_text(re.sub(r"\s+", " ", bio).strip(), 600)
         a["Wikipedia"] = article_url(title)
         # portrait: the lead image, the infobox image, Wikidata's image (free only)
         for name in [images.get(title or "", {}).get("file"), person_files.get(title or "")] + \
@@ -1230,10 +1467,23 @@ def main():
     for a in astronauts_out:
         for field in ("Birth Date", "Death Date"):
             a[field] = iso_date(a[field])
+        if a["Death Date"]:
+            a["Status"] = "Deceased"
+        for field in NUMERIC_COLUMNS:
+            a[field] = fmt_number(a.get(field))
+    for row in missions_out:
+        row["Year"] = fmt_number(row["Year"])
     write_csv(os.path.join(DATA, "missions.csv"), missions_out, MISSION_COLUMNS)
     write_csv(os.path.join(DATA, "all_astronauts.csv"), astronauts_out, ASTRONAUT_COLUMNS)
 
     audit = make_audit(missions_out, astronauts_out)
+    audit["legacy_crews_differ_from_wikidata"] = crews_differ
+    audit["dates_corrected"] = dict(sorted(dates_corrected.items()))
+    used = defaultdict(list)
+    for a in astronauts_out:
+        if by_name_q.get(a["Name"]):
+            used[by_name_q[a["Name"]]].append(a["Name"])
+    audit["qid_used_by_several_records"] = {q: names for q, names in sorted(used.items()) if len(names) > 1}
     with open(os.path.join(DATA, "audit.json"), "w", encoding="utf-8") as f:
         json.dump(audit, f, ensure_ascii=False, indent=1)
     log("audit: %d crew members without astronaut record, %d astronauts with missing fields"
