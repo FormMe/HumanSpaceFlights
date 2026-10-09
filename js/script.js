@@ -168,7 +168,7 @@ function filter() {
     	paracoords_update(curMis, true);
     }
     // d3.select('#FlightsChart').select('.brush').call(brush.move, null);
-    d3.select("#Graph").selectAll('g').remove();
+    graph.clear();
     info.remove();
 }
 
@@ -186,7 +186,7 @@ function filter_astr() {
 
     }
     // d3.select('#FlightsChart').select('.brush').call(brush.move, null);
-    d3.select("#Graph").selectAll('g').remove();
+    graph.clear();
     info.remove();
 }
 
@@ -237,6 +237,7 @@ function complete_graph() {
         }
     });
 
+    G.nodes.forEach(function (n) { n.selected = false; });  // nothing is "the" selected node here
     graph.update(G);
 }
 

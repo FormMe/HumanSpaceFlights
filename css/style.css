@@ -540,7 +540,7 @@ svg#Graph {
   opacity: .55;
 }
 
-.graph:has(#Graph g) .graph-hint { display: none; }
+.graph.has-graph .graph-hint { display: none; }
 
 .links line {
   stroke: #8d94a8;
@@ -1352,3 +1352,10 @@ body:not(.mode-astronauts) .filt-astr { display: none; }
 #Graph.focus circle:not(.hl) { opacity: 0.22; }
 #Graph.focus .links line { opacity: 0.12; }
 #Graph.focus .links line.hl { opacity: 1; stroke: rgba(225, 230, 245, 0.85); stroke-width: 1.6px; }
+
+canvas#Graph {
+  display: block;
+  width: 100%;
+  height: 420px;
+  touch-action: none;
+}

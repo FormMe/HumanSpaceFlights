@@ -72,14 +72,23 @@ function mis_graph(mis) {
 	};
 }
 
+// Union of two graphs. Lookups go through hash maps kept on g1, so merging
+// hundreds of graphs ("Draw all") stays linear instead of quadratic.
 function merge_graph(g1, g2){
+	if (!g1._ids) {
+		g1._ids = new Set(g1.nodes.map(n => n.id));
+		g1._links = new Set(g1.links.map(l => l.source + "\u0000" + l.target));
+	}
 	g2.nodes.forEach(function (node2) {
-		if(g1.nodes.find(node1 => node1.id == node2.id) == undefined){
+		if (!g1._ids.has(node2.id)) {
+			g1._ids.add(node2.id);
 			g1.nodes.push(node2);
 		}
 	});
 	g2.links.forEach(function (link2) {
-		if(g1.links.find(link1 => link1.source == link2.source && link1.target == link2.target) == undefined){
+		var key = link2.source + "\u0000" + link2.target;
+		if (!g1._links.has(key)) {
+			g1._links.add(key);
 			g1.links.push(link2);
 		}
 	});
