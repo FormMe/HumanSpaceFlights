@@ -163,6 +163,11 @@ class Info{
 		box.classList.toggle("no-photo", !photoUrl);
 		if (photoUrl) Photos.show(photo, photoKey, photoUrl); else { photo.hidden = true; photo.dataset.key = ""; }
 		if (hasPatch) Photos.show(patch, patchKey, null); else { patch.hidden = true; patch.dataset.key = ""; }
+		patch.classList.remove("zoomed");
+		if (!patch.dataset.zoomable) {          // tap the patch: it grows, tap again: back
+			patch.dataset.zoomable = "1";
+			patch.addEventListener("click", function () { patch.classList.toggle("zoomed"); });
+		}
 	}
 
 	links(wiki, credits) {

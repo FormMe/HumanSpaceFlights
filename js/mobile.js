@@ -214,3 +214,14 @@
     });
   }).observe(grid, { childList: true });
 })();
+
+// the creators' photo
+(function () {
+  var btn = document.getElementById("CrewBtn"), modal = document.getElementById("CrewModal");
+  if (!btn || !modal) return;
+  function open() { modal.hidden = false; document.getElementById("CrewClose").focus(); }
+  function close() { modal.hidden = true; btn.focus(); }
+  btn.addEventListener("click", open);
+  modal.addEventListener("click", function (e) { if (e.target === modal || e.target.closest(".crew-close")) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) close(); });
+})();
