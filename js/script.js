@@ -290,6 +290,12 @@ d3.csv("data/missions.csv", function (error, missionsData) {
                 "Launch Mission": info["Launch Mission"],
                 "Year": info["Year"],
                 "Habitation": info["Habitation"] == "" ? "Space" : info["Habitation"],
+                "Rocket": info["Rocket"], "Spacecraft": info["Spacecraft"],
+                "Launch Site": info["Launch Site"], "Landing Site": info["Landing Site"],
+                "Callsign": info["Callsign"], "Operator": info["Operator"],
+                "Wikipedia": info["Wikipedia"],
+                "Photo URL": info["Photo URL"], "Photo Credit": info["Photo Credit"], "Photo Page": info["Photo Page"],
+                "Patch URL": info["Patch URL"], "Patch Credit": info["Patch Credit"], "Patch Page": info["Patch Page"],
                 "highlighted": false,
                 "Crew": v.map(function (part) {
                     return {

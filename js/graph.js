@@ -34,7 +34,9 @@ var tip = (function () {
 			row("In space", hours >= 48 ? fmt(hours / 24) + " days" : fmt(hours) + " h") +
 			row("Spacewalks", walks ? walks + " (" + fmt(+v["Space Walks (hr)"] || 0) + " h)" : "none");
 	}
+	var lastEvent = null;
 	function place(e) {
+		if (e) lastEvent = e;
 		if (!el || !e) return;
 		var pad = 14, w = el.offsetWidth, h = el.offsetHeight;
 		var x = e.clientX + pad, y = e.clientY + pad;
@@ -52,9 +54,24 @@ var tip = (function () {
 			el.innerHTML = html(d);
 			el.classList.add("visible");
 			place(e);
+			// portrait / patch, when there is one (packs load once, then it's instant)
+			var v = d.value, key = null;
+			if (d.type === "mission") key = v["Patch URL"] ? "p:" + v["Launch Mission"] : (v["Photo URL"] ? "m:" + v["Launch Mission"] : null);
+			else if (!v.stub && v["Photo URL"]) key = "a:" + v.Name;
+			el.dataset.key = key || "";
+			if (key) Photos.get(key).then(function (src) {
+				if (!src || el.dataset.key !== key || !el.classList.contains("visible")) return;
+				var img = document.createElement("img");
+				img.className = "gt-photo" + (key[0] === "p" ? " patch" : "");
+				img.src = src;
+				img.alt = "";
+				el.insertBefore(img, el.firstChild);
+				el.classList.add("has-photo");
+				place(lastEvent);
+			});
 		},
 		move: place,
-		hide: function () { if (el) el.classList.remove("visible"); }
+		hide: function () { if (el) { el.classList.remove("visible", "has-photo"); el.dataset.key = ""; } }
 	};
 })();
 

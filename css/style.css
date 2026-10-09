@@ -1434,3 +1434,113 @@ canvas#Graph {
   #grid.lt .c-date, #grid.lt .header .h-date,
   #grid.lt .c-eva, #grid.lt .header .h-eva { display: none; }
 }
+
+/* ================= details: photo, patch, links ================= */
+
+.info-media {
+  position: relative;
+  margin: 0 0 14px;
+}
+.info-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.9);
+}
+.info-patch {
+  position: absolute;
+  left: 12px;
+  bottom: -18px;
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  padding: 6px;
+  border-radius: 50%;
+  background: rgba(13, 18, 30, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.8);
+}
+.info-media.no-photo .info-patch {
+  position: static;
+  width: 110px;
+  height: 110px;
+}
+.info-media:not(.no-photo):has(.info-patch:not([hidden])) { margin-bottom: 26px; }
+
+/* astronauts: round portrait */
+.info-media.portrait .info-photo {
+  width: 132px;
+  height: 132px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-position: 50% 20%;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+}
+
+#Info caption .info-name { display: block; font-size: 24px; font-weight: 700; line-height: 1.2; }
+#Info caption .info-sub {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+#Info caption .info-lead {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+#Info td small { display: block; color: var(--text-dim); font-size: 12px; }
+.info-chip {
+  display: inline-block;
+  margin: 0 4px 4px 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12.5px;
+}
+
+.info-links { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.info-wiki {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--field-border);
+  background: var(--field-bg);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+}
+.info-wiki:hover { background: rgba(255, 255, 255, 0.09); text-decoration: none; }
+.info-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+.info-credits a { color: var(--text-muted); }
+
+/* graph tooltip with a portrait or patch */
+.graph-tip .gt-photo {
+  float: right;
+  width: 52px;
+  height: 52px;
+  margin: -2px -4px 6px 10px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+}
+.graph-tip .gt-photo.patch { object-fit: contain; border: 0; border-radius: 0; }
+.graph-tip .gt-row { clear: right; }

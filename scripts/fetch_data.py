@@ -498,14 +498,21 @@ def fetch_file_info(files, width=960):
             info = (page.get("imageinfo") or [{}])[0]
             if not info.get("thumburl"):
                 continue
-            meta = info.get("extmetadata", {})
+            meta = info.get("extmetadata") or {}
+            if not isinstance(meta, dict):          # the API returns [] when there is none
+                meta = {}
+
+            def field(name):
+                v = meta.get(name) or {}
+                return v.get("value", "") if isinstance(v, dict) else ""
+
             name = alias.get(page["title"], page["title"]).split(":", 1)[1]
             result[name] = {
                 "thumb": info["thumburl"],
                 "page": info.get("descriptionurl", ""),
-                "license": meta.get("LicenseShortName", {}).get("value", ""),
-                "nonfree": str(meta.get("NonFree", {}).get("value", "")).lower() in ("true", "1", "yes"),
-                "artist": re.sub(r"<[^>]+>", "", meta.get("Artist", {}).get("value", "")).strip()[:120],
+                "license": field("LicenseShortName"),
+                "nonfree": str(field("NonFree")).lower() in ("true", "1", "yes"),
+                "artist": re.sub(r"<[^>]+>", "", str(field("Artist"))).strip()[:120],
             }
         time.sleep(1)
     return result

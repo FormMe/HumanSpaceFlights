@@ -23,6 +23,7 @@
     <script src="js/SummaryChart.js"></script>
     <script src="js/graphCreator.js"></script>
     <script src="js/graph.js"></script>
+    <script src="js/photos.js"></script>
     <script src="js/Info.js"></script>
     <script src="js/render-queue.js"></script>
 </head>
@@ -206,6 +207,10 @@
                     <svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
                 </button>
             </div>
+            <div class="info-media" id="InfoMedia" hidden>
+                <img class="info-photo" id="InfoPhoto" alt="" hidden>
+                <img class="info-patch" id="InfoPatch" alt="Mission patch" hidden>
+            </div>
             <table>
                 <caption class="title"></caption>
                 <tbody></tbody>
@@ -214,6 +219,7 @@
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="5" width="26" height="30" rx="4"/><path d="M13 13h14M13 19h14M13 25h9"/></svg>
                 Details of the selected mission or astronaut appear here.
             </p>
+            <div class="info-links" id="InfoLinks" hidden></div>
             <button type="button" class="button sheet-graph" id="SheetGraph">Show connections</button>
         </section>
     </main>
