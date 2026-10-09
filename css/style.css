@@ -1171,3 +1171,58 @@ svg#FlightsChart {
   break-inside: avoid;
 }
 .d3-tip li span { color: var(--text-dim); margin-left: 6px; font-variant-numeric: tabular-nums; }
+
+
+/* ================= list folded under the filters ================= */
+
+.list-block {
+  padding-top: 14px;
+  border-top: 1px solid var(--divider);
+}
+.list-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--field-border);
+  background: var(--field-bg);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s;
+}
+.list-toggle:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.24); }
+.list-toggle svg { color: var(--text-muted); flex: none; }
+.list-count {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.list-count:empty { display: none; }
+.list-toggle .chev { margin-left: auto; transition: transform .2s; }
+.list-block.open .list-toggle .chev { transform: rotate(180deg); }
+.list-block #grid { display: none; height: 360px; margin-top: 10px; }
+.list-block.open #grid { display: block; }
+
+/* the cards of the first row keep their own height when the list opens */
+.layout > .stacked,
+.layout > .sun_filters { align-self: start; }
+
+/* details right under the list and the chart; parameters at the end */
+.layout > .graph { grid-column: span 7; order: 1; }
+.layout > .info  { grid-column: span 5; order: 1; }
+.layout > .parcoords { order: 2; }
+
+@media (max-width: 760px) {
+  .layout > .graph { grid-column: 1 / -1; order: 3; }
+  .layout > .parcoords { order: 2; }
+  .list-block #grid { height: 60vh; height: 60svh; }
+}
+.sun_filters .list-block { grid-column: 1 / -1; }

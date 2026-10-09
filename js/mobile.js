@@ -10,13 +10,30 @@
   var phone = window.matchMedia("(max-width: 760px)");
   var tabs = document.querySelectorAll("#TabBar button");
 
-  // ---- tab bar: jump to a section, highlight the one on screen --------------
-  function sectionsOf(name) {
-    return Array.prototype.slice.call(document.querySelectorAll('.layout > [data-tab="' + name + '"]'));
+  // ---- list: folded under the filters ---------------------------------------
+  var listBlock = document.getElementById("ListBlock");
+  var listToggle = document.getElementById("ListToggle");
+  function setList(open) {
+    listBlock.classList.toggle("open", open);
+    listToggle.setAttribute("aria-expanded", String(open));
   }
-  // top of a tab's area = its section that is highest on the page
+  listToggle.addEventListener("click", function () {
+    setList(!listBlock.classList.contains("open"));
+  });
+
+  // ---- tab bar: jump to a section, highlight the one on screen --------------
+  var targets = {
+    timeline: [".layout > .sun_filters", ".layout > .stacked"],
+    list: ["#ListBlock"],
+    params: ["#parcoords"],
+    graph: [".layout > .graph"]
+  };
+  function elementsOf(name) {
+    return targets[name].map(function (sel) { return document.querySelector(sel); })
+                        .filter(Boolean);
+  }
   function topOf(name) {
-    var tops = sectionsOf(name).map(function (el) {
+    var tops = elementsOf(name).map(function (el) {
       return el.getBoundingClientRect().top + window.pageYOffset;
     });
     return tops.length ? Math.min.apply(null, tops) : 0;
@@ -32,6 +49,7 @@
 
   var jumping = 0;
   function goTo(name) {
+    if (name === "list") setList(true);
     markTab(name);
     jumping = Date.now();
     var top = name === "timeline" ? 0 : topOf(name) - 12;
@@ -41,21 +59,26 @@
     b.addEventListener("click", function () { goTo(b.getAttribute("data-tab")); });
   });
 
-  // scroll spy: the active tab follows the section in the upper part of the screen
-  var names = Array.prototype.map.call(tabs, function (b) { return b.getAttribute("data-tab"); });
+  // scroll spy: the tab whose (innermost) element crosses a line in the
+  // upper part of the screen lights up
   var spyQueued = false;
   function spy() {
     spyQueued = false;
     if (!phone.matches || Date.now() - jumping < 900) return;
-    var line = window.pageYOffset + document.documentElement.clientHeight * 0.35;
-    var current = names[0];
-    names.forEach(function (n) { if (topOf(n) <= line) current = n; });
-    // at the very bottom the last section wins even if it is short
     var doc = document.documentElement;
-    if (window.pageYOffset + doc.clientHeight >= doc.scrollHeight - 24) {
-      current = names[names.length - 1];
-    }
-    markTab(current);
+    var line = doc.clientHeight * 0.35;
+    var best = null, bestHeight = Infinity;
+    Object.keys(targets).forEach(function (name) {
+      elementsOf(name).forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top <= line && r.bottom > line && r.height < bestHeight) {
+          best = name;
+          bestHeight = r.height;
+        }
+      });
+    });
+    if (window.pageYOffset + doc.clientHeight >= doc.scrollHeight - 24) best = "graph";
+    if (best) markTab(best);
   }
   window.addEventListener("scroll", function () {
     if (!spyQueued) { spyQueued = true; window.requestAnimationFrame(spy); }
@@ -184,7 +207,9 @@
     pending = true;
     window.requestAnimationFrame(function () {
       pending = false;
-      badge.textContent = grid.querySelectorAll(".row").length || "";
+      var n = grid.querySelectorAll(".row").length;
+      badge.textContent = n || "";
+      document.getElementById("ListCount").textContent = n;
     });
   }).observe(grid, { childList: true });
 })();
