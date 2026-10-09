@@ -20,6 +20,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -31,6 +32,7 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       - name: Fetch raw data (Wikidata + Wikipedia)
+        timeout-minutes: 45
         run: python scripts/fetch_data.py
 
       - name: Build CSV files for the app

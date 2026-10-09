@@ -46,14 +46,18 @@ def log(*args):
 
 def request(method, url, retries=5, **kwargs):
     for attempt in range(retries):
+        wait = 2 ** (attempt + 1)
         try:
-            resp = session.request(method, url, timeout=120, **kwargs)
+            resp = session.request(method, url, timeout=(10, 60), **kwargs)
             if resp.status_code == 429 or resp.status_code >= 500:
+                try:      # the server says how long to back off
+                    wait = max(wait, min(int(resp.headers.get("Retry-After", 0)), 120))
+                except ValueError:
+                    pass
                 raise requests.HTTPError("HTTP %s" % resp.status_code)
             resp.raise_for_status()
             return resp
         except (requests.RequestException, ValueError) as err:
-            wait = 2 ** (attempt + 1)
             log("  request failed (%s), retry in %ss" % (err, wait))
             time.sleep(wait)
     raise RuntimeError("giving up on %s" % url)
@@ -78,7 +82,9 @@ def qid(uri):
 
 def chunks(items, size):
     items = list(items)
-    for i in range(0, len(items), size):
+    for n, i in enumerate(range(0, len(items), size)):
+        if n and n % 10 == 0:
+            log("    %d/%d" % (i, len(items)))       # progress in the CI log
         yield items[i:i + size]
 
 
