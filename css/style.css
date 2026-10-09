@@ -1281,3 +1281,4 @@ body:not(.mode-astronauts) .filt-astr { display: none; }
   .sun_filters { display: flex; }
 }
 .list-toggle { flex: none; }
+.list-block:not(.open) #grid { min-height: 0; }
