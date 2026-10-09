@@ -37,9 +37,16 @@ var types = {
 
 var dimensions, xscale, isMissions;
 // Integer ticks only (counts, years).
-function intAxis() {
-  return d3.axisLeft().tickFormat(function (e) { return Math.floor(e) === e ? e : ""; });
-}
+function intFormat(e) { return Math.floor(e) === e ? e : ""; }
+
+// Desktop: axes side by side, values up the axis. Phones: the plot is turned
+// by 90 degrees, axes are rows one under another and values run to the right,
+// so every axis fits the screen with readable labels (no sideways scrolling).
+var vertical = false, plotW = width, plotH = height, lastFull = null;
+// script.js declares globals with the same names (margin, width, height):
+// keep this plot's own sizes
+var PC_DESKTOP = { m: { top: margin.top, right: margin.right, bottom: margin.bottom, left: margin.left }, w: width, h: height };
+var phone = window.matchMedia("(max-width: 760px)");
 
 // Categorical axes list their values in a meaningful order (top to bottom),
 // not alphabetically; values missing from the list are appended at the end.
@@ -61,8 +68,8 @@ var statusOrder = ["Active", "Management", "Retired", "Deceased"];
 var misDimensions = [
   { key: "Country", description: "Country", type: types["String"], order: ordered(countryOrder) },
   { key: "Habitation", description: "Habitation", type: types["String"], order: ordered(habitationOrder) },
-  { key: "Year", description: "Launch year", type: types["Number"], axis: intAxis() },
-  { key: "Crew size", description: "Crew size", type: types["Number"], axis: intAxis() },
+  { key: "Year", description: "Launch year", type: types["Number"], int: true },
+  { key: "Crew size", description: "Crew size", type: types["Number"], int: true },
   { key: "Duration", description: "Duration\n(days)", type: types["Number"] }
 ];
 
@@ -70,10 +77,10 @@ var astrDimensions = [
   { key: "Country", description: "Country", type: types["String"], order: ordered(countryOrder) },
   { key: "Gender", description: "Gender", type: types["String"], order: ordered(["Female", "Male"]) },
   { key: "Birth Year", description: "Born", type: types["Date"] },
-  { key: "Year", description: "Selected", type: types["Number"], axis: intAxis() },
-  { key: "Space Flights", description: "Flights", type: types["Number"], axis: intAxis() },
+  { key: "Year", description: "Selected", type: types["Number"], int: true },
+  { key: "Space Flights", description: "Flights", type: types["Number"], int: true },
   { key: "Space Flight (hr)", description: "Hours\nin space", type: types["Number"] },
-  { key: "Space Walks", description: "Spacewalks", type: types["Number"], axis: intAxis() },
+  { key: "Space Walks", description: "Spacewalks", type: types["Number"], int: true },
   { key: "Space Walks (hr)", description: "Spacewalk\nhours", type: types["Number"] },
   { key: "Status", description: "Status", type: types["String"], order: ordered(statusOrder) },
   { key: "Death Year", description: "Died", type: types["Date"] }
@@ -93,28 +100,43 @@ var header = container.append('h2').attr('class', 'title');
 var plot = container.append('div')
     .attr('class', 'scroll-x')
   .append('div')
-    .attr('class', 'parcoords-plot')
-    .style('aspect-ratio', svgWidth + ' / ' + svgHeight);
+    .attr('class', 'parcoords-plot');
 
-var svg = plot.append("svg")
-    .attr("viewBox", "0 0 " + svgWidth + " " + svgHeight)
-    .attr("preserveAspectRatio", "xMinYMin meet")
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var svgRoot = plot.append("svg")
+    .attr("preserveAspectRatio", "xMinYMin meet");
+var svg = svgRoot.append("g");
 
-var canvas = plot.append("canvas")
-    .attr("width", width * pixelRatio)
-    .attr("height", height * pixelRatio)
-    .style("left", (100 * margin.left / svgWidth) + "%")
-    .style("top", (100 * margin.top / svgHeight) + "%")
-    .style("width", (100 * width / svgWidth) + "%")
-    .style("height", (100 * height / svgHeight) + "%");
-
+var canvas = plot.append("canvas");
 var ctx = canvas.node().getContext("2d");
-ctx.globalCompositeOperation = 'source-over';
-ctx.globalAlpha = 0.25;
-ctx.lineWidth = 1.5;
-ctx.scale(pixelRatio, pixelRatio);
+
+// Coordinate system of the plot for the current orientation.
+function layout(dims) {
+  vertical = phone.matches;
+  var m = PC_DESKTOP.m, w = PC_DESKTOP.w, h = PC_DESKTOP.h;
+  if (vertical) {
+    var W = Math.max(280, container.node().clientWidth);
+    m = { top: 34, right: 18, bottom: 30, left: 14 };
+    w = W - m.left - m.right;
+    h = 78 * (dims.length - 1);          // a row per axis
+  }
+  var W2 = w + m.left + m.right, H2 = h + m.top + m.bottom;
+  plotW = w; plotH = h;
+  plot.classed('vertical', vertical).style('aspect-ratio', W2 + ' / ' + H2);
+  svgRoot.attr("viewBox", "0 0 " + W2 + " " + H2);
+  svg.attr("transform", "translate(" + m.left + "," + m.top + ")");
+  canvas
+    .attr("width", Math.round(w * pixelRatio))
+    .attr("height", Math.round(h * pixelRatio))
+    .style("left", (100 * m.left / W2) + "%")
+    .style("top", (100 * m.top / H2) + "%")
+    .style("width", (100 * w / W2) + "%")
+    .style("height", (100 * h / H2) + "%");
+  ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  ctx.globalCompositeOperation = 'source-over';
+}
+
+// a point of a line: position of the axis, value along it
+function point(i, v) { return vertical ? [v, xscale(i)] : [xscale(i), v]; }
 
 function draw(d) {
 
@@ -131,7 +153,7 @@ function draw(d) {
                     // check if data element has property and contains a value
                     if (!(p.key in d) || d[p.key] === null) 
                       return null;
-                    return [xscale(i),p.scale(d[p.key])];
+                    return point(i, p.scale(d[p.key]));
                   });
   coords.forEach(function(p,i) {
     // this tricky bit avoids rendering null values as 0
@@ -142,13 +164,13 @@ function draw(d) {
         var prev = coords[i-1];
         if (prev !== null) {
           ctx.moveTo(prev[0],prev[1]);
-          ctx.lineTo(prev[0]+6,prev[1]);
+          if (vertical) ctx.lineTo(prev[0],prev[1]+6); else ctx.lineTo(prev[0]+6,prev[1]);
         }
       }
       if (i < coords.length-1) {
         var next = coords[i+1];
         if (next !== null) {
-          ctx.moveTo(next[0]-6,next[1]);
+          if (vertical) ctx.moveTo(next[0],next[1]-6); else ctx.moveTo(next[0]-6,next[1]);
         }
       }
       return;
@@ -167,12 +189,13 @@ function draw(d) {
 var curData;
 function renderList(_data, isMissions) {
   if(_data == null) _data = curData;
-  ctx.clearRect(0,0,width,height);
+  ctx.clearRect(0,0,plotW,plotH);
   _data.forEach(draw);
 }
 
 function paracoords_update(data, isMis) {
   curData = data;
+  lastFull = data;
   isMissions = isMis;
   if (isMissions) {
     dimensions = misDimensions;
@@ -184,18 +207,17 @@ function paracoords_update(data, isMis) {
   }
 
   svg.selectAll(".axis").remove();
+  layout(dimensions);
 
   xscale = d3.scalePoint()
       .domain(d3.range(dimensions.length))
-      .range([0, width]);
-
-  var yAxis = d3.axisLeft();
+      .range([0, vertical ? plotH : plotW]);
 
   var axes = svg.selectAll(".axis")
       .data(dimensions)
     .enter().append("g")
       .attr("class", function(d) { return "axis " + d.key.replace(/ /g, "_"); })
-      .attr("transform", function(d,i) { return "translate(" + xscale(i) + ")"; });
+      .attr("transform", function(d,i) { return vertical ? "translate(0," + xscale(i) + ")" : "translate(" + xscale(i) + ")"; });
 
   data.forEach(function(d) {
     dimensions.forEach(function(p) {
@@ -210,15 +232,16 @@ function paracoords_update(data, isMis) {
       var values = data.map(function(d) { return d[dim.key]; });
       dim.domain = dim.order ? dim.order(values) : d3_functor(dim.type.extent)(values);
     }
-    if (!("scale" in dim)) {
-      // use type's default scale for dimension
-      dim.scale = dim.type.defaultScale.copy();
-    }
+    // use type's default scale for dimension, in the current orientation:
+    // bigger values up on the desktop, to the right on phones
+    dim.scale = dim.type.defaultScale.copy();
+    if (vertical) dim.scale.range(dim.type.key === "String" ? [0, plotW] : [0, plotW]);
+    else dim.scale.range(dim.type.key === "String" ? [0, plotH] : [plotH, 0]);
     dim.scale.domain(dim.domain);
   });
 
   var render = renderQueue(draw).rate(15);
-  ctx.clearRect(0,0,width,height);
+  ctx.clearRect(0,0,plotW,plotH);
   ctx.globalAlpha = d3.min([0.85/Math.pow(data.length,0.3),1]);
   render(data);
   selectionList.update(data, isMissions);
@@ -226,18 +249,33 @@ function paracoords_update(data, isMis) {
 
   axes.append("g")
       .each(function(d) {
-        var renderAxis = "axis" in d
-          ? d.axis.scale(d.scale)  // custom axis
-          : yAxis.scale(d.scale);  // default axis
-        d3.select(this).call(renderAxis);
+        var axis = (vertical ? d3.axisBottom() : d3.axisLeft()).scale(d.scale);
+        if (d.int) axis.tickFormat(intFormat);
+        if (vertical && d.type.key !== "String") axis.ticks(5);
+        var g = d3.select(this).call(axis);
+        // phones: many categories on one row take two staggered lines of labels
+        // phones: many categories on one row take two or three staggered lines of labels
+        if (vertical && d.type.key === "String" && d.domain.length > 5) {
+          var levels = d.domain.length > 10 ? 3 : 2;
+          g.selectAll(".tick text").attr("dy", function (v, i) { return (0.71 + 1.2 * (i % levels)) + "em"; });
+        }
+        // phones: the labels at both ends stay inside the card
+        if (vertical && d.type.key === "String")
+          g.selectAll(".tick text").style("text-anchor", function (v, i, all) {
+            return i === 0 ? "start" : i === all.length - 1 ? "end" : "middle";
+          });
       })
     .append("text")
       .attr("class", "title")
-      .attr("text-anchor", "middle")
+      .attr("text-anchor", vertical ? "start" : "middle")
       .each(function(d) {
-        // one or two lines, the last one just above the axis
         var lines = ("description" in d ? d.description : d.key).split("\n");
         var text = d3.select(this);
+        if (vertical) {          // one line above the row
+          text.append("tspan").attr("x", 0).text(lines.join(" "));
+          return;
+        }
+        // one or two lines, the last one just above the axis
         lines.forEach(function(line, i) {
           text.append("tspan")
               .attr("x", 0)
@@ -250,8 +288,9 @@ function paracoords_update(data, isMis) {
   axes.append("g")
       .attr("class", "brush")
       .each(function(d) {
-        d3.select(this).call(d.brush = d3.brushY()
-          .extent([[-10,0], [10,height]])
+        d3.select(this).call(d.brush = (vertical
+            ? d3.brushX().extent([[0, -11], [plotW, 11]])
+            : d3.brushY().extent([[-10, 0], [10, plotH]]))
           .on("start", brushstart)
           .on("brush", brush)
           .on("end", function () {
@@ -267,8 +306,10 @@ function paracoords_update(data, isMis) {
         )
       })
     .selectAll("rect")
-      .attr("x", -8)
-      .attr("width", 16);
+      .each(function () {
+        if (vertical) d3.select(this).attr("y", -11).attr("height", 22);
+        else d3.select(this).attr("x", -8).attr("width", 16);
+      });
 
   d3.selectAll(".axis.Country .tick text")
     .style("fill", color);
@@ -313,3 +354,16 @@ function paracoords_update(data, isMis) {
 function d3_functor(v) {
   return typeof v === "function" ? v : function() { return v; };
 };
+
+// turning the phone or crossing the breakpoint: draw again in the right orientation
+(function () {
+  var timer = null, lastW = 0;
+  function redraw() {
+    if (!lastFull) return;
+    var w = container.node().clientWidth;
+    if (phone.matches === vertical && (!vertical || Math.abs(w - lastW) < 8)) return;
+    lastW = w;
+    paracoords_update(lastFull, isMissions);
+  }
+  window.addEventListener("resize", function () { clearTimeout(timer); timer = setTimeout(redraw, 200); });
+})();
