@@ -728,8 +728,6 @@ svg#Graph {
 /* ---------- phone: tabs, folded filters, details sheet ---------- */
 
 .tabbar,
-.mode-switch,
-.filters-reset,
 .sheet-bar,
 .sheet-graph,
 .sheet-backdrop {
@@ -767,102 +765,8 @@ svg#Graph {
     text-align: center;
   }
 
-  /* view switch + filter chips, above the chart */
+  /* filters above the chart on phones */
   .layout > .sun_filters { order: -1; }
-  .sun_filters { gap: 14px; align-items: stretch; }
-  .sun_filters .field-wide { display: none; }
-
-  .mode-switch {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    padding: 4px;
-    border-radius: 12px;
-    background: var(--field-bg);
-    border: 1px solid var(--field-border);
-  }
-  .mode-switch button {
-    height: 38px;
-    border: 0;
-    border-radius: 9px;
-    background: transparent;
-    color: var(--text-muted);
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color .15s, color .15s;
-  }
-  .mode-switch button.active {
-    background: linear-gradient(180deg, var(--accent-strong), var(--accent));
-    color: #fff;
-    box-shadow: 0 4px 14px -6px rgba(107, 95, 211, 0.9);
-  }
-
-  .filters-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .filt { display: contents; }
-  .filt legend { display: none; }
-  body:not(.mode-astronauts) .filt-astr { display: none; }
-
-  .filters-row .field {
-    flex-direction: row;
-    align-items: center;
-    gap: 2px;
-    margin: 0;
-    height: 38px;
-    padding-left: 12px;
-    border-radius: 999px;
-    border: 1px solid var(--field-border);
-    background: var(--field-bg);
-    transition: border-color .15s, background-color .15s;
-  }
-  .filters-row .field.is-set {
-    border-color: var(--accent-strong);
-    background: var(--accent-soft);
-  }
-  .filters-row .field label {
-    font-size: 13px;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-  .filters-row .field .select {
-    width: auto;
-    max-width: none;
-    margin: 0;
-  }
-  .filters-row .field .select select {
-    width: auto;
-    max-width: none;
-    height: 36px;
-    padding: 0 26px 0 4px;
-    border: 0;
-    border-radius: 999px;
-    background: transparent;
-    box-shadow: none;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-  }
-  .filters-row .field .select__arrow { top: 15px; right: 12px; }
-
-  .filters-reset {
-    display: none;
-    align-items: center;
-    gap: 6px;
-    height: 38px;
-    padding: 0 14px;
-    border-radius: 999px;
-    border: 1px solid transparent;
-    background: transparent;
-    color: var(--accent-strong);
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .filters-active .filters-reset { display: inline-flex; }
 
   .sunburst h3 { font-size: 15px; }
 
@@ -996,10 +900,6 @@ svg#Graph {
   .sheet-open .sheet-backdrop { opacity: 1; pointer-events: auto; }
 }
 
-/* wide screens: astronaut filters only act in the Astronauts view */
-@media (min-width: 761px) {
-  body:not(.mode-astronauts) .filt-astr { opacity: 0.45; transition: opacity .2s; }
-}
 
 
 /* ================= charts ================= */
@@ -1208,8 +1108,21 @@ svg#FlightsChart {
 .list-count:empty { display: none; }
 .list-toggle .chev { margin-left: auto; transition: transform .2s; }
 .list-block.open .list-toggle .chev { transform: rotate(180deg); }
-.list-block #grid { display: none; height: 360px; margin-top: 10px; }
-.list-block.open #grid { display: block; }
+/* the list opens smoothly instead of jumping */
+.list-block #grid {
+  display: block;
+  height: 0;
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height .3s cubic-bezier(.2, .8, .2, 1), margin-top .3s, opacity .25s;
+}
+.list-block.open #grid {
+  height: 360px;
+  margin-top: 10px;
+  opacity: 1;
+  overflow-y: auto;
+}
 
 /* the cards of the first row keep their own height when the list opens */
 .layout > .stacked,
@@ -1221,7 +1134,27 @@ svg#FlightsChart {
   .layout { grid-template-rows: auto 1fr auto; }
   .layout > .stacked     { grid-column: 1 / 9;  grid-row: 1; }
   .layout > .parcoords   { grid-column: 1 / 9;  grid-row: 2; align-self: start; }
-  .layout > .sun_filters { grid-column: 9 / 13; grid-row: 1 / 3; align-self: start; }
+  /* as tall as the left column, whatever is inside: opening the list
+     never moves the cards below; the list scrolls inside the card */
+  .layout > .sun_filters {
+    grid-column: 9 / 13;
+    grid-row: 1 / 3;
+    align-self: stretch;
+    height: 0;
+    min-height: 100%;
+    overflow: hidden;
+  }
+  .sun_filters .list-block {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .list-block.open #grid {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+  }
   .layout > .graph       { grid-column: 1 / 8;  grid-row: 3; }
   .layout > .info        { grid-column: 8 / 13; grid-row: 3; }
 }
@@ -1242,6 +1175,109 @@ svg#FlightsChart {
 @media (max-width: 760px) {
   .layout > .graph { grid-column: 1 / -1; order: 3; }
   .layout > .parcoords { order: 2; }
-  .list-block #grid { height: 60vh; height: 60svh; }
+  .list-block.open #grid { height: 60vh; height: 60svh; }
 }
 .sun_filters .list-block { grid-column: 1 / -1; }
+
+/* ================= view switch + filter chips (all screens) ================= */
+.sun_filters { display: flex; flex-direction: column; gap: 14px; align-items: stretch; }
+.sun_filters .field-wide { display: none; }
+
+.mode-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+}
+.mode-switch button {
+  height: 38px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color .15s, color .15s;
+}
+.mode-switch button.active {
+  background: linear-gradient(180deg, var(--accent-strong), var(--accent));
+  color: #fff;
+  box-shadow: 0 4px 14px -6px rgba(107, 95, 211, 0.9);
+}
+
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.filt { display: contents; }
+.filt legend { display: none; }
+body:not(.mode-astronauts) .filt-astr { display: none; }
+
+.filters-row .field {
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  height: 38px;
+  padding-left: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--field-border);
+  background: var(--field-bg);
+  transition: border-color .15s, background-color .15s;
+}
+.filters-row .field.is-set {
+  border-color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+.filters-row .field label {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.filters-row .field .select {
+  width: auto;
+  max-width: none;
+  margin: 0;
+}
+.filters-row .field .select select {
+  width: auto;
+  max-width: none;
+  height: 36px;
+  padding: 0 26px 0 4px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+.filters-row .field .select__arrow { top: 15px; right: 12px; }
+
+.filters-reset {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--accent-strong);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.filters-active .filters-reset { display: inline-flex; }
+
+
+/* the 2-column filter grid of medium screens is no longer needed */
+@media (max-width: 1200px) {
+  .sun_filters { display: flex; }
+}
+.list-toggle { flex: none; }

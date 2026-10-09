@@ -20,6 +20,9 @@
   listToggle.addEventListener("click", function () {
     setList(!listBlock.classList.contains("open"));
   });
+  // on wide screens the list fills the free space of the filters card
+  // without moving anything, so it starts open there
+  if (window.matchMedia("(min-width: 1201px)").matches) setList(true);
 
   // ---- tab bar: jump to a section, highlight the one on screen --------------
   var targets = {
@@ -116,7 +119,6 @@
   ruler.style.cssText = "position:absolute;visibility:hidden;white-space:pre;font:600 16px Nunito,system-ui,sans-serif";
   body.appendChild(ruler);
   function sizeSelect(sel) {
-    if (!phone.matches) { sel.style.width = ""; return; }
     ruler.textContent = sel.options[sel.selectedIndex].text;
     sel.style.width = Math.ceil(ruler.getBoundingClientRect().width + 30) + "px";
   }
@@ -195,7 +197,6 @@
 
   phone.addEventListener && phone.addEventListener("change", function () {
     if (!phone.matches) closeSheet();
-    syncFilters();
   });
 
   // ---- number of rows on the List tab ----------------------------------------
