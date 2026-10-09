@@ -36,15 +36,17 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(DATA, "photos")
 # packs per kind: mission photos are the biggest, so they get many small packs
-PACKS = {"m": 128, "a": 16, "p": 8, "t": 6}
+PACKS = {"m": 128, "a": 16, "p": 8, "t": {"m": 1, "p": 1, "a": 2}}
 # longest side kept per kind, about 2x the size shown on a phone or a retina
 # screen: mission photos fill the details card, portraits sit next to the
 # name, patches are badges, "t" are avatars in lists and tooltips
 MAX_SIDE = {"m": 800, "a": 480, "p": 320, "t": 112}
-# a tiny copy of a mission photo is shown blurred over the full card width
-# while the big one loads, so a few more pixels are worth it
-TINY_SIDE = {"m": 160}
-QUALITY = {"m": 76, "a": 78, "p": 80, "t": 72}
+# a tiny copy of a mission photo is only shown blurred while the big one
+# loads: 72 px is plenty. All tiny copies are loaded with the page, so they
+# must stay small (about 1-3 KB each).
+TINY_SIDE = {"m": 72}
+TINY_VERSION = 3       # bump to re-make the tiny copies from the stored images
+QUALITY = {"m": 76, "a": 78, "p": 80, "t": 60}
 
 session = requests.Session()
 session.headers.update({"User-Agent": "HumanSpaceFlightsBot/1.0 "
@@ -71,8 +73,10 @@ def wanted():
 
 
 def pack_of(key):
-    kind = key[0]
-    return "%s%02d" % (kind, zlib.crc32(key.encode("utf-8")) % PACKS[kind])
+    h = zlib.crc32(key.encode("utf-8"))
+    if key.startswith("t:"):        # tiny copies by kind: "tm00", "tp00", "ta01"
+        return "t%s%02d" % (key[2], h % PACKS["t"][key[2]])
+    return "%s%02d" % (key[0], h % PACKS[key[0]])
 
 
 def load_existing():
@@ -105,6 +109,11 @@ def shrink(raw, kind, side=None):
         img = img.convert("RGBA" if "A" in img.getbands() or img.info.get("transparency") is not None else "RGB")
     side = side or MAX_SIDE[kind]
     img.thumbnail((side, side), Image.LANCZOS)
+    if kind == "t" and img.mode == "RGBA":
+        # tiny copies sit on the dark card: flattened, they are 3x smaller
+        flat = Image.new("RGB", img.size, (13, 18, 30))
+        flat.paste(img, mask=img.getchannel("A"))
+        img = flat
     buf = io.BytesIO()
     img.save(buf, "WEBP", quality=QUALITY[kind], method=6)
     return "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
@@ -118,12 +127,19 @@ def main():
     for key, url in sorted(keys.items()):
         small = "t:" + key       # tiny copy: instant preview, avatars, tooltips
         old, old_small = have.get(key), have.get(small) if small else None
+        tiny = TINY_SIDE.get(key[0], MAX_SIDE["t"])
+        fresh_small = old_small and old_small.get("src") == url and old_small.get("v") == TINY_VERSION
         # reuse when the source and the size are the same as last time
-        if (old and old.get("src") == url and old.get("side") == MAX_SIDE[key[0]]
-                and (not small or (old_small and old_small.get("src") == url))):
+        if old and old.get("src") == url and old.get("side") == MAX_SIDE[key[0]]:
             result[key] = old
-            if small:
+            if fresh_small:
                 result[small] = old_small
+            else:          # tiny copy from the image we already have, no download
+                try:
+                    raw = base64.b64decode(old["data"].split(",", 1)[1])
+                    result[small] = {"src": url, "side": tiny, "v": TINY_VERSION, "data": shrink(raw, "t", tiny)}
+                except Exception as err:
+                    log("  tiny %s: %s" % (key, err))
             continue
         raw = download(url)
         time.sleep(0.25)          # be gentle with upload.wikimedia.org
@@ -137,8 +153,7 @@ def main():
         try:
             result[key] = {"src": url, "side": MAX_SIDE[key[0]], "data": shrink(raw, key[0])}
             if small:
-                tiny = TINY_SIDE.get(key[0], MAX_SIDE["t"])
-                result[small] = {"src": url, "side": tiny, "data": shrink(raw, "t", tiny)}
+                result[small] = {"src": url, "side": tiny, "v": TINY_VERSION, "data": shrink(raw, "t", tiny)}
             fetched += 1
         except Exception as err:          # broken or unsupported image
             log("  skip %s: %s" % (key, err))

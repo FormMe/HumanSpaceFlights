@@ -79,12 +79,18 @@ var Photos = (function () {
 		}
 	}
 
-	// after the page has settled: all tiny copies (a couple of MB at most)
+	// after the page has settled: the tiny copies, mission photos and patches
+	// first (about 1.4 MB), then the astronauts' (about 1.5 MB)
 	function preloadTiny() {
 		loadIndex().then(function (idx) {
-			var names = {};
-			Object.keys(idx).forEach(function (k) { if (k.indexOf("t:") === 0) names[idx[k]] = 1; });
-			Object.keys(names).forEach(loadPack);
+			var first = {}, later = {};
+			Object.keys(idx).forEach(function (k) {
+				if (k.indexOf("t:") !== 0) return;
+				(k.charAt(2) === "a" ? later : first)[idx[k]] = 1;
+			});
+			Promise.all(Object.keys(first).map(loadPack)).then(function () {
+				Object.keys(later).forEach(loadPack);
+			});
 		});
 	}
 	loadIndex();
