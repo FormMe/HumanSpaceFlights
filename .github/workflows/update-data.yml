@@ -37,6 +37,9 @@ jobs:
         run: |
           if [ -f scripts/build_data.py ]; then python scripts/build_data.py; fi
 
+      - name: Download photos and mission patches
+        run: python scripts/fetch_photos.py
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"

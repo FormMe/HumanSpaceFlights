@@ -433,13 +433,91 @@ def fetch_wikidata_ids(titles):
     return result
 
 
-def fetch_extracts(titles):
+def fetch_page_images(titles, size=960):
+    """Lead image of each article (a free image chosen by Wikipedia's PageImages)."""
+    log("Wikipedia: lead images of %d articles" % len(titles))
+    result = {}
+    for batch in chunks(sorted(titles), 50):
+        resp = request("GET", WIKIPEDIA_API, params={
+            "action": "query", "format": "json", "formatversion": 2,
+            "prop": "pageimages", "piprop": "thumbnail|name", "pithumbsize": size,
+            "pilimit": 50, "redirects": 1, "titles": "|".join(batch),
+        })
+        data = resp.json()["query"]
+        alias = {}
+        for kind in ("normalized", "redirects"):
+            for r in data.get(kind, []):
+                alias.setdefault(r["to"], []).append(r["from"])
+        for page in data.get("pages", []):
+            thumb = page.get("thumbnail", {}).get("source")
+            if not thumb:
+                continue
+            todo = [page["title"]]
+            while todo:
+                t = todo.pop()
+                result[t] = {"thumb": thumb, "file": page.get("pageimage", "")}
+                todo += alias.get(t, [])
+        time.sleep(1)
+    return result
+
+
+def infobox_file(infobox, fields):
+    """First file named in the given infobox parameters ('Foo.jpg' or [[File:Foo.jpg|..]])."""
+    try:
+        import mwparserfromhell
+        tpl = mwparserfromhell.parse(infobox or "").filter_templates(recursive=False)[0]
+    except (ImportError, IndexError):
+        return None
+    for p in tpl.params:
+        if str(p.name).strip().lower() not in fields:
+            continue
+        value = str(p.value)
+        m = re.search(r"(?:File|Image):([^|\]\n]+\.(?:jpe?g|png|svg|gif|webp|tiff?))", value, re.I) or \
+            re.search(r"^\s*([^|\]\[{}\n]+\.(?:jpe?g|png|svg|gif|webp|tiff?))", value, re.I)
+        if m:
+            return m.group(1).strip()
+    return None
+
+
+def fetch_file_info(files, width=960):
+    """Thumbnail, author and licence of image files (only free files are kept by the build)."""
+    log("Wikipedia: info about %d image files" % len(files))
+    result = {}
+    for batch in chunks(sorted(files), 50):
+        resp = request("GET", WIKIPEDIA_API, params={
+            "action": "query", "format": "json", "formatversion": 2,
+            "prop": "imageinfo", "iiprop": "url|extmetadata", "iiurlwidth": width,
+            "iiextmetadatafilter": "LicenseShortName|NonFree|Artist|Credit",
+            "titles": "|".join("File:" + f for f in batch),
+        })
+        data = resp.json()["query"]
+        alias = {}
+        for r in data.get("normalized", []):
+            alias[r["to"]] = r["from"]
+        for page in data.get("pages", []):
+            info = (page.get("imageinfo") or [{}])[0]
+            if not info.get("thumburl"):
+                continue
+            meta = info.get("extmetadata", {})
+            name = alias.get(page["title"], page["title"]).split(":", 1)[1]
+            result[name] = {
+                "thumb": info["thumburl"],
+                "page": info.get("descriptionurl", ""),
+                "license": meta.get("LicenseShortName", {}).get("value", ""),
+                "nonfree": str(meta.get("NonFree", {}).get("value", "")).lower() in ("true", "1", "yes"),
+                "artist": re.sub(r"<[^>]+>", "", meta.get("Artist", {}).get("value", "")).strip()[:120],
+            }
+        time.sleep(1)
+    return result
+
+
+def fetch_extracts(titles, sentences=3):
     log("Wikipedia: intros of %d articles" % len(titles))
     result = {}
     for batch in chunks(sorted(titles), 20):
         resp = request("GET", WIKIPEDIA_API, params={
             "action": "query", "format": "json", "formatversion": 2,
-            "prop": "extracts", "exintro": 1, "explaintext": 1, "exsentences": 3,
+            "prop": "extracts", "exintro": 1, "explaintext": 1, "exsentences": sentences,
             "exlimit": "max", "redirects": 1, "titles": "|".join(batch),
         })
         data = resp.json()["query"]
@@ -557,6 +635,20 @@ def main():
     extracts = fetch_extracts(
         {article_title(m["article"][0]) for m in flights.values() if m.get("article")})
 
+    # short biographies and lead images (photos) of people and missions
+    person_titles = set(person_boxes)
+    person_extracts.update(fetch_extracts(person_titles - set(person_extracts), sentences=4))
+    mission_titles_all = {article_title(m["article"][0]) for m in flights.values() if m.get("article")}
+    images = fetch_page_images(person_titles | mission_titles_all | set(mission_boxes))
+    # missions: the real photo of the infobox and the mission patch, separately
+    mission_files = {}
+    for title, box in mission_boxes.items():
+        mission_files[title] = {"image": infobox_file(box, ("image",)),
+                                "insignia": infobox_file(box, ("insignia",))}
+    wanted = {f for v in mission_files.values() for f in v.values() if f}
+    wanted |= {v["file"] for v in images.values() if v.get("file")}
+    file_info = fetch_file_info(wanted)
+
     save("wikidata_links.json", [list(l) for l in links])
     save("wikidata_people.json", people)
     save("wikidata_missions.json", flights)
@@ -566,6 +658,9 @@ def main():
     save("wikipedia_infoboxes.json", person_boxes)
     save("wikipedia_extracts.json", extracts)
     save("wikipedia_person_extracts.json", person_extracts)
+    save("wikipedia_images.json", images)
+    save("wikipedia_mission_files.json", mission_files)
+    save("wikipedia_file_info.json", file_info)
     save("diagnostics.json", DIAGNOSTICS)
     save("meta.json", {"fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                        "people": len(people), "missions": len(flights), "links": len(links)})

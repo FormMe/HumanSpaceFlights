@@ -1,0 +1,142 @@
+#!/usr/bin/env python3
+"""Download photos and mission patches into small packs the page loads lazily.
+
+Stage 3 of the data pipeline (needs internet access), after build_data.py:
+
+    python scripts/fetch_photos.py
+
+Reads the "Photo URL" / "Patch URL" columns of data/missions.csv and
+data/all_astronauts.csv (free Wikimedia images chosen by build_data.py),
+downloads the thumbnails, shrinks them to WebP and stores them as data URIs
+in data/photos/pack-NN.json, with data/photos/index.json mapping each key
+("a:<astronaut>", "m:<mission>", "p:<mission patch>") to its pack.
+
+Only new or changed images are downloaded; images no longer used are dropped.
+A few hundred small files would not fit the limits of every host, so the
+images are packed: the page fetches a pack only when it shows a photo from it.
+"""
+
+import base64
+import csv
+import io
+import json
+import os
+import sys
+import time
+import zlib
+
+import requests
+from PIL import Image
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA = os.path.join(ROOT, "data")
+OUT = os.path.join(DATA, "photos")
+PACKS = 16
+# longest side kept per kind: mission photos fill the details card, portraits
+# are shown as avatars and in the card, patches are small badges
+MAX_SIDE = {"m": 480, "a": 320, "p": 240}
+QUALITY = 78
+
+session = requests.Session()
+session.headers.update({"User-Agent": "HumanSpaceFlightsBot/1.0 "
+                                      "(https://github.com/FormMe/HumanSpaceFlights; data visualization project)"})
+
+
+def log(*args):
+    print(*args, file=sys.stderr, flush=True)
+
+
+def wanted():
+    keys = {}
+    with open(os.path.join(DATA, "missions.csv"), encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            if r.get("Photo URL"):
+                keys["m:" + r["Launch Mission"]] = r["Photo URL"]
+            if r.get("Patch URL"):
+                keys["p:" + r["Launch Mission"]] = r["Patch URL"]
+    with open(os.path.join(DATA, "all_astronauts.csv"), encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            if r.get("Photo URL"):
+                keys["a:" + r["Name"]] = r["Photo URL"]
+    return keys
+
+
+def pack_of(key):
+    return zlib.crc32(key.encode("utf-8")) % PACKS
+
+
+def load_existing():
+    have = {}
+    for n in range(PACKS):
+        path = os.path.join(OUT, "pack-%02d.json" % n)
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as f:
+                have.update(json.load(f))
+    return have
+
+
+def download(url):
+    for attempt in range(5):
+        try:
+            resp = session.get(url, timeout=60)
+            if resp.status_code == 429 or resp.status_code >= 500:
+                raise requests.HTTPError("HTTP %s" % resp.status_code)
+            resp.raise_for_status()
+            return resp.content
+        except requests.RequestException as err:
+            wait = 2 ** (attempt + 1)
+            log("  %s: %s, retry in %ss" % (url.rsplit("/", 1)[-1][:60], err, wait))
+            time.sleep(wait)
+    return None
+
+
+def shrink(raw, kind):
+    img = Image.open(io.BytesIO(raw))
+    img.load()
+    if img.mode not in ("RGB", "RGBA"):
+        img = img.convert("RGBA" if "A" in img.getbands() or img.info.get("transparency") is not None else "RGB")
+    side = MAX_SIDE[kind]
+    img.thumbnail((side, side), Image.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, "WEBP", quality=QUALITY, method=6)
+    return "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
+
+
+def main():
+    os.makedirs(OUT, exist_ok=True)
+    keys = wanted()
+    have = load_existing()
+    result, fetched, failed = {}, 0, 0
+    for key, url in sorted(keys.items()):
+        old = have.get(key)
+        if old and old.get("src") == url:
+            result[key] = old
+            continue
+        raw = download(url)
+        time.sleep(0.25)          # be gentle with upload.wikimedia.org
+        if not raw:
+            failed += 1
+            if old:
+                result[key] = old
+            continue
+        try:
+            result[key] = {"src": url, "data": shrink(raw, key[0])}
+            fetched += 1
+        except Exception as err:          # broken or unsupported image
+            log("  skip %s: %s" % (key, err))
+            failed += 1
+    packs = [{} for _ in range(PACKS)]
+    for key in sorted(result):
+        packs[pack_of(key)][key] = result[key]
+    for n, pack in enumerate(packs):
+        with open(os.path.join(OUT, "pack-%02d.json" % n), "w", encoding="utf-8") as f:
+            json.dump(pack, f, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    with open(os.path.join(OUT, "index.json"), "w", encoding="utf-8") as f:
+        json.dump({k: pack_of(k) for k in sorted(result)}, f, ensure_ascii=False, separators=(",", ":"))
+    size = sum(os.path.getsize(os.path.join(OUT, "pack-%02d.json" % n)) for n in range(PACKS))
+    log("photos: %d wanted, %d downloaded, %d reused, %d failed, %.1f MB in %d packs"
+        % (len(keys), fetched, len(result) - fetched, failed, size / 1e6, PACKS))
+
+
+if __name__ == "__main__":
+    main()

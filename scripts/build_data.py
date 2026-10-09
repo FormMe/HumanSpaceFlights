@@ -44,11 +44,15 @@ SOURCE = os.path.join(DATA, "source")
 
 MISSION_COLUMNS = ["Crew", "Country", "Habitation", "Brief Mission Summary", "Fatality",
                    "Moon", "Sub Orbital", "Prolongation", "Launch Data", "Launch Mission",
-                   "Return Data", "Return Mission", "Year"]
+                   "Return Data", "Return Mission", "Year",
+                   "Rocket", "Spacecraft", "Launch Site", "Landing Site", "Callsign", "Operator",
+                   "Wikipedia", "Photo URL", "Photo Credit", "Photo Page",
+                   "Patch URL", "Patch Credit", "Patch Page"]
 ASTRONAUT_COLUMNS = ["Name", "Year", "Status", "Birth Date", "Birth Place", "Gender",
                      "Alma Mater", "Military Rank", "Military Branch", "Space Flights",
                      "Space Flight (hr)", "Space Walks", "Space Walks (hr)", "Missions",
-                     "Death Date", "Death Mission", "Country", "Nationality", "Country Code", "Source"]
+                     "Death Date", "Death Mission", "Country", "Nationality", "Country Code", "Source",
+                     "Agency", "Bio", "Wikipedia", "Photo URL", "Photo Credit", "Photo Page"]
 
 # Not orbital human spaceflights: kept out, like in the original dataset.
 SUBORBITAL = re.compile(
@@ -530,6 +534,9 @@ def main():
     legacy_ids = load_json("wikipedia_legacy_ids.json", {})
     person_extracts = load_json("wikipedia_person_extracts.json", {})
     extracts = load_json("wikipedia_extracts.json", {})
+    images = load_json("wikipedia_images.json", {})
+    mission_files = load_json("wikipedia_mission_files.json", {})
+    file_info = load_json("wikipedia_file_info.json", {})
     overrides = load_overrides()
 
     if not wd_missions:
@@ -961,6 +968,66 @@ def main():
             "Source": "Wikidata/Wikipedia",
         })
         seen.add(name)
+
+    # ---- more details: vehicle, places, biography, photo, article -------------
+    def short(raw, limit=70):
+        text = plain(re.sub(r"<ref[^>]*/>|<ref.*?</ref>", " ", raw or "", flags=re.S))
+        text = re.split(r"\n|\s{2,}", text.strip())[0] if text else ""
+        text = re.sub(r"\(\s*[,;]?\s*\)", "", text)        # templates removed by plain()
+        text = re.sub(r"(^|\s)(,\s*)?or\s*$", "", text.strip())
+        text = re.sub(r"\s{2,}", " ", text).strip(" ,;(")
+        return text[:limit].rstrip(" ,;(")
+
+    def free_image(name, prefix):
+        """Thumbnail, credit and file page of a free image (non-free files are skipped:
+        Wikipedia may use them under fair use, this site may not)."""
+        info = file_info.get(name or "")
+        if not info or info.get("nonfree"):
+            return {}
+        credit = " · ".join(x for x in (info.get("artist", ""), info.get("license", "")) if x)
+        return {prefix + " URL": info["thumb"], prefix + " Credit": credit[:160], prefix + " Page": info.get("page", "")}
+
+    def article_url(title):
+        return ("https://en.wikipedia.org/wiki/" + title.replace(" ", "_")) if title else ""
+
+    mission_q = {label: q for q, label in new_missions.items()}
+    mission_q.update(legacy_to_wd)
+    for row in missions_out:
+        q = mission_q.get(row["Launch Mission"])
+        if not q or q not in wd_missions:
+            continue
+        m = wd_missions[q]
+        title = article(m)
+        box = parse_infobox(mission_boxes.get(title or "", ""))
+        row["Rocket"] = short(box.get("launch_rocket")) or first(m.get("vehicle", []))
+        row["Spacecraft"] = short(box.get("spacecraft") or box.get("shuttle") or box.get("spacecraft_type"))
+        if not row["Rocket"] and box.get("shuttle"):
+            row["Rocket"] = "Space Shuttle"
+        row["Launch Site"] = short(box.get("launch_site"))
+        row["Landing Site"] = short(box.get("landing_site") or box.get("landing_zone"))
+        row["Callsign"] = short(box.get("crew_callsign"), 40)
+        row["Operator"] = short(box.get("operator")) or first(m.get("operator", []))
+        row["Wikipedia"] = article_url(title)
+        files = mission_files.get(title or "", {})
+        patch = free_image(files.get("insignia"), "Patch")
+        lead = images.get(title or "", {}).get("file")
+        photo = free_image(files.get("image"), "Photo") or \
+            (free_image(lead, "Photo") if lead and lead != files.get("insignia") else {})
+        row.update(photo)
+        row.update(patch)
+
+    for a in astronauts_out:
+        q = by_name_q.get(a["Name"])
+        if not q or q not in people:
+            continue
+        title = article(people[q])
+        box = wikipedia_details(q)
+        a["Agency"] = short(box.get("type"), 50)
+        bio = person_extracts.get(title or "", "")
+        bio = re.sub(r"\s*\([^()]*\)", "", bio)          # drop "(born ...; Russian: ...)"
+        a["Bio"] = re.sub(r"\s+", " ", bio).strip()[:600]
+        a["Wikipedia"] = article_url(title)
+        a.update(free_image(images.get(title or "", {}).get("file"), "Photo"))
 
     write_csv(os.path.join(DATA, "missions.csv"), missions_out, MISSION_COLUMNS)
     write_csv(os.path.join(DATA, "all_astronauts.csv"), astronauts_out, ASTRONAUT_COLUMNS)
