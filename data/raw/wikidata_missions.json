@@ -3,6 +3,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-21"
   ],
+  "commons_image": [
+   "Soyuz MS-21 Crew Portrait (ISS).jpg",
+   "Soyuz MS-21 crew portrait.jpg"
+  ],
   "description": [
    "spaceflight mission to ISS"
   ],
@@ -35,6 +39,12 @@
  "Q100440345": {
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-3"
+  ],
+  "commons_image": [
+   "SpaceX Crew-3 (official portrait).jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-3 logo.svg"
   ],
   "country": [
    "United States"
@@ -74,6 +84,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-4"
   ],
+  "commons_image": [
+   "SpaceX Crew-4 Official Portrait.jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew 4 logo.png"
+  ],
   "country": [
    "United States"
   ],
@@ -112,6 +128,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-29"
   ],
+  "commons_image": [
+   "Soyuz TM-29 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-29 logo SVG.svg"
+  ],
   "country": [
    "Russia"
   ],
@@ -148,6 +170,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Inspiration4"
   ],
+  "commons_image": [
+   "Inspiration4 crew visits NASA's JSC (cropped).jpg"
+  ],
+  "commons_logo": [
+   "Inspiration4 Launch (210915-X-YM354-1013).jpg"
+  ],
   "country": [
    "United States"
   ],
@@ -179,6 +207,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Skylab_3"
   ],
+  "commons_image": [
+   "Skylab 3 Close-Up - GPN-2000-001711.jpg"
+  ],
+  "commons_logo": [
+   "Skylab2-Patch.png"
+  ],
   "description": [
    "second crewed mission of the Skylab program"
   ],
@@ -204,6 +238,9 @@
  "Q106691867": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_13"
+  ],
+  "commons_image": [
+   "Shenzhou 13 crew in October 15.jpg"
   ],
   "country": [
    "People's Republic of China"
@@ -245,6 +282,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-22"
   ],
+  "commons_image": [
+   "Soyuz MS-22 spacecraft at space station leaking 'particles' into space (1).jpg"
+  ],
   "country": [
    "Russia"
   ],
@@ -279,6 +319,12 @@
  "Q106977230": {
   "article": [
    "https://en.wikipedia.org/wiki/Axiom_Mission_2"
+  ],
+  "commons_image": [
+   "Axiom-2 Launch Show & Liftoff (KSC-20230521-PH-JBS01 0059) (cropped).jpg"
+  ],
+  "commons_logo": [
+   "Ax-2 non official logo.svg"
   ],
   "country": [
    "United States"
@@ -316,6 +362,9 @@
  "Q107258411": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_14"
+  ],
+  "commons_image": [
+   "Shenzhou 14 roll out.jpg"
   ],
   "country": [
    "People's Republic of China"
@@ -356,6 +405,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-28"
   ],
+  "commons_image": [
+   "Soyuz TM-28 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-28 patch.png"
+  ],
   "country": [
    "Russia"
   ],
@@ -391,6 +446,9 @@
  "Q107458809": {
   "article": [
    "https://en.wikipedia.org/wiki/Virgin_Galactic_Unity_22"
+  ],
+  "commons_image": [
+   "Virgin Galactic SpaceShipTwo \"Unity\" rollout 19Feb2016, FAITH hangar, Mojave, California.jpg"
   ],
   "country": [
    "United Kingdom"
@@ -483,6 +541,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-5"
   ],
+  "commons_image": [
+   "SpaceX Dragon Endurance and the waxing gibbous Moon (1) (cropped).jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-5 logo.png"
+  ],
   "country": [
    "United States"
   ],
@@ -520,6 +584,12 @@
  "Q1090911": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-111"
+  ],
+  "commons_image": [
+   "STS-111 approach with MPLM.jpg"
+  ],
+  "commons_logo": [
+   "STS-111 Patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -577,6 +647,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_15"
   ],
+  "commons_image": [
+   "Shenzhou 15 - Crew Portrait.jpg"
+  ],
   "country": [
    "People's Republic of China"
   ],
@@ -618,6 +691,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-6"
   ],
+  "commons_image": [
+   "SpaceX crew 6 crew portrait.png"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-6 logo.png"
+  ],
   "country": [
    "United States"
   ],
@@ -656,6 +735,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-23"
   ],
+  "commons_image": [
+   "Expedition 68 Press Conference (NHQ202209200023).jpg"
+  ],
   "country": [
    "Russia"
   ],
@@ -688,6 +770,9 @@
  "Q110622389": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-24"
+  ],
+  "commons_image": [
+   "Soyuz MS-24 Crew.jpg"
   ],
   "description": [
    "spaceflight mission to ISS"
@@ -752,6 +837,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-7"
   ],
+  "commons_image": [
+   "SpaceX crew 7 crew portrait.jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-7 logo.png"
+  ],
   "country": [
    "United States"
   ],
@@ -789,6 +880,12 @@
  "Q110916241": {
   "article": [
    "https://en.wikipedia.org/wiki/Polaris_Dawn"
+  ],
+  "commons_image": [
+   "Polaris Dawn crew.jpg"
+  ],
+  "commons_logo": [
+   "Logo of Polaris Dawn.svg"
   ],
   "country": [
    "United States"
@@ -883,6 +980,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-81"
   ],
+  "commons_image": [
+   "STS-81 Launch.jpg",
+   "STS-81 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-81-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -911,6 +1015,13 @@
  "Q1130109": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-5"
+  ],
+  "commons_image": [
+   "Chiao, Shargin, Sharipov.jpg",
+   "Soyuz TMA-5 launch.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TMA-5 Patch.png"
   ],
   "description": [
    "Russian space exploration mission"
@@ -973,6 +1084,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-113"
   ],
+  "commons_image": [
+   "Shuttle delivers ISS P1 truss.jpg"
+  ],
+  "commons_logo": [
+   "STS-113 Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -1002,6 +1119,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-110"
   ],
+  "commons_image": [
+   "STS-110 Launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-110 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -1030,6 +1153,9 @@
  "Q1137089": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-22"
+  ],
+  "commons_image": [
+   "Soyuz TMA-22 crew.jpg"
   ],
   "description": [
    "crewed spaceflight to the International Space Station"
@@ -1064,6 +1190,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-61"
   ],
+  "commons_image": [
+   "STS061-98-050 - Astronauts Musgrave and Hoffman during servicing of HST (Retouched).jpg",
+   "Sts-61 crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-61 patch.svg"
+  ],
   "description": [
    "the first Hubble Space Telescope servicing mission"
   ],
@@ -1092,6 +1225,10 @@
  "Q1138999": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-03M"
+  ],
+  "commons_image": [
+   "Soyuz TMA-03M crew.jpg",
+   "Soyuz TMA-03M rocket launches 2 cropped.jpg"
   ],
   "description": [
    "2011 Russian crewed spaceflight to the ISS"
@@ -1125,6 +1262,12 @@
  "Q114257376": {
   "article": [
    "https://en.wikipedia.org/wiki/Axiom_Mission_3"
+  ],
+  "commons_image": [
+   "Axiom Mission 3 at the ISS (cropped).jpg"
+  ],
+  "commons_logo": [
+   "Ax-3 non official logo.svg"
   ],
   "country": [
    "United States"
@@ -1163,6 +1306,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-79"
   ],
+  "commons_image": [
+   "STS-79 Launch.jpg",
+   "STS-79 crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-79 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -1191,6 +1341,12 @@
  "Q1143978": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-63"
+  ],
+  "commons_image": [
+   "STS-63 launch.jpg"
+  ],
+  "commons_logo": [
+   "Sts-63-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -1221,6 +1377,14 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-74"
   ],
+  "commons_image": [
+   "Atlantis Docked to Mir (STS-74).jpg",
+   "STS-074 shuttle.jpg",
+   "STS-74 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-74-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -1249,6 +1413,9 @@
  "Q115593337": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_16"
+  ],
+  "commons_image": [
+   "神舟十六号载人飞船发射取得圆满成功1.png"
   ],
   "country": [
    "People's Republic of China"
@@ -1291,6 +1458,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-9"
   ],
+  "commons_image": [
+   "NASA’s SpaceX Crew-9 Launch (NHQ202409280009).jpg"
+  ],
+  "commons_logo": [
+   "Updated SpaceX Crew-9 Patch.png"
+  ],
   "country": [
    "United States"
   ],
@@ -1328,6 +1501,12 @@
  "Q115651849": {
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-8"
+  ],
+  "commons_image": [
+   "Jsc2023e070781.jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-8 logo.svg"
   ],
   "country": [
    "United States"
@@ -1367,6 +1546,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-10"
   ],
+  "commons_image": [
+   "NASA’s SpaceX Crew-10 Launch (NHQ202503140021).jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-10 logo.png"
+  ],
   "country": [
    "United States"
   ],
@@ -1404,6 +1589,12 @@
  "Q115651857": {
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-11"
+  ],
+  "commons_image": [
+   "The official portrait of the four members of NASA's SpaceX Crew-11 mission (jsc2025e011960 alt).jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-11 logo.png"
   ],
   "country": [
    "United States"
@@ -1443,6 +1634,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-13"
   ],
+  "commons_image": [
+   "The four members of NASA’s SpaceX Crew-13 mission to the International Space Station (amf-jsc2026e401203).jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-13 logo.png"
+  ],
   "country": [
    "United States"
   ],
@@ -1478,6 +1675,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Axiom_Mission_4"
   ],
+  "commons_image": [
+   "The SpaceX Dragon spacecraft carrying Axiom Mission 4 approaches the International Space Station (iss073e0249700) (cropped).jpg"
+  ],
+  "commons_logo": [
+   "Inofficial Ax-4 Logo.svg"
+  ],
   "country": [
    "United States"
   ],
@@ -1512,6 +1715,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-25"
   ],
+  "commons_image": [
+   "Soyuz MS-25 in a stream of aurora.jpg"
+  ],
   "description": [
    "2024 Russian crewed spaceflight to the ISS"
   ],
@@ -1538,6 +1744,9 @@
  "Q116178276": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-26"
+  ],
+  "commons_image": [
+   "Iss071e629830 (Sept. 11, 2024) --- The Soyuz MS-26 spacecraft.jpg"
   ],
   "description": [
    "Russian crewed spaceflight to the ISS"
@@ -1569,6 +1778,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-28"
   ],
+  "commons_image": [
+   "The Soyuz MS-28 crew spacecraft approaches the International Space Station (iss073e1196772).jpg"
+  ],
   "description": [
    "2025 Russian crewed spaceflight to the ISS"
   ],
@@ -1598,6 +1810,9 @@
  "Q116178292": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-27"
+  ],
+  "commons_image": [
+   "The Soyuz MS-27 spacecraft approaches the International Space Station (iss072e941652).jpg"
   ],
   "country": [
    "Russia"
@@ -1634,6 +1849,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-104"
   ],
+  "commons_image": [
+   "STS-104 crew.jpg",
+   "STS104 Atlantis Docked ISS.jpg"
+  ],
+  "commons_logo": [
+   "Sts-104-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -1662,6 +1884,9 @@
  "Q117448674": {
   "article": [
    "https://en.wikipedia.org/wiki/Artemis_VI"
+  ],
+  "commons_logo": [
+   "Exploration Mission-1 patch.png"
   ],
   "country": [
    "United States"
@@ -1698,6 +1923,9 @@
  "Q118864589": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_17"
+  ],
+  "commons_image": [
+   "神舟十七号船箭组合体转运至发射区 计划近日择机实施发射1.png"
   ],
   "country": [
    "People's Republic of China"
@@ -1832,6 +2060,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_7"
   ],
+  "commons_image": [
+   "Gemini 6 7.jpg",
+   "Gemini 7 Crew (Lovell und Borman).jpg"
+  ],
+  "commons_logo": [
+   "Gemini VII patch.png"
+  ],
   "description": [
    "1965 crewed spaceflight in NASA's Gemini program"
   ],
@@ -1864,6 +2099,9 @@
  "Q1231148": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-8"
+  ],
+  "commons_image": [
+   "Soyuz TMA-8 crew.jpg"
   ],
   "description": [
    "mission to the International Space Station"
@@ -1923,6 +2161,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Skylab_4"
   ],
+  "commons_image": [
+   "Skylab and Earth Limb - GPN-2000-001055.jpg"
+  ],
+  "commons_logo": [
+   "Skylab3-Patch.png"
+  ],
   "description": [
    "third crewed mission of the Skylab program"
   ],
@@ -1945,6 +2189,9 @@
  "Q124343255": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_18"
+  ],
+  "commons_image": [
+   "神舟十八号航天员乘组 Shenzhou 18 crew 20240425.jpg"
   ],
   "country": [
    "People's Republic of China"
@@ -2010,6 +2257,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-11M"
   ],
+  "commons_image": [
+   "Expedition 36 backup crew members in front of the Soyuz TMA spacecraft mock-up in Star City, Russia.jpg",
+   "Soyuz TMA-11M & Progress M-20M at ISS.jpg"
+  ],
   "description": [
    "space flight"
   ],
@@ -2042,6 +2293,9 @@
  "Q125577807": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-29"
+  ],
+  "commons_image": [
+   "The Soyuz MS-29 spacecraft approaches the International Space Station for an automated docking (iss074e0814098) (cropped).jpg"
   ],
   "country": [
    "Russia"
@@ -2079,6 +2333,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_19"
   ],
+  "commons_image": [
+   "Shenzhou 19 launch 01.png"
+  ],
   "country": [
    "People's Republic of China"
   ],
@@ -2108,6 +2365,9 @@
  "Q128945147": {
   "article": [
    "https://en.wikipedia.org/wiki/Fram2"
+  ],
+  "commons_logo": [
+   "FRAM2 text logo.png"
   ],
   "country": [
    "United States"
@@ -2139,6 +2399,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_20"
   ],
+  "commons_image": [
+   "神舟二十号发射成功 赖岳谦：大陆航天技术已经非常成熟 像“上班下班”一样稳1.png"
+  ],
   "country": [
    "People's Republic of China"
   ],
@@ -2168,6 +2431,9 @@
  "Q131500": {
   "article": [
    "https://en.wikipedia.org/wiki/Tiangong-1"
+  ],
+  "commons_image": [
+   "Tiangong 1 drawing (cropped).png"
   ],
   "country": [
    "People's Republic of China"
@@ -2246,6 +2512,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-76"
   ],
+  "commons_image": [
+   "STS-76 crew.jpg",
+   "STS76 Atlantis Launch.jpg"
+  ],
+  "commons_logo": [
+   "Sts-76-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -2274,6 +2547,13 @@
  "Q1340837": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-86"
+  ],
+  "commons_image": [
+   "STS-86 crew.jpg",
+   "STS86 Launch.jpg"
+  ],
+  "commons_logo": [
+   "Sts-86-patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -2304,6 +2584,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-96"
   ],
+  "commons_image": [
+   "Space-Shuttle-Discovery-Lancering.jpg"
+  ],
+  "commons_logo": [
+   "Sts-96-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -2332,6 +2618,9 @@
  "Q134445626": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_21"
+  ],
+  "commons_image": [
+   "神舟载人飞船首次实现3.5小时交会对接1.png"
   ],
   "country": [
    "People's Republic of China"
@@ -2399,6 +2688,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-12"
   ],
+  "commons_image": [
+   "The four members of NASA's SpaceX Crew-12 mission to the International Space Station (jsc2026e004045).jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-12 logo.png"
+  ],
   "country": [
    "United States"
   ],
@@ -2437,6 +2732,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-4"
   ],
+  "commons_image": [
+   "Soyuz TMA-4 Crew.jpg",
+   "Soyuz TMA-4 launch.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TMA-4 Patch.png"
+  ],
   "description": [
    "Russian space exploration mission"
   ],
@@ -2470,6 +2772,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Blue_Origin_NS-36"
   ],
+  "commons_image": [
+   "Blue Origin NS 36.jpg"
+  ],
   "description": [
    "2025 sub-orbital human spaceflight"
   ],
@@ -2495,6 +2800,13 @@
  "Q1365962": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-78"
+  ],
+  "commons_image": [
+   "STS-78 Launch.jpg",
+   "STS-78 crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-78 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -2524,6 +2836,9 @@
  "Q136745599": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_22"
+  ],
+  "commons_image": [
+   "神舟二十二号发射任务1.png"
   ],
   "country": [
    "People's Republic of China"
@@ -2560,6 +2875,9 @@
  "Q136850111": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_23"
+  ],
+  "commons_image": [
+   "Shenzhou 23 rollout 09.png"
   ],
   "country": [
    "People's Republic of China"
@@ -2642,6 +2960,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-04M"
   ],
+  "commons_image": [
+   "Soyuz TMA-04M crew.jpg",
+   "Soyuz TMA-04M spacecraft departs from the ISS a.jpg"
+  ],
   "description": [
    "2012 Russian crewed spaceflight to the ISS"
   ],
@@ -2674,6 +2996,12 @@
  "Q1423493": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-31"
+  ],
+  "commons_image": [
+   "ISS Expedition 1 crew.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-31 patch.png"
   ],
   "country": [
    "Russia"
@@ -2711,6 +3039,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-1"
   ],
+  "commons_image": [
+   "Soyuz TMA-1 crew.jpg",
+   "Soyuz TMA-1.jpg"
+  ],
+  "commons_logo": [
+   "Soyouz TMA-1 logo.svg"
+  ],
   "country": [
    "Russia"
   ],
@@ -2746,6 +3081,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-32"
   ],
+  "commons_image": [
+   "ISS-02 Soyuz TM-32 Taxi crewmembers.jpg",
+   "Soyuz TM-32.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-32 patch.png"
+  ],
   "description": [
    "2001 Russian crewed spaceflight to the ISS"
   ],
@@ -2778,6 +3120,9 @@
  "Q1424265": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-8"
+  ],
+  "commons_logo": [
+   "Mir insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -2815,6 +3160,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-3"
   ],
+  "commons_image": [
+   "Soyuz TMA-3 Crew.jpeg",
+   "SoyuzTMA3 Launch.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TMA-3 Patch.png"
+  ],
   "description": [
    "crewed spaceflight to the International Space Station"
   ],
@@ -2848,6 +3200,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-2"
   ],
+  "commons_image": [
+   "ISS Expedition 7 crew.jpg",
+   "Soyuz TMA-2 launch.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TMA-2 Patch.png"
+  ],
   "description": [
    "ISS mission"
   ],
@@ -2880,6 +3239,13 @@
  "Q1424853": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-21"
+  ],
+  "commons_image": [
+   "Expedition 7 Soyuz launch.jpg",
+   "Predsedatel SF Vladimir Shumeiko na kosmodrome.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-21 Patch.png"
   ],
   "country": [
    "Russia"
@@ -2917,6 +3283,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-87"
   ],
+  "commons_image": [
+   "STS-87 launch.jpg",
+   "Sts-87 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-87-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -2945,6 +3318,12 @@
  "Q1426913": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-70"
+  ],
+  "commons_image": [
+   "Space Shuttle STS-70 Launch DSC00001.jpg"
+  ],
+  "commons_logo": [
+   "Sts-70-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -2975,6 +3354,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-85"
   ],
+  "commons_image": [
+   "STS-85 crew.jpg",
+   "STS-85 launch.jpg"
+  ],
+  "commons_logo": [
+   "Sts-85-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -3004,6 +3390,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-94"
   ],
+  "commons_image": [
+   "STS-83 crew.jpg",
+   "Sts-94 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-94 Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -3032,6 +3425,10 @@
  "Q14288150": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-19M"
+  ],
+  "commons_image": [
+   "Soyuz TMA-19M crew with backup crew at the Baikonur Cosmodrome.jpg",
+   "Soyuz TMA-19M official crew portrait.jpg"
   ],
   "description": [
    "Soyuz flight to the International Space Station"
@@ -3065,6 +3462,9 @@
  "Q144502": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-14"
+  ],
+  "commons_image": [
+   "Salyut 7 and Cosmos 1686 drawing.png"
   ],
   "country": [
    "Soviet Union"
@@ -3101,6 +3501,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-06M"
   ],
+  "commons_image": [
+   "Soyuz TMA-06M crew.jpg",
+   "Soyuz TMA-06M rocket launches from Baikonur 1.jpg"
+  ],
   "description": [
    "Spaceflight to the International Space Station"
   ],
@@ -3133,6 +3537,12 @@
  "Q1475435": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-9"
+  ],
+  "commons_image": [
+   "Soyuz-tm-9 integration.jpg"
+  ],
+  "commons_logo": [
+   "Mir insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -3170,6 +3580,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-59"
   ],
+  "commons_image": [
+   "EndeavourPayloadBaySTS59.jpg",
+   "Sts-59 crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-59 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -3198,6 +3615,9 @@
  "Q1540599": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-16"
+  ],
+  "commons_logo": [
+   "Soyuz TM-16 patch.png"
   ],
   "country": [
    "Russia"
@@ -3235,6 +3655,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-17"
   ],
+  "commons_image": [
+   "Soyuz TM-17 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-17 patch.png"
+  ],
   "country": [
    "Russia"
   ],
@@ -3270,6 +3696,12 @@
  "Q1540622": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-15"
+  ],
+  "commons_image": [
+   "Soyuz TM-15 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-15 patch.png"
   ],
   "country": [
    "Russia"
@@ -3307,6 +3739,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-122"
   ],
+  "commons_image": [
+   "STS122 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-122 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -3335,6 +3773,9 @@
  "Q15971488": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-01"
+  ],
+  "commons_image": [
+   "Expedition 49 crew portrait with astronaut Kate Rubins, cosmonaut Anatoly Ivanishin, and astronaut Takuya Onishi.jpg"
   ],
   "description": [
    "Soyuz spaceflight"
@@ -3369,6 +3810,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-20M"
   ],
+  "commons_image": [
+   "Soyuz TMA-20M official crew portrait.jpg",
+   "Soyuz TMA-20M spacecraft approaches the ISS (1).jpg"
+  ],
   "description": [
    "2016 spaceflight to the International Space Station"
   ],
@@ -3401,6 +3846,11 @@
  "Q1628242": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-13M"
+  ],
+  "commons_image": [
+   "Soyuz TMA-13M above California-Nevada.jpg",
+   "Soyuz TMA-13M crew during an emergency scenario training session at JSC.jpg",
+   "Soyuz TMA-13M-5-28-2014-25m-final-approach-hand-in-window.png"
   ],
   "description": [
    "2014 Russian crewed spaceflight to the ISS"
@@ -3438,6 +3888,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-14M"
   ],
+  "commons_image": [
+   "Soyuz TMA-14M approaches the ISS (d).jpg",
+   "Soyuz TMA-14M crew in front of their spacecraft.jpg"
+  ],
   "description": [
    "2014 Russian crewed spaceflight to the ISS"
   ],
@@ -3471,6 +3925,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-68"
   ],
+  "commons_image": [
+   "STS-68 crew.jpg",
+   "STS-68 payload bay view.jpg"
+  ],
+  "commons_logo": [
+   "Sts-68-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -3499,6 +3960,13 @@
  "Q16947045": {
   "article": [
    "https://en.wikipedia.org/wiki/Artemis_II"
+  ],
+  "commons_image": [
+   "Artemis 2 Crew Portrait.jpg",
+   "Artemis II Launch (NHQ202604010307).jpg"
+  ],
+  "commons_logo": [
+   "Artemis II patch.svg"
   ],
   "country": [
    "United States"
@@ -3532,6 +4000,9 @@
   ]
  },
  "Q1724109": {
+  "commons_image": [
+   "Soyuz 19 (Apollo Soyuz Test Project) spacecraft.jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -3569,6 +4040,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-26"
   ],
+  "commons_image": [
+   "Soyuz TM-26 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-26 patch.png"
+  ],
   "country": [
    "Russia"
   ],
@@ -3605,6 +4082,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-33"
   ],
+  "commons_image": [
+   "ISS-03 Soyuz TM-33 Taxi crewmembers in the Zvezda Service Module.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-33 patch.png"
+  ],
   "description": [
    "2001 Russian crewed spaceflight to the ISS"
   ],
@@ -3637,6 +4120,13 @@
  "Q1773494": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-08M"
+  ],
+  "commons_image": [
+   "Soyuz TMA-08M crew.jpg",
+   "Soyuz TMA-08M departing from ISS.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz-TMA-08M-Mission-Patch.svg"
   ],
   "description": [
    "2013 Russian crewed spaceflight to the ISS"
@@ -3671,6 +4161,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-107"
   ],
+  "commons_image": [
+   "Close-up STS-107 Launch - GPN-2003-00080.jpg"
+  ],
+  "commons_logo": [
+   "STS-107 Flight Insignia.svg"
+  ],
   "description": [
    "final flight of Space Shuttle Columbia"
   ],
@@ -3696,6 +4192,12 @@
  "Q178871": {
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_14"
+  ],
+  "commons_image": [
+   "Apollo 14 crew.jpg"
+  ],
+  "commons_logo": [
+   "Apollo 14-insignia.png"
   ],
   "country": [
    "United States"
@@ -3732,6 +4234,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_17"
   ],
+  "commons_image": [
+   "Apollo 17 crew.jpg"
+  ],
+  "commons_logo": [
+   "Apollo 17-insignia.png"
+  ],
   "country": [
    "United States"
   ],
@@ -3766,6 +4274,12 @@
  "Q182252": {
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_13"
+  ],
+  "commons_image": [
+   "Apollo 13 Prime Crew.jpg"
+  ],
+  "commons_logo": [
+   "Apollo 13-insignia.png"
   ],
   "country": [
    "United States"
@@ -3802,6 +4316,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Vostok_1"
   ],
+  "commons_image": [
+   "Vostokpanel.JPG"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -3835,6 +4352,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-30"
   ],
+  "commons_image": [
+   "Magellan-IUS stack (close).jpg",
+   "Sts-30 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-30-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -3863,6 +4387,9 @@
  "Q18341312": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-02"
+  ],
+  "commons_image": [
+   "Expedition 47 backup crew members in front of the Soyuz TMA spacecraft mock-up in Star City, Russia.jpg"
   ],
   "description": [
    "Russian crewed flight to the ISS"
@@ -3897,6 +4424,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-03"
   ],
+  "commons_image": [
+   "Soyuz MS-03 crew (2).jpg"
+  ],
   "description": [
    "Russian crewed flight to the ISS"
   ],
@@ -3930,6 +4460,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-04"
   ],
+  "commons_image": [
+   "Expedition 50 Qualification Exams (NHQ201610240005).jpg"
+  ],
   "description": [
    "Russian crewed flight to the ISS"
   ],
@@ -3962,6 +4495,12 @@
  "Q184201": {
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_8"
+  ],
+  "commons_image": [
+   "Apollo 8 Crewmembers - GPN-2000-001125.jpg"
+  ],
+  "commons_logo": [
+   "Apollo-8-patch.png"
   ],
   "country": [
    "United States"
@@ -3998,6 +4537,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_10"
   ],
+  "commons_image": [
+   "Tiangong 1 drawing.png"
+  ],
   "description": [
    "2013 Chinese crewed spaceflight to Tiangong-1"
   ],
@@ -4031,6 +4573,12 @@
  "Q188168": {
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_16"
+  ],
+  "commons_image": [
+   "Apollo 16 crew.jpg"
+  ],
+  "commons_logo": [
+   "Apollo-16-LOGO.png"
   ],
   "country": [
    "United States"
@@ -4067,6 +4615,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_12"
   ],
+  "commons_image": [
+   "Apollo 12 crew.jpg"
+  ],
+  "commons_logo": [
+   "Apollo 12 insignia.png"
+  ],
   "country": [
    "United States"
   ],
@@ -4101,6 +4655,12 @@
  "Q188486": {
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_7"
+  ],
+  "commons_image": [
+   "The Apollo 7 Prime Crew - GPN-2000-001160.jpg"
+  ],
+  "commons_logo": [
+   "Apollo7.png"
   ],
   "country": [
    "United States"
@@ -4137,6 +4697,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-10M"
   ],
+  "commons_image": [
+   "Soyuz TMA-10M crew.jpg",
+   "Soyuz TMA-10M spacecraft approaches the ISS.jpg"
+  ],
   "description": [
    "a flight to the International Space Station"
   ],
@@ -4170,6 +4734,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-51-L"
   ],
+  "commons_image": [
+   "Launch of Challenger.jpg"
+  ],
+  "commons_logo": [
+   "STS-51-L.svg"
+  ],
   "description": [
    "twenty-fifth flight of the American Space Shuttle program"
   ],
@@ -4195,6 +4765,12 @@
  "Q190776": {
   "article": [
    "https://en.wikipedia.org/wiki/Skylab"
+  ],
+  "commons_image": [
+   "Skylab (SL-4).jpg"
+  ],
+  "commons_logo": [
+   "Skylab Program Patch.png"
   ],
   "country": [
    "United States"
@@ -4225,6 +4801,12 @@
  "Q191746": {
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_10"
+  ],
+  "commons_image": [
+   "The Apollo 10 Prime Crew - GPN-2000-001163.jpg"
+  ],
+  "commons_logo": [
+   "Apollo-10-LOGO.png"
   ],
   "country": [
    "United States"
@@ -4261,6 +4843,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_15"
   ],
+  "commons_image": [
+   "The Apollo 15 Prime Crew - GPN-2000-001169.jpg"
+  ],
+  "commons_logo": [
+   "Apollo 15-insignia.png"
+  ],
   "country": [
    "United States"
   ],
@@ -4295,6 +4883,12 @@
  "Q203651": {
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_9"
+  ],
+  "commons_image": [
+   "Apollo9 Prime Crew.jpg"
+  ],
+  "commons_logo": [
+   "Apollo-9-patch.png"
   ],
   "country": [
    "United States"
@@ -4331,6 +4925,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-05"
   ],
+  "commons_image": [
+   "Expedition 52 Launch (NHQ201707280006).jpg"
+  ],
   "description": [
    "Russian crewed flight to the ISS"
   ],
@@ -4364,6 +4961,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-06"
   ],
+  "commons_image": [
+   "Soyuz MS-06 crew.jpg"
+  ],
   "description": [
    "Russian crewed flight to the ISS"
   ],
@@ -4394,6 +4994,9 @@
  "Q21028127": {
   "article": [
    "https://en.wikipedia.org/wiki/Artemis_III"
+  ],
+  "commons_image": [
+   "Sls block1 noeas afterburner engmarkings sm.jpg"
   ],
   "country": [
    "United States"
@@ -4434,6 +5037,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_1"
   ],
+  "commons_image": [
+   "The Soviet Union 1964 CPA 3110 stamp (3-men Space Flight of Komarov, Yegorov and Feoktistov. Vladimir Komarov (1927-1967), a Soviet test pilot, aerospace engineer, and cosmonaut).jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -4467,6 +5073,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Salyut_1"
   ],
+  "commons_image": [
+   "1972 CPA 4112.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
+  ],
   "description": [
    "first space station launched by the Soviet Union"
   ],
@@ -4490,6 +5102,10 @@
  "Q2118077": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-09M"
+  ],
+  "commons_image": [
+   "Soyuz TMA-09M Departs Station.jpg",
+   "Soyuz TMA-09M crew.jpg"
   ],
   "description": [
    "2013 Russian crewed spaceflight to the ISS"
@@ -4523,6 +5139,9 @@
  "Q21392568": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-07"
+  ],
+  "commons_image": [
+   "Soyuz MS-07 crew.jpg"
   ],
   "description": [
    "2017 Russian crewed spaceflight to the ISS"
@@ -4558,6 +5177,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-08"
   ],
+  "commons_image": [
+   "Soyuz MS-08 official crew portrait.jpg"
+  ],
   "description": [
    "Russian crewed flight to the ISS"
   ],
@@ -4587,6 +5209,12 @@
  "Q217531": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-115"
+  ],
+  "commons_image": [
+   "STS-115 Atlantis docked.jpg"
+  ],
+  "commons_logo": [
+   "STS-115 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -4619,6 +5247,12 @@
  "Q217538": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-2"
+  ],
+  "commons_image": [
+   "STS-2 Canadarm debut.jpg"
+  ],
+  "commons_logo": [
+   "Sts 2 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -4653,6 +5287,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-1"
   ],
+  "commons_image": [
+   "Space Shuttle Columbia launching.jpg"
+  ],
+  "commons_logo": [
+   "Sts-1-patch.png"
+  ],
   "description": [
    "1981 Space Shuttle mission, first orbital flight of the Shuttle Columbia"
   ],
@@ -4678,6 +5318,12 @@
  "Q217546": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-125"
+  ],
+  "commons_image": [
+   "Hubble docked in the cargo bay.jpg"
+  ],
+  "commons_logo": [
+   "STS-125 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -4708,6 +5354,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-124"
   ],
+  "commons_image": [
+   "STS-124 launch closeup.jpg"
+  ],
+  "commons_logo": [
+   "STS-124 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -4736,6 +5388,12 @@
  "Q217575": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-114"
+  ],
+  "commons_image": [
+   "Space Shuttle Discovery (STS-114 'Return to Flight') approaches the International Space Station.jpg"
+  ],
+  "commons_logo": [
+   "STS-114 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -4786,6 +5444,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Vostok_2"
   ],
+  "commons_image": [
+   "Vostok spacecraft.jpg"
+  ],
+  "commons_logo": [
+   "Vostok2patch.png"
+  ],
   "description": [
    "space mission of USSR"
   ],
@@ -4820,6 +5484,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-16M"
   ],
+  "commons_image": [
+   "ISS-43 Soyuz TMA 16M approaches the ISS (a).jpg",
+   "Soyuz TMA-16M crew during an emergency scenario training session at JSC.jpg"
+  ],
   "description": [
    "2015 Russian crewed spaceflight to the ISS"
   ],
@@ -4849,6 +5517,9 @@
  "Q238773": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-6"
+  ],
+  "commons_logo": [
+   "Soyuz TM-6 patch.svg"
   ],
   "country": [
    "Soviet Union"
@@ -4886,6 +5557,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-09"
   ],
+  "commons_image": [
+   "Soyuz MS-09 crew during Routine Ops training at JSC.jpg"
+  ],
   "country": [
    "Russia"
   ],
@@ -4922,6 +5596,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-56"
   ],
+  "commons_image": [
+   "STS056-91-054 - Payload bay view with ATLAS pallet (Retouched).jpg",
+   "Sts-56 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-56-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -4950,6 +5631,12 @@
  "Q241736": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_39"
+  ],
+  "commons_image": [
+   "Soyuz 39 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz39 patch.png"
   ],
   "country": [
    "Soviet Union"
@@ -4986,6 +5673,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-21"
   ],
+  "commons_image": [
+   "Soyuz TMA-21 Crew during a training at Johnson Space Center.jpg",
+   "Soyuz TMA-21 departs from the ISS.jpg"
+  ],
   "description": [
    "2011 Russian crewed spaceflight to the ISS"
   ],
@@ -5019,6 +5710,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-10"
   ],
+  "commons_image": [
+   "Expedition 57 Launch (NHQ201810110004).jpg",
+   "Soyuz MS-08 backup crew in front of the Soyuz spacecraft mockup.jpg"
+  ],
   "description": [
    "spaceflight aborted shortly after launch on 11 October 2018"
   ],
@@ -5048,6 +5743,11 @@
  "Q257797": {
   "article": [
    "https://en.wikipedia.org/wiki/Vostok_5"
+  ],
+  "commons_image": [
+   "The Soviet Union 1963 CPA 2888 stamp (Second 'Team' Manned Space Flight. Valery Bykovsky in space helmet).jpg",
+   "Vostok 5 reentry capsule 02.jpg",
+   "Vostok spacecraft.jpg"
   ],
   "description": [
    "space mission of soviet Vostok program"
@@ -5083,6 +5783,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_12"
   ],
+  "commons_image": [
+   "S66-63536.jpg"
+  ],
+  "commons_logo": [
+   "Gemini 12 insignia.png"
+  ],
   "description": [
    "1966 crewed spaceflight in NASA's Project Gemini"
   ],
@@ -5115,6 +5821,12 @@
  "Q261401": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-5"
+  ],
+  "commons_image": [
+   "Soyuz TM-5 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-5 mission patch.svg"
   ],
   "country": [
    "Soviet Union"
@@ -5152,6 +5864,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-106"
   ],
+  "commons_image": [
+   "KSC-00padig034.jpg"
+  ],
+  "commons_logo": [
+   "Sts-106-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -5180,6 +5898,13 @@
  "Q262753": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-51"
+  ],
+  "commons_image": [
+   "1993 s51 IMAX view of Discovery from Spas.JPG",
+   "STS-51-crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-51 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -5210,6 +5935,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-90"
   ],
+  "commons_image": [
+   "STS-90 crew.jpg",
+   "Sunrise over Spacelab.jpg"
+  ],
+  "commons_logo": [
+   "Sts-90-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -5238,6 +5970,13 @@
  "Q269668": {
   "article": [
    "https://en.wikipedia.org/wiki/Vostok_6"
+  ],
+  "commons_image": [
+   "RIAN archive 612748 Valentina Tereshkova.jpg",
+   "Vostok spacecraft.jpg"
+  ],
+  "commons_logo": [
+   "Vostok 6 patch.jpg"
   ],
   "description": [
    "Soviet space mission of 1963, the first human spaceflight to carry a woman (Valentina Tereshkova) into space"
@@ -5273,6 +6012,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-29"
   ],
+  "commons_image": [
+   "Earth through the bay door2.jpg",
+   "STS-29 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-29-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -5301,6 +6047,13 @@
  "Q281398": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-5"
+  ],
+  "commons_image": [
+   "SBS-3 with PAM-D stage.jpg",
+   "Sts-5 crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-5 mission insignia.png"
   ],
   "description": [
    "human spaceflight"
@@ -5331,6 +6084,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-112"
   ],
+  "commons_image": [
+   "STS-112 Atlantis carrying S1 truss.jpg"
+  ],
+  "commons_logo": [
+   "STS-112 Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -5359,6 +6118,9 @@
  "Q28223990": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_12"
+  ],
+  "commons_image": [
+   "Shenzhou-12 roll out 01.png"
   ],
   "country": [
    "People's Republic of China"
@@ -5399,6 +6161,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-93"
   ],
+  "commons_image": [
+   "STS-93 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-93 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -5427,6 +6195,12 @@
  "Q285802": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_22"
+  ],
+  "commons_image": [
+   "1976. «Союз-22», фотографирование Земли из космоса. ЦФА 4667.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -5464,6 +6238,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-11"
   ],
+  "commons_image": [
+   "Soyuz MS-11 spacecraft moments before docking to the ISS.jpg",
+   "The Soyuz MS-11 spacecraft is seen as it lands with the Expedition 59 crew (2).jpg"
+  ],
   "description": [
    "Russian crewed mission to the ISS"
   ],
@@ -5497,6 +6275,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-13"
   ],
+  "commons_image": [
+   "Soyuz MS-13 crew in front of the Soyuz spacecraft simulator.jpg"
+  ],
   "description": [
    "Russian crewed mission to the ISS"
   ],
@@ -5526,6 +6307,9 @@
  "Q29017947": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-12"
+  ],
+  "commons_image": [
+   "Soyuz MS-12 crew members in front of their spacecraft.jpg"
   ],
   "country": [
    "Russia"
@@ -5563,6 +6347,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-135"
   ],
+  "commons_image": [
+   "STS-135 landing cropped.jpg"
+  ],
+  "commons_logo": [
+   "STS-135 Patch.svg"
+  ],
   "description": [
    "135th and final mission of the American Space Shuttle program"
   ],
@@ -5591,6 +6381,13 @@
  "Q312022": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-61-A"
+  ],
+  "commons_image": [
+   "STS-61-A crew.jpg",
+   "STS-61A launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-61-a-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -5622,6 +6419,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-116"
   ],
+  "commons_image": [
+   "STS-116 Launch (KSC-06PD-2750) cropped.jpg"
+  ],
+  "commons_logo": [
+   "STS-116 emblem.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -5650,6 +6453,12 @@
  "Q312037": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-121"
+  ],
+  "commons_image": [
+   "STS-121 Launch2.jpg"
+  ],
+  "commons_logo": [
+   "STS-121 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -5680,6 +6489,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-9"
   ],
+  "commons_image": [
+   "STS-9 Spacelab 1.jpg"
+  ],
+  "commons_logo": [
+   "STS-9 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -5708,6 +6523,9 @@
  "Q3122598": {
   "article": [
    "https://en.wikipedia.org/wiki/Tiangong-2"
+  ],
+  "commons_image": [
+   "Model of the Chinese Tiangong Shenzhou.jpg"
   ],
   "country": [
    "People's Republic of China"
@@ -5744,6 +6562,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_7"
   ],
+  "commons_image": [
+   "Shenzhou spacecapsule drawing.png"
+  ],
   "description": [
    "mission of the Chinese space program"
   ],
@@ -5778,6 +6599,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-69"
   ],
+  "commons_image": [
+   "STS-69 crew.jpg",
+   "STS-69 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-69 patch.svg"
+  ],
   "description": [
    "1995 Space Shuttle mission"
   ],
@@ -5806,6 +6634,13 @@
  "Q324704": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-67"
+  ],
+  "commons_image": [
+   "Astro2 sts67 big.jpg",
+   "Sts-67 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-67-patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -5836,6 +6671,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-133"
   ],
+  "commons_image": [
+   "521430main iss026e030308 hires.jpg"
+  ],
+  "commons_logo": [
+   "STS-133 patch.svg"
+  ],
   "description": [
    "39th and last spaceflight of Space Shuttle Discovery"
   ],
@@ -5864,6 +6705,10 @@
  "Q331310": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_6"
+  ],
+  "commons_image": [
+   "Shenzhou 6 Crew Portrait.jpg",
+   "Shenzhou spacecapsule drawing.png"
   ],
   "country": [
    "People's Republic of China"
@@ -5902,6 +6747,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-12M"
   ],
+  "commons_image": [
+   "Expedition 37 backup crew members in front of the Soyuz TMA spacecraft mock-up in Star City, Russia.jpg",
+   "Soyuz TMA-12M approaches the station.jpg"
+  ],
   "description": [
    "2014 Russian crewed spaceflight to the ISS"
   ],
@@ -5934,6 +6783,9 @@
  "Q367014": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-10"
+  ],
+  "commons_logo": [
+   "Mir insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -5971,6 +6823,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-64"
   ],
+  "commons_image": [
+   "STS-64 EVA.jpg",
+   "Sts-64 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-64-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -5999,6 +6858,13 @@
  "Q370277": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-84"
+  ],
+  "commons_image": [
+   "STS-84 crew.jpg",
+   "STS84 Atlantis Launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-84 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -6029,6 +6895,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-58"
   ],
+  "commons_image": [
+   "STS-58-crew.jpg",
+   "STS058-92-064.jpg"
+  ],
+  "commons_logo": [
+   "Sts-58-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -6058,6 +6931,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-8"
   ],
+  "commons_image": [
+   "STS 8 Launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-8 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -6086,6 +6965,12 @@
  "Q378306": {
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_6A"
+  ],
+  "commons_image": [
+   "Gemini 7 in orbit - GPN-2006-000035.jpg"
+  ],
+  "commons_logo": [
+   "Gemini 6A patch.png"
   ],
   "description": [
    "1965 crewed United States spaceflight in NASA's Gemini program"
@@ -6120,6 +7005,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_5"
   ],
+  "commons_image": [
+   "Shenzhou 5 in space Yang Liwei.png"
+  ],
   "description": [
    "first human spaceflight mission of the Chinese space program"
   ],
@@ -6153,6 +7041,9 @@
  "Q383601": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-10"
+  ],
+  "commons_image": [
+   "1985 CPA 5645 (1).jpg"
   ],
   "country": [
    "Soviet Union"
@@ -6189,6 +7080,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-102"
   ],
+  "commons_image": [
+   "STS-102 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-102 Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -6215,6 +7112,9 @@
   ]
  },
  "Q4068053": {
+  "commons_image": [
+   "Command&Service Module docking with Docking Module.jpg"
+  ],
   "description": [
    "Apollo command and service module used during the Apollo–Soyuz Test Project"
   ],
@@ -6244,6 +7144,12 @@
  "Q426781": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_21"
+  ],
+  "commons_image": [
+   "Soyuz-21.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -6280,6 +7186,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-105"
   ],
+  "commons_image": [
+   "STS-105 launches.jpg"
+  ],
+  "commons_logo": [
+   "Sts-105-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -6308,6 +7220,10 @@
  "Q4308431": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-17M"
+  ],
+  "commons_image": [
+   "ISS-44 Typhoon Soudelor with Soyuz TMA-17M.jpg",
+   "Soyuz TMA-17M crew at Lyndon B. Johnson Space Center.jpg"
   ],
   "description": [
    "flight to the International Space Station"
@@ -6341,6 +7257,12 @@
  "Q43653": {
   "article": [
    "https://en.wikipedia.org/wiki/Apollo_11"
+  ],
+  "commons_image": [
+   "Apollo 11 Crew.jpg"
+  ],
+  "commons_logo": [
+   "Apollo 11 insignia.png"
   ],
   "country": [
    "United States"
@@ -6377,6 +7299,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-132"
   ],
+  "commons_image": [
+   "STS-132 Atlantis at ISS 1.jpg"
+  ],
+  "commons_logo": [
+   "STS-132 Patch.svg"
+  ],
   "description": [
    "NASA Space Shuttle mission"
   ],
@@ -6405,6 +7333,12 @@
  "Q47246047": {
   "article": [
    "https://en.wikipedia.org/wiki/Crew_Dragon_Demo-2"
+  ],
+  "commons_image": [
+   "SpaceX Demo-2 Launch (NHQ202005300044).jpg"
+  ],
+  "commons_logo": [
+   "Crew Dragon Demo-2 Patch.png"
   ],
   "country": [
    "United States"
@@ -6442,6 +7376,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-61-B"
   ],
+  "commons_image": [
+   "STS-61-B crew.jpg",
+   "Structures in Space - GPN-2000-001080.jpg"
+  ],
+  "commons_logo": [
+   "Sts-61-b-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -6470,6 +7411,12 @@
  "Q478803": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-134"
+  ],
+  "commons_image": [
+   "ISS and Endeavour seen from the Soyuz TMA-20 spacecraft 14.jpg"
+  ],
+  "commons_logo": [
+   "STS-134 Patch.svg"
   ],
   "description": [
    "25th and last spaceflight of Space Shuttle Endeavour"
@@ -6500,6 +7447,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-66"
   ],
+  "commons_image": [
+   "STS-66 Spas.jpg",
+   "Sts-66 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-66-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -6529,6 +7483,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Mir"
   ],
+  "commons_image": [
+   "Mir on 12 June 1998edit1.jpg"
+  ],
   "country": [
    "Russia",
    "Soviet Union"
@@ -6556,6 +7513,9 @@
  "Q48816787": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-15"
+  ],
+  "commons_image": [
+   "Expedition 61 Launch (NHQ201909250042).jpg"
   ],
   "description": [
    "Russian crewed mission to the ISS"
@@ -6590,6 +7550,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-12"
   ],
+  "commons_image": [
+   "Soyuz TMA-12 Crew.jpg",
+   "SoyuzTMA12 Docks With ISS.jpg"
+  ],
   "description": [
    "space station"
   ],
@@ -6622,6 +7586,13 @@
  "Q498406": {
   "article": [
    "https://en.wikipedia.org/wiki/Mercury-Redstone_4"
+  ],
+  "commons_image": [
+   "Grissom Climbs into Liberty Bell 7 - GPN-2002-000048.jpg",
+   "Grissom prepares to enter Liberty Bell 7 61-MR4-76.jpg"
+  ],
+  "commons_logo": [
+   "Liberty bell insignia.jpg"
   ],
   "description": [
    "crewed spacecraft"
@@ -6656,6 +7627,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Mercury-Atlas_6"
   ],
+  "commons_image": [
+   "Glenn62.jpg",
+   "Mercury 6, John H Glenn Jr.jpg"
+  ],
+  "commons_logo": [
+   "Friendship 7 insignia.jpg"
+  ],
   "description": [
    "first American orbital spaceflight"
   ],
@@ -6688,6 +7666,13 @@
  "Q498680": {
   "article": [
    "https://en.wikipedia.org/wiki/Mercury-Atlas_7"
+  ],
+  "commons_image": [
+   "Aurora 7 launch.jpg",
+   "Scott Carpenter thumbnail.jpg"
+  ],
+  "commons_logo": [
+   "Aurora 7 insignia.jpg"
   ],
   "description": [
    "crewed spacecraft"
@@ -6722,6 +7707,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Mercury-Atlas_8"
   ],
+  "commons_image": [
+   "Mercury Astronaut Wally Schirra - GPN-2000-001351.jpg",
+   "Mercury-Atlas 8 launch.jpg"
+  ],
+  "commons_logo": [
+   "Sigma 7 insginia.png"
+  ],
   "description": [
    "crewed spacecraft"
   ],
@@ -6754,6 +7746,13 @@
  "Q498722": {
   "article": [
    "https://en.wikipedia.org/wiki/Mercury-Atlas_9"
+  ],
+  "commons_image": [
+   "Gordon Cooper Jr. - cropped.jpg",
+   "S63-07856.jpg"
+  ],
+  "commons_logo": [
+   "Faith 7 insignia.jpg"
   ],
   "description": [
    "crewed spacecraft"
@@ -6788,6 +7787,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-10"
   ],
+  "commons_image": [
+   "Soyuz tma 10 crew.jpg",
+   "SoyuzTMA-10 Approaches ISS.jpg"
+  ],
   "description": [
    "human spaceflight mission"
   ],
@@ -6820,6 +7823,12 @@
  "Q509384": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_23"
+  ],
+  "commons_image": [
+   "Soyuz-23.JPG"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -6857,6 +7866,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-30"
   ],
+  "commons_image": [
+   "Soyuz TM-30 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz-tm-30-patch.svg"
+  ],
   "country": [
    "Russia"
   ],
@@ -6892,6 +7907,9 @@
  "Q516698": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-25"
+  ],
+  "commons_logo": [
+   "Soyuz TM-25 patch.png"
   ],
   "country": [
    "Russia"
@@ -6929,6 +7947,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Tianhe_core_module"
   ],
+  "commons_image": [
+   "Tianhe core module mockup at CSTM 02.jpg"
+  ],
   "description": [
    "module of the Tiangong space station"
   ],
@@ -6954,6 +7975,10 @@
  "Q518760": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-01M"
+  ],
+  "commons_image": [
+   "Soyuz TMA-01M crew.jpg",
+   "Soyuz TMA-01M rocket launches.jpg"
   ],
   "description": [
    "2010 Russian crewed spaceflight to the ISS"
@@ -6988,6 +8013,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-3"
   ],
+  "commons_image": [
+   "STS-3 landing.jpg"
+  ],
+  "commons_logo": [
+   "Sts3-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7016,6 +8047,13 @@
  "Q519533": {
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_9A"
+  ],
+  "commons_image": [
+   "The Actual Gemini 9 Prime Crew - GPN-2000-001353.jpg",
+   "The Angry Alligator - GPN-2000-001354.jpg"
+  ],
+  "commons_logo": [
+   "Ge09Patch orig.png"
   ],
   "description": [
    "crewed spaceflight in NASA's Gemini program"
@@ -7050,6 +8088,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-51-J"
   ],
+  "commons_image": [
+   "STS-51-J crew.jpg",
+   "STS51J First Flight of Atlantis.jpg"
+  ],
+  "commons_logo": [
+   "Sts-51-j-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7078,6 +8123,12 @@
  "Q531246": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_17"
+  ],
+  "commons_image": [
+   "1975 CPA 4446.jpg"
+  ],
+  "commons_logo": [
+   "Vimpel 'Diamond'.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -7113,6 +8164,13 @@
  "Q533568": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-24"
+  ],
+  "commons_image": [
+   "Soyuz TM-24 Crew Portrait.jpg",
+   "Soyuz acoplada MIR.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-24 patch.png"
   ],
   "country": [
    "Russia"
@@ -7150,6 +8208,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-65"
   ],
+  "commons_image": [
+   "STS-65 spacelab.jpg",
+   "Sts-65 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-65-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7178,6 +8243,9 @@
  "Q534559": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-15"
+  ],
+  "commons_image": [
+   "Soyuz TMA-15 crew.jpg"
   ],
   "description": [
    "2009 Russian crewed spaceflight to the ISS"
@@ -7212,6 +8280,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-123"
   ],
+  "commons_image": [
+   "STS-123 launch new.jpg"
+  ],
+  "commons_logo": [
+   "STS-123 Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7241,6 +8315,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-39"
   ],
+  "commons_image": [
+   "STS-39 launch.jpg",
+   "Sts-39 crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-39 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7269,6 +8350,12 @@
  "Q543643": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_12"
+  ],
+  "commons_image": [
+   "USSR stamp Soyuz-12 1973.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -7306,6 +8393,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-28"
   ],
+  "commons_image": [
+   "1989 s28 Liftoff.jpg",
+   "Sts-28 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-28-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7334,6 +8428,12 @@
  "Q545595": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_14"
+  ],
+  "commons_image": [
+   "USSR stamp Soyuz-14 1974 10k.jpg"
+  ],
+  "commons_logo": [
+   "Vimpel 'Diamond'.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -7371,6 +8471,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-16"
   ],
+  "commons_image": [
+   "Expedition 63 Launch (JSC2020-E-017058).jpg",
+   "Expedition 63 Preflight (JSC2020-E-017082).jpg"
+  ],
   "description": [
    "Russian crewed mission to the ISS"
   ],
@@ -7403,6 +8507,9 @@
  "Q56042661": {
   "article": [
    "https://en.wikipedia.org/wiki/Boeing_Crew_Flight_Test"
+  ],
+  "commons_image": [
+   "Boeing Starliner docked to ISS 2024-07-03 (ISS071E265073, cropped).jpg"
   ],
   "country": [
    "United States"
@@ -7438,6 +8545,12 @@
  "Q56042850": {
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-1"
+  ],
+  "commons_image": [
+   "SpaceX Crew-1 Launch (NHQ202011150029).jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-1 logo.svg"
   ],
   "country": [
    "United States"
@@ -7477,6 +8590,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-11"
   ],
+  "commons_image": [
+   "ISS-16 Soyuz TMA-11 arrival.jpg",
+   "Sozuztma11crew.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TMA-11 Patch.png"
+  ],
   "description": [
    "soyuz mission which nearly failed reentry"
   ],
@@ -7510,6 +8630,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Vostok_4"
   ],
+  "commons_image": [
+   "Vostok spacecraft.jpg"
+  ],
+  "commons_logo": [
+   "Vostok3-4patch.png"
+  ],
   "follows": [
    "Vostok 3"
   ],
@@ -7541,6 +8667,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-27"
   ],
+  "commons_image": [
+   "Atlantis taking off on STS-27.jpg"
+  ],
+  "commons_logo": [
+   "Sts-27-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7569,6 +8701,13 @@
  "Q569103": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-72"
+  ],
+  "commons_image": [
+   "STS-72 crew.jpg",
+   "STS072-734-011.jpg"
+  ],
+  "commons_logo": [
+   "Sts-72-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -7601,6 +8740,12 @@
  "Q577280": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-11"
+  ],
+  "commons_image": [
+   "Soyuz TM-11 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-11 patch.png"
   ],
   "country": [
    "Soviet Union"
@@ -7638,6 +8783,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_9"
   ],
+  "commons_image": [
+   "Shenzhou 9 crew.jpg",
+   "Tiangong 1 drawing.png"
+  ],
   "description": [
    "2012 Chinese crewed spaceflight to Tiangong-1"
   ],
@@ -7672,6 +8821,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-41-B"
   ],
+  "commons_image": [
+   "STS-41-B crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-41-b-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7704,6 +8859,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-45"
   ],
+  "commons_image": [
+   "STS-45 payload.jpg",
+   "Sts-45 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-45-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7732,6 +8894,9 @@
  "Q591584": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-9"
+  ],
+  "commons_image": [
+   "Soyuz TMA-9 at ISS (NASA S116-E-06753).jpg"
   ],
   "description": [
    "soyuz space program mission"
@@ -7766,6 +8931,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-53"
   ],
+  "commons_image": [
+   "STS-053 shuttle.jpg",
+   "Sts-53 crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-53 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7795,6 +8967,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-41-G"
   ],
+  "commons_image": [
+   "STS-41-G ERBS deployment.jpg",
+   "STS-41-G crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-41G Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7823,6 +9002,13 @@
  "Q601397": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_40"
+  ],
+  "commons_image": [
+   "Leonid Popov & Dumitru Prunariu.jpg",
+   "Soiuz 40.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz 40 mission patch.svg"
   ],
   "country": [
    "Soviet Union"
@@ -7859,6 +9045,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-51-C"
   ],
+  "commons_image": [
+   "STS-51C launch.jpg"
+  ],
+  "commons_logo": [
+   "51-c-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -7887,6 +9079,10 @@
  "Q60740704": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-17"
+  ],
+  "commons_image": [
+   "Expedition 64 Launch (NHQ202010140006).jpg",
+   "Expedition 64 Preflight (NHQ202009280023).jpg"
   ],
   "description": [
    "Russian crewed mission to the ISS"
@@ -7920,6 +9116,12 @@
  "Q60846240": {
   "article": [
    "https://en.wikipedia.org/wiki/Artemis_IV"
+  ],
+  "commons_image": [
+   "SLS Block 1B Launch.jpg"
+  ],
+  "commons_logo": [
+   "Artemis IV Mission (1083828741619).png"
   ],
   "country": [
    "United States"
@@ -7957,6 +9159,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-37"
   ],
+  "commons_image": [
+   "1991 s37 GRO copy.jpg",
+   "STS-37 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-37-patch.png"
+  ],
   "description": [
    "1991 space shuttle mission to deploy Compton Gamma Ray Telescope"
   ],
@@ -7985,6 +9194,13 @@
  "Q609517": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-62"
+  ],
+  "commons_image": [
+   "Sts-62 crew.jpg",
+   "Typhoon Owen, STS-62.jpg"
+  ],
+  "commons_logo": [
+   "Sts-62-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -8015,6 +9231,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-73"
   ],
+  "commons_image": [
+   "951020 STS73 Columbia launch.jpg",
+   "STS-73 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-73-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8043,6 +9266,10 @@
  "Q610681": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-15M"
+  ],
+  "commons_image": [
+   "Soyuz TMA-15M approach.jpg",
+   "Soyuz TMA-15M crew during a routine operations training session at JSC.jpg"
   ],
   "description": [
    "2014 flight to the International Space Station"
@@ -8076,6 +9303,12 @@
  "Q611541": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-14"
+  ],
+  "commons_image": [
+   "Cosmonauts Exhibition, Science Museum, London, February 2016 (06).JPG"
+  ],
+  "commons_logo": [
+   "Soyuz TM-14 patch.png"
   ],
   "country": [
    "Russia"
@@ -8113,6 +9346,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-35"
   ],
+  "commons_image": [
+   "Onboard Photo - Astro-1 Ultraviolet Telescope in Cargo Bay.jpg",
+   "STS-35 crew portrait.jpg"
+  ],
+  "commons_logo": [
+   "Sts-35-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8145,6 +9385,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Salyut_6"
   ],
+  "commons_image": [
+   "3F9A5634 (36924796730).jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
+  ],
   "description": [
    "former Soviet orbital space station"
   ],
@@ -8167,6 +9413,12 @@
  "Q617651": {
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_8"
+  ],
+  "commons_image": [
+   "Gemini 8 docking.jpg"
+  ],
+  "commons_logo": [
+   "Ge08Patch orig.png"
   ],
   "description": [
    "sixth crewed spaceflight in NASA's Gemini program"
@@ -8199,6 +9451,10 @@
  "Q617708": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_28"
+  ],
+  "commons_image": [
+   "Reentry Capsule of Soyuz 28.JPG",
+   "Soyuz 28 Crew Portrait.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -8235,6 +9491,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_4"
   ],
+  "commons_image": [
+   "Soyuz45-1.jpg"
+  ],
+  "commons_logo": [
+   "Zvezda Rocket Patch.svg"
+  ],
   "description": [
    "crewed flight of the Soyuz programme"
   ],
@@ -8266,6 +9528,12 @@
  "Q619811": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_3"
+  ],
+  "commons_image": [
+   "The Soviet Union 1969 CPA 3734 sheet of 1 (Soyuz 3).jpg"
+  ],
+  "commons_logo": [
+   "Soyuz 3 patch.png"
   ],
   "description": [
    "crewed flight of the Soyuz programme"
@@ -8301,6 +9569,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Mercury-Redstone_3"
   ],
+  "commons_image": [
+   "Alan Shepard during Mercury-Redstone 3.jpg",
+   "Alan-shepard.jpg"
+  ],
+  "commons_logo": [
+   "Freedom 7 insignia.png"
+  ],
   "description": [
    "first United States human spaceflight, on May 5, 1961"
   ],
@@ -8335,6 +9610,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-129"
   ],
+  "commons_image": [
+   "Atlantis seen over the Mediterranean Sea, near the Algerian coast.jpeg"
+  ],
+  "commons_logo": [
+   "STS-129 patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8363,6 +9644,12 @@
  "Q629318": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-92"
+  ],
+  "commons_image": [
+   "STS-92 launch.jpg"
+  ],
+  "commons_logo": [
+   "Sts-92-patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -8393,6 +9680,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-83"
   ],
+  "commons_image": [
+   "STS-83 crew.jpg",
+   "STS-83 landing.jpg"
+  ],
+  "commons_logo": [
+   "Sts-83-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8421,6 +9715,9 @@
  "Q633696": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-9"
+  ],
+  "commons_image": [
+   "1984 CPA 5522.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -8457,6 +9754,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-71"
   ],
+  "commons_image": [
+   "STS-71 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-71-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8486,6 +9789,14 @@
  "Q637048": {
   "article": [
    "https://en.wikipedia.org/wiki/Vostok_3"
+  ],
+  "commons_image": [
+   "Adrian G Nikolaiev.jpg",
+   "The Soviet Union 1962 CPA 2729 stamp (First 'Team' Manned Space Flight. Soviet Cosmonauts Commemoration. Portrait of Andriyan Nikolayev).jpg",
+   "Vostok spacecraft.jpg"
+  ],
+  "commons_logo": [
+   "Vostok3-4patch.png"
   ],
   "follows": [
    "Vostok 2"
@@ -8517,6 +9828,12 @@
  "Q643774": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-27"
+  ],
+  "commons_image": [
+   "Soyuz TM-27 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "PegaseSoyuzTM27svg.svg"
   ],
   "country": [
    "Russia"
@@ -8554,6 +9871,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-130"
   ],
+  "commons_image": [
+   "STS-130 launching 4.jpg"
+  ],
+  "commons_logo": [
+   "STS-130 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8582,6 +9905,12 @@
  "Q645825": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-18"
+  ],
+  "commons_image": [
+   "Soyuz TM-18 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-18 patch.png"
   ],
   "country": [
    "Russia"
@@ -8619,6 +9948,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-6"
   ],
+  "commons_image": [
+   "Crew of soyuz tma6.jpg",
+   "Soyuz TMA-6 spacecraft.jpg"
+  ],
   "description": [
    "2005 Russian crewed spaceflight to the ISS"
   ],
@@ -8652,6 +9985,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-34"
   ],
+  "commons_image": [
+   "Sts-34 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-34-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8683,6 +10022,12 @@
  "Q648581": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_11"
+  ],
+  "commons_image": [
+   "Soyuz 11 crew.jpg"
+  ],
+  "commons_logo": [
+   "Zvezda Rocket Patch.svg"
   ],
   "description": [
    "crewed Soviet space mission to the Salyut 1 Space Station"
@@ -8717,6 +10062,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-131"
   ],
+  "commons_image": [
+   "STS-131 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-131 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8745,6 +10096,9 @@
  "Q653395": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-7"
+  ],
+  "commons_image": [
+   "1983 CPA 5375 (1).jpg"
   ],
   "country": [
    "Soviet Union"
@@ -8781,6 +10135,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-128"
   ],
+  "commons_image": [
+   "382853main 128-aug30-1 full.jpg"
+  ],
+  "commons_logo": [
+   "STS-128 Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8810,6 +10170,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-61-C"
   ],
+  "commons_image": [
+   "STS-61-C crew.jpg",
+   "Space Shuttle Columbia launches on STS-61-C.jpg"
+  ],
+  "commons_logo": [
+   "STS-61-c-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8838,6 +10205,9 @@
  "Q662021": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_10"
+  ],
+  "commons_logo": [
+   "Soyuz 10 mission patch.png"
   ],
   "description": [
    "Failed attempt to dock with Salyut 1"
@@ -8872,6 +10242,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_8"
   ],
+  "commons_image": [
+   "The Soviet Union 1969 CPA 3811 stamp (Vladimir Shatalov and Aleksei Yeliseyev (Soyuz 8)).jpg"
+  ],
   "description": [
    "crewed flight of the Soyuz programme"
   ],
@@ -8905,6 +10278,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-108"
   ],
+  "commons_image": [
+   "STS-108 Launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-108 Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8933,6 +10312,13 @@
  "Q672270": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-55"
+  ],
+  "commons_image": [
+   "STS-55 Spacelab.jpg",
+   "Sts-55 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-55-patch.png"
   ],
   "description": [
    "flight of the US Space Shuttle in 1993"
@@ -8967,6 +10353,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-42"
   ],
+  "commons_image": [
+   "STS-42 view of payload bay.jpg",
+   "Sts-42.jpg"
+  ],
+  "commons_logo": [
+   "Sts-42-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -8996,6 +10389,9 @@
  "Q676306": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-4"
+  ],
+  "commons_image": [
+   "1981. Союз-Т4 - Салют-6. В.В. Коваленюк, В.П. Савиных (3).jpg"
   ],
   "country": [
    "Soviet Union"
@@ -9031,6 +10427,9 @@
  "Q677519": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-13"
+  ],
+  "commons_logo": [
+   "Soyuz TM-13 patch.png"
   ],
   "country": [
    "Soviet Union"
@@ -9068,6 +10467,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-12"
   ],
+  "commons_image": [
+   "Soyuz TM-12 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-12 patch.png"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -9104,6 +10509,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_3"
   ],
+  "commons_image": [
+   "G3C spacesuit Gemini 3.jpg"
+  ],
+  "commons_logo": [
+   "Gemini3.png"
+  ],
   "description": [
    "1965 American crewed space mission"
   ],
@@ -9137,6 +10548,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-4"
   ],
+  "commons_image": [
+   "STS-4 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-4 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -9165,6 +10582,9 @@
  "Q682890": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_18"
+  ],
+  "commons_logo": [
+   "Vimpel 'Diamond'.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -9201,6 +10621,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_36"
   ],
+  "commons_image": [
+   "Soyuz 36 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz36patch.svg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -9236,6 +10662,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Skylab_2"
   ],
+  "commons_image": [
+   "40 Years Ago, Skylab Paved Way for International Space Station.jpg",
+   "Skylab 2 crew.jpg"
+  ],
+  "commons_logo": [
+   "Skylab1-Patch.png"
+  ],
   "description": [
    "first crewed mission of the Skylab program"
   ],
@@ -9267,6 +10700,9 @@
  "Q685316": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-11"
+  ],
+  "commons_logo": [
+   "Soyuz T-11 mission patch.gif"
   ],
   "country": [
    "Soviet Union"
@@ -9303,6 +10739,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-2"
   ],
+  "commons_image": [
+   "1980 CPA 5108.jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -9338,6 +10777,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-18"
   ],
+  "commons_image": [
+   "Expedition 64 Crew Qualification Exams (NHQ202009220006).jpg",
+   "Soyuz MS18 Launch.jpg"
+  ],
   "description": [
    "Russian crewed mission to the ISS"
   ],
@@ -9370,6 +10813,9 @@
  "Q700126": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-20"
+  ],
+  "commons_logo": [
+   "Soyuz TM-20 patch.png"
   ],
   "country": [
    "Russia"
@@ -9407,6 +10853,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-19"
   ],
+  "commons_image": [
+   "Soyuz TM-19 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-19 patch.png"
+  ],
   "country": [
    "Russia"
   ],
@@ -9442,6 +10894,12 @@
  "Q700729": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-22"
+  ],
+  "commons_image": [
+   "Soyuz TM-22 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-22 patch.png"
   ],
   "country": [
    "Russia"
@@ -9479,6 +10937,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-51-A"
   ],
+  "commons_image": [
+   "STS-51-A crew.jpg",
+   "Satellites For Sale - GPN-2000-001036.jpg"
+  ],
+  "commons_logo": [
+   "STS-51A Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -9507,6 +10972,13 @@
  "Q717342": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-77"
+  ],
+  "commons_image": [
+   "STS-77 crew.jpg",
+   "STS-77 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-77 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -9537,6 +11009,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-88"
   ],
+  "commons_image": [
+   "S99 03776.jpg"
+  ],
+  "commons_logo": [
+   "Sts-88-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -9565,6 +11043,13 @@
  "Q717836": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-89"
+  ],
+  "commons_image": [
+   "N6p-024-low.jpg",
+   "STS-89 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-89-patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -9595,6 +11080,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-57"
   ],
+  "commons_image": [
+   "STS057-89-042.jpg",
+   "Sts-57 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-57-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -9624,6 +11116,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-91"
   ],
+  "commons_image": [
+   "STS-91 Landing.jpg",
+   "STS-91 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-91-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -9652,6 +11151,13 @@
  "Q722791": {
   "article": [
    "https://en.wikipedia.org/wiki/Voskhod_2"
+  ],
+  "commons_image": [
+   "1980 CPA 5064.jpg",
+   "Voskhod 2 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Zvezda Rocket Patch.svg"
   ],
   "description": [
    "Soviet crewed spacecraft"
@@ -9687,6 +11193,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_5"
   ],
+  "commons_image": [
+   "S65-45753.jpg"
+  ],
+  "commons_logo": [
+   "Gemini5insignia.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -9719,6 +11231,9 @@
  "Q728886": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-17"
+  ],
+  "commons_image": [
+   "Soyuz TMA-17 crew.jpg"
   ],
   "description": [
    "flight carrying astronauts to the International Space Station"
@@ -9753,6 +11268,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-119"
   ],
+  "commons_image": [
+   "STS-119 RPM.jpg"
+  ],
+  "commons_logo": [
+   "STS-119 Patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -9781,6 +11302,12 @@
  "Q730824": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-117"
+  ],
+  "commons_image": [
+   "STS117 Atlantis approaches ISS2.jpg"
+  ],
+  "commons_logo": [
+   "STS-117 patch new2.svg"
   ],
   "country": [
    "United States"
@@ -9817,6 +11344,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-120"
   ],
+  "commons_image": [
+   "STS-120 backflip maneuver.jpg"
+  ],
+  "commons_logo": [
+   "Sts-120-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -9845,6 +11378,12 @@
  "Q731368": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-6"
+  ],
+  "commons_image": [
+   "Space Shuttle Challenger (04-04-1983).JPEG"
+  ],
+  "commons_logo": [
+   "Sts-6-patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -9875,6 +11414,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-41-D"
   ],
+  "commons_image": [
+   "STS-41-D launch August 30, 1984.jpg"
+  ],
+  "commons_logo": [
+   "Sts-41-d-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -9903,6 +11448,12 @@
  "Q734249": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_27"
+  ],
+  "commons_image": [
+   "USSR stamp Soyuz-27 1978 4k.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -9940,6 +11491,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-7"
   ],
+  "commons_image": [
+   "STS007-32-1702.jpg"
+  ],
+  "commons_logo": [
+   "STS-7 patch.svg"
+  ],
   "description": [
    "Space Shuttle mission; first flight of an American woman"
   ],
@@ -9971,6 +11528,9 @@
  "Q734847": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_34"
+  ],
+  "commons_image": [
+   "Soyuz 34 reentry capsule 01.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -10007,6 +11567,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_35"
   ],
+  "commons_image": [
+   "USSR Stamp 1981 Salyut6 Cosmonauts.jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -10041,6 +11604,9 @@
  "Q738200": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-2"
+  ],
+  "commons_logo": [
+   "Soyuz TM-2 mission patch.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -10078,6 +11644,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-6"
   ],
+  "commons_logo": [
+   "Soyuz T-6 mission patch.png"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -10113,6 +11682,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_4"
   ],
+  "commons_image": [
+   "Ed White First American Spacewalker - GPN-2000-001180.jpg"
+  ],
+  "commons_logo": [
+   "Gemini Four patch.jpg"
+  ],
   "description": [
    "second crewed space flight in NASA's Project Gemini"
   ],
@@ -10146,6 +11721,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_5"
   ],
+  "commons_image": [
+   "Soyuz 5 (portrait).jpg",
+   "Soyuz45-1.jpg"
+  ],
+  "commons_logo": [
+   "Zvezda Rocket Patch.svg"
+  ],
   "description": [
    "spaceship"
   ],
@@ -10177,6 +11759,9 @@
  "Q748738": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-23"
+  ],
+  "commons_logo": [
+   "Soyuz TM-23 patch.png"
   ],
   "country": [
    "Russia"
@@ -10214,6 +11799,14 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-75"
   ],
+  "commons_image": [
+   "STS-075 shuttle.jpg",
+   "STS-75 crew.jpg",
+   "STS-75 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-75 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -10242,6 +11835,11 @@
  "Q750101": {
   "article": [
    "https://en.wikipedia.org/wiki/Voskhod_1"
+  ],
+  "commons_image": [
+   "Voskhod 1 Crew Portrait.jpg",
+   "Voskhod 1 capsule on display, 2016.jpg",
+   "Voskhod spacecraft diagram.png"
   ],
   "country": [
    "Soviet Union"
@@ -10276,6 +11874,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-26"
   ],
+  "commons_image": [
+   "Return to Flight Launch of Discovery - GPN-2000-001871.jpg"
+  ],
+  "commons_logo": [
+   "Sts-26-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -10304,6 +11908,12 @@
  "Q752787": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-126"
+  ],
+  "commons_image": [
+   "STS-126 RPM.jpg"
+  ],
+  "commons_logo": [
+   "STS-126 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -10334,6 +11944,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-127"
   ],
+  "commons_image": [
+   "Endeavour from ISS before docking.jpg"
+  ],
+  "commons_logo": [
+   "STS-127 Patch.svg"
+  ],
   "description": [
    "NASA Space Shuttle mission"
   ],
@@ -10362,6 +11978,12 @@
  "Q752799": {
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_10"
+  ],
+  "commons_image": [
+   "Agena Firing - GPN-2000-001355.jpg"
+  ],
+  "commons_logo": [
+   "Gemini 10 Insignia.svg"
   ],
   "description": [
    "1966 crewed spaceflight in NASA's Gemini program"
@@ -10395,6 +12017,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-41-C"
   ],
+  "commons_image": [
+   "SMMS repair by STS-41C Astronauts.jpg"
+  ],
+  "commons_logo": [
+   "STS-41-C patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -10423,6 +12051,9 @@
  "Q753539": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_7"
+  ],
+  "commons_image": [
+   "The Soviet Union 1969 CPA 3810 stamp (Anatoly Filipchenko, Vladislav Volkov and Viktor Gorbatko (Soyuz 7)).jpg"
   ],
   "description": [
    "crewed flight of the Soyuz programme"
@@ -10457,6 +12088,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_6"
   ],
+  "commons_image": [
+   "The Soviet Union 1969 CPA 3809 stamp (Georgi Shonin and Valeri Kubasov (Soyuz 6)) cancelled.jpg"
+  ],
   "description": [
    "Soviet crewed space mission"
   ],
@@ -10489,6 +12123,12 @@
  "Q753546": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_9"
+  ],
+  "commons_image": [
+   "The Soviet Union 1970 CPA 3907 stamp (Cosmonauts Andriyan Nikolayev and Vitaly Sevastyanov, Soyuz 9).jpg"
+  ],
+  "commons_logo": [
+   "Vimpel 'Diamond'.jpg"
   ],
   "description": [
    "crewed flight of the Soyuz programme"
@@ -10523,6 +12163,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-51-D"
   ],
+  "commons_image": [
+   "STS-51-D Syncom IV-3 activation effort.jpg",
+   "STS-51-D crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-51-d-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -10551,6 +12198,10 @@
  "Q757035": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-13"
+  ],
+  "commons_image": [
+   "Soyuz TMA-13 Edit.jpg",
+   "Sozuztma13crew.jpg"
   ],
   "description": [
    "crewed spaceflight to the International Space Station"
@@ -10585,6 +12236,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-18M"
   ],
+  "commons_image": [
+   "Soyuz TMA-18M crew members during training sessions.jpg",
+   "Soyuz TMA-18M rocket launches from Baikonur.jpg"
+  ],
   "description": [
    "Soyuz spaceflight launched on 2 September 2015"
   ],
@@ -10618,6 +12273,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-99"
   ],
+  "commons_image": [
+   "Payload bay sts-99.jpg"
+  ],
+  "commons_logo": [
+   "Sts-99-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -10647,6 +12308,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-101"
   ],
+  "commons_image": [
+   "STS-101 lifts off.jpg"
+  ],
+  "commons_logo": [
+   "Sts-101-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -10675,6 +12342,12 @@
  "Q767583": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-7"
+  ],
+  "commons_image": [
+   "Soyuz TM-7 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-7 patch.png"
   ],
   "country": [
    "Soviet Union"
@@ -10711,6 +12384,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-109"
   ],
+  "commons_image": [
+   "STS-109 Repaired and Reconfigured Hubble.jpg"
+  ],
+  "commons_logo": [
+   "STS-109 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -10739,6 +12418,9 @@
  "Q780047": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-8"
+  ],
+  "commons_image": [
+   "Soyuz T-8 Crew Portrait.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -10776,6 +12458,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-12"
   ],
+  "commons_image": [
+   "1985 CPA 5654.jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -10811,6 +12496,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-51-I"
   ],
+  "commons_image": [
+   "STS-51-I SYNCOM IV-3 EVA by James van Hoften.jpg",
+   "STS-51-I crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-51-i-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -10839,6 +12531,13 @@
  "Q793632": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-51-G"
+  ],
+  "commons_image": [
+   "Portrait of STS 51-G crew.jpg",
+   "STS-51-G Morelos 1 deployment.jpg"
+  ],
+  "commons_logo": [
+   "Sts-51-g-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -10869,6 +12568,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-97"
   ],
+  "commons_image": [
+   "STS-97 Launch cropped.jpg"
+  ],
+  "commons_logo": [
+   "Sts-97-patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -10897,6 +12602,10 @@
  "Q796537": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-05M"
+  ],
+  "commons_image": [
+   "Soyuz TMA-05M crew.jpg",
+   "Soyuz TMA-05M spacecraft approaches the International Space Station.jpg"
   ],
   "description": [
    "114th flight of a Soyuz spacecraft"
@@ -10931,6 +12640,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/X-15_Flight_90"
   ],
+  "commons_image": [
+   "Joseph Albert Walker.jpg"
+  ],
   "country": [
    "United States"
   ],
@@ -10959,6 +12671,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/X-15_Flight_91"
   ],
+  "commons_image": [
+   "X-15 flying.jpg"
+  ],
   "country": [
    "United States"
   ],
@@ -10979,6 +12694,12 @@
  "Q824383": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-118"
+  ],
+  "commons_image": [
+   "STS-118 approaching ISS.jpg"
+  ],
+  "commons_logo": [
+   "STS-118 Patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -11008,6 +12729,13 @@
  "Q827094": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-51-F"
+  ],
+  "commons_image": [
+   "STS-51-F Instrument Pointing System.jpg",
+   "STS-51-F crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-51-F patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -11040,6 +12768,9 @@
  "Q832305": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-02M"
+  ],
+  "commons_image": [
+   "Soyuz TMA-02M Crew during a training at Johnson Space Center.jpg"
   ],
   "description": [
    "space mission that transported three people to the ISS"
@@ -11074,6 +12805,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-103"
   ],
+  "commons_image": [
+   "STS103-713-048 - Steven Smith and John Grunsfeld repairing Hubble during STS-103 (Retouched).jpg"
+  ],
+  "commons_logo": [
+   "STS-103 Patch.svg"
+  ],
   "description": [
    "human spaceflight Hubble Space Telescope servicing mission by Space Shuttle Discovery"
   ],
@@ -11102,6 +12839,13 @@
  "Q834673": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-31"
+  ],
+  "commons_image": [
+   "1990 s31 IMAX view of HST release.jpg",
+   "Sts-31 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts31 flight insignia.png"
   ],
   "description": [
    "human spaceflight"
@@ -11132,6 +12876,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-51-B"
   ],
+  "commons_image": [
+   "STS-51-B crew.jpg",
+   "STS-51B launch.jpg"
+  ],
+  "commons_logo": [
+   "Sts-51-b-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -11160,6 +12911,13 @@
  "Q834714": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-41"
+  ],
+  "commons_image": [
+   "Discovery Ulysses.jpg",
+   "STS-41 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-41-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -11190,6 +12948,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-95"
   ],
+  "commons_image": [
+   "STS-95 crew.jpg",
+   "STS-95 launch.jpg"
+  ],
+  "commons_logo": [
+   "STS-95 Patch.svg"
+  ],
   "description": [
    "Space Shuttle mission"
   ],
@@ -11218,6 +12983,12 @@
  "Q836047": {
   "article": [
    "https://en.wikipedia.org/wiki/Gemini_11"
+  ],
+  "commons_image": [
+   "Gemini 11 Agena.jpg"
+  ],
+  "commons_logo": [
+   "Gemini 11 patch.png"
   ],
   "description": [
    "ninth crewed spaceflight mission of NASA's Project Gemini"
@@ -11250,6 +13021,12 @@
  "Q836053": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_15"
+  ],
+  "commons_image": [
+   "USSR stamp Soyuz-15 1974 10k.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -11287,6 +13064,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-19"
   ],
+  "commons_image": [
+   "Soyuz TMA-19 crew.jpg"
+  ],
   "description": [
    "flight carrying astronauts to the International Space Station"
   ],
@@ -11320,6 +13100,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-14"
   ],
+  "commons_image": [
+   "Expedition 7 Soyuz launch.jpg",
+   "Soyuz-TMA-14-Crew-Photo.jpeg"
+  ],
   "description": [
    "2009 Russian crewed spaceflight to the ISS"
   ],
@@ -11352,6 +13136,12 @@
  "Q841182": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_13"
+  ],
+  "commons_image": [
+   "Климук.jpg"
+  ],
+  "commons_logo": [
+   "Vimpel 'Diamond'.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -11389,6 +13179,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-15"
   ],
+  "commons_image": [
+   "Soyuz-T drawing.png"
+  ],
+  "commons_logo": [
+   "Soyuz T-15 mission patch.jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -11425,6 +13221,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-49"
   ],
+  "commons_image": [
+   "STS-49 crew 2.jpg",
+   "Three Crew Members Capture Intelsat VI - GPN-2000-001035.jpg"
+  ],
+  "commons_logo": [
+   "Sts-49-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -11453,6 +13256,13 @@
  "Q842305": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-50"
+  ],
+  "commons_image": [
+   "Spacelab Module in Cargo Bay.jpg",
+   "Sts-50-crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-50 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -11483,6 +13293,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-82"
   ],
+  "commons_image": [
+   "Hubble servicing sts-82.jpg",
+   "STS-82 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-82-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -11511,6 +13328,13 @@
  "Q844934": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-54"
+  ],
+  "commons_image": [
+   "1993 s54 TDRS-F.jpg",
+   "Sts-54 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-54-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -11544,6 +13368,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-60"
   ],
+  "commons_image": [
+   "STS-60 Launch - GPN-2000-000759.jpg",
+   "Sts-60 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-60-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -11572,6 +13403,13 @@
  "Q845364": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-52"
+  ],
+  "commons_image": [
+   "Sts-52 crew.jpg",
+   "Sts052-80-030 lrg.jpg"
+  ],
+  "commons_logo": [
+   "Sts-52-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -11602,6 +13440,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-32"
   ],
+  "commons_image": [
+   "1990 s32 LDEF and Columbia over Namibia.jpg",
+   "STS-32 crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-32 patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -11630,6 +13475,13 @@
  "Q845377": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-38"
+  ],
+  "commons_image": [
+   "STS-38 shuttle.jpg",
+   "Sts-38 crew.jpg"
+  ],
+  "commons_logo": [
+   "STS-38 patch.svg"
   ],
   "description": [
    "human spaceflight"
@@ -11660,6 +13512,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-47"
   ],
+  "commons_image": [
+   "STS-47 crew.jpg",
+   "STS-47 payloadbay.jpg"
+  ],
+  "commons_logo": [
+   "Sts-47-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -11688,6 +13547,13 @@
  "Q845390": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-46"
+  ],
+  "commons_image": [
+   "STS-46 EURECA deployment.jpg",
+   "Sts-46 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-46-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -11718,6 +13584,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-33"
   ],
+  "commons_image": [
+   "STS-33 crew.jpg",
+   "STS-33 liftoff.jpg"
+  ],
+  "commons_logo": [
+   "Sts-33-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -11747,6 +13620,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-48"
   ],
+  "commons_image": [
+   "STS-48 crew.jpg",
+   "Sts 48 d13 uars in payload bay2.jpg"
+  ],
+  "commons_logo": [
+   "Sts-48-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -11775,6 +13655,10 @@
  "Q846318": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-16"
+  ],
+  "commons_image": [
+   "Soyuz TMA-16 approaching ISS.jpg",
+   "Soyuz TMA-16 crew.jpg"
   ],
   "description": [
    "2009 Russian crewed spaceflight to the ISS"
@@ -11808,6 +13692,12 @@
  "Q846547": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_25"
+  ],
+  "commons_image": [
+   "Soyuz 25 Crew Portrait.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -11845,6 +13735,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_38"
   ],
+  "commons_logo": [
+   "Soyuz38 patch.png"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -11879,6 +13772,12 @@
  "Q847013": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_16"
+  ],
+  "commons_image": [
+   "1975 CPA 4445.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -11916,6 +13815,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_26"
   ],
+  "commons_image": [
+   "Romanenko and Grechko.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -11951,6 +13856,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_7K-ST_No.16L"
   ],
+  "commons_image": [
+   "Soyuz T-10-1 abort.jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -11983,6 +13891,12 @@
  "Q847126": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_37"
+  ],
+  "commons_image": [
+   "VICTOR GORBATKO & TUÂN PHAM (SOYUZ 37).jpg"
+  ],
+  "commons_logo": [
+   "Soyuz37 patch.png"
   ],
   "country": [
    "Soviet Union"
@@ -12020,6 +13934,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-3"
   ],
+  "commons_logo": [
+   "Soyuz TM-3 mission patch.svg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -12056,6 +13973,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_30"
   ],
+  "commons_image": [
+   "Sojuz 30.JPG"
+  ],
+  "commons_logo": [
+   "Soyuz 30 mission patch.svg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -12091,6 +14014,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-18"
   ],
+  "commons_image": [
+   "Soyuz TMA-18 crew.jpg"
+  ],
   "description": [
    "flight carrying astronauts to the International Space Station"
   ],
@@ -12123,6 +14049,9 @@
  "Q857030": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-20"
+  ],
+  "commons_image": [
+   "Soyuz TMA-20 crew.jpg"
   ],
   "description": [
    "long-duration Roscosmos spaceflight to the International Space Station"
@@ -12157,6 +14086,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-100"
   ],
+  "commons_image": [
+   "Lanzamiento sts-100.jpg"
+  ],
+  "commons_logo": [
+   "STS-100 patch.svg"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -12185,6 +14120,9 @@
  "Q86675323": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-19"
+  ],
+  "commons_image": [
+   "Soyuz MS-19 arriving at the ISS.jpg"
   ],
   "description": [
    "Russian crewed mission to the ISS"
@@ -12219,6 +14157,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-43"
   ],
+  "commons_image": [
+   "STS-43 Official crew portrait.jpg",
+   "TDRS-E deployment from STS-43.jpg"
+  ],
+  "commons_logo": [
+   "Sts-43-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -12248,6 +14193,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-36"
   ],
+  "commons_image": [
+   "STS-36 Launch.jpg",
+   "STS-36 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-36-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -12276,6 +14228,12 @@
  "Q902812": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_7K-T_No.39"
+  ],
+  "commons_image": [
+   "USSR stamp Soyuz-12 1973.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -12311,6 +14269,12 @@
  "Q903151": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_33"
+  ],
+  "commons_image": [
+   "Soyuz 33 descent module.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz-33-svg.svg"
   ],
   "country": [
    "Soviet Union"
@@ -12348,6 +14312,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-13"
   ],
+  "commons_image": [
+   "Soyuz T-13 Crew Portrait.jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -12383,6 +14350,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_24"
   ],
+  "commons_image": [
+   "Gorbatko and Glazkov.jpg"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -12415,6 +14388,9 @@
  "Q904285": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-4"
+  ],
+  "commons_logo": [
+   "Mir insignia.svg"
   ],
   "country": [
    "Soviet Union"
@@ -12452,6 +14428,12 @@
   "article": [
    "https://en.wikipedia.org/wiki/Salyut_7"
   ],
+  "commons_image": [
+   "Salyut 7 diagram.png"
+  ],
+  "commons_logo": [
+   "Salyut program insignia.svg"
+  ],
   "description": [
    "space station launched on 19 April 1982"
   ],
@@ -12477,6 +14459,13 @@
  "Q905035": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-44"
+  ],
+  "commons_image": [
+   "STS-44 DSP deployment.jpg",
+   "STS-44 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-44-patch.png"
   ],
   "description": [
    "human spaceflight"
@@ -12507,6 +14496,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-40"
   ],
+  "commons_image": [
+   "STS-40 Spacelab.jpg",
+   "STS-40 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-40-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -12535,6 +14531,9 @@
  "Q914983": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-5"
+  ],
+  "commons_image": [
+   "1983 CPA 5386.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -12571,6 +14570,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_32"
   ],
+  "commons_image": [
+   "Rus Stamp GSS-Lyahov-Rumin.jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -12605,6 +14607,12 @@
  "Q915385": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_29"
+  ],
+  "commons_image": [
+   "Soyuz 29 landing capsule.jpg"
+  ],
+  "commons_logo": [
+   "Vimpel 'Diamond'.jpg"
   ],
   "country": [
    "Soviet Union"
@@ -12641,6 +14649,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_T-3"
   ],
+  "commons_image": [
+   "USSR stamp Soyuz-T-3 1981 10k.jpg"
+  ],
   "country": [
    "Soviet Union"
   ],
@@ -12675,6 +14686,12 @@
  "Q916974": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_31"
+  ],
+  "commons_image": [
+   "Bundesarchiv Bild 183-T0905-107, Landung der Kosmonauten Bykowski und Jähn.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz 31 mission patch.svg"
   ],
   "country": [
    "Soviet Union"
@@ -12711,6 +14728,13 @@
   "article": [
    "https://en.wikipedia.org/wiki/STS-80"
   ],
+  "commons_image": [
+   "STS-80 Launch 01.jpg",
+   "STS-80 crew.jpg"
+  ],
+  "commons_logo": [
+   "Sts-80-patch.png"
+  ],
   "description": [
    "human spaceflight"
   ],
@@ -12739,6 +14763,12 @@
  "Q921112": {
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TM-34"
+  ],
+  "commons_image": [
+   "Soyuz TM-34 docked to the ISS.jpg"
+  ],
+  "commons_logo": [
+   "Soyuz TM-34 logo.png"
   ],
   "description": [
    "flight of a Russian Sojus-Spaceship to the ISS"
@@ -12772,6 +14802,9 @@
  "Q9335995": {
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_11"
+  ],
+  "commons_image": [
+   "Shenzhou front frei.png"
   ],
   "description": [
    "crewed spaceflight of the Shenzhou program of China"
@@ -12807,6 +14840,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_MS-20"
   ],
+  "commons_image": [
+   "The Soyuz MS-20 crew (cropped).jpg"
+  ],
   "description": [
    "spaceflight mission to ISS"
   ],
@@ -12839,6 +14875,12 @@
  "Q96372870": {
   "article": [
    "https://en.wikipedia.org/wiki/Axiom_Mission_1"
+  ],
+  "commons_image": [
+   "Axiom-1 Liftoff (KSC-20220408PH-KLS01 0031).jpg"
+  ],
+  "commons_logo": [
+   "Inofficial Axiom Space Ax-1 Patch.svg"
   ],
   "country": [
    "United States"
@@ -12874,6 +14916,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-7"
   ],
+  "commons_image": [
+   "Crew of soyuz tma7.jpg",
+   "Soyuz TMA-7 spacecraft.jpg"
+  ],
   "description": [
    "transport mission"
   ],
@@ -12907,6 +14953,10 @@
   "article": [
    "https://en.wikipedia.org/wiki/Soyuz_TMA-07M"
   ],
+  "commons_image": [
+   "Soyuz TMA-07M crew.jpg",
+   "Soyuz TMA-07M docked to MRM1.jpg"
+  ],
   "description": [
    "2012 Russian crewed spaceflight to the ISS"
   ],
@@ -12939,6 +14989,12 @@
  "Q97769209": {
   "article": [
    "https://en.wikipedia.org/wiki/SpaceX_Crew-2"
+  ],
+  "commons_image": [
+   "The SpaceX Crew Dragon Endeavour approaches the International Space Station (iss065e002661).jpg"
+  ],
+  "commons_logo": [
+   "SpaceX Crew-2 logo.png"
   ],
   "country": [
    "United States"
@@ -12977,6 +15033,12 @@
  "Q977964": {
   "article": [
    "https://en.wikipedia.org/wiki/STS-98"
+  ],
+  "commons_image": [
+   "ISS Destiny Lab.jpg"
+  ],
+  "commons_logo": [
+   "Sts-98-patch.svg"
   ],
   "description": [
    "2001 Space Shuttle mission to the ISS"

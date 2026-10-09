@@ -1,1721 +1,2151 @@
 {
  "Apollo 1": {
+  "crew_photo": "Apollo 1 Prime Crew - GPN-2000-001159.jpg",
   "image": "Apollo1-Crew 01.jpg",
   "insignia": "Apollo 1 patch.png"
  },
  "Apollo 10": {
+  "crew_photo": "The Apollo 10 Prime Crew - GPN-2000-001163.jpg",
   "image": "Apollo 10 Lunar Module.jpg",
   "insignia": "Apollo-10-LOGO.png"
  },
  "Apollo 11": {
+  "crew_photo": "apollo 11.jpg",
   "image": "A_Man_on_the_Moon,_AS11-40-5903_(cropped).jpg",
   "insignia": "Apollo 11 insignia.png"
  },
  "Apollo 12": {
+  "crew_photo": "Apollo 12 crew.jpg",
   "image": "Surveyor 3-Apollo 12.jpg",
   "insignia": "Apollo 12 insignia.png"
  },
  "Apollo 13": {
+  "crew_photo": "Apollo 13 Prime Crew.jpg",
   "image": "Apollo 13 Service Module (lossless crop).jpg",
   "insignia": "Apollo 13-insignia.png"
  },
  "Apollo 14": {
+  "crew_photo": "Apollo 14 crew.jpg",
   "image": "Apollo 14 Shepard.jpg",
   "insignia": "Apollo 14-insignia.png"
  },
  "Apollo 15": {
+  "crew_photo": "The Apollo 15 Prime Crew - GPN-2000-001169.jpg",
   "image": "AS15-88-11866 - Apollo 15 flag, rover, LM, Irwin - restoration1.jpg",
   "insignia": "Apollo 15-insignia.png"
  },
  "Apollo 16": {
+  "crew_photo": "Apollo 16 crew.jpg",
   "image": "John W. Young on the Moon.jpg",
   "insignia": "Apollo-16-LOGO.png"
  },
  "Apollo 17": {
+  "crew_photo": "Apollo 17 crew.jpg",
   "image": "Eugene Cernan at the LM, Apollo 17, AS17-134-20378.jpg",
   "insignia": "Apollo 17-insignia.png"
  },
  "Apollo 7": {
+  "crew_photo": "The Apollo 7 Prime Crew - GPN-2000-001160.jpg",
   "image": "Apollo 7 during the first live television transmission from space.jpg",
   "insignia": "Apollo7.png"
  },
  "Apollo 8": {
+  "crew_photo": "Apollo8 Prime Crew.jpg",
   "image": "NASA-Apollo8-Dec24-Earthrise.jpg",
   "insignia": "Apollo-8-patch.png"
  },
  "Apollo 9": {
+  "crew_photo": "Apollo9 Prime Crew.jpg",
   "image": "Gumdrop Meets Spider - GPN-2000-001100.jpg",
   "insignia": "Apollo 9 mission patch.svg"
  },
  "Apollo–Soyuz Test Project": {
+  "crew_photo": "Portrait of ASTP crews - restoration.jpg",
   "image": "Apollo-Soyuz-Test-Program-artist-rendering.jpg",
   "insignia": "ASTP patch.png"
  },
  "Approach and Landing Tests": {
+  "crew_photo": "Space Shuttle Approach and Landing Tests crews - cropped.jpg",
   "image": "OV-101 first flight.jpg",
   "insignia": "Enterprise 1977 Approach and Landing Test mission patch.png"
  },
  "Artemis II": {
+  "crew_photo": "Artemis 2 Crew Portrait.jpg",
   "image": "Earthset (art002e009288).jpg",
   "insignia": "Artemis II patch.svg"
  },
  "Artemis III": {
+  "crew_photo": "The Artemis III crew poses for a portrait (from left- Luca Parmitano, Andre Douglas, Randy Bresnik, Frank Rubio) (jsc2026e391511 alt).jpg",
   "image": "Artemis III ESM3 Engine Nozzle Install Completion (KSC-20260217-PH-JBS01 0002).jpg",
   "insignia": "Artemis III Mission (1083828734419).png"
  },
  "Artemis IV": {
+  "crew_photo": null,
   "image": "Artemis IV Mission (1083828741619).png",
   "insignia": null
  },
  "Artemis V": {
+  "crew_photo": null,
   "image": "Artemis V Logo.png",
   "insignia": null
  },
  "Artemis VII": {
+  "crew_photo": null,
   "image": "Artemis program (solid contrast with wordmark).svg",
   "insignia": null
  },
  "Axiom Mission 1": {
+  "crew_photo": "Axiom Crew Portrait.jpg",
   "image": "SpaceX Axiom 1 docking (cropped).jpg",
   "insignia": "Axiom Mission 1.png"
  },
  "Axiom Mission 2": {
+  "crew_photo": "Ax-2 Crew Portrait.jpg",
   "image": "Axiom-2 Launch Show & Liftoff (KSC-20230521-PH-JBS01 0059) (cropped).jpg",
   "insignia": "Axiom Mission 2 Patch.png"
  },
  "Axiom Mission 3": {
+  "crew_photo": "Axiom_Mission_3_at_the_ISS_(cropped).jpg",
   "image": "Axiom-3 Launch (KSC-20240118-PH-CMS01 0033).jpg",
   "insignia": "Axiom 3 mission patch.png"
  },
  "Axiom Mission 4": {
+  "crew_photo": "Ax-4 crew montage.jpg",
   "image": "The SpaceX Dragon spacecraft carrying Axiom Mission 4 approaches the International Space Station (iss073e0249606).jpg",
   "insignia": "Ax-4 Mission Patch.png"
  },
  "Axiom Mission 5": {
+  "crew_photo": null,
   "image": "SpaceX Crew Dragon (cropped).jpg",
   "insignia": "Ax-5 Mission Patch.png"
  },
  "Blue Origin NS-16": {
+  "crew_photo": null,
   "image": null,
   "insignia": "NS-16 logo.png"
  },
  "Blue Origin NS-18": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Blue Origin NS-18 logo.png"
  },
  "Blue Origin NS-19": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Blue Origin NS-19 logo.png"
  },
  "Blue Origin NS-20": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Blue Origin NS-20 logo.png"
  },
  "Blue Origin NS-21": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Blue Origin NS-21 logo.png"
  },
  "Blue Origin NS-22": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Blue Origin NS-22 patch.png"
  },
  "Blue Origin NS-31": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Blue Origin NS-31 patch.png"
  },
  "Blue Origin NS-36": {
+  "crew_photo": null,
   "image": "Blue Origin NS 36.jpg",
   "insignia": "Blue Origin NS-36 patch.png"
  },
  "Blue Origin NS-37": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Blue Origin NS-37 patch.jpeg"
  },
  "Blue Origin NS-38": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Blue Origin NS-38 patch.webp"
  },
  "Boeing Crew Flight Test": {
+  "crew_photo": "Boeing CFT Crew Portrait-Sunita Williams and Barry Wilmore (KSC-20240404-PH-NAS01 0001).jpg",
   "image": "NASA’s Boeing Crew Flight Test Launch (NHQ202406050029).jpg",
   "insignia": "Boeing CFT patch.png"
  },
  "Crew Dragon Demo-2": {
+  "crew_photo": "Crew Dragon Demo-2 Bob and Doug.jpg",
   "image": null,
   "insignia": "Crew Dragon Demo-2 Patch.png"
  },
  "Fram2": {
+  "crew_photo": null,
   "image": "Fram2 Dragon.jpg",
   "insignia": "Fram2 mission patch.png"
  },
  "Galactic 01": {
+  "crew_photo": null,
   "image": "Virgin Galactic SpaceShipTwo \"Unity\" rollout 19Feb2016, FAITH hangar, Mojave, California.jpg",
   "insignia": "Virgin Galactic - Galactic 1 Patch.png"
  },
  "Galactic 02": {
+  "crew_photo": null,
   "image": "Virgin Galactic SpaceShipTwo \"Unity\" rollout 19Feb2016, FAITH hangar, Mojave, California.jpg",
   "insignia": "Virgin Galactic - Galactic 2 Patch.png"
  },
  "Galactic 04": {
+  "crew_photo": null,
   "image": "G-04 In-Flight.jpg",
   "insignia": "Virgin Galactic - Galactic 4 Patch.png"
  },
  "Galactic 06": {
+  "crew_photo": null,
   "image": "Galactic 06 Landing.jpg",
   "insignia": "Virgin Galactic - Galactic 6 Patch.png"
  },
  "Gemini 10": {
+  "crew_photo": "Gemini10crew.jpg",
   "image": "Agena Firing - GPN-2000-001355.jpg",
   "insignia": "Gemini 10 Insignia.svg"
  },
  "Gemini 11": {
+  "crew_photo": "Gemini 11 prime crew (Gordon and Conrad).jpg",
   "image": "Gemini 11 Agena.jpg",
   "insignia": "Gemini 11 patch.png"
  },
  "Gemini 12": {
+  "crew_photo": "Gemini12 crew.jpg",
   "image": "S66-63536.jpg",
   "insignia": "Gemini 12 insignia.png"
  },
  "Gemini 3": {
+  "crew_photo": "Astronauts Virgil I. Grissom (left) and John W. Young.jpg",
   "image": "G3C spacesuit Gemini 3.jpg",
   "insignia": "Gemini3.png"
  },
  "Gemini 4": {
+  "crew_photo": "Gemini 4 crew portrait.jpg",
   "image": "Ed White First American Spacewalker - GPN-2000-001180.jpg",
   "insignia": "Gemini-4-logo.png"
  },
  "Gemini 5": {
+  "crew_photo": "S65-46990.jpg",
   "image": "S65-45753.jpg",
   "insignia": "Gemini5insignia.png"
  },
  "Gemini 6A": {
+  "crew_photo": "Gemini 6A (GTA-6) crew.png",
   "image": "Gemini 7 in orbit - GPN-2006-000035.jpg",
   "insignia": "Gemini 6A patch.png"
  },
  "Gemini 7": {
+  "crew_photo": "Gemini 7 Crew (Lovell und Borman).jpg",
   "image": "Gemini 6 7.jpg",
   "insignia": "Gemini VII patch.png"
  },
  "Gemini 8": {
+  "crew_photo": "Portrait of the Gemini 8 prime crew.jpg",
   "image": "Gemini8StationKeep.gif",
   "insignia": "Gemini 8 patch.png"
  },
  "Gemini 9A": {
+  "crew_photo": "Thomas P. Stafford and Eugene A. Cernan – Gemini 9 Crew (S66-15621).jpg",
   "image": "The Angry Alligator - GPN-2000-001354.jpg",
   "insignia": "Ge09Patch_orig.png"
  },
  "ISS EP-1": {
+  "crew_photo": "ISS Expedition 2 crew.jpeg",
   "image": "S100E5971 - STS-100 - View of the ISS taken during final flyaround of STS-100 - DPLA - 3c811fbfeeeb9d6d9e00b4729badfff5.jpg",
   "insignia": "Expedition 2 insignia.svg"
  },
  "ISS year-long mission": {
+  "crew_photo": "Scott Kelly and Mikhail Kornienko portrait - year long mission.jpg",
   "image": "One-Year Crew Mission commemorative poster.jpg",
   "insignia": "ISS Yearlong mission patch.png"
  },
  "Inspiration4": {
+  "crew_photo": "Inspiration4 crew visits NASA's JSC (cropped).jpg",
   "image": "Inspiration4 Launch (210915-F-CG053-1004).jpg",
   "insignia": "Inspiration4.png"
  },
  "Mercury-Atlas 10": {
+  "crew_photo": null,
   "image": "20180328 Freedom 7-II capsule Udvar-Hazy.jpg",
   "insignia": "Freedom 7 II insignia.jpg"
  },
  "Mercury-Atlas 6": {
+  "crew_photo": "John Glenn in 1960.jpg",
   "image": "Glenn62.jpg",
   "insignia": "Friendship 7 insignia.jpg"
  },
  "Mercury-Atlas 7": {
+  "crew_photo": "M. Scott Carpenter.jpg",
   "image": "Carpenter aurora 7.jpg",
   "insignia": "Aurora 7 insignia.jpg"
  },
  "Mercury-Atlas 8": {
+  "crew_photo": "Wally Schirra in 1960.jpg",
   "image": "Mercury-8 schirra boarding.jpg",
   "insignia": "Sigma 7 insginia.png"
  },
  "Mercury-Atlas 9": {
+  "crew_photo": "Gordon Cooper in 1960.jpg",
   "image": "S63-07856.jpg",
   "insignia": "Faith 7 insignia.jpg"
  },
  "Mercury-Redstone 3": {
+  "crew_photo": "Portrait of Alan B. Shepard.jpg",
   "image": "Alan Shepard during flight 5.5.61.jpg",
   "insignia": "Freedom 7 insignia.png"
  },
  "Mercury-Redstone 4": {
+  "crew_photo": "Astronaut Gus Grissom in 1960.jpg",
   "image": "Grissom Climbs into Liberty Bell 7 MSFC-6116423.jpg",
   "insignia": "Liberty bell insignia.jpg"
  },
  "Mir": {
+  "crew_photo": null,
   "image": "Mir Space Station viewed from Endeavour during STS-89.jpg",
   "insignia": "Mir insignia.svg"
  },
  "Mir Aragatz": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Mir EO-4 patch.png"
  },
  "Mir EO-12": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Mir EO-19": {
+  "crew_photo": null,
   "image": "Earth & Mir (STS-71).jpg",
   "insignia": "Mir EO-19 patch.png"
  },
  "Mir EO-21": {
+  "crew_photo": "S76e5199.jpg",
   "image": null,
   "insignia": "Mir EO-21 patch.png"
  },
  "Mir EO-23": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz_TM-25_patch.png"
  },
  "Mir EO-24": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz_TM-26_patch.png"
  },
  "Mir EO-5": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Mir EO-6": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Mir EO-7": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Mir EO-8": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-11 patch.png"
  },
  "Mir EP-1": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-2 mission patch.jpg"
  },
  "Mir EP-2": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-5 mission patch.svg"
  },
  "Mir EP-3": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Mir&nbsp;EO-3": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Polaris Dawn": {
+  "crew_photo": "Polaris Dawn crew.jpg",
   "image": "Logo of Polaris Dawn.svg",
   "insignia": "Polaris Dawn mission patch.png"
  },
  "STS-1": {
+  "crew_photo": "Sts-1 crew.jpg",
   "image": "Space Shuttle Columbia launching.jpg",
   "insignia": "Sts-1-patch.png"
  },
  "STS-100": {
+  "crew_photo": "STS-100_crew.jpg",
   "image": "Canadarm2 installation during STS-100.jpg",
   "insignia": "STS-100 patch.svg"
  },
  "STS-101": {
+  "crew_photo": "STS-101 crew.jpg",
   "image": "Astronaut Jeffrey Williams spacewalking (STS-101).jpg",
   "insignia": "Sts-101-patch.svg"
  },
  "STS-102": {
+  "crew_photo": "STS-102 crew.jpg",
   "image": "Mplm in shuttle.jpg",
   "insignia": "STS-102 Patch.svg"
  },
  "STS-103": {
+  "crew_photo": "STS-103 crew.jpg",
   "image": "STS103-713-048 - Steven Smith and John Grunsfeld repairing Hubble during STS-103 (Retouched).jpg",
   "insignia": "STS-103 Patch.svg"
  },
  "STS-104": {
+  "crew_photo": "STS-104 crew.jpg",
   "image": "ISS Quest airlock.jpg",
   "insignia": "Sts-104-patch.png"
  },
  "STS-105": {
+  "crew_photo": "STS-105 crew.jpg",
   "image": "ISS on 20 August 2001.jpg",
   "insignia": "Sts-105-patch.png"
  },
  "STS-106": {
+  "crew_photo": "STS-106 crew.jpg",
   "image": "STS106 Malenchenko EVA1.jpg",
   "insignia": "Sts-106-patch.svg"
  },
  "STS-107": {
+  "crew_photo": "Crew of STS-107, official photo.jpg",
   "image": "Spacehab S107e05359.jpg",
   "insignia": "STS-107 Flight Insignia.svg"
  },
  "STS-108": {
+  "crew_photo": "STS-108 crew2.jpg",
   "image": "STS-108 spacewalk.jpg",
   "insignia": "STS-108 Patch.svg"
  },
  "STS-109": {
+  "crew_photo": "STS-109 crew.jpg",
   "image": "STS-109 Repaired and Reconfigured Hubble.jpg",
   "insignia": "STS-109 patch.svg"
  },
  "STS-110": {
+  "crew_photo": "STS-110 crew.jpg",
   "image": "STS-110 Installation of S0 Truss.jpg",
   "insignia": "STS-110 patch.svg"
  },
  "STS-111": {
+  "crew_photo": "STS-111 crew.jpg",
   "image": "STS-111 Installation of Mobile Base System.jpg",
   "insignia": "Sts-111-patch.png"
  },
  "STS-112": {
+  "crew_photo": "STS-112 crew.jpg",
   "image": "S112 S1 truss is moved from the Payload Bay of Atlantis.jpg",
   "insignia": "Sts-112-patch.png"
  },
  "STS-113": {
+  "crew_photo": "STS-113 crew.jpg",
   "image": "ISS-05 STS-113 EVA Michael Lopez-Alegria.jpg",
   "insignia": "STS-113 Patch.svg"
  },
  "STS-114": {
+  "crew_photo": "STS-114 crew.jpg",
   "image": "ISS-11 Discovery heat shield photograph.jpg",
   "insignia": "STS-114 patch.svg"
  },
  "STS-115": {
+  "crew_photo": "STS-115 crew.jpg",
   "image": "ISS after STS-115 in September 2006.jpg",
   "insignia": "STS-115 patch.svg"
  },
  "STS-116": {
+  "crew_photo": "STS-116 crew.jpg",
   "image": "STS-116 - P5 Truss hand-off to ISS (NASA S116-E-05765).jpg",
   "insignia": "STS-116 emblem.svg"
  },
  "STS-117": {
+  "crew_photo": "STS-117 new crew photo.jpg",
   "image": "STS-117 EVA3c.jpg",
   "insignia": "STS-117 patch new2.svg"
  },
  "STS-118": {
+  "crew_photo": "STS-118 crew lr.jpg",
   "image": "STS-118 approaching ISS.jpg",
   "insignia": "STS-118 patch new.png"
  },
  "STS-119": {
+  "crew_photo": "Sts119 crew portrait.jpg",
   "image": "STS-119 International Space Station after undocking with earth atmosphere backdrop.jpg",
   "insignia": "STS-119 Patch.svg"
  },
  "STS-120": {
+  "crew_photo": "STS-120 crew.jpg",
   "image": "STS-120 EVA Scott Parazynski.jpg",
   "insignia": "Sts-120-patch.svg"
  },
  "STS-121": {
+  "crew_photo": "STS 121 Crew Portrait.jpg",
   "image": "STS-121 Sellers Fossum RMS-OBSS.jpg",
   "insignia": "STS-121 patch.svg"
  },
  "STS-122": {
+  "crew_photo": "STS-122crew.jpg",
   "image": "S122e007873.jpg",
   "insignia": "STS-122 patch.svg"
  },
  "STS-123": {
+  "crew_photo": "STS-123 crew portrait.jpg",
   "image": "S123e006082.jpg",
   "insignia": "STS-123 Patch.svg"
  },
  "STS-124": {
+  "crew_photo": "Sts124crew.jpg",
   "image": "STS-124_Kibo.jpg",
   "insignia": "STS-124 patch.svg"
  },
  "STS-125": {
+  "crew_photo": "STS-125 crew portrait.jpg",
   "image": "Hubble docked in the cargo bay.jpg",
   "insignia": "STS-125 patch.svg"
  },
  "STS-126": {
+  "crew_photo": "STS-126_crew_portrait.jpg",
   "image": "EVA 1 Bowen.jpg",
   "insignia": "STS-126 patch.svg"
  },
  "STS-127": {
+  "crew_photo": "STS-127 Crew Photo.jpg",
   "image": "STS-127 JEM-EF.jpg",
   "insignia": "STS-127 Patch.svg"
  },
  "STS-128": {
+  "crew_photo": "STS-128 Crew Photo.jpg",
   "image": "382853main 128-aug30-1 full.jpg",
   "insignia": "STS-128 patch.png"
  },
  "STS-129": {
+  "crew_photo": "STS-129 Crewphoto.jpg",
   "image": "STS-129 EVA2 Michael Foreman & Randolph Bresnik 1.jpg",
   "insignia": "STS-129 patch.png"
  },
  "STS-130": {
+  "crew_photo": "STS-130 Official Crew Photo.jpg",
   "image": "STS-130 EVA3 Nicholas Patrick 1.jpg",
   "insignia": "STS-130 patch.svg"
  },
  "STS-131": {
+  "crew_photo": "STS-131_Official_Crew_Photo.jpg",
   "image": "STS-131 Canadarm2 grapples Leonardo.jpg",
   "insignia": "STS-131 patch.svg"
  },
  "STS-132": {
+  "crew_photo": "STS-132 Official Crew Photo.jpg",
   "image": "STS-132 Atlantis at ISS 1.jpg",
   "insignia": "STS-132 patch.png"
  },
  "STS-133": {
+  "crew_photo": "STS-133 Official Crew Photo.jpg",
   "image": "STS-133 Installation PMM 3.jpg",
   "insignia": "STS-133 patch.svg"
  },
  "STS-134": {
+  "crew_photo": "STS-134_Official_Crew_Photo.jpg",
   "image": "Endeavour docked to ISS.jpg",
   "insignia": "STS-134 Patch.svg"
  },
  "STS-135": {
+  "crew_photo": "STS-135 Official Crew Photo.jpg",
   "image": "STS-135 landing cropped.jpg",
   "insignia": "STS-135 Patch.svg"
  },
  "STS-2": {
+  "crew_photo": "Sts-2_crew.jpg",
   "image": "STS-2 Canadarm debut.jpg",
   "insignia": "Sts 2 patch.svg"
  },
  "STS-26": {
+  "crew_photo": "The STS-26 Return To Flight Crew - GPN-2000-001174.jpg",
   "image": "TDRS-C.jpg",
   "insignia": "Sts-26-patch.png"
  },
  "STS-27": {
+  "crew_photo": "Crew_STS-27.jpg",
   "image": "Atlantis taking off on STS-27.jpg",
   "insignia": "Sts-27-patch.png"
  },
  "STS-28": {
+  "crew_photo": "Sts-28 crew.jpg",
   "image": "SILTS Image.jpg",
   "insignia": "Sts-28-patch.png"
  },
  "STS-29": {
+  "crew_photo": "STS-29_crew.jpg",
   "image": "Earth through the bay door2.jpg",
   "insignia": "Sts-29-patch.png"
  },
  "STS-3": {
+  "crew_photo": "STS-3 Crew.jpg",
   "image": "STS-3 landing.jpg",
   "insignia": "Sts3-patch.png"
  },
  "STS-30": {
+  "crew_photo": "Sts-30 crew.jpg",
   "image": "Atlantis and Magellan (3).jpg",
   "insignia": "Sts-30-patch.png"
  },
  "STS-31": {
+  "crew_photo": "Sts-31 crew.jpg",
   "image": "1990 s31 IMAX view of HST release.jpg",
   "insignia": "Sts31 flight insignia.png"
  },
  "STS-32": {
+  "crew_photo": "STS-32 crew.jpg",
   "image": "1990 s32 LDEF and Columbia over Namibia.jpg",
   "insignia": "STS-32 patch.png"
  },
  "STS-33": {
+  "crew_photo": "STS-33_crew.jpg",
   "image": "STS-33 Tail.jpg",
   "insignia": "Sts-33-patch.png"
  },
  "STS-34": {
+  "crew_photo": "Sts-34_crew.jpg",
   "image": "Galileo Deployment (high res).jpg",
   "insignia": "Sts-34-patch.png"
  },
  "STS-35": {
+  "crew_photo": "STS-35 crew portrait.jpg",
   "image": "Onboard Photo - Astro-1 Ultraviolet Telescope in Cargo Bay.jpg",
   "insignia": "Sts-35-patch.svg"
  },
  "STS-36": {
+  "crew_photo": "STS-36 crew.jpg",
   "image": "STS-36 Launch.jpg",
   "insignia": "Sts-36-patch.png"
  },
  "STS-37": {
+  "crew_photo": "STS-37 crew.jpg",
   "image": "CGRO s37-96-010.jpg",
   "insignia": "Sts-37-patch.png"
  },
  "STS-38": {
+  "crew_photo": "Sts-38 crew.jpg",
   "image": "STS038-84-23 Atlantis.jpg",
   "insignia": "STS-38 patch.svg"
  },
  "STS-39": {
+  "crew_photo": "Sts-39 crew.jpg",
   "image": "STS039-367-006 - STS-39 Critical Ionization Velocity (CIV) gas release from OV-103 payload bay.jpg",
   "insignia": "STS-39 patch.svg"
  },
  "STS-4": {
+  "crew_photo": "Sts-4-crew.jpg",
   "image": "STS-4 launch.jpg",
   "insignia": "STS-4 patch.svg"
  },
  "STS-40": {
+  "crew_photo": "STS-40 crew.jpg",
   "image": "STS-40 Spacelab.jpg",
   "insignia": "Sts-40-patch.png"
  },
  "STS-41": {
+  "crew_photo": "STS-41 crew.jpg",
   "image": "Ulysses in Discovery's payload bay.jpg",
   "insignia": "Sts-41-patch.png"
  },
  "STS-41-B": {
+  "crew_photo": "STS-41-B crew.jpg",
   "image": "Bruce McCandless II during EVA in 1984.jpg",
   "insignia": "Sts-41-b-patch.png"
  },
  "STS-41-C": {
+  "crew_photo": "STS-41-C crew.jpg",
   "image": "SMMS repair by STS-41C Astronauts.jpg",
   "insignia": "STS-41-C_patch.png"
  },
  "STS-41-D": {
+  "crew_photo": "STS-41-D_crew.jpg",
   "image": "STS41D-01-021.jpg",
   "insignia": "Sts-41-d-patch.png"
  },
  "STS-41-G": {
+  "crew_photo": "STS-41-G_crew.jpg",
   "image": "Earth Radiation Budget Satellite.jpg",
   "insignia": "STS-41G Patch.svg"
  },
  "STS-42": {
+  "crew_photo": "Sts-42.jpg",
   "image": "STS-42 view of payload bay.jpg",
   "insignia": "Sts-42-patch.png"
  },
  "STS-43": {
+  "crew_photo": "STS-43 Official crew portrait.jpg",
   "image": "TDRS-E deployment from STS-43.jpg",
   "insignia": "Sts-43-patch.png"
  },
  "STS-44": {
+  "crew_photo": "STS-44 crew.jpg",
   "image": "STS-44 DSP deployment.jpg",
   "insignia": "Sts-44-patch.png"
  },
  "STS-45": {
+  "crew_photo": "Sts-45 crew.jpg",
   "image": "STS-45 payload.jpg",
   "insignia": "Sts-45-patch.png"
  },
  "STS-46": {
+  "crew_photo": "Sts-46_crew.jpg",
   "image": "STS-46 EURECA deployment.jpg",
   "insignia": "Sts-46-patch.png"
  },
  "STS-47": {
+  "crew_photo": "STS-47 crew.jpg",
   "image": "STS-47 payloadbay.jpg",
   "insignia": "Sts-47-patch.png"
  },
  "STS-48": {
+  "crew_photo": "STS-48 crew.jpg",
   "image": "STS-48_UARS_deployment.jpg",
   "insignia": "Sts-48-patch.png"
  },
  "STS-49": {
+  "crew_photo": "STS-49 crew 2.jpg",
   "image": "Three Crew Members Capture Intelsat VI - GPN-2000-001035.jpg",
   "insignia": "Sts-49-patch.png"
  },
  "STS-5": {
+  "crew_photo": "Sts-5_crew.jpg",
   "image": "SBS-3 with PAM-D stage.jpg",
   "insignia": "Sts-5-patch.png"
  },
  "STS-50": {
+  "crew_photo": "Sts-50-crew.jpg",
   "image": "Spacelab Module in Cargo Bay.jpg",
   "insignia": "STS-50 patch.svg"
  },
  "STS-51": {
+  "crew_photo": "STS-51-crew.jpg",
   "image": "1993 s51 IMAX view of Discovery from Spas.JPG",
   "insignia": "STS-51 patch.svg"
  },
  "STS-51-A": {
+  "crew_photo": "STS-51-A crew.jpg",
   "image": "Satellites For Sale - GPN-2000-001036.jpg",
   "insignia": "Sts-51-a-patch.png"
  },
  "STS-51-B": {
+  "crew_photo": "STS-51-B_crew.jpg",
   "image": "STS-51-B crew in Spacelab.jpg",
   "insignia": "Sts-51-b-patch.png"
  },
  "STS-51-C": {
+  "crew_photo": "STS-51-C_crew.jpg",
   "image": "STS51C-35-105.jpg",
   "insignia": "51-c-patch.png"
  },
  "STS-51-D": {
+  "crew_photo": "STS-51-D Crew March 1985.jpg",
   "image": "STS-51-D Syncom IV-3 activation effort.jpg",
   "insignia": "Sts-51-d-patch.png"
  },
  "STS-51-F": {
+  "crew_photo": "STS-51-F crew.jpg",
   "image": "STS-51-F Instrument Pointing System.jpg",
   "insignia": "STS-51-F patch.svg"
  },
  "STS-51-G": {
+  "crew_photo": "Portrait of STS 51-G crew.jpg",
   "image": "STS-51-G Morelos 1 deployment.jpg",
   "insignia": "Sts-51-g-patch.png"
  },
  "STS-51-I": {
+  "crew_photo": "STS-51-I crew NASA.jpg",
   "image": "STS-51-I SYNCOM IV-3 EVA by James van Hoften.jpg",
   "insignia": "Sts-51-i-patch.png"
  },
  "STS-51-J": {
+  "crew_photo": "STS-51-J crew.jpg",
   "image": "DSCS-III STS-51-J.jpg",
   "insignia": "Sts-51-j-patch.png"
  },
  "STS-51-L": {
+  "crew_photo": "Challenger flight 51-l crew.jpg",
   "image": "STS-51-L.jpg",
   "insignia": "STS-51-L.svg"
  },
  "STS-52": {
+  "crew_photo": "Sts-52 crew.jpg",
   "image": "Sts052-80-030 lrg.jpg",
   "insignia": "Sts-52-patch.png"
  },
  "STS-53": {
+  "crew_photo": "Sts-53_crew.jpg",
   "image": "STS-053 shuttle.jpg",
   "insignia": "STS-53 patch.svg"
  },
  "STS-54": {
+  "crew_photo": "Sts-54 crew.jpg",
   "image": "1993 s54 TDRS-F.jpg",
   "insignia": "Sts-54-patch.png"
  },
  "STS-55": {
+  "crew_photo": "Sts-55 crew.jpg",
   "image": "STS-55 Spacelab.jpg",
   "insignia": "Sts-55-patch.png"
  },
  "STS-56": {
+  "crew_photo": "Sts-56_crew.jpg",
   "image": "STS056-91-054 - Payload bay view with ATLAS pallet (Retouched).jpg",
   "insignia": "Sts-56-patch.png"
  },
  "STS-57": {
+  "crew_photo": "Sts-57 crew.jpg",
   "image": "STS057-89-042.jpg",
   "insignia": "Sts-57-patch.png"
  },
  "STS-58": {
+  "crew_photo": "STS-58-crew.jpg",
   "image": "STS058-92-064.jpg",
   "insignia": "Sts-58-patch.png"
  },
  "STS-59": {
+  "crew_photo": "Sts-59_crew.jpg",
   "image": "EndeavourPayloadBaySTS59.jpg",
   "insignia": "STS-59 patch.svg"
  },
  "STS-6": {
+  "crew_photo": "Sts-6-crew.jpg",
   "image": "Space Shuttle Challenger (04-04-1983).JPEG",
   "insignia": "Sts-6-patch.png"
  },
  "STS-60": {
+  "crew_photo": "Sts-60_crew.jpg",
   "image": "Wake Shield Facility on STS-60 (STS060-74-054).jpg",
   "insignia": "Sts-60-patch.png"
  },
  "STS-61": {
+  "crew_photo": "Sts-61_crew.jpg",
   "image": "STS061-98-050 - Astronauts Musgrave and Hoffman during servicing of HST (Retouched).jpg",
   "insignia": "Sts-61-patch.png"
  },
  "STS-61-A": {
+  "crew_photo": "STS-61-A_crew.jpg",
   "image": "STS-61-A crew in Spacelab D-1.jpg",
   "insignia": "STS-61-a-patch.png"
  },
  "STS-61-B": {
+  "crew_photo": "STS-61-B_crew.jpg",
   "image": "Structures in Space - GPN-2000-001080.jpg",
   "insignia": "Sts-61-b-patch.png"
  },
  "STS-61-C": {
+  "crew_photo": "STS-61-C crew.jpg",
   "image": "STS-61-C SATCOM Ku-1 deployment.jpg",
   "insignia": "STS-61-c-patch.png"
  },
  "STS-61-E": {
+  "crew_photo": "STS-61-E crew.jpg",
   "image": null,
   "insignia": "STS-61-E patch.png"
  },
  "STS-61-G": {
+  "crew_photo": "STS-61-G crew.jpg",
   "image": null,
   "insignia": "STS-61-G patch.png"
  },
  "STS-62": {
+  "crew_photo": "Sts-62_crew.jpg",
   "image": "Typhoon Owen, STS-62.jpg",
   "insignia": "Sts-62-patch.png"
  },
  "STS-63": {
+  "crew_photo": "Sts-63_crew.jpg",
   "image": "STS063-712-068.jpg",
   "insignia": "Sts-63-patch.png"
  },
  "STS-64": {
+  "crew_photo": "Sts-64_crew.jpg",
   "image": "STS-64 EVA.jpg",
   "insignia": "Sts-64-patch.png"
  },
  "STS-65": {
+  "crew_photo": "Sts-65_crew.jpg",
   "image": "STS-65 spacelab.jpg",
   "insignia": "Sts-65-patch.png"
  },
  "STS-66": {
+  "crew_photo": "Sts-66_crew.jpg",
   "image": "STS-66 Spas.jpg",
   "insignia": "Sts-66-patch.png"
  },
  "STS-67": {
+  "crew_photo": "Sts-67 crew.jpg",
   "image": "Astro2 sts67 big.jpg",
   "insignia": "Sts-67-patch.svg"
  },
  "STS-68": {
+  "crew_photo": "STS-68_crew.jpg",
   "image": "STS068-267-079 Sunrise over Endeavour and SIR-C.jpg",
   "insignia": "Sts-68-patch.png"
  },
  "STS-69": {
+  "crew_photo": "STS-69_crew.jpg",
   "image": "Wake Shield Facility on STS-69 (STS069-723-072).jpg",
   "insignia": "STS-69 patch.svg"
  },
  "STS-7": {
+  "crew_photo": "Sts-7-crew.jpg",
   "image": "STS007-32-1702.jpg",
   "insignia": "STS-7 patch.svg"
  },
  "STS-70": {
+  "crew_photo": "STS-70_crew.jpg",
   "image": "S070 TDRS-G1.jpg",
   "insignia": "Sts-70-patch.png"
  },
  "STS-71": {
+  "crew_photo": "STS-71_crew.jpg",
   "image": "Atlantis docked to MIR - GPN-2000-001315.jpg",
   "insignia": "Sts-71-patch.png"
  },
  "STS-72": {
+  "crew_photo": "STS-72_crew.jpg",
   "image": "STS072-734-011.jpg",
   "insignia": "Sts-72-patch.png"
  },
  "STS-73": {
+  "crew_photo": "STS-73_crew.jpg",
   "image": "Columbia with Spacelab Module LM1.jpg",
   "insignia": "Sts-73-patch.png"
  },
  "STS-74": {
+  "crew_photo": "STS-74_crew.jpg",
   "image": "Shuttle-Mir Approach (29053887780).jpg",
   "insignia": "Sts-74-patch.png"
  },
  "STS-75": {
+  "crew_photo": "STS-75_crew.jpg",
   "image": "STS-75 Tethered Satellite System deployment.jpg",
   "insignia": "Sts-75-patch.png"
  },
  "STS-76": {
+  "crew_photo": "STS-76 crew.jpg",
   "image": "STS-76 docking with MIR.jpg",
   "insignia": "Sts-76-patch.png"
  },
  "STS-77": {
+  "crew_photo": "STS-77_crew.jpg",
   "image": "Inflatable Antenna Experiment.jpg",
   "insignia": "STS-77 patch.svg"
  },
  "STS-78": {
+  "crew_photo": "STS-78_crew.jpg",
   "image": "STS078-733-004 Columbia and Spacelab Module LM2.jpg",
   "insignia": "STS-78 patch.svg"
  },
  "STS-79": {
+  "crew_photo": "STS-79_crew.jpg",
   "image": "STS079-350-003.jpg",
   "insignia": "STS-79 patch.svg"
  },
  "STS-8": {
+  "crew_photo": "STS-8 crew.jpg",
   "image": "View of the INSAT-1B PAM-D being deployed S08-49-1722.jpg",
   "insignia": "STS-8 patch.svg"
  },
  "STS-80": {
+  "crew_photo": "STS-80_crew.jpg",
   "image": "Wake Shield Facility on STS-80 (STS080-708-084).jpg",
   "insignia": "Sts-80-patch.png"
  },
  "STS-81": {
+  "crew_photo": "STS-81_crew.jpg",
   "image": "Mir from STS-81.jpg",
   "insignia": "Sts-81-patch.png"
  },
  "STS-82": {
+  "crew_photo": "STS-82_crew.jpg",
   "image": "STS082-703-009.jpg",
   "insignia": "Sts-82-patch.png"
  },
  "STS-83": {
+  "crew_photo": "STS-83_crew.jpg",
   "image": "STS-83 landing.jpg",
   "insignia": "Sts-83-patch.png"
  },
  "STS-84": {
+  "crew_photo": "STS-84_crew.jpg",
   "image": "STS084-309-014 - STS-084 - View of Mir Space Station as seen from flight deck overhead window and Spacehab - DPLA - 8779511e7b072cfd8d524d7cf2e580d7.jpg",
   "insignia": "STS-84 patch.svg"
  },
  "STS-85": {
+  "crew_photo": "STS-85_crew.jpg",
   "image": "Crista-spas launch.jpg",
   "insignia": "Sts-85-patch.png"
  },
  "STS-86": {
+  "crew_photo": "STS-86_crew.jpg",
   "image": "STS86 Mir Station.jpg",
   "insignia": "Sts-86-patch.svg"
  },
  "STS-87": {
+  "crew_photo": "Sts-87 crew.jpg",
   "image": "AERCam Sprint Columbia.jpg",
   "insignia": "Sts-87-patch.svg"
  },
  "STS-88": {
+  "crew_photo": "STS-88 crew.jpg",
   "image": "S99 03776.jpg",
   "insignia": "Sts-88-patch.svg"
  },
  "STS-89": {
+  "crew_photo": "STS-89 crew.jpg",
   "image": "N6p-024-low.jpg",
   "insignia": "Sts-89-patch.svg"
  },
  "STS-9": {
+  "crew_photo": "Sts-9_crew.jpg",
   "image": "STS-9 Spacelab 1.jpg",
   "insignia": "Sts-9-patch.png"
  },
  "STS-90": {
+  "crew_photo": "STS-90 crew.jpg",
   "image": "Sunrise over Spacelab.jpg",
   "insignia": "Sts-90-patch.svg"
  },
  "STS-91": {
+  "crew_photo": "STS-91_crew.jpg",
   "image": "STS-91 Landing.jpg",
   "insignia": "Sts-91-patch.png"
  },
  "STS-92": {
+  "crew_photo": "STS-92 crew.jpg",
   "image": "MS Wisoff and Z1 Truss Berthing.jpg",
   "insignia": "Sts-92-patch.svg"
  },
  "STS-93": {
+  "crew_photo": "STS-93_crew.jpg",
   "image": "STS-93 Deployment of Chandra (deploy1).jpg",
   "insignia": "STS-93 patch.svg"
  },
  "STS-94": {
+  "crew_photo": "STS-83_crew.jpg",
   "image": "STS094-737-071 Columbia and Spacelab Module LM1.jpg",
   "insignia": "Sts-94-patch.png"
  },
  "STS-95": {
+  "crew_photo": "STS-95 crew.jpg",
   "image": "KSC-JohnGlenn-0016 (31144904130).jpg",
   "insignia": "STS-95 Patch.svg"
  },
  "STS-96": {
+  "crew_photo": "STS-96_crew.jpg",
   "image": "Tamara E. Jernigan Discovery crew.jpg",
   "insignia": "Sts-96-patch.svg"
  },
  "STS-97": {
+  "crew_photo": "STS-97 crew.jpg",
   "image": "STS-97 Second Spacewalk.jpg",
   "insignia": "Sts-97-patch.svg"
  },
  "STS-98": {
+  "crew_photo": "STS-98_crew.jpg",
   "image": "ISS Destiny Lab.jpg",
   "insignia": "Sts-98-patch.png"
  },
  "STS-99": {
+  "crew_photo": "STS-99_crew.jpg",
   "image": "Payload bay sts-99.jpg",
   "insignia": "Sts-99-patch.png"
  },
  "Salyut 1": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Salyut_program_insignia.svg"
  },
  "Salyut 6": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Salyut program insignia.svg"
  },
  "Salyut 6 EO-1": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Salyut 6 EP-1": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Salyut 7": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Salyut_program_insignia.svg"
  },
  "Shenzhou 10": {
+  "crew_photo": "Shenzhou 10 crew.jpg",
   "image": "Tiangong 1 drawing.png",
   "insignia": null
  },
  "Shenzhou 11": {
+  "crew_photo": "Shenzhou 11 Crew Montage.jpg",
   "image": "Shenzhou 11 launch.png",
   "insignia": "Shenzhou 11 mission insignia.png"
  },
  "Shenzhou 12": {
+  "crew_photo": "Shenzhou 12 crew press conference.jpg",
   "image": "Shenzhou 12 launch (cropped).jpg",
   "insignia": "Shenzhou 12.png"
  },
  "Shenzhou 13": {
+  "crew_photo": "Shenzhou 13 crew.jpg",
   "image": "Launch of Shenzhou 13.jpg",
   "insignia": "Shenzhou 13 insignia.png"
  },
  "Shenzhou 14": {
+  "crew_photo": "神舟十四号航天员 Shenzhou 14 crew.jpg",
   "image": "Shenzhou 14 roll out.jpg",
   "insignia": "Shenzhou 14 mission insignia.png"
  },
  "Shenzhou 15": {
+  "crew_photo": "Shenzhou 15 - Crew Portrait.jpg",
   "image": "1分钟回顾神舟十五号载人飞船发射2.png",
   "insignia": "Shenzhou 15 insignia.png"
  },
  "Shenzhou 16": {
+  "crew_photo": "神舟十六号航天员 Shenzhou 16 crew.jpg",
   "image": "神舟十六号载人飞船发射取得圆满成功1.png",
   "insignia": "Shenzhou 16 mission patch.png"
  },
  "Shenzhou 17": {
+  "crew_photo": "神舟十七号航天员乘组 Shenzhou 17 crew 20231026 1.jpg",
   "image": "神舟十七号船箭组合体转运至发射区 计划近日择机实施发射1.png",
   "insignia": "Shenzhou 17 mission patch.png"
  },
  "Shenzhou 18": {
+  "crew_photo": "神舟十八号航天员乘组 Shenzhou 18 crew 20240425.jpg",
   "image": "神舟十八号载人飞船发射1.png",
   "insignia": "Shenzhou 18 mission patch.png"
  },
  "Shenzhou 19": {
+  "crew_photo": "Shenzhou-19 crew.jpg",
   "image": "Shenzhou 19 launch 01.png",
   "insignia": "Shenzhou 19 mission patch.png"
  },
  "Shenzhou 20": {
+  "crew_photo": "航天员王杰 (1).jpg",
   "image": "神舟二十号发射成功 赖岳谦：大陆航天技术已经非常成熟 像“上班下班”一样稳1.png",
   "insignia": "Shenzhou 20 mission patch.png"
  },
  "Shenzhou 21": {
+  "crew_photo": null,
   "image": "神舟载人飞船首次实现3.5小时交会对接1.png",
   "insignia": "Shenzhou 21 mission patch.png"
  },
  "Shenzhou 22": {
+  "crew_photo": null,
   "image": "神舟二十二号发射任务1.png",
   "insignia": "Shenzhou 22 mission patch.png"
  },
  "Shenzhou 23": {
+  "crew_photo": null,
   "image": "Shenzhou 23 rollout 04.png",
   "insignia": "Shenzhou 23 mission insignia.png"
  },
  "Shenzhou 5": {
+  "crew_photo": "Yang Liwei(cropped).jpg",
   "image": "中国空间站建造“1+1=1”2.png",
   "insignia": "Shenzhou 5 mission insignia.png"
  },
  "Shenzhou 6": {
+  "crew_photo": "Shenzhou 6 Crew Portrait.jpg",
   "image": "习近平这样勉励航天人5.png",
   "insignia": "Shenzhou 6 mission insignia.png"
  },
  "Shenzhou 7": {
+  "crew_photo": "Shenzhou 7 Crew Montage.jpg",
   "image": "Shenzhou 7 EVA (1).png",
   "insignia": "Shenzhou 7 mission insignia.png"
  },
  "Shenzhou 9": {
+  "crew_photo": "Shenzhou 9 crew.jpg",
   "image": "Tiangong 1 drawing.png",
   "insignia": "Shenzhou 9 mission insignia.png"
  },
  "Skylab": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Skylab Program Patch.png"
  },
  "Skylab 2": {
+  "crew_photo": "Skylab 2 crew.jpg",
   "image": "40 Years Ago, Skylab Paved Way for International Space Station.jpg",
   "insignia": "Skylab1-Patch.png"
  },
  "Skylab 3": {
+  "crew_photo": "S73-28714.jpg",
   "image": "Skylab 3 Close-Up - GPN-2000-001711.jpg",
   "insignia": "Skylab2-Patch.png"
  },
  "Skylab 4": {
+  "crew_photo": "Skylab4 crew.jpg",
   "image": "Skylab and Earth Limb - GPN-2000-001055.jpg",
   "insignia": "Skylab3-Patch.png"
  },
  "Soyuz 1": {
+  "crew_photo": "Владимир Комаров.jpg",
   "image": "Soyuz 1 crash.jpg",
   "insignia": "Soyuz 1 patch.png"
  },
  "Soyuz 10": {
+  "crew_photo": null,
   "image": "Mir-20.jpg",
   "insignia": "Soyuz 10 mission patch.png"
  },
  "Soyuz 11": {
+  "crew_photo": "Soyuz 11 crew.jpg",
   "image": "The Soviet Union 1971 CPA 4060 stamp (Cosmonauts Georgy Dobrovolsky, Vladislav Volkov and Viktor Patsayev).png",
   "insignia": "Zvezda Rocket Patch.svg"
  },
  "Soyuz 12": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Salyut program insignia.svg"
  },
  "Soyuz 13": {
+  "crew_photo": "Климук.jpg",
   "image": null,
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz 14": {
+  "crew_photo": "USSR stamp Soyuz-14 1974 10k.jpg",
   "image": "Soyuz 7K-T 2-seats drawing.svg",
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz 15": {
+  "crew_photo": "USSR stamp Soyuz-15 1974 10k.jpg",
   "image": "Soyuz 7K-T 2-seats drawing.svg",
   "insignia": null
  },
  "Soyuz 16": {
+  "crew_photo": "1975 CPA 4445.jpg",
   "image": "Soyuz 7K-TM (APAS) drawing.png",
   "insignia": null
  },
  "Soyuz 17": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz 18": {
+  "crew_photo": null,
   "image": "Soyuz 18 booster.jpg",
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz 21": {
+  "crew_photo": "Soyuz-21.jpg",
   "image": "Soyuz 7K-T 2-seats drawing.svg",
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz 22": {
+  "crew_photo": null,
   "image": "1976. «Союз-22», фотографирование Земли из космоса. ЦФА 4667.jpg",
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz 23": {
+  "crew_photo": null,
   "image": "Soyuz-23.JPG",
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz 24": {
+  "crew_photo": null,
   "image": "USSR stamp Soyuz-24 1977 10k.jpg",
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz 25": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Soyuz 26": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Soyuz 27": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Soyuz 28": {
+  "crew_photo": "Soyuz 28 Crew Portrait.jpg",
   "image": "Vladimír Remek - modul.jpg",
   "insignia": "Soyuz 28 mission patch.svg"
  },
  "Soyuz 29": {
+  "crew_photo": "Kovalenok and Ivanchenkov.jpg",
   "image": "Sojus 29 capsule.jpg",
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz 3": {
+  "crew_photo": null,
   "image": "The Soviet Union 1968 CPA 3699 stamp (Pilot-Cosmonaut of the USSR Georgy Beregovoy and Carrier Rocket Start).jpg",
   "insignia": "Soyuz 3 patch.png"
  },
  "Soyuz 30": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz 30 mission patch.svg"
  },
  "Soyuz 31": {
+  "crew_photo": null,
   "image": "Bundesarchiv Bild 183-T0709-273, Waleri Bykowski und Sigmund Jähn.jpg",
   "insignia": "Sojus 31 Interkosmos DDR SU.svg"
  },
  "Soyuz 32": {
+  "crew_photo": "Rus Stamp GSS-Lyahov-Rumin.jpg",
   "image": "Soyuz 7K-T 2-seats drawing.svg",
   "insignia": null
  },
  "Soyuz 33": {
+  "crew_photo": null,
   "image": "Soyuz 7K-T 2-seats drawing.svg",
   "insignia": "Soyuz-33 patch.png"
  },
  "Soyuz 34": {
+  "crew_photo": null,
   "image": "Soyuz 7K-T 2-seats drawing.svg",
   "insignia": null
  },
  "Soyuz 35": {
+  "crew_photo": "USSR Stamp 1981 Salyut6 Cosmonauts.jpg",
   "image": "Soyuz 7K-T 2-seats drawing.svg",
   "insignia": null
  },
  "Soyuz 36": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz36 patch.png"
  },
  "Soyuz 37": {
+  "crew_photo": null,
   "image": "VICTOR GORBATKO & TUÂN PHAM (SOYUZ 37).jpg",
   "insignia": "Soyuz37 patch.png"
  },
  "Soyuz 38": {
+  "crew_photo": null,
   "image": "The Soviet Union 1980 CPA 5112 stamp (Soviet-Cuban Space Flight. Cosmonauts at Training Center).jpg",
   "insignia": "Soyuz38 patch.png"
  },
  "Soyuz 39": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz39 patch.png"
  },
  "Soyuz 4": {
+  "crew_photo": null,
   "image": "Soyuz 4 seen from Soyuz 5.jpg",
   "insignia": "Soyuz 4 patch.png"
  },
  "Soyuz 40": {
+  "crew_photo": "Leonid Popov & Dumitru Prunariu.jpg",
   "image": "Soiuz 40.jpg",
   "insignia": "Soyuz 40 mission patch.svg"
  },
  "Soyuz 5": {
+  "crew_photo": "Soyuz 5 (portrait).jpg",
   "image": "Soyuz 4-5 EVA.jpg",
   "insignia": "Soyuz 5 patch.png"
  },
  "Soyuz 6": {
+  "crew_photo": null,
   "image": "The Soviet Union 1969 CPA 3809 stamp (Georgi Shonin and Valeri Kubasov (Soyuz 6)) cancelled.jpg",
   "insignia": null
  },
  "Soyuz 7": {
+  "crew_photo": null,
   "image": "The Soviet Union 1969 CPA 3810 stamp (Anatoly Filipchenko, Vladislav Volkov and Viktor Gorbatko (Soyuz 7)) cancelled.jpg",
   "insignia": null
  },
  "Soyuz 7K-ST No.16L": {
+  "crew_photo": null,
   "image": "Soyuz explosion.jpg",
   "insignia": null
  },
  "Soyuz 7K-T No.39": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Salyut program insignia.svg"
  },
  "Soyuz 8": {
+  "crew_photo": null,
   "image": "The Soviet Union 1969 CPA 3811 stamp (Vladimir Shatalov and Aleksei Yeliseyev (Soyuz 8)).png",
   "insignia": null
  },
  "Soyuz 9": {
+  "crew_photo": null,
   "image": "The Soviet Union 1970 CPA 3907 stamp (Cosmonauts Andriyan Nikolayev and Vitaly Sevastyanov, Soyuz 9).png",
   "insignia": "Vimpel 'Diamond'.jpg"
  },
  "Soyuz MS-01": {
+  "crew_photo": "Expedition 46 backup crew members in front of the Soyuz TMA spacecraft mock-up in Star City, Russia.jpg",
   "image": "Soyuz MS-01 docked to the ISS.jpg",
   "insignia": "Soyuz MS-01 mission patch.png"
  },
  "Soyuz MS-02": {
+  "crew_photo": "Expedition 47 backup crew members in front of the Soyuz TMA spacecraft mock-up in Star City, Russia.jpg",
   "image": "Expedition 49 Preflight (NHQ201609150017).jpg",
   "insignia": "Soyuz MS-02 mission patch.png"
  },
  "Soyuz MS-03": {
+  "crew_photo": "Soyuz MS-03 crew (2).jpg",
   "image": "ISS-50 Soyuz MS-03 docked to Rassvet over Florida.jpg",
   "insignia": "Soyuz MS-03 mission patch.png"
  },
  "Soyuz MS-04": {
+  "crew_photo": "Soyuz MS-04 crew in front of their spacecraft.jpg",
   "image": "Expedition 51 Rollout (NHQ201704170044).jpg",
   "insignia": "Soyuz MS-04 mission patch.png"
  },
  "Soyuz MS-05": {
+  "crew_photo": "Soyuz MS-05 crew.jpg",
   "image": "Expedition 52 Launch (NHQ201707280006).jpg",
   "insignia": "Soyuz MS-05 mission patch.png"
  },
  "Soyuz MS-06": {
+  "crew_photo": "Soyuz MS-06 crew.jpg",
   "image": "Expedition 53 Soyuz Launch (NHQ201709130002).jpg",
   "insignia": "Soyuz MS-06 mission patch.png"
  },
  "Soyuz MS-07": {
+  "crew_photo": "Soyuz MS-07 crew in front of the Soyuz spacecraft mockup.jpg",
   "image": "Expedition 54 Launch (NHQ201712170009).jpg",
   "insignia": "Soyuz MS-07 mission patch.png"
  },
  "Soyuz MS-08": {
+  "crew_photo": "Soyuz MS-08 crew members in front of their spacecraft.jpg",
   "image": "Soyuz MS-08 spacecraft in the integration facility (3).jpg",
   "insignia": "Soyuz MS-08 mission patch.png"
  },
  "Soyuz MS-09": {
+  "crew_photo": "Soyuz MS-09 crew during Routine Ops training at JSC.jpg",
   "image": "The Soyuz MS-09 spacecraft is pictured docked to the Rassvet module.jpg",
   "insignia": "Soyuz MS-09 mission patch.png"
  },
  "Soyuz MS-10": {
+  "crew_photo": "Soyuz MS-08 backup crew in front of the Soyuz spacecraft mockup.jpg",
   "image": "Expedition 57 Launch (NHQ201810110004).jpg",
   "insignia": "Soyuz MS-10 mission patch.png"
  },
  "Soyuz MS-11": {
+  "crew_photo": "Soyuz MS-09 backup crew in front of the Soyuz spacecraft mockup.jpg",
   "image": "Expedition_58_Launch_%28NHQ201812030005%29.jpg",
   "insignia": "Soyuz MS-11 mission patch.png"
  },
  "Soyuz MS-12": {
+  "crew_photo": "Soyuz MS-12 crew members in front of their spacecraft.jpg",
   "image": "Expedition_59_Launch_(NHQ201903150001).jpg",
   "insignia": "Soyuz MS-12 mission patch.png"
  },
  "Soyuz MS-13": {
+  "crew_photo": "Soyuz MS-11 backup crew in front of the Soyuz spacecraft mockup.jpg",
   "image": "ISS-60 Soyuz MS-13 spacecraft approaches the ISS (1).jpg",
   "insignia": "Soyuz MS-13 mission patch.png"
  },
  "Soyuz MS-15": {
+  "crew_photo": "Expedition 61 Press Conference (NHQ201909240006).jpg",
   "image": "Expedition 61 Launch (NHQ201909250042).jpg",
   "insignia": "Soyuz MS-15 mission patch.png"
  },
  "Soyuz MS-16": {
+  "crew_photo": "Expedition 63 Preflight (JSC2020-E-017082).jpg",
   "image": "Expedition 63 docks.jpg",
   "insignia": "Soyuz MS-16 mission patch.png"
  },
  "Soyuz MS-17": {
+  "crew_photo": "Expedition 64 inflight crew portrait (1) cropped.jpg",
   "image": "Expedition 64 Launch (NHQ202010140005).jpg",
   "insignia": "Soyuz MS-17 mission patch.png"
  },
  "Soyuz MS-18": {
+  "crew_photo": "Expedition 64 Crew Qualification Exams (NHQ202009220006).jpg",
   "image": "Soyuz MS18 Launch.jpg",
   "insignia": "Soyuz MS-18 mission patch.png"
  },
  "Soyuz MS-19": {
+  "crew_photo": "Soyuz MS-19 crew.jpg",
   "image": "Soyuz MS-19 arriving at the ISS.jpg",
   "insignia": "Soyuz MS-19 mission patch.png"
  },
  "Soyuz MS-20": {
+  "crew_photo": "The Soyuz MS-20 crew (cropped).jpg",
   "image": "Soyuz MS-20 docking (cropped).jpg",
   "insignia": "Soyuz MS-20 mission patch.png"
  },
  "Soyuz MS-21": {
+  "crew_photo": "Soyuz MS-21 crew portrait.jpg",
   "image": "Prichal with Soyuz MS-21 is pictured during a spacewalk (cropped).jpg",
   "insignia": "Soyuz MS-21 mission patch.png"
  },
  "Soyuz MS-22": {
+  "crew_photo": "The Soyuz MS-22 crew poses in front of the spacecraft.jpg",
   "image": "Soyuz MS-22 spacecraft at space station leaking 'particles' into space (3).gif",
   "insignia": "Soyuz MS-22 mission patch.png"
  },
  "Soyuz MS-23": {
+  "crew_photo": "The Soyuz MS-22 crew poses in front of the spacecraft.jpg",
   "image": "Soyuzms23-docking-3747613040.jpg",
   "insignia": "Soyuz MS-23 mission patch.png"
  },
  "Soyuz MS-24": {
+  "crew_photo": "Soyuz MS-24 Crew.jpg",
   "image": "Soyuz MS-24 approach.jpg",
   "insignia": "Soyuz MS-24 mission patch.png"
  },
  "Soyuz MS-25": {
+  "crew_photo": "Expedition 71 Press Conference (NHQ202403200036).jpg",
   "image": "Soyuz MS-25 in a stream of aurora.jpg",
   "insignia": "Soyuz MS-25 mission patch.png"
  },
  "Soyuz MS-26": {
+  "crew_photo": "Soyuz MS-26 crew 02.png",
   "image": "Iss071e629830 (Sept. 11, 2024) --- The Soyuz MS-26 spacecraft.jpg",
   "insignia": "Soyuz MS-26 mission patch.png"
  },
  "Soyuz MS-27": {
+  "crew_photo": "Expedition 73 Press Conference (NHQ202504070031).jpg",
   "image": "Expedition 73 Launch.jpg",
   "insignia": "Soyuz MS-27 mission patch.png"
  },
  "Soyuz MS-28": {
+  "crew_photo": "Expedition 74 crew members pose for a portrait at NASA's Johnson Space Center in Houston, Texas (jsc2024e077037 alt).jpg",
   "image": "Soyuz MS-28 rollout 01.jpg",
   "insignia": "Soyuz MS-28 mission patch.png"
  },
  "Soyuz MS-29": {
+  "crew_photo": "Expedition 75 crew members participate in an emergency training session at Johnson Space Center (jsc2026e011296).jpg",
   "image": "Expedition 75 Launch (NHQ202607140002).jpg",
   "insignia": "Soyuz MS-29 mission patch.png"
  },
  "Soyuz MS-30": {
+  "crew_photo": "Expedition 75 Soyuz Rollout (NHQ202607110048).jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz T-10": {
+  "crew_photo": null,
   "image": "Soyuz-T-10-6.JPG",
   "insignia": null
  },
  "Soyuz T-11": {
+  "crew_photo": null,
   "image": "Soyuz-T-11-Mission-Patch.svg",
   "insignia": null
  },
  "Soyuz T-12": {
+  "crew_photo": "1985 CPA 5654.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz T-13": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Soyuz T-14": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Soyuz T-15": {
+  "crew_photo": null,
   "image": "Soyuz-T drawing.png",
   "insignia": "Soyuz T-15 mission patch.jpg"
  },
  "Soyuz T-2": {
+  "crew_photo": "1980 CPA 5108.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz T-3": {
+  "crew_photo": "USSR stamp Soyuz-T-3 1981 10k.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz T-4": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Soyuz T-5": {
+  "crew_photo": "1983 CPA 5386.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz T-6": {
+  "crew_photo": null,
   "image": "Soyuz T6 Exterior.jpg",
   "insignia": "Soyuz T-6 mission patch.png"
  },
  "Soyuz T-7": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Soyuz T-8": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Soyuz T-9": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Soyuz TM-10": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Mir insignia.svg"
  },
  "Soyuz TM-11": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-11 patch.png"
  },
  "Soyuz TM-12": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-12 patch.png"
  },
  "Soyuz TM-13": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-13 patch.png"
  },
  "Soyuz TM-14": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-14 patch.png"
  },
  "Soyuz TM-15": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-15 patch.png"
  },
  "Soyuz TM-16": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-16 patch.png"
  },
  "Soyuz TM-17": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-17 patch.png"
  },
  "Soyuz TM-18": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-18 patch.png"
  },
  "Soyuz TM-19": {
+  "crew_photo": null,
   "image": "A125215 41.jpg",
   "insignia": "Soyuz TM-19 patch.png"
  },
  "Soyuz TM-2": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-2 mission patch.jpg"
  },
  "Soyuz TM-20": {
+  "crew_photo": null,
   "image": "Mir as seen from Discovery during STS-63.jpg",
   "insignia": "Soyuz TM-20 patch.png"
  },
  "Soyuz TM-21": {
+  "crew_photo": "Soyuz TM-21 Crew.jpg",
   "image": "Soyuz-TM during STS-71.jpg",
   "insignia": "Soyuz TM-21 Patch.png"
  },
  "Soyuz TM-22": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-22 patch.png"
  },
  "Soyuz TM-23": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-23 patch.png"
  },
  "Soyuz TM-24": {
+  "crew_photo": null,
   "image": "Soyuz acoplada MIR.jpg",
   "insignia": "Soyuz TM-24 patch.png"
  },
  "Soyuz TM-25": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-25 patch.png"
  },
  "Soyuz TM-26": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz_TM-26_patch.png"
  },
  "Soyuz TM-27": {
+  "crew_photo": null,
   "image": null,
   "insignia": "PegaseSoyuzTM27svg.svg"
  },
  "Soyuz TM-28": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-28 patch.png"
  },
  "Soyuz TM-29": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-29 logo SVG.svg"
  },
  "Soyuz TM-3": {
+  "crew_photo": null,
   "image": "1987 CPA 5856.jpg",
   "insignia": "Soyuz_TM-3_mission_patch.svg"
  },
  "Soyuz TM-30": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz-tm-30-patch.svg"
  },
  "Soyuz TM-31": {
+  "crew_photo": "ISS-Expedition 1-crew.jpg",
   "image": "Soyuz TM-31 launch.jpg",
   "insignia": "Soyuz TM-31 patch.png"
  },
  "Soyuz TM-32": {
+  "crew_photo": "ISS-02 Soyuz TM-32 Taxi crewmembers.jpg",
   "image": "Soyuz TM-32.jpg",
   "insignia": "Soyuz TM-32 patch.png"
  },
  "Soyuz TM-33": {
+  "crew_photo": "ISS-03 Soyuz TM-33 Taxi crewmembers in the Zvezda Service Module.jpg",
   "image": "TM-33 Soyuz approach.jpg",
   "insignia": "Soyuz TM-33 patch.png"
  },
  "Soyuz TM-34": {
+  "crew_photo": "Soyuz TM-34 crew 1.jpg",
   "image": "Soyuz TM-34 docked to the ISS.jpg",
   "insignia": "Soyuz TM-34 logo.png"
  },
  "Soyuz TM-4": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Mir insignia.svg"
  },
  "Soyuz TM-5": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Soyuz TM-5 mission patch.svg"
  },
  "Soyuz TM-6": {
+  "crew_photo": null,
   "image": "Soyuz TM-6 patch.svg",
   "insignia": "Soyuz TM-6 patch.svg"
  },
  "Soyuz TM-7": {
+  "crew_photo": null,
   "image": "Союз ТМ-7.jpg",
   "insignia": "Soyuz TM-7 patch.png"
  },
  "Soyuz TM-8": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Mir insignia.svg"
  },
  "Soyuz TM-9": {
+  "crew_photo": null,
   "image": null,
   "insignia": "Mir insignia.svg"
  },
  "Soyuz TMA-01M": {
+  "crew_photo": "Soyuz TMA-01M crew.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz TMA-02M": {
+  "crew_photo": "Soyuz TMA-02M Crew during a training at Johnson Space Center.jpg",
   "image": "Soyuz TMA-02M rocket launches.jpg",
   "insignia": null
  },
  "Soyuz TMA-03M": {
+  "crew_photo": "Soyuz TMA-03M crew.jpg",
   "image": "Soyuz TMA-03M rollout in Baikonur 01.jpg",
   "insignia": null
  },
  "Soyuz TMA-04M": {
+  "crew_photo": "Soyuz TMA-04M crew.jpg",
   "image": "Soyuz TMA-04M spacecraft departs from the ISS a.jpg",
   "insignia": null
  },
  "Soyuz TMA-05M": {
+  "crew_photo": "Soyuz TMA-05M crew.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz TMA-06M": {
+  "crew_photo": "Soyuz TMA-06M crew.jpg",
   "image": "Soyuz TMA-06M spacecraft integration facility 2.jpg",
   "insignia": null
  },
  "Soyuz TMA-07M": {
+  "crew_photo": "Soyuz TMA-07M crew.jpg",
   "image": "Soyuz TMA-07M docked to MRM1.jpg",
   "insignia": null
  },
  "Soyuz TMA-08M": {
+  "crew_photo": "Soyuz TMA-08M crew.jpg",
   "image": "Soyuz_TMA-08M_departing_from_ISS.jpg",
   "insignia": null
  },
  "Soyuz TMA-09M": {
+  "crew_photo": "Soyuz TMA-09M crew.jpg",
   "image": "Soyuz TMA-09M Departs Station.jpg",
   "insignia": null
  },
  "Soyuz TMA-1": {
+  "crew_photo": "Soyuz TMA-1 crew.jpg",
   "image": "Soyuz TMA-1.jpg",
   "insignia": "Soyouz TMA-1 logo.svg"
  },
  "Soyuz TMA-10": {
+  "crew_photo": "Soyuz tma 10 crew.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz TMA-10M": {
+  "crew_photo": "Soyuz TMA-10M crew.jpg",
   "image": "Soyuz TMA-10M spacecraft approaches the ISS.jpg",
   "insignia": null
  },
  "Soyuz TMA-11": {
+  "crew_photo": "Sozuztma11crew.jpg",
   "image": "Expedition 16 Soyuz Launch.JPG",
   "insignia": "Soyuz TMA-11 Patch.png"
  },
  "Soyuz TMA-11M": {
+  "crew_photo": "Expedition 36 backup crew members in front of the Soyuz TMA spacecraft mock-up in Star City, Russia.jpg",
   "image": "Soyuz TMA-11M & Progress M-20M at ISS.jpg",
   "insignia": null
  },
  "Soyuz TMA-12": {
+  "crew_photo": "Soyuz TMA-12 Crew.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz TMA-12M": {
+  "crew_photo": "Expedition 37 backup crew members in front of the Soyuz TMA spacecraft mock-up in Star City, Russia.jpg",
   "image": "Soyuz TMA-12M approaches the station.jpg",
   "insignia": null
  },
  "Soyuz TMA-13": {
+  "crew_photo": "Sozuztma13crew.jpg",
   "image": "Soyuz TMA-13 Edit.jpg",
   "insignia": null
  },
  "Soyuz TMA-13M": {
+  "crew_photo": "Soyuz TMA-13M crew during an emergency scenario training session at JSC.jpg",
   "image": "Soyuz TMA-13M above California-Nevada.jpg",
   "insignia": null
  },
  "Soyuz TMA-14": {
+  "crew_photo": "Soyuz-TMA-14-Crew-Photo.jpeg",
   "image": "Soyuz TMA-14 liftoff.jpg",
   "insignia": null
  },
  "Soyuz TMA-14M": {
+  "crew_photo": "Soyuz TMA-14M crew during an emergency scenario training session at JSC.jpg",
   "image": "Soyuz TMA-14M approaches the ISS (d).jpg",
   "insignia": null
  },
  "Soyuz TMA-15": {
+  "crew_photo": "Soyuz TMA-15 crew.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz TMA-15M": {
+  "crew_photo": "Soyuz TMA-15M crew during a routine operations training session at JSC.jpg",
   "image": "ISS-44 Soyuz TMA-15M spacecraft undocks.jpg",
   "insignia": null
  },
  "Soyuz TMA-16": {
+  "crew_photo": "Soyuz TMA-16 crew.jpg",
   "image": "Soyuz TMA-16 Lifts Off.jpg",
   "insignia": null
  },
  "Soyuz TMA-16M": {
+  "crew_photo": "Expedition 43 Preflight (201503150011HQ).jpg",
   "image": "ISS-43 Soyuz TMA 16M approaches the ISS (a).jpg",
   "insignia": null
  },
  "Soyuz TMA-17": {
+  "crew_photo": "Soyuz TMA-17 crew.jpg",
   "image": "Expedition_22_Launch.jpg",
   "insignia": null
  },
  "Soyuz TMA-17M": {
+  "crew_photo": "Soyuz TMA-17M crew at Lyndon B. Johnson Space Center.jpg",
   "image": "ISS-44 Typhoon Soudelor with Soyuz TMA-17M and Progress M-28M.jpg",
   "insignia": null
  },
  "Soyuz TMA-18": {
+  "crew_photo": "Soyuz TMA-18 crew.jpg",
   "image": "Soyuz TMA-18 launching.jpg",
   "insignia": null
  },
  "Soyuz TMA-18M": {
+  "crew_photo": "Soyuz TMA-18M crew members during training sessions.jpg",
   "image": "Exp46 undock2.jpg",
   "insignia": null
  },
  "Soyuz TMA-19": {
+  "crew_photo": "Soyuz TMA-19 crew.jpg",
   "image": "Expedition 24 Soyuz TMA-19 Launch.jpg",
   "insignia": null
  },
  "Soyuz TMA-19M": {
+  "crew_photo": "Expedition 44 Rollout (201507200016HQ) cropped.jpg",
   "image": "Soyuz_TMA-19M_spacecraft_approaches_the_ISS_(1).jpg",
   "insignia": null
  },
  "Soyuz TMA-2": {
+  "crew_photo": "Soyuz TMA-2 Crew.jpg",
   "image": "Soyuz TMA-2 launch.jpg",
   "insignia": "Soyuz TMA-2 Patch.png"
  },
  "Soyuz TMA-20": {
+  "crew_photo": "Soyuz TMA-20 crew.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz TMA-20M": {
+  "crew_photo": "Soyuz TMA-20M official crew portrait.jpg",
   "image": "Soyuz TMA-20M spacecraft approaches the ISS (1).jpg",
   "insignia": null
  },
  "Soyuz TMA-21": {
+  "crew_photo": "Soyuz TMA-21 crew in front of the capsule.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz TMA-22": {
+  "crew_photo": "Soyuz TMA-22 crew.jpg",
   "image": null,
   "insignia": null
  },
  "Soyuz TMA-3": {
+  "crew_photo": "Soyuz TMA-3 Crew.jpeg",
   "image": null,
   "insignia": "Soyuz TMA-3 Patch.png"
  },
  "Soyuz TMA-4": {
+  "crew_photo": "Soyuz TMA-4 Crew.jpg",
   "image": "Soyuz TMA-4 launch.jpg",
   "insignia": "Soyuz TMA-4 Patch.png"
  },
  "Soyuz TMA-5": {
+  "crew_photo": "Chiao, Shargin, Sharipov.jpg",
   "image": "Soyuz TMA-5 launch.jpg",
   "insignia": "Soyuz TMA-5 Patch.png"
  },
  "Soyuz TMA-6": {
+  "crew_photo": "Crew of soyuz tma6.jpg",
   "image": "Soyuz TMA-6 launch.jpg",
   "insignia": null
  },
  "Soyuz TMA-7": {
+  "crew_photo": "Crew of soyuz tma7.jpg",
   "image": "Soyuz TMA-7 launch.jpg",
   "insignia": null
  },
  "Soyuz TMA-8": {
+  "crew_photo": "Expedition 13 Crew Members wave goodbye at launch pad.jpg",
   "image": "Soyuz TMA-8 launch.jpg",
   "insignia": null
  },
  "Soyuz TMA-9": {
+  "crew_photo": "Soyuz TMA-9 crew w ansari.jpg",
   "image": "Sojuz TMA-9 into flight.jpg",
   "insignia": null
  },
  "SpaceX Crew-1": {
+  "crew_photo": "SpaceX Crew-1 Commercial Crew Portrait.jpg",
   "image": "ISS-64 SpaceX Crew-1 docked to IDA-2.jpg",
   "insignia": "SpaceX Crew-1 logo.svg"
  },
  "SpaceX Crew-10": {
+  "crew_photo": "The official portrait of NASA's SpaceX Crew-10 members (jsc2024e077921).jpg",
   "image": "Crew-10 Sunrise.jpg",
   "insignia": "SpaceX Crew-10 logo.png"
  },
  "SpaceX Crew-11": {
+  "crew_photo": "Crew-11 official portrait.jpg",
   "image": "NASA’s SpaceX Crew-11 Launch (NHQ202508010029).jpg",
   "insignia": "SpaceX Crew-11 logo.png"
  },
  "SpaceX Crew-12": {
+  "crew_photo": "The four members of NASA's SpaceX Crew-12 mission to the International Space Station (jsc2026e004045).jpg",
   "image": "CCP Crew 12 Space X rocket and Artemis on the launch Pad (cropped).jpg",
   "insignia": "SpaceX Crew-12 logo.png"
  },
  "SpaceX Crew-13": {
+  "crew_photo": "The four members of NASA’s SpaceX Crew-13 mission to the International Space Station (amf-jsc2026e401203).jpg",
   "image": "NASA’s SpaceX Crew-13 Launch (NHQ202610010027).jpg",
   "insignia": "SpaceX Crew-13 logo.png"
  },
  "SpaceX Crew-2": {
+  "crew_photo": "SpaceX Crew-2 crew.jpg",
   "image": "The SpaceX Crew Dragon Endeavour approaches the International Space Station (iss065e002708) (cropped).jpg",
   "insignia": "SpaceX Crew-2 logo.png"
  },
  "SpaceX Crew-3": {
+  "crew_photo": "SpaceX Crew-3 (official portrait).jpg",
   "image": "Crew Dragon Endurance at the ISS.jpg",
   "insignia": "SpaceX Crew-3 logo.svg"
  },
  "SpaceX Crew-4": {
+  "crew_photo": "SpaceX Crew-4 Official Portrait.jpg",
   "image": "SpaceX Crew-4 Launch (NHQ202204270012).jpg",
   "insignia": "SpaceX Crew 4 logo.png"
  },
  "SpaceX Crew-5": {
+  "crew_photo": "SpaceX Crew-5 Official Portrait.jpg",
   "image": "NASA’s SpaceX Crew-5 Launch (NHQ202210050006).jpg",
   "insignia": "SpaceX Crew-5 logo.png"
  },
  "SpaceX Crew-6": {
+  "crew_photo": "SpaceX crew 6 crew portrait.png",
   "image": "NASA’s SpaceX Crew-6 Launch (NHQ202303020010).jpeg",
   "insignia": "SpaceX Crew-6 logo.png"
  },
  "SpaceX Crew-7": {
+  "crew_photo": "SpaceX crew 7 crew portrait.jpg",
   "image": "NASA’s SpaceX Crew-7 Launch (NHQ202308260020).jpg",
   "insignia": "SpaceX Crew-7 logo.png"
  },
  "SpaceX Crew-8": {
+  "crew_photo": "Jsc2023e070781.jpg",
   "image": "NASA’s SpaceX Crew-8 Launch (NHQ202403030014) (cropped).jpg",
   "insignia": "SpaceX Crew-8 logo.png"
  },
  "SpaceX Crew-9": {
+  "crew_photo": "Crew-9 members aboard the ISS.jpg",
   "image": "Crew Dragon Freedom over Colorado.jpg",
   "insignia": "Updated SpaceX Crew-9 Patch.png"
  },
  "Tiangong-1": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Tiangong-2": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "Tianhe core module": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "VSS Unity VF-01": {
+  "crew_photo": null,
   "image": "Virgin Galactic SpaceShipTwo \"Unity\" rollout 19Feb2016, FAITH hangar, Mojave, California.jpg",
   "insignia": "VSS Unity VF-01.png"
  },
  "VSS Unity VP-03": {
+  "crew_photo": null,
   "image": "Virgin Galactic SpaceShipTwo \"Unity\" rollout 19Feb2016, FAITH hangar, Mojave, California.jpg",
   "insignia": null
  },
  "Vast-1": {
+  "crew_photo": null,
   "image": "The SpaceX Crew Dragon Endeavour approaches the International Space Station (iss065e002231).jpg",
   "insignia": null
  },
  "Virgin Galactic Unity 21": {
+  "crew_photo": null,
   "image": "Virgin Galactic SpaceShipTwo \"Unity\" rollout 19Feb2016, FAITH hangar, Mojave, California.jpg",
   "insignia": null
  },
  "Virgin Galactic Unity 22": {
+  "crew_photo": null,
   "image": "Virgin Galactic SpaceShipTwo \"Unity\" rollout 19Feb2016, FAITH hangar, Mojave, California.jpg",
   "insignia": "Virgin Galactic Unity 22.png"
  },
  "Virgin Galactic Unity 25": {
+  "crew_photo": null,
   "image": "Virgin Galactic SpaceShipTwo \"Unity\" rollout 19Feb2016, FAITH hangar, Mojave, California.jpg",
   "insignia": "Virgin Galactic - Unity 25 Patch.png"
  },
  "Voskhod 1": {
+  "crew_photo": null,
   "image": "Voskhod 1 capsule on display, 2016.jpg",
   "insignia": null
  },
  "Voskhod 2": {
+  "crew_photo": null,
   "image": "FirstSpaceWalk.png",
   "insignia": "Zvezda Rocket Patch.svg"
  },
  "Vostok 1": {
+  "crew_photo": "Космонавт_Юрий_Гагарин_(cropped).jpg",
   "image": "Vostok1 big.gif",
   "insignia": null
  },
  "Vostok 2": {
+  "crew_photo": null,
   "image": "Gherman Titov Earth photograph.jpg",
   "insignia": "Vostok2patch.png"
  },
  "Vostok 4": {
+  "crew_photo": "Convert ru kosmos174.jpg",
   "image": "Vostok Spacecraft Diagram.svg",
   "insignia": "Vostok3-4patch.png"
  },
  "Vostok 5": {
+  "crew_photo": "Valeri bykovsky.jpg",
   "image": "Vostok_spacecraft.jpg",
   "insignia": null
  },
  "Vostok 6": {
+  "crew_photo": "RIAN archive 612748 Valentina Tereshkova.jpg",
   "image": "Vostok 6 capsule on display, 2016.jpg",
   "insignia": "Vostok 6 patch.jpg"
  },
  "X-15 Flight 35": {
+  "crew_photo": null,
   "image": null,
   "insignia": null
  },
  "X-15 Flight 90": {
+  "crew_photo": "Joseph Albert Walker.jpg",
   "image": null,
   "insignia": null
  },
  "X-15 Flight 91": {
+  "crew_photo": "Joseph Albert Walker.jpg",
   "image": null,
   "insignia": null
  }

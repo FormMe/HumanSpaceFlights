@@ -18,6 +18,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Byron Lichtenberg.jpg"
+  ],
   "description": [
    "American astronaut and engineer"
   ],
@@ -59,6 +62,9 @@
   ],
   "citizenship_code": [
    "IL"
+  ],
+  "commons_image": [
+   "Eitan Stiva.jpg"
   ],
   "description": [
    "Israeli businessman"
@@ -115,6 +121,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Michael Collins (S69-31742, restoration).jpg"
+  ],
   "death": [
    "2021-04-28T00:00:00Z"
   ],
@@ -163,6 +172,9 @@
   "citizenship_code": [
    "SU"
   ],
+  "commons_image": [
+   "Владимир Комаров.jpg"
+  ],
   "death": [
    "1967-04-24T00:00:00Z"
   ],
@@ -200,6 +212,9 @@
   "citizenship_code": [
    "CA"
   ],
+  "commons_image": [
+   "Mark Pathy (cropped big).jpg"
+  ],
   "description": [
    "Canadian businessman and astronaut"
   ],
@@ -232,6 +247,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "John Shoffner (cropped).jpg"
+  ],
   "description": [
    "American fiber-optic entrepreneur, commercial spaceflight participant"
   ],
@@ -260,6 +278,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Hayley Arceneaux (cropped).jpg"
   ],
   "description": [
    "American private astronaut"
@@ -292,6 +313,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Christopher Sembroski at NASA's JSC (cropped).jpg"
   ],
   "description": [
    "commercial astronaut aboard Inspiration4, former USAF missileman, data engineer, space enthusiast"
@@ -333,6 +357,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "CharlesDWalker.jpg"
+  ],
   "description": [
    "American engineer"
   ],
@@ -364,6 +391,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "CharlesDGemar.jpg"
   ],
   "description": [
    "American astronaut"
@@ -403,6 +433,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Charles Precourt KSC39A.jpeg"
   ],
   "description": [
    "American astronaut"
@@ -445,6 +478,9 @@
   "citizenship_code": [
    "JP"
   ],
+  "commons_image": [
+   "Yozo Hirano (cropped).jpg"
+  ],
   "description": [
    "Japanese astronaut"
   ],
@@ -477,6 +513,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "神舟十七号 Shenzhou 17 汤洪波 Tang Hongbo 20231026.jpg"
   ],
   "description": [
    "Chinese astronaut"
@@ -609,6 +648,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "John Young sampling fillet rock at Station 11.jpg"
+  ],
   "death": [
    "2018-01-05T00:00:00Z"
   ],
@@ -658,6 +700,9 @@
   "citizenship_code": [
    "CA"
   ],
+  "commons_image": [
+   "Chris Hadfield 2011.jpg"
+  ],
   "description": [
    "Canadian astronaut"
   ],
@@ -694,6 +739,9 @@
   ],
   "citizenship_code": [
    "IT"
+  ],
+  "commons_image": [
+   "Walter Villadei.jpg"
   ],
   "description": [
    "Italian Air Force pilot"
@@ -803,6 +851,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Schmitt Covered with Lunar Dirt - GPN-2000-001124.jpg"
+  ],
   "description": [
    "Astronaut, geologist, politician, 12th man to walk on the moon (Apollo 17)"
   ],
@@ -840,6 +891,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Oleg Platonov portrait 2025 (cropped).jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -875,6 +929,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Sergei Mikayev.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -908,6 +965,9 @@
   "citizenship_code": [
    "RU",
    "UA"
+  ],
+  "commons_image": [
+   "Alexey Zubritsky (crop).jpg"
   ],
   "description": [
    "Russian cosmonaut (born 1992)"
@@ -943,6 +1003,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Aleksandr Grebenkin in 2023.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -980,6 +1043,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Kirill Peskov (portrait crop).jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -1011,6 +1077,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Konstantin Borisov (cropped).jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -1044,6 +1113,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Aleksandr Gorbunov Portrait (Cropped).jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -1097,6 +1169,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Anil Menon portrait.jpg"
+  ],
   "description": [
    "physician and NASA astronaut"
   ],
@@ -1133,6 +1208,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Nichole Ayers portrait.jpg"
+  ],
   "description": [
    "US Air Force pilot and NASA astronaut"
   ],
@@ -1166,6 +1244,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Andre Douglas in Washington, D.C. on March 19, 2024 (cropped).jpg"
   ],
   "description": [
    "American engineer and NASA astronaut"
@@ -1211,6 +1292,9 @@
    "TR",
    "US"
   ],
+  "commons_image": [
+   "Deniz Burnham.jpg"
+  ],
   "description": [
    "Turkish engineer and NASA astronaut (born 1985)"
   ],
@@ -1245,6 +1329,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Luke Delaney.jpg"
+  ],
   "description": [
    "Naval aviator and NASA astronaut"
   ],
@@ -1278,6 +1365,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Jack Hathaway.jpg"
   ],
   "description": [
    "Naval aviator and NASA astronaut"
@@ -1320,6 +1410,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Christopher Williams February 2024.jpg"
+  ],
   "description": [
    "medical physicist and NASA astronaut"
   ],
@@ -1358,6 +1451,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Schirra cropped.jpg"
   ],
   "death": [
    "2007-05-03T00:00:00Z"
@@ -1424,6 +1520,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Virgil I. (Gus) Grissom portrait.jpg",
+   "VirgilGrissom.NASA.ws.jpg"
+  ],
   "death": [
    "1967-01-27T00:00:00Z"
   ],
@@ -1470,6 +1570,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "NASA astronaut candidate Anna Menon (jsc2025e074865).jpg"
+  ],
   "description": [
    "American aerospace engineer, astronaut on Polaris Dawn space mission"
   ],
@@ -1502,6 +1605,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Academy officer picked for top triathlon (cropped).jpg"
   ],
   "description": [
    "American retired Air Force fighter pilot, former vice president at Shift4, and future private astronaut"
@@ -1538,6 +1644,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Sarah Gillis (crop).jpg"
   ],
   "description": [
    "American aerospace engineer, astronaut on Polaris Dawn space mission"
@@ -1576,6 +1685,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "James Lovell.jpg"
   ],
   "death": [
    "2025-08-07T00:00:00Z"
@@ -1748,6 +1860,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "航天员蔡旭哲 Cai Xuzhe.jpg"
+  ],
   "description": [
    "Chinese astronaut"
   ],
@@ -1790,6 +1905,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Charles Duke (29881269755).jpg"
   ],
   "description": [
    "American engineer, U.S. Air Force officer, test pilot, and NASA astronaut (born 1935)"
@@ -1837,6 +1955,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Zhang Lu (cropped).jpg"
+  ],
   "description": [
    "Chinese astronaut (1976–)"
   ],
@@ -1870,6 +1991,9 @@
   "citizenship_code": [
    "FR"
   ],
+  "commons_image": [
+   "Arnaud Prost (2026).jpg"
+  ],
   "description": [
    "French astronaut"
   ],
@@ -1898,6 +2022,9 @@
   ],
   "citizenship_code": [
    "PL"
+  ],
+  "commons_image": [
+   "Sławosz Uznański 2023.jpg"
   ],
   "description": [
    "Polish astronaut"
@@ -1936,6 +2063,9 @@
    "NO",
    "SE"
   ],
+  "commons_image": [
+   "ESA astronaut announcement Class of 2022 (52519901790) (cropped).jpg"
+  ],
   "description": [
    "Swedish astronaut"
   ],
@@ -1973,6 +2103,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jim Kitchen.jpg"
+  ],
   "description": [
    "American professor"
   ],
@@ -2002,6 +2135,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Daniel Thomas Barry.jpg"
   ],
   "description": [
    "American astronaut"
@@ -2055,6 +2191,9 @@
   "citizenship_code": [
    "SA"
   ],
+  "commons_image": [
+   "Rayyanah Barnawi (cropped).jpg"
+  ],
   "description": [
    "Saudi astronaut"
   ],
@@ -2092,6 +2231,9 @@
   "citizenship_code": [
    "SA"
   ],
+  "commons_image": [
+   "Ali AlQarni (cropped).jpg"
+  ],
   "description": [
    "Saudi astronaut"
   ],
@@ -2126,6 +2268,9 @@
   ],
   "citizenship_code": [
    "CH"
+  ],
+  "commons_image": [
+   "Claude Nicollier en 2024 2.jpg"
   ],
   "description": [
    "Swiss astronaut"
@@ -2162,6 +2307,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "DavidCarlHilmers.jpg"
   ],
   "description": [
    "American astronaut"
@@ -2206,6 +2354,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "DavidCornellLeestma.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -2248,6 +2399,9 @@
   "citizenship_code": [
    "TR"
   ],
+  "commons_image": [
+   "Axiom Mission 3 at the ISS, Alper Gezeravcı (cropped).jpg"
+  ],
   "description": [
    "Turkish fighter pilot (born 1979)"
   ],
@@ -2276,6 +2430,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Sergey Teteryatnikov (cropped).jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -2309,6 +2466,9 @@
   "citizenship_code": [
    "BY"
   ],
+  "commons_image": [
+   "Maryna Vasileuskaya - 2024 (cropped).jpg"
+  ],
   "description": [
    "Belarusian flight attendant and cosmonaut"
   ],
@@ -2337,6 +2497,9 @@
   ],
   "citizenship_code": [
    "EG"
+  ],
+  "commons_image": [
+   "Sara Sabry (53554342117) (cropped).jpg"
   ],
   "description": [
    "private astronaut"
@@ -2375,6 +2538,9 @@
    "RU",
    "SU",
    "UA"
+  ],
+  "commons_image": [
+   "Pavel Popovich.jpg"
   ],
   "death": [
    "2009-09-29T00:00:00Z"
@@ -2418,6 +2584,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "GuiHaichao01.jpg"
+  ],
   "description": [
    "Chinese scholar and taikonaut (1986-)"
   ],
@@ -2449,6 +2618,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "Zhu Yangzhu (20260523).jpg"
   ],
   "description": [
    "Chinese astronaut (1986-)"
@@ -2526,6 +2698,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Douglas Hurley.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -2567,6 +2742,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "神舟十七号 Shenzhou 17 唐胜杰 Tang Shengjie 20231026.jpg"
+  ],
   "description": [
    "Chinese astronaut"
   ],
@@ -2596,6 +2774,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "神舟十七号 Shenzhou 17 江新林 Jiang Xinlin 20231026.jpg"
   ],
   "description": [
    "Chinese astronaut"
@@ -2628,6 +2809,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Donald Thomas.jpg"
   ],
   "description": [
    "American astronaut"
@@ -2665,6 +2849,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Donald McMonagle.jpg"
   ],
   "description": [
    "American astronaut"
@@ -2706,6 +2893,9 @@
   ],
   "citizenship_code": [
    "IN"
+  ],
+  "commons_image": [
+   "Wing Commander Shubhanshu Shukla.jpg"
   ],
   "description": [
    "Indian test pilot and astronaut"
@@ -2751,6 +2941,10 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Lǐ Cōng videoframe 143378(cropped).jpg",
+   "Lǐ Cōng videoframe 143378(cropped).png"
+  ],
   "description": [
    "Chinese astronaut (born 1989)"
   ],
@@ -2780,6 +2974,10 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "Li Guangsu at Shenzhou 18 Press Conference 2025.png",
+   "Lǐ Guǎngsū videoframe 865646(cropped).png"
   ],
   "description": [
    "Chinese astronaut (born 1987)"
@@ -2815,6 +3013,9 @@
   "citizenship_code": [
    "HU"
   ],
+  "commons_image": [
+   "Tibor Kapu on ISS.jpg"
+  ],
   "description": [
    "Hungarian mechanical engineer and astronaut (born 1991)"
   ],
@@ -2847,6 +3048,9 @@
   ],
   "citizenship_code": [
    "FR"
+  ],
+  "commons_image": [
+   "Philippe Perrin.jpg"
   ],
   "description": [
    "French astronaut"
@@ -2885,6 +3089,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "John S. Bull.jpg"
   ],
   "death": [
    "2008-08-11T00:00:00Z"
@@ -2926,6 +3133,9 @@
   ],
   "citizenship_code": [
    "HU"
+  ],
+  "commons_image": [
+   "Bertalan Farkas (Author - Rudolf Csiba).jpg"
   ],
   "description": [
    "Hungarian cosmonaut"
@@ -3097,6 +3307,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Wang Haoze at Shenzhou-19 press conference.png"
+  ],
   "description": [
    "Chinese female taikonaut (born 1990)"
   ],
@@ -3133,6 +3346,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Song Lingdong.jpg"
+  ],
   "description": [
    "Chinese astronaut (born 1990)"
   ],
@@ -3164,6 +3380,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Kevin Kregel.jpg"
   ],
   "description": [
    "American astronaut"
@@ -3203,6 +3422,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Kenneth Reightler.jpg"
   ],
   "description": [
    "American astronaut"
@@ -3264,6 +3486,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Peter Wisoff.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -3300,6 +3525,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Ronald Sega.jpg"
   ],
   "description": [
    "American astronaut"
@@ -3345,6 +3573,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Lawrence DeLucas.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -3380,6 +3611,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Thomas Jones.jpg"
   ],
   "description": [
    "American astronaut"
@@ -3426,6 +3660,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Robert Cabana.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -3465,6 +3702,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Jay Buckey.jpg"
   ],
   "description": [
    "American politician"
@@ -3507,6 +3747,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Manley Carter.jpg"
   ],
   "death": [
    "1991-04-05T00:00:00Z"
@@ -3555,6 +3798,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "John Casper.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -3600,6 +3846,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Roy Bridges.jpg"
+  ],
   "description": [
    "United States Air Force general and NASA astronaut"
   ],
@@ -3643,6 +3892,9 @@
   "citizenship_code": [
    "FR"
   ],
+  "commons_image": [
+   "Michel Tognini.jpg"
+  ],
   "description": [
    "French astronaut"
   ],
@@ -3676,6 +3928,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "神二十航天员首次亮相2.png"
+  ],
   "description": [
    "Chinese astronaut"
   ],
@@ -3705,6 +3960,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "神二十航天员首次亮相1.png"
   ],
   "description": [
    "Chinese astronaut"
@@ -3737,6 +3995,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Jeffrey S Ashby.jpg"
   ],
   "description": [
    "American astronaut"
@@ -3782,6 +4043,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "NASA Candidate Josh A Cassada.jpg"
+  ],
   "description": [
    "American physicist and astronaut"
   ],
@@ -3821,6 +4085,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Col Tyler N. Hague.jpg"
   ],
   "description": [
    "American astronaut and space force officer"
@@ -3866,6 +4133,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jsc2023e0016433 alt.jpg",
+   "Victor J. Glover official portrait.jpg"
+  ],
   "description": [
    "American astronaut (born 1976)"
   ],
@@ -3910,6 +4181,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jsc2023e0016435 alt.jpg"
+  ],
   "description": [
    "American astronaut (born 1979)"
   ],
@@ -3948,6 +4222,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "NASA Candidate Anne C McClain.jpg"
   ],
   "description": [
    "American astronaut"
@@ -3997,6 +4274,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Nicole Aunapu Mann portrait.jpg"
+  ],
   "description": [
    "American astronaut of Estonian origin (born 1977)"
   ],
@@ -4043,6 +4323,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Andrew R. Morgan.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -4085,6 +4368,9 @@
    "GB",
    "US"
   ],
+  "commons_image": [
+   "Vanessa-Obrien-Top-Of-Aiguille-Du-Midi-Chamonix-France.jpg"
+  ],
   "description": [
    "American mountaineer (born 1964)"
   ],
@@ -4116,6 +4402,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gregory Linteris.jpg"
   ],
   "description": [
    "NASA astronaut"
@@ -4159,6 +4448,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Wǔ Fēi videoframe 497409(cropped).jpg"
+  ],
   "description": [
    "Chinese taikonaut (born 1993)"
   ],
@@ -4187,6 +4479,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Mark Brown.jpg"
   ],
   "description": [
    "former NASA astronaut and colonel in the USAF"
@@ -4230,6 +4525,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Richard Searfoss.jpg"
   ],
   "death": [
    "2018-09-29T00:00:00Z"
@@ -4276,6 +4574,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Michael Clifford.jpg"
   ],
   "death": [
    "2021-12-28T00:00:00Z"
@@ -4347,6 +4648,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Astronaut michael mcculley.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -4388,6 +4692,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Stephen Oswald.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -4428,6 +4735,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Thomas Hennen.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -4460,6 +4770,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "WilliamAPailes.jpg"
   ],
   "description": [
    "American astronaut"
@@ -4503,6 +4816,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Jerry Linenger.jpg"
   ],
   "description": [
    "American astronaut"
@@ -4551,6 +4867,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Guy Gardner.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -4591,6 +4910,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Kevin Chilton.jpg"
   ],
   "description": [
    "United States general and astronaut"
@@ -4651,6 +4973,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Kent Rominger.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -4694,6 +5019,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Samuel Durrance.jpg"
+  ],
   "death": [
    "2023-05-05T00:00:00Z"
   ],
@@ -4733,6 +5061,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Ronald Parise.jpg"
   ],
   "death": [
    "2008-05-09T00:00:00Z"
@@ -4774,6 +5105,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "John-David Francis Bartoe.jpg"
+  ],
   "description": [
    "American astrophysicist and astronaut"
   ],
@@ -4806,6 +5140,9 @@
   ],
   "citizenship_code": [
    "IT"
+  ],
+  "commons_image": [
+   "Luca Parmitano 2013.jpg"
   ],
   "description": [
    "Italian astronaut"
@@ -4846,6 +5183,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Zhang Zhiyuan (20260523).jpg"
+  ],
   "description": [
    "Chinese astronaut (born 1986)"
   ],
@@ -4879,6 +5219,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Lai Ka-ying (20260523).jpg"
+  ],
   "description": [
    "Hong Kong astronaut (born 1982)"
   ],
@@ -4911,6 +5254,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Terence Henricks.jpg"
   ],
   "description": [
    "American astronaut"
@@ -4958,6 +5304,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "WilliamFrancisReaddy.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -5002,6 +5351,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Thagard-ne.jpg"
+  ],
   "description": [
    "United States Marine Corps officer, aviator and astronaut"
   ],
@@ -5042,6 +5394,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Yang Liwei.jpg"
+  ],
   "description": [
    "Chinese astronaut"
   ],
@@ -5081,6 +5436,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gary Payton.jpg"
   ],
   "description": [
    "American astronaut"
@@ -5124,6 +5482,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Low David.jpg"
   ],
   "death": [
    "2008-03-15T00:00:00Z"
@@ -5174,6 +5535,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Gherman Titov (1962).jpg"
+  ],
   "death": [
    "2000-09-20T00:00:00Z"
   ],
@@ -5221,6 +5585,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Svetlana Savitskaya, 7 December 2018.jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -5267,6 +5634,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Alexei Leonov.jpg"
+  ],
   "death": [
    "2019-10-11T00:00:00Z"
   ],
@@ -5309,6 +5679,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Gregory J. Harbaugh portrait.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -5345,6 +5718,9 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "Космонавт П.И. Беляев в Киеве (cropped).jpg"
   ],
   "death": [
    "1970-01-10T00:00:00Z"
@@ -5389,6 +5765,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Cernan s71-51308.jpg"
   ],
   "death": [
    "2017-01-16T00:00:00Z"
@@ -5436,6 +5815,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "WaleriBykowski.jpg"
   ],
   "death": [
    "2019-03-27T00:00:00Z"
@@ -5523,6 +5905,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Neil Armstrong pose.jpg"
+  ],
   "death": [
    "2012-08-25T00:00:00Z"
   ],
@@ -5603,6 +5988,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Seven Members of the First Lady Astronaut Trainees in 1995 - GPN-2002-000196-crop.jpg"
+  ],
   "death": [
    "2026-07-08T00:00:00Z"
   ],
@@ -5639,6 +6027,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Dylan Taylor.jpg"
+  ],
   "description": [
    "American businessman"
   ],
@@ -5673,6 +6064,9 @@
   "citizenship_code": [
    "CA",
    "US"
+  ],
+  "commons_image": [
+   "William Shatner Photo Op GalaxyCon Richmond 2026.jpg"
   ],
   "description": [
    "Canadian actor (born 1931)"
@@ -5715,6 +6109,9 @@
   "citizenship_code": [
    "DE"
   ],
+  "commons_image": [
+   "Thomas Reiter STS-121.jpg"
+  ],
   "description": [
    "European astronaut"
   ],
@@ -5752,6 +6149,9 @@
   ],
   "citizenship_code": [
    "CA"
+  ],
+  "commons_image": [
+   "Jsc2023e0016436 alt2.jpg"
   ],
   "description": [
    "Canadian astronaut (born 1976)"
@@ -5791,6 +6191,9 @@
   ],
   "citizenship_code": [
    "IT"
+  ],
+  "commons_image": [
+   "Paolo A. Nespoli 2016.jpg"
   ],
   "description": [
    "Italian astronaut"
@@ -5835,6 +6238,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Business suit portrait of Al Shepard.jpg"
   ],
   "death": [
    "1998-07-21T00:00:00Z"
@@ -5886,6 +6292,9 @@
    "IR",
    "US"
   ],
+  "commons_image": [
+   "Anousheh Ansari at AI for Good 2018.jpg"
+  ],
   "description": [
    "Iranian-American engineer and entrepreneur (born 1966)"
   ],
@@ -5921,6 +6330,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Carl Meade.jpg"
   ],
   "description": [
    "American astronaut"
@@ -5967,6 +6379,9 @@
   "citizenship_code": [
    "PL",
    "US"
+  ],
+  "commons_image": [
+   "Bobko.jpg"
   ],
   "death": [
    "2023-08-17T00:00:00Z"
@@ -6027,6 +6442,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "John Glenn Low Res crop.jpg"
+  ],
   "death": [
    "2016-12-08T00:00:00Z"
   ],
@@ -6074,6 +6492,10 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Anna Kikina Official Portrait.jpg",
+   "Anna Kikina in 2022.jpg"
+  ],
   "description": [
    "Russian astronaut"
   ],
@@ -6109,6 +6531,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "William Frederick Fisher (Astronaut).jpg"
+  ],
   "description": [
    "American astronaut (born 1946)"
   ],
@@ -6143,6 +6568,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "L Blaine Hammond.jpg"
   ],
   "description": [
    "American astronaut"
@@ -6189,6 +6617,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Astronaut Frank Borman.jpg"
+  ],
   "death": [
    "2023-11-07T00:00:00Z"
   ],
@@ -6233,6 +6664,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Mario Runco - STS-54 Mission Specialist.jpg"
   ],
   "description": [
    "American astronaut"
@@ -6283,6 +6717,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Astronaut martin joseph fettman.jpg"
+  ],
   "description": [
    "American pathologist and researcher"
   ],
@@ -6325,6 +6762,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "William Anders.jpg"
   ],
   "death": [
    "2024-06-07T00:00:00Z"
@@ -6371,6 +6811,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Michael Allen Baker.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -6416,6 +6859,9 @@
   "citizenship_code": [
    "GB"
   ],
+  "commons_image": [
+   "5.3.10RichardBransonByDavidShankbone.jpg"
+  ],
   "description": [
    "British business magnate"
   ],
@@ -6445,6 +6891,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "Zhai Zhigang in 2021.jpg"
   ],
   "description": [
    "Chinese astronaut"
@@ -6480,6 +6929,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Drew Gaffney.jpg"
   ],
   "description": [
    "American astronaut"
@@ -6519,6 +6971,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Sergei Zalyotin 2016.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -6563,6 +7018,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Sidney Gutierrez.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -6603,6 +7061,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Robert Springer.jpg"
   ],
   "description": [
    "American astronaut"
@@ -6645,6 +7106,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Richard Richards.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -6685,6 +7149,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Albert Sacco.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -6721,6 +7188,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Dennis Tito.jpg"
+  ],
   "description": [
    "American businessman"
   ],
@@ -6754,6 +7224,9 @@
   ],
   "citizenship_code": [
    "KR"
+  ],
+  "commons_image": [
+   "Yi So-yeon (NASA - JSC2008-E-004174).jpg"
   ],
   "description": [
    "South Korean astronaut"
@@ -6794,6 +7267,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Denis Matveev (cropped).jpg"
+  ],
   "description": [
    "Russian cosmonaut (born 1983)"
   ],
@@ -6830,6 +7306,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Sergey Prokopyev at the Gagarin Cosmonaut Training Center in Star City.jpg"
   ],
   "description": [
    "Cosmonaut"
@@ -6872,6 +7351,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Charles Conrad (S64-31465) (cropped).jpg"
   ],
   "death": [
    "1999-07-08T00:00:00Z"
@@ -6920,6 +7402,9 @@
   "citizenship_code": [
    "DE"
   ],
+  "commons_image": [
+   "Hans schlegel v2.jpg"
+  ],
   "description": [
    "German astronaut"
   ],
@@ -6961,6 +7446,9 @@
   "citizenship_code": [
    "DE"
   ],
+  "commons_image": [
+   "Klaus-Dietrich Flade.jpg"
+  ],
   "description": [
    "German astronaut"
   ],
@@ -7000,6 +7488,9 @@
   "citizenship_code": [
    "DE"
   ],
+  "commons_image": [
+   "Ernst Messerschmid 1.jpg"
+  ],
   "description": [
    "German astronaut"
   ],
@@ -7035,6 +7526,9 @@
   ],
   "citizenship_code": [
    "DE"
+  ],
+  "commons_image": [
+   "Gerhard Thiele.jpg"
   ],
   "description": [
    "German astronaut"
@@ -7076,6 +7570,9 @@
    "DD",
    "DE"
   ],
+  "commons_image": [
+   "Persconferentie bij ESTEC in Noordwijk met de astronaut Ulf Merbold, Bestanddeelnr 932-8300.jpg"
+  ],
   "description": [
    "German astronaut"
   ],
@@ -7107,6 +7604,9 @@
   ],
   "citizenship_code": [
    "DE"
+  ],
+  "commons_image": [
+   "Reinhard Furrer.jpg"
   ],
   "death": [
    "1995-09-09T00:00:00Z"
@@ -7143,6 +7643,9 @@
   "citizenship_code": [
    "DE"
   ],
+  "commons_image": [
+   "Reinhold Ewald, 2008.JPG"
+  ],
   "description": [
    "German astronaut"
   ],
@@ -7177,6 +7680,9 @@
   ],
   "citizenship_code": [
    "DE"
+  ],
+  "commons_image": [
+   "Ulrich Walter2.jpg"
   ],
   "description": [
    "German astronaut"
@@ -7219,6 +7725,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "EdwardWhite.jpeg"
   ],
   "death": [
    "1967-01-27T00:00:00Z"
@@ -7266,6 +7775,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Tracy E Caldwell portrait.jpg"
+  ],
   "description": [
    "American chemist and NASA astronaut"
   ],
@@ -7302,6 +7814,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Mary Cleave.jpg"
   ],
   "death": [
    "2023-11-27T00:00:00Z"
@@ -7343,6 +7858,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Expedition 72 Press Conference (NHQ202409100029).jpg"
+  ],
   "description": [
    "Russian astronaut"
   ],
@@ -7380,6 +7898,9 @@
   ],
   "citizenship_code": [
    "IL"
+  ],
+  "commons_image": [
+   "Ilan Ramon, NASA photo portrait in orange suit.jpg"
   ],
   "death": [
    "2003-02-01T00:00:00Z"
@@ -7470,6 +7991,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Buzz Aldrin.jpg"
+  ],
   "description": [
    "American astronaut (born 1930)"
   ],
@@ -7517,6 +8041,9 @@
    "GB",
    "ZA"
   ],
+  "commons_image": [
+   "Markshuttleworth-dublin-20101116.jpg"
+  ],
   "description": [
    "South African entrepreneur; second self-funded visitor to the International Space Station"
   ],
@@ -7555,6 +8082,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Commander Eileen Collins - GPN-2000-001177.jpg"
   ],
   "description": [
    "Astronaut and United States Air Force pilot"
@@ -7601,6 +8131,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "ChristaMcAuliffe (cropped).jpg"
+  ],
   "death": [
    "1986-01-28T00:00:00Z"
   ],
@@ -7634,6 +8167,9 @@
   ],
   "citizenship_code": [
    "AR"
+  ],
+  "commons_image": [
+   "Fernando Caldeiro.jpg"
   ],
   "death": [
    "2009-10-03T00:00:00Z"
@@ -7676,6 +8212,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Laurel Clark, NASA photo portrait in blue suit.jpg"
   ],
   "death": [
    "2003-02-01T00:00:00Z"
@@ -7723,6 +8262,9 @@
   "citizenship_code": [
    "JP"
   ],
+  "commons_image": [
+   "Naoko Yamazaki.jpg"
+  ],
   "description": [
    "Japanese astronaut (1970-)"
   ],
@@ -7760,6 +8302,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "ShannonLucid.jpeg"
+  ],
   "description": [
    "American biochemist and retired NASA astronaut"
   ],
@@ -7796,6 +8341,9 @@
   "citizenship_code": [
    "JP"
   ],
+  "commons_image": [
+   "Chiaki Mukai.jpg"
+  ],
   "description": [
    "Japanese physician and JAXA astronaut (born 1952)"
   ],
@@ -7831,6 +8379,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Barbara morgan.jpg"
+  ],
   "description": [
    "astronaut"
   ],
@@ -7864,6 +8415,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "LIU Yang CUHK 2012.JPG"
   ],
   "description": [
    "Chinese astronaut"
@@ -7906,6 +8460,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Peggy Whitson Friday at the Smithsonian's National Air and Space Museum on March 2, 2018 (cropped).jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -7942,6 +8499,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Nicole Stott v2.jpg"
   ],
   "description": [
    "American engineer and NASA astronaut"
@@ -7982,6 +8542,12 @@
   "citizenship_code": [
    "FR"
   ],
+  "commons_image": [
+   "20140927 Femmes de science - Claudie Haigneré 02.jpg",
+   "Claudie Haigneré – 1er février 2014.jpg",
+   "Claudie Haigneré.jpg",
+   "HaignereClaudie.jpg"
+  ],
   "description": [
    "French astronaut, politician, doctor"
   ],
@@ -8021,6 +8587,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Fisher-a.jpg"
+  ],
   "description": [
    "American astronaut (born 1949)"
   ],
@@ -8056,6 +8625,9 @@
   ],
   "citizenship_code": [
    "GB"
+  ],
+  "commons_image": [
+   "Dr. Helen Sharman.jpg"
   ],
   "description": [
    "British chemist who became the first Briton in space"
@@ -8120,6 +8692,9 @@
    "IN",
    "US"
   ],
+  "commons_image": [
+   "Kalpana Chawla, NASA photo portrait in orange suit.jpg"
+  ],
   "death": [
    "2003-01-01T00:00:00Z",
    "2003-02-01T00:00:00Z"
@@ -8162,6 +8737,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Pamela Melroy.jpg"
   ],
   "description": [
    "American astronaut"
@@ -8208,6 +8786,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Megan McArthur, official portrait (2020) (cropped).jpg"
+  ],
   "description": [
    "NASA astronaut"
   ],
@@ -8243,6 +8824,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Shannon Walker official portrait 2020 (cropped).jpg"
+  ],
   "description": [
    "American scientist and NASA astronaut"
   ],
@@ -8275,6 +8859,9 @@
   ],
   "citizenship_code": [
    "CA"
+  ],
+  "commons_image": [
+   "Julie Payette 2017.jpg"
   ],
   "description": [
    "29th governor general of Canada, former CSA Astronaut (born 1963)"
@@ -8315,6 +8902,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Karen nyberg v2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -8354,6 +8944,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "James m kelly.jpg"
   ],
   "description": [
    "NASA astronaut"
@@ -8399,6 +8992,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Paul Richards.jpg"
+  ],
   "description": [
    "American engineer and NASA astronaut"
   ],
@@ -8431,6 +9027,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Larry Connor (cropped big).jpg"
   ],
   "description": [
    "American real estate and technology entrepreneur"
@@ -8471,6 +9070,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Charles F. Bolden, Jr.jpg"
   ],
   "description": [
    "23rd Administrator of NASA and astronaut"
@@ -8518,6 +9120,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Pv-sevastyanov-v-i-2002-face.jpg"
+  ],
   "death": [
    "2010-04-05T00:00:00Z"
   ],
@@ -8558,6 +9163,9 @@
   ],
   "citizenship_code": [
    "FR"
+  ],
+  "commons_image": [
+   "Patrick Baudry.jpg"
   ],
   "description": [
    "French astronaut"
@@ -8603,6 +9211,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "MRSeddon.jpg"
+  ],
   "description": [
    "surgeon and former NASA astronaut"
   ],
@@ -8638,6 +9249,9 @@
   ],
   "citizenship_code": [
    "CZ"
+  ],
+  "commons_image": [
+   "VladimirRemek.jpg"
   ],
   "description": [
    "Czech ambassador, astronaut and pilot"
@@ -8679,6 +9293,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Yelena Kondakova.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -8714,6 +9331,9 @@
   ],
   "citizenship_code": [
    "CA"
+  ],
+  "commons_image": [
+   "Roberta Bondar2.jpg"
   ],
   "description": [
    "Canadian astronaut"
@@ -8754,6 +9374,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Michael Smith (NASA).jpg",
+   "MichaelJSmith.jpeg"
   ],
   "death": [
    "1986-01-28T00:00:00Z"
@@ -8801,6 +9425,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Ken ham v2.jpg"
+  ],
   "description": [
    "American astronaut and Captain in the United States Navy"
   ],
@@ -8842,6 +9469,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Joseph Tanner.jpg"
+  ],
   "description": [
    "Welsh-American astronaut"
   ],
@@ -8878,6 +9508,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Evgeny Tarelkin.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -8912,6 +9545,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Tamara E. Jernigan.jpg"
   ],
   "description": [
    "astronaut"
@@ -8952,6 +9588,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Ellen Louise Shulman Baker.jpg"
+  ],
   "description": [
    "American physician and astronaut"
   ],
@@ -8989,6 +9628,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "JanetLKavandi-NASA.jpg"
   ],
   "description": [
    "American astronaut"
@@ -9028,6 +9670,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Aleksandr Misurkin.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -9065,6 +9710,10 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "1975 CPA 4445 b2.jpg",
+   "1975 CPA 4445.jpg"
   ],
   "death": [
    "2002-10-19T00:00:00Z"
@@ -9108,6 +9757,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Sergey Kud-Sverchkov.jpg"
+  ],
   "description": [
    "Russian engineer and cosmonaut"
   ],
@@ -9139,6 +9791,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Mary Ellen Weber.jpg"
   ],
   "description": [
    "American astronaut"
@@ -9180,6 +9835,9 @@
    "AU",
    "US"
   ],
+  "commons_image": [
+   "Astronaut Philip K Chapman.jpg"
+  ],
   "death": [
    "2021-04-05T00:00:00Z"
   ],
@@ -9216,6 +9874,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "航天员陈冬 Chen Dong.jpg"
   ],
   "description": [
    "Chinese taikonaut"
@@ -9260,6 +9921,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Patricia Robertson.jpg"
+  ],
   "death": [
    "2001-05-24T00:00:00Z"
   ],
@@ -9299,6 +9963,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Scott on the Rover - GPN-2000-001306.jpg"
   ],
   "description": [
    "American engineer, retired U.S. Air Force officer, former test pilot, and former NASA astronaut (born 1932)"
@@ -9347,6 +10014,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Klim Shipenko in 2017.jpg"
+  ],
   "description": [
    "Russian director and screenwriter"
   ],
@@ -9379,6 +10049,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Igor Volk 2.jpg"
   ],
   "death": [
    "2017-01-03T00:00:00Z"
@@ -9429,6 +10102,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Boris Vladimirovich Morukov.jpg"
+  ],
   "death": [
    "2015-01-01T00:00:00Z"
   ],
@@ -9466,6 +10142,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Pierre Thuot.jpg"
   ],
   "description": [
    "American astronaut"
@@ -9515,6 +10194,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Sergei A. Volkov.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -9551,6 +10233,10 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Ye Guangfu (alternate) (cropped).jpg",
+   "Ye Guangfu at Shenzhou 18 Press Conference 2025.png"
+  ],
   "description": [
    "Chinese astronaut (born 1980)"
   ],
@@ -9585,6 +10271,9 @@
   ],
   "citizenship_code": [
    "DE"
+  ],
+  "commons_image": [
+   "Matthias Maurer, official portrait (2020).jpg"
   ],
   "description": [
    "German ESA astronaut"
@@ -9623,6 +10312,9 @@
   ],
   "citizenship_code": [
    "JP"
+  ],
+  "commons_image": [
+   "Toyohiro-Akiyama-First-Japanese-Person-in-Space-1990.png"
   ],
   "death": [
    "2026-08-26T00:00:00Z"
@@ -9668,6 +10360,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "KathrynThornton.jpg"
+  ],
   "description": [
    "American scientist and NASA astronaut"
   ],
@@ -9705,6 +10400,11 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Astronaut Nancy J. Currie (27923261402).jpg",
+   "Astronaut Nancy J. Currie (27990762596).jpg",
+   "Nancy Currie.jpg"
   ],
   "description": [
    "American engineer, army officer, astronaut, and professor"
@@ -9749,6 +10449,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jan Davis.jpg"
+  ],
   "description": [
    "American engineer and astronaut"
   ],
@@ -9787,6 +10490,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Apollo 14 Camera.JPG"
   ],
   "death": [
    "2016-02-04T00:00:00Z"
@@ -9839,6 +10545,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Bonnie J. Dunbar.jpg",
+   "Bonnie Jean Dunbar crop CHF 2013 068.jpg"
+  ],
   "description": [
    "American engineer and astronaut"
   ],
@@ -9876,6 +10586,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Patrick Forrester.jpg"
   ],
   "description": [
    "United States Army officer and NASA astronaut"
@@ -9918,6 +10631,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Charles hobaugh-2006.jpg"
   ],
   "description": [
    "American astronaut, fighter pilot"
@@ -9962,6 +10678,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Irwin Scoops up Soil - GPN-2000-001129.jpg",
+   "Jim Irwin Apollo 15 LMP.jpg"
   ],
   "death": [
    "1991-08-08T00:00:00Z"
@@ -10008,6 +10728,9 @@
   "citizenship": [
    "Russian Empire"
   ],
+  "commons_image": [
+   "Georgy Ivanov (1921).jpg"
+  ],
   "death": [
    "1958-08-26T00:00:00Z"
   ],
@@ -10040,6 +10763,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Jonny Kim portrait.jpg"
   ],
   "description": [
    "American physician, Navy SEAL, and NASA astronaut"
@@ -10084,6 +10810,9 @@
    "IR",
    "US"
   ],
+  "commons_image": [
+   "Jasmin Moghbeli official portrait.jpg"
+  ],
   "description": [
    "US astronaut"
   ],
@@ -10124,6 +10853,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jsc2022e095887 alt.jpg"
+  ],
   "description": [
    "US astronaut"
   ],
@@ -10160,6 +10892,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Zena Cardman 2023 (portrait crop).jpg"
   ],
   "description": [
    "American geobiologist and NASA astronaut"
@@ -10199,6 +10934,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "SpaceX Crew-3 Commander Raja Chari.jpg"
   ],
   "description": [
    "American astronaut"
@@ -10246,6 +10984,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Matthew Dominick portrait.jpg"
+  ],
   "description": [
    "American engineer, test pilot and astronaut for NASA"
   ],
@@ -10292,6 +11033,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Warren Hoburg portrait.jpg"
+  ],
   "description": [
    "US astronaut"
   ],
@@ -10330,6 +11074,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Kayla Barron 2025 (cropped).jpg"
   ],
   "description": [
    "American astronaut"
@@ -10380,6 +11127,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jessica Watkins official portrait.jpg"
+  ],
   "description": [
    "US astronaut"
   ],
@@ -10416,6 +11166,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Michael S. Hopkins.jpg"
   ],
   "description": [
    "American astronaut (born 1968)"
@@ -10460,6 +11213,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Francisco Rubio portrait.jpg"
   ],
   "description": [
    "US astronaut"
@@ -10507,6 +11263,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Dr. Sian Proctor at Launch Complex 39A.jpg"
+  ],
   "description": [
    "African American explorer, scientist, STEM communicator"
   ],
@@ -10545,6 +11304,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Amanda Nguyen at House Judiciary Committee.jpg"
+  ],
   "description": [
    "founder and CEO of Rise"
   ],
@@ -10578,6 +11340,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Bob Hines portrait.jpg"
   ],
   "description": [
    "American astronaut"
@@ -10622,6 +11387,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Alan Bean NASA portrait (S69-38859).jpg"
   ],
   "death": [
    "2018-05-26T00:00:00Z"
@@ -10673,6 +11441,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "2023 Gregory Reid Wiseman (cropped).jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -10720,6 +11491,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Andrian Nikolaev atwedding.jpg"
+  ],
   "death": [
    "2004-07-03T00:00:00Z"
   ],
@@ -10766,6 +11540,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jeff Bezos at Amazon Spheres Grand Opening in Seattle - 2018 (39074799225) (cropped).jpg"
+  ],
   "description": [
    "American business magnate (born 1964)"
   ],
@@ -10800,6 +11577,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gordon Cooper in Helmet and Pressure Suit - GPN-2000-001000.jpg"
   ],
   "death": [
    "2004-10-04T00:00:00Z"
@@ -10848,6 +11628,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Vladimir Shatalov.jpg"
+  ],
   "death": [
    "2021-06-15T00:00:00Z"
   ],
@@ -10890,6 +11673,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Ronald Evans.jpg"
   ],
   "death": [
    "1990-04-07T00:00:00Z"
@@ -10940,6 +11726,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Sergei Krikalev.jpg"
+  ],
   "description": [
    "Soviet and Russian cosmonaut"
   ],
@@ -10974,6 +11763,9 @@
   ],
   "citizenship_code": [
    "MY"
+  ],
+  "commons_image": [
+   "Muszaphar shukor.jpg"
   ],
   "description": [
    "Malaysian surgeon and spaceflight participant"
@@ -11015,6 +11807,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Vladimir Kovalyonok 05.jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -11054,6 +11849,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Jack D. Fischer official portrait.jpg"
   ],
   "description": [
    "American astronaut"
@@ -11100,6 +11898,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Ronald mcnair.jpg"
+  ],
   "death": [
    "1986-01-28T00:00:00Z"
   ],
@@ -11140,6 +11941,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Robert Crippen.jpg"
   ],
   "description": [
    "American astronaut"
@@ -11184,6 +11988,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Thomas Stafford.jpg"
   ],
   "death": [
    "2024-03-18T00:00:00Z"
@@ -11231,6 +12038,9 @@
   "citizenship_code": [
    "SE"
   ],
+  "commons_image": [
+   "Christer Fuglesang.jpg"
+  ],
   "description": [
    "Swedish astronaut"
   ],
@@ -11267,6 +12077,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jeanette J. Epps.jpg"
+  ],
   "description": [
    "American aerospace engineer and NASA astronaut (born 1970)"
   ],
@@ -11302,6 +12115,9 @@
   ],
   "citizenship_code": [
    "BR"
+  ],
+  "commons_image": [
+   "Marcos Pontes.jpg"
   ],
   "description": [
    "NASA astronaut, 22nd Minister of Science, Technology and Innovation of Brazil (2019–2022) and Senator of the Federative Republic of Brazil since 2023"
@@ -11346,6 +12162,10 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Cosmonaut Polyakov Watches Discovery's Rendezvous With Mir crop.jpg",
+   "Valery Polyakov.jpg"
+  ],
   "death": [
    "2022-09-07T00:00:00Z"
   ],
@@ -11387,6 +12207,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Mattingly Ken.jpg"
   ],
   "death": [
    "2023-10-31T00:00:00Z"
@@ -11433,6 +12256,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Michael P. Anderson.jpg"
   ],
   "death": [
    "2003-02-01T00:00:00Z"
@@ -11481,6 +12307,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Joseph Acaba v2.jpg"
+  ],
   "description": [
    "Astronaut, Hydrogeologist, science teacher"
   ],
@@ -11523,6 +12352,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Fred Haise GPN-2000-001166.jpg"
   ],
   "description": [
    "American astronaut"
@@ -11576,6 +12408,9 @@
    "GB",
    "US"
   ],
+  "commons_image": [
+   "Richard garriott july 2008.jpg"
+  ],
   "description": [
    "British video game developer, astronaut and entrepreneur"
   ],
@@ -11614,6 +12449,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Kathleen Rubins portrait.jpg"
+  ],
   "description": [
    "NASA astronaut selected in July 2009"
   ],
@@ -11651,6 +12489,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Astronaut Kjell Lindgren Official Photo.jpg"
   ],
   "description": [
    "American astronaut"
@@ -11694,6 +12535,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Francis Richard Scobee.jpg",
+   "Scobee-fr.jpg"
   ],
   "death": [
    "1986-01-28T00:00:00Z"
@@ -11744,6 +12589,10 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Konstantin Feoktistov 1965.jpg",
+   "The Soviet Union 1964 CPA 3111 stamp (3-men Space Flight of Komarov, Yegorov and Feoktistov. Konstantin Feoktistov (1926-2009), a Soviet cosmonaut and an eminent space engineer).jpg"
+  ],
   "death": [
    "2009-11-21T00:00:00Z"
   ],
@@ -11778,6 +12627,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Duane G. Carey (27990761026).jpg"
   ],
   "description": [
    "American Air Force lieutenant colonel and astronaut"
@@ -11824,6 +12676,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Michael Massimino.jpg"
+  ],
   "description": [
    "astronaut, engineer"
   ],
@@ -11860,6 +12715,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Stephen frick-2007.jpg"
   ],
   "description": [
    "American astronaut"
@@ -11901,6 +12759,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "WilliamGGregory.jpg"
   ],
   "description": [
    "American astronaut"
@@ -11946,6 +12807,9 @@
   ],
   "citizenship_code": [
    "IN"
+  ],
+  "commons_image": [
+   "Rakesh Sharma.jpg"
   ],
   "description": [
    "First Indian astronaut"
@@ -11993,6 +12857,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Michel-fc.jpg"
+  ],
   "death": [
    "2015-02-23T00:00:00Z"
   ],
@@ -12029,6 +12896,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Vande Hei Official Photo.jpg"
   ],
   "description": [
    "American astronaut"
@@ -12069,6 +12939,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Sergey Ryazansky 2013.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -12104,6 +12977,9 @@
   "citizenship_code": [
    "PT"
   ],
+  "commons_image": [
+   "Mario Ferreira (cropped).JPG"
+  ],
   "description": [
    "Portuguese businessperson"
   ],
@@ -12132,6 +13008,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "McCool onSTS-107.jpg",
+   "William Cameron McCool.jpg"
   ],
   "death": [
    "2003-02-01T00:00:00Z"
@@ -12181,6 +13061,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "M. Scott Carpenter.jpg",
+   "MalcolmScottCarpenter.jpg"
   ],
   "death": [
    "2013-10-10T00:00:00Z"
@@ -12232,6 +13116,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Slayton.jpg"
+  ],
   "death": [
    "1993-06-13T00:00:00Z"
   ],
@@ -12280,6 +13167,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Mae Carol Jemison.jpg"
+  ],
   "description": [
    "American doctor and NASA astronaut"
   ],
@@ -12317,6 +13207,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Oleg Kotov.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -12357,6 +13250,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "YuriMalenchenko.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -12391,6 +13287,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "Dyor Fei Junlong.jpg"
   ],
   "description": [
    "Chinese military pilot and an astronaut"
@@ -12432,6 +13331,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Alexander Kaleri NASA portrait.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -12469,6 +13371,9 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "Vladislav Volkov.jpg"
   ],
   "death": [
    "1971-06-30T00:00:00Z"
@@ -12511,6 +13416,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "RogerChaffee.1964.ws.jpg"
   ],
   "death": [
    "1967-01-27T00:00:00Z"
@@ -12557,6 +13465,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Richard Husband, NASA photo portrait in orange suit.jpg"
+  ],
   "death": [
    "2003-02-01T00:00:00Z"
   ],
@@ -12601,6 +13512,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Scott D. Tingle official portrait.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -12644,6 +13558,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Astronaut Serena Aunon at Champions of Change (NHQ201509150025).jpg"
+  ],
   "description": [
    "American physician, engineer, and NASA astronaut"
   ],
@@ -12681,6 +13598,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Yurchikhin.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -12717,6 +13637,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Viktor Gorbatko 2016.jpg"
   ],
   "death": [
    "2017-05-17T00:00:00Z"
@@ -12759,6 +13682,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Jack Swigert.jpg"
   ],
   "death": [
    "1982-12-27T00:00:00Z"
@@ -12810,6 +13736,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Yelena Serova (2016-03-10).JPG"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -12845,6 +13774,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Ellison Shoji Onizuka (NASA).jpg"
   ],
   "death": [
    "1986-01-28T00:00:00Z"
@@ -12893,6 +13825,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Stephen thorne NASA.jpg"
+  ],
   "death": [
    "1986-05-24T00:00:00Z"
   ],
@@ -12929,6 +13864,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Graveline-de.jpg"
   ],
   "death": [
    "2016-09-05T00:00:00Z"
@@ -12971,6 +13909,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "David M. Brown, NASA photo portrait in orange suit.jpg"
   ],
   "death": [
    "2003-02-01T00:00:00Z"
@@ -13018,6 +13959,9 @@
   "citizenship_code": [
    "FR"
   ],
+  "commons_image": [
+   "LeopoldEyharts-NASA.jpg"
+  ],
   "description": [
    "French astronaut"
   ],
@@ -13059,6 +14003,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "B.B. Egorov. Photograph. Wellcome V0026324.jpg"
+  ],
   "death": [
    "1994-09-12T00:00:00Z"
   ],
@@ -13097,6 +14044,9 @@
   "citizenship_code": [
    "VN"
   ],
+  "commons_image": [
+   "TUÂN PHAM.JPG"
+  ],
   "description": [
    "Vietnamese astronaut, first Asian in space"
   ],
@@ -13134,6 +14084,9 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "Георгий Добровольский.jpg"
   ],
   "death": [
    "1971-06-30T00:00:00Z"
@@ -13180,6 +14133,9 @@
   "citizenship_code": [
    "JP"
   ],
+  "commons_image": [
+   "Soichi noguchi v2.jpg"
+  ],
   "description": [
    "Japanese astronaut"
   ],
@@ -13215,6 +14171,9 @@
   "citizenship_code": [
    "CA"
   ],
+  "commons_image": [
+   "Laliberté Soyuz TMA16.jpg"
+  ],
   "description": [
    "Canadian businessman, investor, poker player, space tourist, and musician"
   ],
@@ -13247,6 +14206,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Mark Kelly Official Portrait 119th.jpg"
   ],
   "description": [
    "American politician, astronaut, and naval officer (born 1964)"
@@ -13291,6 +14253,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "NASA Administrator Bill Nelson Official Portrait (NHQ202105170001).jpg"
   ],
   "description": [
    "American politician and attorney (born 1942)"
@@ -13339,6 +14304,9 @@
   "citizenship_code": [
    "SU"
   ],
+  "commons_image": [
+   "Viktor Patsayev.jpg"
+  ],
   "death": [
    "1971-06-30T00:00:00Z"
   ],
@@ -13377,6 +14345,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Garrettreismanv2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -13413,6 +14384,10 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "Soyuz-23.JPG",
+   "Valery Rozhdestvensky (cropped).jpg"
   ],
   "death": [
    "2011-08-31T00:00:00Z"
@@ -13455,6 +14430,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Кизим Леонид Денисович.jpg"
   ],
   "death": [
    "2010-06-14T00:00:00Z"
@@ -13503,6 +14481,9 @@
    "CR",
    "US"
   ],
+  "commons_image": [
+   "Changdiaz.jpg"
+  ],
   "description": [
    "Costa Rican-American astronaut and physicist"
   ],
@@ -13536,6 +14517,9 @@
   ],
   "citizenship_code": [
    "PL"
+  ],
+  "commons_image": [
+   "Miroslaw H.jpg"
   ],
   "death": [
    "2022-12-12T00:00:00Z"
@@ -13576,6 +14560,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "William Shepherd.jpg"
   ],
   "description": [
    "American astronaut"
@@ -13621,6 +14608,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Mikhail Tyurin.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -13655,6 +14645,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Scott Kelly, Johnson Space Center portrait, 2019 (cropped) 2.tif"
   ],
   "description": [
    "American astronaut and engineer (born 1964)"
@@ -13701,6 +14694,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "John Grunsfeld.jpg"
+  ],
   "description": [
    "American astronaut and astronomer"
   ],
@@ -13733,6 +14729,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Alan G. Poindexter.jpg"
   ],
   "death": [
    "2012-07-01T00:00:00Z"
@@ -13783,6 +14782,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Michael Fincke 2019 (cropped).jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -13827,6 +14829,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Aleksandr Serebrov.jpg"
+  ],
   "death": [
    "2013-11-12T00:00:00Z"
   ],
@@ -13866,6 +14871,9 @@
   "citizenship_code": [
    "CU"
   ],
+  "commons_image": [
+   "2022 Arnaldo Tamayo Méndez.png"
+  ],
   "description": [
    "Cuban cosmonaut"
   ],
@@ -13902,6 +14910,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Padalka.jpg"
   ],
   "description": [
    "Russian Air Force officer and an RSA cosmonaut"
@@ -13946,6 +14957,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Don Pettit 2024 (portrait crop).jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -13982,6 +14996,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "RustySchweickart.jpg"
   ],
   "description": [
    "American astronaut"
@@ -14021,6 +15038,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Lousma.jpg"
   ],
   "description": [
    "American astronaut and politician"
@@ -14074,6 +15094,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Георгий Береговой.jpg"
   ],
   "death": [
    "1995-06-30T00:00:00Z"
@@ -14130,6 +15153,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "JamesMcDivitt.jpg"
+  ],
   "death": [
    "2022-10-13T00:00:00Z"
   ],
@@ -14177,6 +15203,9 @@
   "citizenship_code": [
    "SU"
   ],
+  "commons_image": [
+   "Vasily Lazarev (cropped).jpg"
+  ],
   "death": [
    "1990-12-31T00:00:00Z"
   ],
@@ -14221,6 +15250,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Walter Cunningham.jpg"
   ],
   "death": [
    "2023-01-03T00:00:00Z"
@@ -14273,6 +15305,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Joe Engle.jpg"
+  ],
   "death": [
    "2024-07-10T00:00:00Z"
   ],
@@ -14319,6 +15354,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Roosa cropped.jpg"
   ],
   "death": [
    "1994-12-12T00:00:00Z"
@@ -14371,6 +15409,9 @@
    "ES",
    "US"
   ],
+  "commons_image": [
+   "Michael Lopez-Alegria.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -14413,6 +15454,9 @@
   "citizenship_code": [
    "JP"
   ],
+  "commons_image": [
+   "Koichi wakata.jpg"
+  ],
   "description": [
    "Japanese engineer and JAXA astronaut"
   ],
@@ -14448,6 +15492,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Daniel Tani.jpg",
+   "Daniel Tani2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -14480,6 +15528,9 @@
   ],
   "citizenship_code": [
    "JP"
+  ],
+  "commons_image": [
+   "Akihoshide.jpg"
   ],
   "description": [
    "Japanese astronaut"
@@ -14520,6 +15571,9 @@
   "citizenship_code": [
    "RU",
    "TM"
+  ],
+  "commons_image": [
+   "Oleg Kononenko Official Portrait (jsc2023e052791).jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -14562,6 +15616,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "WilliamBLenoir.jpg"
+  ],
   "death": [
    "2010-08-26T00:00:00Z"
   ],
@@ -14601,6 +15658,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Usachev.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -14635,6 +15695,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Steven Smith.jpg"
   ],
   "description": [
    "American astronaut"
@@ -14671,6 +15734,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Kenneth Cameron.jpg"
   ],
   "description": [
    "American astronaut"
@@ -14718,6 +15784,10 @@
    "FR",
    "IT"
   ],
+  "commons_image": [
+   "Samantha Cristoforetti official portrait in an EMU spacesuit.jpg",
+   "Samantha Cristoforetti portrait.jpg"
+  ],
   "description": [
    "Italian European Space Agency astronaut, former Italian Air Force pilot and engineer (1977)"
   ],
@@ -14764,6 +15834,9 @@
   "citizenship_code": [
    "SA"
   ],
+  "commons_image": [
+   "Sultan Salman Al-Saud.jpg"
+  ],
   "description": [
    "Saudi Arabian astronaut and politician"
   ],
@@ -14805,6 +15878,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "The Soviet Union 1969 CPA 3811 stamp (Aleksei Yeliseyev (Soyuz 8)).png"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -14840,6 +15916,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gregory Jarvis (NASA) cropped.jpg",
+   "Gregory Jarvis (NASA).jpg"
   ],
   "death": [
    "1986-01-28T00:00:00Z"
@@ -14905,6 +15985,9 @@
    "SU",
    "UA"
   ],
+  "commons_image": [
+   "Leonid Kadenyuk.jpg"
+  ],
   "death": [
    "2018-01-31T00:00:00Z"
   ],
@@ -14946,6 +16029,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Daniel Burbank.jpg"
   ],
   "description": [
    "American astronaut"
@@ -14990,6 +16076,10 @@
    "SU",
    "UA"
   ],
+  "commons_image": [
+   "Soyuz-21 Vitali Zholobov.jpg",
+   "Soyuz-21.jpg"
+  ],
   "description": [
    "Soviet cosmonaut and Ukrainian politician"
   ],
@@ -15029,6 +16119,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Jeffrey N. Williams 2009.jpg",
+   "Jeffrey N. Williams.jpg"
   ],
   "description": [
    "American astronaut"
@@ -15071,6 +16165,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Scott Douglas Altman.jpg"
   ],
   "description": [
    "American astronaut, aviator and test pilot"
@@ -15115,6 +16212,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jerry Ross.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -15157,6 +16257,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Curtis Brown.jpg"
   ],
   "description": [
    "American Air Force pilot and astronaut"
@@ -15202,6 +16305,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Gibson-e.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -15238,6 +16344,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Stewart-rl.jpg"
   ],
   "description": [
    "American astronaut and recipient of the Purple Heart medal"
@@ -15284,6 +16393,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Astronaut-susan-j-helms 35633635475 o.jpg",
+   "Helms sj4.jpg"
+  ],
   "description": [
    "Lieutenant General in the United States Air Force and NASA astronaut"
   ],
@@ -15329,6 +16442,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Joan Higginbotham.jpg"
+  ],
   "description": [
    "American engineer and NASA astronaut"
   ],
@@ -15368,6 +16484,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Kathryn P. Hire.jpg"
   ],
   "description": [
    "NASA astronaut and Captain in the U.S. Navy Reserve"
@@ -15412,6 +16531,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "MarshaIvins-NASA.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -15455,6 +16577,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Katy Perry 2026 Tribeca Film Festival (cropped 1).jpg"
+  ],
   "description": [
    "American singer"
   ],
@@ -15487,6 +16612,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gardner-d.jpg"
   ],
   "death": [
    "2014-02-19T00:00:00Z"
@@ -15535,6 +16663,9 @@
   "citizenship_code": [
    "SY"
   ],
+  "commons_image": [
+   "Muhammed Ahmed Faris.jpg"
+  ],
   "death": [
    "2024-04-19T00:00:00Z"
   ],
@@ -15573,6 +16704,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Савиных Виктор Петрович (cropped).JPG"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -15609,6 +16743,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Valeriy N. Kubasov ASTP portrait - cropped.jpg"
   ],
   "death": [
    "2014-02-19T00:00:00Z"
@@ -15656,6 +16793,10 @@
    "SU",
    "UA"
   ],
+  "commons_image": [
+   "Leonid Popov.jpg",
+   "USSR Stamp 1981 Salyut6 Cosmonauts.jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -15695,6 +16836,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Linda Godwin.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -15728,6 +16872,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "BM II.jpg"
   ],
   "death": [
    "2017-12-21T00:00:00Z"
@@ -15779,6 +16926,9 @@
    "FR",
    "US"
   ],
+  "commons_image": [
+   "Jean-Loup Jacques Marie Chrétien, French Spationaut (NASA).jpg"
+  ],
   "description": [
    "French astronaut (born 1938)"
   ],
@@ -15814,6 +16964,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Michael E. Fossum.jpg"
   ],
   "description": [
    "American astronaut"
@@ -15858,6 +17011,10 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "The Soviet Union 1969 CPA 3809 stamp (Georgi Shonin and Valeri Kubasov (Soyuz 6)) b2.jpg",
+   "The Soviet Union 1969 CPA 3809 stamp (Georgi Shonin and Valeri Kubasov (Soyuz 6)).jpg"
   ],
   "death": [
    "1997-04-07T00:00:00Z"
@@ -15908,6 +17065,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Klimuk.jpg"
+  ],
   "description": [
    "Soviet-Belarusian cosmonaut (born 1942)"
   ],
@@ -15951,6 +17111,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Georgy Grechko.jpg"
+  ],
   "death": [
    "2017-04-08T00:00:00Z"
   ],
@@ -15992,6 +17155,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Юлия Пересильд (29-03-2026).jpg"
+  ],
   "description": [
    "Russian actress of Estonian origin (born 1984)"
   ],
@@ -16026,6 +17192,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gregory Olsen.jpg"
   ],
   "description": [
    "American astronaut and businessman"
@@ -16063,6 +17232,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Vyacheslav Zudov.jpg"
   ],
   "death": [
    "2024-06-12T00:00:00Z"
@@ -16107,6 +17279,11 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Michael R. Barratt 2010.jpg",
+   "Michael Reed Barratt.jpg",
+   "Mike Barratt 2023 (portrait crop).jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -16144,6 +17321,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Antonelli.jpg"
   ],
   "description": [
    "astronaut, Test Pilot"
@@ -16189,6 +17369,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "T. Kopra.jpg",
+   "TimotyKorpav2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -16230,6 +17414,9 @@
   "citizenship_code": [
    "CA"
   ],
+  "commons_image": [
+   "Josh Kutryk official portrait.jpg"
+  ],
   "description": [
    "Canadian astronaut (born 1981)"
   ],
@@ -16267,6 +17454,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Lauren Sanchez Headshot.jpg"
+  ],
   "description": [
    "American media personality"
   ],
@@ -16299,6 +17489,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Garan v2.jpg"
   ],
   "description": [
    "American astronaut"
@@ -16343,6 +17536,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Richard H. Truly - GPN-2002-000090.jpg"
   ],
   "death": [
    "2024-02-27T00:00:00Z"
@@ -16391,6 +17587,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "1st meeting of 8th State Duma 07.jpg"
+  ],
   "description": [
    "Russian cosmonaut and pilot, first woman to have flown in space (born 1937)"
   ],
@@ -16430,6 +17629,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "JosephAllen.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -16463,6 +17665,9 @@
   ],
   "citizenship_code": [
    "BG"
+  ],
+  "commons_image": [
+   "Александр Александров Панайотов.JPG"
   ],
   "death": [
    "2026-07-10T00:00:00Z"
@@ -16507,6 +17712,9 @@
    "SU",
    "UA"
   ],
+  "commons_image": [
+   "Aleksandr Volkov Geek Picnic (cropped).jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -16541,6 +17749,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Millie Hughes-Fulford.jpg"
   ],
   "death": [
    "2021-02-02T00:00:00Z"
@@ -16581,6 +17792,9 @@
   "citizenship_code": [
    "SU"
   ],
+  "commons_image": [
+   "Ivanchenkov Космонавты СССР.jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -16615,6 +17829,9 @@
   ],
   "citizenship_code": [
    "RO"
+  ],
+  "commons_image": [
+   "Stamp of Moldova md389.jpg"
   ],
   "description": [
    "Romanian astronaut"
@@ -16657,6 +17874,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "YuriRomanenko.jpg"
+  ],
   "description": [
    "Soviet cosmonaut (born 1944)"
   ],
@@ -16691,6 +17911,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Astronaut Joseph Kerwin portrait.jpg"
   ],
   "description": [
    "American astronaut"
@@ -16739,6 +17962,9 @@
    "PL",
    "US"
   ],
+  "commons_image": [
+   "Christopher Ferguson in 2018 (cropped).jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -16785,6 +18011,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Clayton Anderson.jpg",
+   "Clayton C. Anderson.jpg"
+  ],
   "description": [
    "American astronaut and engineer"
   ],
@@ -16820,6 +18050,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Rex Walheim.jpg"
   ],
   "description": [
    "American astronaut"
@@ -16863,6 +18096,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Anatoly Solovyev Portrait.jpg"
+  ],
   "description": [
    "Soviet and Russian cosmonaut"
   ],
@@ -16901,6 +18137,9 @@
   "citizenship_code": [
    "CO",
    "US"
+  ],
+  "commons_image": [
+   "Zamka G NASA.jpg"
   ],
   "description": [
    "American astronaut"
@@ -16945,6 +18184,9 @@
    "CS",
    "SK"
   ],
+  "commons_image": [
+   "Ivan Bella (Author - Rudolf Csiba)-2.jpg"
+  ],
   "description": [
    "Slovak astronaut"
   ],
@@ -16980,6 +18222,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Lee Archambault 2009.jpg"
   ],
   "description": [
    "astronaut, test pilot"
@@ -17021,6 +18266,9 @@
   "citizenship_code": [
    "CA"
   ],
+  "commons_image": [
+   "David Saint-Jacques official portrait.jpg"
+  ],
   "description": [
    "Canadian physician, astronaut"
   ],
@@ -17059,6 +18307,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Steven W. Lindsey.jpg"
   ],
   "description": [
    "American astronaut"
@@ -17100,6 +18351,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Yuri Gidzenko.jpg"
+  ],
   "description": [
    "russian cosmonaut"
   ],
@@ -17138,6 +18392,9 @@
   "citizenship_code": [
    "IT"
   ],
+  "commons_image": [
+   "Roberto Vittori NASA portrait.jpg"
+  ],
   "description": [
    "Italian astronaut"
   ],
@@ -17175,6 +18432,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Boris Volynov 2016.jpg"
   ],
   "description": [
    "Soviet cosmonaut"
@@ -17216,6 +18476,9 @@
   "citizenship_code": [
    "ES"
   ],
+  "commons_image": [
+   "Pedro Duque-detail.jpg"
+  ],
   "description": [
    "Spanish astronaut and politician"
   ],
@@ -17250,6 +18513,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Johnphillips v2.jpg"
   ],
   "description": [
    "American astronaut"
@@ -17294,6 +18560,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Walerij Tokariew - jsc2005e36546.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -17333,6 +18602,9 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "Vladimir Lyakhov.jpg"
   ],
   "death": [
    "2018-04-19T00:00:00Z"
@@ -17381,6 +18653,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Eisele donn (crop).jpg"
+  ],
   "death": [
    "1987-12-02T00:00:00Z"
   ],
@@ -17424,6 +18699,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Charles J. Camarda.jpg"
+  ],
   "description": [
    "astronaut"
   ],
@@ -17461,6 +18739,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Herrington.jpg"
   ],
   "description": [
    "American astronaut"
@@ -17507,6 +18788,10 @@
   "citizenship_code": [
    "SU"
   ],
+  "commons_image": [
+   "1974 CPA 4403 (cropped).jpg",
+   "1974 CPA 4403.jpg"
+  ],
   "death": [
    "1998-12-18T00:00:00Z"
   ],
@@ -17550,6 +18835,10 @@
   "citizenship_code": [
    "SU"
   ],
+  "commons_image": [
+   "USSR stamp Soyuz-14 1974 10k b2.jpg",
+   "USSR stamp Soyuz-14 1974 10k.jpg"
+  ],
   "death": [
    "1998-08-04T00:00:00Z"
   ],
@@ -17590,6 +18879,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Lee Morin.jpg"
   ],
   "description": [
    "American astronaut"
@@ -17634,6 +18926,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Paul Lockhart.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -17677,6 +18972,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Sergey Avdeev.jpg"
+  ],
   "description": [
    "Soviet and Russian cosmonaut"
   ],
@@ -17712,6 +19010,9 @@
   "citizenship_code": [
    "NL"
   ],
+  "commons_image": [
+   "André Kuipers 2011.jpg"
+  ],
   "description": [
    "Dutch astronaut"
   ],
@@ -17746,6 +19047,9 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "Yevgeny Khrunov 2020 stamp of Transnistria.jpg"
   ],
   "death": [
    "2000-05-19T00:00:00Z"
@@ -17787,6 +19091,9 @@
   "citizenship_code": [
    "BG"
   ],
+  "commons_image": [
+   "Georgi ivanov-676x1024.jpg"
+  ],
   "description": [
    "Bulgarian cosmonaut"
   ],
@@ -17825,6 +19132,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Roman Romanenko.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -17859,6 +19169,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Henryhartsfield.jpg"
   ],
   "death": [
    "2014-07-17T00:00:00Z"
@@ -17908,6 +19221,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "William R. Pogue.png"
+  ],
   "death": [
    "2014-03-03T00:00:00Z"
   ],
@@ -17952,6 +19268,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Timothy J. Creamer.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -17994,6 +19313,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "DavidWolfv2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -18032,6 +19354,9 @@
   ],
   "citizenship_code": [
    "CA"
+  ],
+  "commons_image": [
+   "Robert thirsk v2.jpg"
   ],
   "description": [
    "Canadian astronaut"
@@ -18075,6 +19400,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Maxim Suraev.jpg"
+  ],
   "description": [
    "Russian cosmonaut and politician"
   ],
@@ -18116,6 +19444,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Ericboev2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -18153,6 +19484,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "Jing Haipeng Shenzhou 16 景海鹏 20230530.jpg"
   ],
   "description": [
    "Chinese astronaut"
@@ -18192,6 +19526,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Wheelock Douglas.jpg"
   ],
   "description": [
    "American astronaut"
@@ -18234,6 +19571,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Gregorychamitoffv2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -18268,6 +19608,9 @@
   ],
   "citizenship_code": [
    "JP"
+  ],
+  "commons_image": [
+   "Doi.jpg"
   ],
   "description": [
    "Japanese astronaut"
@@ -18305,6 +19648,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "StoryMusgrave.jpg"
   ],
   "description": [
    "American physician and NASA astronaut"
@@ -18351,6 +19697,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Richardarnoldv2.jpg"
+  ],
   "description": [
    "American educator and astronaut"
   ],
@@ -18382,6 +19731,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Stephenbowenv2.jpg"
   ],
   "description": [
    "American astronaut"
@@ -18425,6 +19777,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "VanceDBrand.jpg"
+  ],
   "description": [
    "test pilot and NASA astronaut"
   ],
@@ -18465,6 +19820,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Kathryn D. Sullivan.jpg"
   ],
   "description": [
    "American astronaut (born 1951)"
@@ -18508,6 +19866,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Glazkov.jpg"
   ],
   "death": [
    "2008-12-09T00:00:00Z"
@@ -18556,6 +19917,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Березовой Анатолий Николаевич.jpg"
+  ],
   "death": [
    "2014-09-20T00:00:00Z"
   ],
@@ -18598,6 +19962,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Cosmonaut Aleksei Gubarev (cropped).jpg"
   ],
   "death": [
    "2015-02-21T00:00:00Z"
@@ -18643,6 +20010,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Titov cropped.jpg"
+  ],
   "description": [
    "Soviet and Russian cosmonaut"
   ],
@@ -18684,6 +20054,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Pavel Vinogradov 2013.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -18718,6 +20091,9 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "Aleksandr Pavlovich Aleksandrov.jpg"
   ],
   "description": [
    "Soviet cosmonaut"
@@ -18756,6 +20132,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Ba-dzhanibekov-v-a-2002-square.jpg"
   ],
   "description": [
    "Soviet cosmonaut"
@@ -18797,6 +20176,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Макаров Олег Григорьевич.jpg"
+  ],
   "death": [
    "2003-05-28T00:00:00Z"
   ],
@@ -18837,6 +20219,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "U2mir musa manarov.jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -18874,6 +20259,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "В.В. Аксенов (cropped).jpg"
   ],
   "death": [
    "2024-04-09T00:00:00Z"
@@ -18919,6 +20307,9 @@
    "KZ",
    "SU"
   ],
+  "commons_image": [
+   "ToktarAwbakirov 140x190.jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -18955,6 +20346,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "LIU Wang CUHK 2012.JPG"
   ],
   "description": [
    "Chinese astronaut"
@@ -18997,6 +20391,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Gennady Strekalov.jpg"
   ],
   "death": [
    "2004-12-25T00:00:00Z"
@@ -19042,6 +20439,9 @@
   "citizenship_code": [
    "CA"
   ],
+  "commons_image": [
+   "Dafydd Williams.jpg"
+  ],
   "description": [
    "Canadian astronaut and physician"
   ],
@@ -19081,6 +20481,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Viktor Afanasyev (24-04-2022) 02.jpg"
   ],
   "description": [
    "Soviet and Russian cosmonaut and military pilot"
@@ -19124,6 +20527,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "John Olivas v2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -19161,6 +20567,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Aleksey Ovchinin.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -19200,6 +20609,10 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "1974 CPA 4403 b3.jpg",
+   "1974 CPA 4403.jpg"
   ],
   "death": [
    "2005-09-29T00:00:00Z"
@@ -19243,6 +20656,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Ryumin, Valery Victorovitch.jpg"
+  ],
   "death": [
    "2022-06-06T00:00:00Z"
   ],
@@ -19277,6 +20693,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "Nie Haisheng (cropped).jpg"
   ],
   "description": [
    "Chinese astronaut"
@@ -19316,6 +20735,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Mark Polansky.jpg"
   ],
   "description": [
    "American astronaut, pilot"
@@ -19359,6 +20781,9 @@
    "SE",
    "US"
   ],
+  "commons_image": [
+   "NASA Candidate Jessica U Meir.jpg"
+  ],
   "description": [
    "American and Swedish astronaut (born 1977)"
   ],
@@ -19395,6 +20820,9 @@
   ],
   "citizenship_code": [
    "KZ"
+  ],
+  "commons_image": [
+   "Aidyn Aimbetov.jpg"
   ],
   "description": [
    "Cosmonaut"
@@ -19434,6 +20862,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Aisha Bowe LQ 2025.jpg"
+  ],
   "description": [
    "Bahamian-American aerospace engineer"
   ],
@@ -19465,6 +20896,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Anatoli Ivanishin 2011.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -19507,6 +20941,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Космонавт Анатолий Павлович Арцебарский Екатеринбург 18 апреля 2019 года.jpg"
   ],
   "description": [
    "Soviet cosmonaut"
@@ -19595,6 +21032,10 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "1975 CPA 4445 02.jpg",
+   "1975 CPA 4445.jpg"
+  ],
   "death": [
    "2022-08-07T00:00:00Z"
   ],
@@ -19633,6 +21074,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Susan Still-Kilrain.jpg"
   ],
   "description": [
    "American engineer, US Navy officer, and astronaut"
@@ -19677,6 +21121,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Wendy Lawrence NASA STS114.jpg"
+  ],
   "description": [
    "US astronaut and Navy Captain"
   ],
@@ -19720,6 +21167,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Sandra Magnus 2011.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -19757,6 +21207,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Ronald Grabe.jpg"
   ],
   "description": [
    "American astronaut"
@@ -19802,6 +21255,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Lisa M. Nowak.jpg"
+  ],
   "description": [
    "American naval flight officer and NASA astronaut"
   ],
@@ -19842,6 +21298,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Ellen Ochoa (29320023973).jpg"
+  ],
   "description": [
    "American engineer and former astronaut"
   ],
@@ -19879,6 +21338,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Judith A. Resnik, official portrait (cropped).jpg"
   ],
   "death": [
    "1986-01-28T00:00:00Z"
@@ -19922,6 +21384,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Sally Ride (1984).jpg"
   ],
   "death": [
    "2012-07-23T00:00:00Z"
@@ -19967,6 +21432,9 @@
    "AU",
    "US"
   ],
+  "commons_image": [
+   "Astronaut paul desmond scully power.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -20003,6 +21471,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Shaw-b.jpg"
   ],
   "description": [
    "American astronaut"
@@ -20045,6 +21516,9 @@
    "HU",
    "US"
   ],
+  "commons_image": [
+   "Charles simonyi.jpg"
+  ],
   "description": [
    "Hungarian-American computer software executive (born 1948)"
   ],
@@ -20082,6 +21556,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gibson-rl.jpg"
   ],
   "description": [
    "American astronaut"
@@ -20125,6 +21602,9 @@
   "citizenship_code": [
    "DK"
   ],
+  "commons_image": [
+   "Andreas Mogensen official portrait.jpg"
+  ],
   "description": [
    "Danish astronaut"
   ],
@@ -20157,6 +21637,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "John Lounge.jpg"
   ],
   "death": [
    "2011-03-01T00:00:00Z"
@@ -20201,6 +21684,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Andrei Borisenko 2011.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -20238,6 +21724,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "RichardFGordon.jpg"
   ],
   "death": [
    "2017-11-06T00:00:00Z"
@@ -20285,6 +21774,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Roscosmos cosmonaut and Expedition 70 Flight Engineer Nikolai Chub.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -20317,6 +21809,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Dmitry Petelin (cropped).jpg"
   ],
   "description": [
    "Russian cosmonaut (born 1983)"
@@ -20355,6 +21850,9 @@
    "GB",
    "US"
   ],
+  "commons_image": [
+   "Piers sellers v1.jpg"
+  ],
   "death": [
    "2016-12-23T00:00:00Z"
   ],
@@ -20391,6 +21889,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Andrew J. Feustel.jpg"
   ],
   "description": [
    "American astronaut (1965-)"
@@ -20429,6 +21930,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Andrew allen.jpg"
   ],
   "description": [
    "American astronaut (born 1955)"
@@ -20475,6 +21979,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Owen Garriott.jpg"
   ],
   "death": [
    "2019-04-15T00:00:00Z"
@@ -20523,6 +22030,9 @@
    "AU",
    "US"
   ],
+  "commons_image": [
+   "Astronaut Andy Thomas.jpg"
+  ],
   "description": [
    "Australian astronaut"
   ],
@@ -20554,6 +22064,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Christopher Loria.jpg"
   ],
   "description": [
    "American astronaut"
@@ -20599,6 +22112,9 @@
   "citizenship_code": [
    "FR"
   ],
+  "commons_image": [
+   "Thomas Pesquet, official portrait (2).jpg"
+  ],
   "description": [
    "French astronaut"
   ],
@@ -20638,6 +22154,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Ken Cockrell.jpg"
   ],
   "description": [
    "American astronaut"
@@ -20681,6 +22200,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Heide Stefanyshyn-Piper.jpg"
+  ],
   "description": [
    "American naval officer and NASA astronaut"
   ],
@@ -20723,6 +22245,9 @@
   ],
   "citizenship_code": [
    "GB"
+  ],
+  "commons_image": [
+   "Timothy Peake, official portrait.jpg"
   ],
   "description": [
    "British Army Air Corps officer and astronaut"
@@ -20768,6 +22293,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Nelson-p.jpg"
+  ],
   "description": [
    "American astronaut, astronomer"
   ],
@@ -20804,6 +22332,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Overmyer robert 4.jpg"
   ],
   "death": [
    "1996-03-22T00:00:00Z"
@@ -20853,6 +22384,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "GarnNASA.jpg"
+  ],
   "description": [
    "American politician and general (born 1932)"
   ],
@@ -20894,6 +22428,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Fullerton.jpg"
   ],
   "death": [
    "2013-08-21T00:00:00Z"
@@ -20937,6 +22474,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gregory H. Johnson.jpg"
   ],
   "description": [
    "American astronaut"
@@ -20983,6 +22523,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Shanekimbroughv2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -21024,6 +22567,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Mikhail Korniyenko cropped.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -21059,6 +22605,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "ThomasMarshburnv2.jpg"
   ],
   "description": [
    "American physician and NASA astronaut"
@@ -21098,6 +22647,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Chris Cassidy playing chess 2.jpg",
+   "JohnCassidyv2.jpg"
   ],
   "description": [
    "American astronaut (born 1970)"
@@ -21142,6 +22695,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Richard Linnehan.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -21182,6 +22738,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Yuri Baturin 2001.jpg"
   ],
   "description": [
    "Russian politician and cosmonaut"
@@ -21224,6 +22783,9 @@
   ],
   "citizenship_code": [
    "JP"
+  ],
+  "commons_image": [
+   "Mamoru Mohri portrait.jpg"
   ],
   "description": [
    "Japanese astronaut"
@@ -21293,6 +22855,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Robertbehnkenv2.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -21337,6 +22902,9 @@
   "citizenship_code": [
    "BE"
   ],
+  "commons_image": [
+   "Frimout.jpg"
+  ],
   "description": [
    "Belgian astronaut"
   ],
@@ -21369,6 +22937,9 @@
   ],
   "citizenship_code": [
    "BE"
+  ],
+  "commons_image": [
+   "Frank De Winne (2013).jpg"
   ],
   "description": [
    "Belgian astronaut"
@@ -21405,6 +22976,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Deng Qingming (cropped).jpg"
+  ],
   "description": [
    "Chinese astronaut"
   ],
@@ -21439,6 +23013,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "James Voss.jpg"
   ],
   "description": [
    "American astronaut"
@@ -21488,6 +23065,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Guion Bluford.jpg"
+  ],
   "description": [
    "American astronaut (born 1942)"
   ],
@@ -21533,6 +23113,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Janice Voss.jpg"
+  ],
   "death": [
    "2012-02-06T00:00:00Z"
   ],
@@ -21574,6 +23157,9 @@
   "citizenship_code": [
    "CA"
   ],
+  "commons_image": [
+   "Steve MacLean.jpg"
+  ],
   "description": [
    "Canadian astronaut"
   ],
@@ -21610,6 +23196,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "RobertParker.jpg"
   ],
   "description": [
    "American astronaut"
@@ -21649,6 +23238,10 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "1983 CPA 5386.jpg",
+   "Лебедев Валентин Витальевич.jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -21685,6 +23278,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Vladimir Solovyov flight director.jpg"
   ],
   "description": [
    "Soviet cosmonaut"
@@ -21723,6 +23319,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Konstantin Kozeyev in the Zvezda Service Module.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -21757,6 +23356,9 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "Ю.В. Малышев.jpg"
   ],
   "death": [
    "1999-11-08T00:00:00Z"
@@ -21802,6 +23404,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Vladimir Dezhurov.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -21843,6 +23448,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Paul Weitz.jpg"
   ],
   "death": [
    "2017-10-22T00:00:00Z",
@@ -21887,6 +23495,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Richard Mastracchio.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -21925,6 +23536,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Steven swanson v2.jpg"
+  ],
   "description": [
    "American engineer and NASA astronaut"
   ],
@@ -21959,6 +23573,9 @@
   "citizenship_code": [
    "AU"
   ],
+  "commons_image": [
+   "Eric Philips Polar Guide.jpg"
+  ],
   "description": [
    "Australian polar explorer"
   ],
@@ -21987,6 +23604,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Thomas D Akers.jpg"
   ],
   "description": [
    "American astronaut"
@@ -22029,6 +23649,10 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "LonchakovYuriValentinovich.jpeg",
+   "Yuri Lonchakov.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -22073,6 +23697,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Al Worden Apollo 15 CMP.jpg"
   ],
   "death": [
    "2020-03-18T00:00:00Z"
@@ -22121,6 +23748,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Bruce E. Melnick.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -22165,6 +23795,9 @@
    "GB",
    "US"
   ],
+  "commons_image": [
+   "Michael Foale.jpg"
+  ],
   "description": [
    "British-American astrophysicist and former NASA astronaut"
   ],
@@ -22201,6 +23834,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Sunita Williams in 2018.jpg",
+   "Sunita Williams.jpg"
   ],
   "description": [
    "American astronaut and USN officer"
@@ -22246,6 +23883,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Portrait Astronaut Stephanie Wilson 2019 (cropped).jpg"
+  ],
   "description": [
    "American engineer and NASA astronaut"
   ],
@@ -22281,6 +23921,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Gayle King Springsteen-67.jpg"
+  ],
   "description": [
    "American television personality, author and broadcast journalist for CBS News"
   ],
@@ -22315,6 +23958,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Barry Wilmore.jpg"
   ],
   "description": [
    "American astronaut"
@@ -22359,6 +24005,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Terry Virts.jpg"
   ],
   "description": [
    "American astronaut"
@@ -22406,6 +24055,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Alexander Skvortsov cropped.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -22436,6 +24088,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Kelly Latimer.jpg"
+  ],
   "description": [
    "retired U.S. Air Force lieutenant colonel and private spacecraft pilot"
   ],
@@ -22464,6 +24119,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Donald Peterson-NASA-file-photo.jpg"
   ],
   "death": [
    "2018-05-27T00:00:00Z"
@@ -22510,6 +24168,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Gregory-f.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -22551,6 +24212,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Liu Boming.JPG"
+  ],
   "description": [
    "Chinese astronaut"
   ],
@@ -22589,6 +24253,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Stephen Robinson NASA STS114.jpg"
   ],
   "description": [
    "American astronaut"
@@ -22630,6 +24297,9 @@
    "KZ",
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Talğat Musabaev (2022).jpg"
   ],
   "death": [
    "2025-08-03T00:00:00Z"
@@ -22676,6 +24346,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Foreman Michael.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -22719,6 +24392,9 @@
    "US",
    "VN"
   ],
+  "commons_image": [
+   "Gene Trinh (29028720973).jpg"
+  ],
   "description": [
    "Vietnamese-American astronaut"
   ],
@@ -22757,6 +24433,9 @@
   "citizenship_code": [
    "AE"
   ],
+  "commons_image": [
+   "Sultan Al Neyadi in front of the Soyuz spacecraft simulator.jpg"
+  ],
   "description": [
    "Emirati astronaut"
   ],
@@ -22794,6 +24473,9 @@
   "citizenship_code": [
    "AE"
   ],
+  "commons_image": [
+   "Hazza Al Mansouri (1).jpg"
+  ],
   "description": [
    "Emirati astronaut"
   ],
@@ -22829,6 +24511,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Zhāng Hóngzhāng videoframe 615387(cropped).jpg"
+  ],
   "description": [
    "Chinese scholar and taikonaut (1986-)"
   ],
@@ -22863,6 +24548,9 @@
   "citizenship_code": [
    "DD",
    "DE"
+  ],
+  "commons_image": [
+   "Sigmund Jahn cropped.jpg"
   ],
   "death": [
    "2019-09-21T00:00:00Z"
@@ -22914,6 +24602,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Michael Strahan 2022 (cropped).jpg"
+  ],
   "description": [
    "American football player and media personality (born 1971)"
   ],
@@ -22946,6 +24637,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Charles Veach.jpg"
   ],
   "death": [
    "1995-10-03T00:00:00Z"
@@ -22991,6 +24685,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Winston Scott.jpg"
+  ],
   "description": [
    "American navy officer and astronaut"
   ],
@@ -23034,6 +24731,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "AnthonyWEngland.jpg"
   ],
   "description": [
    "astronaut"
@@ -23101,6 +24801,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Expedition 53 Qualification Exams (NHQ201708300012) (cropped).jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -23137,6 +24840,9 @@
   "citizenship_code": [
    "JP"
   ],
+  "commons_image": [
+   "Norishige kanai jaxa.jpg"
+  ],
   "description": [
    "Japanese astronaut"
   ],
@@ -23168,6 +24874,9 @@
   ],
   "citizenship_code": [
    "JP"
+  ],
+  "commons_image": [
+   "Kimiya Yui NASA official portrait.jpg"
   ],
   "description": [
    "Japanese astronaut"
@@ -23207,6 +24916,9 @@
   "citizenship_code": [
    "JP"
   ],
+  "commons_image": [
+   "Takuya onishi jaxa.jpg"
+  ],
   "description": [
    "Japanese astronaut (1975-)"
   ],
@@ -23243,6 +24955,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "VVescovo at the Calypso Deep Prior to Diving Feb 2020 (cropped).jpg"
+  ],
   "description": [
    "American investor, explorer and retired naval officer"
   ],
@@ -23278,6 +24993,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "AnnaLFisher1920.tif",
+   "AnnaLFisher1921.jpg"
+  ],
   "death": [
    "1939-10-17T00:00:00Z"
   ],
@@ -23310,6 +25029,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Mark Stucky.jpg"
   ],
   "description": [
    "Test pilot and astronaut"
@@ -23345,6 +25067,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Richard Hieb.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -23379,6 +25104,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "John Elmer Blaha.jpg"
   ],
   "description": [
    "American astronaut"
@@ -23424,6 +25152,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "James Halsell.jpg"
   ],
   "description": [
    "American astronaut"
@@ -23473,6 +25204,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jared isaacman official portrait.jpg"
+  ],
   "description": [
    "American businessman, pilot, and private astronaut"
   ],
@@ -23511,6 +25245,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Lazutkin.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -23546,6 +25283,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Elliot See.jpg"
   ],
   "death": [
    "1966-02-28T00:00:00Z"
@@ -23587,6 +25327,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Neil Woodward.jpg"
   ],
   "description": [
    "NASA astronaut"
@@ -23633,6 +25376,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Leland Melvin, retired NASA astronaut, speaks at an event to promote the Space4All initiative on June 20, 2024, in the Indian Treaty Room, the White House (cropped).jpg",
+   "Leland Melvin.jpg"
+  ],
   "description": [
    "NASA astronaut and engineer"
   ],
@@ -23669,6 +25416,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Theodore Cordy Freeman.jpg"
   ],
   "death": [
    "1964-10-31T00:00:00Z"
@@ -23714,6 +25464,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Vanhoften-jda.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -23755,6 +25508,10 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Robert Satcher.jpg",
+   "Robert satcher.jpg"
+  ],
   "description": [
    "American astronaut and orthopedic surgeon"
   ],
@@ -23794,6 +25551,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Budarin, Nikolai M.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -23825,6 +25585,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Alvin drew-2007.jpg"
   ],
   "description": [
    "American astronaut"
@@ -23862,6 +25625,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Robert Cenker.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -23897,6 +25663,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Carl Walz.jpg"
   ],
   "description": [
    "American astronaut"
@@ -23941,6 +25710,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gerald P. Carr 2.jpg"
   ],
   "death": [
    "2020-08-26T00:00:00Z"
@@ -23990,6 +25762,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "James Adamson.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -24031,6 +25806,9 @@
   "citizenship_code": [
    "DE"
   ],
+  "commons_image": [
+   "Hans-koenigsmann.jpg"
+  ],
   "description": [
    "Vice President of SpaceX"
   ],
@@ -24063,6 +25841,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Covey.jpg"
   ],
   "description": [
    "American astronaut"
@@ -24107,6 +25888,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Hawley-sa.jpg"
   ],
   "description": [
    "American astronaut"
@@ -24157,6 +25941,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "James Buchli.jpg"
+  ],
   "description": [
    "recipient of the Purple Heart medal"
   ],
@@ -24193,6 +25980,9 @@
   "citizenship_code": [
    "PK"
   ],
+  "commons_image": [
+   "Namira Salim.jpg"
+  ],
   "description": [
    "Pakistani astronaut and explorer"
   ],
@@ -24226,6 +26016,9 @@
   ],
   "citizenship_code": [
    "CA"
+  ],
+  "commons_image": [
+   "Marc Garneau - 2018 (42748534304) (cropped).jpg"
   ],
   "death": [
    "2025-06-04T00:00:00Z"
@@ -24269,6 +26062,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Scott J Horowitz.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -24308,6 +26104,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Michael Bloomfield.jpg"
   ],
   "description": [
    "American astronaut"
@@ -24352,6 +26151,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Michael Gernhardt2.jpg"
+  ],
   "description": [
    "NASA astronaut and manager of Environmental Physiology Laboratory"
   ],
@@ -24390,6 +26192,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Charles Bassett.jpg"
   ],
   "death": [
    "1966-02-28T00:00:00Z"
@@ -24437,6 +26242,9 @@
   "citizenship_code": [
    "MX"
   ],
+  "commons_image": [
+   "Mexico.RodolfoNeriVela.01.jpg"
+  ],
   "description": [
    "Mexican astronaut"
   ],
@@ -24470,6 +26278,9 @@
   ],
   "citizenship_code": [
    "CN"
+  ],
+  "commons_image": [
+   "Wang Yaping in 2021.jpg"
   ],
   "description": [
    "Chinese military pilot and astronaut"
@@ -24505,6 +26316,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Frank Culbertson Jr.jpg"
   ],
   "description": [
    "Astronaut, United States Navy captain"
@@ -24549,6 +26363,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Scott Parazynski.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -24587,6 +26404,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "KevinFord.jpg"
   ],
   "description": [
    "American astronaut"
@@ -24630,6 +26450,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Stan Love 2019 (portrait crop).jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -24667,6 +26490,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Nicholas Patrick.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -24700,6 +26526,9 @@
   ],
   "citizenship_code": [
    "JP"
+  ],
+  "commons_image": [
+   "Satoshi Furukawa.jpg"
   ],
   "description": [
    "Japanese astronaut"
@@ -24735,6 +26564,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Dom gorie.jpg"
   ],
   "description": [
    "American astronaut"
@@ -24776,6 +26608,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Michaelgoodv2.jpg"
   ],
   "description": [
    "American astronaut"
@@ -24821,6 +26656,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Rick Sturckow.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -24864,6 +26702,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Don Lind.jpg"
   ],
   "death": [
    "2022-08-30T00:00:00Z"
@@ -24912,6 +26753,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Taylor Wang - full.jpg"
+  ],
   "description": [
    "American materials engineer and astronaut"
   ],
@@ -24948,6 +26792,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Joseph Albert Walker.jpg"
   ],
   "death": [
    "1966-06-08T00:00:00Z"
@@ -24991,6 +26838,9 @@
   "citizenship_code": [
    "SU"
   ],
+  "commons_image": [
+   "Лавейкин А. И..jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -25024,6 +26874,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Oleg Atkov (cropped).jpg"
   ],
   "description": [
    "Soviet and Russian physician and cosmonaut"
@@ -25063,6 +26916,9 @@
   "citizenship_code": [
    "RU",
    "UA"
+  ],
+  "commons_image": [
+   "Yuri Onufrienko.jpg"
   ],
   "description": [
    "Russian cosmonaut of Ukrainian origin"
@@ -25105,6 +26961,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Expedition 39 crew portrait2.jpg"
   ],
   "description": [
    "Russian cosmonaut (born 1970)"
@@ -25185,6 +27044,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Waleri Grigorjewitsch Korsun.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -25227,6 +27089,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Williams-c.jpg"
   ],
   "death": [
    "1967-10-05T00:00:00Z"
@@ -25271,6 +27136,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "William McArthur - jsc2005e36545.jpg"
   ],
   "description": [
    "United States Army Colonel and NASA astronaut"
@@ -25317,6 +27185,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Edward Tsang Lu.jpg"
+  ],
   "description": [
    "American physicist and astronaut"
   ],
@@ -25350,6 +27221,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Leroy Chiao Astronaut.jpg"
   ],
   "description": [
    "American astronaut and engineer"
@@ -25431,6 +27305,9 @@
   "citizenship_code": [
    "DE"
   ],
+  "commons_image": [
+   "Alexander Gerst - Neutral Buoyancy Laboratory 1.jpg"
+  ],
   "description": [
    "German ESA astronaut and geophysicist"
   ],
@@ -25467,6 +27344,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Jose Hernandez v2.jpg"
   ],
   "description": [
    "American engineer and astronaut"
@@ -25505,6 +27385,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Shriver-lj.jpg"
   ],
   "description": [
    "American astronaut"
@@ -25548,6 +27431,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Williams-de.jpg"
   ],
   "death": [
    "2016-02-23T00:00:00Z"
@@ -25594,6 +27480,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Mcbride-ja.jpg"
   ],
   "death": [
    "2024-08-07T00:00:00Z"
@@ -25643,6 +27532,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "James Philipp Bagian.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -25681,6 +27573,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Creighton.jpg"
   ],
   "description": [
    "American astronaut"
@@ -25722,6 +27617,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Lodewijk van den Berg.jpg"
   ],
   "death": [
    "2022-10-16T00:00:00Z"
@@ -25765,6 +27663,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "JeffreyAlanHoffman.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -25802,6 +27703,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Stanleydavidgriggs.jpg"
   ],
   "death": [
    "1989-06-17T00:00:00Z"
@@ -25850,6 +27754,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "WilliamThornton.jpg"
+  ],
   "death": [
    "2021-01-11T00:00:00Z"
   ],
@@ -25890,6 +27797,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Hauck-fh.jpg"
   ],
   "death": [
    "2025-11-06T00:00:00Z"
@@ -25939,6 +27849,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Fabian nasa.jpg"
+  ],
   "death": [
    "2026-05-21T00:00:00Z"
   ],
@@ -25986,6 +27899,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Hart-tj.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -26031,6 +27947,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Richard M. Mullane in blue flight suit.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -26074,6 +27993,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Edward Galen Givens.jpg"
   ],
   "death": [
    "1967-06-06T00:00:00Z"
@@ -26120,6 +28042,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "MichaelCoats.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -26164,6 +28089,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Walker-dm.jpg"
   ],
   "death": [
    "2001-04-23T00:00:00Z"
@@ -26211,6 +28139,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Steven Nagel.jpg"
+  ],
   "death": [
    "2014-08-21T00:00:00Z"
   ],
@@ -26257,6 +28188,9 @@
   "citizenship_code": [
    "FR"
   ],
+  "commons_image": [
+   "Jean-Pierre Haigneré.jpg"
+  ],
   "description": [
    "French Air Force officer and CNES astronaut"
   ],
@@ -26291,6 +28225,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Gregory Carl Johnson.jpg"
   ],
   "description": [
    "American astronaut"
@@ -26334,6 +28271,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Randolph J. Bresnik.jpg"
   ],
   "description": [
    "astronaut, Fighter pilot"
@@ -26383,6 +28323,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Kondratyev.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -26417,6 +28360,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Henize.jpg"
   ],
   "death": [
    "1993-10-05T00:00:00Z"
@@ -26459,6 +28405,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Daniel Brandenstein.jpg"
+  ],
   "description": [
    "Retired American astronaut and test pilot"
   ],
@@ -26497,6 +28446,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Brady astronaut.jpg"
   ],
   "death": [
    "2006-07-23T00:00:00Z"
@@ -26541,6 +28493,9 @@
   "citizenship_code": [
    "FR"
   ],
+  "commons_image": [
+   "Jean-Francois Clervoy.jpg"
+  ],
   "description": [
    "French astronaut"
   ],
@@ -26577,6 +28532,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "James Wetherbee.jpg"
   ],
   "description": [
    "American astronaut"
@@ -26620,6 +28578,9 @@
   "citizenship_code": [
    "CA"
   ],
+  "commons_image": [
+   "Bjarni Tryggvason, Portrait 1997 - S97-06278 orig.jpg"
+  ],
   "death": [
    "2022-04-05T00:00:00Z"
   ],
@@ -26656,6 +28617,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Brent Jett.jpg"
   ],
   "description": [
    "American astronaut"
@@ -26700,6 +28664,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Баландин.jpg"
+  ],
   "description": [
    "Soviet cosmonaut"
   ],
@@ -26734,6 +28701,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "William Oefelein.jpg"
   ],
   "description": [
    "American astronaut"
@@ -26777,6 +28747,9 @@
   "citizenship_code": [
    "IT"
   ],
+  "commons_image": [
+   "Umberto Guidoni portrait.jpg"
+  ],
   "description": [
    "Italian astronaut"
   ],
@@ -26811,6 +28784,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Sergei Treschev.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -26851,6 +28827,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Tsibliyev.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -26890,6 +28869,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Schargin, Juri G.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -26932,6 +28914,9 @@
   "citizenship_code": [
    "RU",
    "SU"
+  ],
+  "commons_image": [
+   "Sharipov.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -26978,6 +28963,9 @@
   ],
   "citizenship_code": [
    "SU"
+  ],
+  "commons_image": [
+   "Yuri Gagarin portrait.png"
   ],
   "death": [
    "1968-03-27T00:00:00Z"
@@ -27031,6 +29019,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Loren Acton.jpg"
+  ],
   "description": [
    "astronaut"
   ],
@@ -27072,6 +29063,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Reilly cropped.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -27111,6 +29105,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Dorothy Metcalf-Lindenburger JSC2004-E-40090.jpg"
+  ],
   "description": [
    "astronaut"
   ],
@@ -27143,6 +29140,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "James Dutton.jpg"
   ],
   "description": [
    "American astronaut"
@@ -27188,6 +29188,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Sergey Ryzhikov at the Gagarin Cosmonaut Training Center in Star City.jpg"
+  ],
   "description": [
    "Russian cosmonaut and military officer"
   ],
@@ -27225,6 +29228,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "M C lee.jpg"
   ],
   "description": [
    "American astronaut"
@@ -27270,6 +29276,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Catherine Coleman.jpg"
+  ],
   "description": [
    "American astronaut, chemist, United States Air Force officer"
   ],
@@ -27312,6 +29321,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Roger Crouch.jpg"
   ],
   "description": [
    "American astronaut"
@@ -27396,6 +29408,9 @@
   "citizenship_code": [
    "GB"
   ],
+  "commons_image": [
+   "Trevor Beattie.jpg"
+  ],
   "description": [
    "English advertising executive"
   ],
@@ -27461,6 +29476,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "James H Newman.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -27501,6 +29519,9 @@
   "citizenship_code": [
    "JP"
   ],
+  "commons_image": [
+   "Yusaku Maezawa (cropped).jpg"
+  ],
   "description": [
    "Japanese billionaire and entrepreneur"
   ],
@@ -27534,6 +29555,9 @@
   "citizenship_code": [
    "CN"
   ],
+  "commons_image": [
+   "Shenzhou 10 crew(cropped).jpg"
+  ],
   "description": [
    "Chinese astronaut"
   ],
@@ -27562,6 +29586,9 @@
   ],
   "citizenship_code": [
    "MN"
+  ],
+  "commons_image": [
+   "Jügderdemidiin Gürragchaa.jpeg"
   ],
   "description": [
    "Mongolian cosmonaut"
@@ -27604,6 +29631,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Bernard Anthony Harris Jr.jpg"
+  ],
   "description": [
    "American NASA astronaut, physician"
   ],
@@ -27643,6 +29673,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Pyotr Dubrov in 2021.jpg"
+  ],
   "description": [
    "Russian engineer and cosmonaut"
   ],
@@ -27675,6 +29708,10 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Sergei Korsakov (cropped).jpg",
+   "Sergey Korsakov in 2021 (b).jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -27710,6 +29747,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "SpaceX crew 6 image 5.png"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -27738,6 +29778,9 @@
   ],
   "citizenship_code": [
    "FR"
+  ],
+  "commons_image": [
+   "Official portrait of ESA astronaut Sophie Adenot (jsc2025e058846 alt).jpg"
   ],
   "description": [
    "French astronaut, engineer and pilot"
@@ -27779,6 +29822,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Brian Duffy.jpg"
   ],
   "description": [
    "United States Air Force officer"
@@ -27823,6 +29869,10 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Ken Bowersox portrait 2019.jpg",
+   "KenBowersox.jpg"
   ],
   "description": [
    "American astronaut"
@@ -27871,6 +29921,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Oleg Skripochka.jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -27907,6 +29960,9 @@
   "citizenship_code": [
    "RU"
   ],
+  "commons_image": [
+   "Aleksandr Samokutyayev 2011.jpg"
+  ],
   "death": [
    "2026-06-17T00:00:00Z"
   ],
@@ -27938,6 +29994,9 @@
   "article": [
    "https://en.wikipedia.org/wiki/Shenzhou_11"
   ],
+  "commons_image": [
+   "Shenzhou front frei.png"
+  ],
   "description": [
    "crewed spaceflight of the Shenzhou program of China"
   ],
@@ -27960,6 +30019,9 @@
   ],
   "citizenship_code": [
    "FR"
+  ],
+  "commons_image": [
+   "Jean-Jacques Favier.jpg"
   ],
   "death": [
    "2023-03-19T00:00:00Z"
@@ -28000,6 +30062,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Joe Edwards.jpg"
   ],
   "description": [
    "American astronaut"
@@ -28045,6 +30110,9 @@
   "citizenship_code": [
    "PE"
   ],
+  "commons_image": [
+   "Carlos Noriega (29320023123).jpg"
+  ],
   "description": [
    "Peruvian astronaut"
   ],
@@ -28087,6 +30155,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Terrence Wilcutt.jpg"
   ],
   "description": [
    "American astronaut"
@@ -28131,6 +30202,9 @@
   "citizenship_code": [
    "NL"
   ],
+  "commons_image": [
+   "Wubbo Ockels 2007.jpg"
+  ],
   "death": [
    "2014-05-18T00:00:00Z"
   ],
@@ -28168,6 +30242,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Daniel Bursch.jpg"
   ],
   "description": [
    "American astronaut"
@@ -28210,6 +30287,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Robert Curbeam.jpg"
   ],
   "description": [
    "American astronaut"
@@ -28296,6 +30376,9 @@
   "citizenship_code": [
    "IT"
   ],
+  "commons_image": [
+   "Maurizio Cheli.jpg"
+  ],
   "description": [
    "Italian astronaut"
   ],
@@ -28339,6 +30422,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Jerome Apt.jpg"
+  ],
   "description": [
    "American astronaut, scientist, and professor"
   ],
@@ -28375,6 +30461,9 @@
   ],
   "citizenship_code": [
    "IT"
+  ],
+  "commons_image": [
+   "Franco Malerba.jpg"
   ],
   "description": [
    "Italian astronaut"
@@ -28421,6 +30510,9 @@
    "RU",
    "SU"
   ],
+  "commons_image": [
+   "Expedition 71 Press Conference (NHQ202403200025).jpg"
+  ],
   "description": [
    "Russian cosmonaut"
   ],
@@ -28461,6 +30553,9 @@
    "PL",
    "US"
   ],
+  "commons_image": [
+   "James A Pawelczyk.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -28498,6 +30593,9 @@
   ],
   "citizenship_code": [
    "RU"
+  ],
+  "commons_image": [
+   "Sergei Revin 2011.jpg"
   ],
   "description": [
    "Russian cosmonaut"
@@ -28537,6 +30635,9 @@
   "citizenship_code": [
    "US"
   ],
+  "commons_image": [
+   "Fred Leslie.jpg"
+  ],
   "description": [
    "American astronaut"
   ],
@@ -28571,6 +30672,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Sherwood Spring.jpg"
   ],
   "description": [
    "American astronaut"
@@ -28609,6 +30713,9 @@
   ],
   "citizenship_code": [
    "US"
+  ],
+  "commons_image": [
+   "Bryan D. O'Connor.jpg"
   ],
   "description": [
    "NASA astronaut (born 1946)"
