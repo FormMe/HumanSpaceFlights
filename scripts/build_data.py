@@ -1105,6 +1105,26 @@ def main():
 
     info_by_key = {file_key(k): v for k, v in file_info.items()}
     LOOKS_LIKE_PATCH = re.compile(r"patch|insignia|emblem|logo|badge|эмблема", re.I)
+    MISSION_NUMBER = re.compile(r"\b(soyuz(?: ms| tma| tm| t)?|sts|apollo|gemini|shenzhou|vostok|voskhod|"
+                                r"mercury(?: atlas| redstone)?|союз)\s*(\d+)", re.I)
+
+    def other_mission(name, mission):
+        """The file is named after another flight ('USSR stamp Soyuz-12' for Soyuz 18a,
+        'Soyuz MS-09 backup crew' for Soyuz MS-11)."""
+        def numbers(text):
+            text = re.sub(r"[_\-.]", " ", text or "").lower()
+            text = re.sub(r"(soyuz|союз)\s+(?=(ms|tma|tm|t)\s*\d)", r"\1 ", text)
+            return {(re.sub(r"\s+", " ", a), n) for a, n in MISSION_NUMBER.findall(text)}
+        own, named = numbers(mission), numbers(name)
+        if not own or not named:
+            return False
+        same_kind = [(kind, n, m) for kind, n in named for own_kind, m in own if kind == own_kind]
+        if not same_kind:
+            return False
+        def same(n, m):     # 'Soyuz45-1.jpg' (Soyuz 4 docked to Soyuz 5) belongs to both
+            n, m = n.lstrip("0") or "0", m.lstrip("0") or "0"
+            return n == m or (len(m) == 1 and n in (m + str(int(m) + 1), str(int(m) - 1) + m))
+        return not any(same(n, m) for _, n, m in same_kind)
 
     def free_image(name, prefix):
         """Thumbnail, credit and file page of a free image (non-free files are skipped:
@@ -1157,6 +1177,8 @@ def main():
         photo = {}
         for name in photo_names:
             if not name or file_key(name) == patch_file:
+                continue
+            if other_mission(name, row["Launch Mission"]):
                 continue
             if LOOKS_LIKE_PATCH.search(name):
                 if not patch:            # a patch found in the wrong field is still the patch
