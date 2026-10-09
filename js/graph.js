@@ -1,4 +1,63 @@
 
+// Instant, styled tooltip for the nodes of the graph (replaces the
+// browser's slow native <title> tooltip).
+var tip = (function () {
+	var el = null;
+	function fmt(n) { return d3.format(",")(Math.round(n)); }
+	function row(label, value) {
+		return value === undefined || value === null || value === "" ? "" :
+			"<div class='gt-row'><span>" + label + "</span><b>" + value + "</b></div>";
+	}
+	function html(d) {
+		var v = d.value, swatch = "<i style='background:" + color(v.Country) + "'></i>";
+		if (d.type === "mission") {
+			var inOrbit = !v["Return Data"];
+			return "<div class='gt-kicker'>" + swatch + "Mission · " + v.Year + "</div>" +
+				"<div class='gt-title'>" + v["Launch Mission"] + "</div>" +
+				"<div class='gt-sub'>" + (v["Country Flag"] || "") + " " + v.Country + "</div>" +
+				row("Launch", v["Launch Data"]) +
+				row("Duration", inOrbit ? "in orbit" : fmt(v.Duration) + (v.Duration == 1 ? " day" : " days")) +
+				row("Crew", v["Crew size"]) +
+				row("Where", v.Habitation);
+		}
+		if (v.stub) {
+			return "<div class='gt-kicker'>" + swatch + "Astronaut</div>" +
+				"<div class='gt-title'>" + v.Name + "</div>" +
+				"<div class='gt-sub gt-muted'>No details in the dataset</div>";
+		}
+		var hours = +v["Space Flight (hr)"] || 0;
+		var walks = +v["Space Walks"] || 0;
+		return "<div class='gt-kicker'>" + swatch + "Astronaut · " + (v.Status || "") + "</div>" +
+			"<div class='gt-title'>" + v.Name + "</div>" +
+			"<div class='gt-sub'>" + (v["Country Flag"] || "") + " " + (v.Nationality || v.Country) + "</div>" +
+			row("Flights", v["Space Flights"]) +
+			row("In space", hours >= 48 ? fmt(hours / 24) + " days" : fmt(hours) + " h") +
+			row("Spacewalks", walks ? walks + " (" + fmt(+v["Space Walks (hr)"] || 0) + " h)" : "none");
+	}
+	function place(e) {
+		if (!el || !e) return;
+		var pad = 14, w = el.offsetWidth, h = el.offsetHeight;
+		var x = e.clientX + pad, y = e.clientY + pad;
+		if (x + w > window.innerWidth - 8) x = e.clientX - w - pad;
+		if (y + h > window.innerHeight - 8) y = e.clientY - h - pad;
+		el.style.transform = "translate(" + Math.max(8, x) + "px," + Math.max(8, y) + "px)";
+	}
+	return {
+		show: function (d, e) {
+			if (!el) {
+				el = document.createElement("div");
+				el.className = "graph-tip";
+				document.body.appendChild(el);
+			}
+			el.innerHTML = html(d);
+			el.classList.add("visible");
+			place(e);
+		},
+		move: place,
+		hide: function () { if (el) el.classList.remove("visible"); }
+	};
+})();
+
 class Graph{
 	constructor(color, info){
 		this.color = color;
@@ -43,18 +102,38 @@ class Graph{
 			      .on("start", dragstarted)
 			      .on("drag", dragged)
 			      .on("end", dragended))
-			  .on("click", clicked)
+			  .on("click", function (d) { tip.hide(); clicked(d); })
 			  .on('mouseover', function (d) {
 		    	d.value.highlighted = true;
 		    	draw(d.value);
+		    	focus(d);
+		    	tip.show(d, d3.event);
 			  })
+			  .on('mousemove', function () { tip.move(d3.event); })
 			  .on('mouseout', function (d) {
 		    	d.value.highlighted = false;
 		    	renderList(null, isMissions);
+		    	focus(null);
+		    	tip.hide();
 			  });
 
-		node.append("title")
-		  .text(function(d) { return d.id; });
+		// hovering a node keeps it and its neighbours bright, dims the rest
+		function focus(d) {
+			svg.classed("focus", !!d);
+			if (!d) {
+				node.classed("hl", false);
+				link.classed("hl", false);
+				return;
+			}
+			var near = {};
+			near[d.id] = true;
+			graph.links.forEach(function (l) {
+				if (l.source === d) near[l.target.id] = true;
+				if (l.target === d) near[l.source.id] = true;
+			});
+			node.classed("hl", n => near[n.id]);
+			link.classed("hl", l => l.source === d || l.target === d);
+		}
 
 		simulation
 		  .nodes(graph.nodes)

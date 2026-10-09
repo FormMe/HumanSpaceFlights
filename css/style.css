@@ -1282,3 +1282,75 @@ body:not(.mode-astronauts) .filt-astr { display: none; }
 }
 .list-toggle { flex: none; }
 .list-block:not(.open) #grid { min-height: 0; }
+
+/* ================= graph hover ================= */
+
+.graph-tip {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  min-width: 200px;
+  max-width: 280px;
+  padding: 12px 14px 10px;
+  border-radius: 14px;
+  background: rgba(16, 22, 38, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 44px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(0, 0, 0, 0.3);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.35;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .12s ease, visibility 0s linear .12s;
+  will-change: transform;
+}
+.graph-tip.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .12s ease;
+}
+.gt-kicker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.gt-kicker i { width: 8px; height: 8px; border-radius: 50%; }
+.gt-title {
+  margin-top: 4px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.gt-sub {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 8px;
+  color: var(--text-muted);
+}
+.gt-sub img { border-radius: 2px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12); }
+.gt-muted { margin-bottom: 2px; }
+.gt-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 5px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  font-variant-numeric: tabular-nums;
+}
+.gt-row span { color: var(--text-muted); }
+.gt-row b { font-weight: 600; text-align: right; }
+
+/* neighbours of the hovered node stay bright */
+#Graph circle { transition: opacity .15s, r .15s; cursor: pointer; }
+#Graph .links line { transition: opacity .15s, stroke .15s; }
+#Graph.focus circle:not(.hl) { opacity: 0.22; }
+#Graph.focus .links line { opacity: 0.12; }
+#Graph.focus .links line.hl { opacity: 1; stroke: rgba(225, 230, 245, 0.85); stroke-width: 1.6px; }
