@@ -1215,10 +1215,29 @@ svg#FlightsChart {
 .layout > .stacked,
 .layout > .sun_filters { align-self: start; }
 
-/* details right under the list and the chart; parameters at the end */
-.layout > .graph { grid-column: span 7; order: 1; }
-.layout > .info  { grid-column: span 5; order: 1; }
-.layout > .parcoords { order: 2; }
+/* wide screens: chart and parameters on the left, filters + list on the
+   right, graph and details below */
+@media (min-width: 1201px) {
+  .layout { grid-template-rows: auto 1fr auto; }
+  .layout > .stacked     { grid-column: 1 / 9;  grid-row: 1; }
+  .layout > .parcoords   { grid-column: 1 / 9;  grid-row: 2; align-self: start; }
+  .layout > .sun_filters { grid-column: 9 / 13; grid-row: 1 / 3; align-self: start; }
+  .layout > .graph       { grid-column: 1 / 8;  grid-row: 3; }
+  .layout > .info        { grid-column: 8 / 13; grid-row: 3; }
+}
+
+/* medium screens: one column in the same order */
+@media (min-width: 761px) and (max-width: 1200px) {
+  .layout > .stacked     { order: 0; }
+  .layout > .parcoords   { order: 1; }
+  .layout > .sun_filters { order: 2; }
+  .layout > .graph       { grid-column: span 7; order: 3; }
+  .layout > .info        { grid-column: span 5; order: 3; }
+}
+
+/* the parameters plot is scaled down in its card: larger type keeps it legible */
+.parcoords-plot .axis .tick text { font-size: 13px; }
+.parcoords-plot .axis .title { font-size: 13px; }
 
 @media (max-width: 760px) {
   .layout > .graph { grid-column: 1 / -1; order: 3; }
