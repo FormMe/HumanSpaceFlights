@@ -8,8 +8,10 @@ Stage 3 of the data pipeline (needs internet access), after build_data.py:
 Reads the "Photo URL" / "Patch URL" columns of data/missions.csv and
 data/all_astronauts.csv (free Wikimedia images chosen by build_data.py),
 downloads the thumbnails, shrinks them to WebP and stores them as data URIs
-in data/photos/pack-NN.json, with data/photos/index.json mapping each key
-("a:<astronaut>", "m:<mission>", "p:<mission patch>") to its pack.
+in data/photos/pack-*.json, with data/photos/index.json mapping each key
+("a:<astronaut>", "m:<mission>", "p:<mission patch>") to its pack. Portraits
+and patches also get a tiny copy ("t:a:<astronaut>", "t:p:<mission>") for
+avatars and tooltips, so a list of names does not pull the big images.
 
 Only new or changed images are downloaded; images no longer used are dropped.
 A few hundred small files would not fit the limits of every host, so the
@@ -18,6 +20,7 @@ images are packed: the page fetches a pack only when it shows a photo from it.
 
 import base64
 import csv
+import glob
 import io
 import json
 import os
@@ -31,11 +34,13 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(DATA, "photos")
-PACKS = 16
-# longest side kept per kind: mission photos fill the details card, portraits
-# are shown as avatars and in the card, patches are small badges
-MAX_SIDE = {"m": 480, "a": 320, "p": 240}
-QUALITY = 78
+# packs per kind: mission photos are the biggest, so they get many small packs
+PACKS = {"m": 48, "a": 16, "p": 8, "t": 4}
+# longest side kept per kind, about 2x the size shown on a phone or a retina
+# screen: mission photos fill the details card, portraits sit next to the
+# name, patches are badges, "t" are avatars in lists and tooltips
+MAX_SIDE = {"m": 800, "a": 480, "p": 320, "t": 112}
+QUALITY = {"m": 76, "a": 78, "p": 80, "t": 72}
 
 session = requests.Session()
 session.headers.update({"User-Agent": "HumanSpaceFlightsBot/1.0 "
@@ -62,16 +67,15 @@ def wanted():
 
 
 def pack_of(key):
-    return zlib.crc32(key.encode("utf-8")) % PACKS
+    kind = key[0]
+    return "%s%02d" % (kind, zlib.crc32(key.encode("utf-8")) % PACKS[kind])
 
 
 def load_existing():
     have = {}
-    for n in range(PACKS):
-        path = os.path.join(OUT, "pack-%02d.json" % n)
-        if os.path.exists(path):
-            with open(path, encoding="utf-8") as f:
-                have.update(json.load(f))
+    for path in glob.glob(os.path.join(OUT, "pack-*.json")):
+        with open(path, encoding="utf-8") as f:
+            have.update(json.load(f))
     return have
 
 
@@ -98,7 +102,7 @@ def shrink(raw, kind):
     side = MAX_SIDE[kind]
     img.thumbnail((side, side), Image.LANCZOS)
     buf = io.BytesIO()
-    img.save(buf, "WEBP", quality=QUALITY, method=6)
+    img.save(buf, "WEBP", quality=QUALITY[kind], method=6)
     return "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
 
 
@@ -108,9 +112,14 @@ def main():
     have = load_existing()
     result, fetched, failed = {}, 0, 0
     for key, url in sorted(keys.items()):
-        old = have.get(key)
-        if old and old.get("src") == url:
+        small = "t:" + key if key[0] in "ap" else None
+        old, old_small = have.get(key), have.get(small) if small else None
+        # reuse when the source and the size are the same as last time
+        if (old and old.get("src") == url and old.get("side") == MAX_SIDE[key[0]]
+                and (not small or (old_small and old_small.get("src") == url))):
             result[key] = old
+            if small:
+                result[small] = old_small
             continue
         raw = download(url)
         time.sleep(0.25)          # be gentle with upload.wikimedia.org
@@ -118,24 +127,30 @@ def main():
             failed += 1
             if old:
                 result[key] = old
+            if old_small:
+                result[small] = old_small
             continue
         try:
-            result[key] = {"src": url, "data": shrink(raw, key[0])}
+            result[key] = {"src": url, "side": MAX_SIDE[key[0]], "data": shrink(raw, key[0])}
+            if small:
+                result[small] = {"src": url, "side": MAX_SIDE["t"], "data": shrink(raw, "t")}
             fetched += 1
         except Exception as err:          # broken or unsupported image
             log("  skip %s: %s" % (key, err))
             failed += 1
-    packs = [{} for _ in range(PACKS)]
+    packs = {}
     for key in sorted(result):
-        packs[pack_of(key)][key] = result[key]
-    for n, pack in enumerate(packs):
-        with open(os.path.join(OUT, "pack-%02d.json" % n), "w", encoding="utf-8") as f:
+        packs.setdefault(pack_of(key), {})[key] = result[key]
+    for path in glob.glob(os.path.join(OUT, "pack-*.json")):
+        os.remove(path)
+    for name, pack in packs.items():
+        with open(os.path.join(OUT, "pack-%s.json" % name), "w", encoding="utf-8") as f:
             json.dump(pack, f, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     with open(os.path.join(OUT, "index.json"), "w", encoding="utf-8") as f:
         json.dump({k: pack_of(k) for k in sorted(result)}, f, ensure_ascii=False, separators=(",", ":"))
-    size = sum(os.path.getsize(os.path.join(OUT, "pack-%02d.json" % n)) for n in range(PACKS))
+    size = sum(os.path.getsize(p) for p in glob.glob(os.path.join(OUT, "pack-*.json")))
     log("photos: %d wanted, %d downloaded, %d reused, %d failed, %.1f MB in %d packs"
-        % (len(keys), fetched, len(result) - fetched, failed, size / 1e6, PACKS))
+        % (len(keys), fetched, len(keys) - fetched - failed, failed, size / 1e6, len(packs)))
 
 
 if __name__ == "__main__":

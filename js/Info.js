@@ -25,11 +25,10 @@ class Info{
 		var badges = [];
 		if (inOrbit) badges.push(["live", "In orbit"]);
 		if (d["Fatality"] == "Y") badges.push(["sad", "Crew lost"]);
-		if (d["Moon"] == "Y") badges.push(["", "Moon"]);
 		if (d["Sub Orbital"] == "Y") badges.push(["", "Suborbital"]);
 		var crew = (d["Members"] || []).map(function (name) {
 			var a = Info.find(astronauts, x => x.Name == name);
-			return { label: name, key: "a:" + name, round: true, open: a && !a.Stub ? () => graph.clicked({ type: "astronaut", value: a }) : null };
+			return { label: name, key: "t:a:" + name, round: true, open: a && !a.Stub ? () => graph.clicked({ type: "astronaut", value: a }) : null };
 		});
 		return {
 			title: d["Launch Mission"],
@@ -64,7 +63,7 @@ class Info{
 		var age = born ? Math.floor(((died || new Date()) - born) / 31557600000) : null;
 		var missions = (d["Missions"] || []).filter(Boolean).map(function (name) {
 			var m = Info.find(missions_list(), x => x["Launch Mission"] == name);
-			return { label: name, sub: m ? m.Year : "", key: "p:" + name,
+			return { label: name, sub: m ? m.Year : "", key: "t:p:" + name,
 			         open: m ? () => graph.clicked({ type: "mission", value: m }) : null };
 		});
 		var firstYear = d3.min(missions, m => +m.sub || Infinity);

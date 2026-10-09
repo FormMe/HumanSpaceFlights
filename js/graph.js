@@ -56,13 +56,14 @@ var tip = (function () {
 			place(e);
 			// portrait / patch, when there is one (packs load once, then it's instant)
 			var v = d.value, key = null;
-			if (d.type === "mission") key = v["Patch URL"] ? "p:" + v["Launch Mission"] : (v["Photo URL"] ? "m:" + v["Launch Mission"] : null);
-			else if (!v.stub && v["Photo URL"]) key = "a:" + v.Name;
+			// tiny copies: a tooltip must not pull a pack of big photos
+			if (d.type === "mission") key = v["Patch URL"] ? "t:p:" + v["Launch Mission"] : null;
+			else if (!v.stub && v["Photo URL"]) key = "t:a:" + v.Name;
 			el.dataset.key = key || "";
 			if (key) Photos.get(key).then(function (src) {
 				if (!src || el.dataset.key !== key || !el.classList.contains("visible")) return;
 				var img = document.createElement("img");
-				img.className = "gt-photo" + (key[0] === "p" ? " patch" : "");
+				img.className = "gt-photo" + (key.indexOf("t:p:") === 0 ? " patch" : "");
 				img.src = src;
 				img.alt = "";
 				el.insertBefore(img, el.firstChild);

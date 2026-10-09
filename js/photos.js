@@ -16,14 +16,16 @@ var Photos = (function () {
 
 	function loadPack(n) {
 		if (!packs[n]) {
-			packs[n] = fetch("data/photos/pack-" + (n < 10 ? "0" : "") + n + ".json")
+			var name = typeof n === "number" ? (n < 10 ? "0" : "") + n : n;   // "m07", "a03"...
+			packs[n] = fetch("data/photos/pack-" + name + ".json")
 				.then(r => r.ok ? r.json() : {})
 				.catch(() => ({}));
 		}
 		return packs[n];
 	}
 
-	// key: "a:<astronaut name>", "m:<mission>" (photo), "p:<mission>" (patch)
+	// key: "a:<astronaut name>", "m:<mission>" (photo), "p:<mission>" (patch);
+	// "t:a:…" / "t:p:…" are tiny copies for avatars and tooltips
 	function get(key) {
 		return loadIndex().then(function (idx) {
 			if (!(key in idx)) return null;
