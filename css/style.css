@@ -1434,7 +1434,7 @@ canvas#Graph {
   height: 100px;
   cursor: zoom-in;
   transform-origin: 0 100%;     /* grows up and right, over the photo */
-  transition: transform .45s cubic-bezier(.2, .9, .25, 1.15), box-shadow .45s ease;
+  transition: transform .45s cubic-bezier(.2, .9, .25, 1.15), box-shadow .45s ease, filter .35s ease;
   -webkit-tap-highlight-color: transparent;
   object-fit: contain;
   padding: 6px;
@@ -1862,4 +1862,81 @@ canvas#Graph {
   .graph .card-head { flex-wrap: nowrap; align-items: center; }
   .graph .card-head .title { min-width: 0; }
   .graph .card-head .button { flex: none; padding: 8px 14px; font-size: 14px; }
+}
+
+/* photo loading: the box keeps its size, the tiny copy is shown blurred */
+.info-photo { transition: filter .35s ease; }
+.info-photo.loading {
+  filter: blur(10px) saturate(1.2);
+  clip-path: inset(0 round 12px);     /* the blur stays inside the rounded box */
+}
+.info-media.portrait .info-photo.loading { clip-path: circle(50%); }
+.info-patch.loading { filter: blur(4px); }
+@media (max-width: 760px) {
+  #Info .info-media:not(.portrait):not(.no-photo) .info-photo.loading { clip-path: inset(0); }
+}
+
+/* ================= full-screen photo ================= */
+
+.info-photo { cursor: zoom-in; }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px;
+  background: rgba(3, 5, 12, 0.88);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  cursor: zoom-out;
+  transition: opacity .35s ease, visibility 0s linear .35s;
+}
+.lightbox.show { opacity: 1; visibility: visible; transition: opacity .35s ease; }
+.lightbox-img {
+  display: block;
+  max-width: none;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.9);
+  transition: transform .38s cubic-bezier(.2, .8, .2, 1), border-radius .38s ease;
+  will-change: transform;
+}
+.lightbox-cap {
+  margin: 0;
+  max-width: 720px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: opacity .3s ease .1s;
+}
+.lightbox:not(.show) .lightbox-cap { opacity: 0; transition-delay: 0s; }
+.lightbox-cap b { display: block; font-size: 17px; color: var(--text); }
+.lightbox-cap span { font-size: 12px; color: var(--text-dim); }
+.lightbox-close {
+  position: absolute;
+  top: calc(14px + env(safe-area-inset-top, 0px));
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 14, 24, 0.7);
+  color: #fff;
+  cursor: pointer;
+}
+@media (max-width: 760px) {
+  .lightbox { padding: 0; }
+  .lightbox-img { border-radius: 0; }
+  .lightbox-cap { padding: 0 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-img { transition: none; }
 }

@@ -11,7 +11,8 @@ downloads the thumbnails, shrinks them to WebP and stores them as data URIs
 in data/photos/pack-*.json, with data/photos/index.json mapping each key
 ("a:<astronaut>", "m:<mission>", "p:<mission patch>") to its pack. Portraits
 and patches also get a tiny copy ("t:a:<astronaut>", "t:p:<mission>") for
-avatars and tooltips, so a list of names does not pull the big images.
+avatars and tooltips; mission photos get one too ("t:m:<mission>"): the page loads
+all tiny copies up front and shows one at once while the big image loads.
 
 Only new or changed images are downloaded; images no longer used are dropped.
 A few hundred small files would not fit the limits of every host, so the
@@ -35,11 +36,14 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(DATA, "photos")
 # packs per kind: mission photos are the biggest, so they get many small packs
-PACKS = {"m": 48, "a": 16, "p": 8, "t": 4}
+PACKS = {"m": 128, "a": 16, "p": 8, "t": 6}
 # longest side kept per kind, about 2x the size shown on a phone or a retina
 # screen: mission photos fill the details card, portraits sit next to the
 # name, patches are badges, "t" are avatars in lists and tooltips
 MAX_SIDE = {"m": 800, "a": 480, "p": 320, "t": 112}
+# a tiny copy of a mission photo is shown blurred over the full card width
+# while the big one loads, so a few more pixels are worth it
+TINY_SIDE = {"m": 160}
 QUALITY = {"m": 76, "a": 78, "p": 80, "t": 72}
 
 session = requests.Session()
@@ -94,12 +98,12 @@ def download(url):
     return None
 
 
-def shrink(raw, kind):
+def shrink(raw, kind, side=None):
     img = Image.open(io.BytesIO(raw))
     img.load()
     if img.mode not in ("RGB", "RGBA"):
         img = img.convert("RGBA" if "A" in img.getbands() or img.info.get("transparency") is not None else "RGB")
-    side = MAX_SIDE[kind]
+    side = side or MAX_SIDE[kind]
     img.thumbnail((side, side), Image.LANCZOS)
     buf = io.BytesIO()
     img.save(buf, "WEBP", quality=QUALITY[kind], method=6)
@@ -112,7 +116,7 @@ def main():
     have = load_existing()
     result, fetched, failed = {}, 0, 0
     for key, url in sorted(keys.items()):
-        small = "t:" + key if key[0] in "ap" else None
+        small = "t:" + key       # tiny copy: instant preview, avatars, tooltips
         old, old_small = have.get(key), have.get(small) if small else None
         # reuse when the source and the size are the same as last time
         if (old and old.get("src") == url and old.get("side") == MAX_SIDE[key[0]]
@@ -133,7 +137,8 @@ def main():
         try:
             result[key] = {"src": url, "side": MAX_SIDE[key[0]], "data": shrink(raw, key[0])}
             if small:
-                result[small] = {"src": url, "side": MAX_SIDE["t"], "data": shrink(raw, "t")}
+                tiny = TINY_SIDE.get(key[0], MAX_SIDE["t"])
+                result[small] = {"src": url, "side": tiny, "data": shrink(raw, "t", tiny)}
             fetched += 1
         except Exception as err:          # broken or unsupported image
             log("  skip %s: %s" % (key, err))

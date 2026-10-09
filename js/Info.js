@@ -16,6 +16,18 @@ class Info{
 			this.media("a:" + data["Name"], data["Photo URL"], null, false, true);
 			this.links(data["Wikipedia"], [["Photo", data["Photo Credit"], data["Photo Page"], data["Photo URL"]]]);
 		}
+		this.reveal();
+	}
+
+	// bring the card into view, smoothly, when its top is out of sight or low on
+	// the screen (phones show it as a bottom sheet instead)
+	reveal() {
+		if (window.matchMedia("(max-width: 760px)").matches) return;
+		var card = document.getElementById("Info");
+		var top = card.getBoundingClientRect().top, vh = window.innerHeight;
+		if (top >= 0 && top < vh * 0.45) return;
+		var smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		window.scrollTo({ top: window.pageYOffset + top - 16, behavior: smooth ? "smooth" : "auto" });
 	}
 
 	mission(d) {
@@ -147,9 +159,9 @@ class Info{
 		});
 		// small portraits / patches next to the names, when we have them
 		body.querySelectorAll(".ic-ava").forEach(function (el) {
-			Photos.get(el.dataset.key).then(function (src) {
-				if (src && el.isConnected) { el.style.backgroundImage = "url(" + src + ")"; el.classList.add("img"); }
-			}, function () {});
+			function put(src) { if (src && el.isConnected) { el.style.backgroundImage = "url(" + src + ")"; el.classList.add("img"); } }
+			var now = Photos.peek(el.dataset.key);      // tiny copies are usually here already
+			if (now) put(now); else Photos.get(el.dataset.key).then(put, function () {});
 		});
 	}
 
@@ -162,12 +174,25 @@ class Info{
 		box.hidden = !photoUrl && !hasPatch;
 		box.classList.toggle("no-photo", !photoUrl);
 		if (photoUrl) Photos.show(photo, photoKey, photoUrl); else { photo.hidden = true; photo.dataset.key = ""; }
+		photo.dataset.full = photoUrl || "";
+		var self = this;
+		if (!photo.dataset.zoomable) {          // tap the photo: full screen
+			photo.dataset.zoomable = "1";
+			photo.addEventListener("click", function () { Lightbox.open(photo, self.photoCaption()); });
+		}
 		if (hasPatch) Photos.show(patch, patchKey, null); else { patch.hidden = true; patch.dataset.key = ""; }
 		patch.classList.remove("zoomed");
 		if (!patch.dataset.zoomable) {          // tap the patch: it grows, tap again: back
 			patch.dataset.zoomable = "1";
 			patch.addEventListener("click", function () { patch.classList.toggle("zoomed"); });
 		}
+	}
+
+	photoCaption() {
+		var d = this.d || {};
+		var name = this.isMission ? d["Launch Mission"] : d.Name;
+		var credit = d["Photo Credit"] ? " <span>Photo: " + Info.esc(d["Photo Credit"]) + "</span>" : "";
+		return "<b>" + Info.esc(name || "") + "</b>" + credit;
 	}
 
 	links(wiki, credits) {

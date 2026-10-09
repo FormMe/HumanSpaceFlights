@@ -60,6 +60,7 @@ var tip = (function () {
 			if (d.type === "mission") key = v["Patch URL"] ? "t:p:" + v["Launch Mission"] : null;
 			else if (!v.stub && v["Photo URL"]) key = "t:a:" + v.Name;
 			el.dataset.key = key || "";
+			if (!v.stub) Photos.prefetch(photoKeys(v, d.type === "mission"));   // a click on the node will want it
 			if (key) Photos.get(key).then(function (src) {
 				if (!src || el.dataset.key !== key || !el.classList.contains("visible")) return;
 				var img = document.createElement("img");

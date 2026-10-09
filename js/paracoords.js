@@ -1,7 +1,7 @@
 var margin = {top: 42, right: 110, bottom: 20, left: 84},
     width = 1200 - margin.left - margin.right,
     height = 340 - margin.top - margin.bottom,
-    innerHeight = height - 2;
+    plotHeight = height - 2;
 
 var pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -17,21 +17,21 @@ var types = {
     coerce: function(d) { return +d; },
     extent: d3.extent,
     within: function(d, extent, dim) { return extent[0] <= dim.scale(d) && dim.scale(d) <= extent[1]; },
-    defaultScale: d3.scaleLinear().range([innerHeight, 0])
+    defaultScale: d3.scaleLinear().range([plotHeight, 0])
   },
   "String": {
     key: "String",
     coerce: String,
     extent: function (data) { return data.sort(); },
     within: function(d, extent, dim) { return extent[0] <= dim.scale(d) && dim.scale(d) <= extent[1]; },
-    defaultScale: d3.scalePoint().range([0, innerHeight])
+    defaultScale: d3.scalePoint().range([0, plotHeight])
   },
   "Date": {
     key: "Date",
     coerce: function(d) { return new Date(d); },
     extent: d3.extent,
     within: function(d, extent, dim) { return extent[0] <= dim.scale(d) && dim.scale(d) <= extent[1]; },
-    defaultScale: d3.scaleTime().range([innerHeight, 0])
+    defaultScale: d3.scaleTime().range([plotHeight, 0])
   }
 };
 

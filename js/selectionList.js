@@ -133,9 +133,11 @@ class SelectionList{
 		    	renderList(data, isMissions);
 		    })
 		    .on('mouseover', function (d) {
+		    	Photos.prefetch(photoKeys(d, isMissions));     // the photo is on its way before the click
 		    	d.highlighted = true;
 		    	draw(d);
 		    })
+		    .on('touchstart', function (d) { Photos.prefetch(photoKeys(d, isMissions)); }, { passive: true })
 		    .on('mouseout', function (d) {
 		    	d.highlighted = false;
 		    	renderList(data, isMissions);
@@ -143,4 +145,8 @@ class SelectionList{
 		// keep the header first
 		root.node().insertBefore(head.node(), root.node().firstChild);
 	}
+}
+
+function photoKeys(d, isMission) {
+	return isMission ? ["m:" + d["Launch Mission"], "p:" + d["Launch Mission"]] : ["a:" + d.Name];
 }
