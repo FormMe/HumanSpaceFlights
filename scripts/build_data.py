@@ -556,6 +556,11 @@ def make_audit(missions, astronauts):
         "astronauts_with_gaps": dict(sorted(gaps.items())),
         "missions_without_summary": sorted({r["Launch Mission"] for r in missions
                                             if not r["Brief Mission Summary"].strip()}),
+        # free images that were not found anywhere (Wikipedia, infobox, Wikidata)
+        "missions_without_photo": sorted({r["Launch Mission"] for r in missions if not r.get("Photo URL")}),
+        "missions_without_patch": sorted({r["Launch Mission"] for r in missions if not r.get("Patch URL")}),
+        "astronauts_without_photo": sorted(a["Name"] for a in astronauts
+                                           if a.get("Missions") and not a.get("Photo URL")),
         "sources": dict(sorted(defaultdict(int, {k: sum(1 for a in astronauts if a.get("Source") == k)
                                                  for k in {a.get("Source") for a in astronauts}}).items())),
     }
@@ -576,6 +581,7 @@ def main():
     images = load_json("wikipedia_images.json", {})
     mission_files = load_json("wikipedia_mission_files.json", {})
     file_info = load_json("wikipedia_file_info.json", {})
+    person_files = load_json("wikipedia_person_files.json", {})
     overrides = load_overrides()
 
     if not wd_missions:
@@ -906,6 +912,48 @@ def main():
     for q, name in person_name.items():
         if name in flights_of:
             by_name_q.setdefault(name, q)
+    # People whose legacy spelling matched nobody ("Mikhail TYuryn", "Yury
+    # Usachyev"): the Wikidata crews of their missions, minus everyone already
+    # matched, usually leave exactly one person.
+    # A person counts as taken only when matched to an astronaut record: the
+    # crew may spell the same person differently ("Albert Sacco" for the
+    # record "Albert Sacco Jr.").
+    taken = {q for n, q in by_name_q.items() if n in legacy_astr_by_name}
+    unmatched = dict(flights_of)
+    for a in legacy_astronauts:
+        flown = [m.strip() for m in a["Missions"].split(",") if m.strip()]
+        if flown and a["Name"] not in unmatched:
+            unmatched[a["Name"]] = flown
+    for name, flown in sorted(unmatched.items()):
+        if name in by_name_q:
+            continue
+        common, seen = None, defaultdict(int)
+        for mission in flown:
+            mq = legacy_to_wd.get(mission) or next((q for q, l in new_missions.items() if l == mission), None)
+            if not mq:
+                continue
+            crew = (launch_crew.get(mq, set()) | landing_crew.get(mq, set())) - taken
+            common = crew if common is None else common & crew
+            for q in crew:
+                seen[q] += 1
+        if not common and seen:
+            # the legacy record mixes two people (Alexandrov: Soviet on T-9 and
+            # TM-3, Bulgarian on TM-5): the one on most of the flights
+            top = max(seen.values())
+            common = {q for q, c in seen.items() if c == top and c >= 2}
+        if not common:
+            continue
+        if len(common) > 1:      # several left: the closest name, if it is close at all
+            scored = sorted(((same_person(name, first(people.get(q, {}).get("label", [""]))), q) for q in common),
+                            reverse=True)
+            if scored[0][0] < 1 or scored[0][0] == scored[1][0]:
+                continue
+            common = {scored[0][1]}
+        q = common.pop()
+        if q in people:
+            by_name_q[name] = q
+            taken.add(q)
+            log("  matched by crew: %s -> %s" % (name, first(people[q].get("label", [q]))))
 
     astronauts_out = []
     seen = set()
@@ -1050,10 +1098,18 @@ def main():
                 parts.append(hit.group(1).replace(",", "") + " " + label)
         return " ".join(parts)
 
+    def file_key(name):
+        """'Soyuz_TM-2_patch.jpg' and 'Soyuz TM-2 patch.jpg' are the same file."""
+        name = (name or "").replace("_", " ").strip()
+        return name[:1].upper() + name[1:]
+
+    info_by_key = {file_key(k): v for k, v in file_info.items()}
+    LOOKS_LIKE_PATCH = re.compile(r"patch|insignia|emblem|logo|badge|эмблема", re.I)
+
     def free_image(name, prefix):
         """Thumbnail, credit and file page of a free image (non-free files are skipped:
         Wikipedia may use them under fair use, this site may not)."""
-        info = file_info.get(name or "")
+        info = file_info.get(name or "") or info_by_key.get(file_key(name))
         if not info or info.get("nonfree"):
             return {}
         credit = " · ".join(x for x in (info.get("artist", ""), info.get("license", "")) if x)
@@ -1066,10 +1122,11 @@ def main():
     mission_q.update(legacy_to_wd)
     for row in missions_out:
         q = mission_q.get(row["Launch Mission"])
-        if not q or q not in wd_missions:
+        m = wd_missions.get(q, {}) if q else {}
+        # a mission without its own article (Soyuz 19) can be pointed at one
+        title = override(row["Launch Mission"], "*", "wikipedia") or (article(m) if m else None)
+        if not title:
             continue
-        m = wd_missions[q]
-        title = article(m)
         box = parse_infobox(mission_boxes.get(title or "", ""))
         row["Rocket"] = short(box.get("launch_rocket")) or first(m.get("vehicle", []))
         row["Spacecraft"] = short(box.get("spacecraft") or box.get("shuttle") or box.get("spacecraft_type"))
@@ -1083,11 +1140,32 @@ def main():
         row["Wikipedia"] = article_url(title)
         intro = re.sub(r"\s*\([^()]*\)", "", extracts.get(title or "", ""))
         row["Description"] = re.sub(r"\s+", " ", intro).strip()[:700]
+        # Images, free ones only, from several places in order. The patch:
+        # infobox 'insignia', then Wikidata's logo. The photo: infobox 'image',
+        # the crew photo, the article's lead image, Wikidata's image; never the
+        # patch (the lead image of many Soyuz articles is the patch).
         files = mission_files.get(title or "", {})
-        patch = free_image(files.get("insignia"), "Patch")
-        lead = images.get(title or "", {}).get("file")
-        photo = free_image(files.get("image"), "Photo") or \
-            (free_image(lead, "Photo") if lead and lead != files.get("insignia") else {})
+        patch_names = [files.get("insignia")] + m.get("commons_logo", [])
+        photo_names = [files.get("image"), files.get("crew_photo"),
+                       images.get(title or "", {}).get("file")] + m.get("commons_image", [])
+        patch, patch_file = {}, None
+        for name in patch_names:
+            patch = free_image(name, "Patch")
+            if patch:
+                patch_file = file_key(name)
+                break
+        photo = {}
+        for name in photo_names:
+            if not name or file_key(name) == patch_file:
+                continue
+            if LOOKS_LIKE_PATCH.search(name):
+                if not patch:            # a patch found in the wrong field is still the patch
+                    patch = free_image(name, "Patch")
+                    patch_file = file_key(name) if patch else None
+                continue
+            photo = free_image(name, "Photo")
+            if photo:
+                break
         row.update(photo)
         row.update(patch)
 
@@ -1102,7 +1180,13 @@ def main():
         bio = re.sub(r"\s*\([^()]*\)", "", bio)          # drop "(born ...; Russian: ...)"
         a["Bio"] = re.sub(r"\s+", " ", bio).strip()[:600]
         a["Wikipedia"] = article_url(title)
-        a.update(free_image(images.get(title or "", {}).get("file"), "Photo"))
+        # portrait: the lead image, the infobox image, Wikidata's image (free only)
+        for name in [images.get(title or "", {}).get("file"), person_files.get(title or "")] + \
+                people[q].get("commons_image", []):
+            photo = free_image(name, "Photo")
+            if photo:
+                a.update(photo)
+                break
 
     link_people_and_missions(missions_out, astronauts_out)
     write_csv(os.path.join(DATA, "missions.csv"), missions_out, MISSION_COLUMNS)

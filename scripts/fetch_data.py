@@ -146,6 +146,8 @@ MISSION_FIELDS = {
     "part_of": "?item wdt:P361 ?v . " + label_of("?v"),
     "destination": "?item wdt:P1444 ?v . " + label_of("?v"),
     "follows": "?item wdt:P155 ?v . " + label_of("?v"),
+    "commons_image": "?item wdt:P18 ?value",      # free files on Wikimedia Commons
+    "commons_logo": "?item wdt:P154 ?value",
 }
 
 PEOPLE_FIELDS = {
@@ -163,6 +165,7 @@ PEOPLE_FIELDS = {
     "educated_at": "?item wdt:P69 ?v . " + label_of("?v"),
     "military_rank": "?item wdt:P410 ?v . " + label_of("?v"),
     "military_branch": "?item wdt:P241 ?v . " + label_of("?v"),
+    "commons_image": "?item wdt:P18 ?value",
 }
 
 
@@ -218,6 +221,7 @@ API_PROPS = {
     "P375": ("vehicle", "item"), "P361": ("part_of", "item"),
     "P1444": ("destination", "item"), "P155": ("follows", "item"),
     "P2873": ("time_in_space_s", "quantity"),
+    "P18": ("commons_image", "file"), "P154": ("commons_logo", "file"),
 }
 SECONDS = {"Q11574": 1, "Q7727": 60, "Q25235": 3600, "Q573": 86400, "Q577": 31557600}
 
@@ -280,6 +284,8 @@ def fetch_details_api(ids, fields):
                 elif kind == "item":
                     refs.add(v["id"])
                     item.setdefault("_" + field, []).append(v["id"])
+                elif kind == "file":          # Commons file name
+                    item.setdefault(field, []).append(v)
                 elif kind == "quantity":
                     unit = v.get("unit", "").rsplit("/", 1)[-1]
                     if unit in SECONDS:
@@ -668,8 +674,17 @@ def main():
     mission_files = {}
     for title, box in mission_boxes.items():
         mission_files[title] = {"image": infobox_file(box, ("image",)),
+                                "crew_photo": infobox_file(box, ("crew_photo",)),
                                 "insignia": infobox_file(box, ("insignia",))}
+    # people: the infobox portrait, in case the lead image is missing
+    person_files = {t: infobox_file(box, ("image",)) for t, box in person_boxes.items()}
+    person_files = {t: f for t, f in person_files.items() if f}
     wanted = {f for v in mission_files.values() for f in v.values() if f}
+    wanted |= set(person_files.values())
+    # the same images on Wikidata (free files on Commons): the fallback when
+    # Wikipedia's file is not free or there is none
+    for item in list(people.values()) + list(missions.values()) + list(flights.values()):
+        wanted |= set(item.get("commons_image", [])) | set(item.get("commons_logo", []))
     wanted |= {v["file"] for v in images.values() if v.get("file")}
     file_info = fetch_file_info(wanted)
 
@@ -684,6 +699,7 @@ def main():
     save("wikipedia_person_extracts.json", person_extracts)
     save("wikipedia_images.json", images)
     save("wikipedia_mission_files.json", mission_files)
+    save("wikipedia_person_files.json", person_files)
     save("wikipedia_file_info.json", file_info)
     save("diagnostics.json", DIAGNOSTICS)
     save("meta.json", {"fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

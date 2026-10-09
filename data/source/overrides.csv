@@ -11,3 +11,6 @@ Shenzhou 21,*,return_date,2026-05-29
 Vast-1,*,skip,
 # Legacy mission without summary; Wikidata names it "Apollo–Soyuz Test Project".
 Apollo-Soyuz,*,summary,First joint US-Soviet spaceflight: Apollo docked with Soyuz 19 in orbit.
+# Apollo-Soyuz: both ships are described in one article.
+Apollo-Soyuz,*,wikipedia,Apollo–Soyuz Test Project
+Soyuz 19,*,wikipedia,Apollo–Soyuz Test Project
