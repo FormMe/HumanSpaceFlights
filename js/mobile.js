@@ -29,23 +29,64 @@
   });
   setTab("timeline");
 
-  // ---- filters ---------------------------------------------------------------
-  var toggle = document.getElementById("FiltersToggle");
-  var count = document.getElementById("FiltersCount");
-  toggle.addEventListener("click", function () {
-    var open = !body.classList.contains("filters-open");
-    body.classList.toggle("filters-open", open);
-    toggle.setAttribute("aria-expanded", String(open));
-  });
-  function countFilters() {
-    var n = ["Habitation", "Outcome", "Status", "Gender", "SpaceWalk"].filter(function (id) {
-      var el = document.getElementById(id);
-      return el && el.value !== "All";
-    }).length;
-    count.textContent = n ? n : "";
+  // ---- view switch and filters -------------------------------------------
+  var dataType = document.getElementById("DataType");
+  var modeButtons = document.querySelectorAll(".mode-switch button");
+  var missionFilters = ["Habitation", "Outcome"];
+  var astronautFilters = ["Status", "Gender", "SpaceWalk"];
+
+  function astronautsMode() { return dataType.value === "Astonauts"; }
+
+  function syncMode() {
+    body.classList.toggle("mode-astronauts", astronautsMode());
+    modeButtons.forEach(function (b) {
+      var on = b.getAttribute("data-mode") === dataType.value;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
   }
-  document.addEventListener("change", countFilters);
-  countFilters();
+  modeButtons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (dataType.value === b.getAttribute("data-mode")) return;
+      dataType.value = b.getAttribute("data-mode");
+      dataType.dispatchEvent(new Event("change", { bubbles: true }));   // runs the page's filter()
+    });
+  });
+
+  // a select is as wide as its current value, so the chips stay compact
+  var ruler = document.createElement("span");
+  ruler.style.cssText = "position:absolute;visibility:hidden;white-space:pre;font:600 16px Nunito,system-ui,sans-serif";
+  body.appendChild(ruler);
+  function sizeSelect(sel) {
+    if (!phone.matches) { sel.style.width = ""; return; }
+    ruler.textContent = sel.options[sel.selectedIndex].text;
+    sel.style.width = Math.ceil(ruler.getBoundingClientRect().width + 30) + "px";
+  }
+
+  function syncFilters() {
+    var active = 0;
+    missionFilters.concat(astronautFilters).forEach(function (id) {
+      var sel = document.getElementById(id);
+      var set = sel.value !== "All";
+      sel.closest(".field").classList.toggle("is-set", set);
+      if (set && (missionFilters.indexOf(id) >= 0 || astronautsMode())) active++;
+      sizeSelect(sel);
+    });
+    body.classList.toggle("filters-active", active > 0);
+  }
+
+  document.getElementById("FiltersReset").addEventListener("click", function () {
+    missionFilters.concat(astronautFilters).forEach(function (id) {
+      document.getElementById(id).value = "All";
+    });
+    window.filter();
+    syncFilters();
+  });
+
+  document.addEventListener("change", function () { syncMode(); syncFilters(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncFilters);
+  syncMode();
+  syncFilters();
 
   // ---- details sheet ---------------------------------------------------------
   var info = document.getElementById("Info");
@@ -96,6 +137,7 @@
 
   phone.addEventListener && phone.addEventListener("change", function () {
     if (!phone.matches) closeSheet();
+    syncFilters();
   });
 
   // ---- number of rows on the List tab ----------------------------------------
