@@ -4,7 +4,7 @@ svgWidth = 900;
 svgHeight = 400;
 var Countries = ["USSR/Russia", "USA", "China", "Other"]
 var color = d3.scaleOrdinal()
-            .range(["#7c587f", "#a4bcbc", "#007f97", "#4c3f77"])
+            .range(["#e5578b", "#3987e5", "#c98500", "#8a92a6"])
             .domain(Countries);
 
 let missions, astronauts;

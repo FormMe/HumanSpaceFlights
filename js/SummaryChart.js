@@ -1,80 +1,39 @@
 class SummaryChart{
+	// Share of missions / astronauts per country: one rounded bar split into
+	// segments, with a legend that carries the numbers.
 	constructor(color){
 		this.color = color;
-
-		this.margin = {top: 30, right: 20, bottom: 30, left: 50};
-	    //fetch the svg bounds
-
-	    this.svgWidth = 350 - this.margin.left - this.margin.right;
-	    this.svgHeight = 120;
-
-	    //add the svg to the div
-	    d3.select("#SummaryChart")
-        	.attr("width",this.svgWidth)
-        	.attr("height",this.svgHeight)
 	}
 
 	update(data, isMissions){
-
-		var all = isMissions ? data : data.concat(notFound)
+		var all = isMissions ? data : data.concat(notFound);
 		var len = all.length;
-		if(isMissions){
-			d3.select('#sumTitle').text('Count of missions: ' + len);
-		}
-		else{
-			d3.select('#sumTitle').text('Count of astronauts:' + len);
-		}
-		var groupedData = d3.nest()
-							.key(d => d.Country)
-							.entries(all)
-							.sort((a, b) => Countries.indexOf(a.key) - Countries.indexOf(b.key));
-		
+		var counts = d3.nest().key(d => d.Country).rollup(v => v.length).object(all);
+		var rows = Countries.map(c => ({ key: c, n: counts[c] || 0 }));
 		var color = this.color;
-		var svg = d3.select("#SummaryChart");
 
-        var width = this.svgWidth;
+		d3.select('#sumTitle').html(
+			"<b>" + len + "</b> " + (isMissions ? (len === 1 ? "mission" : "missions")
+			                                     : (len === 1 ? "astronaut" : "astronauts")));
 
-        var bias = 0;
-        var bars = svg.selectAll('rect')
-                      .data(groupedData);
-        bars.exit().remove();
+		var segs = d3.select("#SummaryBar").selectAll(".seg").data(rows, d => d.key);
+		segs.enter().append("div")
+			.attr("class", "seg")
+			.style("background", d => color(d.key))
+			.merge(segs)
+			.attr("title", d => d.key + ": " + d.n)
+			.style("flex-grow", d => d.n)
+			.classed("empty", d => d.n === 0);
 
-        bars = bars.enter()
-           .append('rect')
-           .merge(bars)
-           .transition()
-           .duration(1000)
-           .attr('y', 30)
-           .attr('x', function (d) {
-           		var cur = bias;
-           		bias += d.values.length * width / len;
-           	 	return cur;
-           })
-           .attr('height', 40)
-           .attr('width', d =>  d.values.length * width / len)
-           .attr("fill", d => color(d.key));
-
-
-        var bias = 0, labelX = 0;
-   		var counts = svg.selectAll('.cnt')
-	            .data(groupedData);
-		counts.exit().remove();
-		counts = counts.enter()
-		     	.append('text')
-		      .merge(counts)
-	            .transition()
-	            .duration(1000)
-	            .attr('font-size', "12px")
-		     	.attr("dy", "20")
-				.attr("dx", function (d, i) {
-	           		var cur = bias;
-	           		bias += d.values.length * width / len;
-	           		// keep labels of narrow segments from overlapping
-	           		labelX = i == 0 ? cur : Math.max(cur, labelX + 30);
-	           	 	return Math.min(labelX, width - 23);
-				})
-				.attr('class', 'cnt')
-				.text(function(d) { return d.values.length; });
-
+		var items = d3.select("#SummaryLegend").selectAll(".sum-item").data(rows, d => d.key);
+		var enter = items.enter().append("div").attr("class", "sum-item");
+		enter.append("i").style("background", d => color(d.key));
+		enter.append("span").attr("class", "sum-name").text(d => d.key);
+		enter.append("b");
+		enter.append("span").attr("class", "sum-pct");
+		items = enter.merge(items);
+		items.classed("empty", d => d.n === 0);
+		items.select("b").text(d => d.n);
+		items.select(".sum-pct").text(d => len ? Math.round(100 * d.n / len) + "%" : "");
 	}
 }

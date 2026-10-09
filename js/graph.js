@@ -31,12 +31,12 @@ class Graph{
 			.enter().append("circle")
 			  .attr("class", d => d.selected ? "selected" : "nodes")
 			  .attr("r", function (d) {
-			  	if (d.type == 'mission') return 5;
+			  	if (d.type == 'mission') return 4.5;
 			  	if (d.type == 'astronaut' && d.value.stub) return 5;
 			  	return Math.max(3, Math.log(d.value['Space Flight (hr)']));
 			  })
 			  .attr("fill", function(d) { 
-			  	if(d.type == 'mission') return "#fdd023";
+			  	if(d.type == 'mission') return "#eef0f7";
 			  	return color(d.value.Country);
 			  })
 			  .call(d3.drag()

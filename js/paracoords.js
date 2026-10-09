@@ -1,4 +1,4 @@
-var margin = {top: 66, right: 110, bottom: 20, left: 70},
+var margin = {top: 42, right: 110, bottom: 20, left: 84},
     width = 1200 - margin.left - margin.right,
     height = 340 - margin.top - margin.bottom,
     innerHeight = height - 2;
@@ -8,7 +8,7 @@ var pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
 var Countries = ["USSR/Russia", "USA", "China", "Other"]
 var color = d3.scaleOrdinal()
-            .range(["#7c587f", "#a4bcbc", "#007f97", "#4c3f77"])
+            .range(["#e5578b", "#3987e5", "#c98500", "#8a92a6"])
             .domain(Countries);
 
 var types = {
@@ -177,7 +177,7 @@ var canvas = plot.append("canvas")
     .style("height", (100 * height / svgHeight) + "%");
 
 var ctx = canvas.node().getContext("2d");
-ctx.globalCompositeOperation = 'darken';
+ctx.globalCompositeOperation = 'source-over';
 ctx.globalAlpha = 0.25;
 ctx.lineWidth = 1.5;
 ctx.scale(pixelRatio, pixelRatio);
@@ -189,9 +189,9 @@ function draw(d) {
   }
 
   var hl = d.highlighted || (info.d && cmp(info.d, d));
-  ctx.strokeStyle = hl ? "red" : color(d.Country);   
-  ctx.lineWidth = hl ? 3 : 1.5; 
-  ctx.globalAlpha = hl ? 1 : 0.25; 
+  ctx.strokeStyle = hl ? "#ffffff" : color(d.Country);
+  ctx.lineWidth = hl ? 2.5 : 1.2;
+  ctx.globalAlpha = hl ? 1 : 0.2;
   ctx.beginPath();
   var coords = dimensions.map(function(p,i) {
                     // check if data element has property and contains a value

@@ -282,9 +282,7 @@ svg#Graph {
   scrollbar-width: thin;
 }
 
-.stacked .scroll-x svg {
-  min-width: 600px;
-}
+
 
 .scroll-hint {
   display: none;
@@ -764,7 +762,6 @@ svg#Graph {
   /* view switch + filter chips, above the chart */
   .layout > .sun_filters { order: -1; }
   .sun_filters { gap: 14px; align-items: stretch; }
-  svg#SummaryChart { max-width: none; }
   .sun_filters .field-wide { display: none; }
 
   .mode-switch {
@@ -995,3 +992,174 @@ svg#Graph {
 @media (min-width: 761px) {
   body:not(.mode-astronauts) .filt-astr { opacity: 0.45; transition: opacity .2s; }
 }
+
+
+/* ================= charts ================= */
+
+:root {
+  --grid: rgba(255, 255, 255, 0.07);
+  --axis-text: #7d869a;
+}
+
+/* legends: a colored key beside text in text colors */
+.legend-row,
+.graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.legend-item i {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+/* columns per year */
+.stacked .card-head { align-items: baseline; }
+svg#FlightsChart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-variant-numeric: tabular-nums;
+}
+#FlightsChart .grid line { stroke: var(--grid); shape-rendering: crispEdges; }
+#FlightsChart .grid .baseline line { stroke: rgba(255, 255, 255, 0.22); }
+#FlightsChart .grid text,
+#FlightsChart .Xaxis text {
+  fill: var(--axis-text);
+  font-size: 11px;
+}
+#FlightsChart .grid text { text-anchor: end; }
+#FlightsChart .Xaxis text { text-anchor: middle; }
+#FlightsChart .stackBar rect { transition: opacity .15s; cursor: pointer; }
+#FlightsChart.hovering .stackBar rect { opacity: 0.38; }
+#FlightsChart.hovering .stackBar.hover rect { opacity: 1; }
+
+/* share per country */
+.sunburst { display: flex; flex-direction: column; gap: 12px; }
+.sum-title {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+.sum-title b {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-right: 2px;
+}
+.sum-bar {
+  display: flex;
+  gap: 2px;
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+.sum-bar .seg {
+  flex: 0 0 0;
+  min-width: 3px;
+  transition: flex-grow .6s cubic-bezier(.2, .8, .2, 1);
+}
+.sum-bar .seg.empty { min-width: 0; }
+.sum-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+}
+.sum-item {
+  display: grid;
+  grid-template-columns: 10px 1fr auto auto;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  transition: opacity .2s;
+}
+.sum-item i { width: 10px; height: 10px; border-radius: 3px; align-self: center; }
+.sum-item b { color: var(--text); font-weight: 700; }
+.sum-item .sum-pct { color: var(--text-dim); min-width: 32px; text-align: right; }
+.sum-item.empty { opacity: 0.35; }
+
+/* parallel coordinates */
+.parcoords-plot .axis path,
+.parcoords-plot .axis line {
+  stroke: rgba(255, 255, 255, 0.18);
+}
+/* axes above the lines, labels with a dark halo so they stay readable */
+.parcoords-plot svg { z-index: 1; }
+.parcoords-plot .axis .tick text {
+  fill: #aab2c4;
+  font-size: 11px;
+  paint-order: stroke;
+  stroke: #0b101c;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.parcoords-plot .axis .title {
+  transform: translate(0, -18px);
+  text-anchor: middle;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--text-muted);
+}
+.parcoords-plot .axis:hover .title { fill: var(--text); font-weight: 700; }
+.parcoords-plot .brush .selection {
+  fill: var(--accent-strong);
+  fill-opacity: 0.22;
+  stroke: var(--accent-strong);
+  stroke-width: 1px;
+  rx: 4px;
+}
+
+/* graph */
+.graph-legend { justify-content: center; margin-top: 10px; }
+.graph-legend i { border-radius: 50%; }
+.graph-legend .node-mission { background: #eef0f7; }
+.graph-legend .node-astro { background: conic-gradient(#e5578b 0 25%, #3987e5 0 50%, #c98500 0 75%, #8a92a6 0); }
+.graph-legend .node-selected { background: transparent; box-shadow: inset 0 0 0 2px #fff, 0 0 8px rgba(255,255,255,.6); }
+#Graph .links line { stroke: rgba(170, 180, 205, 0.35); }
+#Graph .nodes { stroke: #0d121e; stroke-width: 1.5px; }
+#Graph .selected {
+  stroke: #ffffff;
+  stroke-width: 2.5px;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+}
+
+/* tooltip */
+.d3-tip { padding: 12px 14px; font-size: 13px; line-height: 1.35; }
+.d3-tip label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 0 8px;
+  margin: 0 0 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  filter: none;
+  color: var(--text);
+  font-style: normal;
+  font-weight: 600;
+}
+.d3-tip label i { width: 10px; height: 10px; border-radius: 3px; }
+.d3-tip label b { margin-left: auto; padding-left: 12px; }
+.d3-tip ul { margin: 0; padding: 0; column-gap: 18px; }
+.d3-tip li {
+  list-style: none;
+  padding: 2px 0;
+  font-size: 12.5px;
+  font-style: normal;
+  color: var(--text);
+  break-inside: avoid;
+}
+.d3-tip li span { color: var(--text-dim); margin-left: 6px; font-variant-numeric: tabular-nums; }

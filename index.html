@@ -48,11 +48,13 @@
 
     <main class="layout">
         <section class="view card stacked" data-tab="timeline">
-            <h2 class="title" id="BarChartTitle">Number of launched space missions</h2>
-            <div class="scroll-x">
-                <svg id="FlightsChart" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid meet"></svg>
+            <div class="card-head">
+                <h2 class="title" id="BarChartTitle">Launches per year</h2>
+                <div class="legend-row" id="BarLegend"></div>
             </div>
-            <p class="scroll-hint">← swipe to see earlier years</p>
+            <div class="scroll-x">
+                <svg id="FlightsChart" preserveAspectRatio="xMidYMid meet"></svg>
+            </div>
         </section>
 
         <section class="view card sun_filters" data-tab="timeline">
@@ -160,8 +162,9 @@
             </div>
 
             <div class="sunburst">
-                <h3 id="sumTitle">Count of missions</h3>
-                <svg id="SummaryChart" viewBox="0 0 280 76" preserveAspectRatio="xMinYMin meet"></svg>
+                <p class="sum-title" id="sumTitle"></p>
+                <div class="sum-bar" id="SummaryBar"></div>
+                <div class="sum-legend" id="SummaryLegend"></div>
             </div>
         </section>
 
@@ -183,6 +186,11 @@
                     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="22" cy="22" r="5"/><circle cx="8" cy="10" r="3.5"/><circle cx="37" cy="12" r="3.5"/><circle cx="34" cy="36" r="3.5"/><circle cx="9" cy="33" r="3.5"/><path d="M18 19l-7-6.5M26 19.5l8-5.5M25.5 25.5l6 8M18 25.5l-7 5.5"/></svg>
                     Pick a mission or an astronaut in the list to see who flew with whom, or press <b>Draw all</b>.
                 </p>
+            </div>
+            <div class="graph-legend" id="GraphLegend">
+                <span class="legend-item"><i class="node-mission"></i>Mission</span>
+                <span class="legend-item"><i class="node-astro"></i>Astronaut, by country</span>
+                <span class="legend-item"><i class="node-selected"></i>Selected</span>
             </div>
         </section>
 
