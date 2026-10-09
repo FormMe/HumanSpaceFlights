@@ -44,20 +44,8 @@
   pointer-events: none;
 }
 
-.axis.pl_facility .tick text,
-.axis.pl_instrument .tick text,
-.axis.st_spstr .tick text {
-  font-size: 6px; 
-}
-
-.axis.pl_telescope .tick text {
-  font-size: 5px; 
-}
-
 .axis:hover line,
-.axis:hover path,
-.axis.active line,
-.axis.active path {
+.axis:hover path {
   fill: none;
   stroke: #f5f5f5;
   stroke-width: 1px;
@@ -71,17 +59,3 @@
   opacity: 1;
 }
 
-.axis.active .title {
-  font-weight: bold;
-}
-
-.axis.active .tick text {
-  opacity: 1;
-  font-weight: bold;
-}
-
-.brush .extent {
-  fill-opacity: .3;
-  stroke: #f5f5f5;
-  stroke-width: 1px;
-}
