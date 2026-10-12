@@ -169,7 +169,7 @@ class Info{
 		body.querySelectorAll(".ic-ava").forEach(function (el) {
 			function put(src) { if (src && el.isConnected) { el.style.backgroundImage = 'url("' + src + '")'; el.classList.add("img"); } }
 			var now = Photos.peek(el.dataset.key);      // tiny copies are usually here already
-			if (now) put(now); else Photos.get(el.dataset.key).then(put, function () {});
+			if (now) put(now); else Photos.get(el.dataset.key, () => el.isConnected).then(put, function () {});
 		});
 	}
 

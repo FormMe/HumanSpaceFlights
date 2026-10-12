@@ -24,22 +24,58 @@ var Photos = (function () {
 		return typeof n === "number" ? (n < 10 ? "0" : "") + n : n;   // "m07", "a03"...
 	}
 
-	function loadPack(n) {
+	// priority: "high" for the photo of the card just opened, "low" for the
+	// tiny copies loaded in the background (they must not slow the first down).
+	// A background download is stopped when a click needs the connection and
+	// goes back to the queue.
+	var background = [];            // { n, ctrl } of the low downloads in flight
+	function loadPack(n, priority, pausable) {
 		if (!packs[n]) {
-			packs[n] = fetch("data/photos/pack-" + packName(n) + ".json")
+			var ctrl = pausable && window.AbortController ? new AbortController() : null;
+			if (ctrl) background.push({ n: n, ctrl: ctrl });
+			packs[n] = fetch("data/photos/pack-" + packName(n) + ".json",
+					{ priority: priority || "auto", signal: ctrl ? ctrl.signal : undefined })
 				.then(r => r.ok ? r.json() : {})
-				.catch(() => ({}))
-				.then(p => (loaded[n] = p));
+				.then(p => (loaded[n] = p), function (e) {
+					if (ctrl && ctrl.signal.aborted) throw e;   // pauseBackground() dropped it
+					return (loaded[n] = {});
+				})
+				.finally(function () { background = background.filter(b => b.ctrl !== ctrl); });
 		}
 		return packs[n];
 	}
+	function pauseBackground() {
+		background.splice(0).forEach(function (b) { delete packs[b.n]; b.ctrl.abort(); requeue(b.n); });
+	}
 
 	// key: "a:<astronaut name>", "m:<mission>" (photo), "p:<mission>" (patch);
-	// "t:" + key is the tiny copy
-	function get(key) {
+	// "t:" + key is the tiny copy. low: an extra (crew avatar, tooltip), it
+	// waits for the photos of the card, gives way to the next card's, and is
+	// dropped when no longer wanted (low() says false) by the time its turn comes
+	function get(key, low) {
 		return loadIndex().then(function (idx) {
 			if (!(key in idx)) return null;
-			return loadPack(idx[key]).then(p => p[key] ? p[key].data : null);
+			if (low) return (function attempt() {
+				return afterCard().then(function () {
+					if (typeof low === "function" && !low()) return {};
+					// paused by the next card's photo: try again after it
+					return loadPack(idx[key], "low", true).catch(attempt);
+				});
+			})().then(p => p[key] ? p[key].data : null);
+			var pending = !loaded[idx[key]];
+			if (pending) { busy++; pauseBackground(); }
+			return loadPack(idx[key], "high").then(function (p) {
+				if (pending) busy--;
+				return p[key] ? p[key].data : null;
+			});
+		});
+	}
+
+	// resolves once the photos asked for by the card have arrived
+	function afterCard() {
+		return new Promise(function (resolve) {
+			// first a turn: the card asks for its photos right after the avatars
+			setTimeout(function wait() { busy ? setTimeout(wait, 100) : resolve(); }, 0);
 		});
 	}
 
@@ -80,18 +116,23 @@ var Photos = (function () {
 		}
 	}
 
-	// after the page has settled: the tiny copies, mission photos and patches
-	// first, then the astronauts' (about 3 MB in all)
+	// after the page has settled: the tiny copies (mission photos, patches,
+	// then portraits; about 3 MB), one pack at a time and only while no photo
+	// asked for by a click is loading, so they never slow that photo down
+	var busy = 0, queue = [];
+	function requeue(n) { if (queue.indexOf(n) < 0) queue.unshift(n); }
 	function preloadTiny() {
 		loadIndex().then(function (idx) {
-			var first = {}, later = {};
-			Object.keys(idx).forEach(function (k) {
-				if (k.indexOf("t:") !== 0) return;
-				(k.charAt(2) === "a" ? later : first)[idx[k]] = 1;
-			});
-			Promise.all(Object.keys(first).map(loadPack)).then(function () {
-				Object.keys(later).forEach(loadPack);
-			});
+			var order = { m: 0, p: 1, a: 2 }, names = {};
+			Object.keys(idx).forEach(function (k) { if (k.indexOf("t:") === 0) names[idx[k]] = order[k.charAt(2)]; });
+			queue = Object.keys(names).sort((x, y) => names[x] - names[y] || (x < y ? -1 : 1));
+			(function next() {
+				if (!queue.length) return;
+				if (busy) return setTimeout(next, 150);
+				var n = queue.shift();
+				if (loaded[n]) return next();
+				loadPack(n, "low", true).then(next, function () { setTimeout(next, 150); });
+			})();
 		});
 	}
 	loadIndex();

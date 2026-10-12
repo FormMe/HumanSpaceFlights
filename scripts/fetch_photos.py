@@ -36,8 +36,11 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(DATA, "photos")
-# packs per kind: mission photos are the biggest, so they get many small packs
-PACKS = {"m": 128, "a": 16, "p": 8, "t": {"m": 1, "p": 1, "a": 2}}
+# packs per kind: a card loads the pack of its photo, so packs hold only a
+# few images each (about 0.1-0.2 MB; 40 portraits in a pack meant 1.1 MB for
+# one 20 KB portrait; tiny copies too, as a crew avatar loads its pack).
+# About 390 files in all: the artifact host allows 511.
+PACKS = {"m": 160, "a": 160, "p": 64, "t": {"m": 4, "p": 6, "a": 8}}
 # longest side kept per kind, about 2x the size shown on a phone or a retina
 # screen: mission photos fill the details card, portraits sit next to the
 # name, patches are badges, "t" are avatars in lists and tooltips
