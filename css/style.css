@@ -1955,3 +1955,70 @@ body.sheet-open, html:has(body.sheet-open) { overflow: hidden; }
 
 /* rows out of view are not laid out (600+ rows: ~280 ms less per list change on phones) */
 #grid .row { content-visibility: auto; contain-intrinsic-size: auto 46px; }
+
+/* ================= parameters plot: rails, picked ranges, hint ================= */
+
+/* the hint and, once a range is picked, the count + Reset share one line */
+.pc-bar { display: grid; align-items: center; min-height: 34px; margin: -6px 0 12px; }
+.pc-bar > p { grid-area: 1 / 1; margin: 0; transition: opacity .25s, visibility .25s; }
+.pc-hint { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 13px; line-height: 1.35; }
+.pc-hint svg { flex: none; color: var(--accent-strong); }
+.pc-status { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted);
+             opacity: 0; visibility: hidden; }
+.pc-count b { color: var(--text); font-weight: 700; font-variant-numeric: tabular-nums; }
+.pc-bar.filtered .pc-hint { opacity: 0; visibility: hidden; }
+.pc-bar.filtered .pc-status { opacity: 1; visibility: visible; }
+.pc-reset {
+  display: inline-flex; align-items: center; min-height: 32px; padding: 0 14px;
+  border: 1px solid var(--field-border); border-radius: 999px; background: var(--field-bg);
+  color: var(--text); font: inherit; font-weight: 600; cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.pc-reset:hover, .pc-reset:focus-visible { background: var(--accent-soft); border-color: var(--accent-strong); }
+@media (max-width: 760px) { .pc-reset { min-height: 40px; } }
+
+/* a rail along each axis: the thing to drag on */
+.parcoords-plot .axis .rail { fill: rgba(255, 255, 255, 0.045); stroke: rgba(255, 255, 255, 0.07); }
+.parcoords-plot .axis .domain { stroke: rgba(255, 255, 255, 0.26); }
+.parcoords-plot .axis.filtered .rail { fill: var(--accent-soft); stroke: rgba(138, 127, 240, 0.35); }
+.parcoords-plot .axis.filtered .title { fill: var(--accent-strong); }
+.parcoords-plot .brush .selection { fill-opacity: 0.26; stroke-width: 1.5px; }
+/* the rows left out by the picked ranges (drawn once, shown while filtering) */
+.parcoords-plot canvas.pc-ghost { opacity: 0; transition: opacity .2s; }
+.parcoords-plot canvas.pc-ghost.on { opacity: 1; }
+
+/* the one-time demo: a dot draws a range along an axis */
+.pc-demo { pointer-events: none; opacity: 0; }
+.pc-demo.play { opacity: 1; }
+.pc-demo-sel { fill: var(--accent-strong); fill-opacity: 0.24; stroke: var(--accent-strong); stroke-width: 1.5px;
+               transform-box: fill-box; }
+.pc-demo.h .pc-demo-sel { transform-origin: left center; transform: scaleX(0); }
+.pc-demo.v .pc-demo-sel { transform-origin: center bottom; transform: scaleY(0); }
+.pc-demo-dot { fill: #fff; stroke: var(--accent-strong); stroke-width: 4px; stroke-opacity: 0.45; opacity: 0;
+               transform-box: fill-box; transform-origin: center; }
+.pc-demo.h.play .pc-demo-sel { animation: pc-sel-h 2.6s ease-in-out 2; }
+.pc-demo.v.play .pc-demo-sel { animation: pc-sel-v 2.6s ease-in-out 2; }
+.pc-demo.h.play .pc-demo-dot { animation: pc-dot-h 2.6s ease-in-out 2; }
+.pc-demo.v.play .pc-demo-dot { animation: pc-dot-v 2.6s ease-in-out 2; }
+@keyframes pc-sel-h {
+  0%, 16% { transform: scaleX(0); opacity: 1; }
+  62%, 80% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+@keyframes pc-sel-v {
+  0%, 16% { transform: scaleY(0); opacity: 1; }
+  62%, 80% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+@keyframes pc-dot-h {
+  0% { opacity: 0; transform: translateX(0) scale(1.7); }
+  12%, 16% { opacity: 1; transform: translateX(0) scale(1); }
+  62% { opacity: 1; transform: translateX(var(--run)) scale(1); }
+  74%, 100% { opacity: 0; transform: translateX(var(--run)) scale(1.5); }
+}
+@keyframes pc-dot-v {
+  0% { opacity: 0; transform: translateY(0) scale(1.7); }
+  12%, 16% { opacity: 1; transform: translateY(0) scale(1); }
+  62% { opacity: 1; transform: translateY(var(--run)) scale(1); }
+  74%, 100% { opacity: 0; transform: translateY(var(--run)) scale(1.5); }
+}

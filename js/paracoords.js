@@ -1,4 +1,4 @@
-var margin = {top: 42, right: 110, bottom: 20, left: 84},
+var margin = {top: 42, right: 110, bottom: 20, left: 100},
     width = 1200 - margin.left - margin.right,
     height = 340 - margin.top - margin.bottom,
     plotHeight = height - 2;
@@ -20,7 +20,9 @@ var types = {
     coerce: String,
     extent: function (data) { return data.sort(); },
     within: function(d, extent, dim) { return extent[0] <= dim.scale(d) && dim.scale(d) <= extent[1]; },
-    defaultScale: d3.scalePoint().range([0, plotHeight])
+    // half a step of space at both ends: the values sit inside the axis,
+    // not on its ends (Female / Male at a quarter and three quarters)
+    defaultScale: d3.scalePoint().range([0, plotHeight]).padding(0.5)
   },
   "Date": {
     key: "Date",
@@ -90,6 +92,31 @@ var container = d3.select("#parcoords");
 
 var header = container.append('h2').attr('class', 'title');
 
+// how to use it, then (once something is picked) how many rows are left
+var pcBar = container.append('div').attr('class', 'pc-bar');
+var pcHint = pcBar.append('p').attr('class', 'pc-hint');
+pcHint.html("<svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' " +
+          "stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M4 12h16M4 12l3-3M4 12l3 3M20 12l-3-3M20 12l-3 3'/></svg>" +
+          "<span></span>");
+var pcStatus = pcBar.append('p').attr('class', 'pc-status').attr('aria-live', 'polite');
+pcStatus.append('span').attr('class', 'pc-count');
+pcStatus.append('button').attr('type', 'button').attr('class', 'pc-reset').text('Reset')
+    .on('click', function () { clearBrushes(); });
+
+function showCount(n, total) {
+  var on = n < total;
+  pcBar.classed('filtered', on);
+  pcStatus.select('.pc-count').html(on ? "<b>" + n.toLocaleString("en-US") + "</b> of " + total.toLocaleString("en-US") +
+                                       (isMissions ? " missions" : " astronauts") : "");
+}
+
+// every brush back to nothing (each one sends its own end event: the views follow)
+function clearBrushes() {
+  svg.selectAll(".axis .brush").each(function (d) {
+    if (d3.brushSelection(this)) d3.select(this).call(d.brush.move, null);
+  });
+}
+
 // The plot keeps its original coordinate system (viewBox) and is scaled
 // to the card width with CSS; the canvas is positioned in percentages so
 // it always stays aligned with the svg axes.
@@ -102,6 +129,10 @@ var svgRoot = plot.append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet");
 var svg = svgRoot.append("g");
 
+// under the lines: every row once, faint and grey; shown only while a
+// range is picked, so the rows left out keep their place as context
+var ghostCanvas = plot.append("canvas").attr("class", "pc-ghost");
+var ghostCtx = ghostCanvas.node().getContext("2d");
 var canvas = plot.append("canvas");
 var ctx = canvas.node().getContext("2d");
 
@@ -118,33 +149,41 @@ function layout(dims) {
   var W2 = w + m.left + m.right, H2 = h + m.top + m.bottom;
   plotW = w; plotH = h;
   plot.classed('vertical', vertical).style('aspect-ratio', W2 + ' / ' + H2);
+  pcHint.select('svg').style('transform', vertical ? null : 'rotate(90deg)');   // along the axes
+  pcHint.select('span').text(vertical
+      ? "Slide a finger along any axis to pick a range. Pick on several axes to combine."
+      : "Drag along any axis to pick a range. Pick on several axes to combine; click an axis to clear it.");
   svgRoot.attr("viewBox", "0 0 " + W2 + " " + H2);
   svg.attr("transform", "translate(" + m.left + "," + m.top + ")");
-  canvas
+  canvas.merge(ghostCanvas)
     .attr("width", Math.round(w * pixelRatio))
     .attr("height", Math.round(h * pixelRatio))
     .style("left", (100 * m.left / W2) + "%")
     .style("top", (100 * m.top / H2) + "%")
     .style("width", (100 * w / W2) + "%")
     .style("height", (100 * h / H2) + "%");
-  ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-  ctx.globalCompositeOperation = 'source-over';
+  [ctx, ghostCtx].forEach(function (c) {
+    c.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    c.globalCompositeOperation = 'source-over';
+  });
 }
 
 // a point of a line: position of the axis, value along it
 function point(i, v) { return vertical ? [v, xscale(i)] : [xscale(i), v]; }
 
-function draw(d) {
+// ghost: drawn faint and grey on the ghost canvas
+function draw(d, ghost) {
+  var c = ghost === true ? ghostCtx : ctx;
 
   function cmp(d1, d2) {
       return isMissions ? d1["Launch Mission"] == d2["Launch Mission"] : d1["Name"] == d2["Name"];
   }
 
-  var hl = d.highlighted || (info.d && cmp(info.d, d));
-  ctx.strokeStyle = hl ? "#ffffff" : color(d.Country);
-  ctx.lineWidth = hl ? 2.5 : 1.2;
-  ctx.globalAlpha = hl ? 1 : 0.2;
-  ctx.beginPath();
+  var hl = ghost !== true && (d.highlighted || (info.d && cmp(info.d, d)));
+  c.strokeStyle = hl ? "#ffffff" : ghost === true ? "#8a93a6" : color(d.Country);
+  c.lineWidth = hl ? 2.5 : 1.2;
+  c.globalAlpha = hl ? 1 : ghost === true ? 0.05 : 0.22;
+  c.beginPath();
   var coords = dimensions.map(function(p,i) {
                     // check if data element has property and contains a value
                     if (!(p.key in d) || d[p.key] === null) 
@@ -159,27 +198,37 @@ function draw(d) {
       if (i > 0) {
         var prev = coords[i-1];
         if (prev !== null) {
-          ctx.moveTo(prev[0],prev[1]);
-          if (vertical) ctx.lineTo(prev[0],prev[1]+6); else ctx.lineTo(prev[0]+6,prev[1]);
+          c.moveTo(prev[0],prev[1]);
+          if (vertical) c.lineTo(prev[0],prev[1]+6); else c.lineTo(prev[0]+6,prev[1]);
         }
       }
       if (i < coords.length-1) {
         var next = coords[i+1];
         if (next !== null) {
-          if (vertical) ctx.moveTo(next[0],next[1]-6); else ctx.moveTo(next[0]-6,next[1]);
+          if (vertical) c.moveTo(next[0],next[1]-6); else c.moveTo(next[0]-6,next[1]);
         }
       }
       return;
     }
     
     if (i == 0) {
-      ctx.moveTo(p[0],p[1]);
+      c.moveTo(p[0],p[1]);
       return;
     }
 
-    ctx.lineTo(p[0],p[1]);
+    var q = coords[i-1];
+    if (q === null) { c.lineTo(p[0],p[1]); return; }
+    // a smooth S between two axes: leaves and meets each axis square on,
+    // so the bundles read as flows instead of zigzags
+    if (vertical) {
+      var my = (q[1] + p[1]) / 2;
+      c.bezierCurveTo(q[0], my, p[0], my, p[0], p[1]);
+    } else {
+      var mx = (q[0] + p[0]) / 2;
+      c.bezierCurveTo(mx, q[1], mx, p[1], p[0], p[1]);
+    }
   });
-  ctx.stroke();
+  c.stroke();
 }
 
 var curData;
@@ -192,7 +241,8 @@ function renderList(_data) {
   if(_data == null) _data = curData;
   lineQueue.invalidate();
   ctx.clearRect(0,0,plotW,plotH);
-  _data.forEach(draw);
+  ghostCanvas.classed("on", !!lastFull && _data.length < lastFull.length);
+  _data.forEach(function (d) { draw(d); });
 }
 
 // data: the rows drawn; domainData: the rows the axes span when they are
@@ -223,6 +273,14 @@ function paracoords_update(data, isMis, domainData) {
       .attr("class", function(d) { return "axis " + d.key.replace(/ /g, "_"); })
       .attr("transform", function(d,i) { return vertical ? "translate(0," + xscale(i) + ")" : "translate(" + xscale(i) + ")"; });
 
+  // a soft rail along each axis: it is the thing to drag on
+  axes.append("rect")
+      .attr("class", "rail")
+      .attr("rx", 3)
+      .attr("x", vertical ? -3 : -3).attr("y", vertical ? -3 : -3)
+      .attr("width", vertical ? plotW + 6 : 6)
+      .attr("height", vertical ? 6 : plotH + 6);
+
   var spanned = domainData || data;
   [data, spanned].forEach(function (rows) {
     rows.forEach(function(d) {
@@ -248,6 +306,10 @@ function paracoords_update(data, isMis, domainData) {
   });
 
   ctx.clearRect(0,0,plotW,plotH);
+  ghostCtx.clearRect(0,0,plotW,plotH);
+  ghostCanvas.classed("on", false);
+  data.forEach(function (d) { draw(d, true); });
+  showCount(data.length, data.length);
   lineQueue(data);
   selectionList.update(data, isMissions);
   summaryChart.update(data, isMissions);
@@ -264,10 +326,11 @@ function paracoords_update(data, isMis, domainData) {
           var levels = d.domain.length > 10 ? 3 : 2;
           g.selectAll(".tick text").attr("dy", function (v, i) { return (0.71 + 1.2 * (i % levels)) + "em"; });
         }
-        // phones: the labels at both ends stay inside the card
+        // phones: a label close to an end stays inside the card
         if (vertical && d.type.key === "String")
-          g.selectAll(".tick text").style("text-anchor", function (v, i, all) {
-            return i === 0 ? "start" : i === all.length - 1 ? "end" : "middle";
+          g.selectAll(".tick text").style("text-anchor", function (v) {
+            var x = d.scale(v);
+            return x < 34 ? "start" : x > plotW - 34 ? "end" : "middle";
           });
       })
     .append("text")
@@ -318,9 +381,14 @@ function paracoords_update(data, isMis, domainData) {
 
   d3.selectAll(".axis.Country .tick text")
     .style("fill", color);
+
+  addDemo(axes);
     
   function brushstart() {
-    if (d3.event.sourceEvent) d3.event.sourceEvent.stopPropagation();   // none for brush.move
+    if (d3.event.sourceEvent) {                                          // none for brush.move
+      d3.event.sourceEvent.stopPropagation();
+      stopDemo(true);
+    }
   }
 
   // Handles a brush event, toggling the display of foreground lines.
@@ -350,6 +418,8 @@ function paracoords_update(data, isMis, domainData) {
     });
 
     curData = selected;
+    axes.classed("filtered", function (d) { return actives.some(function (a) { return a.dimension === d; }); });
+    showCount(selected.length, data.length);
     scheduleBrushRender(selected);
     return selected;
   }
@@ -364,6 +434,45 @@ function scheduleBrushRender(rows) {
     renderList(rows);
     selectionList.update(rows, isMissions);
   });
+}
+
+// A finger (a dot) draws a range on one axis, twice, the first
+// time the plot comes into view; never again once somebody has brushed.
+// It is only a picture: nothing is filtered.
+var demoSeen = false, demoObserver = null;
+try { demoSeen = localStorage.getItem("pcBrushed") === "1"; } catch (e) {}
+
+function stopDemo(used) {
+  svg.selectAll(".pc-demo").remove();
+  if (used && !demoSeen) {
+    demoSeen = true;
+    try { localStorage.setItem("pcBrushed", "1"); } catch (e) {}
+  }
+}
+
+function addDemo(axes) {
+  if (demoSeen || REDUCED_MOTION.matches) return;
+  // a numeric axis in the middle: launch year / year selected
+  var target = axes.filter(function (d) { return d.key === "Year"; });
+  if (target.empty()) return;
+  var a = 0.28, b = 0.7, demo = target.append("g").attr("class", "pc-demo " + (vertical ? "h" : "v"));
+  if (vertical) {
+    demo.attr("transform", "translate(" + (plotW * a) + ",0)").style("--run", (plotW * (b - a)) + "px");
+    demo.append("rect").attr("class", "pc-demo-sel").attr("x", 0).attr("y", -9).attr("width", plotW * (b - a)).attr("height", 18).attr("rx", 4);
+  } else {
+    demo.attr("transform", "translate(0," + (plotH * b) + ")").style("--run", (-plotH * (b - a)) + "px");
+    demo.append("rect").attr("class", "pc-demo-sel").attr("x", -8).attr("y", -plotH * (b - a)).attr("width", 16).attr("height", plotH * (b - a)).attr("rx", 4);
+  }
+  demo.append("circle").attr("class", "pc-demo-dot").attr("r", 9);
+  if (demoObserver) demoObserver.disconnect();
+  if (!window.IntersectionObserver) { demo.classed("play", true); return; }
+  demoObserver = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting) return;
+    demoObserver.disconnect();
+    setTimeout(function () { demo.classed("play", true); }, 500);
+    demo.select(".pc-demo-sel").on("animationend", function () { stopDemo(false); });
+  }, { threshold: 1 });
+  demoObserver.observe(demo.node());
 }
 
 function d3_functor(v) {
