@@ -112,6 +112,7 @@ function showCount(n, total) {
 
 // every brush back to nothing (each one sends its own end event: the views follow)
 function clearBrushes() {
+  snapshot();
   svg.selectAll(".axis .brush").each(function (d) {
     if (d3.brushSelection(this)) d3.select(this).call(d.brush.move, null);
   });
@@ -131,6 +132,9 @@ var svg = svgRoot.append("g");
 
 var canvas = plot.append("canvas");
 var ctx = canvas.node().getContext("2d");
+// the picture before a change, over the new one, fading out: lines cross-fade
+// instead of being repainted in chunks
+var prevCanvas = plot.append("canvas").attr("class", "pc-prev").attr("aria-hidden", "true");
 
 // Coordinate system of the plot for the current orientation.
 function layout(dims) {
@@ -151,7 +155,7 @@ function layout(dims) {
       : "Drag along any axis to pick a range. Pick on several axes to combine; click an axis to clear it.");
   svgRoot.attr("viewBox", "0 0 " + W2 + " " + H2);
   svg.attr("transform", "translate(" + m.left + "," + m.top + ")");
-  canvas
+  d3.selectAll([canvas.node(), prevCanvas.node()])     // same box for both
     .attr("width", Math.round(w * pixelRatio))
     .attr("height", Math.round(h * pixelRatio))
     .style("left", (100 * m.left / W2) + "%")
@@ -235,11 +239,48 @@ function renderList(_data) {
   lineQueue.invalidate();
   ctx.clearRect(0,0,plotW,plotH);
   _data.forEach(draw);
+  if (fadePending) { fadePending = false; crossFade(); }
+}
+
+// ---- smooth changes -----------------------------------------------------------
+var FADE_MS = 450, fadePending = false;
+function animated() { return !REDUCED_MOTION.matches && !document.hidden; }
+// keep what is on screen now; the next renderList fades it into the new lines
+function snapshot() {
+  if (!animated()) return;
+  var p = prevCanvas.node(), c = p.getContext("2d");
+  c.setTransform(1, 0, 0, 1, 0, 0);
+  c.clearRect(0, 0, p.width, p.height);
+  c.drawImage(canvas.node(), 0, 0);
+  fadePending = true;
+}
+function crossFade() {
+  var old = prevCanvas.node(), now = canvas.node();
+  old.style.transition = now.style.transition = "none";
+  old.style.opacity = "0.9";
+  now.style.opacity = "0";
+  old.getBoundingClientRect();                 // commit the start
+  old.style.transition = now.style.transition = "opacity " + FADE_MS + "ms ease";
+  old.style.opacity = "0";
+  now.style.opacity = "";
 }
 
 // data: the rows drawn; domainData: the rows the axes span when they are
 // set up the first time (all astronauts, even if a filter is on)
-function paracoords_update(data, isMis, domainData) {
+function paracoords_update(data, isMis, domainData, quiet) {
+  // other axes (Missions <-> Astronauts): the whole plot fades through;
+  // same axes, other rows (filters): the lines cross-fade
+  var switching = dimensions && isMis !== isMissions && animated() && !quiet;
+  if (switching || (!quiet && plot.classed("pc-out"))) {   // a newer call while fading: it wins
+    plot.classed("pc-out", true);
+    clearTimeout(paracoords_update.timer);
+    paracoords_update.timer = setTimeout(function () {
+      paracoords_update(data, isMis, domainData, true);
+      plot.classed("pc-out", false);
+    }, 180);
+    return;
+  }
+  if (dimensions && !quiet && isMis === isMissions) snapshot();
   curData = data;
   lastFull = data;
   isMissions = isMis;
@@ -297,9 +338,8 @@ function paracoords_update(data, isMis, domainData) {
     dim.scale.domain(dim.domain);
   });
 
-  ctx.clearRect(0,0,plotW,plotH);
   showCount(data.length, data.length);
-  lineQueue(data);
+  renderList(data);           // all at once: it fades in instead of being painted in chunks
   selectionList.update(data, isMissions);
   summaryChart.update(data, isMissions);
 
@@ -360,6 +400,7 @@ function paracoords_update(data, isMis, domainData) {
               var x = d.scale(d.domain.reduce(function (a, b) {
                 return Math.abs(d.scale(b) - mid) < Math.abs(d.scale(a) - mid) ? b : a;
               }));
+              snapshot();
               d3.select(this).call(d.brush.move, [x - half, x + half]);   // sends its own end event
               return;
             }
@@ -491,7 +532,7 @@ function d3_functor(v) {
     if (phone.matches === vertical && (!vertical || Math.abs(w - lastW) < 8)) return;
     lastW = w;
     // brushes do not survive the new axes: the bars go back to the same rows
-    paracoords_update(lastFull, isMissions);
+    paracoords_update(lastFull, isMissions, null, true);
     flightsChart.update(isMissions ? group_missions(lastFull) : group_astronauts(astronauts, curMis), isMissions);
   }
   window.addEventListener("resize", function () { clearTimeout(timer); timer = setTimeout(redraw, 200); });

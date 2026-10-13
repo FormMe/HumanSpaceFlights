@@ -2025,3 +2025,10 @@ canvas#Graph {
   62% { opacity: 1; transform: translateY(var(--run)) scale(1); }
   74%, 100% { opacity: 0; transform: translateY(var(--run)) scale(1.5); }
 }
+
+/* parameters plot: the old lines fade out over the new ones; on a switch
+   to the other axes the whole plot fades through */
+.parcoords-plot canvas.pc-prev { opacity: 0; }
+.parcoords-plot { transition: opacity .18s ease; }
+.parcoords-plot.pc-out { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .parcoords-plot { transition: none; } }
