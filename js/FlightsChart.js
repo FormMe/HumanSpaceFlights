@@ -165,9 +165,21 @@ class FlightsChart{
 		}
 
 		if (!this.tip) {
-			this.tip = d3.tip().attr('class', 'd3-tip bars-tip').direction('e').offset([0, 10]);
-			svg.call(this.tip);
+			var t = this.tip = d3.tip().attr('class', 'd3-tip bars-tip').direction('e').offset([0, 10]);
+			svg.call(t);
+			// a tap shows the tooltip but nothing "leaves" the bar on a phone:
+			// it goes on scroll and on a tap anywhere else
+			var hide = function () {
+				svg.classed("hovering", false).selectAll(".hover").classed("hover", false);
+				t.hide();
+			};
+			document.addEventListener("scroll", hide, { capture: true, passive: true });   // the page or the bars sideways
+			document.addEventListener("touchstart", function (e) {
+				if (!(e.target instanceof Element) || !e.target.closest(".stacked rect")) hide();
+			}, { passive: true });
+			this.hideTip = hide;
 		}
+		this.hideTip();      // new bars: the old tooltip is about rows no longer here
 		var tip = this.tip.html(tooltip_render);
 
 		var barWidth = Math.min(x.bandwidth(), 24);
