@@ -54,11 +54,12 @@ function group_astronauts(astrData, misData) {
             var missionOf = {};
             astrs.forEach(function (a) { if (!(a.Name in missionOf)) missionOf[a.Name] = a["Year Mission"]; });
 
-            var found = filter_status(filter_gender(filter_walk(astrData.filter(astr => astr.Name in missionOf))));
+            var found = astrData.filter(astr => astr.Name in missionOf && Filters.matchAstronaut(astr));
             curAstrs = curAstrs.concat(found);
 
             var groups = d3.nest().key(d => d['Country']).entries(found);
-            var nFound = astrs.filter(astr => !known.has(astr.Name));
+            // crew lists name people we have no page for: "Other", unless a filter rules them out
+            var nFound = Filters.passUnknown() ? astrs.filter(astr => !known.has(astr.Name)) : [];
             if (nFound.length) {
                 nFound.forEach(d => { d.Country = "Other"; });
                 groups.push({ key: "Other", values: nFound });
@@ -72,41 +73,15 @@ function group_astronauts(astrData, misData) {
     return grouped;
 }
 
-// ---- filters ---------------------------------------------------------------------
-
-function selected(id) { return document.getElementById(id).value; }
-
-function filter_status(astrData) {
-    var status = selected("Status");
-    return status == "All" ? astrData : astrData.filter(astr => astr.Status == status);
-}
-
-function filter_gender(astrData) {
-    var gender = selected("Gender");
-    return gender == "All" ? astrData : astrData.filter(astr => astr.Gender == gender);
-}
-
-function filter_walk(astrData) {
-    var walk = selected("SpaceWalk");
-    if (walk == "All") return astrData;
-    return astrData.filter(astr => (+astr["Space Walks"] > 0) === (walk == "Yes"));
-}
-
-function filter_habitation(misData) {
-    var habitation = selected("Habitation");
-    return habitation == "All" ? misData : misData.filter(m => m["Habitation"] == habitation);
-}
-
-function filter_outcome(misData) {
-    var outcome = selected("Outcome");
-    if (outcome == "All") return misData;
-    return misData.filter(m => m.Fatality == (outcome == "Fatality" ? "Y" : "N"));
-}
+// ---- filters (the rules live in js/filters.js) -------------------------------------
 
 // every filter change and the Missions / Astronauts switch
 function filter() {
     if (!missions || !astronauts) return;
-    curMis = filter_habitation(filter_outcome(missions));
+    // missions view: all the filters; astronauts view: when / where / how it ended
+    // (who the people are is asked of the people)
+    var missionsView = isMissionMode();
+    curMis = missions.filter(m => Filters.matchMission(m, missionsView));
     if (isMissionMode()) {
         flightsChart.update(group_missions(curMis), true);
         paracoords_update(curMis, true);
@@ -122,11 +97,6 @@ function filter() {
         .attr("data-empty", "No " + (isMissionMode() ? "missions" : "astronauts") + " match these filters");
     graph.clear();
     info.remove();
-}
-
-// the astronaut filters are only shown in the Astronauts view
-function filter_astr() {
-    if (!isMissionMode()) filter();
 }
 
 function complete_graph() {
@@ -240,8 +210,7 @@ function loadFailed(error) {
 }
 
 // controls (no inline handlers in the HTML: the page's CSP forbids them)
-["DataType", "Habitation", "Outcome"].forEach(id => document.getElementById(id).addEventListener("change", filter));
-["Status", "Gender", "SpaceWalk"].forEach(id => document.getElementById(id).addEventListener("change", filter_astr));
+document.getElementById("DataType").addEventListener("change", function () { filter(); Filters.writeHash(); });
 document.getElementById("DrawAll").addEventListener("click", complete_graph);
 
 // both tables first: clicks before the second one arrived used to throw
@@ -267,6 +236,7 @@ d3.queue()
         astronauts = prepareAstronauts(astronautRows);
         missions = prepareMissions(missionRows);
         curMis = missions;
+        Filters.init(missions, astronauts, filter);
 
         flightsChart.drawLegend();
         flightsChart.update(group_missions(missions), true);
@@ -274,7 +244,8 @@ d3.queue()
         // the switch works once there is something to switch to
         d3.selectAll("#DataType, .mode-switch button").property("disabled", false);
         // a select restored by the browser (back / forward) applies at once
-        if (!isMissionMode() || ["Habitation", "Outcome"].some(id => selected(id) != "All")) filter();
+        // a view from the address (#...) or restored by the browser applies at once
+        if (!isMissionMode() || Filters.active()) filter();
 
         // the latest years in view (in the next frame: reading scrollWidth forces a layout)
         requestAnimationFrame(function () {

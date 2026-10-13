@@ -51,6 +51,7 @@ class FlightsChart{
 			.attr("class", "legend-item");
 		items.append("i").style("background", this.color);
 		items.append("span").text(d => d);
+		Filters.syncLegends();      // a click on a country shows only it
 	}
 
 	update(stackedData, isMissions){

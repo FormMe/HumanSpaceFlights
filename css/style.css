@@ -2039,100 +2039,7 @@ canvas#Graph {
 }
 
 
-/* ================= filters: one slim bar =================
-   One row, always the same height. A filter shows its name, or (once
-   picked) its value in the accent colour; the native select lies over it,
-   invisible, so the system list opens. Astronaut filters only in the
-   Astronauts view. Too many for a narrow phone: the bar scrolls sideways. */
-.sun_filters .filters-row {
-  display: flex;
-  flex: none;                /* scrolls sideways: as a flex item it could shrink to nothing */
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 0;
-  height: 40px;
-  padding: 0 4px;
-  border: 1px solid var(--field-border);
-  border-radius: 12px;
-  background: var(--field-bg);
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-}
-.sun_filters .filters-row::-webkit-scrollbar { display: none; }
-.sun_filters .filters-row.more-right { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); }
-.sun_filters .filt { display: contents; }
-.sun_filters .filt legend { display: none; }
-body:not(.mode-astronauts) .sun_filters .filt-astr { display: none; }
-.sun_filters .filters-row .field {
-  position: relative;
-  flex: none;
-  display: flex;
-  align-items: center;
-  height: 32px;
-  margin: 0;
-  padding: 0 12px;
-  border: 0;
-  border-radius: 8px;
-  background: transparent;
-  box-shadow: none;
-  transition: background-color .15s;
-}
-/* thin dividers between the filters */
-.sun_filters .filters-row .field + .field::before,
-.sun_filters .filt-astr .field:first-of-type::before {
-  content: ""; position: absolute; left: 0; top: 9px; bottom: 9px; width: 1px; background: var(--divider);
-}
-.sun_filters .filters-row .field:hover { background: rgba(255, 255, 255, 0.06); }
-.sun_filters .filters-row .field:focus-within { background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1.5px var(--accent-strong); }
-.sun_filters .filters-row .field.is-set { background: var(--accent-soft); }
-.sun_filters .filters-row .field.is-set::before,
-.sun_filters .filters-row .field.is-set + .field::before { opacity: 0; }
-.sun_filters .filters-row .field label {
-  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
-}
-.sun_filters .filters-row .field .fv {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 13.5px; font-weight: 600; color: var(--text-muted); white-space: nowrap;
-  pointer-events: none;
-}
-.sun_filters .filters-row .field .fv::after {
-  content: ""; border-style: solid; border-width: 4px 3.5px 0 3.5px;
-  border-color: currentColor transparent transparent transparent; opacity: .8;
-}
-.sun_filters .filters-row .field:hover .fv { color: var(--text); }
-.sun_filters .filters-row .field.is-set .fv { color: var(--accent-strong); }
-.sun_filters .filters-row .field .select { position: absolute; inset: 0; width: auto; max-width: none; margin: 0; }
-.sun_filters .filters-row .field { cursor: pointer; outline: none; }
-.sun_filters .filters-row .field:focus-visible { box-shadow: inset 0 0 0 1.5px var(--accent-strong); }
-.sun_filters .filters-row .field .select { pointer-events: none; }
-.sun_filters .filters-row .field .select select {
-  position: absolute; inset: 0; width: 100%; max-width: none; height: 100%;
-  padding: 0; border: 0; opacity: 0; pointer-events: none;
-}
-.sun_filters .filters-row .field .select__arrow { display: none; }
-/* reset: a small x pinned to the right end of the bar, even while it scrolls */
-.sun_filters .filters-reset {
-  display: none; flex: none; align-items: center; justify-content: center;
-  position: sticky; right: 0; z-index: 1;
-  margin-left: auto; width: 32px; height: 32px; padding: 0;
-  border: 0; border-radius: 8px;
-  background: #171d2c;
-  box-shadow: -10px 0 10px -2px #171d2c;   /* the items slide under it */
-  color: var(--text-muted); font-size: 0;
-  visibility: visible; opacity: 1;
-}
-.sun_filters .filters-reset svg { width: 12px; height: 12px; }
-.sun_filters .filters-reset:hover { color: var(--text); background: #222939; }
-.filters-active .sun_filters .filters-reset { display: inline-flex; }
-@media (max-width: 760px) {
-  .sun_filters .filters-row { height: 44px; }
-  .sun_filters .filters-row .field { height: 36px; padding: 0 10px; }
-  .sun_filters .filters-reset { width: 36px; height: 36px; }
-  .sun_filters .filters-row .field .fv { font-size: 13px; gap: 5px; }
-}
-
-/* the filter menu (mobile.js): a dark card under the filter */
+/* the filter menu (js/filters.js): a dark card under the filter */
 .fmenu {
   position: fixed; z-index: 60;
   display: flex; flex-direction: column; gap: 2px;
@@ -2168,23 +2075,152 @@ body:not(.mode-astronauts) .sun_filters .filt-astr { display: none; }
 @media (max-width: 760px) { .fmenu-item { min-height: 42px; font-size: 15px; } }
 @media (prefers-reduced-motion: reduce) { .fmenu { transition: none; } }
 
-/* the three astronaut filters: one button, one menu in sections */
-.sun_filters .filt-astr .field:not(.fgroup) { display: none; }
-.sun_filters .filters-row .fgroup .fv { max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
-.sun_filters .filters-row .fgroup .fv::after { flex: none; }
+/* ================= filters: the bar =================
+   Search, Years, Missions, Crew in one row of fixed height; an item shows
+   its name, or what is picked in the accent colour. Countries are switched
+   in the legends. js/filters.js builds it. */
+.sun_filters .filters-row {
+  position: relative;
+  display: flex;
+  flex: none;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 2px;
+  height: 44px;
+  padding: 0 4px;
+  border: 1px solid var(--field-border);
+  border-radius: 12px;
+  background: var(--field-bg);
+}
+.fb, .fb-reset, .fsearch-close {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  flex: 0 1 auto; min-width: 0;
+  height: 34px; padding: 0 11px;
+  border: 0; border-radius: 8px; background: transparent;
+  color: var(--text-muted); font: inherit; font-size: 13.5px; font-weight: 600; white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .15s, color .15s;
+}
+.fb:hover, .fb-reset:hover, .fsearch-close:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+.fb:focus-visible, .fb-reset:focus-visible, .fsearch-close:focus-visible { outline: none; box-shadow: inset 0 0 0 1.5px var(--accent-strong); }
+.fb[data-menu]::after {
+  content: ""; flex: none; border-style: solid; border-width: 4px 3.5px 0 3.5px;
+  border-color: currentColor transparent transparent transparent; opacity: .75;
+}
+.fb[aria-expanded="true"] { background: rgba(255, 255, 255, 0.08); color: var(--text); }
+.fb .fvt { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.fb.is-set { background: var(--accent-soft); color: var(--accent-strong); }
+.fb-search { flex: none; width: 36px; padding: 0; }
+/* thin dividers between the items */
+.fb + .fb::before {
+  content: ""; position: absolute; left: -1px; top: 10px; bottom: 10px; width: 1px; background: var(--divider);
+}
+.fb.is-set::before, .fb.is-set + .fb::before, .fb[aria-expanded="true"]::before, .fb[aria-expanded="true"] + .fb::before { opacity: 0; }
+.fb-reset { display: none; flex: none; width: 32px; padding: 0; margin-left: auto; }
+.filters-active .fb-reset { display: inline-flex; }
+
+/* search: the field covers the bar while it is open */
+.fsearch {
+  position: absolute; inset: 3px;
+  display: flex; align-items: center; gap: 4px;
+  padding-left: 10px;
+  border-radius: 9px;
+  background: #151b2b;
+}
+.fsearch[hidden] { display: none; }
+.fsearch-icon { display: inline-flex; color: var(--accent-strong); }
+.fsearch input {
+  flex: 1; min-width: 0; height: 100%;
+  border: 0; outline: none; background: transparent;
+  color: var(--text); font: inherit; font-size: 16px; font-weight: 600;
+}
+.fsearch input::placeholder { color: var(--text-dim); font-weight: 500; }
+.fsearch input::-webkit-search-cancel-button { display: none; }
+.fsearch-close { flex: none; width: 34px; padding: 0; }
+
+/* the panels */
+.fpanel { width: max-content; max-width: min(340px, calc(100vw - 16px)); }
+.fpanel-years { width: 340px; }
+.fpanel-search { width: 360px; }
+.fmenu-note { margin-left: auto; padding-left: 18px; color: var(--text-dim); font-weight: 600; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.fmenu-item[role="menuitemcheckbox"]::before, .fmenu-item[role="menuitemradio"]::before { opacity: 0; }
+.fmenu-item[aria-checked="true"] { color: var(--accent-strong); }
+.fmenu-item[aria-checked="true"]::before { opacity: 1; }
+.fmenu-item[aria-checked="true"] .fmenu-note { color: var(--accent-strong); opacity: .75; }
+.fmenu-hint { margin: 6px 10px 4px; color: var(--text-dim); font-size: 12.5px; line-height: 1.4; max-width: 280px; }
+.fmenu-clear {
+  margin-top: 4px; min-height: 34px; padding: 0 10px;
+  border: 0; border-top: 1px solid var(--divider); border-radius: 0 0 8px 8px; background: transparent;
+  color: var(--text-muted); font: inherit; font-size: 13px; font-weight: 600; text-align: left; cursor: pointer;
+}
+.fmenu-clear:hover, .fmenu-clear:focus-visible { color: var(--text); background: rgba(255, 255, 255, 0.05); outline: none; }
+
+/* years: launches per year, the range lit, two handles; eras below */
+.fy-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 6px 8px 8px; }
+.fy-range { font-size: 20px; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+.fy-count { font-size: 12.5px; color: var(--text-dim); font-weight: 600; }
+.fy-chart { position: relative; margin: 0 8px; padding-bottom: 14px; touch-action: none; cursor: crosshair; }
+.fy-chart svg { display: block; width: 100%; height: 64px; }
+.fy-chart rect { fill: rgba(255, 255, 255, 0.14); }
+.fy-chart rect.in { fill: var(--accent-strong); }
+.fy-track { position: absolute; left: 0; right: 0; bottom: 4px; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.1); }
+.fy-sel { position: absolute; top: 0; bottom: 0; border-radius: 2px; background: var(--accent-strong); }
+.fy-thumb {
+  position: absolute; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px;
+  border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgba(138, 127, 240, 0.35), 0 2px 6px rgba(0, 0, 0, 0.5);
+  cursor: grab; touch-action: none;
+}
+.fy-thumb:focus-visible { outline: none; box-shadow: 0 0 0 5px var(--accent-strong); }
+.fy-axis { display: flex; justify-content: space-between; margin: 6px 8px 2px; font-size: 11px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.fy-eras { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 2px 4px 4px; }
+.fy-era {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+  padding: 8px 10px; border-radius: 10px;
+  border: 1px solid var(--field-border); background: rgba(255, 255, 255, 0.03);
+  color: var(--text); font: inherit; text-align: left; cursor: pointer;
+}
+.fy-era b { font-size: 13px; }
+.fy-era span { font-size: 11.5px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.fy-era:hover, .fy-era:focus-visible { border-color: rgba(255, 255, 255, 0.24); outline: none; }
+.fy-era[aria-pressed="true"] { border-color: var(--accent-strong); background: var(--accent-soft); }
+.fy-era[aria-pressed="true"] b { color: var(--accent-strong); }
+
+/* search results */
+.fres {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  min-height: 48px; padding: 6px 8px;
+  border: 0; border-radius: 10px; background: transparent;
+  color: var(--text); font: inherit; text-align: left; cursor: pointer;
+}
+.fres.hit, .fres:hover { background: rgba(255, 255, 255, 0.07); }
+.fres-ava {
+  flex: none; display: grid; place-items: center; width: 34px; height: 34px;
+  border-radius: 8px; background: rgba(255, 255, 255, 0.08) center / cover no-repeat;
+  font-size: 11px; font-weight: 700; color: var(--text-muted);
+}
+.fres-ava.round { border-radius: 50%; }
+.fres-text { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.fres-text b { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fres-text span { font-size: 12px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fres-kind { flex: none; font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+
+/* countries: the legends switch them */
+#SummaryLegend .sum-item, #BarLegend .legend-item { cursor: pointer; border-radius: 6px; transition: opacity .2s; }
+#SummaryLegend .sum-item:hover, #BarLegend .legend-item:hover { background: rgba(255, 255, 255, 0.05); }
+#SummaryLegend .sum-item:focus-visible, #BarLegend .legend-item:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent-strong); }
+#SummaryLegend .sum-item.off, #BarLegend .legend-item.off { opacity: 0.3; }
+#SummaryLegend .sum-item.solo .sum-name, #BarLegend .legend-item.solo span { color: var(--text); font-weight: 700; }
+
+@media (max-width: 400px) {
+  .fb { padding: 0 8px; font-size: 13px; }
+  .fb.is-set .fvt { max-width: 72px; }
+}
 .fmenu-head {
-  padding: 8px 10px 4px 34px;
+  padding: 10px 10px 4px;
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--text-dim);
 }
-.fmenu-head:not(:first-child) { margin-top: 4px; border-top: 1px solid var(--divider); padding-top: 10px; }
-/* narrow phones: long picked values are cut short, so the bar still fits */
-.sun_filters .filters-row .fvt { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.sun_filters .filters-row .fgroup .fv { max-width: none; overflow: visible; }
-.sun_filters .filters-row .fgroup .fvt { max-width: 150px; }
-@media (max-width: 400px) {
-  .sun_filters .filters-row .field { padding: 0 8px; }
-  .sun_filters .filters-row .is-set .fvt { max-width: 64px; }
-  .sun_filters .filters-row { padding: 0 3px; }
-  .sun_filters .filters-reset { width: 30px; }
-}
+.fmenu-head:not(:first-child) { margin-top: 4px; border-top: 1px solid var(--divider); padding-top: 12px; }
+.fpanel .fmenu-item { min-height: 38px; }
+@media (max-width: 760px) { .fpanel .fmenu-item { min-height: 42px; } }

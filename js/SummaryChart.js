@@ -35,5 +35,6 @@ class SummaryChart{
 		items.classed("empty", d => d.n === 0);
 		items.select("b").text(d => d.n);
 		items.select(".sum-pct").text(d => len ? Math.round(100 * d.n / len) + "%" : "");
+		Filters.syncLegends();      // the legend is also the country switch
 	}
 }

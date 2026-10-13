@@ -77,93 +77,8 @@
                 <button type="button" data-mode="Astronauts" aria-pressed="false" disabled>Astronauts</button>
             </div>
 
-            <div class="filters-row" id="FiltersPanel">
-                <fieldset class="filt filt-mis">
-                    <legend>Missions filters</legend>
-
-                    <div class="field">
-                        <label for="Habitation">Habitation</label>
-                        <div class="select">
-                            <select id="Habitation" autocomplete="off">
-                                <option selected value="All">All</option>
-                                <option value="Space">Space</option>
-                                <option value="Moon">Moon</option>
-                                <option value="ISS">ISS</option>
-                                <option value="Tiangong">Tiangong</option>
-                                <option value="Mir">Mir</option>
-                                <option value="Salyut 1">Salyut 1</option>
-                                <option value="Salyut 3">Salyut 3</option>
-                                <option value="Salyut 4">Salyut 4</option>
-                                <option value="Salyut 5">Salyut 5</option>
-                                <option value="Salyut 6">Salyut 6</option>
-                                <option value="Salyut 7">Salyut 7</option>
-                                <option value="Skylab">Skylab</option>
-                                <option value="Tiangong 1">Tiangong 1</option>
-                                <option value="Tiangong 2">Tiangong 2</option>
-                            </select>
-                            <div class="select__arrow"></div>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="Outcome">Outcome</label>
-                        <div class="select">
-                            <select id="Outcome" autocomplete="off">
-                                <option selected value="All">All</option>
-                                <option value="Fatality">Fatality</option>
-                                <option value="Success">Success</option>
-                            </select>
-                            <div class="select__arrow"></div>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <fieldset class="filt filt-astr">
-                    <legend>Astronauts filters</legend>
-
-                    <div class="field">
-                        <label for="Status">Status</label>
-                        <div class="select">
-                            <select id="Status" autocomplete="off">
-                                <option selected value="All">All</option>
-                                <option value="Active">Active</option>
-                                <option value="Management">Management</option>
-                                <option value="Retired">Retired</option>
-                                <option value="Deceased">Deceased</option>
-                            </select>
-                            <div class="select__arrow"></div>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="Gender">Gender</label>
-                        <div class="select">
-                            <select id="Gender" autocomplete="off">
-                                <option selected value="All">All</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
-                            <div class="select__arrow"></div>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="SpaceWalk">Spacewalk</label>
-                        <div class="select">
-                            <select id="SpaceWalk" autocomplete="off">
-                                <option selected value="All">All</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                            <div class="select__arrow"></div>
-                        </div>
-                    </div>
-                </fieldset>
-                <button type="button" class="filters-reset" id="FiltersReset" aria-label="Reset filters" title="Reset filters">
-                    <svg width="12" height="12" viewBox="0 0 12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg>
-                    Reset
-                </button>
-            </div>
+            <!-- search, years, missions, crew: built by js/filters.js -->
+            <div class="filters-row" id="FiltersPanel" role="toolbar" aria-label="Filters"></div>
 
             <div class="sunburst">
                 <p class="sum-title" id="sumTitle"></p>
@@ -272,6 +187,7 @@
         <span id="DataUpdated"></span>
     </footer>
 
+    <script src="js/filters.js"></script>
     <script src="js/starfield.js"></script>
     <script src="js/paracoords.js"></script>
     <script src="js/selectionList.js"></script>
