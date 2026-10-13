@@ -6,10 +6,8 @@ class FlightsChart{
 	constructor(color){
 		this.margin = {top: 12, right: 6, bottom: 26, left: 30};
 		this.color = color;
-		this.down_d = 250;
-		this.up_d = 700;
+		this.morph_d = 600;      // a filter change: every column glides to its new height
 		this.gap = 1.5;          // surface gap between stacked segments
-		this.emptyData = true;
 		this.data = null;
 		this.isMissions = true;
 		this.measure();
@@ -65,37 +63,18 @@ class FlightsChart{
 	   	d3.select("#ListTitle")
 	          .text(isMissions ? "List of missions" : "List of astronauts");
 
-        if(this.emptyData){
-        	this.raise_up(stackedData, isMissions);
-        }
-        else{
-			var t = this;
-			var pending = true;          // raise the new bars once, after the last old one went down
-			var bars = d3.select('#FlightsChart').selectAll('.stackBar rect');
-			if (bars.empty()) {
-				t.raise_up(stackedData, isMissions);
-			} else {
-				bars.transition()
-		        	.duration(REDUCED_MOTION.matches ? 0 : this.down_d)
-		        	.attr('y', this.height)
-		        	.attr('height', 0)
-		        	.on("end", function () {
-		        		if (pending) {
-		        			pending = false;
-		        			t.raise_up(stackedData, isMissions);
-		        		}
-		        	});
-			}
-        }
-        this.emptyData = stackedData.length == 0
+        // the columns go from their old height to the new one (no drop to zero)
+        this.raise_up(stackedData, isMissions);
 	}
 
 	raise_up(stackedData, isMissions, instant){
 		var svg = d3.select('#FlightsChart');
-		svg.selectAll(".stackBar").remove();
-		if (!stackedData.length) {
-			svg.select(".grid").selectAll("*").remove();
-			svg.select(".Xaxis").selectAll("*").remove();
+		var dur = instant || REDUCED_MOTION.matches ? 0 : this.morph_d;
+		var height = this.height;
+		function glide(sel) { return sel.transition("bars").duration(dur).ease(d3.easeCubicInOut); }
+		if (!stackedData.length) {        // everything sinks, then the chart is empty
+			glide(svg.selectAll(".stackBar rect")).attr("y", height).attr("height", 0)
+				.on("end", function () { d3.select(this.parentNode).remove(); });
 			return;
 		}
 
@@ -123,13 +102,18 @@ class FlightsChart{
 		// recessive grid with the value labels on the left
 		var ticks = y.ticks(4).filter(v => Math.floor(v) === v);
 		var grid = svg.select(".grid").selectAll("g").data(ticks, d => d);
-		grid.exit().remove();
-		var gridEnter = grid.enter().append("g");
+		// the scale glides with the bars: old lines fade out at their new place
+		var y0 = this.lastY || y;
+		glide(grid.exit()).style("opacity", 0).attr("transform", d => "translate(0," + y(d) + ")").remove();
+		var gridEnter = grid.enter().append("g")
+			.style("opacity", 0)
+			.attr("transform", d => "translate(0," + y0(d) + ")");
 		gridEnter.append("line");
 		gridEnter.append("text").attr("dy", "0.32em");
 		grid = gridEnter.merge(grid);
-		grid.attr("class", d => d === 0 ? "baseline" : null)
-			.attr("transform", d => "translate(0," + y(d) + ")");
+		grid.attr("class", d => d === 0 ? "baseline" : null);
+		glide(grid).style("opacity", 1).attr("transform", d => "translate(0," + y(d) + ")");
+		this.lastY = y;
 		grid.select("line").attr("x1", m.left).attr("x2", this.width);
 		grid.select("text").attr("x", m.left - 8).text(d => d);
 
@@ -186,36 +170,33 @@ class FlightsChart{
 		this.hideTip();      // new bars: the old tooltip is about rows no longer here
 		var tip = this.tip.html(tooltip_render);
 
+		// one column per year, one segment per country, matched by key: a
+		// column that stays changes its height, a new one grows from the
+		// baseline, one that is gone sinks into it
 		var barWidth = Math.min(x.bandwidth(), 24);
-		var stackBars = svg.select(".bars").selectAll(".stackBar")
-			.data(stackedData)
-	   		.enter()
-	    	.append('g')
-		    	.attr("class", "stackBar")
-		        .attr("transform", d => "translate(" + (x(d.key) + (x.bandwidth() - barWidth) / 2) + ",0)");
-
-		var height = this.height;
-		var rects = stackBars.selectAll('rect')
-		    	.data(d => d.values)
-		    	.enter()
-		    	.append("rect")
-				.attr("width", barWidth)
-				.attr("rx", Math.min(2, barWidth / 3))
-	        	.style("fill", d => color(d.key));
+		function place(d) { return "translate(" + (x(d.key) + (x.bandwidth() - barWidth) / 2) + ",0)"; }
+		var stackBars = svg.select(".bars").selectAll(".stackBar").data(stackedData, d => d.key);
+		glide(stackBars.exit().selectAll("rect")).attr("y", height).attr("height", 0);
+		glide(stackBars.exit()).remove();
+		stackBars = stackBars.enter().append('g')
+			.attr("class", "stackBar")
+			.attr("transform", place)
+			.merge(stackBars);
+		stackBars.interrupt("bars").attr("transform", place);
 
 		function top(d) { return y(d.prev + d.values.length); }
 		function size(d) { return Math.max(0.5, y(d.prev) - top(d) - (d.prev > 0 ? gap : 0)); }
 
-		if (instant) {
-			rects.attr("y", top).attr("height", size);
-		} else {
-	        rects.attr("y", height).attr("height", 0)
-	    		.transition()
-	        	.duration(REDUCED_MOTION.matches ? 0 : this.up_d)
-	  			.ease(d3.easeCubicOut)
-		        .attr("y", top)
-				.attr("height", size);
-		}
+		var rects = stackBars.selectAll('rect').data(d => d.values, d => d.key);
+		glide(rects.exit()).attr("y", height).attr("height", 0).remove();
+		rects = rects.enter().append("rect")
+			.attr("y", height)
+			.attr("height", 0)
+			.style("fill", d => color(d.key))
+			.merge(rects)
+			.attr("width", barWidth)
+			.attr("rx", Math.min(2, barWidth / 3));
+		glide(rects).attr("y", top).attr("height", size);
 
 		rects.on('mouseover', function (d) {
 				svg.classed("hovering", true);
