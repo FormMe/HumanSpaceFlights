@@ -2033,89 +2033,158 @@ canvas#Graph {
 .parcoords-plot.pc-out { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .parcoords-plot { transition: none; } }
 
-/* ================= filters: a grid of tiles =================
-   Every filter in its place in both views (no jump when switching):
-   missions filters in two columns, astronaut filters in three under them.
-   A tile: small caps label on top, the value under it; the select covers
-   the whole tile, so all of it opens the list. */
-.sun_filters .filters-row { display: grid; grid-template-columns: 1fr; gap: 8px; }
-.sun_filters .filt { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.sun_filters .filt-astr { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.sun_filters .filt legend { display: none; }
-.sun_filters .filters-row .field {
-  position: relative;
-  display: block;
-  height: 54px;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border-radius: 12px;
-  border: 1px solid var(--field-border);
-  background: var(--field-bg);
-  transition: border-color .15s, background-color .15s, opacity .25s;
-}
-.sun_filters .filters-row .field label {
-  position: absolute;
-  top: 9px; left: 12px; right: 10px;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  pointer-events: none;
-  z-index: 1;
-}
-.sun_filters .filters-row .field .select { position: absolute; inset: 0; width: auto; max-width: none; margin: 0; }
-.sun_filters .filters-row .field .select select {
-  position: absolute; inset: 0;
-  width: 100%; max-width: none; height: 100%;
-  padding: 22px 26px 0 12px;
-  border: 0; border-radius: 12px;
-  background: transparent; box-shadow: none;
-  font-size: 15px; font-weight: 600; color: var(--text);
-  text-overflow: ellipsis;
-  cursor: pointer;
-}
-.sun_filters .filters-row .field .select__arrow {
-  top: auto; bottom: 15px; right: 12px;
-  border-width: 5px 4px 0 4px;
-}
-.sun_filters .filters-row .field:hover { border-color: rgba(255, 255, 255, 0.24); background: rgba(255, 255, 255, 0.07); }
-.sun_filters .filters-row .field:focus-within { border-color: var(--accent-strong); box-shadow: 0 0 0 3px var(--accent-soft); }
-.sun_filters .filters-row .field.is-set { border-color: rgba(138, 127, 240, 0.7); background: var(--accent-soft); }
-.sun_filters .filters-row .field.is-set label { color: var(--accent-strong); }
-/* astronaut filters in the Missions view (mobile.js): in place, dimmed */
-.sun_filters .filters-row .field.dimmed { opacity: 0.38; border-style: dashed; cursor: pointer; }
-.sun_filters .filters-row .field.dimmed select { pointer-events: none; }
-.sun_filters .filters-row .field.dimmed:hover { opacity: 0.6; }
-@media (max-width: 760px) {
-  .sun_filters .filters-row .field .select select { font-size: 16px; }   /* no zoom on iOS */
-}
-@media (max-width: 340px) {
-  .sun_filters .filt-astr { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .sun_filters .filt-astr .field:last-child { grid-column: 1 / -1; }
-}
 /* very narrow phones: the country summary in one column (two ran together) */
 @media (max-width: 360px) {
   .sum-legend { grid-template-columns: 1fr; }
 }
-/* Reset sits on the line under the tiles, right of the count, and takes no
-   room of its own: picking a filter moves nothing */
-.sun_filters .filters-row { position: relative; }
-.sun_filters .filters-reset {
-  display: inline-flex;
-  position: absolute; right: 0; top: calc(100% + 16px);
-  height: 34px; padding: 0 12px;
-  border-radius: 999px;
+
+
+/* ================= filters: one slim bar =================
+   One row, always the same height. A filter shows its name, or (once
+   picked) its value in the accent colour; the native select lies over it,
+   invisible, so the system list opens. Astronaut filters only in the
+   Astronauts view. Too many for a narrow phone: the bar scrolls sideways. */
+.sun_filters .filters-row {
+  display: flex;
+  flex: none;                /* scrolls sideways: as a flex item it could shrink to nothing */
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0;
+  height: 40px;
+  padding: 0 4px;
   border: 1px solid var(--field-border);
+  border-radius: 12px;
   background: var(--field-bg);
-  color: var(--text);
-  font-size: 13px;
-  visibility: hidden; opacity: 0;
-  transition: opacity .2s, visibility .2s, background-color .15s;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
 }
-.sun_filters .filters-reset:hover { background: var(--accent-soft); border-color: var(--accent-strong); }
-.filters-active .sun_filters .filters-reset { visibility: visible; opacity: 1; }
+.sun_filters .filters-row::-webkit-scrollbar { display: none; }
+.sun_filters .filters-row.more-right { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); }
+.sun_filters .filt { display: contents; }
+.sun_filters .filt legend { display: none; }
+body:not(.mode-astronauts) .sun_filters .filt-astr { display: none; }
+.sun_filters .filters-row .field {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  margin: 0;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  transition: background-color .15s;
+}
+/* thin dividers between the filters */
+.sun_filters .filters-row .field + .field::before,
+.sun_filters .filt-astr .field:first-of-type::before {
+  content: ""; position: absolute; left: 0; top: 9px; bottom: 9px; width: 1px; background: var(--divider);
+}
+.sun_filters .filters-row .field:hover { background: rgba(255, 255, 255, 0.06); }
+.sun_filters .filters-row .field:focus-within { background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1.5px var(--accent-strong); }
+.sun_filters .filters-row .field.is-set { background: var(--accent-soft); }
+.sun_filters .filters-row .field.is-set::before,
+.sun_filters .filters-row .field.is-set + .field::before { opacity: 0; }
+.sun_filters .filters-row .field label {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+.sun_filters .filters-row .field .fv {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13.5px; font-weight: 600; color: var(--text-muted); white-space: nowrap;
+  pointer-events: none;
+}
+.sun_filters .filters-row .field .fv::after {
+  content: ""; border-style: solid; border-width: 4px 3.5px 0 3.5px;
+  border-color: currentColor transparent transparent transparent; opacity: .8;
+}
+.sun_filters .filters-row .field:hover .fv { color: var(--text); }
+.sun_filters .filters-row .field.is-set .fv { color: var(--accent-strong); }
+.sun_filters .filters-row .field .select { position: absolute; inset: 0; width: auto; max-width: none; margin: 0; }
+.sun_filters .filters-row .field { cursor: pointer; outline: none; }
+.sun_filters .filters-row .field:focus-visible { box-shadow: inset 0 0 0 1.5px var(--accent-strong); }
+.sun_filters .filters-row .field .select { pointer-events: none; }
+.sun_filters .filters-row .field .select select {
+  position: absolute; inset: 0; width: 100%; max-width: none; height: 100%;
+  padding: 0; border: 0; opacity: 0; pointer-events: none;
+}
+.sun_filters .filters-row .field .select__arrow { display: none; }
+/* reset: a small x pinned to the right end of the bar, even while it scrolls */
+.sun_filters .filters-reset {
+  display: none; flex: none; align-items: center; justify-content: center;
+  position: sticky; right: 0; z-index: 1;
+  margin-left: auto; width: 32px; height: 32px; padding: 0;
+  border: 0; border-radius: 8px;
+  background: #171d2c;
+  box-shadow: -10px 0 10px -2px #171d2c;   /* the items slide under it */
+  color: var(--text-muted); font-size: 0;
+  visibility: visible; opacity: 1;
+}
+.sun_filters .filters-reset svg { width: 12px; height: 12px; }
+.sun_filters .filters-reset:hover { color: var(--text); background: #222939; }
+.filters-active .sun_filters .filters-reset { display: inline-flex; }
+@media (max-width: 760px) {
+  .sun_filters .filters-row { height: 44px; }
+  .sun_filters .filters-row .field { height: 36px; padding: 0 10px; }
+  .sun_filters .filters-reset { width: 36px; height: 36px; }
+  .sun_filters .filters-row .field .fv { font-size: 13px; gap: 5px; }
+}
+
+/* the filter menu (mobile.js): a dark card under the filter */
+.fmenu {
+  position: fixed; z-index: 60;
+  display: flex; flex-direction: column; gap: 2px;
+  max-height: min(360px, 60vh); overflow-y: auto; overscroll-behavior: contain;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(16, 21, 36, 0.97);
+  box-shadow: 0 18px 44px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  opacity: 0; transform: translateY(-4px) scale(.98); transform-origin: top left;
+  transition: opacity .14s ease, transform .14s ease;
+}
+.fmenu[hidden] { display: none; }
+.fmenu.show { opacity: 1; transform: none; }
+.fmenu-item {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 36px; padding: 0 14px 0 10px;
+  border: 0; border-radius: 9px; background: transparent;
+  color: var(--text); font: inherit; font-size: 14px; font-weight: 600; text-align: left;
+  white-space: nowrap; cursor: pointer;
+}
+.fmenu-item::before {               /* the check of the current value */
+  content: ""; flex: none; width: 14px; height: 14px; opacity: 0;
+  background: var(--accent-strong);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2.5 7.5l3 3 6-7' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2.5 7.5l3 3 6-7' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.fmenu-item[aria-selected="true"] { color: var(--accent-strong); }
+.fmenu-item[aria-selected="true"]::before { opacity: 1; }
+.fmenu-item:hover, .fmenu-item:focus-visible { background: rgba(255, 255, 255, 0.07); outline: none; }
+.fmenu-item:focus-visible { box-shadow: inset 0 0 0 1.5px var(--accent-strong); }
+@media (max-width: 760px) { .fmenu-item { min-height: 42px; font-size: 15px; } }
+@media (prefers-reduced-motion: reduce) { .fmenu { transition: none; } }
+
+/* the three astronaut filters: one button, one menu in sections */
+.sun_filters .filt-astr .field:not(.fgroup) { display: none; }
+.sun_filters .filters-row .fgroup .fv { max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+.sun_filters .filters-row .fgroup .fv::after { flex: none; }
+.fmenu-head {
+  padding: 8px 10px 4px 34px;
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-dim);
+}
+.fmenu-head:not(:first-child) { margin-top: 4px; border-top: 1px solid var(--divider); padding-top: 10px; }
+/* narrow phones: long picked values are cut short, so the bar still fits */
+.sun_filters .filters-row .fvt { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.sun_filters .filters-row .fgroup .fv { max-width: none; overflow: visible; }
+.sun_filters .filters-row .fgroup .fvt { max-width: 150px; }
+@media (max-width: 400px) {
+  .sun_filters .filters-row .field { padding: 0 8px; }
+  .sun_filters .filters-row .is-set .fvt { max-width: 64px; }
+  .sun_filters .filters-row { padding: 0 3px; }
+  .sun_filters .filters-reset { width: 30px; }
+}

@@ -98,30 +98,8 @@
 
   function astronautsMode() { return dataType.value === "Astronauts"; }
 
-  // the astronaut filters stay in their place in both views (showing them
-  // only for astronauts moved everything below): in the Missions view they
-  // are dimmed, do nothing, and a tap on one switches to Astronauts
-  function syncAstronautFilters() {
-    var off = !astronautsMode();
-    astronautFilters.forEach(function (id) {
-      var sel = document.getElementById(id), field = sel.closest(".field");
-      sel.tabIndex = off ? -1 : 0;
-      sel.setAttribute("aria-disabled", String(off));
-      field.classList.toggle("dimmed", off);
-      field.title = off ? "Astronaut filter: tap to show astronauts" : "";
-    });
-  }
-  astronautFilters.forEach(function (id) {
-    document.getElementById(id).closest(".field").addEventListener("click", function () {
-      if (astronautsMode()) return;
-      dataType.value = "Astronauts";
-      dataType.dispatchEvent(new Event("change", { bubbles: true }));
-    });
-  });
-
   function syncMode() {
     body.classList.toggle("mode-astronauts", astronautsMode());
-    syncAstronautFilters();
     modeButtons.forEach(function (b) {
       var on = b.getAttribute("data-mode") === dataType.value;
       b.classList.toggle("active", on);
@@ -137,15 +115,154 @@
   });
 
 
+  // the bar shows a filter's name, or its value once one is picked
+  var filtersRow = document.getElementById("FiltersPanel");
+  missionFilters.concat(astronautFilters).forEach(function (id) {
+    var field = document.getElementById(id).closest(".field");
+    var fv = document.createElement("span");
+    fv.className = "fv";
+    fv.setAttribute("aria-hidden", "true");
+    fv.innerHTML = "<span class='fvt'></span>";
+    field.insertBefore(fv, field.firstChild);
+  });
+  // ---- the filter menu: our own list instead of the system one ------------
+  // The selects stay the source of truth (their values, their change event
+  // that runs filter()); a field is the button, the menu is a listbox in
+  // <body>. The three astronaut filters share one button and one menu (in
+  // sections), so the bar holds three items at most and fits one row.
+  var menu = document.createElement("div");
+  menu.className = "fmenu";
+  menu.setAttribute("role", "listbox");
+  menu.hidden = true;
+  body.appendChild(menu);
+  var menuField = null;
+
+  function closeMenu(refocus) {
+    if (!menuField) return;
+    menu.hidden = true;
+    menu.classList.remove("show");
+    menuField.setAttribute("aria-expanded", "false");
+    if (refocus) menuField.focus({ preventScroll: true });
+    menuField = null;
+  }
+  function pick(sel, value) {
+    closeMenu(true);
+    if (sel.value === value) return;
+    sel.value = value;
+    sel.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+  function labelOf(sel) { return sel.closest(".field").querySelector("label").textContent; }
+  function openMenu(field, sels) {
+    menuField = field;
+    menu.setAttribute("aria-label", sels.length > 1 ? "Astronaut filters" : labelOf(sels[0]));
+    menu.innerHTML = "";
+    sels.forEach(function (sel) {
+      if (sels.length > 1) {
+        var h = document.createElement("div");
+        h.className = "fmenu-head";
+        h.setAttribute("role", "presentation");
+        h.textContent = labelOf(sel);
+        menu.appendChild(h);
+      }
+      Array.prototype.forEach.call(sel.options, function (o) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "fmenu-item";
+        b.setAttribute("role", "option");
+        b.setAttribute("aria-selected", String(o.value === sel.value));
+        b.textContent = o.text;
+        b.addEventListener("click", function () { pick(sel, o.value); });
+        menu.appendChild(b);
+      });
+    });
+    menu.hidden = false;
+    // under the field, kept on the screen
+    var r = field.getBoundingClientRect(), vw = document.documentElement.clientWidth, vh = window.innerHeight;
+    var w = Math.max(r.width, menu.offsetWidth), h = menu.offsetHeight;
+    var left = Math.min(Math.max(8, r.left), vw - w - 8);
+    var top = r.bottom + 6 + h > vh - 8 && r.top - 6 - h > 8 ? r.top - 6 - h : r.bottom + 6;
+    menu.style.left = left + "px";
+    menu.style.top = top + "px";
+    menu.style.minWidth = r.width + "px";
+    field.setAttribute("aria-expanded", "true");
+    requestAnimationFrame(function () { menu.classList.add("show"); });
+    (menu.querySelector("[aria-selected=true]") || menu.querySelector(".fmenu-item")).focus({ preventScroll: true });
+  }
+  function asButton(field, sels) {
+    field.tabIndex = 0;
+    field.setAttribute("role", "button");
+    field.setAttribute("aria-haspopup", "listbox");
+    field.setAttribute("aria-expanded", "false");
+    field.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (menuField === field) closeMenu(true); else { closeMenu(false); openMenu(field, sels); }
+    });
+    field.addEventListener("keydown", function (e) {
+      if (["Enter", " ", "ArrowDown", "ArrowUp"].indexOf(e.key) >= 0) { e.preventDefault(); closeMenu(false); openMenu(field, sels); }
+    });
+  }
+  missionFilters.concat(astronautFilters).forEach(function (id) {
+    var sel = document.getElementById(id);
+    sel.tabIndex = -1;
+    sel.setAttribute("aria-hidden", "true");
+  });
+  missionFilters.forEach(function (id) {
+    var sel = document.getElementById(id);
+    asButton(sel.closest(".field"), [sel]);
+  });
+  // one button for the three astronaut filters
+  var astroSels = astronautFilters.map(function (id) { return document.getElementById(id); });
+  var astroField = document.createElement("div");
+  astroField.className = "field fgroup";
+  astroField.innerHTML = "<span class='fv' aria-hidden='true'><span class='fvt'></span></span>";
+  astroSels[0].closest(".filt").insertBefore(astroField, astroSels[0].closest(".field"));
+  asButton(astroField, astroSels);
+
+  menu.addEventListener("click", function (e) { e.stopPropagation(); });
+  menu.addEventListener("keydown", function (e) {
+    var items = Array.prototype.slice.call(menu.querySelectorAll(".fmenu-item")), i = items.indexOf(document.activeElement);
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      items[(i + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length].focus();
+    } else if (e.key === "Home" || e.key === "End") {
+      e.preventDefault(); items[e.key === "Home" ? 0 : items.length - 1].focus();
+    } else if (e.key === "Escape") {
+      e.preventDefault(); e.stopPropagation(); closeMenu(true);
+    } else if (e.key === "Tab") {
+      closeMenu(true);
+    }
+  });
+  document.addEventListener("click", function () { closeMenu(false); });
+  window.addEventListener("resize", function () { closeMenu(false); });
+  document.addEventListener("scroll", function (e) { if (!menu.contains(e.target)) closeMenu(false); }, { capture: true, passive: true });
+
+  // a soft edge on the right while more filters are hidden there
+  function syncOverflow() {
+    var more = filtersRow.scrollWidth - filtersRow.clientWidth - filtersRow.scrollLeft > 2;
+    filtersRow.classList.toggle("more-right", more);
+  }
+  filtersRow.addEventListener("scroll", syncOverflow, { passive: true });
+  window.addEventListener("resize", syncOverflow);
+
   function syncFilters() {
     var active = 0;
     missionFilters.concat(astronautFilters).forEach(function (id) {
       var sel = document.getElementById(id);
       var set = sel.value !== "All";
-      sel.closest(".field").classList.toggle("is-set", set);
+      var field = sel.closest(".field");
+      field.classList.toggle("is-set", set);
+      field.querySelector(".fvt").textContent = set ? sel.options[sel.selectedIndex].text
+                                                   : field.querySelector("label").textContent;
+      field.setAttribute("aria-label", field.querySelector("label").textContent + ": " + sel.options[sel.selectedIndex].text);
       if (set && (missionFilters.indexOf(id) >= 0 || astronautsMode())) active++;
     });
+    // the astronaut button: its name, or the values picked
+    var picked = astroSels.filter(sel => sel.value !== "All").map(sel => sel.options[sel.selectedIndex].text);
+    astroField.classList.toggle("is-set", picked.length > 0);
+    astroField.querySelector(".fvt").textContent = picked.length ? picked.join(" · ") : "Astronaut";
+    astroField.setAttribute("aria-label", "Astronaut filters: " + astroSels.map(sel => labelOf(sel) + " " + sel.options[sel.selectedIndex].text).join(", "));
     body.classList.toggle("filters-active", active > 0);
+    syncOverflow();
   }
 
   document.getElementById("FiltersReset").addEventListener("click", function () {
