@@ -100,8 +100,11 @@ class FlightsChart{
 		}
 
 		var m = this.margin, gap = this.gap, color = this.color;
-		var first = parseInt(stackedData[0].key),
-		    last = parseInt(stackedData[stackedData.length - 1].key);
+		// always the whole history: with a filter on, the bars keep their
+		// place in time (the axis used to shrink to the years found)
+		var found = stackedData.map(d => parseInt(d.key));
+		var all = typeof missions !== "undefined" && missions ? missions.map(d => +d.Year).filter(Boolean) : [];
+		var first = d3.min(all.concat(found)), last = d3.max(all.concat(found));
 		var years = d3.range(first, last + 1);
 
 		var x = d3.scaleBand()
@@ -110,7 +113,8 @@ class FlightsChart{
 			.paddingOuter(0.1)
 			.domain(years);
 
-		var maxY = d3.max(stackedData, d => d3.max(d.values, c => c.prev + c.values.length));
+		// at least 4 high: one launch is a short bar, not a wall
+		var maxY = Math.max(4, d3.max(stackedData, d => d3.max(d.values, c => c.prev + c.values.length)));
 		var y = d3.scaleLinear()
 			.range([this.height, m.top])
 			.domain([0, maxY])
