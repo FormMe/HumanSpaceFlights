@@ -1984,9 +1984,6 @@ body.sheet-open, html:has(body.sheet-open) { overflow: hidden; }
 .parcoords-plot .axis.filtered .rail { fill: var(--accent-soft); stroke: rgba(138, 127, 240, 0.35); }
 .parcoords-plot .axis.filtered .title { fill: var(--accent-strong); }
 .parcoords-plot .brush .selection { fill-opacity: 0.26; stroke-width: 1.5px; }
-/* the rows left out by the picked ranges (drawn once, shown while filtering) */
-.parcoords-plot canvas.pc-ghost { opacity: 0; transition: opacity .2s; }
-.parcoords-plot canvas.pc-ghost.on { opacity: 1; }
 
 /* the one-time demo: a dot draws a range along an axis */
 .pc-demo { pointer-events: none; opacity: 0; }

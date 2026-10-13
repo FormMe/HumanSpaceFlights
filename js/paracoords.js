@@ -129,10 +129,6 @@ var svgRoot = plot.append("svg")
     .attr("preserveAspectRatio", "xMinYMin meet");
 var svg = svgRoot.append("g");
 
-// under the lines: every row once, faint and grey; shown only while a
-// range is picked, so the rows left out keep their place as context
-var ghostCanvas = plot.append("canvas").attr("class", "pc-ghost");
-var ghostCtx = ghostCanvas.node().getContext("2d");
 var canvas = plot.append("canvas");
 var ctx = canvas.node().getContext("2d");
 
@@ -155,34 +151,31 @@ function layout(dims) {
       : "Drag along any axis to pick a range. Pick on several axes to combine; click an axis to clear it.");
   svgRoot.attr("viewBox", "0 0 " + W2 + " " + H2);
   svg.attr("transform", "translate(" + m.left + "," + m.top + ")");
-  d3.selectAll([canvas.node(), ghostCanvas.node()])     // both layers, same box
+  canvas
     .attr("width", Math.round(w * pixelRatio))
     .attr("height", Math.round(h * pixelRatio))
     .style("left", (100 * m.left / W2) + "%")
     .style("top", (100 * m.top / H2) + "%")
     .style("width", (100 * w / W2) + "%")
     .style("height", (100 * h / H2) + "%");
-  [ctx, ghostCtx].forEach(function (c) {
-    c.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    c.globalCompositeOperation = 'source-over';
-  });
+  ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  ctx.globalCompositeOperation = 'source-over';
 }
 
 // a point of a line: position of the axis, value along it
 function point(i, v) { return vertical ? [v, xscale(i)] : [xscale(i), v]; }
 
-// ghost: drawn faint and grey on the ghost canvas
-function draw(d, ghost) {
-  var c = ghost === true ? ghostCtx : ctx;
+function draw(d) {
+  var c = ctx;
 
   function cmp(d1, d2) {
       return isMissions ? d1["Launch Mission"] == d2["Launch Mission"] : d1["Name"] == d2["Name"];
   }
 
-  var hl = ghost !== true && (d.highlighted || (info.d && cmp(info.d, d)));
-  c.strokeStyle = hl ? "#ffffff" : ghost === true ? "#8a93a6" : color(d.Country);
+  var hl = d.highlighted || (info.d && cmp(info.d, d));
+  c.strokeStyle = hl ? "#ffffff" : color(d.Country);
   c.lineWidth = hl ? 2.5 : 1.2;
-  c.globalAlpha = hl ? 1 : ghost === true ? 0.05 : 0.22;
+  c.globalAlpha = hl ? 1 : 0.22;
   c.beginPath();
   var coords = dimensions.map(function(p,i) {
                     // check if data element has property and contains a value
@@ -241,8 +234,7 @@ function renderList(_data) {
   if(_data == null) _data = curData;
   lineQueue.invalidate();
   ctx.clearRect(0,0,plotW,plotH);
-  ghostCanvas.classed("on", !!lastFull && _data.length < lastFull.length);
-  _data.forEach(function (d) { draw(d); });
+  _data.forEach(draw);
 }
 
 // data: the rows drawn; domainData: the rows the axes span when they are
@@ -306,9 +298,6 @@ function paracoords_update(data, isMis, domainData) {
   });
 
   ctx.clearRect(0,0,plotW,plotH);
-  ghostCtx.clearRect(0,0,plotW,plotH);
-  ghostCanvas.classed("on", false);
-  data.forEach(function (d) { draw(d, true); });
   showCount(data.length, data.length);
   lineQueue(data);
   selectionList.update(data, isMissions);
