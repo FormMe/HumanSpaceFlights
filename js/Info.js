@@ -161,9 +161,21 @@ class Info{
 			box.classList.toggle("clamp");
 			more.textContent = box.classList.contains("clamp") ? "Read more" : "Show less";
 		});
+		// what is one tap away loads in the background, after this card's photos
+		Photos.warm([].concat.apply([], people.filter(p => p.open).map(function (p) {
+			var k = p.key.slice(2);
+			return k.charAt(0) === "p" ? ["m:" + k.slice(2), k] : [k];
+		})));
 		body.querySelectorAll(".ic-person").forEach(function (el) {
 			var p = people[+el.dataset.i];
-			if (p.open) el.addEventListener("click", p.open);
+			if (p.open) {
+				el.addEventListener("click", p.open);
+				// "t:a:Name" -> the portrait; "t:p:Mission" -> its photo and patch
+				var k = p.key.slice(2);
+				el.addEventListener("pointerdown", function () {
+					Photos.prefetch(k.charAt(0) === "p" ? ["m:" + k.slice(2), k] : [k]);
+				});
+			}
 		});
 		// small portraits / patches next to the names, when we have them
 		body.querySelectorAll(".ic-ava").forEach(function (el) {

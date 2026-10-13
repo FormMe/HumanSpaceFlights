@@ -170,6 +170,11 @@
     opener = null;
   }
 
+  // a sheet too short to scroll would hand the swipe to the page behind
+  infoCard.addEventListener("touchmove", function (e) {
+    if (body.classList.contains("sheet-open") && infoCard.scrollHeight <= infoCard.clientHeight + 1) e.preventDefault();
+  }, { passive: false });
+
   new MutationObserver(function () {
     if (rows.firstChild) {
       if (phone.matches) openSheet();

@@ -315,6 +315,14 @@ class Graph{
 			self.setHover(self.nodeAt(p[0], p[1]), e);
 		});
 		canvas.addEventListener("mouseleave", function () { self.setHover(null); });
+		// the photos start loading as the finger (or button) goes down,
+		// not when the click comes, about 100-200 ms later
+		canvas.addEventListener("pointerdown", function (e) {
+			var p = local(e), d = self.nodeAt(p[0], p[1]);
+			if (d) Photos.prefetch(d.type === "mission"
+				? ["m:" + d.value["Launch Mission"], "p:" + d.value["Launch Mission"]]
+				: ["a:" + d.value.Name]);
+		});
 		canvas.addEventListener("click", function (e) {
 			var p = local(e), d = self.nodeAt(p[0], p[1]);
 			if (d) { self.setHover(null); self.clicked(d); }

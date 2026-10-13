@@ -89,7 +89,9 @@ var Photos = (function () {
 	// start loading the packs of these keys (pointer over a row, a node...)
 	function prefetch(keys) {
 		loadIndex().then(function (idx) {
-			keys.forEach(function (k) { if (k && k in idx) loadPack(idx[k]); });
+			var wanted = keys.filter(k => k && k in idx && !loaded[idx[k]]);
+			if (wanted.length) pauseBackground();      // the connection is for these now
+			wanted.forEach(function (k) { loadPack(idx[k], "high"); });
 		});
 	}
 
@@ -119,26 +121,45 @@ var Photos = (function () {
 	// after the page has settled: the tiny copies (mission photos, patches,
 	// then portraits; about 3 MB), one pack at a time and only while no photo
 	// asked for by a click is loading, so they never slow that photo down
-	var busy = 0, queue = [];
+	var busy = 0, queue = [], pumping = false;
 	function requeue(n) { if (queue.indexOf(n) < 0) queue.unshift(n); }
+	// one background download at a time, only while no card photo is loading
+	function pump() {
+		if (pumping) return;
+		pumping = true;
+		(function next() {
+			if (!queue.length) { pumping = false; return; }
+			if (busy) return setTimeout(next, 150);
+			var n = queue.shift();
+			if (loaded[n] || packs[n]) return next();
+			loadPack(n, "low", true).then(next, function () { setTimeout(next, 150); });
+		})();
+	}
 	function preloadTiny() {
 		loadIndex().then(function (idx) {
 			var order = { m: 0, p: 1, a: 2 }, names = {};
 			Object.keys(idx).forEach(function (k) { if (k.indexOf("t:") === 0) names[idx[k]] = order[k.charAt(2)]; });
-			queue = Object.keys(names).sort((x, y) => names[x] - names[y] || (x < y ? -1 : 1));
-			(function next() {
-				if (!queue.length) return;
-				if (busy) return setTimeout(next, 150);
-				var n = queue.shift();
-				if (loaded[n]) return next();
-				loadPack(n, "low", true).then(next, function () { setTimeout(next, 150); });
-			})();
+			Object.keys(names).sort((x, y) => names[x] - names[y] || (x < y ? -1 : 1))
+				.forEach(function (n) { if (queue.indexOf(n) < 0) queue.push(n); });
+			pump();
+		});
+	}
+	// the photos one tap away (the crew of an open card, an astronaut's
+	// missions): ahead of the tiny copies in the background queue
+	var saveData = !!(navigator.connection && navigator.connection.saveData);
+	function warm(keys) {
+		if (saveData) return;
+		loadIndex().then(function (idx) {
+			keys.slice().reverse().forEach(function (k) {
+				if (k in idx && !loaded[idx[k]] && !packs[idx[k]]) requeue(idx[k]);
+			});
+			pump();
 		});
 	}
 	loadIndex();
 	(window.requestIdleCallback || function (f) { setTimeout(f, 1500); })(preloadTiny, { timeout: 3000 });
 
-	return { get: get, show: show, peek: peek, prefetch: prefetch };
+	return { get: get, show: show, peek: peek, prefetch: prefetch, warm: warm };
 })();
 
 // Full-screen view of a photo: it grows out of its place in the card and
