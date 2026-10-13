@@ -155,7 +155,7 @@ function layout(dims) {
       : "Drag along any axis to pick a range. Pick on several axes to combine; click an axis to clear it.");
   svgRoot.attr("viewBox", "0 0 " + W2 + " " + H2);
   svg.attr("transform", "translate(" + m.left + "," + m.top + ")");
-  canvas.merge(ghostCanvas)
+  d3.selectAll([canvas.node(), ghostCanvas.node()])     // both layers, same box
     .attr("width", Math.round(w * pixelRatio))
     .attr("height", Math.round(h * pixelRatio))
     .style("left", (100 * m.left / W2) + "%")
@@ -361,7 +361,19 @@ function paracoords_update(data, isMis, domainData) {
             : d3.brushY().extent([[-10, 0], [10, plotH]]))
           .on("start", brushstart)
           .on("brush", brush)
-          .on("end", function () {
+          .on("end", function (d) {
+            // a range on a category axis that misses every value (dropped
+            // between two of them) takes the nearest one instead of nothing
+            var sel = d3.event.selection;
+            if (d3.event.sourceEvent && sel && d.type.key === "String" &&
+                !d.domain.some(function (v) { var x = d.scale(v); return sel[0] <= x && x <= sel[1]; })) {
+              var mid = (sel[0] + sel[1]) / 2, half = Math.max(8, d.scale.step() * 0.3);
+              var x = d.scale(d.domain.reduce(function (a, b) {
+                return Math.abs(d.scale(b) - mid) < Math.abs(d.scale(a) - mid) ? b : a;
+              }));
+              d3.select(this).call(d.brush.move, [x - half, x + half]);   // sends its own end event
+              return;
+            }
             var selected = brush();
             summaryChart.update(selected, isMissions);
             if (isMissions) {
@@ -385,8 +397,10 @@ function paracoords_update(data, isMis, domainData) {
   addDemo(axes);
     
   function brushstart() {
-    if (d3.event.sourceEvent) {                                          // none for brush.move
-      d3.event.sourceEvent.stopPropagation();
+    // a pointer or a finger (brush.move has no DOM event behind it)
+    var e = d3.event.sourceEvent;
+    if (e && typeof e.stopPropagation === "function") {
+      e.stopPropagation();
       stopDemo(true);
     }
   }

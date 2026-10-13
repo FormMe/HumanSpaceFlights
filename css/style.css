@@ -1722,8 +1722,9 @@ canvas#Graph {
     font-size: 13.5px;
     text-align: left;
   }
-  .crew-helmet { grid-row: 1 / 3; }
-  .crew-hint { max-width: none; margin: 0; font-size: 11.5px; line-height: 1.3; }
+  .crew-helmet { grid-row: 1 / 3; align-self: center; }
+  /* shown whatever the phone says about hover: hidden, it left an empty row */
+  .crew-hint { max-width: none; margin: 0; opacity: .9; font-size: 11.5px; line-height: 1.3; }
 }
 
 .crew-modal {

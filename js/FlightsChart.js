@@ -165,7 +165,7 @@ class FlightsChart{
 		}
 
 		if (!this.tip) {
-			this.tip = d3.tip().attr('class', 'd3-tip').direction('e').offset([0, 10]);
+			this.tip = d3.tip().attr('class', 'd3-tip bars-tip').direction('e').offset([0, 10]);
 			svg.call(this.tip);
 		}
 		var tip = this.tip.html(tooltip_render);
@@ -204,7 +204,14 @@ class FlightsChart{
 		rects.on('mouseover', function (d) {
 				svg.classed("hovering", true);
 				d3.select(this.parentNode).classed("hover", true);
+				// opens away from the screen edge, and stays on the screen
+				var r = this.getBoundingClientRect(), vw = document.documentElement.clientWidth;
+				var west = r.left + r.width / 2 > vw / 2;
+				tip.direction(west ? 'w' : 'e').offset([0, west ? -10 : 10]);
 				tip.show.apply(this, arguments);
+				var node = document.querySelector('.bars-tip'), t = node.getBoundingClientRect();
+				var dx = Math.min(0, vw - 8 - t.right) || Math.max(0, 8 - t.left);
+				if (dx) node.style.left = (parseFloat(node.style.left) + dx) + "px";
 			})
 			.on('mouseout', function () {
 				svg.classed("hovering", false);
