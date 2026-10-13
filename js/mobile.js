@@ -98,8 +98,30 @@
 
   function astronautsMode() { return dataType.value === "Astronauts"; }
 
+  // the astronaut filters stay in their place in both views (showing them
+  // only for astronauts moved everything below): in the Missions view they
+  // are dimmed, do nothing, and a tap on one switches to Astronauts
+  function syncAstronautFilters() {
+    var off = !astronautsMode();
+    astronautFilters.forEach(function (id) {
+      var sel = document.getElementById(id), field = sel.closest(".field");
+      sel.tabIndex = off ? -1 : 0;
+      sel.setAttribute("aria-disabled", String(off));
+      field.classList.toggle("dimmed", off);
+      field.title = off ? "Astronaut filter: tap to show astronauts" : "";
+    });
+  }
+  astronautFilters.forEach(function (id) {
+    document.getElementById(id).closest(".field").addEventListener("click", function () {
+      if (astronautsMode()) return;
+      dataType.value = "Astronauts";
+      dataType.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+  });
+
   function syncMode() {
     body.classList.toggle("mode-astronauts", astronautsMode());
+    syncAstronautFilters();
     modeButtons.forEach(function (b) {
       var on = b.getAttribute("data-mode") === dataType.value;
       b.classList.toggle("active", on);
@@ -114,14 +136,6 @@
     });
   });
 
-  // a select is as wide as its current value, so the chips stay compact
-  var ruler = document.createElement("span");
-  ruler.style.cssText = "position:absolute;visibility:hidden;white-space:pre;font:600 16px Nunito,system-ui,sans-serif";
-  body.appendChild(ruler);
-  function sizeSelect(sel) {
-    ruler.textContent = sel.options[sel.selectedIndex].text;
-    sel.style.width = Math.ceil(ruler.getBoundingClientRect().width + 30) + "px";
-  }
 
   function syncFilters() {
     var active = 0;
@@ -130,7 +144,6 @@
       var set = sel.value !== "All";
       sel.closest(".field").classList.toggle("is-set", set);
       if (set && (missionFilters.indexOf(id) >= 0 || astronautsMode())) active++;
-      sizeSelect(sel);
     });
     body.classList.toggle("filters-active", active > 0);
   }
@@ -144,7 +157,6 @@
   });
 
   document.addEventListener("change", function () { syncMode(); syncFilters(); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncFilters);
   syncMode();
   syncFilters();
 

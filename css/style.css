@@ -1111,7 +1111,7 @@ svg#FlightsChart {
 }
 .filt { display: contents; }
 .filt legend { display: none; }
-body:not(.mode-astronauts) .filt-astr { display: none; }
+
 
 .filters-row .field {
   flex-direction: row;
@@ -2032,3 +2032,90 @@ canvas#Graph {
 .parcoords-plot { transition: opacity .18s ease; }
 .parcoords-plot.pc-out { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .parcoords-plot { transition: none; } }
+
+/* ================= filters: a grid of tiles =================
+   Every filter in its place in both views (no jump when switching):
+   missions filters in two columns, astronaut filters in three under them.
+   A tile: small caps label on top, the value under it; the select covers
+   the whole tile, so all of it opens the list. */
+.sun_filters .filters-row { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.sun_filters .filt { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.sun_filters .filt-astr { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sun_filters .filt legend { display: none; }
+.sun_filters .filters-row .field {
+  position: relative;
+  display: block;
+  height: 54px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+  border: 1px solid var(--field-border);
+  background: var(--field-bg);
+  transition: border-color .15s, background-color .15s, opacity .25s;
+}
+.sun_filters .filters-row .field label {
+  position: absolute;
+  top: 9px; left: 12px; right: 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  z-index: 1;
+}
+.sun_filters .filters-row .field .select { position: absolute; inset: 0; width: auto; max-width: none; margin: 0; }
+.sun_filters .filters-row .field .select select {
+  position: absolute; inset: 0;
+  width: 100%; max-width: none; height: 100%;
+  padding: 22px 26px 0 12px;
+  border: 0; border-radius: 12px;
+  background: transparent; box-shadow: none;
+  font-size: 15px; font-weight: 600; color: var(--text);
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.sun_filters .filters-row .field .select__arrow {
+  top: auto; bottom: 15px; right: 12px;
+  border-width: 5px 4px 0 4px;
+}
+.sun_filters .filters-row .field:hover { border-color: rgba(255, 255, 255, 0.24); background: rgba(255, 255, 255, 0.07); }
+.sun_filters .filters-row .field:focus-within { border-color: var(--accent-strong); box-shadow: 0 0 0 3px var(--accent-soft); }
+.sun_filters .filters-row .field.is-set { border-color: rgba(138, 127, 240, 0.7); background: var(--accent-soft); }
+.sun_filters .filters-row .field.is-set label { color: var(--accent-strong); }
+/* astronaut filters in the Missions view (mobile.js): in place, dimmed */
+.sun_filters .filters-row .field.dimmed { opacity: 0.38; border-style: dashed; cursor: pointer; }
+.sun_filters .filters-row .field.dimmed select { pointer-events: none; }
+.sun_filters .filters-row .field.dimmed:hover { opacity: 0.6; }
+@media (max-width: 760px) {
+  .sun_filters .filters-row .field .select select { font-size: 16px; }   /* no zoom on iOS */
+}
+@media (max-width: 340px) {
+  .sun_filters .filt-astr { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sun_filters .filt-astr .field:last-child { grid-column: 1 / -1; }
+}
+/* very narrow phones: the country summary in one column (two ran together) */
+@media (max-width: 360px) {
+  .sum-legend { grid-template-columns: 1fr; }
+}
+/* Reset sits on the line under the tiles, right of the count, and takes no
+   room of its own: picking a filter moves nothing */
+.sun_filters .filters-row { position: relative; }
+.sun_filters .filters-reset {
+  display: inline-flex;
+  position: absolute; right: 0; top: calc(100% + 16px);
+  height: 34px; padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--field-border);
+  background: var(--field-bg);
+  color: var(--text);
+  font-size: 13px;
+  visibility: hidden; opacity: 0;
+  transition: opacity .2s, visibility .2s, background-color .15s;
+}
+.sun_filters .filters-reset:hover { background: var(--accent-soft); border-color: var(--accent-strong); }
+.filters-active .sun_filters .filters-reset { visibility: visible; opacity: 1; }
