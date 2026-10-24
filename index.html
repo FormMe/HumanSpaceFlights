@@ -3,177 +3,195 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Interactive visualization of every human spaceflight mission and astronaut since 1961.">
+    <meta name="theme-color" content="#090a0f">
     <title>Human Space Flights</title>
+    <!-- scripts only from this site; images from here and Wikimedia; fonts from Google -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://upload.wikimedia.org https://thumb.wikimedia.org; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/background.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-	<link rel="stylesheet" href="css/paracoords.css"></link>
     <link rel="stylesheet" href="css/buttons.css"/>
     <link rel="stylesheet" href="css/tooltip.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-	<script src="bower_components/d3/d3.min.js"></script>
+    <link rel="stylesheet" href="css/paracoords.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="bower_components/d3/d3.min.js"></script>
     <script src="bower_components/d3-tip/index.js"></script>
-    <script src="js/divgrid.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/FlightsChart.js"></script>
     <script src="js/SummaryChart.js"></script>
     <script src="js/graphCreator.js"></script>
     <script src="js/graph.js"></script>
+    <script src="js/photos.js"></script>
     <script src="js/Info.js"></script>
-	<script src="js/render-queue.js"></script>
-    <!-- <script src="js/SelectionTable.js" ></script> -->
+    <script src="js/render-queue.js"></script>
 </head>
 <body>
-<!-- 	<div id='stars'></div>
-	<div id='stars2'></div>
-	<div id='stars3'></div> -->
+    <div id="sky" aria-hidden="true"></div>
 
-    <div id="header">
-    	<div style="display: inline-block;">
-	        <img class='logo' src="pics/roscosmos.png" width="77" height="82"/>
-	        <img class='logo' src="pics/nasa.png" width="82" height="82"/>
-	        <img class='logo' src="pics/jaxa.png" width="102" height="82"/>    		
-    	</div>
-        <div style="display: inline-block;">
-        	<span class="page_header">Human Spaceflight Missions</span>
-        	<br>
-        	<span class="project">"Astronet" project</span>
+    <header id="header">
+        <div class="logos">
+            <img class="logo" src="pics/roscosmos.png" alt="Roscosmos" width="77" height="82"/>
+            <img class="logo" src="pics/nasa.png" alt="NASA" width="82" height="82"/>
+            <img class="logo" src="pics/jaxa.png" alt="JAXA" width="102" height="82"/>
         </div>
-    	<div style="display: inline-block;">
-	        <img class='logo' src="pics/CNSA.png" width="112" height="82"/>
-	        <img class='logo' src="pics/esa_white.png" width="162" height="82"/>		
-    	</div>
-		<hr>
+        <div class="heading">
+            <h1 class="page_header">Human Spaceflight Missions</h1>
+            <p class="project">"Astronet" project</p>
+            <div class="stats" id="Stats"></div>
+        </div>
+        <div class="logos">
+            <img class="logo" src="pics/CNSA.png" alt="CNSA" width="112" height="82"/>
+            <img class="logo" src="pics/esa_white.png" alt="ESA" width="162" height="82"/>
+        </div>
+    </header>
+
+    <main class="layout">
+        <section class="view card stacked" data-tab="timeline">
+            <div class="card-head">
+                <h2 class="title" id="BarChartTitle">Launches per year</h2>
+                <div class="legend-row" id="BarLegend"></div>
+            </div>
+            <div class="scroll-x">
+                <svg id="FlightsChart" preserveAspectRatio="xMidYMid meet"></svg>
+            </div>
+        </section>
+
+        <section class="view card sun_filters" data-tab="timeline">
+            <div class="field field-wide">
+                <label for="DataType">Graph of:</label>
+                <div class="select">
+                    <select id="DataType" autocomplete="off" disabled>
+                        <option selected value="Missions">Missions</option>
+                        <option value="Astronauts">Astronauts</option>
+                    </select>
+                    <div class="select__arrow"></div>
+                </div>
+            </div>
+
+            <div class="mode-switch" role="group" aria-label="Show">
+                <button type="button" data-mode="Missions" class="active" aria-pressed="true" disabled>Missions</button>
+                <button type="button" data-mode="Astronauts" aria-pressed="false" disabled>Astronauts</button>
+            </div>
+
+            <!-- search, years, missions, crew: built by js/filters.js -->
+            <div class="filters-row" id="FiltersPanel" role="toolbar" aria-label="Filters"></div>
+
+            <div class="sunburst">
+                <p class="sum-title" id="sumTitle"></p>
+                <div class="sum-bar" id="SummaryBar"></div>
+                <div class="sum-legend" id="SummaryLegend"></div>
+            </div>
+
+            <div class="list-block" id="ListBlock" data-tab="list">
+                <button type="button" class="list-toggle" id="ListToggle" aria-expanded="false" aria-controls="grid">
+                    <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 5.5h10M8 11h10M8 16.5h10"/><circle cx="4" cy="5.5" r="1"/><circle cx="4" cy="11" r="1"/><circle cx="4" cy="16.5" r="1"/></svg>
+                    <span id="ListTitle">List of missions</span>
+                    <b class="list-count" id="ListCount"></b>
+                    <svg class="chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3.5 5.5L7 9l3.5-3.5"/></svg>
+                </button>
+                <div id="grid"></div>
+            </div>
+        </section>
+
+        <section class="view card parcoords" id="parcoords" data-tab="params"></section>
+
+        <section class="view card graph" data-tab="graph">
+            <div class="card-head">
+                <h2 class="title" id="GraphTitle">Missions-Astronauts Connections</h2>
+                <button type="button" class="button" id="DrawAll">Draw all</button>
+            </div>
+            <div class="graph-body">
+                <canvas id="Graph" role="img" aria-label="Graph of missions and their crews"></canvas>
+                <p class="graph-hint">
+                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="22" cy="22" r="5"/><circle cx="8" cy="10" r="3.5"/><circle cx="37" cy="12" r="3.5"/><circle cx="34" cy="36" r="3.5"/><circle cx="9" cy="33" r="3.5"/><path d="M18 19l-7-6.5M26 19.5l8-5.5M25.5 25.5l6 8M18 25.5l-7 5.5"/></svg>
+                    Pick a mission or an astronaut in the list to see who flew with whom, or press <b>Draw all</b>.
+                </p>
+            </div>
+            <div class="graph-legend" id="GraphLegend">
+                <span class="legend-item"><i class="node-mission"></i>Mission</span>
+                <span class="legend-item"><i class="node-astro"></i>Astronaut, by country</span>
+                <span class="legend-item"><i class="node-selected"></i>Selected</span>
+            </div>
+        </section>
+
+        <section class="view card info" id="Info" aria-label="Details">
+            <div class="sheet-bar">
+                <span class="sheet-handle"></span>
+                <button type="button" class="sheet-close" id="SheetClose" aria-label="Close details">
+                    <svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+                </button>
+            </div>
+            <div class="info-media" id="InfoMedia" hidden>
+                <img class="info-photo" id="InfoPhoto" alt="" hidden>
+                <img class="info-patch" id="InfoPatch" alt="Mission patch" hidden>
+            </div>
+            <div class="info-body" id="InfoBody"></div>
+            <p class="info-hint">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="5" width="26" height="30" rx="4"/><path d="M13 13h14M13 19h14M13 25h9"/></svg>
+                Details of the selected mission or astronaut appear here.
+            </p>
+            <div class="info-links" id="InfoLinks" hidden></div>
+            <button type="button" class="button sheet-graph" id="SheetGraph">Show connections</button>
+        </section>
+    </main>
+
+    <div class="sheet-backdrop" id="SheetBackdrop"></div>
+
+    <nav class="tabbar" id="TabBar" aria-label="Sections">
+        <button type="button" data-tab="timeline" class="active">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 18V11M8.5 18V6M13 18V9M17.5 18V4"/></svg>
+            <span>Timeline</span>
+        </button>
+        <button type="button" data-tab="list">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M8 5.5h10M8 11h10M8 16.5h10"/><circle cx="4" cy="5.5" r="1"/><circle cx="4" cy="11" r="1"/><circle cx="4" cy="16.5" r="1"/></svg>
+            <span>List</span><b class="tab-badge" id="ListBadge"></b>
+        </button>
+        <button type="button" data-tab="params">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 3v16M11 3v16M18 3v16"/><path d="M4 7l7 8 7-10" stroke-width="1.4"/></svg>
+            <span>Parameters</span>
+        </button>
+        <button type="button" data-tab="graph">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="2.6"/><circle cx="4.5" cy="5" r="1.9"/><circle cx="17.5" cy="5.5" r="1.9"/><circle cx="16.5" cy="17.5" r="1.9"/><circle cx="5" cy="16.5" r="1.9"/><path d="M9 9.2L6 6.4M13 9.4l3.1-2.6M12.7 13l2.6 3M9.2 12.9L6.4 15.2"/></svg>
+            <span>Connections</span>
+        </button>
+    </nav>
+
+    <div class="crew-modal" id="CrewModal" role="dialog" aria-modal="true" aria-label="The Astronet crew" hidden>
+        <figure class="crew-card">
+            <button type="button" class="crew-close" id="CrewClose" aria-label="Close">
+                <svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+            </button>
+            <img src="pics/crew.jpg" loading="lazy" decoding="async" alt="Ilya, Yana and their commander in orange launch suits, Earth behind them" width="1280" height="661">
+            <figcaption>
+                <span class="crew-tag">Astronet crew · ready for launch</span>
+                <b>Ilya Ovchinnikov</b> and <b>Yana Dolzhanskaya</b>, with a very experienced commander
+            </figcaption>
+        </figure>
     </div>
 
-    <div class="view stacked">
-    	<label class="title" id="BarChartTitle">Number of launched space missions</label>
-		<svg id='FlightsChart'></svg>
-    </div>
+    <footer class="footer">
+        <p class="authors">"Astronet" project by
+            <button type="button" class="crew-btn" id="CrewBtn" aria-haspopup="dialog">
+                <span class="crew-helmet" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0v3a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/><path d="M7.5 12.5a4.5 3.5 0 0 1 9 0v1a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2z" fill="currentColor" fill-opacity=".25"/><path d="M9 21h6"/></svg>
+                </span>
+                <span class="crew-names"><b>Ilya Ovchinnikov</b> &amp; <b>Yana Dolzhanskaya</b></span>
+                <span class="crew-hint">meet the crew</span>
+            </button>
+        </p>
+        Data: <a href="https://www.wikidata.org/">Wikidata</a> &amp; <a href="https://en.wikipedia.org/">Wikipedia</a>
+        <span id="DataUpdated"></span>
+    </footer>
 
-    <div class="view sun_filters">
-    	<div class="view">
-    		<label>Graph of:</label>
-	        <div class="select">
-		      <select id="DataType" onchange="filter()">
-		        <option selected value="Missions">Missions</option>
-	            <option value="Astonauts">Astonauts</option>
-		      </select>
-		      <div class="select__arrow"></div>
-		    </div>
-
-		    <div class="filt">
-			    <label>Missions filters</label>
-			    <hr>
-
-		    	<label>Habitation:</label>
-		        <div class="select">
-			      <select id="Habitation" onchange="filter()">
-			        <option selected value="All">All</option>
-		            <option value="Space">Space</option>
-		            <option value="Moon">Moon</option>
-		            <option value="ISS">ISS</option>
-		            <option value="Mir">Mir</option>
-		            <option value="Salyut 1">Salyut 1</option>
-		            <option value="Salyut 3">Salyut 3</option>
-		            <option value="Salyut 4">Salyut 4</option>
-		            <option value="Salyut 5">Salyut 5</option>
-		            <option value="Salyut 6">Salyut 6</option>
-		            <option value="Salyut 7">Salyut 7</option>
-		            <option value="Skylab">Skylab</option>
-		            <option value="Tiangong 1">Tiangong 1</option>
-		            <option value="Tiangong 2">Tiangong 2</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
-
-		        <label >Outcome:</label>
-			     <div class="select">
-			      <select id="Outcome" onchange="filter()">
-			        <option selected value="All">All</option>
-			        <option value="Fatality">Fatality</option>
-		            <option value="Success">Success</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
-		    </div>
-
-		    <div class="filt">
-			    <label>Astronauts filters</label>
-			    <hr>
-
-			    <label>Status:</label>
-		        <div class="select">
-			      <select id="Status" onchange="filter_astr()">
-			        <option selected value="All">All</option>
-		            <option value="Active">Active</option>
-		            <option value="Retired">Retired</option>
-		            <option value="Deceased">Deceased</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
-
-			    <label>Gender:</label>
-		        <div class="select">
-			      <select id="Gender" onchange="filter_astr()">
-			        <option selected value="All">All</option>
-		            <option value="Male">Male</option>
-		            <option value="Female">Female</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
-
-			    <label>Space walk:</label>
-			    <div class="select">
-			      <select id="SpaceWalk" onchange="filter_astr()">
-			        <option selected value="All">All</option>
-		            <option value="Yes">Yes</option>
-		            <option value="No">No</option>
-			      </select>
-			      <div class="select__arrow"></div>
-			    </div>
-		    </div>
-    	</div>
-    	
-    	<div class="view sunburst">
-		    <label id='sumTitle'>Count of missions</label>
-		    <hr>
-			<svg id='SummaryChart'> </svg>
-    	</div>
-    </div>
-
-	<script src="js/paracoords.js"></script>
-
-	<div class="view grid">		
-	    <label class="title" id="ListTitle"></label>
-	    <hr style="margin-top: 15px;">
-	    <div id='grid'></div>
-	</div>
-
-	<div class="view graph">	
-	    <label class="title" id="GraphTitle">Missions-Astronauts Connections</label>
-		<button class="button" onclick="complete_graph()">Draw all</button>
-	    <hr>
-			
-		<svg id='Graph' width="430" height="450"></svg>
-	</div>
-
-
-	<div class="view info" id="Info">
-		<table>
-			<caption class="title"></caption>
-			<tbody></tbody>
-		</table>
-	</div>
-<!-- 	<div>
-		
-	<form>
-		<label><input type="radio" name="mode" value="grouped"> Grouped</label>
-		<label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
-	</form>
-
-	</div> -->
-
-    <script src="js/selectionList.js" ></script>
+    <script src="js/filters.js"></script>
+    <script src="js/starfield.js"></script>
+    <script src="js/paracoords.js"></script>
+    <script src="js/selectionList.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/mobile.js"></script>
 </body>
 </html>

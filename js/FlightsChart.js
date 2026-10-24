@@ -1,256 +1,220 @@
-
 class FlightsChart{
-	
-	constructor(svgHeight, svgWidth, margin, selectionList, color){
-		this.margin = margin;
-		this.svgWidth = svgWidth;
-		this.svgHeight = svgHeight;
-		this.width = this.svgWidth - this.margin.left - this.margin.right;
-		this.height = this.svgHeight - this.margin.top - this.margin.bottom;
 
+	// Stacked columns: launches (or people launched) per year, stacked by country.
+	// Drawn at the real pixel size of its card, so text keeps its size on
+	// phones; re-drawn when the card width changes.
+	constructor(color){
+		this.margin = {top: 12, right: 6, bottom: 26, left: 30};
 		this.color = color;
-		this.down_d = 300;
-		this.up_d = 800;
-		this.emptyData = true;
+		this.morph_d = 600;      // a filter change: every column glides to its new height
+		this.gap = 1.5;          // surface gap between stacked segments
 		this.data = null;
-		this.selectionList = selectionList;
+		this.isMissions = true;
+		this.measure();
+
+		var t = this;
+		var lastWidth = this.svgWidth;
+		window.addEventListener("resize", function () {
+			clearTimeout(t.resizeTimer);
+			t.resizeTimer = setTimeout(function () {
+				t.measure();
+				if (t.svgWidth !== lastWidth && t.data && t.data.length) {
+					lastWidth = t.svgWidth;
+					t.raise_up(t.data, t.isMissions, true);
+				}
+			}, 150);
+		});
+	}
+
+	measure(){
+		var box = document.getElementById("FlightsChart").parentNode;
+		var w = Math.max(280, Math.round(box.clientWidth || 900));
+		this.svgWidth = w;
+		this.svgHeight = Math.round(Math.max(210, Math.min(330, w * 0.4)));
+		this.width = this.svgWidth - this.margin.right;
+		this.height = this.svgHeight - this.margin.bottom;
+		d3.select("#FlightsChart")
+			.attr("viewBox", "0 0 " + this.svgWidth + " " + this.svgHeight)
+			.attr("width", this.svgWidth)
+			.attr("height", this.svgHeight);
 	}
 
 	drawLegend() {
-		var svg = d3.select('#FlightsChart')
-							.attr('width', this.svgWidth)
-							.attr('height', this.svgHeight);
-		svg.append("g")
-      		.attr("class", "Yaxis axis")
-	        .attr("transform", "translate("+this.margin.left+",0)");
+		var svg = d3.select('#FlightsChart');
+		svg.append("g").attr("class", "grid");
+		svg.append("g").attr("class", "Xaxis axis-x");
+		svg.append("g").attr("class", "bars");
 
-
-      	var axisBrush = svg.append("g").attr("class", "axisBrush");
-
-      	axisBrush.append("g")
-      		.attr("class", "Xaxis axis")
-	        .attr("transform", "translate(0," + this.height + ")");
-
-	    axisBrush.append("g").attr("class", "brush");
-
-		var legend = svg.append("g")
-		      .attr("font-family", "sans-serif")
-		      .attr("font-size", 10)
-		      .attr("text-anchor", "end")
-		      .attr("class", "legend")
-		    .selectAll("g")
-		    .data(this.color.domain())
-		    .enter().append("g")
-		      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-		legend.append("rect")
-		      .attr("x", this.svgWidth - 19)
-		      .attr("width", 19)
-		      .attr("height", 19)
-		      .attr("fill", this.color);
-
-		legend.append("text")
-		      .attr("x", this.svgWidth - 24)
-		      .attr("y", 9.5)
-		      .attr("dy", "0.32em")
-		      .text(function(d) { return d; });
+		var items = d3.select("#BarLegend").selectAll(".legend-item")
+			.data(this.color.domain())
+			.enter().append("span")
+			.attr("class", "legend-item");
+		items.append("i").style("background", this.color);
+		items.append("span").text(d => d);
+		Filters.syncLegends();      // a click on a country shows only it
 	}
 
 	update(stackedData, isMissions){
 
 		this.data = stackedData;
+		this.isMissions = isMissions;
 
-	   	d3.select("#BarChartTitle")		  
-          .text(function () {
-      	 	return isMissions ? "Number of launched space missions" 
-      	 					  : "Number of humans launched into space";
-          });
-	   	d3.select("#ListTitle")		  
-	          .text(function () {
-	      	 	return isMissions ? "List of missions" 
-	      	 					  : "List of astronauts";
-	          });
+	   	d3.select("#BarChartTitle")
+          .text(isMissions ? "Launches per year" : "People launched per year");
+	   	d3.select("#ListTitle")
+	          .text(isMissions ? "List of missions" : "List of astronauts");
 
-        if(this.emptyData){
-        	this.raise_up(stackedData, isMissions);
-        }
-        else{
-			var t = this;
-			var draw = true;
-			d3.select('#FlightsChart')
-			  .selectAll('.stackBar')
-			  .selectAll('rect')
-	    		.transition()
-	        	.duration(this.down_d)
-	        	.attr('height', 0)
-	        	.on("end", function () {
-	        		if (draw) {
-	        			draw = false;
-	        			t.raise_up(stackedData, isMissions);
-	        		}
-	        	});
-        }
-        this.emptyData = stackedData.length == 0
+        // the columns go from their old height to the new one (no drop to zero)
+        this.raise_up(stackedData, isMissions);
 	}
 
-	raise_up(stackedData, isMissions){
-		function range(start, edge, step) {
-		  // If only one number was passed in make it the edge and 0 the start.
-		  if (arguments.length == 1) {
-		    edge = start;
-		    start = 0;
-		  }
-		 
-		  // Validate the edge and step numbers.
-		  edge = edge || 0;
-		  step = step || 1;
-		 
-		  // Create the array of numbers, stopping befor the edge.
-		  for (var ret = []; (edge - start) * step > 0; start += step) {
-		    ret.push(start);
-		  }
-		  return ret;
-		}
-		console.log();
-		var x = d3.scaleBand()
-			.range([this.margin.left, this.width])
-			.padding(0.1)
-			.domain(range(parseInt(stackedData[0].key),
-			 		 	  parseInt(stackedData[stackedData.length - 1].key) + 1));
-			// .domain(range([parseInt(stackedData[0].key),
-			// 		 	   parseInt(stackedData[stackedData.length - 1]) + 0.1]));
-
-		var maxY = d3.max(stackedData, function (d) {
-				return d3.max(d.values, function (c) {
-					return c.prev + c.values.length;
-				})
-			});
-		var y = d3.scaleLinear()
-			.range([this.height, this.margin.top])
-			.domain([0, maxY]);
-
-		var color = this.color;
+	raise_up(stackedData, isMissions, instant){
 		var svg = d3.select('#FlightsChart');
+		var dur = instant || REDUCED_MOTION.matches ? 0 : this.morph_d;
+		var height = this.height;
+		function glide(sel) { return sel.transition("bars").duration(dur).ease(d3.easeCubicInOut); }
+		if (!stackedData.length) {        // everything sinks, then the chart is empty
+			glide(svg.selectAll(".stackBar rect")).attr("y", height).attr("height", 0)
+				.on("end", function () { d3.select(this.parentNode).remove(); });
+			return;
+		}
+
+		var m = this.margin, gap = this.gap, color = this.color;
+		// always the whole history: with a filter on, the bars keep their
+		// place in time (the axis used to shrink to the years found)
+		var found = stackedData.map(d => parseInt(d.key));
+		var all = typeof missions !== "undefined" && missions ? missions.map(d => +d.Year).filter(Boolean) : [];
+		var first = d3.min(all.concat(found)), last = d3.max(all.concat(found));
+		var years = d3.range(first, last + 1);
+
+		var x = d3.scaleBand()
+			.range([m.left, this.width])
+			.paddingInner(0.22)
+			.paddingOuter(0.1)
+			.domain(years);
+
+		// at least 4 high: one launch is a short bar, not a wall
+		var maxY = Math.max(4, d3.max(stackedData, d => d3.max(d.values, c => c.prev + c.values.length)));
+		var y = d3.scaleLinear()
+			.range([this.height, m.top])
+			.domain([0, maxY])
+			.nice(4);
+
+		// recessive grid with the value labels on the left
+		var ticks = y.ticks(4).filter(v => Math.floor(v) === v);
+		var grid = svg.select(".grid").selectAll("g").data(ticks, d => d);
+		// the scale glides with the bars: old lines fade out at their new place
+		var y0 = this.lastY || y;
+		glide(grid.exit()).style("opacity", 0).attr("transform", d => "translate(0," + y(d) + ")").remove();
+		var gridEnter = grid.enter().append("g")
+			.style("opacity", 0)
+			.attr("transform", d => "translate(0," + y0(d) + ")");
+		gridEnter.append("line");
+		gridEnter.append("text").attr("dy", "0.32em");
+		grid = gridEnter.merge(grid);
+		grid.attr("class", d => d === 0 ? "baseline" : null);
+		glide(grid).style("opacity", 1).attr("transform", d => "translate(0," + y(d) + ")");
+		this.lastY = y;
+		grid.select("line").attr("x1", m.left).attr("x2", this.width);
+		grid.select("text").attr("x", m.left - 8).text(d => d);
+
+		// year labels: every 5th or 10th year, horizontal
+		var step = x.step() * 5 < 34 ? 10 : 5;
+		var labels = years.filter(yr => yr % step === 0);
+		var xaxis = svg.select(".Xaxis").selectAll("text").data(labels, d => d);
+		xaxis.exit().remove();
+		xaxis.enter().append("text")
+			.merge(xaxis)
+			.attr("x", d => x(d) + x.bandwidth() / 2)
+			.attr("y", this.height + 18)
+			.text(d => d);
 
 		function tooltip_render (tooltip_data) {
-		    let text = "<label style='color: " + color(tooltip_data.key) + "'>" + tooltip_data.key + "</label>";
+		    let text = "<label><i style='background:" + color(tooltip_data.key) + "'></i>" + esc(tooltip_data.key) +
+		               " <b>" + tooltip_data.values.length + "</b></label>";
         	var cols = tooltip_data.values.length >= 15 ? 2 : 1;
         	text += "<ul style='columns: " + cols + "'>";
         	if (isMissions){
         		tooltip_data.values.forEach(function (row) {
-            		text += "<li>" + row["Launch Mission"] + ": "+ row["Launch Data"]  + "</li>";
+            		text += "<li>" + esc(row["Launch Mission"]) + " <span>" + esc(Info.date(row["Launch Data"], true)) + "</span></li>";
             	});
             }
             else{
+        		var missionOf = tooltip_data.missionOf || {};
         		var grouped = d3.nest()
-		            		  .key(d => d["Year Mission"])
+		            		  .key(d => missionOf[d.Name] || d["Year Mission"])
 		            		  .entries(tooltip_data.values);
 		        grouped.forEach(function (row) {
         			row.values.forEach(function (astrs) {
-        				text += "<li>" + astrs.Name + ": " + row.key + "</li>";
+        				text += "<li>" + esc(astrs.Name) + " <span>" + esc(row.key) + "</span></li>";
         			})
     			});
             }
-		    return "</ul>" + text;
+		    return text + "</ul>";
 		}
 
-		let tip = d3.tip().attr('class', 'd3-tip')
-		            .direction('e')
-		            .html(tooltip_render);
+		if (!this.tip) {
+			var t = this.tip = d3.tip().attr('class', 'd3-tip bars-tip').direction('e').offset([0, 10]);
+			svg.call(t);
+			// a tap shows the tooltip but nothing "leaves" the bar on a phone:
+			// it goes on scroll and on a tap anywhere else
+			var hide = function () {
+				svg.classed("hovering", false).selectAll(".hover").classed("hover", false);
+				t.hide();
+			};
+			document.addEventListener("scroll", hide, { capture: true, passive: true });   // the page or the bars sideways
+			document.addEventListener("touchstart", function (e) {
+				if (!(e.target instanceof Element) || !e.target.closest(".stacked rect")) hide();
+			}, { passive: true });
+			this.hideTip = hide;
+		}
+		this.hideTip();      // new bars: the old tooltip is about rows no longer here
+		var tip = this.tip.html(tooltip_render);
 
-		svg.call(tip);
+		// one column per year, one segment per country, matched by key: a
+		// column that stays changes its height, a new one grows from the
+		// baseline, one that is gone sinks into it
+		var barWidth = Math.min(x.bandwidth(), 24);
+		function place(d) { return "translate(" + (x(d.key) + (x.bandwidth() - barWidth) / 2) + ",0)"; }
+		var stackBars = svg.select(".bars").selectAll(".stackBar").data(stackedData, d => d.key);
+		glide(stackBars.exit().selectAll("rect")).attr("y", height).attr("height", 0);
+		glide(stackBars.exit()).remove();
+		stackBars = stackBars.enter().append('g')
+			.attr("class", "stackBar")
+			.attr("transform", place)
+			.merge(stackBars);
+		stackBars.interrupt("bars").attr("transform", place);
 
-		svg.selectAll(".stackBar").remove();
-	   	
-		var stackBars = svg.selectAll(".stackBar")
-			.data(stackedData)
-	   		.enter()
-	    	.append('g')
-		    	.attr("class", "stackBar")
-		        .attr("transform", function (d) {
-		        	console.log(d.key);
-				    return "translate("+ x(d.key) + ",0)";
-		        });
+		function top(d) { return y(d.prev + d.values.length); }
+		function size(d) { return Math.max(0.5, y(d.prev) - top(d) - (d.prev > 0 ? gap : 0)); }
 
-		var rects = stackBars.selectAll('rect')
-		    	.data(function(d) { return d.values; })
-		    	.enter()
-		    	.append("rect")
-				.attr("width", x.bandwidth())
-	        	.style("fill", function(d){return color(d.key);});
+		var rects = stackBars.selectAll('rect').data(d => d.values, d => d.key);
+		glide(rects.exit()).attr("y", height).attr("height", 0).remove();
+		rects = rects.enter().append("rect")
+			.attr("y", height)
+			.attr("height", 0)
+			.style("fill", d => color(d.key))
+			.merge(rects)
+			.attr("width", barWidth)
+			.attr("rx", Math.min(2, barWidth / 3));
+		glide(rects).attr("y", top).attr("height", size);
 
-        rects.attr("y", this.height)
-    		.transition()
-        	.duration(this.up_d)
-  			.ease(d3.easeCubic)
-	        .attr("y", function(d) { return  y(d.prev + d.values.length); })
-			.attr("height", function(d) { return  y(d.prev) - y(d.prev + d.values.length) ; });
-
-		rects.on('mouseover', tip.show)
-      		 .on('mouseout', tip.hide);
-
-	    svg.select(".Xaxis")
-    		.transition()
-        	.duration(this.up_d)
-	        .call(d3.axisBottom(x))
-			.selectAll("text")
-			    .attr("y", 0)
-			    .attr("x", 9)
-			    .attr("dy", ".35em")
-			    .attr("transform", "rotate(90)")
-			    .style("text-anchor", "start");
-
-	    svg.select(".Yaxis")
-    		.transition()
-        	.duration(this.up_d)
-	        .call(d3.axisLeft(y)
-	        		.tickFormat(function(e){
-				        if(Math.floor(e) != e) return;
-				        return e;
-				    }));
+		rects.on('mouseover', function (d) {
+				svg.classed("hovering", true);
+				d3.select(this.parentNode).classed("hover", true);
+				// opens away from the screen edge, and stays on the screen
+				var r = this.getBoundingClientRect(), vw = document.documentElement.clientWidth;
+				var west = r.left + r.width / 2 > vw / 2;
+				tip.direction(west ? 'w' : 'e').offset([0, west ? -10 : 10]);
+				tip.show.apply(this, arguments);
+				var node = document.querySelector('.bars-tip'), t = node.getBoundingClientRect();
+				var dx = Math.min(0, vw - 8 - t.right) || Math.max(0, 8 - t.left);
+				if (dx) node.style.left = (parseFloat(node.style.left) + dx) + "px";
+			})
+			.on('mouseout', function () {
+				svg.classed("hovering", false);
+				d3.select(this.parentNode).classed("hover", false);
+				tip.hide.apply(this, arguments);
+			});
 	}
 }
-
-
-		
-
-		// d3.selectAll("input")
-		//     .on("change", changed);
-
-		// var timeout = d3.timeout(function() {
-		//   d3.select("input[value=\"grouped\"]")
-		//       .property("checked", true)
-		//       .dispatch("change");
-		// }, 2000);
-
-		// function changed() {
-		//   timeout.stop();
-		//   if (this.value === "grouped") transitionGrouped();
-		//   else transitionStacked();
-		// }
-
-		// function transitionGrouped() {
-		//   y.domain([0, yMax]);
-
-		//   rect.transition()
-		//       .duration(500)
-		//       .delay(function(d, i) { return i * 10; })
-		//       .attr("x", function(d, i) { return x(i) + x.bandwidth() / n * this.parentNode.__data__.key; })
-		//       .attr("width", x.bandwidth() / n)
-		//     .transition()
-		//       .attr("y", function(d) { return y(d[1] - d[0]); })
-		//       .attr("height", function(d) { return y(0) - y(d[1] - d[0]); });
-		// }
-
-		// function transitionStacked() {
-		//   y.domain([0, y1Max]);
-
-		//   rect.transition()
-		//       .duration(500)
-		//       .delay(function(d, i) { return i * 10; })
-		//       .attr("y", function(d) { return y(d[1]); })
-		//       .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-		//     .transition()
-		//       .attr("x", function(d, i) { return x(i); })
-		//       .attr("width", x.bandwidth());
-		// }

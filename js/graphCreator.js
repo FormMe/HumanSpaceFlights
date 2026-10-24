@@ -1,4 +1,22 @@
 
+// lookups built once per data set: who is who, and who flew which missions
+// (scanning every astronaut and mission for each node made "Draw all" slow)
+var lookups = { missions: null, astronauts: null };
+function lookup() {
+	if (lookups.missions !== missions || lookups.astronauts !== astronauts) {
+		var byName = new Map(), missionsOf = new Map();
+		astronauts.forEach(a => byName.set(a.Name, a));
+		missions.forEach(function (m) {
+			m.Members.forEach(function (n) {
+				if (!missionsOf.has(n)) missionsOf.set(n, new Set());
+				missionsOf.get(n).add(m);
+			});
+		});
+		lookups = { missions: missions, astronauts: astronauts, byName: byName, missionsOf: missionsOf };
+	}
+	return lookups;
+}
+
 function astr_graph(astr) {
 	var nodes = [{
 		id: astr.Name,
@@ -7,9 +25,11 @@ function astr_graph(astr) {
     	selected: false
 	}];
 	var links = [];
-	if (astr.Country != "Other") {
+	if (!astr.stub) {
+		var crewOf = lookup().missionsOf.get(astr.Name) || new Set();
 		missions
-			.filter(mis => astr.Missions.includes(mis["Launch Mission"]))
+			// by name, and by crew membership (one spelling mistake must not break a link)
+			.filter(mis => crewOf.has(mis) || astr.Missions.includes(mis["Launch Mission"]))
 			.forEach(function (mis) {
 				nodes.push({
 	    			id: mis["Launch Mission"],
@@ -47,8 +67,8 @@ function mis_graph(mis) {
     		});
 		})
 	});
-	astronauts
-		.filter(astr => members.includes(astr.Name))
+	var byName = lookup().byName;
+	members.slice().map(n => byName.get(n)).filter(Boolean)
 		.forEach(function (astr) {
     		nodes.push({
     			id: astr.Name,
@@ -62,7 +82,7 @@ function mis_graph(mis) {
 		nodes.push({
 			id: astr,
 			type: 'astronaut',
-			value: {Name: astr, Country: "Other"},
+			value: {Name: astr, Country: "Other", stub: true},
 			selected: false
 		});
 	})
@@ -72,14 +92,23 @@ function mis_graph(mis) {
 	};
 }
 
+// Union of two graphs. Lookups go through hash maps kept on g1, so merging
+// hundreds of graphs ("Draw all") stays linear instead of quadratic.
 function merge_graph(g1, g2){
+	if (!g1._ids) {
+		g1._ids = new Set(g1.nodes.map(n => n.id));
+		g1._links = new Set(g1.links.map(l => l.source + "\u0000" + l.target));
+	}
 	g2.nodes.forEach(function (node2) {
-		if(g1.nodes.find(node1 => node1.id == node2.id) == undefined){
+		if (!g1._ids.has(node2.id)) {
+			g1._ids.add(node2.id);
 			g1.nodes.push(node2);
 		}
 	});
 	g2.links.forEach(function (link2) {
-		if(g1.links.find(link1 => link1.source == link2.source && link1.target == link2.target) == undefined){
+		var key = link2.source + "\u0000" + link2.target;
+		if (!g1._links.has(key)) {
+			g1._links.add(key);
 			g1.links.push(link2);
 		}
 	});
